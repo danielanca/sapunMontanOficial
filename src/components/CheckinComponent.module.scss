@@ -1,0 +1,138 @@
+@import './../main.module.scss';
+@import './../data//themes.scss';
+
+.bottomPanel {
+  background-color: map-get($map: $colors, $key: whitePure);
+  border-radius: 10px;
+  width: 628px;
+  height: 72px;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-box-shadow: 0px 3px 6px map-get($map: $colors, $key: chillGrayTransparent);
+  box-shadow: 0px 3px 6px map-get($map: $colors, $key: chillGrayTransparent);
+  bottom: -32px;
+  z-index: 2;
+  display: flex;
+  flex: 1 0;
+  justify-content: center;
+
+  @include media('>=phone', '<=tablet') {
+    width: 50vw;
+  }
+  @include media('>tablet', '<=desktopSmall') {
+    width: 22vw;
+  }
+}
+
+.bookingComponent {
+  align-self: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 13;
+  padding-top: 44px;
+  padding-bottom: 1000px;
+  animation: fadein 0.5s;
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.calendar {
+  position: absolute;
+  top: 80px;
+}
+
+.textCheck {
+  color: rgb(61, 61, 61);
+  font-size: 14px;
+  margin: 0px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  align-self: center;
+
+  &:hover {
+    font-weight: 500;
+  }
+}
+.extenderWrapper {
+  flex: 1.5 0 auto;
+  width: 66.66666667%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  @include media('>=phone', '<=desktopSmall') {
+    display: none !important;
+  }
+  @include media('>=tablet', '<=desktopSmall') {
+    display: none !important;
+  }
+}
+.bookAction {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  background-color: map-get($map: $colors, $key: headColor);
+  border-radius: 10px;
+  border: none;
+  height: inherit;
+  color: map-get($map: $colors, $key: whitePure);
+  transition: all 0.5s;
+  &:hover {
+    background-color: map-get($map: $colors, $key: welcomeHead);
+  }
+}
+.bookText {
+  color: map-get($map: $colors, $key: whiteSmokey);
+  font-size: 14px;
+  font-family: 'SallenasGrande Regular';
+
+  @include media('>=phone', '<=tablet') {
+    font-size: 1.1em;
+  }
+  @include media('>tablet', '<=desktopSmall') {
+    font-size: 2vw;
+  }
+}
+.arrow {
+  &:hover {
+    filter: brightness(0.5);
+  }
+}
+.topper {
+  @extend .arrow;
+  margin-top: 5px;
+}
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+.rightStyle {
+  background-color: map-get($map: $colors, $key: chillGraySolid);
+  opacity: 0.6;
+  width: 2px;
+  height: 55%;
+  margin-left: 5%;
+}
+.centerer {
+  flex: 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

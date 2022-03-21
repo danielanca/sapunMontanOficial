@@ -1,0 +1,11 @@
+@import './../data/themes.scss';
+
+.frontWelcome {
+  font-size: 24px;
+  color: map-get($map: $colors, $key: redBomb);
+}
+.welcomeHead {
+  font-size: 45px;
+  color: map-get($map: $colors, $key: mainlyBlack);
+  font-family: 'Bebas Neue Regular' !important;
+}

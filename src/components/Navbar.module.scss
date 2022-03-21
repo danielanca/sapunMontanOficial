@@ -1,0 +1,277 @@
+@import './../main.module.scss';
+@import './../data/themes.scss';
+.jewel {
+  background-color: red;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  margin-left: -16px;
+  margin-top: -6px;
+  color: white;
+  box-shadow: 2px 10px 17px -3px rgba(0, 0, 0, 0.1);
+}
+.montanLogo {
+  font-weight: 500;
+  font-size: 36px;
+  cursor: pointer;
+}
+.roProduct {
+  width: 30px;
+  height: auto;
+}
+.WeRomanians {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @include media('<tablet') {
+    display: none;
+  }
+}
+.backDropBackground {
+  display: none;
+  background-color: black;
+  @include media('<tablet') {
+    opacity: 0.7;
+    filter: blur(4px);
+    width: 100vw;
+    position: absolute;
+    height: 185vh;
+    z-index: 8;
+  }
+}
+.active {
+  display: initial;
+}
+///NEW
+.middleNoUl {
+  @extend .col-3;
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  @include media('<desktop') {
+    width: 100%;
+    align-self: center;
+  }
+}
+.navbarContainer {
+  width: 100%;
+  height: 108px;
+  background-color: map-get($map: $colors, $key: navBarBackground);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  z-index: 10;
+
+  @include media('<desktop') {
+    background-color: map-get($map: $colors, $key: navBarBackgroundMobile);
+    flex-direction: column;
+    height: auto;
+    width: 100vw;
+    justify-content: space-around;
+    position: relative;
+  }
+}
+
+.ulMenu {
+  @extend .col-4;
+  list-style: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  padding-left: 0 !important;
+  align-items: center;
+  @include media('<desktop') {
+    display: none !important;
+  }
+}
+
+.ulMenuStart {
+  @extend .ulMenu;
+  justify-content: start;
+  width: auto;
+}
+.ulMenuEnd {
+  @extend .ulMenu;
+  width: auto;
+  justify-content: end;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.burgerMenu {
+  display: none;
+  border: 2px solid map-get($map: $colors, $key: mainlyBlack);
+  background-color: map-get($map: $colors, $key: burgerColorBackground);
+  border-radius: 1px;
+  width: 80vw;
+  margin-top: 1.3vw;
+  font-size: 1.2em;
+  font-weight: 500;
+  opacity: 0;
+  z-index: 24;
+  transition: 0.6s ease-in;
+  animation: fadeIn 0.5s;
+  -webkit-animation: fadeIn 0.5s;
+  -moz-animation: fadeIn 0.5s;
+  -o-animation: fadeIn 0.5s;
+  -ms-animation: fadeIn 0.5s;
+
+  @include media('<tablet') {
+    width: 70vw;
+    margin-top: 2.2vh;
+    position: absolute;
+    top: 140px;
+  }
+  @include media('>tablet', '<desktop') {
+    width: 37vw;
+    margin-top: 2.2vh;
+  }
+}
+
+.activeBurger {
+  display: block;
+  @include media('<=desktop') {
+    opacity: 1;
+    align-self: center;
+  }
+}
+.ulMobile {
+  list-style: none;
+  padding: 19px;
+  text-align: center;
+}
+.liMobile {
+  color: map-get($map: $colors, $key: mainlyBlack);
+
+  font-weight: 500;
+  margin-top: 1vw;
+  @include media('<tablet') {
+    font-size: 3.1vh;
+  }
+  @include media('>tablet', '<=desktop') {
+    font-size: 2.3vh;
+  }
+}
+
+.liItem {
+  font-weight: 100;
+  opacity: 1;
+  cursor: pointer;
+  font-size: 1.4em;
+  color: #000000;
+  margin: 0 0.8vw;
+  font-family: 'SallenasGrande Regular' !important;
+  border-bottom: 5px solid transparent;
+  white-space: nowrap;
+  &:hover {
+  }
+}
+.HashLinkStyle {
+  color: map-get($map: $colors, $key: mainlyBlack);
+
+  text-decoration: none;
+  &:hover {
+    color: map-get($map: $colors, $key: mainlyBlack);
+    border-bottom: 2px solid black;
+  }
+}
+.logoHover {
+  color: map-get($map: $colors, $key: mainlyBlack);
+  text-decoration: none;
+
+  &:hover {
+    color: map-get($map: $colors, $key: chillBlack);
+  }
+}
+.hashTransparent {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.navLogo {
+  width: 25vw;
+  @include media('<desktop') {
+    width: 80vw;
+    margin-top: 0px;
+  }
+}
+.burgerElement {
+  display: none;
+  @include media('<desktop') {
+    display: initial;
+    z-index: 24;
+    height: 36px;
+    width: 31px;
+
+    transition: 0.5s;
+    align-self: center;
+  }
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  @include media('<tablet') {
+    width: 32px;
+    height: 3.5px;
+    background-color: map-get($map: $colors, $key: redBomb);
+    margin: 3px 0;
+    transition: 0.8s;
+  }
+
+  @include media('>=tablet', '<desktop') {
+    width: 33px;
+    height: 3.5px;
+    background-color: map-get($map: $colors, $key: redBomb);
+    margin: 5px 0;
+    transition: 0.8s;
+  }
+}
+
+.bar1End {
+  -webkit-transform: rotate(-45deg) translate(-5px, 2px);
+  transform: rotate(-45deg) translate(-5px, 2px);
+  background-color: map-get($map: $colors, $key: whitePure);
+}
+.bar2End {
+  display: none;
+}
+.bar3End {
+  -webkit-transform: rotate(45deg) translate(-2px, 0px);
+  transform: rotate(45deg) translate(-2px, 0px);
+  background-color: map-get($map: $colors, $key: whitePure);
+}
+
+.shopIcon {
+  width: 30px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+.cartContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  white-space: nowrap;
+}
+.spanCart {
+  font-size: 1.2rem;
+  margin: 0 3%;
+  cursor: pointer;
+  color: green;
+  &:hover {
+    opacity: 0.7;
+  }
+}

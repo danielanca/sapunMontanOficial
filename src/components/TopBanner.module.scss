@@ -1,0 +1,46 @@
+@import './../main.module.scss';
+@import './../data//themes.scss';
+
+.bigBlanaBanner {
+  @extend .container-fluid;
+
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  width: 100vw;
+  position: relative;
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+
+  @include media('<tablet') {
+    height: 75px;
+    flex-direction: column;
+  }
+}
+.headTitle {
+  color: whitesmoke;
+  text-align: center;
+  font-size: 1.8em;
+  margin: 0;
+  @include media('>=tablet', '<=desktop') {
+    font-size: 1.2em;
+  }
+  @include media('<tablet') {
+    font-size: 1.3em;
+  }
+}
+.emailTop {
+  color: rgb(207, 207, 0);
+  font-weight: 200;
+  @include media('<tablet') {
+    display: none;
+  }
+}
+.socialsTop {
+  color: rgb(207, 207, 0);
+
+  @include media('<tablet') {
+    display: none;
+  }
+}

@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'SallenasGrande Regular';
+  src: url(./../fonts/SallenasGrandesRegular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Montserrat Regular';
+  src: url(./../fonts/MontserratRegular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Montserrat Light';
+  src: url(./../fonts/MontserratLight.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Montserrat Bold';
+  src: url(./../fonts/MontserratBold.ttf);
+  font-weight: 400;
+}
+
+.frontWelcome {
+  font-size: 18px;
+  color: #caa987;
+}
+
+.welcomeHead {
+  font-size: 50px;
+  color: #5c534c;
+  font-family: 'SallenasGrande Regular' !important;
+}
+/*# sourceMappingURL=HeaderMessage.module.css.map */

@@ -1,0 +1,33 @@
+@import './../main.module.scss';
+@import './../data//themes.scss';
+
+.addSection {
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 77vw;
+  max-width: 533px;
+}
+
+.submitButton {
+  background-color: gainsboro;
+  width: 200px;
+  height: 33px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+textarea[type='reviewInput'] {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+input[type='credentialsInput'] {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

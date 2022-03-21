@@ -1,0 +1,50 @@
+@import './../main.module.scss';
+@import './../data//themes.scss';
+
+.commentBoard {
+  height: auto;
+  width: 80vw;
+  max-width: 860px;
+  background-color: whitesmoke;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  @include media('<tablet') {
+    height: auto;
+    text-align: center;
+  }
+}
+.authorStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.name {
+  font-weight: 500;
+  font-size: 1.4em;
+  margin: 0 10px;
+}
+.date {
+  font-weight: 300;
+  margin: 0 10px;
+  font-size: 1.4em;
+}
+.comment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.actualComment {
+  padding: 1%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  @include media('<tablet') {
+    height: auto;
+    text-align: center;
+    padding: 5%;
+  }
+}
+.reviewStars {
+  display: table;
+  margin: auto;
+}
+.starIcon {
+  width: 25px;
+}

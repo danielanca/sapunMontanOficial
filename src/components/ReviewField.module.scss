@@ -1,0 +1,17 @@
+@import './../main.module.scss';
+@import './../data//themes.scss';
+
+.reviewContainer {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 30px;
+}
+.contain {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

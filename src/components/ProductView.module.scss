@@ -1,0 +1,138 @@
+@import './../main.module.scss';
+@import './../data//themes.scss';
+
+.padder {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.leftSection {
+  display: flex;
+  justify-content: end;
+
+  padding: 0;
+}
+.rightSection {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  flex-direction: column;
+}
+
+.leftContainer {
+  position: relative;
+  width: 500px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include media('<tablet') {
+    width: 100%;
+  }
+}
+
+.rightContainer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  @include media('<tablet') {
+    width: 100vw;
+  }
+}
+.imageContainer {
+  width: 100%;
+}
+.productTitle {
+  font-size: 3rem;
+  text-align: center;
+}
+.reviewContainer {
+  display: flex;
+  justify-content: start;
+  @include media('<tablet') {
+    flex-direction: column;
+  }
+}
+.shortDescription {
+  font-size: 1.2rem;
+  text-align: center;
+}
+.longDescription {
+  font-family: 'Open Sans Regular', Georgia, Times, 'Times New Roman', serif;
+  padding-left: 10px;
+  line-height: 21px;
+}
+.starsContainer {
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 26px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  align-self: center;
+}
+.reviewStar {
+  width: 25px;
+}
+.reviewHead {
+  font-size: 20px;
+  align-self: center;
+}
+.priceWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.productPrice {
+  font-size: 3rem;
+  color: rgb(219, 12, 12);
+}
+.actionContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 115px;
+}
+.addToCart {
+  background-color: rgb(219, 12, 12);
+  color: white;
+  outline: none;
+  border-style: none;
+  font-size: 1.6em;
+  width: 250px;
+  height: 50px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+  &:hover {
+    background-color: rgb(73, 73, 73);
+  }
+}
+
+.liItem {
+}
+
+.previewImageContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.clickableImage {
+  border: 2px solid rgba(30, 30, 30, 0.3);
+  width: 100%;
+  height: 130px;
+  opacity: 0.6;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+.innerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -1,0 +1,85 @@
+@import './../main.module.scss';
+
+.cardboard {
+  @extend .col;
+  display: flex;
+  width: 40vw;
+  height: 21vw;
+  border-radius: 10px;
+  border: 2px solid map-get($map: $colors, $key: headColor);
+  cursor: default;
+
+  @include media('>=phone', '<=desktopSmall') {
+    width: 96vw;
+    height: 28vw;
+  }
+}
+.textInner {
+  white-space: nowrap;
+  font-size: 80%;
+
+  @include media('>=phone', '<=tablet') {
+    font-size: 2.4em;
+  }
+  @include media('>tablet', '<=desktopSmall') {
+    font-size: 1.8em;
+  }
+}
+.cardimgStyle {
+  width: auto;
+  height: 100%;
+
+  @include media('>=phone', '<=desktopSmall') {
+    width: default;
+    height: default;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+.fancyPrice {
+  color: map-get($map: $colors, $key: headColor);
+  font-weight: 500;
+  white-space: nowrap;
+  font-size: 1.3em;
+  @include media('>=phone', '<=tablet') {
+    font-size: 3.3em;
+  }
+  @include media('>tablet', '<=desktopSmall') {
+    font-size: 2.6em;
+  }
+}
+.padder {
+  padding: 8% 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2vw;
+  @include media('>=tablet', '<desktopSmall') {
+    font-size: 0.8vw;
+  }
+}
+.column4 {
+  @extend .col-4;
+  align-self: center;
+}
+.wrap {
+  @extend .col-8;
+  overflow: hidden;
+  -webkit-box-shadow: 2px 3px 15px -2px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 3px 15px -2px rgba(0, 0, 0, 0.4);
+}
+.headCardTitle {
+  text-decoration: underline;
+  color: map-get($map: $colors, $key: welcomeHead);
+  font-size: 1.3em;
+  margin-bottom: 3%;
+
+  @include media('>=phone', '<=tablet') {
+    font-size: 4.5em;
+  }
+  @include media('>tablet', '<=desktopSmall') {
+    font-size: 2.3em;
+  }
+}

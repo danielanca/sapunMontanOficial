@@ -1,0 +1,32 @@
+@import './../../main.module.scss';
+@import './../../data//themes.scss';
+
+.text {
+  font-family: 'Open Sans Regular', Georgia, Times, 'Times New Roman', serif;
+  line-height: 21px;
+  text-align: center;
+  padding: 0 12vw;
+}
+.bold {
+  font-family: 'Open Sans Regular', Georgia, Times, 'Times New Roman', serif;
+  font-weight: bolder;
+}
+.imagePic {
+  @include media('<tablet') {
+    width: 300px;
+  }
+  width: 60%;
+  height: auto;
+  display: table;
+  margin: auto;
+}
+.padder {
+  width: 70%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: table;
+  margin: auto;
+}
+.centerText {
+  text-align: center;
+}
