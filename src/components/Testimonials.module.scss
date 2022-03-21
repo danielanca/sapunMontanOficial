@@ -1,0 +1,70 @@
+@import './../main.module.scss';
+@import './../data//themes.scss';
+
+.blockContainer {
+  @extend .row;
+  width: 100%;
+  height: auto;
+  background-color: map-get($map: $colors, $key: whitePure);
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  @include media('<tablet') {
+    margin: 0;
+  }
+}
+
+.testimonialPic {
+  width: 100%;
+}
+
+.testimonialSection {
+  padding: 76px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include media('<tablet') {
+    padding: 32px 10px;
+  }
+}
+.titleNameStart {
+  font-size: 2.75rem;
+  @include media('<tablet') {
+    text-align: center;
+  }
+}
+.titleNameEnd {
+  font-size: 2.75rem;
+  text-align: end;
+  @include media('<tablet') {
+    text-align: center;
+  }
+}
+.descriptionStart {
+  font-size: 0.95rem;
+  text-align: start;
+  font-family: 'Open Sans Regular';
+  @include media('<tablet') {
+    line-height: 1em;
+  }
+}
+.descriptionEnd {
+  font-size: 0.95rem;
+  text-align: end;
+  font-family: 'Open Sans Regular';
+  @include media('<tablet') {
+    line-height: 1em;
+  }
+}
+.padderComment {
+  padding: 5%;
+  background-color: #e7e7e7;
+}
+
+.imageContainer {
+  width: 66%;
+
+  @include media('<tablet') {
+    width: 100%;
+  }
+}

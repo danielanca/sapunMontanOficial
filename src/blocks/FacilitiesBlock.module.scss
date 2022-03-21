@@ -1,0 +1,120 @@
+@import './../main.module.scss';
+@import './../data//themes.scss';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  width: 60%;
+  margin-top: 70px;
+  @include media('>=phone', '<tablet') {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  @include media('>=tablet', '<desktopSmall') {
+    flex-wrap: wrap;
+    width: 80%;
+    justify-content: space-evenly;
+    grid-column-gap: 64px;
+  }
+}
+
+.blockContainer {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include media('>=phone', '<tablet') {
+    margin-bottom: 30px;
+    padding: 17px;
+  }
+  @include media('>=tablet', '<desktopSmall') {
+    margin-bottom: 30px;
+    padding: 17px;
+  }
+}
+
+.subText {
+  font-size: 12px;
+  color: map-get($map: $colors, $key: headColor);
+
+  display: none;
+  position: absolute;
+  margin-top: 80px;
+  @include media('>=phone', '<tablet') {
+    display: block;
+    font-size: 9px;
+  }
+  @include media('>=tablet', '<desktopSmall') {
+    display: block;
+    font-size: 9px;
+  }
+}
+
+.image:hover + .subText {
+  display: block;
+  animation: colorChange 0.8s;
+  animation: fadein 0.8s;
+  filter: brightness(0.4);
+
+  @include media('>=phone', '<tablet') {
+    animation: none;
+    filter: none;
+  }
+  @include media('>=tablet', '<desktopSmall') {
+    animation: none;
+    filter: none;
+  }
+
+  @keyframes colorChange {
+    from {
+      filter: brightness(1);
+    }
+    to {
+      filter: brightness(0.4);
+    }
+  }
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.image {
+  display: flex;
+
+  &:hover {
+    animation: colorChange 0.8s;
+    filter: brightness(0.4);
+  }
+
+  @include media('>=phone', '<tablet') {
+    width: 70px;
+    height: 70px;
+    &:hover {
+      animation: none;
+      filter: none;
+    }
+  }
+  @include media('>=tablet', '<desktopSmall') {
+    width: 70px;
+    height: 70px;
+    &:hover {
+      animation: none;
+      filter: none;
+    }
+  }
+
+  @keyframes colorChange {
+    from {
+      filter: brightness(1);
+    }
+    to {
+      filter: brightness(0.4);
+    }
+  }
+}

@@ -1,0 +1,271 @@
+@import './../../main.module.scss';
+@import './../../data/themes.scss';
+
+.FinishSection {
+  width: 100%;
+  height: auto;
+  min-height: 300px;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cartLine {
+  width: calc(76px + 3.2vw);
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: 10px;
+}
+.topTitle {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  color: rgba(0, 0, 0, 0.4);
+
+  @include media('<tablet') {
+    padding: 20px 0;
+  }
+}
+.hashTransparent {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.finishOrderContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 17%;
+
+  @include media('<tablet') {
+    padding: 0 1%;
+    flex-direction: column;
+  }
+}
+.leftContainer {
+  padding: 27px 10px;
+  border: 2px solid red;
+  @include media('<tablet') {
+    width: 100%;
+  }
+}
+.topBillText {
+  @include media('<tablet') {
+    text-align: center;
+  }
+}
+.rightContainer {
+  width: 422px;
+  height: auto;
+  border: 2px solid green;
+  @include media('<tablet') {
+    width: 100%;
+  }
+}
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 20px;
+  width: 100%;
+  font-family: 'Open Sans Regular';
+
+  @include media('<tablet') {
+    margin: 0px;
+  }
+}
+.groupInput {
+  display: flex;
+  flex-direction: row;
+
+  @include media('<=tablet') {
+    flex-direction: column;
+    width: 87vw;
+    display: table;
+    margin: auto;
+  }
+}
+input {
+  font-family: 'Open Sans Regular';
+}
+input[type='large'] {
+  width: 100%;
+  font-family: 'Open Sans Regular';
+}
+label {
+  font-family: 'Open Sans Regular';
+}
+.alertAsterisk {
+  font-weight: bolder;
+  color: red;
+}
+.checkBoxStyle {
+  display: flex;
+  flex-direction: row;
+  row-gap: 10px;
+  margin-top: 10px;
+}
+.deliverOption {
+  font-weight: bolder;
+}
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.optionalNote {
+  margin-right: 10px;
+}
+.optionalFormStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+.productIconFinish {
+  width: 50px;
+  height: auto;
+}
+.itemLi {
+  display: flex;
+  flex-direction: row;
+  row-gap: 10px;
+  justify-content: space-between;
+}
+.itemUl {
+  margin: 10px 0;
+  padding: 0;
+
+  width: 100%;
+  border-top: 1px solid gray;
+  border-right: 1px solid gray;
+  border-bottom: 2px dashed black;
+}
+.count {
+  width: 20px;
+}
+.price {
+  width: 20px;
+  text-align: end;
+}
+.productSummarizeTitle {
+  width: 268px;
+  border-right: 1px solid gray;
+}
+.finishOrderTitle {
+  text-align: center;
+  white-space: nowrap;
+}
+.rightChild {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.subTotal {
+  font-weight: 200;
+  font-size: 1.2em;
+  text-align: end;
+
+  @include media('<=tablet') {
+    text-align: center;
+    font-size: calc(16px + 2vw);
+  }
+}
+.deliveryInfo {
+  font-family: 'Open Sans Regular';
+  display: table;
+  margin: auto;
+}
+
+.paymentContainer {
+  width: 500px;
+  height: 300px;
+  padding: 20px;
+}
+.paymentShipContainer {
+  display: flex;
+  justify-content: center;
+  border: 1px gray solid;
+}
+.deliveryCheckbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}
+.legendsTable {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
+  font-size: 1.8rem;
+}
+.carShip {
+  width: 50px;
+  height: auto;
+  display: table;
+  margin: auto;
+}
+.VATincluded {
+  font-family: 'Open Sans Regular';
+  color: green;
+  text-align: end;
+  font-weight: bolder;
+}
+.checkboxer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.paymentDetails {
+  display: flex;
+  justify-content: center;
+  font-size: 1.4em;
+  flex-direction: row;
+}
+.GDPRNotify {
+  font-family: 'Open Sans Regular';
+  color: black;
+  font-size: 1px;
+  font-weight: bolder;
+
+  @include media('<=tablet') {
+    font-size: calc(9px + 0.5vw);
+  }
+}
+.extensiveGdpr {
+  @extend .GDPRNotify;
+  color: red;
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+.acceptTerms {
+  font-size: 3px;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.groupInputTerms {
+  display: flex;
+  justify-content: center;
+}
+.finishOrder {
+  background-color: rgb(0, 153, 25);
+  color: white;
+  outline: none;
+  border-style: none;
+  font-size: 1.6em;
+  width: 250px;
+  height: 50px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  display: table;
+  margin: 40px auto 20px;
+  &:hover {
+    background-color: rgb(73, 73, 73);
+  }
+}

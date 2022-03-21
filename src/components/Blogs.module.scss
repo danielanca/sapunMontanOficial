@@ -1,0 +1,19 @@
+@import './../main.module.scss';
+@import './../data//themes.scss';
+
+.blogsSection {
+  width: 100%;
+
+  border: 2px solid red;
+}
+.blogPostsList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  width: 1120px;
+  margin: auto;
+  row-gap: 20px;
+  column-gap: 20px;
+  padding: 62px 10px;
+}

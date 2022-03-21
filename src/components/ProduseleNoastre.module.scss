@@ -1,0 +1,32 @@
+@import './../main.module.scss';
+@import './../data//themes.scss';
+
+.blockContainer {
+  @extend .row;
+  width: 100%;
+  height: auto;
+  background-color: map-get($map: $colors, $key: whitePure);
+  display: flex;
+  @include media('<tablet') {
+    margin: 0;
+  }
+}
+
+.productList {
+  padding: 35px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  row-gap: 30px;
+  column-gap: 20px;
+
+  @include media('<tablet') {
+    flex-direction: column;
+  }
+  @include media('>=tablet', '<desktop') {
+    max-width: 250px;
+    width: calc(130px + 10vw);
+    height: calc(300px + 18vw);
+  }
+}

@@ -1,0 +1,12 @@
+@import './../main.module.scss';
+@import './../data//themes.scss';
+
+.banner {
+  width: 100%;
+  height: 100px;
+  background-color: black;
+}
+.titleBanner {
+  color: white;
+  font-size: 3rem;
+}

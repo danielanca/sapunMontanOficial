@@ -1,0 +1,122 @@
+  <html>
+  <head>
+    <style>
+      div.img {
+        margin-left: 265px;
+      }
+      div.container{
+        width: 880px;
+        height: 800px;
+        border-width: 1px;
+        border: solid;
+        border-color: #caa987;
+        border-radius: 10px;
+        background-color: white;
+      }
+      div.header1 {
+        margin-left: 210px;
+        font-size: 35px;
+        color: #5c534c;
+        font-family: 'SallenasGrande Regular' !important;
+      }
+      div.header2 {
+        margin-left: 290px;
+        font-size: 25px;
+        color: #5c534c;
+        font-family: 'SallenasGrande Regular' !important;
+        margin-top: 10px;
+      }
+      div.dates {
+        width: 628px;
+        height: 220px;
+        border-width: 1px;
+        border: solid;
+        border-color: #caa987;
+        margin-top: 10px;
+        margin-left: 126px;
+        margin-right: 126px;
+      }
+      div.apartmentImages {
+          margin-left: 153px;
+      }
+      div.contact {
+          margin-left: 285px;
+      }
+      div.enquiries {
+          font-size: 18px;
+      }
+      div.phone{
+        color: #5C534C;
+        font-size: 16px;
+        margin-top: 5px;
+        margin-left: 100px;
+      }
+      div.email{
+        color: #5C534C;
+        font-size: 16px;
+        margin-left: 60px;
+      }
+      h2 {
+       margin-left: 426px;
+      }
+      p {
+        font-size: 16px;
+        font-family: 'Montserrat';
+        margin-left: 10px;
+        margin-top: 20px;
+      }
+      div.adress {
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 16px;
+        color:#5C534C;
+      }
+      body {
+          width: 1000px;
+          height: 1200px;
+          background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="container">
+    <div class="img">
+      <img src="https://i.postimg.cc/hGt7BQW1/Group-33.png" , alt="LOGO" />
+    </div>
+    <div class="header1">Your reservation is confirmed!</div>
+    <div class="header2">You are going to Baia Mare!</div>
+    <div class="dates">
+      <p>Name: ${data.name} </p>
+      <p>Email: ${data.email}</p>
+      <p>Phone: ${data.phone}</p>
+      <p>Other Details: ${data.details}</p>
+      <p>${data.dates}, ${data.persons} persons</p>
+    </div>
+    <h2>
+      <img src="https://i.postimg.cc/TYK3x8PF/Icon-feather-map-pin.png" , alt="PIN" />
+    </h2> 
+
+    <div class="adress">Str. Victoriei, Nr. 10, Ap. 10, Sc. B, Et. 1, Baia Mare</div>
+    <div class="apartmentImages">
+        <img src="https://i.postimg.cc/FR1CM2vg/CRS-7095-HDR.png">
+        <img src="https://i.postimg.cc/SN5SHhpV/CRS-7113-HDR.png">
+        <img src="https://i.postimg.cc/TwHFhT04/Mask-Group-3.png">
+        <img src="https://i.postimg.cc/0QNh8zYS/Mask-Group-2.png">
+        <img src="https://i.postimg.cc/QC2zkSRg/Mask-Group-4.png">
+    </div>
+    <div class="contact">
+    <div class="enquiries">
+        If you have any enquiries please contact us:
+    </div>
+    <div class="phone">
+        + 40 755 123 456
+    </div>
+    <div class="email">
+        contact@oasisresidence.com
+    </div>
+    </div>
+</div>
+  </body>
+</html>

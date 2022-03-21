@@ -1,0 +1,18 @@
+@import './../main.module.scss';
+.heroSection {
+  width: 100%;
+  height: 94vh;
+  position: relative;
+  background-image: linear-gradient(180deg, rgba(74, 74, 74, 0.8130602582830007) 0%, rgba(98, 98, 98, 0) 100%),
+    url('./../media/assets/ResidenceDraft.jpg');
+  background-size: cover;
+  @include media('>tablet', '<=desktopSmall') {
+    height: 52vh;
+  }
+  @include media('>=phone', '<=tablet') {
+    height: 74vh;
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+  }
+}

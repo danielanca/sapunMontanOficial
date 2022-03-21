@@ -1,0 +1,139 @@
+@import './../main.module.scss';
+
+.bookingButton {
+  width: 200px;
+  height: 60px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+
+  @include media('>=phone', '<tablet') {
+    margin: 3vw;
+    width: 140px;
+    height: 48px;
+  }
+  @include media('>=tablet', '<desktopSmall') {
+    margin: 1vw;
+  }
+}
+.bookingIcon {
+  width: 75%;
+}
+.offersWrap {
+  flex: 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cardsWrapper {
+  @extend .my-4;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  @include media('>=phone', '<tablet') {
+    flex-direction: column;
+    height: 71vh;
+  }
+
+  @include media('>=tablet', '<desktopSmall') {
+    width: 99vw;
+  }
+}
+.delimiterZigZag {
+  height: 21vw;
+
+  @include media('>=phone', '<tablet') {
+    height: 24px;
+  }
+}
+.interiorZigger {
+  background-image: url('./../media/assets/zigzag.svg');
+  background-position: center;
+  width: 22px;
+  height: 100%;
+  @include media('>=phone', '<tablet') {
+    width: 100%;
+    height: 100%;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  @include media('>=tablet', '<desktopSmall') {
+    width: 29px;
+    height: 133%;
+  }
+}
+.bookingStyle {
+  background-repeat: no-repeat;
+  @extend .bookingButton;
+  border: 2px solid map-get($map: $colors, $key: blueSky);
+  @include media('>=phone', '<tablet') {
+    position: absolute;
+    margin-top: 60px;
+    left: 5vw;
+    padding: 0 4%;
+  }
+}
+.airbnbStyle {
+  @extend .bookingButton;
+  border: 2px solid map-get($map: $colors, $key: redBomb);
+  @include media('>=phone', '<tablet') {
+    right: 5vw;
+    position: absolute;
+    padding: 0 4%;
+    margin-top: 60px;
+  }
+}
+.bookNative {
+  @extend .bookingButton;
+
+  background-color: map-get($map: $colors, $key: headColor);
+  @include media('>=phone', '<tablet') {
+    position: absolute;
+    margin-top: -60px;
+  }
+}
+.buttonText {
+  font-size: 1.4em;
+  text-transform: uppercase;
+  color: whitesmoke;
+  white-space: pre;
+  @include media('>=phone', '<tablet') {
+    font-size: 1em;
+  }
+}
+.calltoActions {
+  @extend .my-5;
+  display: flex;
+  flex: 1 0;
+  padding-left: 17%;
+  padding-right: 17%;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+
+  @include media('>=phone', '<tablet') {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+    padding-left: 1%;
+    padding-right: 1%;
+    position: relative;
+    height: 167px;
+  }
+  @include media('>=tablet', '<=desktopSmall') {
+    padding-right: 8%;
+    padding-left: 8%;
+  }
+}

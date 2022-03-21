@@ -1,0 +1,119 @@
+@import './../main.module.scss';
+@import './../data//themes.scss';
+
+.viewComponent {
+  width: 60vw;
+  height: 30vh;
+}
+.buttonComponent {
+  height: 300px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+}
+.buttonComponentStart {
+  @extend .buttonComponent;
+  justify-content: start;
+  z-index: 5;
+}
+.buttonComponentEnd {
+  @extend .buttonComponent;
+  justify-content: end;
+  z-index: 5;
+}
+.iconClick {
+  height: 35px;
+  margin: 10px 5%;
+  cursor: pointer;
+  &:hover {
+    padding: 0%;
+    filter: invert(0.9);
+  }
+
+  @include media('>=phone', '<desktopSmall') {
+    display: none;
+  }
+}
+.carouselCompo {
+  @extend .col-6;
+  width: 65vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  @include media('>=phone', '<=tablet') {
+    width: 100vw;
+  }
+  @include media('>tablet', '<=desktopSmall') {
+    width: 100vw;
+    height: 42vw;
+  }
+}
+
+.viewAllContainer {
+  display: flex;
+  justify-content: center;
+  border-bottom-width: 1px;
+  z-index: 6;
+}
+
+.viewAllButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: map-get($map: $colors, $key: headColor);
+  background-color: map-get($map: $colors, $key: whitePure);
+  font-size: 24px;
+
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px double map-get($map: $colors, $key: headColor);
+
+  &:hover {
+    color: map-get($map: $colors, $key: welcomeHead);
+    border-bottom-color: map-get($map: $colors, $key: welcomeHead);
+  }
+}
+
+.photosComponent {
+  align-self: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  width: 100%;
+  z-index: 7;
+  padding-top: 44px;
+  padding-bottom: 44px;
+  animation: fadein 0.5s;
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.carouselSection {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.innerSection {
+  @extend .col-2;
+  display: flex;
+  justify-content: center;
+  z-index: 5;
+}
+.outerAction {
+  @extend .col-2;
+  display: flex;
+  justify-content: center;
+}
