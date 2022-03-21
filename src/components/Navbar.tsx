@@ -13,12 +13,10 @@ import roFLAG from './../media/assets/pics/prezentareCarbune/flagRO.jpg';
 import { useEffect, useState } from 'react';
 
 interface NavProps {
-  updateNotification?: boolean;
+  updateNotification?: number;
 }
 
 const NavBar = ({ updateNotification }: NavProps) => {
-  // const [isUpdated, setIsUpdated] = useState(updateNotification);
-
   var storedCart = [];
   var totalItems = 0;
   let expectedData = localStorage.getItem('cartData');
