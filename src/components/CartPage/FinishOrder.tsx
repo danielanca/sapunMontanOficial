@@ -4,7 +4,7 @@ import images from './../../data/images';
 
 import productList from './../../data/productList';
 import { componentStrings } from '../../data/componentStrings';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface orderProps {
   firstName?: string;
@@ -49,7 +49,11 @@ const FinishOrder = () => {
       subtotalPrepare += Number(productList[item.id].price) * Number(item.itemNumber);
     });
   }
-  const onNameCompletion = (data: string) => {};
+
+  useEffect(() => {
+    setorderData({ cartSum: subtotalPrepare, shippingTax: deliveryFee });
+  }, [subtotalPrepare]);
+
   return (
     <div className={styles.FinishSection}>
       <div className={styles.topTitle}>
