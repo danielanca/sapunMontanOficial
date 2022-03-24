@@ -1,16 +1,19 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBP_sMdu-HOTvKgJIm2XUpfXqlaYtNqLF4",
-  authDomain: "oasisresidenceweb-b7f37.firebaseapp.com",
-  projectId: "oasisresidenceweb-b7f37",
-  storageBucket: "oasisresidenceweb-b7f37.appspot.com",
-  messagingSenderId: "1042123150157",
-  appId: "1:1042123150157:web:291f331b8a79ea4dea5d04",
-  measurementId: "G-SDS7QHRL4Z"
+  apiKey: 'AIzaSyBU-XLXRpmXuGWH8D0XLFRGU4-UA-b_fbg',
+  authDomain: 'sapunmontan.firebaseapp.com',
+  databaseURL: 'https://sapunmontan-default-rtdb.europe-west1.firebasedatabase.app',
+  projectId: 'sapunmontan',
+  storageBucket: 'sapunmontan.appspot.com',
+  messagingSenderId: '763434878339',
+  appId: '1:763434878339:web:287dd37cd472f368b5a2b6',
+  measurementId: 'G-71TJGXC0TV',
 };
-
-
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+const analytics = getAnalytics(app);
 
 export default app;
