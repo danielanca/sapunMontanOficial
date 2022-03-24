@@ -1,35 +1,65 @@
 import styles from './../CartPage/FinishOrder.module.scss';
 
 import images from './../../data/images';
-
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import app from './../../firebase';
 import productList from './../../data/productList';
 import { componentStrings } from '../../data/componentStrings';
 import { useState, useEffect } from 'react';
 
 interface orderProps {
-  firstName?: string;
-  lastName?: string;
-  deliveryAddress?: string;
-  city?: string;
-  county?: string;
+  firstName: string;
+  lastName: string;
+  deliveryAddress: string;
+  city: string;
+  county: string;
   phoneNo?: string;
   emailAddress?: string;
   orderNotes?: string;
-  cartProducts?: string;
+  cartProducts: string;
   cartSum?: number;
   shippingTax?: number;
-  paymentMethod?: string;
+  paymentMethod: string;
+  orderDateTimeStamp?: {
+    day: number;
+    month: number;
+    year: number;
+  };
+}
+interface ErrorProps {
+  paymentSelected: boolean;
+  termsNotAccepted: boolean;
+  inputNotCompleted: boolean;
 }
 
 const FinishOrder = () => {
   const [orderData, setorderData] = useState<orderProps>({
+    firstName: '',
+    lastName: '',
+    deliveryAddress: '',
+    city: '',
+    county: '',
+    paymentMethod: '',
+    cartProducts: '',
     cartSum: subtotalPrepare,
     shippingTax: deliveryFee,
   });
+  const db = getFirestore(app);
+  const [checkBoxTerms, setCheckBoxTerms] = useState(false);
+  const [completionState, setError] = useState<ErrorProps>({
+    paymentSelected: false,
+    termsNotAccepted: false,
+    inputNotCompleted: false,
+  });
 
   const sendOrderData = () => {
+    if (checkBoxTerms !== true) {
+    }
     console.log('Data prepared to be sent!');
     console.log(orderData);
+    addDoc(collection(db, 'orders'), {
+      orders: { orderData },
+    });
   };
 
   var storedCart = [];
@@ -49,9 +79,22 @@ const FinishOrder = () => {
       subtotalPrepare += Number(productList[item.id].price) * Number(item.itemNumber);
     });
   }
+  const termAcceptHandler = () => {
+    setCheckBoxTerms(!checkBoxTerms);
+  };
 
   useEffect(() => {
-    setorderData({ cartSum: subtotalPrepare, shippingTax: deliveryFee });
+    setorderData({
+      ...orderData,
+      cartSum: subtotalPrepare,
+      shippingTax: deliveryFee,
+      orderDateTimeStamp: {
+        day: new Date().getDay(),
+        month: new Date().getMonth(),
+        year: new Date().getFullYear(),
+      },
+      cartProducts: expectedData,
+    });
   }, [subtotalPrepare]);
 
   return (
@@ -240,7 +283,7 @@ const FinishOrder = () => {
 
             <div className={styles.groupInputTerms}>
               <div className={styles.checkBoxStyle}>
-                <input name="acceptTerms" type={'checkbox'}></input>
+                <input defaultChecked={checkBoxTerms} onChange={termAcceptHandler} name="acceptTerms" type={'checkbox'}></input>
                 <label htmlFor="acceptTerms" className={styles.acceptTerms}>
                   {'Am citit și sunt de acord cu termenii și condiții site-ului web '}
                 </label>
