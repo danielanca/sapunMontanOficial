@@ -7,6 +7,15 @@
   display: flex;
   flex-direction: row;
 }
+.fluidHandler {
+  max-width: 2000px;
+  width: auto;
+  display: table;
+  margin: auto;
+  @include media('<=1800px') {
+    width: 100%;
+  }
+}
 .infoBoxFooter {
   border: 1px solid rgb(158, 158, 158);
   display: flex;
@@ -14,7 +23,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(221, 221, 221);
-  @include media('>tablet') {
+  @include media('>=tablet') {
     display: none;
   }
 }
@@ -28,7 +37,7 @@
   width: 10px;
   opacity: 0.7;
   margin-left: 3px;
-  @include media('>tablet') {
+  @include media('>=tablet') {
     display: none;
   }
 }
@@ -41,6 +50,8 @@
 
 .largeFooter {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  padding: 0px 10vw;
+  --bs-gutter-x: 0;
 }
 .showPop {
   @extend .container;

@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: row;
   height: 60px;
-  width: 100vw;
+  width: 100%;
   position: relative;
   background-color: black;
   align-items: center;
@@ -16,6 +16,9 @@
   @include media('<tablet') {
     height: 75px;
     flex-direction: column;
+  }
+  @include media('>=tablet', '<desktop') {
+    justify-content: space-between;
   }
 }
 .headTitle {
@@ -39,7 +42,9 @@
 }
 .socialsTop {
   color: rgb(207, 207, 0);
-
+  display: flex;
+  justify-content: end;
+  align-items: center;
   @include media('<tablet') {
     display: none;
   }

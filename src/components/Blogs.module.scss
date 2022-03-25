@@ -3,17 +3,22 @@
 
 .blogsSection {
   width: 100%;
-
-  border: 2px solid red;
 }
 .blogPostsList {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
   width: 1120px;
   margin: auto;
   row-gap: 20px;
   column-gap: 20px;
   padding: 62px 10px;
+
+  @include media('>=tablet', '<desktop') {
+    width: 88vw;
+  }
+
+  @include media('<tablet') {
+    width: 100vw;
+  }
 }

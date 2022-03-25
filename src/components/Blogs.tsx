@@ -5,16 +5,16 @@ const Blogs = () => {
   return (
     <div className={styles.blogsSection}>
       <div className={'row ' + styles.blogPostsList}>
-        <div className="col">
+        <div className="col-12">
           <BlogItem />
         </div>
-        <div className="col">
+        <div className="col-12">
           <BlogItem />
         </div>
-        <div className="col">
+        <div className="col-12">
           <BlogItem />
         </div>
-        <div className="col">
+        <div className="col-12">
           <BlogItem />
         </div>
       </div>

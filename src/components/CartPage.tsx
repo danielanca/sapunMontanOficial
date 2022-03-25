@@ -61,45 +61,49 @@ const CartPage = ({ notifyMe }: CartProps) => {
             <div className={styles.emptyCart}>{'Cosul de cumparaturi este gol'}</div>
           )}
         </div>
-        <div className={'row ' + styles.actualCheckout}>
-          <div className="col-sm-6"></div>
-          <div className="col-sm-6">
-            <div className={styles.checkoutTotal}>
-              <h3>{'Total Cos'}</h3>
-              <div className={styles.subtotalContainer}>
-                <div className={styles.subtotalLine + ' row '}>
-                  <div className="col-sm-4 d-flex align-items-center justify-content-end">
-                    <p className={styles.toRight}>{'Subtotal:' + totalCart}</p>
+        {subtotalPrepare != 0 ? (
+          <div className={'row ' + styles.actualCheckout}>
+            <div className="col-sm-6"></div>
+            <div className="col-sm-6">
+              <div className={styles.checkoutTotal}>
+                <h3>{'Total Cos'}</h3>
+                <div className={styles.subtotalContainer}>
+                  <div className={styles.subtotalLine + ' row '}>
+                    <div className="col-sm-4 d-flex align-items-center justify-content-end">
+                      <p className={styles.toRight}>{'Subtotal:' + totalCart}</p>
+                    </div>
+                    <div className={'col-sm-8 d-flex justify-content-start align-items-center '}>
+                      <p className={styles.subtotalStyle}>{subtotalPrepare + ' LEI'}</p>
+                    </div>
                   </div>
-                  <div className={'col-sm-8 d-flex justify-content-start align-items-center '}>
-                    <p className={styles.subtotalStyle}>{subtotalPrepare + ' LEI'}</p>
+                  <div className={styles.deliveryLine + ' row '}>
+                    <div className="col-sm-4 d-flex align-items-center justify-content-end">
+                      <p className={styles.toRight}>{'Subtotal:'}</p>
+                    </div>
+                    <div className="col-sm-8 d-flex justify-content-start align-items-center">
+                      <p className={styles.subtotalStyle}>{'Livrare standard prin GLS: lei 18.00 Livrare la România.'}</p>
+                    </div>
                   </div>
-                </div>
-                <div className={styles.deliveryLine + ' row '}>
-                  <div className="col-sm-4 d-flex align-items-center justify-content-end">
-                    <p className={styles.toRight}>{'Subtotal:'}</p>
+                  <div className={styles.totalLine + ' row '}>
+                    <div className="col-sm-4 d-flex align-items-center justify-content-end">
+                      <p className={styles.toRight}>{'TOTAL:'}</p>
+                    </div>
+                    <div className="col-sm-8 d-flex justify-content-start align-items-center">
+                      <p className={styles.subtotalStyle}>{' 32 lei (include TVA)'}</p>
+                    </div>
                   </div>
-                  <div className="col-sm-8 d-flex justify-content-start align-items-center">
-                    <p className={styles.subtotalStyle}>{'Livrare standard prin GLS: lei 18.00 Livrare la România.'}</p>
+                  <div className={styles.finishTheOrderBox}>
+                    <NavHashLink className={styles.hashTransparent} to="/finalizare-comanda">
+                      <button className={styles.finishOrder}>{'Finalizeaza comanda'}</button>
+                    </NavHashLink>
                   </div>
-                </div>
-                <div className={styles.totalLine + ' row '}>
-                  <div className="col-sm-4 d-flex align-items-center justify-content-end">
-                    <p className={styles.toRight}>{'TOTAL:'}</p>
-                  </div>
-                  <div className="col-sm-8 d-flex justify-content-start align-items-center">
-                    <p className={styles.subtotalStyle}>{' 32 lei (include TVA)'}</p>
-                  </div>
-                </div>
-                <div className={styles.finishTheOrderBox}>
-                  <NavHashLink className={styles.hashTransparent} to="/finalizare-comanda">
-                    <button className={styles.finishOrder}>{'Finalizeaza comanda'}</button>
-                  </NavHashLink>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        ) : (
+          ''
+        )}
       </div>
     </>
   );
