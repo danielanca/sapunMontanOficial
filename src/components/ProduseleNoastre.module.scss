@@ -19,14 +19,9 @@
   align-items: center;
   flex-direction: row;
   row-gap: 30px;
-  column-gap: 20px;
+  column-gap: calc(-13px + 3.9vw);
 
   @include media('<tablet') {
     flex-direction: column;
-  }
-  @include media('>=tablet', '<desktop') {
-    max-width: 250px;
-    width: calc(130px + 10vw);
-    height: calc(300px + 18vw);
   }
 }

@@ -57,7 +57,7 @@
   min-width: 100px;
   width: 30vw;
 
-  @include media('<=tablet') {
+  @include media('<tablet') {
     padding: 2%;
   }
 }

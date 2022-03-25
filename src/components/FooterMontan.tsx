@@ -20,7 +20,7 @@ const FooterMontan = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className={styles.fluidHandler}>
       <div className={'row ' + styles.largeFooter}>
         <div className="col-md-4">
           <div onClick={clickHandler.bind(this, 1)} className={styles.clickableBox}>

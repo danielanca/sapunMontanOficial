@@ -44,14 +44,14 @@
   line-height: 27px;
   margin-top: 10px;
   cursor: pointer;
-  @include media('<=tablet') {
+  @include media('<tablet') {
     line-height: 29px;
   }
 }
 .productPrice {
   font-family: 'Bebas Neue', cursive;
   font-size: 50px;
-  @include media('<=tablet') {
+  @include media('<tablet') {
     font-size: 3em;
   }
 }

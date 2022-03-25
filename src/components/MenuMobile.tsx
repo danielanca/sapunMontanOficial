@@ -10,17 +10,22 @@ const MenuMobile = () => {
   const burgerClickHandler = (event: boolean) => {
     setBurgerOpen(!BurgerOpen);
   };
+  const closeBackdrop = () => {
+    setBurgerOpen(false);
+  };
   return (
     <>
-      <div
-        className={styles.burgerElement}
-        onClick={() => {
-          burgerClickHandler(!BurgerOpen);
-        }}
-      >
-        <div className={BurgerOpen ? `${styles.bar1} ${styles.bar1End}` : `${styles.bar1}`}></div>
-        <div className={BurgerOpen ? `${styles.bar2} ${styles.bar2End}` : `${styles.bar2}`}></div>
-        <div className={BurgerOpen ? `${styles.bar3} ${styles.bar3End}` : `${styles.bar3}`}></div>
+      <div className={styles.menuMobileContainer}>
+        <div
+          className={styles.burgerElement}
+          onClick={() => {
+            burgerClickHandler(!BurgerOpen);
+          }}
+        >
+          <div className={BurgerOpen ? `${styles.bar1} ${styles.bar1End}` : `${styles.bar1}`}></div>
+          <div className={BurgerOpen ? `${styles.bar2} ${styles.bar2End}` : `${styles.bar2}`}></div>
+          <div className={BurgerOpen ? `${styles.bar3} ${styles.bar3End}` : `${styles.bar3}`}></div>
+        </div>
       </div>
       <div
         onClick={() => {
@@ -31,27 +36,27 @@ const MenuMobile = () => {
       <div className={BurgerOpen ? `${styles.burgerMenu} ${styles.activeBurger} ` : `${styles.burgerMenu}`}>
         <ul className={styles.ulMobile}>
           <li className={styles.liMobile}>
-            <NavHashLink className={styles.HashLinkStyle} to="#aboutus">
+            <NavHashLink onClick={closeBackdrop} className={styles.HashLinkStyle} to="/produsele-noastre">
+              {strings.navMenu.ourProducts}
+            </NavHashLink>
+          </li>
+          <li className={styles.liMobile}>
+            <NavHashLink onClick={closeBackdrop} className={styles.HashLinkStyle} to="/despre-noi">
               {strings.navMenu.aboutUs}
             </NavHashLink>
           </li>
           <li className={styles.liMobile}>
-            <NavHashLink className={styles.HashLinkStyle} to="#gallery">
-              {strings.navMenu.gallery}
+            <NavHashLink onClick={closeBackdrop} className={styles.HashLinkStyle} to="/blogs">
+              {strings.navMenu.blog}
             </NavHashLink>
           </li>
           <li className={styles.liMobile}>
-            <NavHashLink className={styles.HashLinkStyle} to="#offers">
-              {strings.navMenu.offers}
+            <NavHashLink onClick={closeBackdrop} className={styles.HashLinkStyle} to="/testimonials">
+              {strings.navMenu.testimonials}
             </NavHashLink>
           </li>
           <li className={styles.liMobile}>
-            <NavHashLink className={styles.HashLinkStyle} to="#reviews">
-              {strings.navMenu.reviews}
-            </NavHashLink>
-          </li>
-          <li className={styles.liMobile}>
-            <NavHashLink className={styles.HashLinkStyle} to="#contactus">
+            <NavHashLink onClick={closeBackdrop} className={styles.HashLinkStyle} to="#contactus">
               {strings.navMenu.contactUs}
             </NavHashLink>
           </li>

@@ -6,34 +6,34 @@ admin.initializeApp({
   credential: admin.credential.applicationDefault(),
 });
 
-const stripe = require('stripe')(
-  'sk_test_51K8kipF6DC0ZD14MOKdxgGhtFFtugCKfjSkzFQPseXthbvJbHvjSe7rMc4NP5y0zqP4aTvG6YohFOPo25RDkhgTW002CbdBy3c',
-);
-const calculateAmount = async (numberOfDays: number) => {
-  const priceRef = await admin.firestore().collection('price').doc('price').get();
-  const priceObject = priceRef.data();
-  const pricePerNight = priceObject?.currentPrice - priceObject?.currentPrice * priceObject?.discountPercentage * 0.01;
-  return numberOfDays * pricePerNight * 100;
-};
-export const createPayment = functions.https.onRequest(async (req, res) => {
-  const body = JSON.parse(req.body);
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: await calculateAmount(body.numberOfDays),
-    currency: 'ron',
-    payment_method_types: ['card'],
-  });
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+// const stripe = require('stripe')(
+//   'sk_test_51K8kipF6DC0ZD14MOKdxgGhtFFtugCKfjSkzFQPseXthbvJbHvjSe7rMc4NP5y0zqP4aTvG6YohFOPo25RDkhgTW002CbdBy3c',
+// );
+// const calculateAmount = async (numberOfDays: number) => {
+//   const priceRef = await admin.firestore().collection('price').doc('price').get();
+//   const priceObject = priceRef.data();
+//   const pricePerNight = priceObject?.currentPrice - priceObject?.currentPrice * priceObject?.discountPercentage * 0.01;
+//   return numberOfDays * pricePerNight * 100;
+// };
+// export const createPayment = functions.https.onRequest(async (req, res) => {
+//   const body = JSON.parse(req.body);
+//   const paymentIntent = await stripe.paymentIntents.create({
+//     amount: await calculateAmount(body.numberOfDays),
+//     currency: 'ron',
+//     payment_method_types: ['card'],
+//   });
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
 
-  if (req.method === 'OPTIONS') {
-    res.status(204).send('');
-    return;
-  }
-  res.send({
-    clientSecret: paymentIntent.client_secret,
-  });
-});
+//   if (req.method === 'OPTIONS') {
+//     res.status(204).send('');
+//     return;
+//   }
+//   res.send({
+//     clientSecret: paymentIntent.client_secret,
+//   });
+// });
 
 let transporter = nodemailer.createTransport({
   service: 'gmail',

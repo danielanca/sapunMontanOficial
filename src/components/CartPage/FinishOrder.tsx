@@ -105,7 +105,7 @@ const FinishOrder = () => {
         <div className={styles.cartLine} />
       </div>
       <div className={'row ' + styles.finishOrderContainer}>
-        <div className={'col-6  ' + styles.leftContainer}>
+        <div className={'col-6  col-sm-12 ' + styles.leftContainer}>
           <div>
             <h3 className={styles.topBillText}>{'Detalii pentru facturare'}</h3>
           </div>

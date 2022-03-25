@@ -1,8 +1,7 @@
 {
   "navMenu": {
-    "aboutUs": "Produsele Noastre",
-    "gallery": "Despre noi",
-    "offers": "OFERTE",
+    "ourProducts": "Produsele Noastre",
+    "aboutUs": "Despre noi",
     "blog": "Blog",
     "testimonials": "Testimoniale",
     "contactUs": "Contact"
