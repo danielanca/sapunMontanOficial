@@ -1,4 +1,4 @@
-import styles from './../CartPage/FinishOrder.module.scss';
+import axios from 'axios';
 
 import images from './../../data/images';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
@@ -6,6 +6,8 @@ import app from './../../firebase';
 import productList from './../../data/productList';
 import { componentStrings } from '../../data/componentStrings';
 import { useState, useEffect } from 'react';
+
+import styles from './../CartPage/FinishOrder.module.scss';
 
 interface orderProps {
   firstName: string;
@@ -33,6 +35,17 @@ interface ErrorProps {
 }
 
 const FinishOrder = () => {
+  const [sent, setSent] = useState(false);
+
+  const handleSend = async () => {
+    setSent(true);
+    console.log('FRONT-END set sent TRUE');
+    try {
+      await axios.post('http://localhost:3000/send_email', { data: 'Daniel' });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const [orderData, setorderData] = useState<orderProps>({
     firstName: '',
     lastName: '',
@@ -60,6 +73,7 @@ const FinishOrder = () => {
     addDoc(collection(db, 'orders'), {
       orders: { orderData },
     });
+    handleSend();
   };
 
   var storedCart = [];

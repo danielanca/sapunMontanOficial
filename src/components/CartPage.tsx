@@ -1,6 +1,6 @@
 import { NavHashLink } from 'react-router-hash-link';
 import styles from './CartPage.module.scss';
-import { useEffect } from 'react';
+
 import ItemCartList from './ItemCartList';
 import productList from './../data/productList';
 import { useState } from 'react';
