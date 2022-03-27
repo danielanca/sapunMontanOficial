@@ -36,12 +36,17 @@ interface ErrorProps {
 
 const FinishOrder = () => {
   const [sent, setSent] = useState(false);
-
+  
   const handleSend = async () => {
     setSent(true);
     console.log('FRONT-END set sent TRUE');
+ 
     try {
-      await axios.post('http://localhost:3000/send_email', { data: 'Daniel' });
+      await axios.post('http://localhost:5000/send_mail', { orderData }, {headers:{
+        'Content-Type': 'application/json',
+      }}).then((res) => {
+        console.log('REZULTAT:' + res);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -303,9 +308,10 @@ const FinishOrder = () => {
                 </label>
               </div>
             </div>
-            <button onClick={sendOrderData} className={styles.finishOrder}>
-              {'TRIMITE COMANDA'}
-            </button>
+              <button onClick={handleSend} type='submit' className={styles.finishOrder}>
+                {'TRIMITE COMANDA'}
+              </button>
+           
           </div>
         </div>
       </div>
