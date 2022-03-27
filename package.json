@@ -2,6 +2,7 @@
   "name": "oasisresidenceweb",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@emotion/memoize": "^0.7.5",
     "@emotion/react": "^11.7.1",
@@ -37,6 +38,8 @@
     "jade": "^1.11.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
+    "mongoose": "^6.2.8",
+    "node": "^17.7.1",
     "nodemailer": "^6.7.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -53,7 +56,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"cd backend && nodemon server.js\" ",
+    "start": "concurrently \"react-scripts --openssl-legacy-provider start\" \"cd backend && nodemon server.js\" ",
     "build": "react-scripts build",
     "dev": "nodemon server.js"
   },

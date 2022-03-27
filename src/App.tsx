@@ -15,8 +15,11 @@ import FooterMontan from './components/FooterMontan';
 import CartPage from './components/CartPage';
 import FinishOrder from './components/CartPage/FinishOrder';
 import Blogs from './components/Blogs';
+import EmailTemplate from './components/EmailTemplate/EmailTemplate';
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
+
+
 
 function App() {
   const [letsCartHandler, CartHandler] = useState(1);
@@ -32,6 +35,14 @@ function App() {
     window.addEventListener('scroll', handleScroll, {
       passive: true,
     });
+    
+
+    // useEffect(()=>{
+    //     fetch("/api/message")
+    //     .then((response) => response.json())
+    //     .then((json) => this.setState({ message: json }));
+  
+    // }, []);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -51,6 +62,7 @@ function App() {
             <Route path="/finalizare-comanda" element={<FinishOrder />}></Route>
             <Route path="/blogs" element={<Blogs />}></Route>
             <Route path="/testimonials" element={<Testimonials />}></Route>
+            <Route path="/email" element={<EmailTemplate />}></Route>
           </Routes>
           <FooterMontan />
         </BrowserRouter>
