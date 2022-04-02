@@ -49,7 +49,7 @@ function App() {
           <Navbar updateNotification={letsCartHandler} />
           <Routes>
             <Route path="/" element={<MainNavigation />}></Route>
-
+              
             <Route path="/produsele-noastre" element={<ProduseleNoastre />}></Route>
             <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />}></Route>
             <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />}></Route>

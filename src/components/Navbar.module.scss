@@ -60,6 +60,7 @@
   background-color: map-get($map: $colors, $key: navBarBackground);
   width: 100%;
   height: 108px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 .navbarContainer {
   width: 100%;

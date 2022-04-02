@@ -84,7 +84,7 @@ const FooterMontan = () => {
         </div>
         <div className={styles.wideBanner}>
           <img className={styles.flagStyle} src={flagRomania} />
-          <p className={styles.statementRO}>{'Produs Românesc 100%. Produs handmade'}</p>
+          <p className={styles.statementRO}>{'Produs Românesti handmade'}</p>
         </div>
       </div>
     </div>

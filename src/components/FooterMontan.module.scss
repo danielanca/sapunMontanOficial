@@ -87,6 +87,11 @@
   text-transform: uppercase;
   margin-bottom: 0;
   font-size: calc(10px + 2vw);
+
+  @include media('>desktop'){
+    font-size: calc(2px + 1vw);
+  }
+  
 }
 .flagStyle {
   width: 50px;

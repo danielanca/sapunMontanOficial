@@ -47,7 +47,7 @@
 }
 .leftContainer {
   padding: 27px 10px;
-  border: 2px solid red;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   max-width: 559px;
   @include media('>=tablet', '<desktop') {
     width: 80%;
@@ -65,7 +65,7 @@
 .rightContainer {
   width: 422px;
   height: auto;
-  border: 2px solid green;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   @include media('<tablet') {
     width: 100%;
   }
@@ -278,3 +278,4 @@ input[type='checkbox'] {
     background-color: rgb(73, 73, 73);
   }
 }
+
