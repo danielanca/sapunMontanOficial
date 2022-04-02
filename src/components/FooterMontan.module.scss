@@ -86,7 +86,7 @@
 .statementRO {
   text-transform: uppercase;
   margin-bottom: 0;
-  font-size: 1.4rem;
+  font-size: calc(10px + 2vw);
 }
 .flagStyle {
   width: 50px;

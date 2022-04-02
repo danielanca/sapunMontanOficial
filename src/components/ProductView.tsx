@@ -65,7 +65,7 @@ const ProductView = ({ notifyMe }: CartProps) => {
   return (
     <>
       <div className={styles.padder}>
-        <div className={'row'}>
+        <div className={'row ' + styles.sectionParent}>
           <div className={'col-md-6 ' + styles.leftSection}>
             <div className={styles.leftContainer}>
               <img className={styles.imageContainer} src={data[ID].productPicture[mainPicture]} />

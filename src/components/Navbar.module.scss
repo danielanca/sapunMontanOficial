@@ -51,7 +51,7 @@
   height: 70px;
   @include media('<desktop') {
     display: table;
-    margin: auto;
+    margin: 0 auto;
     width: auto;
     order: 2;
   }

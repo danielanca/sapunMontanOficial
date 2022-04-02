@@ -54,6 +54,7 @@ const FinishOrder = () => {
   const [orderData, setorderData] = useState<orderProps>({
     firstName: '',
     lastName: '',
+    emailAddress:'',
     deliveryAddress: '',
     city: '',
     county: '',

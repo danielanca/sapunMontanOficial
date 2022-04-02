@@ -37,12 +37,6 @@ function App() {
     });
     
 
-    // useEffect(()=>{
-    //     fetch("/api/message")
-    //     .then((response) => response.json())
-    //     .then((json) => this.setState({ message: json }));
-  
-    // }, []);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
