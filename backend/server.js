@@ -5,7 +5,22 @@ import cors from 'cors';
 import nodemailer from 'nodemailer';
 import path from 'path';
 import {fileURLToPath} from 'url';
+import functions from 'firebase-functions';
+import admin from 'firebase-admin'
+import serviceAccount from './serviceAccount.json' assert {type:"json"}
 
+
+// const adminConfig = JSON.parse(process.env.Fi)
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://sapunmontan-default-rtdb.europe-west1.firebasedatabase.app"
+});
+
+const insertOrderInDB = async () =>{
+    await admin.firestore().collection('orders').doc('orders').create({name:"yaaa", blyat:'yablyat'});
+
+    return true;
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +30,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 
 const administratorEmail = "steptu94@gmail.com";
+
 
 
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
@@ -28,13 +44,17 @@ app.use( function(res,req, next){
   next();
 });
 
-app.post('/send_mail', (req,res) => {
+app.post('/sendOrderDone', (req,res) => {
+
+
+    insertOrderInDB();
     var list = ["Email was sent by DaniAnca.Ro"];
-    res.json(list);
+    var orderConfirmedResponse = {fromServerMSG: "EMAIL_SENT", status:"OK"}
+    res.json(orderConfirmedResponse);
     console.log('Email SENT!');
     console.log("Received:");
     console.log(req.body);
-
+  
     // var objectData = JSON.parse(req.body);
     
     const transport = nodemailer.createTransport({
@@ -414,7 +434,7 @@ app.get('*', (req,res) =>{
 });
 
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 app.listen(port);
 
 console.log('App is listening on port ' + port);

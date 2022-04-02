@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import OrderDone from './OrderDone';
 import images from './../../data/images';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import app from './../../firebase';
@@ -35,23 +36,26 @@ interface ErrorProps {
 }
 
 const FinishOrder = () => {
-  const [sent, setSent] = useState(false);
+  const [emailSentConfirmed, setSent] = useState(false);
   
   const handleSend = async () => {
     setSent(true);
-    console.log('FRONT-END set sent TRUE');
- 
-    try {
-      await axios.post('http://localhost:5000/send_mail', { orderData }, {headers:{
-        'Content-Type': 'application/json',
-      }}).then((res) => {
-        console.log('REZULTAT:' + res);
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    
+    // try {
+    //   await axios.post('http://localhost:5001/sendOrderDone', { orderData }, {headers:{
+    //     'Content-Type': 'application/json',
+    //   }}).then((res) => {
+    //     console.log('REZULTAT:' + res.data.fromServerMSG);
+    //     if(res.data.fromServerMSG == "EMAIL_SENT"){
+    //       setSent(true);
+    //     }
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
   const [orderData, setorderData] = useState<orderProps>({
+
     firstName: '',
     lastName: '',
     emailAddress:'',
@@ -119,6 +123,8 @@ const FinishOrder = () => {
 
   return (
     <div className={styles.FinishSection}>
+     { emailSentConfirmed ? 
+     <>
       <div className={styles.topTitle}>
         <div className={styles.cartLine} />
         <h3 className={styles.finishOrderTitle}>{'Finalizeaza comanda'}</h3>
@@ -315,7 +321,9 @@ const FinishOrder = () => {
            
           </div>
         </div>
-      </div>
+      </div> 
+      </>
+      : <OrderDone  /> }
     </div>
   );
 };

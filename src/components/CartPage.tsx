@@ -63,8 +63,8 @@ const CartPage = ({ notifyMe }: CartProps) => {
         </div>
         {subtotalPrepare != 0 ? (
           <div className={'row ' + styles.actualCheckout}>
-            <div className="col-sm-6"></div>
-            <div className="col-sm-6">
+            <div className={"col-sm-6 " + styles.bottomLeft}></div>
+            <div className={"col-sm-6 " + styles.bottomRight}>
               <div className={styles.checkoutTotal}>
                 <h3>{'Total Cos'}</h3>
                 <div className={styles.subtotalContainer}>
