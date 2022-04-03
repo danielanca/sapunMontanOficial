@@ -14,8 +14,10 @@ module.exports = {
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
+    ecmaVersion: 2022,
     project: ["tsconfig.json", "tsconfig.dev.json"],
     sourceType: "module",
+    
   },
   ignorePatterns: [
     "/lib/**/*", // Ignore built files.

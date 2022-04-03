@@ -24,6 +24,11 @@
    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
    margin: auto;
    margin-bottom: 40px;
+   
+   p{
+     margin:0;
+     text-align: center;
+   }
  }
  .padder{
    row-gap: 20px;
@@ -31,3 +36,20 @@
    display: flex;
    flex-direction: column;
  }
+ p{
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ }
+.subtableStyle{
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 60px;
+}
+.productList{
+  display: flex;
+  justify-content: center;
+}
+.bottomAdvices{
+  display: flex;
+  flex-direction: column;
+}
