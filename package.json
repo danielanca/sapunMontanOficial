@@ -80,6 +80,7 @@
   },
   "devDependencies": {
     "@types/jquery": "^3.5.13",
+    "@types/nodemailer": "^6.4.4",
     "@types/react": "^17.0.36",
     "@types/react-router-hash-link": "^2.4.4",
     "express": "^4.17.3",
