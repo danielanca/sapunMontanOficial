@@ -9,8 +9,6 @@ import functions from 'firebase-functions';
 import admin from 'firebase-admin'
 import serviceAccount from './serviceAccount.json' assert {type:"json"}
 
-
-// const adminConfig = JSON.parse(process.env.Fi)
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://sapunmontan-default-rtdb.europe-west1.firebasedatabase.app"

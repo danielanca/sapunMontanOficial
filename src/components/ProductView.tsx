@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import Comments from './Comments';
 import ProductAdded from './PopUps/ProductAdded';
-// import CartHandler from './CartPage/CartHandler';
 
 interface CartProps {
   notifyMe?: React.Dispatch<React.SetStateAction<number>>;

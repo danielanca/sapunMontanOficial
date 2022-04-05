@@ -16,10 +16,9 @@ import CartPage from './components/CartPage';
 import FinishOrder from './components/CartPage/FinishOrder';
 import Blogs from './components/Blogs';
 import EmailTemplate from './components/EmailTemplate/EmailTemplate';
+import BlogPost from './components/BlogPost';
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
-
-
 
 function App() {
   const [letsCartHandler, CartHandler] = useState(1);
@@ -33,10 +32,8 @@ function App() {
   };
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, {
-      passive: true,
+      passive: true
     });
-    
-
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -49,12 +46,13 @@ function App() {
           <Navbar updateNotification={letsCartHandler} />
           <Routes>
             <Route path="/" element={<MainNavigation />}></Route>
-              
+
             <Route path="/produsele-noastre" element={<ProduseleNoastre />}></Route>
             <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />}></Route>
             <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />}></Route>
             <Route path="/finalizare-comanda" element={<FinishOrder />}></Route>
             <Route path="/blogs" element={<Blogs />}></Route>
+            <Route path="/blogid/:blogid" element={<BlogPost />}></Route>
             <Route path="/testimonials" element={<Testimonials />}></Route>
             <Route path="/email" element={<EmailTemplate />}></Route>
           </Routes>
