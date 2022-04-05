@@ -1,7 +1,7 @@
-import styles from './../components/ProductItem.module.scss';
 import { HashLink } from 'react-router-hash-link';
 import productList from './../data/productList';
-import { useRef } from 'react';
+
+import styles from './../components/ProductItem.module.scss';
 
 interface ProdProps {
   ID: number;
