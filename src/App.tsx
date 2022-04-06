@@ -1,22 +1,21 @@
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import ReactGA from 'react-ga4';
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import ReactGA from "react-ga4";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import MainNavigation from './Navigation/MainNavigation';
-import Testimonials from './components/Testimonials';
-import MontanLanding from './components/MontanLanding';
-import Navbar from './components/Navbar';
-import './App.css';
-import ProduseleNoastre from './components/ProduseleNoastre';
-import ProductView from './components/ProductView';
-import FooterMontan from './components/FooterMontan';
-import CartPage from './components/CartPage';
-import FinishOrder from './components/CartPage/FinishOrder';
-import Blogs from './components/Blogs';
-import EmailTemplate from './components/EmailTemplate/EmailTemplate';
-import BlogPost from './components/BlogPost';
+import MainNavigation from "./Navigation/MainNavigation";
+import Testimonials from "./components/Testimonials";
+import Navbar from "./components/Navbar";
+import "./App.css";
+import ProduseleNoastre from "./components/ProduseleNoastre";
+import ProductView from "./components/ProductView";
+import FooterMontan from "./components/FooterMontan";
+import CartPage from "./components/CartPage";
+import FinishOrder from "./components/CartPage/FinishOrder";
+import Blogs from "./components/Blogs";
+import EmailTemplate from "./components/EmailTemplate/EmailTemplate";
+import BlogPost from "./components/BlogPost";
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
 
@@ -27,16 +26,16 @@ function App() {
     const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
 
     if (bottom) {
-      ReactGA.event('User scrolled to bottom');
+      ReactGA.event("User scrolled to bottom");
     }
   };
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, {
+    window.addEventListener("scroll", handleScroll, {
       passive: true
     });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
   return (
