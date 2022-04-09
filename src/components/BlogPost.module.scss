@@ -1,5 +1,5 @@
-@import './../main.module.scss';
-@import './../data//themes.scss';
+@import "./../main.module.scss";
+@import "./../data//themes.scss";
 
 .centerFlex {
   display: flex;
@@ -16,7 +16,7 @@
   text-align: center;
   font-size: 50px;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     font-size: calc(20px + 8vw);
   }
 }
@@ -35,7 +35,7 @@
 .postcategory,
 .date {
   cursor: pointer;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   opacity: 0.8;
 
   &:hover {
@@ -57,7 +57,7 @@
   row-gap: 30px;
   min-height: 670px;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     min-height: 520px;
   }
 }
@@ -67,10 +67,10 @@
   max-width: 800px;
   min-width: 300px;
   margin-top: 30px;
-  @include media('>=tablet', '<desktop') {
+  @include media(">=tablet", "<desktop") {
     width: 90%;
   }
-  @include media('<tablet') {
+  @include media("<tablet") {
     width: 80%;
   }
 }
@@ -79,7 +79,7 @@
   width: 100%;
   max-width: 740px;
   min-width: 280px;
-  @include media('<tablet') {
+  @include media("<tablet") {
     width: 80%;
   }
 }
@@ -89,7 +89,7 @@
   flex-direction: row;
 }
 .tags {
-  font-family: 'Bebas Neue';
+  font-family: "Bebas Neue Regular";
   margin-left: 3px;
   margin-right: 3px;
 }

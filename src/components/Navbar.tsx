@@ -1,16 +1,16 @@
-import { HashLink, HashLink as Link, NavHashLink } from 'react-router-hash-link';
-import ReactGA from 'react-ga4';
+import { HashLink, HashLink as Link, NavHashLink } from "react-router-hash-link";
+import ReactGA from "react-ga4";
 
-import images from '../data/images';
+import images from "../data/images";
 
-import styles from './Navbar.module.scss';
-import TopBanner from './TopBanner';
-import strings from '../data/strings.json';
-import MenuMobile from './MenuMobile';
+import styles from "./Navbar.module.scss";
+import TopBanner from "./TopBanner";
+import strings from "../data/strings.json";
+import MenuMobile from "./MenuMobile";
 
-import shoppingCart from './../media/assets/pics/prezentareCarbune/shoppingCart.png';
-import roFLAG from './../media/assets/pics/prezentareCarbune/flagRO.jpg';
-import { useEffect, useState } from 'react';
+import shoppingCart from "./../media/assets/pics/prezentareCarbune/shoppingCart.png";
+import roFLAG from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
+import { useEffect, useState } from "react";
 
 interface NavProps {
   updateNotification?: number;
@@ -19,7 +19,7 @@ interface NavProps {
 const NavBar = ({ updateNotification }: NavProps) => {
   var storedCart = [];
   var totalItems = 0;
-  let expectedData = localStorage.getItem('cartData');
+  let expectedData = localStorage.getItem("cartData");
   if (expectedData != null) {
     storedCart = JSON.parse(expectedData);
     storedCart.map((item) => {
@@ -28,7 +28,7 @@ const NavBar = ({ updateNotification }: NavProps) => {
   }
 
   const sendAnalyticsIdea = () => {
-    ReactGA.event('User pressed on gallery');
+    ReactGA.event("User pressed on gallery");
   };
 
   return (
@@ -52,9 +52,9 @@ const NavBar = ({ updateNotification }: NavProps) => {
           </ul>
           <div className={styles.middleNoUl}>
             <HashLink className={styles.logoHover} to="/">
-              <span className={styles.montanLogo}>{'Săpun Montan'}</span>
+              <span className={styles.montanLogo}>{"Săpun Montan"}</span>
               <div className={styles.WeRomanians}>
-                <span>{'Produs Românesc'}</span>
+                <span>{"Produs Românesc"}</span>
                 <img className={styles.roProduct} src={roFLAG} />
               </div>
             </HashLink>
@@ -83,7 +83,7 @@ const NavBar = ({ updateNotification }: NavProps) => {
               <span className={styles.jewel}>{totalItems}</span>
             </NavHashLink>
             <NavHashLink className={styles.hashTransparent} to="/cosulmeu">
-              <span className={styles.spanCart}>{'Cosul meu'}</span>
+              <span className={styles.spanCart}>{"Cosul meu"}</span>
             </NavHashLink>
           </div>
         </div>
