@@ -1,0 +1,12 @@
+@import "./../../main.module.scss";
+
+.starVisualizer {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin-top: 7px;
+}
+.starIcon {
+  width: 16px;
+}

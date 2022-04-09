@@ -1,9 +1,9 @@
-import styles from './ProductAdded.module.scss';
-import images from './../../data/images';
-import productList from '../../data/productList';
-import { NavHashLink } from 'react-router-hash-link';
-import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import styles from "./ProductAdded.module.scss";
+import images from "./../../data/images";
+import productList from "../../data/productList";
+import { NavHashLink } from "react-router-hash-link";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
 interface ProductProps {
   id: number;
   animFin: () => void;
@@ -23,15 +23,15 @@ const ProductAdded = ({ id, animFin }: ProductProps) => {
       </div>
       <div className={styles.titleProduct}>{data[ID].title}</div>
       <div className={styles.confirmMessage}>
-        <p className={styles.confirmMessage}>{'A fost adaugat cu succes in cosul tau de cumparaturi!'}</p>
+        <p className={styles.confirmMessage}>{"A fost adaugat cu succes in cosul tau de cumparaturi!"}</p>
       </div>
       <div className={styles.actionCallOut}>
         <NavHashLink className={styles.hashTransparent} to="/cosulmeu">
-          <button className={styles.chillButton}>{'Vezi cosul'}</button>
+          <button className={styles.chillButton}>{"Vezi cosul"}</button>
         </NavHashLink>
 
         <NavHashLink className={styles.hashTransparent} to="/finalizare-comanda">
-          <button className={styles.takeActionButton}>{'Finalizează comanda'}</button>
+          <button className={styles.takeActionButton}>{"Finalizează comanda"}</button>
         </NavHashLink>
       </div>
     </div>

@@ -8,6 +8,7 @@ interface productObject {
   title: string;
   price: string;
   shortDescription: string;
+  imageProduct: string[];
 }
 
 interface ProdProps {
@@ -22,7 +23,7 @@ const ProductItem = ({ productObject }: ProdProps) => {
     <HashLink onClick={gotoElement} className={styles.HashLinkStyle} to={"/produs/" + productObject.ID}>
       <div className={"col-md-3 " + styles.productItem}>
         <div className={styles.imageWrap}>
-          <img className={styles.productImage} src={productList[productObject.ID].productPicture[0]}></img>
+          <img className={styles.productImage} src={productObject.imageProduct[0]}></img>
         </div>
         <div className={styles.titleWrap}>
           <span className={styles.productTitle}>{productObject.title}</span>
