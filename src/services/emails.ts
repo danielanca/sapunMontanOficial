@@ -1,26 +1,38 @@
+import { orderProps } from "./../utils/OrderInterfaces";
+
+export const sendOrderConfirmation = async (data: orderProps) => {
+  return await fetch("http://localhost:5000/sapunmontan/us-central1/sendEmail", {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({
+      firstName: data.firstName,
+      lastName: data.lastName,
+      emailAddress: data.emailAddress,
+      city: data.city,
+      deliveryAddress: data.deliveryAddress,
+      orderNotes: data.orderNotes,
+      cartSum: data.cartSum,
+      shippingTax: data.shippingTax,
+      cartProducts: data.cartProducts
+    })
+  })
+    .then(() => true)
+    .catch(() => false);
+};
+
 export const sendReservationMail = async (
   name: string,
   email: string,
   phone: string,
   details: string,
   dates: string,
-  persons: number,
+  persons: number
 ) => {
-  return await fetch('https://us-central1-oasisresidenceweb-b7f37.cloudfunctions.net/sendEmail', {
-    method: 'POST',
-    mode: 'no-cors',
-    body: JSON.stringify({ email: email, name: name, phone: phone, details: details, dates: dates, persons: persons }),
+  return await fetch("https://us-central1-oasisresidenceweb-b7f37.cloudfunctions.net/sendEmail", {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({ email: email, name: name, phone: phone, details: details, dates: dates, persons: persons })
   })
     .then((res) => res)
     .catch((error) => error);
-};
-
-export const sendEmailToOasis = async (name: string, email: string, message: string) => {
-  return await fetch('https://us-central1-oasisresidenceweb-b7f37.cloudfunctions.net/sendEmailToOasis', {
-    method: 'POST',
-    mode: 'no-cors',
-    body: JSON.stringify({ name: name, email: email, message: message }),
-  })
-    .then(() => true)
-    .catch(() => false);
 };

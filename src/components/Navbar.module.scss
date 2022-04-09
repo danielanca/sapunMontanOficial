@@ -1,5 +1,5 @@
-@import './../main.module.scss';
-@import './../data/themes.scss';
+@import "./../main.module.scss";
+@import "./../data/themes.scss";
 .jewel {
   background-color: red;
   border-radius: 50%;
@@ -25,14 +25,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  @include media('<tablet') {
+  @include media("<tablet") {
     display: none;
   }
 }
 .backDropBackground {
   display: none;
   background-color: black;
-  @include media('<desktop') {
+  @include media("<desktop") {
     opacity: 0.7;
     width: 100vw;
     position: absolute;
@@ -49,7 +49,7 @@
   display: flex;
   justify-content: center;
   height: 70px;
-  @include media('<desktop') {
+  @include media("<desktop") {
     display: table;
     margin: 0 auto;
     width: auto;
@@ -62,8 +62,8 @@
   height: 108px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 
-  @include media('<tablet') {
-    height: 95px;
+  @include media("<tablet") {
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,11 +80,11 @@
   justify-content: center;
   z-index: 10;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     flex-direction: row;
     justify-content: space-around;
   }
-  @include media('>=tablet', '<desktop') {
+  @include media(">=tablet", "<desktop") {
     background-color: map-get($map: $colors, $key: navBarBackgroundMobile);
     flex-direction: row;
     height: auto;
@@ -104,7 +104,7 @@
   flex-direction: row;
   padding-left: 0 !important;
   align-items: center;
-  @include media('<desktop') {
+  @include media("<desktop") {
     display: none !important;
   }
 }
@@ -146,7 +146,7 @@
   -o-animation: fadeIn 0.5s;
   -ms-animation: fadeIn 0.5s;
 
-  @include media('<desktop') {
+  @include media("<desktop") {
     width: 70vw;
     margin-top: 2.2vh;
     position: absolute;
@@ -160,7 +160,7 @@
 
 .activeBurger {
   display: block;
-  @include media('<desktop') {
+  @include media("<desktop") {
     opacity: 1;
     align-self: center;
   }
@@ -175,10 +175,10 @@
 
   font-weight: 500;
   margin-top: 1vw;
-  @include media('<tablet') {
+  @include media("<tablet") {
     font-size: calc(21px + 2vw);
   }
-  @include media('>=tablet', '<=desktop') {
+  @include media(">=tablet", "<=desktop") {
     font-size: calc(20px + 2vw);
   }
 }
@@ -190,7 +190,7 @@
   font-size: 1.4em;
   color: #000000;
   margin: 0 0.8vw;
-  font-family: 'SallenasGrande Regular' !important;
+  font-family: "SallenasGrande Regular" !important;
   border-bottom: 5px solid transparent;
   white-space: nowrap;
   &:hover {
@@ -221,7 +221,7 @@
 }
 .navLogo {
   width: 25vw;
-  @include media('<desktop') {
+  @include media("<desktop") {
     width: 80vw;
     margin-top: 0px;
   }
@@ -234,7 +234,7 @@
   transition: 0.5s;
   align-self: center;
 
-  @include media('<desktop') {
+  @include media("<desktop") {
     order: 1;
   }
 }
@@ -242,7 +242,7 @@
 .bar1,
 .bar2,
 .bar3 {
-  @include media('<tablet') {
+  @include media("<tablet") {
     width: 32px;
     height: 3.5px;
     background-color: map-get($map: $colors, $key: redBomb);
@@ -250,7 +250,7 @@
     transition: 0.8s;
   }
 
-  @include media('>=tablet', '<desktop') {
+  @include media(">=tablet", "<desktop") {
     width: 33px;
     height: 3.5px;
     background-color: map-get($map: $colors, $key: redBomb);
@@ -263,7 +263,7 @@
   width: 80px;
   justify-content: center;
   align-items: center;
-  @include media('>=desktop') {
+  @include media(">=desktop") {
     display: none;
   }
 }
@@ -295,7 +295,7 @@
   align-items: center;
   white-space: nowrap;
 
-  @include media('<desktop') {
+  @include media("<desktop") {
     display: none;
   }
 }
@@ -305,7 +305,7 @@
   width: 100%;
   align-items: center;
   white-space: nowrap;
-  @include media('<desktop') {
+  @include media("<desktop") {
     order: 3;
     justify-content: end;
     padding: 0 20px;
@@ -321,7 +321,7 @@
     opacity: 0.7;
   }
 
-  @include media('<desktop') {
+  @include media("<desktop") {
     display: none;
   }
 }

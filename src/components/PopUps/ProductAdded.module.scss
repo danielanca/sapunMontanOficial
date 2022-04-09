@@ -1,5 +1,5 @@
-@import './../../main.module.scss';
-@import './../../data/themes.scss';
+@import "./../../main.module.scss";
+@import "./../../data/themes.scss";
 
 @keyframes fadeIn {
   0% {
@@ -33,7 +33,7 @@
   animation-name: fadeIn;
   animation-duration: 8s;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     width: 100vw;
   }
 }
@@ -45,13 +45,13 @@
   margin: auto;
 }
 .titleProduct {
-  font-family: 'Bebas Neue';
+  font-family: "Bebas Neue Regular";
   text-align: center;
   font-size: 2rem;
 }
 .confirmMessage {
   text-align: center;
-  font-family: 'Open Sans Regular', Georgia, Times, 'Times New Roman', serif;
+  font-family: "Open Sans Regular", Georgia, Times, "Times New Roman", serif;
 }
 
 .actionCallOut {

@@ -1,5 +1,5 @@
-@import './../main.module.scss';
-@import './../data//themes.scss';
+@import "./../main.module.scss";
+@import "./../data//themes.scss";
 
 .HashLinkStyle {
   color: map-get($map: $colors, $key: mainlyBlack);
@@ -19,11 +19,11 @@
   height: 452px;
   position: relative;
 
-  @include media('>=tablet', '<desktop') {
+  @include media(">=tablet", "<desktop") {
     max-width: 250px;
     width: calc(130px + 10vw);
   }
-  @include media('<tablet') {
+  @include media("<tablet") {
     width: calc(232px + 8.8vw);
     height: calc(369px + 7vw);
   }
@@ -37,21 +37,21 @@
   opacity: 0.8;
 }
 .productTitle {
-  font-family: 'Bebas Neue', cursive;
+  font-family: "Bebas Neue Regular", cursive;
   font-size: 1.8em;
   text-decoration: none;
   text-align: center;
   line-height: 27px;
   margin-top: 10px;
   cursor: pointer;
-  @include media('<tablet') {
+  @include media("<tablet") {
     line-height: 29px;
   }
 }
 .productPrice {
-  font-family: 'Bebas Neue', cursive;
+  font-family: "Bebas Neue Regular", cursive;
   font-size: 50px;
-  @include media('<tablet') {
+  @include media("<tablet") {
     font-size: 3em;
   }
 }
@@ -69,7 +69,7 @@
   background-color: #e67373;
 }
 .textInside {
-  font-family: 'Bebas Neue', cursive;
+  font-family: "Bebas Neue Regular", cursive;
   font-size: 20px;
   white-space: nowrap;
 }
