@@ -1,12 +1,12 @@
-@import './../main.module.scss';
-@import './../data//themes.scss';
+@import "./../main.module.scss";
+@import "./../data//themes.scss";
 
 .padder {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
-.sectionParent{
+.sectionParent {
   display: flex;
   justify-content: center;
 }
@@ -15,7 +15,7 @@
   justify-content: end;
   padding: 0;
 
-  @include media('>=tablet', '<desktop'){
+  @include media(">=tablet", "<desktop") {
     justify-content: center;
   }
 }
@@ -25,7 +25,7 @@
   width: 500px;
   flex-direction: column;
 
-  @include media('>=tablet', '<desktop'){
+  @include media(">=tablet", "<desktop") {
     width: auto;
   }
 }
@@ -39,7 +39,7 @@
   justify-content: center;
   align-items: center;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     width: 100%;
   }
 }
@@ -48,12 +48,15 @@
   position: relative;
   width: 100%;
   height: auto;
-  @include media('<tablet') {
+  @include media("<tablet") {
     width: 100vw;
   }
 }
 .imageContainer {
   width: 100%;
+  @include media(">desktop") {
+    min-height: 500px;
+  }
 }
 .productTitle {
   font-size: 3rem;
@@ -62,10 +65,10 @@
 .reviewContainer {
   display: flex;
   justify-content: start;
-  @include media('<tablet') {
+  @include media("<tablet") {
     flex-direction: column;
   }
-  @include media('>=tablet', '<desktop'){
+  @include media(">=tablet", "<desktop") {
     justify-content: center;
   }
 }
@@ -73,21 +76,20 @@
   font-size: 1.2rem;
   text-align: center;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     padding: 0 30px;
   }
 }
 .longDescription {
-  font-family: 'Open Sans Regular', Georgia, Times, 'Times New Roman', serif;
+  font-family: "Open Sans Regular", Georgia, Times, "Times New Roman", serif;
   padding-left: 10px;
   line-height: 21px;
 
-  @include media('>=tablet','<desktop'){
+  @include media(">=tablet", "<desktop") {
     line-height: initial;
     padding: 10px 50px;
     border: 1px solid gray;
   }
-  
 }
 .starsContainer {
   display: flex;

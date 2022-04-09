@@ -1,33 +1,30 @@
-import images from './../data/images';
+import images from "./../data/images";
 
-import styles from './ReviewCard.module.scss';
-import stars from './../media/assets/pics/prezentareCarbune/star_review.png';
+import styles from "./ReviewCard.module.scss";
+
+import StarDisplayer from "./StarDisplayer/StarDisplayer";
 interface ReviewerInterface {
-  authorName: string;
-  testimonialText: string;
+  fullName: string;
+  date: string;
+  starsNumber: number;
+  actualComment: string;
 }
 interface IProps {
-  styler?: string;
-  testimonials?: ReviewerInterface;
+  testimonials?: any;
 }
 
-const ReviewCard = ({ styler, testimonials }: IProps) => {
+const ReviewCard = ({ testimonials }: IProps) => {
   return (
     <div className={styles.commentBoard}>
       <div className={styles.authorStyle}>
-        <p className={styles.name}>{'Cristina Popescu'}</p>
-        <p className={styles.date}>{'25.5.2022'}</p>
+        <p className={styles.name}>{testimonials.name}</p>
+        <p className={styles.date}>{testimonials.date}</p>
       </div>
       <div className={styles.reviewStars}>
-        <img className={styles.starIcon} src={stars} />
-        <img className={styles.starIcon} src={stars} />
-        <img className={styles.starIcon} src={stars} />
-        <img className={styles.starIcon} src={stars} />
+        <StarDisplayer starScore={testimonials.starsNumber} />
       </div>
       <div className={styles.comment}>
-        <p className={styles.actualComment}>
-          {'Produsul exact asa cum speram dar și mai plăcută a fost interacțiunea cu vânzătorul. Foarte profi!'}
-        </p>
+        <p className={styles.actualComment}>{testimonials.actualComment}</p>
       </div>
     </div>
   );

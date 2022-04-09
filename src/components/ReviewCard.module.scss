@@ -1,13 +1,14 @@
-@import './../main.module.scss';
-@import './../data//themes.scss';
+@import "./../main.module.scss";
+@import "./../data//themes.scss";
 
 .commentBoard {
   height: auto;
   width: 80vw;
   max-width: 860px;
   background-color: whitesmoke;
+  border-radius: 11px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  @include media('<tablet') {
+  @include media("<tablet") {
     height: auto;
     text-align: center;
   }
@@ -34,8 +35,8 @@
 }
 .actualComment {
   padding: 1%;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  @include media('<tablet') {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  @include media("<tablet") {
     height: auto;
     text-align: center;
     padding: 5%;
