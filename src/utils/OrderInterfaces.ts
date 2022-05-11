@@ -16,4 +16,5 @@ export interface orderProps {
   cartSum?: number;
   shippingTax?: number;
   paymentMethod: string;
+  deliveryName?: string;
 }

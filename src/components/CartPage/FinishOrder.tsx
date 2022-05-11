@@ -22,6 +22,7 @@ const FinishOrder = () => {
   let productSessionStorage = JSON.parse(sessionStorage.getItem("productsFetched"));
   const handleSend = async () => {
     try {
+      console.log("We are sending", orderData);
       await sendOrderConfirmation(orderData).then();
     } catch (error) {
       console.log(error);
@@ -37,9 +38,11 @@ const FinishOrder = () => {
     county: "",
     paymentMethod: "",
     cartProducts: "",
+    phoneNo: "",
     cartSum: subtotalPrepare,
     shippingTax: deliveryFee,
-    orderNotes: ""
+    orderNotes: "",
+    deliveryName: "DPD Curier"
   });
 
   const [finishOrderRequested, setFinishRequested] = useState<number>(null);
@@ -52,9 +55,11 @@ const FinishOrder = () => {
   const sendOrderData = () => {
     setFinishRequested(finishOrderRequested + 1);
 
-    console.log(orderData);
-
-    handleSend();
+    if (completionState.inputCompleted && completionState.paymentSelected && completionState.termsAccepted) {
+      console.log(orderData);
+      console.log("ORDER Criteria MEET");
+      handleSend();
+    }
   };
   const inputHandler = (data: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = data.target;
@@ -72,14 +77,8 @@ const FinishOrder = () => {
   var explicitProductList = [];
   if (expectedData != null) {
     storedCart = JSON.parse(expectedData);
-    // console.log("We have");
-    // console.log(storedCart);
-    // console.log
+
     storedCart.map((item) => {
-      // console.log("finish order price" + Number(productSessionStorage[item.id].price));
-      // console.log("finish order itemNumber:" + Number(item.itemNumber));
-      // console.log("finish order name" + productSessionStorage[item.id].title);
-      // console.log("Index " + subtotalPrepare);
       subtotalPrepare += Number(productSessionStorage[item.id].price) * Number(item.itemNumber);
       explicitProductList.push({
         id: item.id,
@@ -98,17 +97,13 @@ const FinishOrder = () => {
   };
 
   useEffect(() => {
-    setorderData({
+    setorderData((orderData) => ({
       ...orderData,
       cartSum: subtotalPrepare,
       shippingTax: deliveryFee,
       cartProducts: JSON.stringify(explicitProductList)
-    });
+    }));
   }, [subtotalPrepare]);
-
-  useEffect(() => {
-    console.log("Payment is :", orderData.paymentMethod);
-  }, [orderData.paymentMethod]);
 
   useEffect(() => {
     if (finishOrderRequested == 0) {
@@ -152,14 +147,7 @@ const FinishOrder = () => {
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
 
-                  <input
-                    onChange={(event) => {
-                      setorderData({ ...orderData, firstName: event.target.value });
-                    }}
-                    value={orderData.firstName}
-                    name="firstName"
-                    type={"large"}
-                  ></input>
+                  <input onChange={inputHandler} value={orderData.firstName} name="firstName" type={"large"}></input>
                 </div>
                 <div className={styles.inputBox}>
                   <label>
@@ -178,9 +166,7 @@ const FinishOrder = () => {
                   <input
                     name="deliveryAddress"
                     type={"large"}
-                    onChange={(event) => {
-                      setorderData({ ...orderData, deliveryAddress: event.target.value });
-                    }}
+                    onChange={inputHandler}
                     value={orderData.deliveryAddress}
                   ></input>
                 </div>
@@ -191,14 +177,7 @@ const FinishOrder = () => {
                     {"Oras"}
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
-                  <input
-                    name="city"
-                    type={"large"}
-                    onChange={(event) => {
-                      setorderData({ ...orderData, city: event.target.value });
-                    }}
-                    value={orderData.city}
-                  ></input>
+                  <input name="city" type={"large"} onChange={inputHandler} value={orderData.city}></input>
                 </div>
               </div>
               <div className={styles.groupInput}>
@@ -208,12 +187,11 @@ const FinishOrder = () => {
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
                   <input
+                    autoComplete="false"
                     list={"county"}
                     type={"large"}
                     name="county"
-                    onChange={(event) => {
-                      setorderData({ ...orderData, county: event.target.value });
-                    }}
+                    onChange={inputHandler}
                     value={orderData.county}
                   ></input>
                   <datalist id="county">
@@ -229,13 +207,7 @@ const FinishOrder = () => {
                     {"Telefon"}
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
-                  <input
-                    name="phone"
-                    type={"large"}
-                    onChange={(event) => {
-                      setorderData({ ...orderData, phoneNo: event.target.value });
-                    }}
-                  ></input>
+                  <input name="phoneNo" type={"large"} onChange={inputHandler}></input>
                 </div>
               </div>
               <div className={styles.groupInput}>
@@ -244,9 +216,7 @@ const FinishOrder = () => {
                   <input
                     name="emailAddress"
                     type={"large"}
-                    onChange={(event) => {
-                      setorderData({ ...orderData, emailAddress: event.target.value });
-                    }}
+                    onChange={inputHandler}
                     value={orderData.emailAddress}
                   ></input>
                 </div>
@@ -266,10 +236,10 @@ const FinishOrder = () => {
                     spellCheck="false"
                     rows={2}
                     onChange={(event) => {
-                      setorderData({ ...orderData, orderNotes: event.target.value });
+                      setorderData((orderData) => ({ ...orderData, orderNotes: event.target.value }));
                     }}
                     value={orderData.orderNotes}
-                  ></textarea>
+                  />
                 </div>
               </div>
             </div>
@@ -315,7 +285,7 @@ const FinishOrder = () => {
                       value={"Ramburs"}
                       checked={orderData.paymentMethod != ""}
                       onChange={(e) => {
-                        setorderData({ ...orderData, paymentMethod: "rambursPayment" });
+                        setorderData((orderData) => ({ ...orderData, paymentMethod: "rambursPayment" }));
                       }}
                     />
                     <label htmlFor="delivercheck">Plata Ramburs</label>
