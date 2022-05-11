@@ -6,20 +6,20 @@ import { addDoc, collection, getFirestore } from "firebase/firestore";
 import app from "./../../firebase";
 import productList from "./../../data/productList";
 import { componentStrings } from "../../data/componentStrings";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { sendOrderConfirmation } from "./../../services/emails";
 import styles from "./../CartPage/FinishOrder.module.scss";
 import { orderProps } from "./../../utils/OrderInterfaces";
 
 interface ErrorProps {
   paymentSelected: boolean;
-  termsNotAccepted: boolean;
-  inputNotCompleted: boolean;
+  termsAccepted: boolean;
+  inputCompleted: boolean;
 }
 
 const FinishOrder = () => {
   const [emailSentConfirmed, setSent] = useState(false);
-
+  let productSessionStorage = JSON.parse(sessionStorage.getItem("productsFetched"));
   const handleSend = async () => {
     try {
       await sendOrderConfirmation(orderData).then();
@@ -27,6 +27,7 @@ const FinishOrder = () => {
       console.log(error);
     }
   };
+
   const [orderData, setorderData] = useState<orderProps>({
     firstName: "",
     lastName: "",
@@ -38,48 +39,62 @@ const FinishOrder = () => {
     cartProducts: "",
     cartSum: subtotalPrepare,
     shippingTax: deliveryFee,
-    orderDateTimeStamp: {
-      day: 0,
-      month: 0,
-      year: 0
-    }
+    orderNotes: ""
   });
-  const db = getFirestore(app);
-  const [checkBoxTerms, setCheckBoxTerms] = useState(false);
+
+  const [finishOrderRequested, setFinishRequested] = useState<number>(null);
   const [completionState, setError] = useState<ErrorProps>({
     paymentSelected: false,
-    termsNotAccepted: false,
-    inputNotCompleted: false
+    termsAccepted: false,
+    inputCompleted: false
   });
 
   const sendOrderData = () => {
-    if (checkBoxTerms !== true) {
-    }
-    console.log("Data prepared to be sent!");
+    setFinishRequested(finishOrderRequested + 1);
+
     console.log(orderData);
 
     handleSend();
+  };
+  const inputHandler = (data: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = data.target;
+
+    setorderData((orderData) => ({
+      ...orderData,
+      [name]: value
+    }));
   };
 
   var storedCart = [];
   var subtotalPrepare = 0;
   var deliveryFee = 15;
   let expectedData = localStorage.getItem("cartData");
+  var explicitProductList = [];
   if (expectedData != null) {
     storedCart = JSON.parse(expectedData);
-    console.log("We have");
-    console.log(storedCart);
-
+    // console.log("We have");
+    // console.log(storedCart);
+    // console.log
     storedCart.map((item) => {
-      console.log("finish order" + Number(productList[item.id].price));
-      console.log("finish order:" + Number(item.itemNumber));
-      console.log("finish order" + storedCart.length);
-      console.log("Index " + subtotalPrepare);
-      subtotalPrepare += Number(productList[item.id].price) * Number(item.itemNumber);
+      // console.log("finish order price" + Number(productSessionStorage[item.id].price));
+      // console.log("finish order itemNumber:" + Number(item.itemNumber));
+      // console.log("finish order name" + productSessionStorage[item.id].title);
+      // console.log("Index " + subtotalPrepare);
+      subtotalPrepare += Number(productSessionStorage[item.id].price) * Number(item.itemNumber);
+      explicitProductList.push({
+        id: item.id,
+        name: productSessionStorage[item.id].title,
+        itemNumber: item.itemNumber,
+        imageProduct: productSessionStorage[item.id].imageProduct[0],
+        price: productSessionStorage[item.id].price
+      });
     });
+
+    console.log("EXPLICIT PRODS:", explicitProductList);
+    console.log(orderData);
   }
   const termAcceptHandler = () => {
-    setCheckBoxTerms(!checkBoxTerms);
+    setError((completionState) => ({ ...completionState, termsAccepted: !completionState.termsAccepted }));
   };
 
   useEffect(() => {
@@ -87,15 +102,35 @@ const FinishOrder = () => {
       ...orderData,
       cartSum: subtotalPrepare,
       shippingTax: deliveryFee,
-      orderDateTimeStamp: {
-        day: new Date().getDay(),
-        month: new Date().getMonth(),
-        year: new Date().getFullYear()
-      },
-      cartProducts: expectedData
+      cartProducts: JSON.stringify(explicitProductList)
     });
   }, [subtotalPrepare]);
 
+  useEffect(() => {
+    console.log("Payment is :", orderData.paymentMethod);
+  }, [orderData.paymentMethod]);
+
+  useEffect(() => {
+    if (finishOrderRequested == 0) {
+      return;
+    }
+    if (
+      orderData.firstName.length >= 2 &&
+      orderData.lastName.length >= 2 &&
+      orderData.city.length >= 2 &&
+      orderData.county.length >= 2 &&
+      orderData.phoneNo.length >= 2 &&
+      orderData.deliveryAddress.length >= 2
+    ) {
+      setError((completionState) => ({ ...completionState, inputCompleted: true }));
+    } else {
+      setError((completionState) => ({ ...completionState, inputCompleted: false }));
+    }
+    if (orderData.paymentMethod != "") {
+      setError((completionState) => ({ ...completionState, paymentSelected: true }));
+    }
+    console.log("Finish order request", finishOrderRequested);
+  }, [finishOrderRequested, orderData]);
   return (
     <div className={styles.FinishSection}>
       {!emailSentConfirmed ? (
@@ -122,7 +157,7 @@ const FinishOrder = () => {
                       setorderData({ ...orderData, firstName: event.target.value });
                     }}
                     value={orderData.firstName}
-                    name="firstname"
+                    name="firstName"
                     type={"large"}
                   ></input>
                 </div>
@@ -131,14 +166,7 @@ const FinishOrder = () => {
                     {"Prenume"}
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
-                  <input
-                    name="lastname"
-                    type={"large"}
-                    onChange={(event) => {
-                      setorderData({ ...orderData, lastName: event.target.value });
-                    }}
-                    value={orderData.lastName}
-                  ></input>
+                  <input name="lastName" type={"large"} onChange={inputHandler} value={orderData.lastName}></input>
                 </div>
               </div>
               <div className={styles.groupInput}>
@@ -148,6 +176,7 @@ const FinishOrder = () => {
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
                   <input
+                    name="deliveryAddress"
                     type={"large"}
                     onChange={(event) => {
                       setorderData({ ...orderData, deliveryAddress: event.target.value });
@@ -163,6 +192,7 @@ const FinishOrder = () => {
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
                   <input
+                    name="city"
                     type={"large"}
                     onChange={(event) => {
                       setorderData({ ...orderData, city: event.target.value });
@@ -180,6 +210,7 @@ const FinishOrder = () => {
                   <input
                     list={"county"}
                     type={"large"}
+                    name="county"
                     onChange={(event) => {
                       setorderData({ ...orderData, county: event.target.value });
                     }}
@@ -198,13 +229,20 @@ const FinishOrder = () => {
                     {"Telefon"}
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
-                  <input type={"large"}></input>
+                  <input
+                    name="phone"
+                    type={"large"}
+                    onChange={(event) => {
+                      setorderData({ ...orderData, phoneNo: event.target.value });
+                    }}
+                  ></input>
                 </div>
               </div>
               <div className={styles.groupInput}>
                 <div className={styles.inputBox}>
                   <label>{"Adresa de Email:"}</label>
                   <input
+                    name="emailAddress"
                     type={"large"}
                     onChange={(event) => {
                       setorderData({ ...orderData, emailAddress: event.target.value });
@@ -225,6 +263,7 @@ const FinishOrder = () => {
                 <div className={styles.inputBox}>
                   <label className={styles.optionalNote}>{"Note comandă [opțional]"}</label>
                   <textarea
+                    spellCheck="false"
                     rows={2}
                     onChange={(event) => {
                       setorderData({ ...orderData, orderNotes: event.target.value });
@@ -243,9 +282,9 @@ const FinishOrder = () => {
                 <ul className={styles.itemUl}>
                   {storedCart.map((item) => (
                     <li className={styles.itemLi}>
-                      <span className={styles.productSummarizeTitle}>{productList[item.id].title}</span>
+                      <span className={styles.productSummarizeTitle}>{productSessionStorage[item.id].title}</span>
                       <span className={styles.count}>{Number(item.itemNumber) + " x"}</span>
-                      <span className={styles.price}>{Number(productList[item.id].price)}</span>
+                      <span className={styles.price}>{Number(productSessionStorage[item.id].price)}</span>
                     </li>
                   ))}
                 </ul>
@@ -269,12 +308,35 @@ const FinishOrder = () => {
                 <label htmlFor="cardcheck">Plata prin Card</label>
               </div> */}
                   <div className={styles.checkboxer}>
-                    <input id="delivercheck" type="radio" name="radio" value="1" />
+                    <input
+                      id="delivercheck"
+                      type="radio"
+                      name="radio"
+                      value={"Ramburs"}
+                      checked={orderData.paymentMethod != ""}
+                      onChange={(e) => {
+                        setorderData({ ...orderData, paymentMethod: "rambursPayment" });
+                      }}
+                    />
                     <label htmlFor="delivercheck">Plata Ramburs</label>
                   </div>
                 </div>
               </div>
+              {finishOrderRequested && orderData.paymentMethod === "" ? (
+                <h4 className="text-center " style={{ color: "red" }}>
+                  {"Nu ati selectat metoda de plata!"}
+                </h4>
+              ) : (
+                ""
+              )}
             </div>
+            {finishOrderRequested >= 1 && !completionState.inputCompleted && (
+              <div className="col-12">
+                <h4 className={styles.warningOrder} style={{ color: "red", margin: "auto", textAlign: "center" }}>
+                  {"Verificati datele introduse. Completarea spatilor cu * bulina sunt obligatorii"}
+                </h4>
+              </div>
+            )}
             <div className={"col-12 " + styles.paymentShipContainer}>
               <div className={styles.paymentContainer}>
                 <p className={styles.GDPRNotify}>
@@ -287,15 +349,20 @@ const FinishOrder = () => {
                 <div className={styles.groupInputTerms}>
                   <div className={styles.checkBoxStyle}>
                     <input
-                      defaultChecked={checkBoxTerms}
+                      defaultChecked={completionState.termsAccepted}
                       onChange={termAcceptHandler}
                       name="acceptTerms"
                       type={"checkbox"}
-                    ></input>
+                    />
                     <label htmlFor="acceptTerms" className={styles.acceptTerms}>
                       {"Am citit și sunt de acord cu termenii și condiții site-ului web "}
                     </label>
                   </div>
+                  {finishOrderRequested && !completionState.termsAccepted && (
+                    <h4 className={styles.termConditionAlert}>
+                      {"Trebuie sa fiti de-acord cu termenii si conditiile pentru a plasa comanda!"}
+                    </h4>
+                  )}
                 </div>
                 <button onClick={sendOrderData} type="submit" className={styles.finishOrder}>
                   {"TRIMITE COMANDA"}

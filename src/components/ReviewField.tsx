@@ -4,11 +4,17 @@ import AddReview from "./AddReview";
 import styles from "./ReviewField.module.scss";
 
 interface ReviewsProps {
-  reviewsAr: any;
+  reviewsAr?: any;
+  productIdentification: number;
 }
-const ReviewField = (reviewsAr: ReviewsProps) => {
-  const listOfReviews = Object.values(reviewsAr);
-  console.log("Review Field is teling: ", listOfReviews[0].reviewsList);
+const ReviewField = ({ reviewsAr, productIdentification }: ReviewsProps) => {
+  var listOfReviews = [];
+  if (reviewsAr != undefined) {
+    listOfReviews = Object.values(reviewsAr);
+    console.log("Review Field is teling: ", listOfReviews[0].reviewsList);
+  } else {
+    listOfReviews[0] = 1;
+  }
 
   return (
     <div className={styles.contain}>
@@ -17,7 +23,7 @@ const ReviewField = (reviewsAr: ReviewsProps) => {
           <ReviewCard testimonials={item} />
         ))}
 
-        <AddReview />
+        <AddReview productID={productIdentification} />
       </div>
     </div>
   );

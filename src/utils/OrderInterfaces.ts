@@ -1,3 +1,8 @@
+interface DayTime {
+  day: number;
+  month: number;
+  year: number;
+}
 export interface orderProps {
   firstName: string;
   lastName: string;
@@ -11,9 +16,4 @@ export interface orderProps {
   cartSum?: number;
   shippingTax?: number;
   paymentMethod: string;
-  orderDateTimeStamp: {
-    day: number;
-    month: number;
-    year: number;
-  };
 }

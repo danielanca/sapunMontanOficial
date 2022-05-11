@@ -1,5 +1,21 @@
 import { orderProps } from "./../utils/OrderInterfaces";
 
+export const sendReviewToBack = async (reviewObj: any) => {
+  return await fetch("http://localhost:5000/sapunmontan/us-central1/sendReviewToServer", {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({
+      name: reviewObj.name,
+      starsNumber: reviewObj.starsNumber,
+      reviewActual: reviewObj.reviewActual,
+      email: reviewObj.email,
+      reviewProductID: reviewObj.reviewProductID
+    })
+  })
+    .then(() => true)
+    .catch(() => false);
+};
+
 export const sendOrderConfirmation = async (data: orderProps) => {
   return await fetch("http://localhost:5000/sapunmontan/us-central1/sendEmail", {
     method: "POST",

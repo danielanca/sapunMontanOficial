@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { HashLink as Link, NavHashLink } from 'react-router-hash-link';
+import { useState } from "react";
+import { HashLink as Link, NavHashLink } from "react-router-hash-link";
 
-import styles from './../components/Navbar.module.scss';
+import styles from "./../components/Navbar.module.scss";
 
-import strings from '../data/strings.json';
+import strings from "../data/strings.json";
 
 const MenuMobile = () => {
   const [BurgerOpen, setBurgerOpen] = useState(false);
