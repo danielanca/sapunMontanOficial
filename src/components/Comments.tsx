@@ -5,9 +5,10 @@ import ReviewField from "./ReviewField";
 
 interface CommentsProps {
   reviewsList: any;
+  productID: number;
 }
-const Comments = (reviewsList: CommentsProps) => {
-  const [tabButton, settabButton] = useState(1);
+const Comments = ({ reviewsList, productID }: CommentsProps) => {
+  const [tabButton, settabButton] = useState(0);
 
   const handleTab = (event: number) => {
     settabButton(event);
@@ -35,7 +36,11 @@ const Comments = (reviewsList: CommentsProps) => {
           </div>
         </div>
         <div className={styles.descriptionContainer}>
-          {tabButton === 0 ? <SapunDescriere /> : <ReviewField reviewsAr={reviewsList} />}
+          {tabButton === 0 ? (
+            <SapunDescriere />
+          ) : (
+            <ReviewField reviewsAr={reviewsList} productIdentification={productID} />
+          )}
         </div>
       </div>
     </>

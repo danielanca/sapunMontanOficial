@@ -3,13 +3,13 @@ import images from "./../../data/images";
 import productList from "../../data/productList";
 import { NavHashLink } from "react-router-hash-link";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+
 interface ProductProps {
   id: number;
   animFin: () => void;
 }
 const ProductAdded = ({ id, animFin }: ProductProps) => {
-  let data = Array.from(productList);
+  let data = Array.from(JSON.parse(sessionStorage.getItem("productsFetched")));
   let params = useParams();
   let ID = id;
 

@@ -23,7 +23,6 @@ const ProductView = ({ notifyMe }: CartProps) => {
   useEffect(() => {
     if (productListUpdated == null) {
       getProductWithID(ID).then((finalData) => {
-        console.log("What is finalData?:", finalData);
         setProducts(finalData);
       });
     }
@@ -50,30 +49,21 @@ const ProductView = ({ notifyMe }: CartProps) => {
 
       storedCart.push({ id: ID, itemNumber: "1" });
 
-      console.log("After push storedCard is:");
-      console.log(storedCart);
-
       localStorage.setItem("cartData", JSON.stringify(storedCart));
       return;
     }
     var itemFound = false;
     storedCart = JSON.parse(expectedData);
-    console.log(storedCart);
+
     storedCart.map((item) => {
-      console.log("mapper");
-      console.log(item);
-      if (item.id === ID.toString()) {
+      if (item.id == ID.toString()) {
         item.itemNumber = (Number(item.itemNumber) + 1).toString();
         itemFound = true;
       }
-      console.log("mapper after:");
-      console.log(item);
     });
-
     if (!itemFound) {
       storedCart.push({ id: ID, itemNumber: "1" });
     }
-
     localStorage.setItem("cartData", JSON.stringify(storedCart));
   };
 
@@ -179,7 +169,9 @@ const ProductView = ({ notifyMe }: CartProps) => {
           </div>
         </div>
       </div>
-      <div>{productListUpdated != null ? <Comments reviewsList={productListUpdated[ID].reviews} /> : ""}</div>
+      <div>
+        {productListUpdated != null ? <Comments productID={ID} reviewsList={productListUpdated[ID].reviews} /> : ""}
+      </div>
     </>
   );
 };

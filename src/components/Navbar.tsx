@@ -52,7 +52,7 @@ const NavBar = ({ updateNotification }: NavProps) => {
           </ul>
           <div className={styles.middleNoUl}>
             <HashLink className={styles.logoHover} to="/">
-              <span className={styles.montanLogo}>{"Săpun Montan"}</span>
+              <span className={styles.montanLogo}>{"Montan Air.Ro"}</span>
               <div className={styles.WeRomanians}>
                 <span>{"Produs Românesc"}</span>
                 <img className={styles.roProduct} src={roFLAG} />

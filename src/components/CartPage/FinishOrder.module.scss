@@ -1,5 +1,5 @@
-@import './../../main.module.scss';
-@import './../../data/themes.scss';
+@import "./../../main.module.scss";
+@import "./../../data/themes.scss";
 
 .FinishSection {
   width: 100%;
@@ -23,7 +23,7 @@
   padding: 20px;
   color: rgba(0, 0, 0, 0.4);
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     padding: 20px 0;
   }
 }
@@ -40,7 +40,7 @@
   max-width: 1010px;
   padding: 0;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     padding: 0 1%;
     flex-direction: column;
   }
@@ -49,16 +49,16 @@
   padding: 27px 10px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   max-width: 559px;
-  @include media('>=tablet', '<desktop') {
+  @include media(">=tablet", "<desktop") {
     width: 80%;
     margin: auto;
   }
-  @include media('<tablet') {
+  @include media("<tablet") {
     width: 100%;
   }
 }
 .topBillText {
-  @include media('<tablet') {
+  @include media("<tablet") {
     text-align: center;
   }
 }
@@ -66,10 +66,10 @@
   width: 422px;
   height: auto;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  @include media('<tablet') {
+  @include media("<tablet") {
     width: 100%;
   }
-  @include media('>=tablet', '<desktop') {
+  @include media(">=tablet", "<desktop") {
     margin: auto;
   }
 }
@@ -79,9 +79,9 @@
   margin-left: 10px;
   margin-right: 20px;
   width: 100%;
-  font-family: 'Open Sans Regular';
+  font-family: "Open Sans Regular";
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     margin: 0px;
   }
 }
@@ -89,7 +89,7 @@
   display: flex;
   flex-direction: row;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     flex-direction: column;
     width: 87vw;
     display: table;
@@ -97,14 +97,14 @@
   }
 }
 input {
-  font-family: 'Open Sans Regular';
+  font-family: "Open Sans Regular";
 }
-input[type='large'] {
+input[type="large"] {
   width: 100%;
-  font-family: 'Open Sans Regular';
+  font-family: "Open Sans Regular";
 }
 label {
-  font-family: 'Open Sans Regular';
+  font-family: "Open Sans Regular";
 }
 .alertAsterisk {
   font-weight: bolder;
@@ -119,7 +119,7 @@ label {
 .deliverOption {
   font-weight: bolder;
 }
-input[type='checkbox'] {
+input[type="checkbox"] {
   width: 20px;
   height: 20px;
   margin-left: 10px;
@@ -177,13 +177,13 @@ input[type='checkbox'] {
   font-size: 1.2em;
   text-align: end;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     text-align: center;
     font-size: calc(16px + 2vw);
   }
 }
 .deliveryInfo {
-  font-family: 'Open Sans Regular';
+  font-family: "Open Sans Regular";
   display: table;
   margin: auto;
 }
@@ -217,7 +217,7 @@ input[type='checkbox'] {
   margin: auto;
 }
 .VATincluded {
-  font-family: 'Open Sans Regular';
+  font-family: "Open Sans Regular";
   color: green;
   text-align: end;
   font-weight: bolder;
@@ -234,12 +234,12 @@ input[type='checkbox'] {
   flex-direction: row;
 }
 .GDPRNotify {
-  font-family: 'Open Sans Regular';
+  font-family: "Open Sans Regular";
   color: black;
   font-size: 10px;
   font-weight: bolder;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     font-size: calc(9px + 0.5vw);
   }
 }
@@ -262,6 +262,7 @@ input[type='checkbox'] {
 .groupInputTerms {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 .finishOrder {
   background-color: rgb(0, 153, 25);
@@ -279,3 +280,12 @@ input[type='checkbox'] {
   }
 }
 
+.warningOrder {
+  font-family: "Open Sans Regular";
+}
+.termConditionAlert {
+  color: red;
+  font-size: 17px;
+  margin: auto;
+  text-align: center;
+}

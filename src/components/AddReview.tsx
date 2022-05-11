@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import styles from "./AddReview.module.scss";
-
+import { sendReviewToBack } from "./../services/emails";
 interface ReviewProps {
   name: string;
   starsNumber: string;
   reviewActual: string;
   email: string;
+  reviewProductID: string;
 }
-const AddReview = () => {
+interface PassingReview {
+  productID: number;
+}
+const AddReview = ({ productID }: PassingReview) => {
+  console.log("We are getting:", productID);
   const [reviewBuffer, setReviewBuffer] = useState<ReviewProps>({
+    reviewProductID: productID.toString() || "1994",
     name: "",
     starsNumber: "5",
     reviewActual: "",
@@ -29,7 +35,9 @@ const AddReview = () => {
       [name]: value
     }));
   };
-  const sendToDB = () => {};
+  const submitReviewToServer = () => {
+    sendReviewToBack(reviewBuffer);
+  };
   return (
     <div className={styles.addSection}>
       <div className={styles.inputContainer}>
@@ -47,7 +55,7 @@ const AddReview = () => {
         <span>{"Email:"}</span>
         <input onChange={identificationInserter} name={"email"} id="email" placeholder="Email:*"></input>
       </div>
-      <button onClick={sendToDB} className={styles.submitButton}>
+      <button onClick={submitReviewToServer} className={styles.submitButton}>
         {"TRIMITE"}
       </button>
     </div>
