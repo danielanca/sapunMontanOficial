@@ -13,17 +13,17 @@ export const helloWorld = functions.https.onRequest((request, response) => {
   functions.logger.info("Hello logs!", { structuredData: true });
   response.send({ orderSentToClient: "yes" });
 
-  // response.header("Access-Control-Allow-Origin", "*");
+  // respons    e.header("Access-Control-Allow-Origin", "*");
   // response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   // response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
 });
 
 const transport = nodemailer.createTransport({
-  host: "mail.danianca.ro",
+  host: "smtp.gmail.com",
   port: "465",
   auth: {
-    user: "contact@danianca.ro",
-    pass: "huhububucucu2"
+    user: "montanair.ro@gmail.com",
+    pass: "dinmunte2021"
   }
 });
 
@@ -39,14 +39,17 @@ export const sendEmail = functions.https.onRequest((request, response) => {
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
 
-  functions.logger.info("Hello logs!", { structuredData: true });
   const invoiceNumberID = generateInvoiceID();
-
+  const TodayDate = new Date();
+  var DateAndTime = `${TodayDate.getDate()}/${
+    TodayDate.getMonth() + 1
+  }/${TodayDate.getFullYear()} ${TodayDate.getHours()}: ${TodayDate.getMinutes()}`;
   const data = JSON.parse(request.body);
   postOrderToDB(invoiceNumberID, data);
   response.send({ orderSentToClient: "yes" });
+  functions.logger.info(`Received phone: ${data.phoneNo} `);
   transport.sendMail({
-    from: "contact@danianca.ro",
+    from: "montanair.ro@gmail.com",
     to: data.emailAddress,
     subject: "Comanda inregistrata, " + data.firstName,
     html:
@@ -190,7 +193,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
       `</a></h2></td> 
                            </tr> 
                            <tr> 
-                            <td align="center" class="es-m-p0r es-m-p0l" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:40px;padding-right:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Apr 17,&nbsp;2021</p></td> 
+                            <td align="center" class="es-m-p0r es-m-p0l" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:40px;padding-right:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">${DateAndTime}</p></td> 
                            </tr> 
                            <tr> 
                             <td align="center" class="es-m-p0r es-m-p0l" style="Margin:0;padding-top:5px;padding-bottom:15px;padding-left:40px;padding-right:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Acest email a fost trimis pentru a confirma inregistrarea comenzii dvs.&nbsp;</p></td> 
@@ -320,7 +323,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
                         <td class="es-m-p0r" align="center" style="padding:0;Margin:0;width:560px"> 
                          <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;border-top:2px solid #efefef;border-bottom:2px solid #efefef" role="presentation"> 
                            <tr> 
-                            <td align="right" class="es-m-txt-r" style="padding:0;Margin:0;padding-top:10px;padding-bottom:20px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Subtotal:&nbsp;<strong>$40.00</strong><br>Taxa Transport:&nbsp;<strong>$0.00</strong><br>Total (TVA inclus):&nbsp;<strong>$50.00</strong></p></td> 
+                            <td align="right" class="es-m-txt-r" style="padding:0;Margin:0;padding-top:10px;padding-bottom:20px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Subtotal:&nbsp;<strong>${data.cartSum}</strong><br>Taxa Transport:&nbsp;<strong>$0.00</strong><br>Total (TVA inclus):&nbsp;<strong>$50.00</strong></p></td> 
                            </tr> 
                          </table></td> 
                        </tr> 
@@ -333,7 +336,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
                         <td class="es-m-p0r es-m-p20b" align="center" style="padding:0;Margin:0;width:280px"> 
                          <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                            <tr> 
-                            <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Client: <strong>sarah_powell@domain.com</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Comanda :&nbsp;<strong>#65000500</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Data facturarii:&nbsp;<strong>Apr 17, 2021</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Metoda de plata:&nbsp;<strong>PayPal</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Moneda:&nbsp;<strong>RON</strong></p></td> 
+                            <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Client: <strong>${data.firstName} ${data.lastName}</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Comanda :&nbsp;<strong>${invoiceNumberID}</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Data facturarii:&nbsp;<strong>${DateAndTime}</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Metoda de plata:&nbsp;<strong>${data.paymentMethod}</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Telefon:&nbsp;<strong>${data.phoneNo}</strong></p></td> 
                            </tr> 
                          </table></td> 
                        </tr> 
@@ -343,7 +346,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
                         <td class="es-m-p0r" align="center" style="padding:0;Margin:0;width:280px"> 
                          <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                            <tr> 
-                            <td align="left" class="es-m-txt-l" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Curier: <strong>UPS - Ground</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Adresa de livrare:</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Sarah Powell,<br>600 Montgomery St,<br>San Francisco, CA 94111</strong></p></td> 
+                            <td align="left" class="es-m-txt-l" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Curier: <strong>${data.deliveryName}</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Adresa de livrare:</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>${data.deliveryAddress},<br>${data.city},<br>${data.county}</strong></p></td> 
                            </tr> 
                          </table></td> 
                        </tr> 
