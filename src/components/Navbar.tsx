@@ -1,8 +1,6 @@
 import { HashLink, HashLink as Link, NavHashLink } from "react-router-hash-link";
 import ReactGA from "react-ga4";
 
-import images from "../data/images";
-
 import styles from "./Navbar.module.scss";
 import TopBanner from "./TopBanner";
 import strings from "../data/strings.json";
@@ -14,9 +12,10 @@ import { useEffect, useState } from "react";
 
 interface NavProps {
   updateNotification?: number;
+  clearNotif?: boolean;
 }
 
-const NavBar = ({ updateNotification }: NavProps) => {
+const NavBar = ({ updateNotification, clearNotif }: NavProps) => {
   var storedCart = [];
   var totalItems = 0;
   let expectedData = localStorage.getItem("cartData");
@@ -31,6 +30,7 @@ const NavBar = ({ updateNotification }: NavProps) => {
     ReactGA.event("User pressed on gallery");
   };
 
+  useEffect(() => {}, [clearNotif]);
   return (
     <>
       <TopBanner />

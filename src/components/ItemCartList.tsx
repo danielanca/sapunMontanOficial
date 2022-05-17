@@ -34,7 +34,6 @@ const ItemCartList = ({ productID, amount, updateRequest }: itemCart) => {
       console.log(item);
       if (item.id == productID) {
         item.itemNumber = (Number(item.itemNumber) + 1).toString();
-        // setproductQuantity(item.itemNumber);
         value = item.itemNumber;
       }
     });

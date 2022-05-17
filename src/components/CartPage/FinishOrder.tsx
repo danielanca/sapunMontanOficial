@@ -1,10 +1,6 @@
-import axios from "axios";
-
 import OrderDone from "./OrderDone";
 import images from "./../../data/images";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
-import app from "./../../firebase";
-import productList from "./../../data/productList";
+
 import { componentStrings } from "../../data/componentStrings";
 import { useState, useEffect, useCallback } from "react";
 import { sendOrderConfirmation } from "./../../services/emails";
@@ -16,19 +12,35 @@ interface ErrorProps {
   termsAccepted: boolean;
   inputCompleted: boolean;
 }
+interface OrderProps {
+  clearNotification?: (event: string) => {};
+}
 
-const FinishOrder = () => {
-  const [emailSentConfirmed, setSent] = useState(false);
+const FinishOrder = ({ clearNotification }: OrderProps) => {
+  const [emailSentConfirmed, setSent] = useState(true);
   let productSessionStorage = JSON.parse(sessionStorage.getItem("productsFetched"));
+  const [pendingRequest, setPendingReq] = useState(false);
+
   const handleSend = async () => {
     try {
       console.log("We are sending", orderData);
-      await sendOrderConfirmation(orderData).then();
+      return await sendOrderConfirmation(orderData).then((response) => {
+        setSent(response);
+      });
     } catch (error) {
       console.log(error);
     }
   };
+  const sendOrderData = () => {
+    setFinishRequested(finishOrderRequested + 1);
 
+    if (completionState.inputCompleted && completionState.paymentSelected && completionState.termsAccepted) {
+      console.log(orderData);
+      setPendingReq(true);
+
+      handleSend();
+    }
+  };
   const [orderData, setorderData] = useState<orderProps>({
     firstName: "",
     lastName: "",
@@ -52,15 +64,6 @@ const FinishOrder = () => {
     inputCompleted: false
   });
 
-  const sendOrderData = () => {
-    setFinishRequested(finishOrderRequested + 1);
-
-    if (completionState.inputCompleted && completionState.paymentSelected && completionState.termsAccepted) {
-      console.log(orderData);
-      console.log("ORDER Criteria MEET");
-      handleSend();
-    }
-  };
   const inputHandler = (data: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = data.target;
 
@@ -69,7 +72,13 @@ const FinishOrder = () => {
       [name]: value
     }));
   };
-
+  useEffect(() => {
+    console.log(`Email state changed to: ${emailSentConfirmed} and removed items from localStorage`);
+    if (emailSentConfirmed) {
+      localStorage.removeItem("cartData");
+      clearNotification("CLEAR_LOCAL");
+    }
+  }, [emailSentConfirmed]);
   var storedCart = [];
   var subtotalPrepare = 0;
   var deliveryFee = 15;
@@ -147,14 +156,14 @@ const FinishOrder = () => {
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
 
-                  <input onChange={inputHandler} value={orderData.firstName} name="firstName" type={"large"}></input>
+                  <input onChange={inputHandler} value={orderData.firstName} name="firstName" type={"large"} />
                 </div>
                 <div className={styles.inputBox}>
                   <label>
                     {"Prenume"}
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
-                  <input name="lastName" type={"large"} onChange={inputHandler} value={orderData.lastName}></input>
+                  <input name="lastName" type={"large"} onChange={inputHandler} value={orderData.lastName} />
                 </div>
               </div>
               <div className={styles.groupInput}>
@@ -168,7 +177,7 @@ const FinishOrder = () => {
                     type={"large"}
                     onChange={inputHandler}
                     value={orderData.deliveryAddress}
-                  ></input>
+                  />
                 </div>
               </div>
               <div className={styles.groupInput}>
@@ -177,7 +186,7 @@ const FinishOrder = () => {
                     {"Oras"}
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
-                  <input name="city" type={"large"} onChange={inputHandler} value={orderData.city}></input>
+                  <input name="city" type={"large"} onChange={inputHandler} value={orderData.city} />
                 </div>
               </div>
               <div className={styles.groupInput}>
@@ -193,7 +202,7 @@ const FinishOrder = () => {
                     name="county"
                     onChange={inputHandler}
                     value={orderData.county}
-                  ></input>
+                  />
                   <datalist id="county">
                     {Object.values(componentStrings.FinishOrder.countyList).map((item) => (
                       <option value={item} />
@@ -213,12 +222,7 @@ const FinishOrder = () => {
               <div className={styles.groupInput}>
                 <div className={styles.inputBox}>
                   <label>{"Adresa de Email:"}</label>
-                  <input
-                    name="emailAddress"
-                    type={"large"}
-                    onChange={inputHandler}
-                    value={orderData.emailAddress}
-                  ></input>
+                  <input name="emailAddress" type={"large"} onChange={inputHandler} value={orderData.emailAddress} />
                 </div>
               </div>
               <div className={styles.groupInput}>
@@ -335,15 +339,15 @@ const FinishOrder = () => {
                   )}
                 </div>
                 <button onClick={sendOrderData} type="submit" className={styles.finishOrder}>
-                  {"TRIMITE COMANDA"}
+                  {!pendingRequest ? <span>{"TRIMITE COMANDA"}</span> : <span>{". . ."}</span>}
                 </button>
+                <div>{pendingRequest && <p className={styles.emailSendStyle}>{"Se trimite comanda..."}</p>}</div>
               </div>
             </div>
           </div>
         </>
       ) : (
-        // <OrderDone />
-        ""
+        <OrderDone />
       )}
     </div>
   );
