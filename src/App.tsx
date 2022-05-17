@@ -14,10 +14,12 @@ import FooterMontan from "./components/FooterMontan";
 import CartPage from "./components/CartPage";
 import FinishOrder from "./components/CartPage/FinishOrder";
 import Blogs from "./components/Blogs";
-import EmailTemplate from "./components/EmailTemplate/EmailTemplate";
+
 import BlogPost from "./components/BlogPost";
 
 import { getData } from "./data/productList";
+import OrderView from "./components/OrderView/OrderView";
+import OrderDone from "./components/CartPage/OrderDone";
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
 
@@ -26,7 +28,7 @@ export const ProductsContext = React.createContext<any[]>([]);
 function App() {
   const [letsCartHandler, CartHandler] = useState(1);
   const [ssProducts, setSSproducts] = useState<any[]>();
-
+  const [clearRequest, setClearRequest] = useState(false);
   const handleScroll = () => {
     const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
 
@@ -47,29 +49,33 @@ function App() {
     if (ssProducts == null) {
       getData().then((finalData) => {
         console.log("Loading in Session Storage data about products", finalData);
-        // setSSproducts(finalData);
+
         sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
       });
     }
   }, [ssProducts]);
-
+  const basketClear = (event: string) => {
+    if (event === "CLEAR_LOCAL") {
+      setClearRequest(true);
+    }
+  };
   return (
     <div className="App">
       <header className="App-header">
         <ProductsContext.Provider productsData={ssProducts}>
           <BrowserRouter basename={"/"}>
-            <Navbar updateNotification={letsCartHandler} />
+            <Navbar clearNotif={clearRequest} />
             <Routes>
               <Route path="/" element={<MainNavigation />}></Route>
 
               <Route path={`${process.env.PUBLIC_URL}/produsele-noastre`} element={<ProduseleNoastre />}></Route>
               <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />}></Route>
               <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />}></Route>
-              <Route path="/finalizare-comanda" element={<FinishOrder />}></Route>
+              <Route path="/finalizare-comanda" element={<FinishOrder clearNotification={basketClear} />}></Route>
               <Route path="/blogs" element={<Blogs />}></Route>
               <Route path="/blogid/:blogid" element={<BlogPost />}></Route>
               <Route path="/testimonials" element={<Testimonials />}></Route>
-              <Route path="/email" element={<EmailTemplate />}></Route>
+              <Route path="/order/:orderID" element={<OrderDone />}></Route>
             </Routes>
             <FooterMontan />
           </BrowserRouter>

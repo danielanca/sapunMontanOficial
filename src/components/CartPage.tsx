@@ -9,7 +9,6 @@ interface CartProps {
   notifyMe?: React.Dispatch<React.SetStateAction<number>>;
 }
 const CartPage = ({ notifyMe }: CartProps) => {
-  // const [sessionProducts, setSessionProducts] = useState(localStorage.getItem("cartData"));
   const [totalCart, settotalCart] = useState(0);
   const [updateMade, setupdateMade] = useState(1);
   var subtotalPrepare = 0;
@@ -31,21 +30,6 @@ const CartPage = ({ notifyMe }: CartProps) => {
       subtotalPrepare += Number(sessionProducts[item.id].price) * Number(item.itemNumber);
     });
   }
-  // useEffect(() => {
-  //   if (expectedData != null) {
-  //     storedCart = JSON.parse(expectedData);
-  //     console.log("We have");
-  //     console.log(storedCart);
-
-  //     storedCart.map((item) => {
-  //       console.log("Product price:" + Number(sessionProducts[item.id].price));
-  //       console.log("Product number:" + Number(item.itemNumber));
-  //       console.log("Last length" + storedCart.length);
-  //       console.log("Index " + subtotalPrepare);
-  //       subtotalPrepare += Number(sessionProducts[item.id].price) * Number(item.itemNumber);
-  //     });
-  //   }
-  // }, [sessionProducts, subtotalPrepare]);
 
   const productNotification = () => {
     setupdateMade(updateMade + 1);
