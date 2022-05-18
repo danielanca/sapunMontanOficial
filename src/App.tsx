@@ -71,7 +71,7 @@ function App() {
               <Route path="/blogs" element={<Blogs />}></Route>
               <Route path="/blogid/:blogid" element={<BlogPost />}></Route>
               <Route path="/testimonials" element={<Testimonials />}></Route>
-              <Route path="/order/:orderID" element={<OrderDone />}></Route>
+              <Route path="/order/:orderID" element={<OrderView />}></Route>
             </Routes>
             <FooterMontan />
           </BrowserRouter>

@@ -1,2 +1,38 @@
-@import "./../main.module.scss";
-@import "./../data//themes.scss";
+@import "./../../main.module.scss";
+
+.orderViewContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/casacaly%2FcheileTureni.jpg?alt=media&token=d621f91b-76a0-4d87-9a7f-a2903c31b237");
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(10px);
+}
+.textContainer {
+  display: flex;
+  justify-content: start;
+  flex-direction: row;
+  column-gap: 5px;
+}
+.boldInvoiceText {
+  font-weight: bolder;
+}
+.cardBoard {
+  width: 100%;
+  min-width: 745px;
+  border-radius: 4px;
+  background-color: white;
+  justify-content: center;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  @include media("<tablet") {
+    min-width: 340px;
+  }
+}
+.inner {
+  width: 300px;
+  margin: auto;
+}
