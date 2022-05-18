@@ -1,8 +1,6 @@
 import styles from "./ProductAdded.module.scss";
 import images from "./../../data/images";
-import productList from "../../data/productList";
 import { NavHashLink } from "react-router-hash-link";
-import { useParams } from "react-router-dom";
 
 interface ProductProps {
   id: number;
@@ -10,7 +8,7 @@ interface ProductProps {
 }
 const ProductAdded = ({ id, animFin }: ProductProps) => {
   let data = Array.from(JSON.parse(sessionStorage.getItem("productsFetched")));
-  let params = useParams();
+
   let ID = id;
 
   const animationFinished = () => {

@@ -12,12 +12,14 @@ import { useEffect, useState } from "react";
 
 interface NavProps {
   updateNotification?: number;
-  clearNotif?: boolean;
+  // clearNotif?: React.Dispatch<React.SetStateAction<number>>;
+  clearNotif: number;
 }
 
-const NavBar = ({ updateNotification, clearNotif }: NavProps) => {
+const NavBar = ({ clearNotif }: NavProps) => {
   var storedCart = [];
   var totalItems = 0;
+  const [updateCart, setUpdateCart] = useState(clearNotif);
   let expectedData = localStorage.getItem("cartData");
   if (expectedData != null) {
     storedCart = JSON.parse(expectedData);
@@ -30,7 +32,6 @@ const NavBar = ({ updateNotification, clearNotif }: NavProps) => {
     ReactGA.event("User pressed on gallery");
   };
 
-  useEffect(() => {}, [clearNotif]);
   return (
     <>
       <TopBanner />

@@ -13,7 +13,7 @@ interface ErrorProps {
   inputCompleted: boolean;
 }
 interface OrderProps {
-  clearNotification?: (event: string) => {};
+  clearNotification?: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const FinishOrder = ({ clearNotification }: OrderProps) => {
@@ -76,7 +76,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     console.log(`Email state changed to: ${emailSentConfirmed} and removed items from localStorage`);
     if (emailSentConfirmed) {
       localStorage.removeItem("cartData");
-      clearNotification("CLEAR_LOCAL");
+      clearNotification(Math.floor(Math.random() * 120));
     }
   }, [emailSentConfirmed]);
   var storedCart = [];

@@ -12,7 +12,6 @@ interface CartProps {
 }
 
 const ProductView = ({ notifyMe }: CartProps) => {
-  let data = Array.from(productList);
   let params = useParams();
   var ID = Number(params.productID);
 
@@ -40,8 +39,6 @@ const ProductView = ({ notifyMe }: CartProps) => {
     setpopProductInCart(false);
   };
   const addToCart_Handler = () => {
-    setpopProductInCart(true);
-    notifyMe(Number(ID));
     var storedCart = [];
     let expectedData = localStorage.getItem("cartData");
     if (expectedData === null) {
@@ -50,6 +47,8 @@ const ProductView = ({ notifyMe }: CartProps) => {
       storedCart.push({ id: ID, itemNumber: "1" });
 
       localStorage.setItem("cartData", JSON.stringify(storedCart));
+      setpopProductInCart(true);
+      notifyMe(Math.floor(Math.random() * 100));
       return;
     }
     var itemFound = false;
@@ -65,6 +64,9 @@ const ProductView = ({ notifyMe }: CartProps) => {
       storedCart.push({ id: ID, itemNumber: "1" });
     }
     localStorage.setItem("cartData", JSON.stringify(storedCart));
+
+    setpopProductInCart(true);
+    notifyMe(Math.floor(Math.random() * 100));
   };
 
   return (

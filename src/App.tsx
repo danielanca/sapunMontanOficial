@@ -54,24 +54,20 @@ function App() {
       });
     }
   }, [ssProducts]);
-  const basketClear = (event: string) => {
-    if (event === "CLEAR_LOCAL") {
-      setClearRequest(true);
-    }
-  };
+
   return (
     <div className="App">
       <header className="App-header">
         <ProductsContext.Provider productsData={ssProducts}>
           <BrowserRouter basename={"/"}>
-            <Navbar clearNotif={clearRequest} />
+            <Navbar clearNotif={letsCartHandler} />
             <Routes>
               <Route path="/" element={<MainNavigation />}></Route>
 
               <Route path={`${process.env.PUBLIC_URL}/produsele-noastre`} element={<ProduseleNoastre />}></Route>
               <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />}></Route>
               <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />}></Route>
-              <Route path="/finalizare-comanda" element={<FinishOrder clearNotification={basketClear} />}></Route>
+              <Route path="/finalizare-comanda" element={<FinishOrder clearNotification={CartHandler} />}></Route>
               <Route path="/blogs" element={<Blogs />}></Route>
               <Route path="/blogid/:blogid" element={<BlogPost />}></Route>
               <Route path="/testimonials" element={<Testimonials />}></Route>
