@@ -6,6 +6,14 @@
     "testimonials": "Testimoniale",
     "contactUs": "Contact"
   },
+
+  "companyData": {
+    "name": "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
+    "number": "41030416",
+    "fiscal": "F12/696/23.04.2019",
+    "address": "str. LIVIU REBREANU loc. Turda, Cluj"
+  },
+
   "personalComponent": {
     "back": "Back",
     "pay": "Pay",

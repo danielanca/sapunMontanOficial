@@ -33,7 +33,11 @@ const generateInvoiceID = () => {
   return Math.ceil(Math.random() * 15044332);
 };
 
-const postOrderToDB = async (invoiceID: number, dataObject: any) => {
+const postOrderToDB = async (invoiceID: number, dataObject: any, todayDate: Date) => {
+  dataObject.invoiceID = `${invoiceID}`;
+  dataObject.timestamp = `${todayDate.getDate()}/${
+    todayDate.getMonth() + 1
+  }/${todayDate.getFullYear()} ${todayDate.getHours()}:${todayDate.getMinutes()}:${todayDate.getSeconds()}`;
   await admin.firestore().collection("orders").doc(invoiceID.toString()).create(dataObject).then();
 };
 export const sendEmail = functions.https.onRequest((request, response) => {
@@ -49,7 +53,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
     TodayDate.getMonth() + 1
   }/${TodayDate.getFullYear()} ${TodayDate.getHours()}:${TodayDate.getMinutes()}`;
   const data = JSON.parse(request.body);
-  postOrderToDB(invoiceNumberID, data);
+  postOrderToDB(invoiceNumberID, data, TodayDate);
   var cartProd = JSON.parse(data.cartProducts);
 
   transport.sendMail(

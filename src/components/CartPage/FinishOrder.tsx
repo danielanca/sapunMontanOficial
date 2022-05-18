@@ -17,7 +17,7 @@ interface OrderProps {
 }
 
 const FinishOrder = ({ clearNotification }: OrderProps) => {
-  const [emailSentConfirmed, setSent] = useState(true);
+  const [emailSentConfirmed, setSent] = useState(false);
   let productSessionStorage = JSON.parse(sessionStorage.getItem("productsFetched"));
   const [pendingRequest, setPendingReq] = useState(false);
 
