@@ -14,7 +14,7 @@ import FooterMontan from "./components/FooterMontan";
 import CartPage from "./components/CartPage";
 import FinishOrder from "./components/CartPage/FinishOrder";
 import Blogs from "./components/Blogs";
-
+import AdminArea from "./components/AdminArea/AdminArea";
 import BlogPost from "./components/BlogPost";
 
 import { getData } from "./data/productList";
@@ -74,6 +74,9 @@ function App() {
               <Route path="/order/:orderID" element={<OrderView />}></Route>
             </Routes>
             <FooterMontan />
+          </BrowserRouter>
+          <BrowserRouter>
+            <Route path="/admin" element={<AdminArea />}></Route>
           </BrowserRouter>
         </ProductsContext.Provider>
       </header>
