@@ -1,7 +1,7 @@
+/* eslint-disable */
+
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
-const cors = require("cors");
-/* eslint-disable */
 
 const administratorEmail = "steptu94@gmail.com";
 const nodemailer = require("nodemailer");
@@ -11,7 +11,6 @@ admin.initializeApp({
 });
 
 export const helloWorld = functions.https.onRequest((request, response) => {
-  cors();
   functions.logger.info("Hello logs!", { structuredData: true });
   response.send({ orderSentToClient: "yes" });
 
@@ -41,7 +40,6 @@ const postOrderToDB = async (invoiceID: number, dataObject: any, todayDate: Date
   await admin.firestore().collection("orders").doc(invoiceID.toString()).create(dataObject).then();
 };
 export const sendEmail = functions.https.onRequest((request, response) => {
-  cors(); // nu pare sa functioneze
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
