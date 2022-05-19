@@ -15,9 +15,10 @@ export const sendReviewToBack = async (reviewObj: any) => {
     .then(() => true)
     .catch(() => false);
 };
-
+//https://us-central1-sapunmontan.cloudfunctions.net/sendEmail
+//http://localhost:5000/sapunmontan/us-central1/sendEmail
 export const sendOrderConfirmation = async (data: orderProps) => {
-  return await fetch("http://localhost:5000/sapunmontan/us-central1/sendEmail", {
+  return await fetch("https://us-central1-sapunmontan.cloudfunctions.net/sendEmail", {
     method: "POST",
     mode: "no-cors",
     body: JSON.stringify({
