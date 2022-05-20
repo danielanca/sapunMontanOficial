@@ -20,6 +20,20 @@ export const helloWorld = functions.https.onRequest((request, response) => {
   // response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
 });
 
+export const requestAuth = functions.https.onRequest((request, response) => {
+  var userData = JSON.parse(request.body);
+  functions.logger.info("request Auth called, username and password are: ", userData.password);
+  response.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  response.header("Access-Control-Allow-Credentials", "true");
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
+  if (userData.password === "piutzyke2022") {
+    response.send({ LOGIN_ANSWER: "SUCCESS" });
+  } else {
+    response.send({ LOGIN_ANSWER: "REJECTED" });
+  }
+});
+
 const transport = nodemailer.createTransport({
   host: "smtp.gmail.com",
   service: "gmail",
