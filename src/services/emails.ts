@@ -41,6 +41,16 @@ export const sendOrderConfirmation = async (data: orderProps) => {
     .catch(() => false);
 };
 
+export const requestLoginAccess = async (email: string, password: string) => {
+  return await fetch("https://us-central1-sapunmontan.cloudfunctions.net/requestAuth", {
+    method: "POST",
+    mode: "cors",
+    body: JSON.stringify({ email: email, password: password })
+  })
+    .then((res) => res)
+    .catch((error) => error);
+};
+
 export const sendReservationMail = async (
   name: string,
   email: string,
