@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+/* eslint-disable */
+import { BrowserRouter as Router, Routes, Route, BrowserRouter, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga4";
 
@@ -20,6 +21,7 @@ import BlogPost from "./components/BlogPost";
 import { getData } from "./data/productList";
 import OrderView from "./components/OrderView/OrderView";
 import OrderDone from "./components/CartPage/OrderDone";
+
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
 
@@ -59,11 +61,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <ProductsContext.Provider productsData={ssProducts}>
-          <BrowserRouter basename={"/"}>
+          <BrowserRouter basename="/">
             <Navbar clearNotif={letsCartHandler} />
             <Routes>
-              <Route path="/" element={<MainNavigation />}></Route>
-
+              <Route path="/admin" element={<AdminArea />} />
               <Route path={`${process.env.PUBLIC_URL}/produsele-noastre`} element={<ProduseleNoastre />}></Route>
               <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />}></Route>
               <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />}></Route>
@@ -72,11 +73,11 @@ function App() {
               <Route path="/blogid/:blogid" element={<BlogPost />}></Route>
               <Route path="/testimonials" element={<Testimonials />}></Route>
               <Route path="/order/:orderID" element={<OrderView />}></Route>
+              <Route path="/" element={<MainNavigation />}></Route>
+              {/* <Route path="*" component={NotFound} /> */}
             </Routes>
+
             <FooterMontan />
-          </BrowserRouter>
-          <BrowserRouter>
-            <Route path="/admin" element={<AdminArea />}></Route>
           </BrowserRouter>
         </ProductsContext.Provider>
       </header>

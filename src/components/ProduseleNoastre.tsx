@@ -6,10 +6,6 @@ import React, { useContext } from "react";
 import { ProductsContext } from "../App";
 import { useEffect, useState } from "react";
 
-interface YayaData {
-  title: string;
-  price: number;
-}
 const ProduseleNoastre = () => {
   const ProductsFroMContext = useContext(ProductsContext);
 
