@@ -85,7 +85,9 @@ const ProductView = ({ notifyMe }: CartProps) => {
                   onClick={() => {
                     onImageClicked(0);
                   }}
-                  className={styles.clickableImage}
+                  className={
+                    mainPicture === 0 ? `${styles.clickableImage} ${styles.activeImage} ` : `${styles.clickableImage}`
+                  }
                 >
                   {productListUpdated != null ? (
                     <img className={styles.innerImage} src={productListUpdated[ID].imageProduct[0]} />
@@ -97,7 +99,9 @@ const ProductView = ({ notifyMe }: CartProps) => {
                   onClick={() => {
                     onImageClicked(1);
                   }}
-                  className={styles.clickableImage}
+                  className={
+                    mainPicture === 1 ? `${styles.clickableImage} ${styles.activeImage} ` : `${styles.clickableImage}`
+                  }
                 >
                   {productListUpdated != null ? (
                     <img className={styles.innerImage} src={productListUpdated[ID].imageProduct[1]} />
@@ -109,7 +113,9 @@ const ProductView = ({ notifyMe }: CartProps) => {
                   onClick={() => {
                     onImageClicked(2);
                   }}
-                  className={styles.clickableImage}
+                  className={
+                    mainPicture === 2 ? `${styles.clickableImage} ${styles.activeImage} ` : `${styles.clickableImage}`
+                  }
                 >
                   {productListUpdated != null ? (
                     <img className={styles.innerImage} src={productListUpdated[ID].imageProduct[2]} />

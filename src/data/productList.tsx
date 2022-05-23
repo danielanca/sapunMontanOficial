@@ -14,8 +14,6 @@ export const getOrderByID = async (invoiceID: number) => {
     productsAreHere = snap.data();
   }
 
-  console.log("getOrderByID will return :", productsAreHere);
-
   return productsAreHere;
 };
 export const getData = async () => {
