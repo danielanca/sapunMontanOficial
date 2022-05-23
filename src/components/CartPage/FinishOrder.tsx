@@ -21,12 +21,37 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   let productSessionStorage = JSON.parse(sessionStorage.getItem("productsFetched"));
   const [pendingRequest, setPendingReq] = useState(false);
 
+  // try {
+  //   await requestLoginAccess(userCredentials.email, userCredentials.password).then((dataResponse) => {
+  //     dataResponse.json().then((jsonResponse: ResponseServer) => {
+  //       if (jsonResponse.LOGIN_ANSWER === "SUCCESS") {
+  //         setAuth({
+  //           email: userCredentials.email,
+  //           password: userCredentials.password,
+  //           accesToken: jsonResponse.LOGIN_ANSWER
+  //         });
+  //         navigate(from, { replace: true });
+  //       } else {
+  //         console.log("Here is the result:", jsonResponse.LOGIN_ANSWER);
+  //       }
+  //     });
+  //   });
+  // } catch (error) {
+  //   console.log(error);
+  // }
+
   const handleSend = async () => {
     try {
-      console.log("We are sending", orderData);
-      return await sendOrderConfirmation(orderData).then((response) => {
-        setSent(response);
-      });
+      return await sendOrderConfirmation(orderData)
+        .then((response) => {
+          response.json().then((jsonResponse: any) => {
+            console.log("Whole Object:", jsonResponse);
+            console.log("Is Email to Client sent? : ", jsonResponse.EMAILTO_CLIENT);
+            console.log("Is Email to Admin sent? : ", jsonResponse.EMAILTO_ADMIN);
+          });
+          setSent(true);
+        })
+        .catch((error) => console.log(error));
     } catch (error) {
       console.log(error);
     }

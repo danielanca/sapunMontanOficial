@@ -1,23 +1,37 @@
-import { useEffect, useState } from "react";
-
+import { useEffect, useState, useRef } from "react";
+import useAuth from "./../hooks/useAuth";
 import { requestLoginAccess } from "../../services/emails";
 import styles from "./LogIn.module.scss";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 interface Credentials {
   email: string;
   password: string;
+  accessToken: string;
 }
 interface ResponseServer {
   LOGIN_ANSWER: string;
 }
 const Login = () => {
   const [userCredentials, setuserCredentials] = useState<Credentials>({ email: "", password: "" });
-  const [loggedIn, setLoggedIn] = useState(false);
+
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state.from?.pathname || "/";
+
+  const userRef = useRef();
+
   const requestAccess = async () => {
     try {
       await requestLoginAccess(userCredentials.email, userCredentials.password).then((dataResponse) => {
         dataResponse.json().then((jsonResponse: ResponseServer) => {
           if (jsonResponse.LOGIN_ANSWER === "SUCCESS") {
-            setLoggedIn(true);
+            setAuth({
+              email: userCredentials.email,
+              password: userCredentials.password,
+              accesToken: jsonResponse.LOGIN_ANSWER
+            });
+            navigate(from, { replace: true });
           } else {
             console.log("Here is the result:", jsonResponse.LOGIN_ANSWER);
           }
@@ -58,7 +72,6 @@ const Login = () => {
           <input name="password" type={"password"} onChange={inputHandler}></input>
           <input type="submit" value="Submit" onClick={onSubmitLogin} />
         </div>
-        {loggedIn && <p className={styles.centerP}>{"Logat!"}</p>}
       </div>
     </div>
   );

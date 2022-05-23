@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["./src/**/*.ts", "backend/server1.jsjss"]
+  "include": ["./src/**/*.ts", "backend/server1.jsjss", "src/components/context/AuthProvider.tsx"]
 }

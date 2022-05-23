@@ -7,14 +7,7 @@ import Login from "./LogIn";
 const AdminArea = () => {
   const [isUserLogged, setIsLogged] = useState(false);
 
-  const isAuthenticated = () => {
-    if (!isUserLogged) {
-      return <Login></Login>;
-    } else {
-      <div>Here will be Admin Area</div>;
-    }
-  };
-  return <>{isAuthenticated()}</>;
+  return <div>Here will be Admin Area</div>;
 };
 
 export default AdminArea;

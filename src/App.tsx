@@ -21,7 +21,8 @@ import BlogPost from "./components/BlogPost";
 import { getData } from "./data/productList";
 import OrderView from "./components/OrderView/OrderView";
 import OrderDone from "./components/CartPage/OrderDone";
-
+import RequireAuth from "./components/AdminArea/RequireAuth";
+import Login from "./components/AdminArea/LogIn";
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
 
@@ -63,8 +64,14 @@ function App() {
         <ProductsContext.Provider productsData={ssProducts}>
           <BrowserRouter basename="/">
             <Navbar clearNotif={letsCartHandler} />
+
             <Routes>
-              <Route path="/admin" element={<AdminArea />} />
+              {/* protect this */}
+              <Route element={<RequireAuth />}>
+                <Route path="/admin" element={<AdminArea />} />
+              </Route>
+              {/* protect the above */}
+              <Route path="/login" element={<Login />} />
               <Route path={`${process.env.PUBLIC_URL}/produsele-noastre`} element={<ProduseleNoastre />}></Route>
               <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />}></Route>
               <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />}></Route>

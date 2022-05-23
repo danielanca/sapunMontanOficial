@@ -22,7 +22,7 @@ const FooterMontan = () => {
 
   return (
     <>
-      {pathname !== "/admin" && (
+      {!pathname.includes("/admin") && !pathname.includes("/login") && (
         <div className={styles.fluidHandler}>
           <div className={"row " + styles.largeFooter}>
             <div className="col-md-4">

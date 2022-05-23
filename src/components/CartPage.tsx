@@ -35,6 +35,16 @@ const CartPage = ({ notifyMe }: CartProps) => {
     setupdateMade(updateMade + 1);
     notifyMe(subtotalPrepare);
   };
+
+  const displayFinishOrderDialog = () => {
+    if (subtotalPrepare > 0) {
+      return (
+        <NavHashLink className={styles.hashTransparent} to="/finalizare-comanda">
+          <button className={styles.finishOrder}>{"Finalizeaza comanda"}</button>
+        </NavHashLink>
+      );
+    }
+  };
   return (
     <>
       <div className={styles.CartSection}>
@@ -43,9 +53,8 @@ const CartPage = ({ notifyMe }: CartProps) => {
           <h3 className={styles.middleCosText}>{"Cos de cumparaturi"}</h3>
           <div className={styles.cartLine} />
         </div>
-        <NavHashLink className={styles.hashTransparent} to="/finalizare-comanda">
-          <button className={styles.finishOrder}>{"Finalizeaza comanda"}</button>
-        </NavHashLink>
+
+        {displayFinishOrderDialog()}
         <div className={styles.actualCartBox}>
           <div className={styles.topline}>
             <div className={"col-sm-8 "}>

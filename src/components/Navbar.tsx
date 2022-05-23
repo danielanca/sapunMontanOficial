@@ -35,7 +35,7 @@ const NavBar = ({ clearNotif }: NavProps) => {
 
   return (
     <>
-      {pathname !== "/admin" && (
+      {!pathname.includes("/admin") && !pathname.includes("/login") && (
         <>
           <TopBanner />
           <div className={styles.WeRomanians} />
