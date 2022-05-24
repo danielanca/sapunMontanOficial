@@ -10,11 +10,17 @@ interface Credentials {
 }
 interface ResponseServer {
   LOGIN_ANSWER: string;
+  LOGIN_TOKEN: string;
+}
+interface Provi {
+  email: string;
+  password: string;
+  accessToken: string;
 }
 const Login = () => {
-  const [userCredentials, setuserCredentials] = useState<Credentials>({ email: "", password: "" });
+  const [userCredentials, setuserCredentials] = useState<Credentials>({ email: "", password: "", accessToken: "" });
 
-  const { setAuth } = useAuth();
+  const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state.from?.pathname || "/";
@@ -26,12 +32,14 @@ const Login = () => {
       await requestLoginAccess(userCredentials.email, userCredentials.password).then((dataResponse) => {
         dataResponse.json().then((jsonResponse: ResponseServer) => {
           if (jsonResponse.LOGIN_ANSWER === "SUCCESS") {
-            setAuth({
+            setAuth((auth) => ({
+              ...auth,
               email: userCredentials.email,
               password: userCredentials.password,
-              accesToken: jsonResponse.LOGIN_ANSWER
-            });
-            navigate(from, { replace: true });
+              accessToken: jsonResponse.LOGIN_TOKEN
+            }));
+            console.log("RESPONSE:", jsonResponse.LOGIN_TOKEN);
+            navigate("/admin", { replace: true });
           } else {
             console.log("Here is the result:", jsonResponse.LOGIN_ANSWER);
           }

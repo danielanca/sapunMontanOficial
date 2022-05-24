@@ -2,9 +2,21 @@
 
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
+import * as express from "express";
 
-const administratorEmail = "steptu94@gmail.com";
+const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
+const app = express();
+
+app.use(cookieParser);
+const administratorEmail = "steptu94@gmail.com";
+
+const administratorPassword = "emilutdinmunte";
+const SessionIDs = ["FlorinSalam2022", "GicaHagi232"];
+
+const getSessionID = () => {
+  return SessionIDs[0];
+};
 
 // process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 
@@ -18,25 +30,27 @@ interface ResponseObject {
 admin.initializeApp({
   credential: admin.credential.applicationDefault()
 });
-
-export const helloWorld = functions.https.onRequest((request, response) => {
-  functions.logger.info("Hello logs!", { structuredData: true });
-  response.send({ orderSentToClient: "yes" });
-});
-
-export const requestAuth = functions.https.onRequest((request, response) => {
-  var userData = JSON.parse(request.body);
-  functions.logger.info("request Auth called, username and password are: ", userData.password);
-
+export const requestOrders = functions.https.onRequest((request, response) => {
   response.header("Access-Control-Allow-Origin", "http://localhost:3000");
-
   response.header("Access-Control-Allow-Credentials", "true");
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
-  if (userData.password === "piutzyke2022") {
-    response.send({ LOGIN_ANSWER: "SUCCESS" });
+  functions.logger.info(` REQUEST MADE bro ${request.cookies}   `);
+  response.send({ requestOrdersAnswer: `Your Cookies are : ${JSON.stringify(request.signedCookies)}` });
+});
+export const requestAuth = functions.https.onRequest((request, response) => {
+  var userData = JSON.parse(request.body);
+  functions.logger.info("request Auth called, username and password are: ", userData.password);
+  response.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  response.header("Access-Control-Allow-Credentials", "true");
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
+
+  if (userData.password === administratorPassword && userData.email === administratorEmail) {
+    response.cookie("jwt", getSessionID(), { httpOnly: true, sameSite: "none", secure: true, maxAge: 25 * 60 * 1000 });
+    response.send({ LOGIN_ANSWER: "SUCCESS", LOGIN_TOKEN: "COOKIE_HTTPONLY" });
   } else {
-    response.send({ LOGIN_ANSWER: "REJECTED" });
+    response.send({ LOGIN_ANSWER: "REJECTED", LOGIN_TOKEN: "NO_AUTH" });
   }
 });
 

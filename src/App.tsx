@@ -23,6 +23,7 @@ import OrderView from "./components/OrderView/OrderView";
 import OrderDone from "./components/CartPage/OrderDone";
 import RequireAuth from "./components/AdminArea/RequireAuth";
 import Login from "./components/AdminArea/LogIn";
+import { AuthProvider } from "./components/context/AuthProvider";
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
 
@@ -63,28 +64,28 @@ function App() {
       <header className="App-header">
         <ProductsContext.Provider productsData={ssProducts}>
           <BrowserRouter basename="/">
-            <Navbar clearNotif={letsCartHandler} />
-
-            <Routes>
-              {/* protect this */}
-              <Route element={<RequireAuth />}>
-                <Route path="/admin" element={<AdminArea />} />
-              </Route>
-              {/* protect the above */}
-              <Route path="/login" element={<Login />} />
-              <Route path={`${process.env.PUBLIC_URL}/produsele-noastre`} element={<ProduseleNoastre />}></Route>
-              <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />}></Route>
-              <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />}></Route>
-              <Route path="/finalizare-comanda" element={<FinishOrder clearNotification={CartHandler} />}></Route>
-              <Route path="/blogs" element={<Blogs />}></Route>
-              <Route path="/blogid/:blogid" element={<BlogPost />}></Route>
-              <Route path="/testimonials" element={<Testimonials />}></Route>
-              <Route path="/order/:orderID" element={<OrderView />}></Route>
-              <Route path="/" element={<MainNavigation />}></Route>
-              {/* <Route path="*" component={NotFound} /> */}
-            </Routes>
-
-            <FooterMontan />
+            <AuthProvider>
+              <Navbar clearNotif={letsCartHandler} />
+              <Routes>
+                {/* protect this */}
+                <Route element={<RequireAuth />}>
+                  <Route path="/admin" element={<AdminArea />} />
+                </Route>
+                {/* protect the above */}
+                <Route path="/login" element={<Login />} />
+                <Route path={`${process.env.PUBLIC_URL}/produsele-noastre`} element={<ProduseleNoastre />} />
+                <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />} />
+                <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />} />
+                <Route path="/finalizare-comanda" element={<FinishOrder clearNotification={CartHandler} />} />
+                <Route path="/blogs" element={<Blogs />} />
+                <Route path="/blogid/:blogid" element={<BlogPost />} />
+                <Route path="/testimonials" element={<Testimonials />} />
+                <Route path="/order/:orderID" element={<OrderView />} />
+                <Route path="/" element={<MainNavigation />} />
+                {/* <Route path="*" component={NotFound} /> */}
+              </Routes>
+              <FooterMontan />
+            </AuthProvider>
           </BrowserRouter>
         </ProductsContext.Provider>
       </header>

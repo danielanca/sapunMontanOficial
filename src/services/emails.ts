@@ -1,7 +1,22 @@
 import { orderProps } from "./../utils/OrderInterfaces";
 
+// const destination = "https://us-central1-sapunmontan.cloudfunctions.net";
+const destination = "http://localhost:5001/sapunmontan/us-central1";
+
+export const requestOrdersList = async () => {
+  return await fetch(`${destination}/requestOrders`, {
+    method: "POST",
+    mode: "cors",
+    body: JSON.stringify({
+      someData: "someTest"
+    })
+  })
+    .then((res) => res)
+    .catch((error) => error);
+};
+
 export const sendReviewToBack = async (reviewObj: any) => {
-  return await fetch("http://localhost:5000/sapunmontan/us-central1/sendReviewToServer", {
+  return await fetch(`${destination}/sendReviewToServer`, {
     method: "POST",
     mode: "no-cors",
     body: JSON.stringify({
@@ -15,10 +30,9 @@ export const sendReviewToBack = async (reviewObj: any) => {
     .then(() => true)
     .catch(() => false);
 };
-//https://us-central1-sapunmontan.cloudfunctions.net/sendEmail
-//http://localhost:5000/sapunmontan/us-central1/sendEmail
+
 export const sendOrderConfirmation = async (data: orderProps) => {
-  return await fetch("https://us-central1-sapunmontan.cloudfunctions.net/sendEmail", {
+  return await fetch(`${destination}/sendEmail`, {
     method: "POST",
     mode: "cors",
     body: JSON.stringify({
@@ -42,7 +56,8 @@ export const sendOrderConfirmation = async (data: orderProps) => {
 };
 
 export const requestLoginAccess = async (email: string, password: string) => {
-  return await fetch("https://us-central1-sapunmontan.cloudfunctions.net/requestAuth", {
+  return await fetch(`${destination}/requestAuth`, {
+    credentials: "include",
     method: "POST",
     mode: "cors",
     body: JSON.stringify({ email: email, password: password })
