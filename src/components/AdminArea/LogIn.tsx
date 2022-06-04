@@ -23,7 +23,7 @@ const Login = () => {
   const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state.from?.pathname || "/";
+  const from = "/";
 
   const userRef = useRef();
 
@@ -39,7 +39,6 @@ const Login = () => {
               accessToken: jsonResponse.LOGIN_TOKEN
             }));
             console.log("RESPONSE:", jsonResponse.LOGIN_TOKEN);
-            navigate("/admin", { replace: true });
           } else {
             console.log("Here is the result:", jsonResponse.LOGIN_ANSWER);
           }
@@ -47,6 +46,8 @@ const Login = () => {
       });
     } catch (error) {
       console.log(error);
+    } finally {
+      navigate("/admin", { replace: true });
     }
   };
   const onSubmitLogin = () => {

@@ -1,18 +1,25 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { getCookie } from "./../../utils/functions";
 interface Provi {
   email: string;
   password: string;
   accessToken: string;
+  authorise: boolean | null;
 }
 interface ProviInter {
-  auth: Provi;
-  setAuth: React.Dispatch<React.SetStateAction<Provi>>;
+  auth?: Provi;
+  setAuth?: React.Dispatch<React.SetStateAction<Provi>>;
 }
-// @ts-ignore
-const AuthContext = createContext<ProviInter>({ email: "", password: "", accessToken: "" });
+const AuthContext = createContext<ProviInter | null>(null);
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [auth, setAuth] = useState<Provi>({ email: "", password: "", accessToken: "" });
+  var authoriseMe = false;
+  if (getCookie("jwt") == "FlorinSalam2022") {
+    authoriseMe = true;
+    // setAuth((auth) => ({ ...auth, email: "yeah", authorise: true }));
+  }
+  //you have to learn React lifecycle
+  const [auth, setAuth] = useState<Provi>({ email: "", password: "", accessToken: "", authorise: authoriseMe });
 
   return <AuthContext.Provider value={{ auth, setAuth }}>{children}</AuthContext.Provider>;
 };

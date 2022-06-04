@@ -2,13 +2,11 @@
 import { BrowserRouter as Router, Routes, Route, BrowserRouter, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga4";
-
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import MainNavigation from "./Navigation/MainNavigation";
 import Testimonials from "./components/Testimonials";
 import Navbar from "./components/Navbar";
-import "./App.css";
+
 import ProduseleNoastre from "./components/ProduseleNoastre";
 import ProductView from "./components/ProductView";
 import FooterMontan from "./components/FooterMontan";
@@ -17,13 +15,14 @@ import FinishOrder from "./components/CartPage/FinishOrder";
 import Blogs from "./components/Blogs";
 import AdminArea from "./components/AdminArea/AdminArea";
 import BlogPost from "./components/BlogPost";
-
 import { getData } from "./data/productList";
 import OrderView from "./components/OrderView/OrderView";
 import OrderDone from "./components/CartPage/OrderDone";
 import RequireAuth from "./components/AdminArea/RequireAuth";
 import Login from "./components/AdminArea/LogIn";
 import { AuthProvider } from "./components/context/AuthProvider";
+import "./App.css";
+import CheckAuth from "./components/AdminArea/CheckAuth";
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
 
@@ -71,8 +70,11 @@ function App() {
                 <Route element={<RequireAuth />}>
                   <Route path="/admin" element={<AdminArea />} />
                 </Route>
+                <Route element={<CheckAuth />}>
+                  <Route path="/login" element={<Login />} />
+                </Route>
                 {/* protect the above */}
-                <Route path="/login" element={<Login />} />
+
                 <Route path={`${process.env.PUBLIC_URL}/produsele-noastre`} element={<ProduseleNoastre />} />
                 <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />} />
                 <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />} />

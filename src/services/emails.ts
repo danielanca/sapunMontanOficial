@@ -1,5 +1,5 @@
 import { orderProps } from "./../utils/OrderInterfaces";
-
+import { getCookie } from "../utils/functions";
 // const destination = "https://us-central1-sapunmontan.cloudfunctions.net";
 const destination = "http://localhost:5001/sapunmontan/us-central1";
 
@@ -8,7 +8,8 @@ export const requestOrdersList = async () => {
     method: "POST",
     mode: "cors",
     body: JSON.stringify({
-      someData: "someTest"
+      someData: "someTest",
+      authCookie: getCookie("jwt")
     })
   })
     .then((res) => res)
