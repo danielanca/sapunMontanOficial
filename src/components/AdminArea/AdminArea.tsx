@@ -1,10 +1,15 @@
-import styles from "./AdminArea.module.scss";
 import { BrowserRouter as Router, Routes, Route, BrowserRouter, useLocation } from "react-router-dom";
 import { Admin, Resource, ListGuesser, email } from "react-admin";
 import { useEffect, useState } from "react";
+
 import Login from "./LogIn";
 import useAuth from "../hooks/useAuth";
 import { requestOrdersList } from "../../services/emails";
+import Dashboard from "./../AdminArea/Dashboard/index";
+
+import React from "react";
+
+import "./../../assets/scss/theme.scss";
 const AdminArea = () => {
   const [isUserLogged, setIsLogged] = useState(false);
   const { auth } = useAuth();
@@ -24,7 +29,13 @@ const AdminArea = () => {
   useEffect(() => {
     requestData();
   }, []);
-  return <div>Here will be Admin Area</div>;
+  return (
+    <div>
+      {/* <Sidebar /> */}
+
+      <Dashboard />
+    </div>
+  );
 };
 
 export default AdminArea;
