@@ -79,7 +79,8 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     cartSum: subtotalPrepare,
     shippingTax: deliveryFee,
     orderNotes: "",
-    deliveryName: "DPD Curier"
+    deliveryName: "DPD Curier",
+    paymentStatus: "NOT_PAID"
   });
 
   const [finishOrderRequested, setFinishRequested] = useState<number>(null);

@@ -18,4 +18,5 @@ export interface orderProps {
   shippingTax?: number;
   paymentMethod: string;
   deliveryName?: string;
+  paymentStatus?: string;
 }

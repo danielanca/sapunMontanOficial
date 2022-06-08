@@ -1,4 +1,3 @@
-import images from "./../data/images";
 import { collection, doc, setDoc, getFirestore, getDoc, getDocs } from "firebase/firestore";
 import app from "./../firebase";
 
@@ -15,6 +14,16 @@ export const getOrderByID = async (invoiceID: number) => {
   }
 
   return productsAreHere;
+};
+export const getAllOrders = async () => {
+  const snapShot = await getDocs(collection(db, "orders"));
+  var dataProducts = [];
+
+  snapShot.forEach((doc) => {
+    dataProducts.push(doc.data());
+  });
+
+  return dataProducts;
 };
 export const getData = async () => {
   const snapShot = await getDocs(collection(db, "products"));

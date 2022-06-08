@@ -43,7 +43,6 @@ const getOrdersAdmin = async () => {
   var ordersArray: any = [];
   await collection.get().then((snapshot) => {
     snapshot.forEach((doc) => {
-      // functions.logger.info(doc.data());
       ordersArray.push(doc.data());
     });
   });
@@ -88,7 +87,7 @@ const transport = nodemailer.createTransport({
   secure: true,
   auth: {
     user: "montanair.ro@gmail.com",
-    pass: "dinmunte2021"
+    pass: "drzqeixyfxrqwcpq"
   }
 });
 
@@ -101,7 +100,12 @@ const postOrderToDB = async (invoiceID: number, dataObject: any, todayDate: Date
   dataObject.timestamp = `${todayDate.getDate()}/${
     todayDate.getMonth() + 1
   }/${todayDate.getFullYear()} ${todayDate.getHours()}:${todayDate.getMinutes()}:${todayDate.getSeconds()}`;
-  await admin.firestore().collection("orders").doc(invoiceID.toString()).create(dataObject).then();
+  await admin
+    .firestore()
+    .collection("orders")
+    .doc(invoiceID.toString())
+    .create(dataObject)
+    .then((result) => functions.logger.info("POST_To_DB: ", result));
 };
 export const sendEmail = functions.https.onRequest((request, response) => {
   response.header("Access-Control-Allow-Origin", "http://localhost:3000");
