@@ -9,6 +9,8 @@
 .sectionParent {
   display: flex;
   justify-content: center;
+  max-width: 1000px;
+  margin: auto !important;
 }
 .leftSection {
   display: flex;

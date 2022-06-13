@@ -1,8 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 import useAuth from "./../hooks/useAuth";
 import { requestLoginAccess } from "../../services/emails";
-import styles from "./LogIn.module.scss";
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { setJWT } from "../../utils/functions";
+import styles from "./LogIn.module.scss";
+
 interface Credentials {
   email: string;
   password: string;
@@ -39,6 +42,11 @@ const Login = () => {
               accessToken: jsonResponse.LOGIN_TOKEN
             }));
             console.log("RESPONSE:", jsonResponse.LOGIN_TOKEN);
+            setJWT("jwt", jsonResponse.LOGIN_TOKEN, 1).then((confirmation) => {
+              if (confirmation) {
+                navigate("/admin", { replace: true });
+              }
+            });
           } else {
             console.log("Here is the result:", jsonResponse.LOGIN_ANSWER);
           }
@@ -46,8 +54,6 @@ const Login = () => {
       });
     } catch (error) {
       console.log(error);
-    } finally {
-      navigate("/admin", { replace: true });
     }
   };
   const onSubmitLogin = () => {

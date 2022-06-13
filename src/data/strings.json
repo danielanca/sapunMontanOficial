@@ -6,6 +6,42 @@
     "testimonials": "Testimoniale",
     "contactUs": "Contact"
   },
+  "navMenuMobile": {
+    "ourProducts": {
+      "title": "PRODUSE",
+      "link": "/produsele-noastre",
+      "ulItems": {
+        "one": {
+          "title": "Sapununuri",
+          "link": "/sapunuri"
+        },
+        "two": {
+          "title": "Creme faciale",
+          "link": "/creme"
+        }
+      }
+    },
+    "aboutUs": {
+      "title": "Despre noi",
+      "link": "/despre-noi",
+      "ulItems": 0
+    },
+    "blog": {
+      "title": "Blog",
+      "link": "/blogs",
+      "ulItems": 0
+    },
+    "testimonials": {
+      "title": "Recenzii",
+      "link": "/recenzii",
+      "ulItems": 0
+    },
+    "contactUs": {
+      "title": "Contact",
+      "link": "/contact",
+      "ulItems": 0
+    }
+  },
 
   "companyData": {
     "name": "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",

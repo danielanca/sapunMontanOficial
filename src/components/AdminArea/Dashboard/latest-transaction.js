@@ -47,10 +47,10 @@ const LatestTransaction = () => {
                         <td>
                           <span
                             className={`badge badge-soft-${
-                              item.paymentStatus === "paid" ? "succes" : "danger"
+                              item.paymentStatus === "PAID" ? "succes" : "danger"
                             } font-size-20`}
                           >
-                            {item.paymentStatus === "paid" ? "Paid" : "Unpaid"}
+                            {item.paymentStatus === "NOT_PAID" ? "Paid" : "Unpaid"}
                           </span>
                         </td>
                         <td>

@@ -1,5 +1,5 @@
-@import './../main.module.scss';
-@import './../data//themes.scss';
+@import "./../main.module.scss";
+@import "./../data//themes.scss";
 
 .blockContainer {
   @extend .row;
@@ -7,7 +7,7 @@
   height: auto;
   background-color: map-get($map: $colors, $key: whitePure);
   display: flex;
-  @include media('<tablet') {
+  @include media("<tablet") {
     margin: 0;
   }
 }
@@ -21,7 +21,9 @@
   row-gap: 30px;
   column-gap: calc(-13px + 3.9vw);
 
-  @include media('<tablet') {
+  max-width: 1000px;
+  margin: auto;
+  @include media("<tablet") {
     flex-direction: column;
   }
 }

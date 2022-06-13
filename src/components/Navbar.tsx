@@ -5,7 +5,7 @@ import styles from "./Navbar.module.scss";
 import TopBanner from "./TopBanner";
 import strings from "../data/strings.json";
 import MenuMobile from "./MenuMobile";
-
+import MenuMobileSide from "./MenuMobileSide";
 import shoppingCart from "./../media/assets/pics/prezentareCarbune/shoppingCart.png";
 import roFLAG from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
 import { useEffect, useState } from "react";
@@ -63,7 +63,8 @@ const NavBar = ({ clearNotif }: NavProps) => {
                   </div>
                 </HashLink>
               </div>
-              <MenuMobile />
+              {/* <MenuMobile /> */}
+              <MenuMobileSide />
               <ul className={styles.ulMenuStart}>
                 <li className={styles.liItem}>
                   <NavHashLink className={styles.HashLinkStyle} to="/blogs">
