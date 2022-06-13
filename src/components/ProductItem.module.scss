@@ -4,6 +4,7 @@
 .HashLinkStyle {
   color: map-get($map: $colors, $key: mainlyBlack);
   text-decoration: none !important;
+  width: none;
   &:hover {
     color: map-get($map: $colors, $key: mainlyBlack);
   }
@@ -63,7 +64,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5px;
+  margin: auto;
 }
 .addButtonCart:hover {
   background-color: #e67373;

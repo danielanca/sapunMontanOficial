@@ -28,6 +28,7 @@ const getAuthToken = (body: any) => {
 // process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 
 // const localHost = "https://montanair.ro";
+const localHost = "http://localhost:3000";
 
 interface ResponseObject {
   EMAILTO_CLIENT: string;
@@ -49,7 +50,7 @@ const getOrdersAdmin = async () => {
   return ordersArray;
 };
 export const requestOrders = functions.https.onRequest((request, response) => {
-  response.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  response.header("Access-Control-Allow-Origin", localHost);
   response.header("Access-Control-Allow-Credentials", "true");
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
@@ -64,17 +65,20 @@ export const requestOrders = functions.https.onRequest((request, response) => {
     response.send({ ordersList: result, requestOrdersAnswer: `You : ${request.body}` });
   });
 });
+
+// https://stackoverflow.com/questions/57253593/cross-domain-state-cookie-issue-for-oauth-using-firebase-functions-while-on-the
+/* response.cookie can not be used because it will return cookies with firebase domain, and we need montanair.ro domain */
 export const requestAuth = functions.https.onRequest((request, response) => {
   var userData = JSON.parse(request.body);
   functions.logger.info("request Auth called, username and password are: ", userData.password);
-  response.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  response.header("Access-Control-Allow-Origin", localHost);
   response.header("Access-Control-Allow-Credentials", "true");
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
 
   if (userData.password === administratorPassword && userData.email === administratorEmail) {
-    response.cookie("jwt", getSessionID(), { sameSite: "none", secure: true, maxAge: 25 * 60 * 1000 });
-    response.send({ LOGIN_ANSWER: "SUCCESS", LOGIN_TOKEN: "COOKIE_HTTPONLY" });
+    // response.cookie("jwt", getSessionID(), { sameSite: "none", secure: true, maxAge: 900 * 25 * 60 * 1000 });
+    response.send({ LOGIN_ANSWER: "SUCCESS", LOGIN_TOKEN: getSessionID() });
   } else {
     response.send({ LOGIN_ANSWER: "REJECTED", LOGIN_TOKEN: "NO_AUTH" });
   }
@@ -108,7 +112,7 @@ const postOrderToDB = async (invoiceID: number, dataObject: any, todayDate: Date
     .then((result) => functions.logger.info("POST_To_DB: ", result));
 };
 export const sendEmail = functions.https.onRequest((request, response) => {
-  response.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  response.header("Access-Control-Allow-Origin", localHost);
   response.header("Access-Control-Allow-Credentials", "true");
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");

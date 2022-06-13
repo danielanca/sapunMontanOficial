@@ -171,7 +171,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
             <div className={styles.cartLine} />
           </div>
           <div className={"row " + styles.finishOrderContainer}>
-            <div className={"col-6  col-sm-12 " + styles.leftContainer}>
+            <div className={"col-sm-12  col-lg-6  " + styles.leftContainer}>
               <div>
                 <h3 className={styles.topBillText}>{"Detalii pentru facturare"}</h3>
               </div>
@@ -273,7 +273,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                 </div>
               </div>
             </div>
-            <div className={"col-6 col-sm-12 " + styles.rightContainer}>
+            <div className={" col-lg-6  col-sm-12 " + styles.rightContainer}>
               <div className={styles.rightChild}>
                 <div className={styles.legendsTable}>
                   <span>{"Produs"}</span>
@@ -353,6 +353,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                       onChange={termAcceptHandler}
                       name="acceptTerms"
                       type={"checkbox"}
+                      className={styles.checkboxTerms}
                     />
                     <label htmlFor="acceptTerms" className={styles.acceptTerms}>
                       {"Am citit și sunt de acord cu termenii și condiții site-ului web "}

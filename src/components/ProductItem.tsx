@@ -20,8 +20,8 @@ const ProductItem = ({ productObject }: ProdProps) => {
   };
 
   return (
-    <HashLink onClick={gotoElement} className={styles.HashLinkStyle} to={"/produs/" + productObject.ID}>
-      <div className={"col-md-3 " + styles.productItem}>
+    <HashLink onClick={gotoElement} className={"col-md-3 " + styles.HashLinkStyle} to={"/produs/" + productObject.ID}>
+      <div className={styles.productItem}>
         <div className={styles.imageWrap}>
           <img className={styles.productImage} src={productObject.imageProduct[0]}></img>
         </div>

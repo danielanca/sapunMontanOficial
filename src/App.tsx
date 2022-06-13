@@ -2,7 +2,8 @@
 import { BrowserRouter as Router, Routes, Route, BrowserRouter, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ReactGA from "react-ga4";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
+
 import MainNavigation from "./Navigation/MainNavigation";
 import Testimonials from "./components/Testimonials";
 import Navbar from "./components/Navbar";

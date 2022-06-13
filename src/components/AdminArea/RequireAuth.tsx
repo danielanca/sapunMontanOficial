@@ -3,7 +3,7 @@ import { getCookie } from "../../utils/functions";
 import useAuth from "../hooks/useAuth";
 
 const RequireAuth = () => {
-  const { auth } = useAuth();
+  const auth = useAuth();
   console.log("Auth:", auth);
   const location = useLocation();
 
