@@ -193,6 +193,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 0 14px;
 }
 .individualItem span {
   padding-left: 6px;
@@ -399,7 +400,7 @@ input[type="checkbox"]:not(:checked) ~ .subItemUL {
   background-color: #d6ffb4;
   padding: 0;
 }
-.ulOthers > li {
+.ulOthers > li > span {
   font-size: 24px;
   padding-left: 14px;
   font-family: "Roboto Regular" !important;

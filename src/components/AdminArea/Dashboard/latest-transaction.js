@@ -23,12 +23,12 @@ const LatestTransaction = () => {
             <Table className="table-centered">
               <thead>
                 <tr>
-                  <th scope="col">Date</th>
-                  <th scope="col">Id no.</th>
-                  <th scope="col">Billing Name</th>
-                  <th scope="col">Amount</th>
+                  <th scope="col">Data</th>
+                  <th scope="col">Factura</th>
+                  <th scope="col">Client</th>
+                  <th scope="col">Suma</th>
                   <th scope="col" colSpan="2">
-                    Payment Status
+                    PLATA
                   </th>
                 </tr>
               </thead>

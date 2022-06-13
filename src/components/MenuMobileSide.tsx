@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { HashLink as Link, NavHashLink } from "react-router-hash-link";
-import { __ } from "lodash";
+
 import styles from "./../components/MenuMobileSide.module.scss";
 import images from "../data/images";
 import strings from "../data/strings.json";
@@ -66,7 +66,8 @@ const MenuMobileSide = () => {
 
         <ul className={styles.ulOthers}>
           <li className={styles.individualItem}>
-            <img className={styles.icon} src={images.cartLogo} /> <span>{"Cosul Meu"}</span>
+            <img className={styles.icon} src={images.cartLogo} />
+            <span>{"Cosul Meu"}</span>
           </li>
           <li className={styles.individualItem}>
             <img className={styles.icon} src={images.heartIcon} />

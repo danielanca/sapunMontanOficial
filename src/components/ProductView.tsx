@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Comments from "./Comments";
 import ProductAdded from "./PopUps/ProductAdded";
 import productList from "./../data/productList";
+import Loader from "./MiniComponents/Loader";
 interface CartProps {
   notifyMe?: React.Dispatch<React.SetStateAction<number>>;
   productID: number;
@@ -27,11 +28,6 @@ const ProductView = ({ notifyMe }: CartProps) => {
     }
   });
 
-  useEffect(() => {
-    if (productListUpdated != null) {
-      console.log("YAYA:", productListUpdated[0].reviews);
-    }
-  }, [productListUpdated]);
   const onImageClicked = (event: number) => {
     setmainPicture(event);
   };
@@ -72,110 +68,115 @@ const ProductView = ({ notifyMe }: CartProps) => {
   return (
     <>
       <div className={styles.padder}>
-        <div className={"row " + styles.sectionParent}>
-          <div className={"col-md-6 " + styles.leftSection}>
-            <div className={styles.leftContainer}>
-              {productListUpdated != null ? (
-                <img className={styles.imageContainer} src={productListUpdated[ID].imageProduct[mainPicture]} />
-              ) : (
-                ""
-              )}
-              <div className={styles.previewImageContainer}>
-                <div
-                  onClick={() => {
-                    onImageClicked(0);
-                  }}
-                  className={
-                    mainPicture === 0 ? `${styles.clickableImage} ${styles.activeImage} ` : `${styles.clickableImage}`
-                  }
-                >
-                  {productListUpdated != null ? (
-                    <img className={styles.innerImage} src={productListUpdated[ID].imageProduct[0]} />
-                  ) : (
-                    ""
-                  )}
-                </div>
-                <div
-                  onClick={() => {
-                    onImageClicked(1);
-                  }}
-                  className={
-                    mainPicture === 1 ? `${styles.clickableImage} ${styles.activeImage} ` : `${styles.clickableImage}`
-                  }
-                >
-                  {productListUpdated != null ? (
-                    <img className={styles.innerImage} src={productListUpdated[ID].imageProduct[1]} />
-                  ) : (
-                    ""
-                  )}
-                </div>
-                <div
-                  onClick={() => {
-                    onImageClicked(2);
-                  }}
-                  className={
-                    mainPicture === 2 ? `${styles.clickableImage} ${styles.activeImage} ` : `${styles.clickableImage}`
-                  }
-                >
-                  {productListUpdated != null ? (
-                    <img className={styles.innerImage} src={productListUpdated[ID].imageProduct[2]} />
-                  ) : (
-                    ""
-                  )}
+        {productListUpdated != null ? (
+          <div className={"row " + styles.sectionParent}>
+            <div className={"col-md-6 " + styles.leftSection}>
+              <div className={styles.leftContainer}>
+                {productListUpdated != null ? (
+                  <img className={styles.imageContainer} src={productListUpdated[ID].imageProduct[mainPicture]} />
+                ) : (
+                  ""
+                )}
+                <div className={styles.previewImageContainer}>
+                  <div
+                    onClick={() => {
+                      onImageClicked(0);
+                    }}
+                    className={
+                      mainPicture === 0 ? `${styles.clickableImage} ${styles.activeImage} ` : `${styles.clickableImage}`
+                    }
+                  >
+                    {productListUpdated != null ? (
+                      <img className={styles.innerImage} src={productListUpdated[ID].imageProduct[0]} />
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                  <div
+                    onClick={() => {
+                      onImageClicked(1);
+                    }}
+                    className={
+                      mainPicture === 1 ? `${styles.clickableImage} ${styles.activeImage} ` : `${styles.clickableImage}`
+                    }
+                  >
+                    {productListUpdated != null ? (
+                      <img className={styles.innerImage} src={productListUpdated[ID].imageProduct[1]} />
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                  <div
+                    onClick={() => {
+                      onImageClicked(2);
+                    }}
+                    className={
+                      mainPicture === 2 ? `${styles.clickableImage} ${styles.activeImage} ` : `${styles.clickableImage}`
+                    }
+                  >
+                    {productListUpdated != null ? (
+                      <img className={styles.innerImage} src={productListUpdated[ID].imageProduct[2]} />
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className={"col-md-6  " + styles.rightSection}>
-            <div className={styles.rightContainer}>
-              <h3 className={styles.productTitle}>
-                {productListUpdated != null ? productListUpdated[ID].title : "..."}
-              </h3>
-              <div className={styles.reviewContainer}>
-                <div className={styles.starsContainer}>
-                  <img className={styles.reviewStar} src={reviewStar} />
-                  <img className={styles.reviewStar} src={reviewStar} />
-                  <img className={styles.reviewStar} src={reviewStar} />
-                  <img className={styles.reviewStar} src={reviewStar} />
-                  <img className={styles.reviewStar} src={reviewStar} />
-                </div>
-                <span className={styles.reviewHead}>
-                  {productListUpdated != null
-                    ? productListUpdated[ID].hasOwnProperty("reviews")
-                      ? Object.values(productListUpdated[ID].reviews).length + " RECENZII"
-                      : " FARA RECENZII"
-                    : ""}
-                </span>
-              </div>
-              <div className={styles.shortDescription}>
-                {productListUpdated != null ? productListUpdated[0].shortDescription : ""}
-              </div>
-              <div className={styles.longDescription}>
-                {productListUpdated != null ? productListUpdated[0].firstDescription : ""}
 
-                <ul>
-                  <li className={styles.liItem}>
-                    {productListUpdated != null ? productListUpdated[0].ULbeneficii[1] : ""}
-                  </li>
-                  <li className={styles.liItem}>
-                    {productListUpdated != null ? productListUpdated[0].ULbeneficii[1] : ""}
-                  </li>
-                </ul>
-              </div>
-              <div className={styles.priceWrapper}>
-                <div className={styles.productPrice}>
-                  {productListUpdated != null ? productListUpdated[ID].price + " LEI " : "Loading"}
+            <div className={"col-md-6  " + styles.rightSection}>
+              <div className={styles.rightContainer}>
+                <h3 className={styles.productTitle}>
+                  {productListUpdated != null ? productListUpdated[ID].title : "..."}
+                </h3>
+                <div className={styles.reviewContainer}>
+                  <div className={styles.starsContainer}>
+                    <img className={styles.reviewStar} src={reviewStar} />
+                    <img className={styles.reviewStar} src={reviewStar} />
+                    <img className={styles.reviewStar} src={reviewStar} />
+                    <img className={styles.reviewStar} src={reviewStar} />
+                    <img className={styles.reviewStar} src={reviewStar} />
+                  </div>
+                  <span className={styles.reviewHead}>
+                    {productListUpdated != null
+                      ? productListUpdated[ID].hasOwnProperty("reviews")
+                        ? Object.values(productListUpdated[ID].reviews).length + " RECENZII"
+                        : " FARA RECENZII"
+                      : ""}
+                  </span>
                 </div>
+                <div className={styles.shortDescription}>
+                  {productListUpdated != null ? productListUpdated[0].shortDescription : ""}
+                </div>
+                <div className={styles.longDescription}>
+                  {productListUpdated != null ? productListUpdated[0].firstDescription : ""}
+
+                  <ul>
+                    <li className={styles.liItem}>
+                      {productListUpdated != null ? productListUpdated[0].ULbeneficii[1] : ""}
+                    </li>
+                    <li className={styles.liItem}>
+                      {productListUpdated != null ? productListUpdated[0].ULbeneficii[1] : ""}
+                    </li>
+                  </ul>
+                </div>
+                <div className={styles.priceWrapper}>
+                  <div className={styles.productPrice}>
+                    {productListUpdated != null ? productListUpdated[ID].price + " LEI " : "Loading"}
+                  </div>
+                </div>
+                <div className={styles.actionContainer}>
+                  <button onClick={addToCart_Handler} className={styles.addToCart}>
+                    {"ADAUGĂ IN COȘ"}
+                  </button>
+                </div>
+                {popProductInCart && <ProductAdded animFin={animEnded} id={ID} />}
               </div>
-              <div className={styles.actionContainer}>
-                <button onClick={addToCart_Handler} className={styles.addToCart}>
-                  {"ADAUGĂ IN COȘ"}
-                </button>
-              </div>
-              {popProductInCart && <ProductAdded animFin={animEnded} id={ID} />}
             </div>
           </div>
-        </div>
+        ) : (
+          <Loader />
+        )}
       </div>
       <div>
         {productListUpdated != null ? <Comments productID={ID} reviewsList={productListUpdated[ID].reviews} /> : ""}

@@ -63,7 +63,7 @@ const NavBar = ({ clearNotif }: NavProps) => {
                   </div>
                 </HashLink>
               </div>
-              {/* <MenuMobile /> */}
+
               <MenuMobileSide />
               <ul className={styles.ulMenuStart}>
                 <li className={styles.liItem}>
