@@ -58,7 +58,7 @@ const CartPage = ({ notifyMe }: CartProps) => {
         <div className={styles.actualCartBox}>
           <div className={styles.topline}>
             <div className={"col-sm-8 "}>
-              <h3 className={styles.cartProductTitle}>{"Produsele Noastre"}</h3>
+              <h3 className={styles.cartProductTitle}>{"Produse"}</h3>
             </div>
             <div className={"col-sm-3 "}>
               <h3 className={styles.cartProductTitle}>{"Cantitate"}</h3>

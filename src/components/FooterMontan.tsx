@@ -1,8 +1,11 @@
 import { useRef, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, BrowserRouter, useLocation } from "react-router-dom";
-import styles from "./../components/FooterMontan.module.scss";
+
 import arrow_down from "./../media/assets/pics/prezentareCarbune/arrow_down.svg";
 import flagRomania from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
+import Relaxbar from "./MiniComponents/Footers/Relaxbar";
+
+import styles from "./../components/FooterMontan.module.scss";
 
 const FooterMontan = () => {
   const [openedContainer, setContainer] = useState(0);
@@ -24,6 +27,7 @@ const FooterMontan = () => {
     <>
       {!pathname.includes("/admin") && !pathname.includes("/login") && (
         <div className={styles.fluidHandler}>
+          <Relaxbar />
           <div className={"row " + styles.largeFooter}>
             <div className="col-md-4">
               <div onClick={clickHandler.bind(this, 1)} className={styles.clickableBox}>
@@ -86,6 +90,7 @@ const FooterMontan = () => {
                 </div>
               </div>
             </div>
+
             <div className={styles.wideBanner}>
               <img className={styles.flagStyle} src={flagRomania} />
               <p className={styles.statementRO}>{"Produs Românesti handmade"}</p>

@@ -1,0 +1,68 @@
+@import "../../../../node_modules//include-media/dist/include-media";
+
+@import "../../../../node_modules//bootstrap/scss//bootstrap.scss";
+
+@import "./../../../main.module.scss";
+
+.relaxSpace {
+  width: 100%;
+  height: 400px;
+  background-color: red;
+  background-size: contain;
+  overflow: hidden;
+  background: url("./../../../media/assets//pics/blocks/background_Montan.jpg");
+
+  display: flex;
+  align-items: center;
+}
+.cardobard {
+  width: 100%;
+  max-width: 800px;
+
+  height: 200px;
+  background-color: whitesmoke;
+
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  margin: auto;
+  padding: 50px;
+
+  @include media("<tablet") {
+    max-width: 320px;
+    height: 230px;
+  }
+}
+.cardobard {
+  h3 {
+    font-family: "Roboto";
+    text-align: center;
+  }
+}
+
+.iconStyle {
+  width: 40px;
+  height: 40px;
+}
+.socialsTop {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 30px;
+  row-gap: 30px;
+  max-width: 220px;
+}
+
+.inquiries {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  P {
+    text-align: center;
+    font-family: "Roboto";
+    font-weight: bold;
+    margin: 0;
+  }
+}

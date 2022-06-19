@@ -53,6 +53,8 @@
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   padding: 0px 10vw;
   --bs-gutter-x: 0;
+  width: 100%;
+  margin: 0;
 }
 .showPop {
   @extend .container;

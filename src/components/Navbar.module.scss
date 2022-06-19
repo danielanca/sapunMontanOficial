@@ -14,6 +14,7 @@
 .montanLogo {
   font-weight: 500;
   font-size: 36px;
+  height: 40px;
   cursor: pointer;
 }
 .roProduct {
@@ -21,7 +22,7 @@
   height: auto;
 }
 .WeRomanians {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -48,7 +49,7 @@
   @extend .col-3;
   display: flex;
   justify-content: center;
-  height: 70px;
+  height: auto;
   @include media("<desktop") {
     display: table;
     margin: 0 auto;
@@ -57,11 +58,12 @@
   }
 }
 .wrapper {
-  background-color: map-get($map: $colors, $key: navBarBackground);
+  background-color: rgba(239, 239, 239, 0.8);
   width: 100%;
-  height: 108px;
+  height: 54px;
+  display: flex;
+  align-items: center;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-
   @include media("<tablet") {
     height: 70px;
     display: flex;

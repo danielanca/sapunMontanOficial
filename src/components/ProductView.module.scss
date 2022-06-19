@@ -163,6 +163,7 @@
   }
 }
 .activeImage {
+  @extend .clickableImage;
   opacity: 1;
 }
 .innerImage {

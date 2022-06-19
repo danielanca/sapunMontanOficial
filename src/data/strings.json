@@ -1,4 +1,11 @@
 {
+  "socialsInfo": {
+    "socialLinks": {
+      "instagram": { "link": "https://instagram.com/montanair.ro", "image": "instagram" },
+      "facebook": { "link": "https://facebook.com/montanair.ro", "image": "facebook" },
+      "whatsapp": { "link": "https://whatsapp.com/montanair.ro", "image": "whatsapp" }
+    }
+  },
   "navMenu": {
     "ourProducts": "PRODUSELE NOASTRE",
     "aboutUs": "Despre noi",
@@ -41,6 +48,15 @@
       "link": "/contact",
       "ulItems": 0
     }
+  },
+
+  "productDescription": {
+    "vitaminC": {
+      "text": "<b>VITAMINA C</b><br> luminează petele post-acneice sau hiperpigmentare",
+      "image": "vitaminaC"
+    },
+    "argila": { "text": "<b>ARGILA</b><br> desfundă și micșorează porii, oferind pielii matifiere", "image": "argila" },
+    "carbon": { "text": " <b>Carbunele activ</b><br> asigură o exfoliere blândă", "image": "carbon" }
   },
 
   "companyData": {

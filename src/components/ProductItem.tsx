@@ -13,8 +13,9 @@ interface productObject {
 
 interface ProdProps {
   productObject: productObject;
+  width?: number;
 }
-const ProductItem = ({ productObject }: ProdProps) => {
+const ProductItem = ({ productObject, width }: ProdProps) => {
   const gotoElement = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };

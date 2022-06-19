@@ -9,6 +9,7 @@ import MenuMobileSide from "./MenuMobileSide";
 import shoppingCart from "./../media/assets/pics/prezentareCarbune/shoppingCart.png";
 import roFLAG from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
 import { useEffect, useState } from "react";
+import images from "../data/images";
 
 interface NavProps {
   updateNotification?: number;
@@ -56,7 +57,7 @@ const NavBar = ({ clearNotif }: NavProps) => {
               </ul>
               <div className={styles.middleNoUl}>
                 <HashLink className={styles.logoHover} to="/">
-                  <span className={styles.montanLogo}>{"Montan Air.Ro"}</span>
+                  <img className={styles.montanLogo} src={images.montanLogo} />
                   <div className={styles.WeRomanians}>
                     <span>{"Produs Românesc"}</span>
                     <img className={styles.roProduct} src={roFLAG} />
@@ -86,9 +87,6 @@ const NavBar = ({ clearNotif }: NavProps) => {
                 <NavHashLink className={styles.hashTransparent} to="/cosulmeu">
                   <img className={styles.shopIcon} src={shoppingCart} />
                   <span className={styles.jewel}>{totalItems}</span>
-                </NavHashLink>
-                <NavHashLink className={styles.hashTransparent} to="/cosulmeu">
-                  <span className={styles.spanCart}>{"Cosul meu"}</span>
                 </NavHashLink>
               </div>
             </div>
