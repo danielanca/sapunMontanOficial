@@ -49,12 +49,13 @@ const NavBar = ({ clearNotif }: NavProps) => {
                     {strings.navMenu.ourProducts}
                   </NavHashLink>
                 </li>
-                <li onClick={() => sendAnalyticsIdea()} className={styles.liItem}>
-                  <NavHashLink className={styles.HashLinkStyle} to="/despre-noi">
-                    {strings.navMenu.aboutUs}
+                <li className={styles.liItem}>
+                  <NavHashLink className={styles.HashLinkStyle} to="/blogs">
+                    {strings.navMenu.blog}
                   </NavHashLink>
                 </li>
               </ul>
+
               <div className={styles.middleNoUl}>
                 <HashLink className={styles.logoHover} to="/">
                   <img className={styles.montanLogo} src={images.montanLogo} />
@@ -67,11 +68,6 @@ const NavBar = ({ clearNotif }: NavProps) => {
 
               <MenuMobileSide />
               <ul className={styles.ulMenuStart}>
-                <li className={styles.liItem}>
-                  <NavHashLink className={styles.HashLinkStyle} to="/blogs">
-                    {strings.navMenu.blog}
-                  </NavHashLink>
-                </li>
                 <li className={styles.liItem}>
                   <NavHashLink className={styles.HashLinkStyle} to="/testimonials">
                     {strings.navMenu.testimonials}

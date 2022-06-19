@@ -13,16 +13,23 @@ interface productObject {
 
 interface ProdProps {
   productObject: productObject;
-  width?: number;
+  size?: string;
 }
-const ProductItem = ({ productObject, width }: ProdProps) => {
+const ProductItem = ({ productObject, size }: ProdProps) => {
   const gotoElement = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const renderSize = () => {
+    if (size != null && size === "small") {
+      return styles.productItemSmall;
+    } else {
+      return styles.productItem;
+    }
+  };
   return (
-    <HashLink onClick={gotoElement} className={"col-md-3 " + styles.HashLinkStyle} to={"/produs/" + productObject.ID}>
-      <div className={styles.productItem}>
+    <HashLink onClick={gotoElement} className={styles.HashLinkStyle} to={"/produs/" + productObject.ID}>
+      <div className={renderSize()}>
         <div className={styles.imageWrap}>
           <img className={styles.productImage} src={productObject.imageProduct[0]}></img>
         </div>

@@ -2,6 +2,7 @@
 @import "./../data//themes.scss";
 
 .HashLinkStyle {
+  @extend .col-md-3;
   color: map-get($map: $colors, $key: mainlyBlack);
   text-decoration: none !important;
   width: none;
@@ -28,6 +29,11 @@
     width: calc(232px + 8.8vw);
     height: calc(369px + 7vw);
   }
+}
+.productItemSmall {
+  @extend .productItem;
+  width: 210px;
+  height: 335px;
 }
 .productImage {
   width: 100%;

@@ -1,4 +1,5 @@
 import ProductItem from "../ProductItem";
+
 import { useEffect, useState } from "react";
 import styles from "./SuggestionArea.module.scss";
 
@@ -18,9 +19,14 @@ const SuggestionArea = ({ productID }: SuggestionProps) => {
 
   return (
     <div className={styles.relatedContainer}>
-      <h3 className={styles.titleProducts}>{"Alte produse"}</h3>
+      <div className={styles.productHead}>
+        <h3 className={styles.titleProducts}>{"Alte produse"}</h3>
+      </div>
+
       <div className={styles.productArea}>
-        {products != null ? products.map((item) => <ProductItem productObject={item} />) : "loading data..."}
+        {products != null
+          ? products.map((item, index) => <ProductItem size="small" productObject={item} />)
+          : "LOADING PRODUCTS"}
       </div>
     </div>
   );

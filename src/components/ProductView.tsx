@@ -149,7 +149,7 @@ const ProductView = ({ notifyMe }: CartProps) => {
         {productListUpdated != null ? <Comments productID={ID} reviewsList={productListUpdated[ID].reviews} /> : ""}
       </div>
 
-      <SuggestionArea />
+      <SuggestionArea productID={ID} />
     </>
   );
 };
