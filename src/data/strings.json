@@ -50,6 +50,16 @@
     }
   },
 
+  "legal": {
+    "termsConditions": {
+      "title": "Termeni si Conditii",
+      "jsonContent": " <h3 class=\"middleText\"> Condiții generale: </h3> \n"
+    }
+  },
+  "rawCSS": {
+    "plainCSS": " <style> </style>"
+  },
+
   "productDescription": {
     "vitaminC": {
       "text": "<b>VITAMINA C</b><br> luminează petele post-acneice sau hiperpigmentare",

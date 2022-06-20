@@ -24,6 +24,7 @@ import Login from "./components/AdminArea/LogIn";
 import { AuthProvider } from "./components/context/AuthProvider";
 import "./App.css";
 import CheckAuth from "./components/AdminArea/CheckAuth";
+import SimpleContent from "./blocks/SimpleContent";
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
 
@@ -80,6 +81,9 @@ function App() {
                 <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />} />
                 <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />} />
                 <Route path="/finalizare-comanda" element={<FinishOrder clearNotification={CartHandler} />} />
+                <Route path="/tc" element={<SimpleContent type={"Terms"} />} />
+                <Route path="/metode-plata" element={<SimpleContent type={"PaymentMethods"} />} />
+                <Route path="/politica-retur" element={<SimpleContent type={"RefundPolicy"} />} />
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/blogid/:blogid" element={<BlogPost />} />
                 <Route path="/testimonials" element={<Testimonials />} />

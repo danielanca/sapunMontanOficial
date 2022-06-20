@@ -85,6 +85,9 @@ th {
   padding: 18px 6px;
   width: 100%;
   height: auto;
+  @include media("<tablet") {
+    min-height: 400px;
+  }
 }
 .leftClient {
   display: flex;

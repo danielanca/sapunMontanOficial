@@ -29,13 +29,8 @@ const AdminArea = () => {
   useEffect(() => {
     requestData();
   }, []);
-  return (
-    <div>
-      {/* <Sidebar /> */}
 
-      <Dashboard />
-    </div>
-  );
+  return <Dashboard />;
 };
 
 export default AdminArea;

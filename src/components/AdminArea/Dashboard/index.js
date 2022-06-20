@@ -68,6 +68,15 @@ const Dashboard = () => {
 
             <Card>
               <CardBody>
+                <div className={styles.productsWrap}>
+                  <h3>PRODUCT LISTS</h3>
+
+                  <a href="/admin/products">
+                    <button>{"PRODUCTS PAGE"}</button>
+                  </a>
+                </div>
+              </CardBody>
+              {/* <CardBody>
                 <div className="d-flex align-items-start">
                   <div className="avatar-sm font-size-20 me-3">
                     <span className="avatar-title bg-soft-primary text-primary rounded">
@@ -91,7 +100,7 @@ const Dashboard = () => {
                     <Progress value="62" color="success" className="bg-transparent progress-sm" size="sm" />
                   </div>
                 </Row>
-              </CardBody>
+              </CardBody> */}
             </Card>
           </Col>
           <Col lg={6}>
@@ -104,7 +113,7 @@ const Dashboard = () => {
           <LatestTransaction />
         </Row>
 
-        <Row>
+        {/* <Row>
           <Col lg={5}>
             <SalesAnalytics />
           </Col>
@@ -134,12 +143,12 @@ const Dashboard = () => {
               </CardBody>
             </Card>
           </Col>
-        </Row>
-        <Row>
+        </Row> */}
+        {/* <Row>
           <Overview />
           <Reviews />
           <Revenue />
-        </Row>
+        </Row> */}
       </div>
     </React.Fragment>
   );

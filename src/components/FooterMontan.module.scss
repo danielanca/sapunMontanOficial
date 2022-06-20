@@ -55,6 +55,8 @@
   --bs-gutter-x: 0;
   width: 100%;
   margin: 0;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 .showPop {
   @extend .container;

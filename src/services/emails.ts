@@ -1,7 +1,7 @@
 import { orderProps } from "./../utils/OrderInterfaces";
 import { getCookie } from "../utils/functions";
 // const destination = "https://us-central1-sapunmontan.cloudfunctions.net";
-const destination = "http://localhost:5001/sapunmontan/us-central1";
+const destination = "http://localhost:5000/sapunmontan/us-central1";
 
 export const requestOrdersList = async () => {
   return await fetch(`${destination}/requestOrders`, {

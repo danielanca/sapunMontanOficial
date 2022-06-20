@@ -1,0 +1,44 @@
+@import "./../main.module.scss";
+
+* {
+  // font-family: "Roboto";
+}
+.centerTextTitle {
+  text-align: center;
+  font-family: "Roboto";
+  @include media("<tablet") {
+    font-size: 14px;
+  }
+}
+.middleSubtext {
+  text-align: center;
+  font-size: 17px;
+  font-weight: bolder;
+  font-family: "Roboto";
+}
+p {
+  line-height: 18px;
+  text-indent: 50px;
+}
+strong,
+b {
+  font-family: "Roboto";
+}
+.justTextAlignCenter {
+  text-align: center;
+}
+.textSpaceMargins {
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 980px;
+  font-family: "Roboto";
+  margin: auto;
+  @include media("<800px") {
+    max-width: 500px;
+  }
+}
+.centerImageMedium {
+  width: 100%;
+  max-width: 400px;
+  min-width: 300px;
+}
