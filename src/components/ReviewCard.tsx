@@ -4,13 +4,13 @@ import styles from "./ReviewCard.module.scss";
 
 import StarDisplayer from "./StarDisplayer/StarDisplayer";
 interface ReviewerInterface {
-  fullName: string;
+  name: string;
   date: string;
   starsNumber: number;
   actualComment: string;
 }
 interface IProps {
-  testimonials?: any;
+  testimonials: ReviewerInterface;
 }
 
 const ReviewCard = ({ testimonials }: IProps) => {

@@ -146,10 +146,17 @@ const ProductView = ({ notifyMe }: CartProps) => {
         )}
       </div>
       <div>
-        {productListUpdated != null ? <Comments productID={ID} reviewsList={productListUpdated[ID].reviews} /> : ""}
+        {productListUpdated != null ? (
+          <Comments
+            productData={JSON.stringify(productListUpdated)}
+            productID={ID}
+            reviewsList={productListUpdated[ID].reviews}
+          />
+        ) : (
+          ""
+        )}
       </div>
-
-      <SuggestionArea productID={ID} />
+      {productListUpdated != null ? <SuggestionArea productID={ID} /> : ""}
     </>
   );
 };

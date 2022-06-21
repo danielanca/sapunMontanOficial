@@ -16,17 +16,7 @@
   font-weight: bolder;
   font-family: "Roboto";
 }
-p {
-  line-height: 18px;
-  text-indent: 50px;
-}
-strong,
-b {
-  font-family: "Roboto";
-}
-.justTextAlignCenter {
-  text-align: center;
-}
+
 .textSpaceMargins {
   padding-left: 20px;
   padding-right: 20px;
@@ -36,9 +26,54 @@ b {
   @include media("<800px") {
     max-width: 500px;
   }
+
+  p {
+    line-height: 18px;
+    text-indent: 50px;
+  }
+  strong,
+  b {
+    font-family: "Roboto";
+  }
+  .justTextAlignCenter {
+    text-align: center;
+  }
+  a {
+    font-family: "Roboto";
+  }
 }
 .centerImageMedium {
   width: 100%;
   max-width: 400px;
   min-width: 300px;
+  margin: auto;
+}
+.spacerPadder50 {
+  width: 100%;
+  height: 50px;
+}
+.spacerPadder100 {
+  width: 100%;
+  height: 100px;
+}
+.spacerPadder200 {
+  width: 100%;
+  height: 200px;
+}
+
+.spacerPadder300 {
+  width: 100%;
+  height: 300px;
+}
+.termsUl {
+  li {
+    font-family: "Roboto";
+  }
+}
+.lefter {
+  text-align: start;
+  font-family: "Roboto";
+}
+.rightIndent {
+  margin-left: 5%;
 }

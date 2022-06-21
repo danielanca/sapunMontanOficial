@@ -32,7 +32,7 @@ export const ProductsContext = React.createContext<any[]>([]);
 
 function App() {
   const [letsCartHandler, CartHandler] = useState(1);
-  const [ssProducts, setSSproducts] = useState<any[]>();
+  const [ssProducts, setSSproducts] = useState<any>();
   const [clearRequest, setClearRequest] = useState(false);
   const handleScroll = () => {
     const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
@@ -54,7 +54,6 @@ function App() {
     if (ssProducts == null) {
       getData().then((finalData) => {
         console.log("Loading in Session Storage data about products", finalData);
-
         sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
       });
     }
@@ -84,6 +83,8 @@ function App() {
                 <Route path="/tc" element={<SimpleContent type={"Terms"} />} />
                 <Route path="/metode-plata" element={<SimpleContent type={"PaymentMethods"} />} />
                 <Route path="/politica-retur" element={<SimpleContent type={"RefundPolicy"} />} />
+                <Route path="/politica-confidentialitate" element={<SimpleContent type={"PrivacyPolicy"} />} />
+                <Route path="/politica-de-cookies" element={<SimpleContent type={"CookiesPolicy"} />} />
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/blogid/:blogid" element={<BlogPost />} />
                 <Route path="/testimonials" element={<Testimonials />} />

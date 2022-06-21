@@ -7,24 +7,18 @@ import { ProductsContext } from "../App";
 import { useEffect, useState } from "react";
 
 const ProduseleNoastre = () => {
-  const ProductsFroMContext = useContext(ProductsContext);
-
-  const [isFetched, setIsFetched] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [products, setProducts] = useState<any[]>();
+  const [products, setProducts] = useState(null);
+  var productsFetched = sessionStorage.getItem("productsFetched");
 
   useEffect(() => {
-    if (products == null) {
-      // getData().then((finalData) => {
-      //   console.log("In then", finalData);
-      //   setProducts(finalData);
-      // });
-
-      // setProducts(ProductsFroMContext);
-      let productSessionStorage = JSON.parse(sessionStorage.getItem("productsFetched"));
-      setProducts(productSessionStorage);
+    if (productsFetched != null) {
+      setProducts(JSON.parse(productsFetched));
+    } else {
+      getData().then((finalData) => {
+        setProducts(JSON.parse(JSON.stringify(finalData)));
+      });
     }
-  }, [products]);
+  }, [products, productsFetched]);
 
   return (
     <>

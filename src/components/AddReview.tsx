@@ -16,7 +16,7 @@ const AddReview = ({ productID }: PassingReview) => {
   const [reviewBuffer, setReviewBuffer] = useState<ReviewProps>({
     reviewProductID: productID.toString() || "1994",
     name: "",
-    starsNumber: "5",
+    starsNumber: "",
     reviewActual: "",
     email: ""
   });
@@ -40,24 +40,26 @@ const AddReview = ({ productID }: PassingReview) => {
   };
   return (
     <div className={styles.addSection}>
-      <div className={styles.inputContainer}>
-        <span>{Object.values(reviewBuffer)}</span>
-        <span>{"Recenzia:"}</span>
-        <textarea
-          rows={5}
-          onChange={reviewInputer}
-          className={styles.textarea}
-          id="recenzia"
-          placeholder="Recenzia*"
-        ></textarea>
-        <span>{"Numele dvs:"}</span>
-        <input onChange={identificationInserter} name="name" id="name" placeholder="Nume*"></input>
-        <span>{"Email:"}</span>
-        <input onChange={identificationInserter} name={"email"} id="email" placeholder="Email:*"></input>
+      <div className={styles.wrapper}>
+        <div className={styles.inputContainer}>
+          <span>{Object.values(reviewBuffer)}</span>
+          <span>{"Recenzia:"}</span>
+          <textarea
+            rows={5}
+            onChange={reviewInputer}
+            className={styles.textarea}
+            id="recenzia"
+            placeholder="Introduceti mesajul cu privire la experienta dvs. "
+          ></textarea>
+          <span>{"Numele dvs:"}</span>
+          <input onChange={identificationInserter} name="name" id="name" placeholder="Nume*"></input>
+          <span>{"Email:"}</span>
+          <input onChange={identificationInserter} name={"email"} id="email" placeholder="Email:*"></input>
+        </div>
+        <button onClick={submitReviewToServer} className={styles.submitButton}>
+          {"TRIMITE"}
+        </button>
       </div>
-      <button onClick={submitReviewToServer} className={styles.submitButton}>
-        {"TRIMITE"}
-      </button>
     </div>
   );
 };
