@@ -80,7 +80,7 @@ function App() {
                 <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />} />
                 <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />} />
                 <Route path="/finalizare-comanda" element={<FinishOrder clearNotification={CartHandler} />} />
-                <Route path="/tc" element={<SimpleContent type={"Terms"} />} />
+                <Route path="/termeni-si-conditii" element={<SimpleContent type={"Terms"} />} />
                 <Route path="/metode-plata" element={<SimpleContent type={"PaymentMethods"} />} />
                 <Route path="/politica-retur" element={<SimpleContent type={"RefundPolicy"} />} />
                 <Route path="/politica-confidentialitate" element={<SimpleContent type={"PrivacyPolicy"} />} />

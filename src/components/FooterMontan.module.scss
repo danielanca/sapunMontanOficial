@@ -69,6 +69,13 @@
 
 .footItem {
   padding: 3px 0;
+  a {
+    cursor: pointer;
+    color: black;
+  }
+  a:hover {
+    font-weight: 600;
+  }
 }
 .footerTittleCenter {
   text-align: center;

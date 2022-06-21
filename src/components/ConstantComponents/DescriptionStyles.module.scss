@@ -1,18 +1,18 @@
-@import './../../main.module.scss';
-@import './../../data//themes.scss';
+@import "./../../main.module.scss";
+@import "./../../data//themes.scss";
 
 .text {
-  font-family: 'Open Sans Regular', Georgia, Times, 'Times New Roman', serif;
+  font-family: "Open Sans Regular", Georgia, Times, "Times New Roman", serif;
   line-height: 21px;
   text-align: center;
   padding: 0 12vw;
 }
 .bold {
-  font-family: 'Open Sans Regular', Georgia, Times, 'Times New Roman', serif;
+  font-family: "Open Sans Regular", Georgia, Times, "Times New Roman", serif;
   font-weight: bolder;
 }
 .imagePic {
-  @include media('<tablet') {
+  @include media("<tablet") {
     width: 300px;
   }
   width: 60%;
@@ -29,4 +29,8 @@
 }
 .centerText {
   text-align: center;
+}
+.innerDescription {
+  min-height: 600px;
+  width: 100%;
 }

@@ -53,3 +53,44 @@ export const componentStrings = {
     address: "str. LIVIU REBREANU loc. Turda, Cluj"
   }
 };
+
+export const footerData = {
+  linkuriUtile: {
+    terms: {
+      name: "Termeni si conditii",
+      link: "/termeni-si-conditii"
+    },
+    paymentMethods: {
+      name: "Metode de plata",
+      link: "/metode-plata"
+    },
+    onlineDispute: {
+      name: "Online Dispute Resolution",
+      link: "https://ec.europa.eu/consumers/odr/main/?event=main.trader.register"
+    },
+    anpc: { name: "ANPC", link: "https://anpc.ro/" }
+  },
+
+  companyData: {
+    name: "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
+    number: "41030416",
+    fiscal: "F12/696/23.04.2019",
+    address: "str. LIVIU REBREANU loc. Turda, Cluj"
+  },
+
+  ourShop: {
+    affiliate: {
+      name: "Program Afiliere",
+      link: "/program-afiliere"
+    },
+    paymentMethods: {
+      name: "Politica de retur",
+      link: "/politica-retur"
+    },
+    onlineDispute: {
+      name: "Politica de Cookies",
+      link: "/politica-de-cookies"
+    },
+    anpc: { name: "Scrie-ne !", link: "/contact" }
+  }
+};
