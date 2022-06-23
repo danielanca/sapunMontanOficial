@@ -1,15 +1,17 @@
+import { useState } from "react";
 import { HashLink, HashLink as Link, NavHashLink } from "react-router-hash-link";
 import ReactGA from "react-ga4";
-import { BrowserRouter as Router, Routes, Route, BrowserRouter, useLocation } from "react-router-dom";
-import styles from "./Navbar.module.scss";
+import { BrowserRouter as Router, useLocation } from "react-router-dom";
+
 import TopBanner from "./TopBanner";
-import strings from "../data/strings.json";
-import MenuMobile from "./MenuMobile";
+
 import MenuMobileSide from "./MenuMobileSide";
-import shoppingCart from "./../media/assets/pics/prezentareCarbune/shoppingCart.png";
+import shoppingCart from "./../media/assets/cart.png";
 import roFLAG from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
-import { useEffect, useState } from "react";
+
+import styles from "./Navbar.module.scss";
 import images from "../data/images";
+import strings from "../data/strings.json";
 
 interface NavProps {
   updateNotification?: number;

@@ -1,14 +1,15 @@
-import styles from './../components/Blogs.module.scss';
-import BlogItem from './ConstantComponents/BlogItem';
+import styles from "./../components/Blogs.module.scss";
+import BlogItem from "./ConstantComponents/BlogItem";
+import { blogs } from "./../data/blogStrings";
+import "./../data/customCSS.scss";
 
 const Blogs = () => {
   return (
     <div className={styles.blogsSection}>
-      <div className={'row ' + styles.blogPostsList}>
-        <BlogItem blogID={1} />
-        <BlogItem blogID={2} />
-        <BlogItem blogID={3} />
-        <BlogItem blogID={4} />
+      <div className={styles.blogPostsList}>
+        {Object.values(blogs.posts).map((data) => (
+          <BlogItem data={JSON.stringify(data)} />
+        ))}
       </div>
     </div>
   );

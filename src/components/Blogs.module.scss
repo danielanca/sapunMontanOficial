@@ -1,10 +1,11 @@
-@import './../main.module.scss';
-@import './../data//themes.scss';
+@import "./../main.module.scss";
+@import "./../data//themes.scss";
 
 .blogsSection {
   width: 100%;
 }
 .blogPostsList {
+  @extend .row;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,11 +16,11 @@
   column-gap: 5px;
   padding: 62px 10px;
 
-  @include media('>=tablet', '<desktop') {
+  @include media(">=tablet", "<desktop") {
     width: 88vw;
   }
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     width: 100vw;
   }
 }

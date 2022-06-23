@@ -22,6 +22,8 @@ import OrderDone from "./components/CartPage/OrderDone";
 import RequireAuth from "./components/AdminArea/RequireAuth";
 import Login from "./components/AdminArea/LogIn";
 import { AuthProvider } from "./components/context/AuthProvider";
+import { getCookie } from "./components/CookieConsent/functions";
+import CookieConsent from "./components/CookieConsent/CookieConsent";
 import "./App.css";
 import CheckAuth from "./components/AdminArea/CheckAuth";
 import SimpleContent from "./blocks/SimpleContent";
@@ -34,6 +36,12 @@ function App() {
   const [letsCartHandler, CartHandler] = useState(1);
   const [ssProducts, setSSproducts] = useState<any>();
   const [clearRequest, setClearRequest] = useState(false);
+
+  const getCookieConsent = () => {
+    if (getCookie("cookieConsentBrasov") === "userAccepted") return false;
+    else return true;
+  };
+
   const handleScroll = () => {
     const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
 
@@ -61,6 +69,7 @@ function App() {
 
   return (
     <div className="App">
+      {getCookieConsent() && <CookieConsent />}
       <header className="App-header">
         <ProductsContext.Provider productsData={ssProducts}>
           <BrowserRouter basename="/">
@@ -86,7 +95,7 @@ function App() {
                 <Route path="/politica-confidentialitate" element={<SimpleContent type={"PrivacyPolicy"} />} />
                 <Route path="/politica-de-cookies" element={<SimpleContent type={"CookiesPolicy"} />} />
                 <Route path="/blogs" element={<Blogs />} />
-                <Route path="/blogid/:blogid" element={<BlogPost />} />
+                <Route path="/blogid/:blogLink" element={<BlogPost />} />
                 <Route path="/testimonials" element={<Testimonials />} />
                 <Route path="/order/:orderID" element={<OrderView />} />
                 <Route path="/" element={<MainNavigation />} />

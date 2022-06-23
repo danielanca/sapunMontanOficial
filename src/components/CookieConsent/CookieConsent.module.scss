@@ -1,0 +1,71 @@
+@import "./../../main.module.scss";
+
+.cookiePopper {
+  position: fixed;
+  width: 90vw;
+  min-height: 100px;
+  background-color: rgb(255, 255, 255);
+  z-index: 1000;
+  bottom: 20px;
+  transform: translate(-50%);
+  left: 50%;
+  border-radius: 2px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  @include media("<800px") {
+    flex-direction: column;
+  }
+  border: #000000 2px solid;
+  p {
+    color: #0c0c0c;
+    line-height: 17px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  img {
+    margin: 5px;
+  }
+  h4 {
+    color: #ce0000;
+    text-align: start;
+    font-weight: bold;
+    @include media("<tablet") {
+      text-align: center;
+    }
+  }
+  a {
+    color: unset;
+  }
+
+  button {
+    background-color: #ce0000;
+    border-radius: 2px;
+    width: 200px;
+    height: 56px;
+    color: white;
+    outline: none;
+    border: none;
+  }
+  .acceptWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+  }
+  .textArea {
+    margin: 0 5px;
+  }
+  p,
+  p > a {
+    font-family: "Roboto";
+  }
+  a {
+    border-bottom: 2px solid black;
+  }
+}
+
+.cookieIcon {
+  width: 34px;
+  height: 34px;
+}

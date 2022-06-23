@@ -8,7 +8,7 @@ const images = {
   heartIcon: require("./../media/assets/pics/prezentareCarbune/heart.png").default,
   montanLogo: require("./../media/assets/pics/prezentareCarbune/montanLogo.png").default,
   featuredProduct: require("./../media/assets/pics/prezentareCarbune/montanairFeatured.jpg").default,
-
+  cookieIcon: require("./../media/assets/cookie.png").default,
   relaxBackground: require("./../media/assets/pics/blocks/background_Montan.jpg").default,
   ingredients: {
     vitaminaC: require("./../media/assets/pics/prezentareCarbune/ingredients/vitaminaC.png").default,

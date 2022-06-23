@@ -18,7 +18,7 @@ const ProduseleNoastre = () => {
         setProducts(JSON.parse(JSON.stringify(finalData)));
       });
     }
-  }, [products, productsFetched]);
+  }, [productsFetched]);
 
   return (
     <>

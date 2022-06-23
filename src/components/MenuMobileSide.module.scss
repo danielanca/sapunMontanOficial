@@ -208,9 +208,6 @@
   font-size: 22px;
 }
 
-input[type="checkbox"] {
-}
-
 .visuallyHidden {
   position: absolute !important;
   left: -100vw;
@@ -239,6 +236,13 @@ input[type="checkbox"]:not(:checked) ~ .subItemUL {
   width: 100%;
   list-style: none;
   padding-left: 14px;
+  a,
+  a > li {
+    color: black;
+    font-family: initial;
+    text-align: start;
+    text-transform: capitalize;
+  }
 }
 .subItemIcon {
   width: 20px;
@@ -254,8 +258,6 @@ input[type="checkbox"]:not(:checked) ~ .subItemUL {
   font-family: "SallenasGrande Regular" !important;
   border-bottom: 5px solid transparent;
   white-space: nowrap;
-  &:hover {
-  }
 }
 .HashLinkStyle {
   color: map-get($map: $colors, $key: mainlyBlack);

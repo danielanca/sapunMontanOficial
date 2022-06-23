@@ -1,8 +1,5 @@
 @import "./../main.module.scss";
 
-* {
-  // font-family: "Roboto";
-}
 .centerTextTitle {
   text-align: center;
   font-family: "Roboto";
@@ -76,4 +73,23 @@
 }
 .rightIndent {
   margin-left: 5%;
+}
+
+//block content area
+
+.blogContent {
+  font-family: "Roboto";
+  b,
+  strong,
+  p,
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Roboto";
+  }
+
+  .imageCenterMedium {
+    width: 100px;
+  }
 }

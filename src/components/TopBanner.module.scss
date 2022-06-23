@@ -45,7 +45,7 @@
     font-size: 1.2em;
   }
   @include media("<tablet") {
-    font-size: calc(9px + 62%);
+    font-size: 1.1em;
   }
 }
 .emailTop {

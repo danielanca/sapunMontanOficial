@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { HashLink as Link, NavHashLink } from "react-router-hash-link";
-
+import { uniqueId } from "lodash";
 import styles from "./../components/MenuMobileSide.module.scss";
 import images from "../data/images";
 import strings from "../data/strings.json";
@@ -32,7 +32,7 @@ const MenuMobileSide = () => {
           burgerClickHandler(!BurgerOpen);
         }}
         className={BurgerOpen ? `${styles.backDropBackground} ${styles.active}` : `${styles.backDropBackground}`}
-      ></div>
+      />
       <div className={BurgerOpen ? `${styles.burgerMenu} ${styles.activeBurger} ` : `${styles.burgerMenu}`}>
         <ul className={styles.ulMobile}>
           {Object.values(strings.navMenuMobile).map((item) => {
@@ -55,7 +55,9 @@ const MenuMobileSide = () => {
 
                   <ul className={styles.subItemUL}>
                     {Object.values(item.ulItems).map((subItem) => (
-                      <li>{subItem.title}</li>
+                      <NavHashLink onClick={closeBackdrop} replace to={`${subItem.link}`}>
+                        <li key={uniqueId()}>{subItem.title}</li>
+                      </NavHashLink>
                     ))}
                   </ul>
                 </label>

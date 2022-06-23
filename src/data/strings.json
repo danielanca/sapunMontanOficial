@@ -16,15 +16,19 @@
   "navMenuMobile": {
     "ourProducts": {
       "title": "PRODUSE",
-      "link": "/produsele-noastre",
+
       "ulItems": {
         "one": {
-          "title": "Sapununuri",
-          "link": "/sapunuri"
+          "title": "TOATE",
+          "link": "/produsele-noastre"
         },
         "two": {
           "title": "Creme faciale",
           "link": "/creme"
+        },
+        "three": {
+          "title": "Scrub",
+          "link": "/scrub"
         }
       }
     },

@@ -11,6 +11,11 @@
   justify-content: center;
   align-items: center;
   column-gap: 43px;
+  padding: 12px;
+  @include media("<tablet") {
+    column-gap: 0px;
+    grid-column-gap: 0px;
+  }
 }
 .iconImage {
   width: 80px;

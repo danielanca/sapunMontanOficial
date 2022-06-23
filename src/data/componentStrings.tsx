@@ -94,3 +94,11 @@ export const footerData = {
     anpc: { name: "Scrie-ne !", link: "/contact" }
   }
 };
+
+export const cookieConsent = {
+  headTitle: "Utilizam Cookies",
+  mainText:
+    "Acest site folosește cookies pentru a personaliza conținutul, pentru analiza traficului și statistică; unele informații de utilizare a site-ului sunt procesate de partenerii noștri. Puteți oricând să ștergeți cookie-urile din browser.",
+  secondText: "Citește aici politica de cookies, politica de confidențialitate si termenii si condițiile de utilizare.",
+  acceptButton: "Accepta"
+};

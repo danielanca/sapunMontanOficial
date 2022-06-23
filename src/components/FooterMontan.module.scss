@@ -94,6 +94,9 @@
   align-items: center;
   height: 150px;
   background-color: azure;
+  @include media("<tablet") {
+    height: 85px;
+  }
 }
 .statementRO {
   text-transform: uppercase;

@@ -1,7 +1,26 @@
+import { useParams } from "react-router-dom";
+import parse from "html-react-parser";
 import styles from "./BlogPost.module.scss";
 import { NavHashLink } from "react-router-hash-link";
+import { blogs } from "./../data/blogStrings";
+
+interface BlogContent {
+  link: string;
+  title: string;
+  postedDate: string;
+  firstDescription: string;
+  jsonContent: string;
+}
 
 const BlogPost = () => {
+  let params = useParams();
+  var blogLinkBro = "";
+  blogLinkBro = params.blogLink != undefined ? params.blogLink : "";
+  console.log("BlogPost saying:", blogLinkBro);
+
+  var dani: BlogContent = blogs.posts[blogLinkBro];
+  if (blogs.posts[blogLinkBro] != null) {
+  }
   const gotoElement = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -11,27 +30,17 @@ const BlogPost = () => {
       <div className={"container "}>
         <div className={styles.blogPostCont}>
           <div className={styles.topTitle}>
-            <h3 className={styles.centerTitle}>{"Ce este dermatita? Si cum poti scapa de ea?"}</h3>
-            <span className={styles.date}>{"Septembrie 25 - 2021"}</span>
+            <h3 className={styles.centerTitle}>{dani.title}</h3>
+            <span className={styles.date}>{dani.postedDate}</span>
             <span className={styles.fineLine} />
             <span className={styles.postcategory}>{"Ingrijire personala, cosmetice"}</span>
           </div>
           <div className={styles.previewArea}>
-            <p className={styles.firstWords}>
-              {
-                "When it comes to creating is a website for your busi-ness, an attreactive design will only get you far. With people increasingly using their tablets and smartphones and website for your business, an attractive design will only get you far. With people increasingly using their tablets and smartphones shop online,..."
-              }
-            </p>
+            <p className={styles.firstWords}>{}</p>
           </div>
         </div>
         <div className={styles.actualBlogContent}>
-          <img
-            className={styles.pictureThumbnail}
-            src="https://i.pinimg.com/originals/39/0c/74/390c74fe1e6f3dacbfc758e984b704ae.jpg"
-          />
-          <div className={styles.textContainer}>
-            <p>{"text b text btext btext btext btext btext b"}</p>
-          </div>
+          {parse(dani.jsonContent)}
 
           <div className={styles.endOfPost}>
             <p className={styles.tags}>{"Tags:  "}</p>
