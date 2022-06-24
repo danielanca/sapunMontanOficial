@@ -1,6 +1,6 @@
 import ReviewCard from "./../components/ReviewCard";
 import AddReview from "./AddReview";
-
+import { uniqueId } from "lodash";
 import styles from "./ReviewField.module.scss";
 
 interface ReviewsInterface {
@@ -10,15 +10,16 @@ interface ReviewsInterface {
   starsNumber: string;
 }
 interface ReviewsProps {
-  reviewsAr?: any;
   productIdentification: number;
   productData?: ReviewsInterface;
 }
-const ReviewField = ({ productData, reviewsAr, productIdentification }: ReviewsProps) => {
+const ReviewField = ({ productData, productIdentification }: ReviewsProps) => {
   return (
     <div className={styles.contain}>
       <div className={styles.reviewContainer}>
-        {productData != null ? Object.values(productData).map((item) => <ReviewCard testimonials={item} />) : ""}
+        {productData != null
+          ? Object.values(productData).map((item) => <ReviewCard key={uniqueId()} testimonials={item} />)
+          : ""}
 
         <AddReview productID={productIdentification} />
       </div>

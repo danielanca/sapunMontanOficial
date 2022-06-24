@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, BrowserRouter, useLocation } from "react-router-dom";
+import { uniqueId } from "lodash";
 
-import arrow_down from "./../media/assets/pics/prezentareCarbune/arrow_down.svg";
-import flagRomania from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
 import Relaxbar from "./MiniComponents/Footers/Relaxbar";
 import { footerData } from "./../data/componentStrings";
 import styles from "./../components/FooterMontan.module.scss";
+import flagRomania from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
 
 const FooterMontan = () => {
   const [openedContainer, setContainer] = useState(0);
@@ -34,7 +34,7 @@ const FooterMontan = () => {
                 <div className={"col " + styles.footItem}>
                   <h3 className={styles.footerTittleCenter}>{"LINK-URI UTILE"}</h3>
                   {Object.values(footerData.linkuriUtile).map((item) => (
-                    <a href={item.link}>
+                    <a key={uniqueId()} href={item.link}>
                       <p className={styles.classicText}>{item.name}</p>
                     </a>
                   ))}

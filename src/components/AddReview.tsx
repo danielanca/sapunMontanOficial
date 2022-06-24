@@ -42,7 +42,6 @@ const AddReview = ({ productID }: PassingReview) => {
     <div className={styles.addSection}>
       <div className={styles.wrapper}>
         <div className={styles.inputContainer}>
-          <span>{Object.values(reviewBuffer)}</span>
           <span>{"Recenzia:"}</span>
           <textarea
             rows={5}
@@ -50,7 +49,7 @@ const AddReview = ({ productID }: PassingReview) => {
             className={styles.textarea}
             id="recenzia"
             placeholder="Introduceti mesajul cu privire la experienta dvs. "
-          ></textarea>
+          />
           <span>{"Numele dvs:"}</span>
           <input onChange={identificationInserter} name="name" id="name" placeholder="Nume*"></input>
           <span>{"Email:"}</span>

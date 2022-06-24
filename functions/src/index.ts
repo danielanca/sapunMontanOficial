@@ -38,6 +38,27 @@ interface ResponseObject {
 admin.initializeApp({
   credential: admin.credential.applicationDefault()
 });
+
+export const sendReviewToServer = functions.https.onRequest((request, response) => {
+  getReviewData();
+  //   await admin
+  //   .firestore()
+  //   .collection("products")
+  //   .doc("activeProds")
+  //   .create(dataObject)
+  //   .then((result) => functions.logger.info("POST_To_DB: ", result));
+  // };
+});
+const getReviewData = async () => {
+  await admin
+    .firestore()
+    .collection("products")
+    .doc("activeProds")
+    .collection("1")
+    .get()
+    .then((response) => functions.logger.info("sendReviewToServer response: ", response.data()));
+};
+
 const getOrdersAdmin = async () => {
   const adminFirestore = admin.firestore();
   const collection = adminFirestore.collection("orders");
@@ -49,6 +70,7 @@ const getOrdersAdmin = async () => {
   });
   return ordersArray;
 };
+
 export const requestOrders = functions.https.onRequest((request, response) => {
   response.header("Access-Control-Allow-Origin", localHost);
   response.header("Access-Control-Allow-Credentials", "true");

@@ -1,5 +1,6 @@
 import styles from "./../components/ProduseleNoastre.module.scss";
 import { getData } from "../data/productList";
+import { uniqueId } from "lodash";
 import HeadlineTitle from "./HeadlineTitle";
 import ProductItem from "./ProductItem";
 import React, { useContext } from "react";
@@ -25,7 +26,9 @@ const ProduseleNoastre = () => {
       <HeadlineTitle title={"Produsele Noastre"} />
       <div className={styles.blockContainer}>
         <div className={styles.productList}>
-          {products != null ? products.map((item) => <ProductItem productObject={item} />) : "loading data..."}
+          {products != null
+            ? products.map((item) => <ProductItem key={uniqueId()} productObject={item} />)
+            : "loading data..."}
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 import ProductItem from "../ProductItem";
-
+import { uniqueId } from "lodash";
 import { useEffect, useState } from "react";
 import styles from "./SuggestionArea.module.scss";
 
@@ -25,7 +25,7 @@ const SuggestionArea = ({ productID }: SuggestionProps) => {
 
       <div className={styles.productArea}>
         {products != null
-          ? products.map((item, index) => <ProductItem size="small" productObject={item} />)
+          ? products.map((item, index) => <ProductItem key={uniqueId()} size="small" productObject={item} />)
           : "LOADING PRODUCTS"}
       </div>
     </div>
