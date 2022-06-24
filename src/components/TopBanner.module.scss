@@ -14,7 +14,7 @@
   justify-content: center;
 
   @include media("<tablet") {
-    height: 75px;
+    height: 42px;
     flex-direction: column;
   }
   @include media(">=tablet", "<desktop") {
@@ -41,12 +41,6 @@
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   font-weight: 600;
-  @include media(">=tablet", "<=desktop") {
-    font-size: 1.2em;
-  }
-  @include media("<tablet") {
-    font-size: 1.1em;
-  }
 }
 .emailTop {
   font-family: "Roboto", sans-serif;

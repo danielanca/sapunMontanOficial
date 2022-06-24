@@ -17,6 +17,33 @@
   background-color: rgba(0, 0, 0, 0.4);
   margin: 10px;
 }
+.methodPaymentCheck {
+  margin: 0;
+}
+.textareaparticular {
+  resize: none;
+}
+.infoBoxing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 50px 0px;
+
+  img {
+    width: 70px;
+    height: 70px;
+    @include media("<tablet") {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  h3 {
+    margin-top: 20px;
+    font-family: "Roboto";
+    font-family: 20px;
+  }
+}
 .topTitle {
   display: flex;
   justify-content: center;
@@ -145,6 +172,7 @@ input[type="checkbox"] {
   flex-direction: row;
   row-gap: 10px;
   justify-content: space-between;
+  font-family: "Roboto Regular";
 }
 .itemUl {
   margin: 10px 0;
@@ -179,7 +207,7 @@ input[type="checkbox"] {
   font-weight: 200;
   font-size: 1.2em;
   text-align: end;
-
+  font-family: "Roboto Regular";
   @include media("<tablet") {
     text-align: center;
     font-size: calc(16px + 2vw);

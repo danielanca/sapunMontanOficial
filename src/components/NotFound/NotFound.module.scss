@@ -1,0 +1,44 @@
+@import "./../../main.module.scss";
+@import "./../../data//themes.scss";
+
+.NotFoundContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.titleNoFound {
+  font-size: 30px;
+}
+.coalCartoon {
+  width: auto;
+  height: 200px;
+}
+
+.carbunelWrap {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    text-align: center;
+    margin-top: 10px;
+  }
+  h2 {
+    font-family: "Roboto";
+    text-align: center;
+  }
+
+  button {
+    outline: none;
+    border: none;
+    background-color: #00ac10;
+    width: 200px;
+    color: white;
+    height: 45px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}

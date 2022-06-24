@@ -4,7 +4,7 @@ import styles from "./CartPage.module.scss";
 import ItemCartList from "./ItemCartList";
 import productList from "./../data/productList";
 import { useState, useEffect } from "react";
-
+import images from "./../data/images";
 interface CartProps {
   notifyMe?: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -14,7 +14,7 @@ const CartPage = ({ notifyMe }: CartProps) => {
   var subtotalPrepare = 0;
   var storedCart = [];
   let expectedData = localStorage.getItem("cartData");
-
+  var shippingFee = 20;
   let sessionProducts = JSON.parse(sessionStorage.getItem("productsFetched"));
   console.log("Product session:", sessionProducts);
   if (expectedData != null) {
@@ -82,7 +82,7 @@ const CartPage = ({ notifyMe }: CartProps) => {
                 <div className={styles.subtotalContainer}>
                   <div className={styles.subtotalLine + " row "}>
                     <div className="col-sm-4 d-flex align-items-center justify-content-end">
-                      <p className={styles.toRight}>{"Subtotal:" + totalCart}</p>
+                      <p className={styles.toRight}>{"Subtotal:"}</p>
                     </div>
                     <div className={"col-sm-8 d-flex justify-content-start align-items-center "}>
                       <p className={styles.subtotalStyle}>{subtotalPrepare + " LEI"}</p>
@@ -94,7 +94,7 @@ const CartPage = ({ notifyMe }: CartProps) => {
                     </div>
                     <div className="col-sm-8 d-flex justify-content-start align-items-center">
                       <p className={styles.subtotalStyle}>
-                        {"Livrare standard prin GLS: lei 18.00 Livrare la România."}
+                        {`Livrare standard prin SameDay:  ${shippingFee}.00 RON  Livrare oriunde in România.`}
                       </p>
                     </div>
                   </div>
@@ -103,7 +103,7 @@ const CartPage = ({ notifyMe }: CartProps) => {
                       <p className={styles.toRight}>{"TOTAL:"}</p>
                     </div>
                     <div className="col-sm-8 d-flex justify-content-start align-items-center">
-                      <p className={styles.subtotalStyle}>{" 32 lei (include TVA)"}</p>
+                      <p className={styles.subtotalStyle}>{`${subtotalPrepare + shippingFee}.00 (include TVA)`}</p>
                     </div>
                   </div>
                   <div className={styles.finishTheOrderBox}>

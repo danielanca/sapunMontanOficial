@@ -68,12 +68,17 @@ const MenuMobileSide = () => {
 
         <ul className={styles.ulOthers}>
           <li className={styles.individualItem}>
-            <img className={styles.icon} src={images.cartLogo} />
-            <span>{"Cosul Meu"}</span>
+            <NavHashLink className={styles.HashLinkStyleBottom} onClick={closeBackdrop} replace to={`cosulmeu`}>
+              <img className={styles.icon} src={images.cartLogo} />
+              <span>{"Cosul Meu"}</span>
+            </NavHashLink>
           </li>
+
           <li className={styles.individualItem}>
-            <img className={styles.icon} src={images.heartIcon} />
-            <span>{"Favorite"}</span>
+            <NavHashLink className={styles.HashLinkStyleBottom} onClick={closeBackdrop} replace to={`favorite`}>
+              <img className={styles.icon} src={images.heartIcon} />
+              <span>{"Favorite"}</span>
+            </NavHashLink>
           </li>
         </ul>
       </div>

@@ -10,6 +10,8 @@ const images = {
   featuredProduct: require("./../media/assets/pics/prezentareCarbune/montanairFeatured.jpg").default,
   cookieIcon: require("./../media/assets/cookie.png").default,
   relaxBackground: require("./../media/assets/pics/blocks/background_Montan.jpg").default,
+  coalCartoon: require("./../media/assets/coal_cartoon.png").default,
+  finishOrder: require("./../media/assets/open-box.png").default,
   ingredients: {
     vitaminaC: require("./../media/assets/pics/prezentareCarbune/ingredients/vitaminaC.png").default,
     argila: require("./../media/assets/pics/prezentareCarbune/ingredients/argila.png").default,

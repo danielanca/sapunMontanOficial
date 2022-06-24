@@ -1,5 +1,5 @@
 import styles from "./SimpleContent.module.scss";
-import strings from "./../data/strings.json";
+
 import parse from "html-react-parser";
 import { staticContent } from "./../data/contentLegal";
 import "./../data/customCSS.scss";

@@ -27,6 +27,7 @@ import CookieConsent from "./components/CookieConsent/CookieConsent";
 import "./App.css";
 import CheckAuth from "./components/AdminArea/CheckAuth";
 import SimpleContent from "./blocks/SimpleContent";
+import NotFound from "./components/NotFound/NotFound";
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
 
@@ -89,17 +90,23 @@ function App() {
                 <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />} />
                 <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />} />
                 <Route path="/finalizare-comanda" element={<FinishOrder clearNotification={CartHandler} />} />
-                <Route path="/termeni-si-conditii" element={<SimpleContent type={"Terms"} />} />
-                <Route path="/metode-plata" element={<SimpleContent type={"PaymentMethods"} />} />
-                <Route path="/politica-retur" element={<SimpleContent type={"RefundPolicy"} />} />
-                <Route path="/politica-confidentialitate" element={<SimpleContent type={"PrivacyPolicy"} />} />
-                <Route path="/politica-de-cookies" element={<SimpleContent type={"CookiesPolicy"} />} />
+
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/blogid/:blogLink" element={<BlogPost />} />
                 <Route path="/testimonials" element={<Testimonials />} />
                 <Route path="/order/:orderID" element={<OrderView />} />
                 <Route path="/" element={<MainNavigation />} />
-                {/* <Route path="*" component={NotFound} /> */}
+
+                {/* Content Template*/}
+                <Route path="/termeni-si-conditii" element={<SimpleContent type={"Terms"} />} />
+                <Route path="/metode-plata" element={<SimpleContent type={"PaymentMethods"} />} />
+                <Route path="/politica-retur" element={<SimpleContent type={"RefundPolicy"} />} />
+                <Route path="/politica-confidentialitate" element={<SimpleContent type={"PrivacyPolicy"} />} />
+                <Route path="/politica-de-cookies" element={<SimpleContent type={"CookiesPolicy"} />} />
+                <Route path="/afiliere" element={<SimpleContent type={"AffiliateProgram"} />} />
+                {/* Content Template*/}
+
+                <Route path="*" element={<NotFound />} />
               </Routes>
               <FooterMontan />
             </AuthProvider>

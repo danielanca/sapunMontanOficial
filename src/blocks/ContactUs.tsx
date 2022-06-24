@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-import TheSeparator from '../components/TheSeparator';
-import HeaderMessage from '../components/HeaderMessage';
+import TheSeparator from "../components/TheSeparator";
+import HeaderMessage from "../components/HeaderMessage";
 
-import styles from './ContactUs.module.scss';
+import styles from "./ContactUs.module.scss";
 
-import images from './../data/images';
+import images from "./../data/images";
 
-import strings from './../data/strings.json';
+import strings from "./../data/strings.json";
 
-import { sendEmailToOasis } from '../services/emails';
+import { sendEmailToOasis } from "../services/emails";
 
-import { addEmailToList } from '../functions/firebase';
+import { addEmailToList } from "../functions/firebase";
 
 const ContactUs = () => {
   const [emailSucces, setEmailSucces] = useState<boolean>(true);
   const [showEmailBox, setShowEmailBox] = useState<boolean>(false);
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [message, setMessage] = useState<string>('');
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const [showNameError, setShowNameError] = useState<boolean>(false);
   const [showEmailError, setShowEmailError] = useState<boolean>(false);
   const [showMessageError, setShowMessageError] = useState<boolean>(false);
@@ -32,13 +32,13 @@ const ContactUs = () => {
   };
 
   const validateFields = () => {
-    if (name === '') {
+    if (name === "") {
       setShowNameError(true);
     } else setShowNameError(false);
-    if (!validateEmail(email) || email === '') {
+    if (!validateEmail(email) || email === "") {
       setShowEmailError(true);
     } else setShowEmailError(false);
-    if (message === '') {
+    if (message === "") {
       setShowMessageError(true);
     } else setShowMessageError(false);
   };
@@ -52,9 +52,9 @@ const ContactUs = () => {
   const validateAndSend = async () => {
     if (name && email && message && !error) {
       if ((await sendEmailToOasis(name, email, message)) === true) {
-        setName('');
-        setEmail('');
-        setMessage('');
+        setName("");
+        setEmail("");
+        setMessage("");
         setEmailSucces(true);
         setShowEmailBox(true);
         setError(true);
@@ -62,9 +62,9 @@ const ContactUs = () => {
         if (newsChecked) addEmailToList(email);
       } else {
         {
-          setName('');
-          setEmail('');
-          setMessage('');
+          setName("");
+          setEmail("");
+          setMessage("");
           setEmailSucces(false);
           setShowEmailBox(true);
           setError(true);
@@ -111,20 +111,20 @@ const ContactUs = () => {
               <div className={styles.containerPadder}>
                 <input
                   placeholder={strings.contactUs.content.newsletterBox.placeholderName}
-                  type={showNameError ? 'textError' : 'text'}
+                  type={showNameError ? "textError" : "text"}
                   value={name}
                   onChange={(text) => setName(text.target.value)}
                 />
                 <input
                   placeholder={strings.contactUs.content.newsletterBox.placeholderEmail}
-                  type={showEmailError ? 'textError' : 'text'}
+                  type={showEmailError ? "textError" : "text"}
                   value={email}
                   onChange={(text) => setEmail(text.target.value)}
                 />
                 <span className={styles.fieldsText}>{strings.contactUs.content.newsletterBox.otherDetails}</span>
                 <textarea
                   rows={5}
-                  type={showMessageError ? 'detailsContainerError' : 'detailsContainer'}
+                  type={showMessageError ? "detailsContainerError" : "detailsContainer"}
                   value={message}
                   onChange={(text) => setMessage(text.target.value)}
                 />
@@ -132,7 +132,11 @@ const ContactUs = () => {
               <div className={styles.newsAction}>
                 <label className={`${styles.control}  ${styles.controlcheckbox} `}>
                   <span className={styles.checkBoxText}> {strings.contactUs.content.newsletterBox.radioButton} </span>
-                  <input type="checkbox" className={styles.checked} onClick={() => setNewsChecked((prevState) => !prevState)} />
+                  <input
+                    type="checkbox"
+                    className={styles.checked}
+                    onClick={() => setNewsChecked((prevState) => !prevState)}
+                  />
                   <div className={styles.control_indicator}></div>
                 </label>
 
@@ -146,7 +150,7 @@ const ContactUs = () => {
                 <img
                   className={styles.iconContact}
                   src={images.contactUs.callerIcon}
-                  onClick={() => (window.location = 'tel:+40 747 057 615')}
+                  onClick={() => (window.location = "tel:+40 747 057 615")}
                 />
                 <span className={styles.contactText}>{strings.contactUs.content.telephone}</span>
               </div>
@@ -154,7 +158,7 @@ const ContactUs = () => {
                 <img
                   className={styles.iconContact}
                   src={images.contactUs.emailIcon}
-                  onClick={() => (window.location = 'mailto:contact@oasisresidence.co')}
+                  onClick={() => (window.location = "mailto:contact@oasisresidence.co")}
                 />
                 <span className={styles.contactText}>{strings.contactUs.content.email}</span>
               </div>
@@ -162,7 +166,7 @@ const ContactUs = () => {
                 <img
                   className={styles.iconContact}
                   src={images.contactUs.mapIcon}
-                  onClick={() => window.open(strings.contactUs.mapsUrl, '_blank', 'noopener,noreferrer')}
+                  onClick={() => window.open(strings.contactUs.mapsUrl, "_blank", "noopener,noreferrer")}
                 />
                 <span className={styles.contactText}>{strings.contactUs.content.address}</span>
               </div>
@@ -177,13 +181,13 @@ const ContactUs = () => {
 
                 <input
                   placeholder={strings.contactUs.content.newsletterBox.placeholderName}
-                  type={showNameError ? 'textError' : 'text'}
+                  type={showNameError ? "textError" : "text"}
                   value={name}
                   onChange={(text) => setName(text.target.value)}
                 />
                 <input
                   placeholder={strings.contactUs.content.newsletterBox.placeholderEmail}
-                  type={showEmailError ? 'textError' : 'text'}
+                  type={showEmailError ? "textError" : "text"}
                   value={email}
                   onChange={(text) => setEmail(text.target.value)}
                 />
@@ -191,7 +195,7 @@ const ContactUs = () => {
                 <div>
                   <span className={styles.fieldsText}>{strings.contactUs.content.newsletterBox.otherDetails}</span>
                   <textarea
-                    type={showMessageError ? 'detailsContainerError' : 'detailsContainer'}
+                    type={showMessageError ? "detailsContainerError" : "detailsContainer"}
                     value={message}
                     onChange={(text) => setMessage(text.target.value)}
                   />
@@ -200,7 +204,11 @@ const ContactUs = () => {
               <div className={styles.newsAction}>
                 <label className={`${styles.control}  ${styles.controlcheckbox} `}>
                   <span className={styles.checkBoxText}> {strings.contactUs.content.newsletterBox.radioButton} </span>
-                  <input type="checkbox" className={styles.checked} onClick={() => setNewsChecked((prevState) => !prevState)} />
+                  <input
+                    type="checkbox"
+                    className={styles.checked}
+                    onClick={() => setNewsChecked((prevState) => !prevState)}
+                  />
                   <div className={styles.control_indicator}></div>
                 </label>
                 <button className={styles.newsButton} onClick={() => (validateFields(), setPressed(true))}>

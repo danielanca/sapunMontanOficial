@@ -2,7 +2,7 @@
 @import "./../data/themes.scss";
 
 .jewel {
-  background-color: red;
+  background-color: #00ac10;
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -37,7 +37,8 @@
     opacity: 0.7;
     width: 100vw;
     position: absolute;
-    height: 185vh;
+    height: 100%;
+    top: 0px;
     z-index: 8;
   }
 }
@@ -264,11 +265,24 @@ input[type="checkbox"]:not(:checked) ~ .subItemUL {
   font-family: inherit;
   text-decoration: none;
   text-transform: uppercase;
+
+  span {
+    font-family: "Roboto";
+  }
+
   &:hover {
     color: map-get($map: $colors, $key: mainlyBlack);
     border-bottom: 2px solid black;
   }
 }
+
+.HashLinkStyleBottom {
+  @extend .HashLinkStyle;
+  &:hover {
+    border-bottom: none;
+  }
+}
+
 .logoHover {
   color: map-get($map: $colors, $key: mainlyBlack);
   text-decoration: none;

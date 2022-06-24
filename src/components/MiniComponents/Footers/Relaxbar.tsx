@@ -1,8 +1,12 @@
 import styles from "./Relaxbar.module.scss";
 import images from "../../../data/images";
 import strings from "../../../data/strings.json";
+import { NavHashLink } from "react-router-hash-link";
 
 const Relaxbar = () => {
+  const goToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <div className={styles.relaxSpace}>
       <div className={styles.cardobard}>
@@ -16,9 +20,9 @@ const Relaxbar = () => {
         </div>
         <div className={styles.inquiries}>
           <p>{"Hai sa colaboram impreuna!"}</p>
-          <a>
+          <NavHashLink onClick={goToTop} smooth replace to={"afiliere"}>
             <p>{"Program Afiliere"}</p>
-          </a>
+          </NavHashLink>
         </div>
       </div>
     </div>

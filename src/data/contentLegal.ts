@@ -198,7 +198,29 @@ export const staticContent = {
 <p> <b>6. La telefoane  tablete și alte dispozitive mobile:</b> fiecare model de telefon poate gestiona această funcție diferit. Vă recomandăm să verificați setările de confidențialitate din documentația de pe site-ul web al producătorului dispozitivului dvs. mobil</p>
 
 </div>
-<div class="spacerPadder50"> </div>
+<div class="spacerPadder50"> 
+
+
+
+</div>
+
+    `
+  },
+
+  AffiliateProgram: {
+    title: "Programul de afiliere",
+    jsonContent: `
+    <div class="spacerPadder200"> </div>
+  
+    <div class="textSpaceMargins">
+    <h2 class="middleSubtext">Program de afiliere</h2>
+
+    <p class="text-center">Pregatim un program de afiliere pentru toti partenerii nostri, in curand va fi gata!</p>
+   
+    <div class="spacerPadder200"> </div>
+    </div>
+
+
 
     `
   }

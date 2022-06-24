@@ -100,8 +100,8 @@
 }
 
 .page-content {
-  padding: calc(#{$header-height} + #{$grid-gutter-width / 2})
-    $grid-gutter-width $footer-height $grid-gutter-width;
+  padding: calc(#{$header-height} + #{calc($grid-gutter-width / 2)}) $grid-gutter-width $footer-height
+    $grid-gutter-width;
 }
 
 .header-item {
@@ -137,7 +137,7 @@
 }
 
 .notification-item {
-  .d-flex{
+  .d-flex {
     padding: 0.75rem 1rem;
     display: flex;
 

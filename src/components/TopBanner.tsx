@@ -6,7 +6,7 @@ const TopBanner = () => {
     <div className={styles.bigBlanaBanner}>
       <div className={"col-md-3 " + styles.emailTop}>{"contact@sapun-montan.ro"}</div>
       <div className="col-md-6 ">
-        <p className={styles.headTitle}>{"Transport Gratuit pentru comenzi peste 130 lei"}</p>
+        <p className={styles.headTitle}>{"Transport Gratuit la comenzi peste 130 lei"}</p>
       </div>
       <div className={"col-md-3 " + styles.socialsTop}>
         <div className={styles.iconWrapper}>

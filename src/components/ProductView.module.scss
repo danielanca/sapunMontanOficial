@@ -109,6 +109,7 @@
 .reviewHead {
   font-size: 20px;
   align-self: center;
+  font-family: "Roboto";
 }
 .priceWrapper {
   width: 100%;
@@ -119,7 +120,7 @@
 }
 .productPrice {
   font-size: 3rem;
-  color: rgb(219, 12, 12);
+  color: #00ac10;
 }
 .actionContainer {
   width: 100%;
@@ -129,7 +130,7 @@
   height: 115px;
 }
 .addToCart {
-  background-color: rgb(219, 12, 12);
+  background-color: #00ac10;
   color: white;
   outline: none;
   border-style: none;

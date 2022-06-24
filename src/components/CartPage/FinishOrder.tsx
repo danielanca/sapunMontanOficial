@@ -6,6 +6,7 @@ import { useState, useEffect, useCallback } from "react";
 import { sendOrderConfirmation } from "./../../services/emails";
 import styles from "./../CartPage/FinishOrder.module.scss";
 import { orderProps } from "./../../utils/OrderInterfaces";
+import { NavHashLink } from "react-router-hash-link";
 
 interface ErrorProps {
   paymentSelected: boolean;
@@ -170,6 +171,10 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
             <h3 className={styles.finishOrderTitle}>{"Finalizeaza comanda"}</h3>
             <div className={styles.cartLine} />
           </div>
+          <div className={styles.infoBoxing}>
+            <img src={images.finishOrder} />
+            <h3>{"Pregatim comanda de indata, ne mai lipsesc datele de livrare"}</h3>
+          </div>
           <div className={"row " + styles.finishOrderContainer}>
             <div className={"col-sm-12  col-lg-6  " + styles.leftContainer}>
               <div>
@@ -263,6 +268,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                 <div className={styles.inputBox}>
                   <label className={styles.optionalNote}>{"Note comandă [opțional]"}</label>
                   <textarea
+                    className={styles.textareaparticular}
                     spellCheck="false"
                     rows={2}
                     onChange={(event) => {
@@ -318,7 +324,9 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                         setorderData((orderData) => ({ ...orderData, paymentMethod: "rambursPayment" }));
                       }}
                     />
-                    <label htmlFor="delivercheck">Plata Ramburs</label>
+                    <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
+                      Plata Ramburs
+                    </label>
                   </div>
                 </div>
               </div>
@@ -343,7 +351,9 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                   {
                     "Datele dumneavoastre personale vor fi folosite pentru a vă procesa comanda, pentru a vă susține experiența pe tot acest site web și pentru alte scopuri descrise în "
                   }
-                  <a className={styles.extensiveGdpr}>{"politica de confidentialitate"}</a>
+                  <NavHashLink replace to={"/politica-confidentialitate"}>
+                    <a className={styles.extensiveGdpr}>{"politica de confidentialitate"}</a>
+                  </NavHashLink>
                 </p>
 
                 <div className={styles.groupInputTerms}>

@@ -81,7 +81,7 @@ export const footerData = {
   ourShop: {
     affiliate: {
       name: "Program Afiliere",
-      link: "/program-afiliere"
+      link: "/afiliere"
     },
     paymentMethods: {
       name: "Politica de retur",
