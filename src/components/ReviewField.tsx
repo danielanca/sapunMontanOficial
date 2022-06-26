@@ -4,10 +4,12 @@ import { uniqueId } from "lodash";
 import styles from "./ReviewField.module.scss";
 
 interface ReviewsInterface {
-  actualComment: string;
+  reviewActual: string;
   date: string;
   name: string;
   starsNumber: string;
+  email: string;
+  reviewProductID: string;
 }
 interface ReviewsProps {
   productIdentification: number;

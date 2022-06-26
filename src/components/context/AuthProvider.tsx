@@ -14,7 +14,7 @@ const AuthContext = createContext<ProviInter | null>(null);
 
 export const AuthProvider: React.FC = ({ children }) => {
   var authoriseMe = false;
-  if (getCookie("jwt") == "FlorinSalam2022") {
+  if (getCookie("jwt") === "FlorinSalam2022") {
     authoriseMe = true;
     // setAuth((auth) => ({ ...auth, email: "yeah", authorise: true }));
   }

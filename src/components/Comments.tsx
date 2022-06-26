@@ -10,8 +10,6 @@ interface CommentsProps {
   productData?: string;
 }
 const Comments = ({ productData, reviewsList, productID }: CommentsProps) => {
-  const [tabButton, settabButton] = useState(0);
-
   var productReviews;
 
   if (productData != null) {

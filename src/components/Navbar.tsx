@@ -6,7 +6,6 @@ import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import TopBanner from "./TopBanner";
 
 import MenuMobileSide from "./MenuMobileSide";
-import shoppingCart from "./../media/assets/cart.png";
 import roFLAG from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
 
 import styles from "./Navbar.module.scss";
@@ -83,7 +82,7 @@ const NavBar = ({ clearNotif }: NavProps) => {
               </ul>
               <div className={styles.sideRightContainer}>
                 <NavHashLink className={styles.hashTransparent} to="/cosulmeu">
-                  <img className={styles.shopIcon} src={shoppingCart} />
+                  <img className={styles.shopIcon} src={images.cartLogo} />
                   <span className={styles.jewel}>{totalItems}</span>
                 </NavHashLink>
               </div>

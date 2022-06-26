@@ -4,12 +4,12 @@ import stars from "./../../media/assets/pics/prezentareCarbune/star_review.png";
 // import images from "./../data/images";
 
 interface StarsProps {
-  starScore: number;
+  starScore: string;
 }
 
 const StarDisplayer = ({ starScore }: StarsProps) => {
   let lastHalf = false;
-  if (starScore % 1 != 0) lastHalf = true;
+  if (Number(starScore) % 1 != 0) lastHalf = true;
 
   return (
     <div className={styles.starVisualizer}>

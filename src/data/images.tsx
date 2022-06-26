@@ -3,7 +3,7 @@ const images = {
   deliveryCar: require("./../media/assets/pics/prezentareCarbune/delivery.png").default,
   logo: require("./../media/assets/oasis_header.svg").default,
   star: require("./../media/assets/pics/prezentareCarbune/star_review.png").default,
-  cartLogo: require("./../media/assets/pics/prezentareCarbune/shoppingCart.png").default,
+  cartLogo: require("./../media/assets/cart.png").default,
   arrowRight: require("./../media/assets/pics/prezentareCarbune/next.png").default,
   heartIcon: require("./../media/assets/pics/prezentareCarbune/heart.png").default,
   montanLogo: require("./../media/assets/pics/prezentareCarbune/montanLogo.png").default,

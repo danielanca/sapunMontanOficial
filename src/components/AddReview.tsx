@@ -3,10 +3,10 @@ import styles from "./AddReview.module.scss";
 import { sendReviewToBack } from "./../services/emails";
 interface ReviewProps {
   name: string;
-  starsNumber: string;
-  reviewActual: string;
   email: string;
+  reviewActual: string;
   reviewProductID: string;
+  starsNumber: string;
 }
 interface PassingReview {
   productID: number;
@@ -47,7 +47,8 @@ const AddReview = ({ productID }: PassingReview) => {
             rows={5}
             onChange={reviewInputer}
             className={styles.textarea}
-            id="recenzia"
+            name="reviewActual"
+            id="reviewActual"
             placeholder="Introduceti mesajul cu privire la experienta dvs. "
           />
           <span>{"Numele dvs:"}</span>

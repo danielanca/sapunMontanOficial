@@ -36,7 +36,7 @@ const MenuMobileSide = () => {
       <div className={BurgerOpen ? `${styles.burgerMenu} ${styles.activeBurger} ` : `${styles.burgerMenu}`}>
         <ul className={styles.ulMobile}>
           {Object.values(strings.navMenuMobile).map((item) => {
-            if (item.ulItems == 0) {
+            if (item.ulItems === 0) {
               return (
                 <li className={styles.liMobile}>
                   <NavHashLink onClick={closeBackdrop} className={styles.HashLinkStyle} to={`${item.link}`}>

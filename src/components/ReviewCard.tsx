@@ -4,10 +4,12 @@ import styles from "./ReviewCard.module.scss";
 
 import StarDisplayer from "./StarDisplayer/StarDisplayer";
 interface ReviewerInterface {
-  name: string;
+  reviewActual: string;
   date: string;
-  starsNumber: number;
-  actualComment: string;
+  name: string;
+  starsNumber: string;
+  email: string;
+  reviewProductID: string;
 }
 interface IProps {
   testimonials: ReviewerInterface;
@@ -24,7 +26,7 @@ const ReviewCard = ({ testimonials }: IProps) => {
         <StarDisplayer starScore={testimonials.starsNumber} />
       </div>
       <div className={styles.comment}>
-        <p className={styles.actualComment}>{testimonials.actualComment}</p>
+        <p className={styles.actualComment}>{testimonials.reviewActual}</p>
       </div>
     </div>
   );

@@ -43,6 +43,7 @@
   font-weight: 600;
 }
 .emailTop {
+  @extend .col-md-3;
   font-family: "Roboto", sans-serif;
   color: #eee6d3;
   font-weight: 900;
@@ -51,6 +52,7 @@
   }
 }
 .socialsTop {
+  @extend .col-md-3;
   font-family: "Roboto", sans-serif;
   color: #eee6d3;
   display: flex;
