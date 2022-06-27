@@ -1,4 +1,4 @@
-import { orderProps } from "./../utils/OrderInterfaces";
+import { orderProps, ProductModel } from "./../utils/OrderInterfaces";
 import { getCookie } from "../utils/functions";
 // const destination = "https://us-central1-sapunmontan.cloudfunctions.net";
 const destination = "http://localhost:5000/sapunmontan/us-central1";
@@ -63,6 +63,17 @@ export const requestLoginAccess = async (email: string, password: string) => {
     method: "POST",
     mode: "cors",
     body: JSON.stringify({ email: email, password: password })
+  })
+    .then((res) => res)
+    .catch((error) => error);
+};
+
+export const updateProduct = async (productModel: ProductModel) => {
+  return await fetch(`${destination}/updateProduct`, {
+    credentials: "include",
+    method: "POST",
+    mode: "cors",
+    body: JSON.stringify(productModel)
   })
     .then((res) => res)
     .catch((error) => error);

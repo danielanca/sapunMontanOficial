@@ -15,7 +15,7 @@ interface CartProps {
 
 const ProductView = ({ notifyMe }: CartProps) => {
   let params = useParams();
-  var ID = Number(params.productID);
+  var ID = params.productID != undefined ? params.productID : "";
 
   const [mainPicture, setmainPicture] = useState(0);
   const [popProductInCart, setpopProductInCart] = useState(false);
@@ -120,14 +120,14 @@ const ProductView = ({ notifyMe }: CartProps) => {
                       : ""}
                   </span>
                 </div>
-                <div className={styles.shortDescription}>{productListUpdated[0].shortDescription}</div>
+                <div className={styles.shortDescription}>{productListUpdated[ID].shortDescription}</div>
                 <div className={styles.longDescription}>
-                  {productListUpdated[0].firstDescription}
+                  {productListUpdated[ID].firstDescription}
 
-                  <ul>
-                    <li className={styles.liItem}>{productListUpdated[0].ULbeneficii[1]}</li>
-                    <li className={styles.liItem}>{productListUpdated[0].ULbeneficii[1]}</li>
-                  </ul>
+                  {/* <ul>
+                    <li className={styles.liItem}>{productListUpdated[ID].ULbeneficii[0]}</li>
+                    <li className={styles.liItem}>{productListUpdated[ID].ULbeneficii[1]}</li>
+                  </ul> */}
                 </div>
                 <div className={styles.priceWrapper}>
                   <div className={styles.productPrice}>{productListUpdated[ID].price + " LEI"}</div>

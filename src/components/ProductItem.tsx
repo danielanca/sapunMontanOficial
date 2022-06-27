@@ -4,11 +4,15 @@ import productList from "./../data/productList";
 import styles from "./../components/ProductItem.module.scss";
 
 interface productObject {
-  ID: number;
-  title: string;
+  ID: string;
+  ULbeneficii: [];
+  firstDescription: string;
+  imageProduct: [];
+  jsonContent: string;
   price: string;
+  reviews: {};
   shortDescription: string;
-  imageProduct: string[];
+  title: string;
 }
 
 interface ProdProps {

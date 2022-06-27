@@ -27,7 +27,7 @@ const ProduseleNoastre = () => {
       <div className={styles.blockContainer}>
         <div className={styles.productList}>
           {products != null
-            ? products.map((item) => <ProductItem key={uniqueId()} productObject={item} />)
+            ? Object.values(products).map((item) => <ProductItem key={uniqueId()} productObject={item} />)
             : "loading data..."}
         </div>
       </div>

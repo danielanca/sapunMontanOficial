@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./SuggestionArea.module.scss";
 
 interface SuggestionProps {
-  productID: number;
+  productID: string;
 }
 
 const SuggestionArea = ({ productID }: SuggestionProps) => {
@@ -25,7 +25,9 @@ const SuggestionArea = ({ productID }: SuggestionProps) => {
 
       <div className={styles.productArea}>
         {products != null
-          ? products.map((item, index) => <ProductItem key={uniqueId()} size="small" productObject={item} />)
+          ? Object.values(products).map((item, index) => (
+              <ProductItem key={uniqueId()} size="small" productObject={item} />
+            ))
           : "LOADING PRODUCTS"}
       </div>
     </div>

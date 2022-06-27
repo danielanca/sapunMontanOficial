@@ -3,14 +3,15 @@ import images from "./../../data/images";
 import { NavHashLink } from "react-router-hash-link";
 
 interface ProductProps {
-  id: number;
+  id: string;
   animFin: () => void;
 }
 const ProductAdded = ({ id, animFin }: ProductProps) => {
-  let data = Array.from(JSON.parse(sessionStorage.getItem("productsFetched")));
+  let sessionData = sessionStorage.getItem("productsFetched");
 
-  let ID = id;
+  let data = sessionData != null ? JSON.parse(sessionData) : null;
 
+  console.log("Product added", data[id].title);
   const animationFinished = () => {
     animFin();
   };
@@ -19,7 +20,7 @@ const ProductAdded = ({ id, animFin }: ProductProps) => {
       <div className={styles.cartLogoStyle}>
         <img className={styles.cartIcon} src={images.cartLogo} />
       </div>
-      <div className={styles.titleProduct}>{data[ID].title}</div>
+      <div className={styles.titleProduct}>{data != null ? data[id].title : ""}</div>
       <div className={styles.confirmMessage}>
         <p className={styles.confirmMessage}>{"A fost adaugat cu succes in cosul tau de cumparaturi!"}</p>
       </div>

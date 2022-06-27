@@ -47,19 +47,17 @@ admin.initializeApp({
   credential: admin.credential.applicationDefault()
 });
 
+export const updateProduct = functions.https.onRequest((request, response) => {
+  let requestParam = JSON.parse(request.body);
+  console.log("updateProduct:", requestParam);
+
+  createNewProduct(requestParam);
+});
+
 export const sendReviewToServer = functions.https.onRequest((request, response) => {
   let requestParam = JSON.parse(request.body);
-  console.log("Param data is:", requestParam);
+  console.log("endReviewToServer:", requestParam);
   postReviewData(requestParam);
-  // createNewProduct();
-  // createNewProduct();
-  //   await admin
-  //   .firestore()
-  //   .collection("products")
-  //   .doc("activeProds")
-  //   .create(dataObject)
-  //   .then((result) => functions.logger.info("POST_To_DB: ", result));
-  // };
 });
 const postReviewData = async (data: ReviewType) => {
   data.date = new Date().toISOString().slice(0, 10);
@@ -109,8 +107,6 @@ const postReviewData = async (data: ReviewType) => {
         reviews: theResult
       }
     });
-
-  //some conflicts nbetween ProductID and URL params ID
 };
 
 // .update({
@@ -977,39 +973,79 @@ export const sendEmail = functions.https.onRequest((request, response) => {
       });
   };
 });
+interface ProductModel {
+  ID: string;
+  title: string;
+  shortDescription: string;
+  price: string;
+  firstDescription: string;
+  reviews: {};
+  // reviews: { [key:string]: };
+  jsonContent: string;
+  imageProduct: [];
+  ULbeneficii: [];
+}
 
-// const createNewProduct = async () => {
-//   await admin
-//     .firestore()
-//     .collection("products")
-//     .doc("activeProds")
-//     .update({
-//       0: {
-//         title: "Sapun Negru",
-//         shortDescription: "Test test",
-//         price: "90",
-//         firstDescription:
-//           "Pachetul de Scrub si Sapun indragit de toata lumea va garanteaza rasfatul pielii dvs. Săpunul negru ce conține cărbune activat pentru un ten neted  și mătăsos, este cel mai îndrăgit și utilizat de comunitatea Karbonoir. Acesta reprezintă ingrijirea optimă pentru toate tipurile de piele, inclusiv cea problematică, cu afecțuni precum (dermatita, acneea, coșuri, punctele negre și altele), deoarece purifică, detoxifică și absoarbe toxinele adunate in pori, lăsand pielea moale și catifelată.",
-//         reviews: {
-//           0: {
-//             reviewActual: "Sunt ok produsele, un pic cam scump",
-//             starsNumber: "3",
-//             name: "Lips Mihai",
-//             date: "19.02.2020",
-//             reviewProductID: "0"
-//           }
-//         },
+const createNewProduct = async (modelID: ProductModel) => {
+  console.log("create new product received:", JSON.stringify(modelID));
+  await admin
+    .firestore()
+    .collection("products")
+    .doc("activeProds")
+    .update({
+      [modelID.ID]: {
+        ID: modelID.ID,
+        title: modelID.title,
+        shortDescription: modelID.shortDescription,
+        price: modelID.price,
+        firstDescription: modelID.firstDescription,
+        reviews: {},
+        // reviews: {
+        //   0: {
+        //     reviewActual: "Sunt ok produsele, un pic cam scump",
+        //     starsNumber: "3",
+        //     name: "Lips Mihai",
+        //     date: "19.02.2020",
+        //     reviewProductID: "0"
+        //   }
+        // },
 
-//         jsonContent:
-//           '<div class="spacerPadder50"> </div>     <div class="textSpaceMargins">             <h4 class="middleSubtext"> Produs miracol </h4>               <p>             Folosirea acestui site implica acceptarea termenilor si conditiilor de mai jos. Recomandam citirea cu atentie a acestora. <strong>RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA</strong> isi asuma dreptul de a modifica aceste prevederi fara o alta notificare. Cea mai recenta versiune poate fi accesata in aceasta pagina.             Accesul/vizitarea acestui website de catre dumneavoastra se supune <strong>Termenilor si conditiilor de utilizare</strong>, si implica acceptul explicit al dumneavoastra cu privire la acestea si reprezinta intelegerea dintre parti.         </p>          <img class="centerImageMedium" src="https://karbonoir.ro/wp-content/uploads/2021/12/2-RO-2-1024x768.jpg"></img>         <p> Pe baza dorințelor clienților noștri, am dezvoltat un nou produs – unguentul hrănitor. Am selectat ingrediente complet naturale de înaltă calitate care au un efect benefic asupra sănătății pielii noastre – în special pentru pielea uscată și problematică.         Amestecul atent selectat de unturi și uleiuri pe bază de plante din Unguentul Hrănitor Karbonoir catifelează și hrănește pielea, accelerează regenerarea pielii uscate și crăpate și o protejează de influențele externe (cum ar fi frigul, aerul uscat, vântul, agenții de curățare agresivi etc. .). Microparticulele de cărbune activat leagă microorganismele patogene care pot provoca inflamații ale pielii.         Unturile și uleiurile pe bază de plante din unguent ajută la reducerea senzației de strângere și mâncărime a pielii și fac pielea moale și netedă.         Uleiul esențial natural de vanilie adaugă unguentului un parfum foarte plăcut, delicat, care ne amintește de sărbători.</p>       </div>     <div class="spacerPadder50"> </div>',
-//         ID: 0,
-//         imageProduct: [
-//           "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/poza1.png?alt=media&token=d55eb00a-21e7-4ab2-8bf7-80c5e5c0569c",
-//           "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/poza1.png?alt=media&token=d55eb00a-21e7-4ab2-8bf7-80c5e5c0569c",
-//           "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/sapunCarbune.jpg?alt=media&token=c0c66773-a2aa-4602-9c45-17e5232e6724"
-//         ],
-//         ULbeneficii: ["Revigorează pielea", "Curata in profunzime pielea"]
-//       }
-//     })
-//     .then((result) => functions.logger.info("sendReviewToServer response: ", result));
-// };
+        jsonContent: modelID.jsonContent,
+
+        imageProduct: modelID.imageProduct,
+        ULbeneficii: modelID.ULbeneficii
+      }
+    })
+    .then((result) => functions.logger.info("sendReviewToServer response: ", result));
+};
+
+// .firestore()
+// .collection("products")
+// .doc("activeProds")
+// .update({
+//   [modelID.ID]: {
+//     ID: modelID.ID,
+//     title: modelID.title,
+//     shortDescription: modelID.shortDescription,
+//     price: modelID.price,
+//     firstDescription: modelID.firstDescription,
+//     reviews: {},
+//     // reviews: {
+//     //   0: {
+//     //     reviewActual: "Sunt ok produsele, un pic cam scump",
+//     //     starsNumber: "3",
+//     //     name: "Lips Mihai",
+//     //     date: "19.02.2020",
+//     //     reviewProductID: "0"
+//     //   }
+//     // },
+
+//     jsonContent: modelID.jsonContent
+
+//     imageProduct: [
+//       "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/poza1.png?alt=media&token=d55eb00a-21e7-4ab2-8bf7-80c5e5c0569c",
+//       "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/poza1.png?alt=media&token=d55eb00a-21e7-4ab2-8bf7-80c5e5c0569c",
+//       "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/sapunCarbune.jpg?alt=media&token=c0c66773-a2aa-4602-9c45-17e5232e6724"
+//     ],
+//     ULbeneficii: ["Revigorează pielea", "Curata in profunzime pielea"]
+//   }

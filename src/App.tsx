@@ -28,6 +28,9 @@ import "./App.css";
 import CheckAuth from "./components/AdminArea/CheckAuth";
 import SimpleContent from "./blocks/SimpleContent";
 import NotFound from "./components/NotFound/NotFound";
+import UpdateProducts from "./components/AdminArea/UpdateProducts";
+import EditProduct from "./components/AdminArea/EditProduct";
+import AddProduct from "./components/AdminArea/AddProduct";
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
 
@@ -80,6 +83,9 @@ function App() {
                 {/* protect this */}
                 <Route element={<RequireAuth />}>
                   <Route path="/admin" element={<AdminArea />} />
+                  <Route path="/admin/products" element={<UpdateProducts />} />
+                  <Route path="/admin/products/edit-:productID" element={<EditProduct />} />
+                  <Route path="/admin/products/add" element={<AddProduct />} />
                 </Route>
                 <Route element={<CheckAuth />}>
                   <Route path="/login" element={<Login />} />

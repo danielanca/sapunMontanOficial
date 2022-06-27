@@ -20,3 +20,15 @@ export interface orderProps {
   deliveryName?: string;
   paymentStatus?: string;
 }
+
+export interface ProductModel {
+  ID: string;
+  ULbeneficii: [];
+  firstDescription: string;
+  imageProduct: [];
+  jsonContent: string;
+  price: string;
+  reviews: {};
+  shortDescription: string;
+  title: string;
+}
