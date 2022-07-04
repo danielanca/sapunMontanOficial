@@ -1,8 +1,8 @@
 import OrderDone from "./OrderDone";
 import images from "./../../data/images";
 
-import { componentStrings } from "../../data/componentStrings";
-import { useState, useEffect, useCallback } from "react";
+import { componentStrings, productConstants } from "../../data/componentStrings";
+import { useState, useEffect } from "react";
 import { sendOrderConfirmation } from "./../../services/emails";
 import styles from "./../CartPage/FinishOrder.module.scss";
 import { orderProps } from "./../../utils/OrderInterfaces";
@@ -78,7 +78,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     cartProducts: "",
     phoneNo: "",
     cartSum: subtotalPrepare,
-    shippingTax: deliveryFee,
+    shippingTax: productConstants.shippingFee,
     orderNotes: "",
     deliveryName: "DPD Curier",
     paymentStatus: "NOT_PAID"
@@ -108,7 +108,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   }, [emailSentConfirmed]);
   var storedCart = [];
   var subtotalPrepare = 0;
-  var deliveryFee = 15;
+  var deliveryFee = productConstants.shippingFee;
   let expectedData = localStorage.getItem("cartData");
   var explicitProductList = [];
   if (expectedData != null) {

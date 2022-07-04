@@ -1,10 +1,10 @@
+import { useState, useEffect } from "react";
 import { NavHashLink } from "react-router-hash-link";
+import { productConstants } from "../data/componentStrings";
+import ItemCartList from "./ItemCartList";
+
 import styles from "./CartPage.module.scss";
 
-import ItemCartList from "./ItemCartList";
-import productList from "./../data/productList";
-import { useState, useEffect } from "react";
-import images from "./../data/images";
 interface CartProps {
   notifyMe?: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -14,7 +14,7 @@ const CartPage = ({ notifyMe }: CartProps) => {
   var subtotalPrepare = 0;
   var storedCart = [];
   let expectedData = localStorage.getItem("cartData");
-  var shippingFee = 20;
+  var shippingFee = productConstants.shippingFee;
   let sessionProducts = JSON.parse(sessionStorage.getItem("productsFetched"));
   console.log("Product session:", sessionProducts);
   if (expectedData != null) {

@@ -7,7 +7,7 @@ const RequireAuth = () => {
   console.log("Auth:", auth);
   const location = useLocation();
 
-  return getCookie("jwt") == "FlorinSalam2022" ? (
+  return getCookie("jwt") === "FlorinSalam2022" ? (
     <Outlet />
   ) : (
     <Navigate to="/login" state={{ from: location }} replace />

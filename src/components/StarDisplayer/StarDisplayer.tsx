@@ -9,7 +9,7 @@ interface StarsProps {
 
 const StarDisplayer = ({ starScore }: StarsProps) => {
   let lastHalf = false;
-  if (Number(starScore) % 1 != 0) lastHalf = true;
+  if (Number(starScore) % 1 !== 0) lastHalf = true;
 
   return (
     <div className={styles.starVisualizer}>

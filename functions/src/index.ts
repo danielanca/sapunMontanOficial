@@ -10,6 +10,9 @@ const app = express();
 
 app.use(cookieParser());
 const administratorEmail = "steptu94@gmail.com";
+admin.initializeApp({
+  credential: admin.credential.applicationDefault()
+});
 
 const administratorPassword = "emilutdinmunte";
 const SessionIDs = ["FlorinSalam2022", "GicaHagi232"];
@@ -42,10 +45,6 @@ interface ResponseObject {
   EMAILTO_CLIENT: string;
   EMAILTO_ADMIN: string;
 }
-
-admin.initializeApp({
-  credential: admin.credential.applicationDefault()
-});
 
 export const updateProduct = functions.https.onRequest((request, response) => {
   let requestParam = JSON.parse(request.body);

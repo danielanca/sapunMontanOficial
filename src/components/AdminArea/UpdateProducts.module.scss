@@ -7,12 +7,14 @@
   min-height: 500px;
 
   h3 {
-    text-align: center;
+    text-align: start;
     font-size: 40px;
+    padding: 0 20px;
   }
 }
 .tableStyle {
   max-width: 800px;
+  border: 2px solid black;
   @include media("<tablet") {
     width: 100%;
   }

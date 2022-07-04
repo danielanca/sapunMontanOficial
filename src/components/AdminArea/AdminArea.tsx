@@ -17,7 +17,7 @@ const AdminArea = () => {
   const requestData = async () => {
     try {
       await requestOrdersList().then((response) => {
-        response.json().then((result) => {
+        response.json().then((result: any) => {
           console.log("Response from Server:", result);
         });
       });

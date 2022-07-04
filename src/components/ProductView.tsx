@@ -1,4 +1,3 @@
-import styles from "./../components/ProductView.module.scss";
 import { getProductWithID } from "./../data/productList";
 import reviewStar from "./../media/assets/pics/prezentareCarbune/star_review.png";
 import { useParams } from "react-router-dom";
@@ -7,6 +6,7 @@ import Comments from "./Comments";
 import ProductAdded from "./PopUps/ProductAdded";
 import Loader from "./MiniComponents/Loader";
 import SuggestionArea from "./SuggestedProducts/SuggestionArea";
+import styles from "./../components/ProductView.module.scss";
 
 interface CartProps {
   notifyMe?: React.Dispatch<React.SetStateAction<number>>;
@@ -101,7 +101,7 @@ const ProductView = ({ notifyMe }: CartProps) => {
               </div>
             </div>
 
-            <div className={"col-md-6  " + styles.rightSection}>
+            <div className={"col-md-6 " + styles.rightSection}>
               <div className={styles.rightContainer}>
                 <h3 className={styles.productTitle}>{productListUpdated[ID].title}</h3>
                 <div className={styles.reviewContainer}>

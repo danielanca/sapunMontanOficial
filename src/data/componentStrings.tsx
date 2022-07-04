@@ -102,3 +102,7 @@ export const cookieConsent = {
   secondText: "Citește aici politica de cookies, politica de confidențialitate si termenii si condițiile de utilizare.",
   acceptButton: "Accepta"
 };
+
+export const productConstants = {
+  shippingFee: 15
+};

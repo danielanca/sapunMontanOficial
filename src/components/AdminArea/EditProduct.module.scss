@@ -22,6 +22,8 @@
   min-height: 800px;
   width: 100%;
   padding: 30px 20px;
+  background-color: #f2f2f2;
+
   border: 2px solid green;
   h2 {
     text-align: center;
@@ -35,9 +37,8 @@
   }
   div > label {
     font-weight: 700;
-    color: chocolate;
+    color: #3f3e3e;
     max-width: 300px;
-    margin: auto;
   }
   textarea {
     min-width: 700px;
@@ -45,14 +46,57 @@
     width: 75%;
     margin: 30px auto;
   }
+  input {
+    background-color: #f7f7f7;
+    outline: none;
+    border: 1px solid gray;
+    font-family: "Roboto";
+    border-radius: 2px;
+    padding: 5px 10px;
+    min-width: 300px;
+  }
+}
+.confirmationSaveText {
+  text-align: center;
+  font-weight: bolder;
+  color: rgb(10, 175, 10);
+}
+.dialogSpace {
+  height: 50px;
+}
+.inputFielder {
+  display: flex;
+  flex-direction: column;
+  max-width: 360px;
+  label {
+    text-align: start;
+  }
+  textarea {
+    height: 120px;
+    resize: none;
+  }
+  p {
+    line-height: 20px;
+    color: rgb(233, 178, 0);
+    font-weight: bold;
+  }
+}
+.rowSpacer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
 }
 .inputContainer {
   max-width: 1250px;
-  border: 2px solid black;
-  margin: auto;
+  padding: 26px;
+  margin: 30px auto;
   display: flex;
+  min-height: 200px;
   justify-content: center;
   flex-direction: column;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .actionControl {
   margin: auto;
