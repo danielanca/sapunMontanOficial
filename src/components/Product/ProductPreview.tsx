@@ -30,7 +30,7 @@ const ProductPreview = ({ previewOnly, productListUpdated, ID, addCartHandler }:
           <div className={styles.leftContainer}>
             {productListUpdated != null ? (
               <div className={styles.imageActualContainer}>
-                <img className={styles.imageContainer} src={productListUpdated.imageProduct[mainPicture]} />
+                <img className={styles.imageContainer} src={productListUpdated[ID].imageProduct[mainPicture]} />
               </div>
             ) : (
               ""
