@@ -20,13 +20,8 @@ const Comments = ({ productData, reviewsList, productID }: CommentsProps) => {
 
   return (
     <>
-      <h3 className={styles.title}>{"Detalii PRODUS"}</h3>
-      <div className={styles.commentsArea}>
-        <div className={styles.descriptionContainer}>
-          <ProductDescription productDescription={productData} productID={productID} />
-
-          <ReviewField productData={productReviews} reviewsAr={reviewsList} productIdentification={productID} />
-        </div>
+      <div className={styles.descriptionContainer}>
+        <ReviewField productData={productReviews} reviewsAr={reviewsList} productIdentification={productID} />
       </div>
     </>
   );
