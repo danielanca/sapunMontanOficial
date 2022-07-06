@@ -32,3 +32,17 @@ export interface ProductModel {
   shortDescription: string;
   title: string;
 }
+
+export interface ProductListType {
+  [key: string]: {
+    ID: string;
+    title: string;
+    firstDescription: string;
+    shortDescription: string;
+    imageProduct: [];
+    jsonContent: string;
+    price: string;
+    reviews: {};
+    ULbeneficii: [];
+  };
+}

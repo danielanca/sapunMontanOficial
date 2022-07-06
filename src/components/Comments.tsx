@@ -6,7 +6,7 @@ import styles from "./../components/Comments.module.scss";
 
 interface CommentsProps {
   reviewsList: any;
-  productID: number;
+  productID: string;
   productData?: string;
 }
 const Comments = ({ productData, reviewsList, productID }: CommentsProps) => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import { useMemo } from "react";
 import { useCallback } from "react";
@@ -7,20 +7,10 @@ import { useParams } from "react-router-dom";
 import { getProductWithID } from "../../data/productList";
 import { useEffect, useState } from "react";
 import { updateProduct } from "./../../services/emails";
-import { ProductModel } from "./../../utils/OrderInterfaces";
+import { ProductListType, ProductModel } from "./../../utils/OrderInterfaces";
+import DraftEdit from "./../DraftEdit/DraftEdit";
 import styles from "./EditProduct.module.scss";
-
-// interface productProps {
-//   ID: string;
-//   ULbeneficii: [];
-//   firstDescription: string;
-//   imageProduct: [];
-//   jsonContent: string;
-//   price: string;
-//   reviews: {};
-//   shortDescription: string;
-//   title: string;
-// }
+import ProductPreview from "../Product/ProductPreview";
 
 const EditProduct = () => {
   const [editableTitle, seteditableTitle] = useState<boolean>(false);
@@ -35,13 +25,11 @@ const EditProduct = () => {
     shortDescription: "",
     title: ""
   });
-
-  const editTitle = () => {
-    seteditableTitle(!editableTitle);
-  };
+  const [openPreviewArea, setOpenPreviewArea] = useState<boolean>(false);
   let params = useParams();
   var ID = params.productID != undefined ? params.productID : "";
-  const [productListUpdated, setProducts] = useState<any[]>();
+  const [productListUpdated, setProducts] = useState<ProductListType[]>();
+
   const [editSent, setEditSent] = useState<boolean>(false);
   const [editproductModel, setEditProductModel] = useState<ProductModel>({
     ID: "",
@@ -80,6 +68,9 @@ const EditProduct = () => {
       });
     }
   };
+  const previewOperation = () => {
+    setOpenPreviewArea(true);
+  };
   useEffect(() => {
     if (editSent) {
       const timer = setTimeout(() => {
@@ -88,8 +79,9 @@ const EditProduct = () => {
       return () => clearTimeout(timer);
     }
   }, [editSent]);
+
   const cancelOperation = () => {
-    console.log("Operation cancelled");
+    window.location.reload();
   };
   useEffect(() => {
     if (productListUpdated == null) {
@@ -109,28 +101,21 @@ const EditProduct = () => {
 
   return (
     <div>
-      <div
-        spellCheck={false}
-        contentEditable={editableTitle ? true : false}
-        className={editableTitle ? styles.editableContainer : styles.staticContainer}
-      >
-        {productListUpdated != null
-          ? editableTitle
-            ? productListUpdated[ID].jsonContent
-            : parse(productListUpdated[ID].jsonContent)
-          : ""}
-      </div>
-
       <div className={styles.editPage}>
         {productListUpdated != null ? (
           <div className={styles.addAreaContainer}>
             <h2>{"EDIT PRODUCT"}</h2>
 
             <div className={styles.inputContainer}>
-              <div className={styles.inputFielder}>
+              <div className={styles.imageContainer}>
                 <label htmlFor="imageProduct">{"Images"}</label>
                 <p>{"Linkurile spre imagini trebuie separate de virgula"}</p>
-                <textarea onChange={separatorHandler} name="imageProduct" value={editproductModel.imageProduct} />
+                <textarea
+                  className={styles.imageTextArea}
+                  onChange={separatorHandler}
+                  name="imageProduct"
+                  value={editproductModel.imageProduct}
+                />
               </div>
             </div>
             <div className={styles.inputContainer}>
@@ -148,24 +133,29 @@ const EditProduct = () => {
                   <input onChange={inputHandler} name="price" value={editproductModel.price} />
                 </div>
               </div>
-              <div className={styles.rowSpacer}>
-                <div className={styles.inputFielder}>
+              <div className={styles.rowSpacerTextArea}>
+                <div className={styles.inputFielderTextArea}>
                   <label htmlFor="shortDescription">{"short Description"}</label>
-                  <input onChange={inputHandler} name="shortDescription" value={editproductModel.shortDescription} />
+                  <textarea onChange={inputHandler} name="shortDescription" value={editproductModel.shortDescription} />
                 </div>
-                <div className={styles.inputFielder}>
+                <div className={styles.inputFielderTextArea}>
                   <label htmlFor="firstDescription">{"first Description"}</label>
-                  <input onChange={inputHandler} name="firstDescription" value={editproductModel.firstDescription} />
+                  <textarea onChange={inputHandler} name="firstDescription" value={editproductModel.firstDescription} />
                 </div>
               </div>
 
-              <div className={"d-flex flex-column"}>
+              <div className={styles.editorElement}>
                 <label htmlFor="jsonContent">{"Full description HTML"}</label>
                 <textarea onChange={inputHandler} name="jsonContent" value={editproductModel.jsonContent} />
               </div>
 
               <div className={styles.actionControl}>
-                <button onClick={submitEditOperation}>{"SAVE"}</button>
+                <button className={styles.saveButton} onClick={submitEditOperation}>
+                  {"SAVE"}
+                </button>
+                <button onClick={previewOperation} className={styles.previewButton}>
+                  {"PREVIEW"}
+                </button>
                 <button onClick={cancelOperation} className={styles.cancelButton}>
                   {"CANCEL"}
                 </button>
@@ -179,9 +169,26 @@ const EditProduct = () => {
           ""
         )}
       </div>
+      {openPreviewArea && <ProductPreview previewOnly={true} ID={ID} productListUpdated={{ [ID]: editproductModel }} />}
     </div>
   );
 };
+
+export default EditProduct;
+
+{
+  /* <div
+        spellCheck={false}
+        contentEditable={editableTitle ? true : false}
+        className={editableTitle ? styles.editableContainer : styles.staticContainer}
+      >
+        {productListUpdated != null
+          ? editableTitle
+            ? productListUpdated[ID].jsonContent
+            : parse(productListUpdated[ID].jsonContent)
+          : ""}
+      </div> */
+}
 // const CodeElement = (props: any) => {
 //   return (
 //     <pre className={styles.codeElementStyle} {...props.attributes}>
@@ -193,4 +200,3 @@ const EditProduct = () => {
 // const DefaultElement = (props: any) => {
 //   return <p {...props.attributes}>{props.children}</p>;
 // };
-export default EditProduct;

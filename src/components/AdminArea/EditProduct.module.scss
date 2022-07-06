@@ -34,18 +34,18 @@
   textarea {
     font-family: "Roboto";
     margin: auto;
+    min-width: 150px;
+    width: 100%;
+  }
+  textarea {
+    height: 550px;
   }
   div > label {
     font-weight: 700;
     color: #3f3e3e;
     max-width: 300px;
   }
-  textarea {
-    min-width: 700px;
-    height: 400px;
-    width: 75%;
-    margin: 30px auto;
-  }
+
   input {
     background-color: #f7f7f7;
     outline: none;
@@ -67,24 +67,60 @@
 .inputFielder {
   display: flex;
   flex-direction: column;
-  max-width: 360px;
+
+  display: flex;
+  flex-direction: column;
+  max-width: 305px;
+  width: 100%;
+
   label {
     text-align: start;
   }
-  textarea {
-    height: 120px;
-    resize: none;
-  }
+
   p {
     line-height: 20px;
     color: rgb(233, 178, 0);
     font-weight: bold;
   }
 }
+.imageContainer {
+  textarea {
+    min-width: 300px;
+    max-height: 150px;
+    resize: none;
+    background-color: #f7f7f7;
+  }
+}
+.inputFielderTextArea {
+  textarea {
+    max-height: 180px;
+    width: 100%;
+    min-height: 120px;
+    max-width: 500px;
+    height: auto;
+    resize: none;
+    background-color: #f7f7f7;
+    border-right-width: 1px;
+  }
+}
+.imageTextArea {
+  min-width: 400px;
+  max-width: 700px;
+}
+.rowSpacerTextArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.editorElement {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+}
+
 .rowSpacer {
   display: flex;
   justify-content: space-between;
-  padding: 0 5%;
 }
 .inputContainer {
   max-width: 1250px;
@@ -100,17 +136,28 @@
 }
 .actionControl {
   margin: auto;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
 
   button {
     outline: none;
     border: none;
     width: 220px;
     height: 45px;
-    background-color: rgb(10, 175, 10);
+
     color: white;
     margin: 10px 20px;
+    font-size: 2em;
+  }
+  .saveButton {
+    background-color: rgb(10, 175, 10);
   }
   .cancelButton {
     background-color: rgb(204, 7, 7);
+  }
+  .previewButton {
+    width: 320px;
+    background-color: rgb(245, 167, 0);
   }
 }
