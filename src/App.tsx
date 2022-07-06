@@ -48,7 +48,6 @@ const Loading = () => <div>LOADING</div>;
 function App() {
   const [letsCartHandler, CartHandler] = useState(1);
   const [ssProducts, setSSproducts] = useState<any>();
-  const [clearRequest, setClearRequest] = useState(false);
 
   const getCookieConsent = () => {
     if (getCookie("cookieConsentBrasov") === "userAccepted") return false;

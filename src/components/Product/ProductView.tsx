@@ -1,12 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Comments from "../Comments";
-import ProductAdded from "../PopUps/ProductAdded";
 import ProductPreview from "./ProductPreview";
 import Loader from "../MiniComponents/Loader";
 import SuggestionArea from "../SuggestedProducts/SuggestionArea";
 import { getProductWithID } from "../../data/productList";
-import images from "../../data/images";
 import styles from "./ProductView.module.scss";
 import { ProductListType } from "./../../utils/OrderInterfaces";
 
@@ -19,7 +17,7 @@ const ProductView = ({ notifyMe, productLink }: CartProps) => {
   let params = useParams();
   var ID = params.productID != undefined ? params.productID : "";
 
-  const [productListUpdated, setProducts] = useState<ProductListType[]>();
+  const [productListUpdated, setProducts] = useState<ProductListType>();
 
   useEffect(() => {
     if (productListUpdated == null) {
