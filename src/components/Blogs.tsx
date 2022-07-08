@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./../components/Blogs.module.scss";
 import BlogItem from "./ConstantComponents/BlogItem";
 import HeadlineTitle from "./HeadlineTitle";
