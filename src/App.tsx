@@ -94,8 +94,8 @@ function App() {
                   <Route element={<RequireAuth />}>
                     <Route path="/admin" element={<AdminArea />} />
                     <Route path="/admin/products" element={<UpdateProducts />} />
-                    <Route path="/admin/products/edit-:productID" element={<EditProduct />} />
-                    <Route path="/admin/products/add" element={<AddProduct />} />
+                    <Route path="/admin/products/edit-:productID" element={<EditProduct editMode={true} />} />
+                    <Route path="/admin/products/add" element={<EditProduct editMode={false} />} />
                   </Route>
                   <Route element={<CheckAuth />}>
                     <Route path="/login" element={<Login />} />

@@ -11,20 +11,10 @@ import { ProductListType, ProductModel } from "./../../utils/OrderInterfaces";
 import DraftEdit from "./../DraftEdit/DraftEdit";
 import styles from "./EditProduct.module.scss";
 import ProductPreview from "../Product/ProductPreview";
-
-const EditProduct = () => {
-  const [editableTitle, seteditableTitle] = useState<boolean>(false);
-  const [productModel, setProductModel] = useState<ProductModel>({
-    ID: "",
-    price: "",
-    ULbeneficii: [],
-    firstDescription: "",
-    imageProduct: [],
-    jsonContent: "",
-    reviews: {},
-    shortDescription: "",
-    title: ""
-  });
+interface EditProduct {
+  editMode: boolean;
+}
+const EditProduct = ({ editMode }: EditProduct) => {
   const [openPreviewArea, setOpenPreviewArea] = useState<boolean>(false);
   let params = useParams();
   var ID = params.productID != undefined ? params.productID : "";
@@ -84,17 +74,20 @@ const EditProduct = () => {
     window.location.reload();
   };
   useEffect(() => {
-    if (productListUpdated == null) {
-      getProductWithID(ID).then((finalData) => {
-        setProducts(finalData);
-      });
+    if (editMode) {
+      if (productListUpdated == null) {
+        getProductWithID(ID).then((finalData) => {
+          setProducts(finalData);
+        });
+      }
     }
   });
   useEffect(() => {
-    if (productListUpdated != null) {
+    if (productListUpdated != null && editMode) {
       setEditProductModel(productListUpdated[ID]);
     }
   }, [productListUpdated]);
+
   useEffect(() => {
     console.log("Edit productModel", editproductModel);
   }, [editproductModel]);
@@ -102,9 +95,9 @@ const EditProduct = () => {
   return (
     <div>
       <div className={styles.editPage}>
-        {productListUpdated != null ? (
+        {productListUpdated != null || !editMode ? (
           <div className={styles.addAreaContainer}>
-            <h2>{"EDIT PRODUCT"}</h2>
+            <h2>{`${editMode ? "EDIT" : "ADD"} PRODUCT`}</h2>
 
             <div className={styles.inputContainer}>
               <div className={styles.imageContainer}>

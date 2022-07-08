@@ -1,8 +1,12 @@
 import { orderProps, ProductModel } from "./../utils/OrderInterfaces";
 import { getCookie } from "../utils/functions";
-// const destination = "https://us-central1-sapunmontan.cloudfunctions.net";
-const destination = "http://localhost:5000/sapunmontan/us-central1";
-
+var destination: string = "";
+// const destination = "http://localhost:5000/sapunmontan/us-central1";
+if (process.env.NODE_ENV === "development") {
+  destination = "http://localhost:5000/sapunmontan/us-central1";
+} else {
+  destination = "https://us-central1-sapunmontan.cloudfunctions.net";
+}
 export const requestOrdersList = async () => {
   return await fetch(`${destination}/requestOrders`, {
     method: "POST",

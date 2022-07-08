@@ -7,7 +7,10 @@ import * as express from "express";
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
 const app = express();
+var localHost = "http://localhost:3000";
+//: "https://montanair.ro";
 
+functions.logger.info("localHost allow  origin:", process.env.NODE_ENV);
 app.use(cookieParser());
 const administratorEmail = "steptu94@gmail.com";
 admin.initializeApp({
@@ -38,8 +41,8 @@ const getAuthToken = (body: any) => {
 };
 // process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 
-// const localHost = "https://montanair.ro";
-const localHost = "http://localhost:3000";
+// var localHost = "https://montanair.ro";
+// const localHost = "http://localhost:3000";
 
 interface ResponseObject {
   EMAILTO_CLIENT: string;

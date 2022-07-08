@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./ShowProduct.module.scss";
 import { HashLink, NavHashLink } from "react-router-hash-link";
 
