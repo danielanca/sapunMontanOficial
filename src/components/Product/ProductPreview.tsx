@@ -4,6 +4,7 @@ import images from "../../data/images";
 import { useState } from "react";
 import ProductAdded from "./../PopUps/ProductAdded";
 import { ProductListType } from "./../../utils/OrderInterfaces";
+import ProductDescription from "./../ConstantComponents/ProductDescription";
 
 interface ProductTypes {
   previewOnly?: boolean;
@@ -107,6 +108,11 @@ const ProductPreview = ({ previewOnly, productListUpdated, ID, addCartHandler }:
             {popProductInCart && <ProductAdded animFin={animEnded} id={ID} />}
           </div>
         </div>
+        {productListUpdated != null ? (
+          <ProductDescription productDescription={productListUpdated} productID={ID} />
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

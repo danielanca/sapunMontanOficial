@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import styles from './PaymentComponents.module.scss';
-import Select from 'react-select';
-import { reserveDate } from '../functions/firebase';
-import { sendReservationMail } from '../services/emails';
+import React, { useEffect, useState } from "react";
+import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import styles from "./PaymentComponents.module.scss";
 
-export default function CheckoutForm({ setShowPayment, setShowPaymentField, reservationObject , sendAnalyticsForPaymentSuccesfull,sendAnalyticsForPaymentFailed}) {
+import { reserveDate } from "../functions/firebase";
+import { sendReservationMail } from "../services/emails";
+
+export default function CheckoutForm({
+  setShowPayment,
+  setShowPaymentField,
+  reservationObject,
+  sendAnalyticsForPaymentSuccesfull,
+  sendAnalyticsForPaymentFailed
+}) {
   const stripe = useStripe();
   const elements = useElements();
   const [isLoading, setIsLoading] = useState(false);
@@ -29,9 +35,9 @@ export default function CheckoutForm({ setShowPayment, setShowPaymentField, rese
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: 'http://localhost:3000/',
+        return_url: "http://localhost:3000/"
       },
-      redirect: 'if_required',
+      redirect: "if_required"
     });
 
     if (!error) {
@@ -40,7 +46,7 @@ export default function CheckoutForm({ setShowPayment, setShowPaymentField, rese
         reservationObject.email,
         reservationObject.phoneNumber,
         reservationObject.details,
-        reservationObject.checkInDates,
+        reservationObject.checkInDates
       );
       sendReservationMail(
         reservationObject.fullname,
@@ -48,15 +54,14 @@ export default function CheckoutForm({ setShowPayment, setShowPaymentField, rese
         reservationObject.phoneNumber,
         reservationObject.details,
         reservationObject.datesForEmail,
-        reservationObject.persons,
+        reservationObject.persons
       );
       setShowPaymentField(false);
       setShowPayment(true);
-      sendAnalyticsForPaymentSuccesfull()
+      sendAnalyticsForPaymentSuccesfull();
     }
-    if(error)
-    {
-      sendAnalyticsForPaymentFailed()
+    if (error) {
+      sendAnalyticsForPaymentFailed();
     }
     setIsLoading(false);
   };
@@ -76,7 +81,7 @@ export default function CheckoutForm({ setShowPayment, setShowPaymentField, rese
       }
       <button className={styles.submit} disabled={isPaymentDisabled} id="submit">
         <span className={styles.textPay} id="button-text">
-          {isLoading ? <div className={styles.spinner} id="spinner"></div> : 'PAY NOW'}
+          {isLoading ? <div className={styles.spinner} id="spinner"></div> : "PAY NOW"}
         </span>
       </button>
     </form>

@@ -5,7 +5,7 @@
   @extend .col-md-3;
   color: map-get($map: $colors, $key: mainlyBlack);
   text-decoration: none !important;
-  width: none;
+  width: auto;
   &:hover {
     color: map-get($map: $colors, $key: mainlyBlack);
   }
@@ -20,14 +20,15 @@
   width: 250px;
   height: 452px;
   position: relative;
-  margin: auto;
+
+  margin: 10px 15px;
   @include media(">=tablet", "<desktop") {
     max-width: 250px;
     width: calc(130px + 10vw);
   }
   @include media("<tablet") {
     width: calc(232px + 8.8vw);
-    height: calc(369px + 7vw);
+    height: calc(404px + 7vw);
   }
 }
 .productItemSmall {
@@ -101,6 +102,7 @@ a {
 .imageWrap {
   height: 45%;
   position: relative;
+  padding: 20px;
 }
 .priceWrap {
   position: relative;

@@ -12,7 +12,7 @@ import LatestTransaction from "./latest-transaction";
 //Import Image
 
 import widgetImage from "../../../assets/widget-img.png";
-import Overview from "./Overview";
+
 import Reviews from "./Reviews";
 import Revenue from "./Revenue";
 import Inbox from "./Inbox";

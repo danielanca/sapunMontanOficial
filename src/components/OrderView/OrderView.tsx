@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 
 import styles from "./OrderView.module.scss";
 import { getOrderByID } from "./../../data/productList";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { componentStrings } from "./../../data/componentStrings";
 interface OrderInterface {
   lastName?: string;

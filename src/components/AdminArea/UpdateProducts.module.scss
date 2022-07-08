@@ -36,3 +36,33 @@ th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+.actionButton {
+  width: 130px;
+  height: 50px;
+  background-color: #00ac10;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.actionButton:hover {
+  background-color: #39c948;
+  color: black;
+}
+.textInside {
+  font-family: "Bebas Neue Regular", cursive;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.textInside:hover {
+  color: white;
+}
+.controlArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 765px;
+  width: 100%;
+}

@@ -1,22 +1,24 @@
 import parse from "html-react-parser";
 
 import styles from "./../ConstantComponents/DescriptionStyles.module.scss";
-
+import { ProductListType } from "./../../utils/OrderInterfaces";
 interface ProductProps {
-  productID: number;
-  productDescription?: string;
+  productID: string;
+
+  productDescription: ProductListType;
 }
 
 const ProductDescription = ({ productDescription, productID }: ProductProps) => {
-  var data = null;
-  if (productDescription != null) {
-    data = JSON.parse(productDescription);
-    console.log("ProductDescription:", JSON.parse(productDescription));
-  }
-
   return (
     <>
-      <div className={styles.innerDescription}>{data != null && parse(data[productID].jsonContent)}</div>
+      <h3 className={styles.title}>{"Detalii PRODUS"}</h3>
+      <div className={styles.commentsArea}>
+        <div className={styles.descriptionContainer}>
+          <div className={styles.innerDescription}>
+            {productDescription != null && parse(productDescription[productID].jsonContent)}
+          </div>
+        </div>
+      </div>
     </>
   );
 };
