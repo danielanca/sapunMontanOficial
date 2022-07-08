@@ -5,33 +5,15 @@ import ReactGA from "react-ga4";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 import MainNavigation from "./Navigation/MainNavigation";
-import Testimonials from "./components/Testimonials";
-import Navbar from "./components/Navbar";
 
-import ProduseleNoastre from "./components/ProduseleNoastre";
-import ProductView from "./components/Product/ProductView";
-import FooterMontan from "./components/FooterMontan";
-import CartPage from "./components/CartPage";
-import FinishOrder from "./components/CartPage/FinishOrder";
-import Blogs from "./components/Blogs";
-// import AdminArea from "./components/AdminArea/AdminArea";
-import BlogPost from "./components/BlogPost";
 import { getData } from "./data/productList";
-import OrderView from "./components/OrderView/OrderView";
-import OrderDone from "./components/CartPage/OrderDone";
 
 import { AuthProvider } from "./components/context/AuthProvider";
 import { getCookie } from "./components/CookieConsent/functions";
 import CookieConsent from "./components/CookieConsent/CookieConsent";
 
-import CheckAuth from "./components/AdminArea/CheckAuth";
-import SimpleContent from "./blocks/SimpleContent";
 import NotFound from "./components/NotFound/NotFound";
-// import RequireAuth from "./components/AdminArea/RequireAuth";
-// import Login from "./components/AdminArea/LogIn";
-// import UpdateProducts from "./components/AdminArea/UpdateProducts";
-// import EditProduct from "./components/AdminArea/EditProduct";
-// import AddProduct from "./components/AdminArea/AddProduct";
+
 import "./App.css";
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
@@ -43,7 +25,19 @@ const RequireAuth = lazy(() => import("./components/AdminArea/RequireAuth"));
 const Login = lazy(() => import("./components/AdminArea/LogIn"));
 const UpdateProducts = lazy(() => import("./components/AdminArea/UpdateProducts"));
 const EditProduct = lazy(() => import("./components/AdminArea/EditProduct"));
-// const AddProduct = lazy(() => import("./components/AdminArea/AddProduct"));
+const OrderView = lazy(() => import("./components/OrderView/OrderView"));
+const Testimonials = lazy(() => import("./components/Testimonials"));
+const CartPage = lazy(() => import("./components/CartPage"));
+const SimpleContent = lazy(() => import("./blocks/SimpleContent"));
+const FinishOrder = lazy(() => import("./components/CartPage/FinishOrder"));
+const Navbar = lazy(() => import("./components/Navbar"));
+const ProduseleNoastre = lazy(() => import("./components/ProduseleNoastre"));
+const ProductView = lazy(() => import("./components/Product/ProductView"));
+const CheckAuth = lazy(() => import("./components/AdminArea/CheckAuth"));
+const Blogs = lazy(() => import(/* webpackChunkName: "Blogs" */ "./components/Blogs"));
+const BlogPost = lazy(() => import(/* webpackChunkName: "BlogPost" */ "./components/BlogPost"));
+const FooterMontan = lazy(() => import(/* webpackChunkName: "FooterMontan" */ "./components/FooterMontan"));
+
 const Loading = () => <div>LOADING</div>;
 
 function App() {
