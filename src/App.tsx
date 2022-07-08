@@ -14,7 +14,7 @@ import FooterMontan from "./components/FooterMontan";
 import CartPage from "./components/CartPage";
 import FinishOrder from "./components/CartPage/FinishOrder";
 import Blogs from "./components/Blogs";
-import AdminArea from "./components/AdminArea/AdminArea";
+// import AdminArea from "./components/AdminArea/AdminArea";
 import BlogPost from "./components/BlogPost";
 import { getData } from "./data/productList";
 import OrderView from "./components/OrderView/OrderView";
@@ -38,11 +38,12 @@ import "./App.css";
 
 export const ProductsContext = React.createContext<any[]>([]);
 
+const AdminArea = lazy(() => import("./components/AdminArea/AdminArea"));
 const RequireAuth = lazy(() => import("./components/AdminArea/RequireAuth"));
 const Login = lazy(() => import("./components/AdminArea/LogIn"));
 const UpdateProducts = lazy(() => import("./components/AdminArea/UpdateProducts"));
 const EditProduct = lazy(() => import("./components/AdminArea/EditProduct"));
-const AddProduct = lazy(() => import("./components/AdminArea/AddProduct"));
+// const AddProduct = lazy(() => import("./components/AdminArea/AddProduct"));
 const Loading = () => <div>LOADING</div>;
 
 function App() {
