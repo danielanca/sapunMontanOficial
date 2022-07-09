@@ -94,10 +94,11 @@ a {
 }
 .titleWrap {
   position: relative;
-  width: 100%;
-  height: 25%;
-  text-align: center;
   padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
 }
 .imageWrap {
   height: 45%;
@@ -110,4 +111,7 @@ a {
 .addCartWrap {
   height: 30%;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 import React, { useEffect, useState, Suspense, lazy } from "react";
 import ReactGA from "react-ga4";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import MainNavigation from "./Navigation/MainNavigation";
 
