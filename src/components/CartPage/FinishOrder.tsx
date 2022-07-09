@@ -2,7 +2,7 @@ import OrderDone from "./OrderDone";
 import images from "./../../data/images";
 
 import { componentStrings, productConstants } from "../../data/componentStrings";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { sendOrderConfirmation } from "./../../services/emails";
 import styles from "./../CartPage/FinishOrder.module.scss";
 import { orderProps } from "./../../utils/OrderInterfaces";
@@ -142,7 +142,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   }, [subtotalPrepare]);
 
   useEffect(() => {
-    if (finishOrderRequested == 0) {
+    if (finishOrderRequested === 0) {
       return;
     }
     if (

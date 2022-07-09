@@ -1,10 +1,11 @@
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
 import Comments from "../Comments";
 import ProductPreview from "./ProductPreview";
 import Loader from "../MiniComponents/Loader";
 import SuggestionArea from "../SuggestedProducts/SuggestionArea";
 import { getProductWithID } from "../../data/productList";
+
 import styles from "./ProductView.module.scss";
 import { ProductListType } from "./../../utils/OrderInterfaces";
 
@@ -15,7 +16,7 @@ interface CartProps {
 
 const ProductView = ({ notifyMe, productLink }: CartProps) => {
   let params = useParams();
-  var ID = params.productID != undefined ? params.productID : "";
+  var ID = params.productID !== undefined ? params.productID : "";
 
   const [productListUpdated, setProducts] = useState<ProductListType>();
 
@@ -26,15 +27,11 @@ const ProductView = ({ notifyMe, productLink }: CartProps) => {
       });
     }
   });
-  useEffect(() => {
-    console.log("ProductView is saying:", productListUpdated);
-  }, [productListUpdated]);
+
   const addCartHandler = () => {
     var storedCart: { id: string; itemNumber: string }[] = [];
     let expectedData = localStorage.getItem("cartData");
     if (expectedData === null) {
-      console.log("Data not found");
-
       storedCart.push({ id: ID, itemNumber: "1" });
 
       localStorage.setItem("cartData", JSON.stringify(storedCart));
@@ -46,7 +43,7 @@ const ProductView = ({ notifyMe, productLink }: CartProps) => {
     storedCart = JSON.parse(expectedData);
 
     storedCart.map((item) => {
-      if (item.id == ID.toString()) {
+      if (item.id === ID.toString()) {
         item.itemNumber = (Number(item.itemNumber) + 1).toString();
         itemFound = true;
       }

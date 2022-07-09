@@ -1,11 +1,11 @@
-import styles from "./../components/ProduseleNoastre.module.scss";
+import React from "react";
 import { getData } from "../data/productList";
 import { uniqueId } from "lodash";
 import HeadlineTitle from "./HeadlineTitle";
 import ProductItem from "./ProductItem";
-import React, { useContext } from "react";
-import { ProductsContext } from "../App";
+
 import { useEffect, useState } from "react";
+import styles from "./../components/ProduseleNoastre.module.scss";
 
 const ProduseleNoastre = () => {
   const [products, setProducts] = useState(null);

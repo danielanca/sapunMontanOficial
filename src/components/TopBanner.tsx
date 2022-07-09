@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./../components/TopBanner.module.scss";
 import images from "../data/images";
 
@@ -11,13 +12,13 @@ const TopBanner = () => {
       <div className={styles.socialsTop}>
         <div className={styles.iconWrapper}>
           <a href="https://facebook.com/montanAir">
-            <img alt="social Image" className={styles.iconStyle} src={images.socialIcons.facebook} />
+            <img alt="social montanair" className={styles.iconStyle} src={images.socialIcons.facebook} />
           </a>
           <a href="https://facebook.com/montanAir">
-            <img alt="social Image" className={styles.iconStyle} src={images.socialIcons.instagram} />
+            <img alt="social montanair " className={styles.iconStyle} src={images.socialIcons.instagram} />
           </a>
           <a href="https://facebook.com/montanAir">
-            <img alt="social Image" className={styles.iconStyle} src={images.socialIcons.whatsapp} />
+            <img alt="social montanair" className={styles.iconStyle} src={images.socialIcons.whatsapp} />
           </a>
         </div>
       </div>

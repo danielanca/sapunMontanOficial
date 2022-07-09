@@ -19,23 +19,38 @@ import "./App.css";
 // ReactGA.send('pageview');
 
 export const ProductsContext = React.createContext<any[]>([]);
-
-const AdminArea = lazy(() => import("./components/AdminArea/AdminArea"));
-const RequireAuth = lazy(() => import("./components/AdminArea/RequireAuth"));
-const Login = lazy(() => import("./components/AdminArea/LogIn"));
-const UpdateProducts = lazy(() => import("./components/AdminArea/UpdateProducts"));
-const EditProduct = lazy(() => import("./components/AdminArea/EditProduct"));
+const FinishOrder = lazy(() => import(/*webpackPreload: true*/ "./components/CartPage/FinishOrder"));
+const CartPage = lazy(() => import(/*webpackPreload: true*/ "./components/CartPage"));
+const CheckAuth = lazy(() => import(/*webpackPreload: true*/ "./components/AdminArea/CheckAuth"));
+const Blogs = lazy(() => import(/* webpackPreload: true , webpackChunkName: "Blogs" */ "./components/Blogs"));
+const BlogPost = lazy(() => import(/* webpackPreload: true,  webpackChunkName: "BlogPost" */ "./components/BlogPost"));
+const ProduseleNoastre = lazy(
+  () => import(/*webpackPreload: true , webpackChunkName: "ProduseleNoastre" */ "./components/ProduseleNoastre")
+);
+const AdminArea = lazy(
+  () => import(/* webpackPrefetch: true, webpackChunkName: "AdminArea" */ "./components/AdminArea/AdminArea")
+);
+const RequireAuth = lazy(
+  () => import(/*webpackPrefetch: true , webpackChunkName: "RequireAuth"*/ "./components/AdminArea/RequireAuth")
+);
+const Login = lazy(() => import(/*webpackPrefetch: true , webpackChunkName: "Login" */ "./components/AdminArea/LogIn"));
+const UpdateProducts = lazy(
+  () => import(/*webpackPrefetch: true , webpackChunkName: "UpdateProducts"  */ "./components/AdminArea/UpdateProducts")
+);
+const EditProduct = lazy(
+  () => import(/*webpackPrefetch: true , webpackChunkName: "EditProduct" */ "./components/AdminArea/EditProduct")
+);
 const OrderView = lazy(() => import("./components/OrderView/OrderView"));
-const Testimonials = lazy(() => import("./components/Testimonials"));
-const CartPage = lazy(() => import("./components/CartPage"));
-const SimpleContent = lazy(() => import("./blocks/SimpleContent"));
-const FinishOrder = lazy(() => import("./components/CartPage/FinishOrder"));
-const Navbar = lazy(() => import("./components/Navbar"));
-const ProduseleNoastre = lazy(() => import("./components/ProduseleNoastre"));
+const Testimonials = lazy(
+  () => import(/*webpackPrefetch: true , webpackChunkName: "Testimonials" */ "./components/Testimonials")
+);
+
+const SimpleContent = lazy(() => import(/*webpackPrefetch: true*/ "./blocks/SimpleContent"));
+
+const Navbar = lazy(() => import(/* webpackChunkName: "Navbar"  */ "./components/Navbar"));
+
 const ProductView = lazy(() => import("./components/Product/ProductView"));
-const CheckAuth = lazy(() => import("./components/AdminArea/CheckAuth"));
-const Blogs = lazy(() => import(/* webpackChunkName: "Blogs" */ "./components/Blogs"));
-const BlogPost = lazy(() => import(/* webpackChunkName: "BlogPost" */ "./components/BlogPost"));
+
 const FooterMontan = lazy(() => import(/* webpackChunkName: "FooterMontan" */ "./components/FooterMontan"));
 
 const Loading = () => <div>LOADING</div>;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { HashLink as Link, NavHashLink } from "react-router-hash-link";
 import { uniqueId } from "lodash";
 import styles from "./../components/MenuMobileSide.module.scss";
@@ -50,7 +50,7 @@ const MenuMobileSide = () => {
                   <input type="checkbox" id="toggle" className={styles.visuallyHidden} />
                   <div className={styles.extendSub}>
                     {item.title}
-                    <img className={styles.subItemIcon} src={images.arrowRight} />
+                    <img alt="picture" className={styles.subItemIcon} src={images.arrowRight} />
                   </div>
 
                   <ul className={styles.subItemUL}>

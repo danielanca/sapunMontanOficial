@@ -18,7 +18,7 @@ interface productProps {
 }
 const ShowProduct = ({ productName }: productProps) => {
   return (
-    <tr>
+    <tr className={styles.productRow}>
       <td>
         <div className={styles.imageWrap}>
           <img className={styles.productImage} src={productName.imageProduct[0]}></img>

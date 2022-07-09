@@ -1,8 +1,7 @@
-import images from "./../data/images";
-
+import React from "react";
+import StarDisplayer from "./StarDisplayer/StarDisplayer";
 import styles from "./ReviewCard.module.scss";
 
-import StarDisplayer from "./StarDisplayer/StarDisplayer";
 interface ReviewerInterface {
   reviewActual: string;
   date: string;

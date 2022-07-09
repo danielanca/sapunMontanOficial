@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import { HashLink, HashLink as Link, NavHashLink } from "react-router-hash-link";
 import ReactGA from "react-ga4";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
@@ -14,7 +14,7 @@ import strings from "../data/strings.json";
 
 interface NavProps {
   updateNotification?: number;
-  // clearNotif?: React.Dispatch<React.SetStateAction<number>>;
+
   clearNotif?: number;
 }
 
@@ -22,7 +22,7 @@ const NavBar = ({ clearNotif }: NavProps) => {
   const { pathname } = useLocation();
   var storedCart = [];
   var totalItems = 0;
-  const [updateCart, setUpdateCart] = useState(clearNotif);
+
   let expectedData = localStorage.getItem("cartData");
   if (expectedData != null) {
     storedCart = JSON.parse(expectedData);
