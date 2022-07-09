@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { HashLink } from "react-router-hash-link";
 import styles from "./../components/ItemCartList.module.scss";
 
@@ -14,14 +14,12 @@ const ItemCartList = ({ productID, amount, updateRequest }: itemCart) => {
   let sessionProducts = JSON.parse(sessionStorage.getItem("productsFetched"));
 
   var value = 0;
-  const [productQuantity, setproductQuantity] = useState(amount);
-  const [eventCounter, setEventCounter] = useState(0);
 
   let expectedData = localStorage.getItem("cartData");
 
   storedCart = JSON.parse(expectedData);
   storedCart.map((item) => {
-    if (item.id == productID) {
+    if (item.id === productID) {
       amount = Number(item.itemNumber);
       value = amount;
     }
@@ -32,7 +30,7 @@ const ItemCartList = ({ productID, amount, updateRequest }: itemCart) => {
     storedCart = JSON.parse(expectedData);
     storedCart.map((item) => {
       console.log(item);
-      if (item.id == productID) {
+      if (item.id === productID) {
         item.itemNumber = (Number(item.itemNumber) + 1).toString();
         value = item.itemNumber;
       }
@@ -48,7 +46,7 @@ const ItemCartList = ({ productID, amount, updateRequest }: itemCart) => {
     storedCart = JSON.parse(expectedData);
     storedCart.map((item) => {
       console.log(item);
-      if (item.id == productID) {
+      if (item.id === productID) {
         if (item.itemNumber > 1) {
           item.itemNumber = (Number(item.itemNumber) - 1).toString();
 

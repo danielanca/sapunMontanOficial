@@ -1,10 +1,10 @@
-import styles from "./../Product/ProductView.module.scss";
 import React from "react";
 import images from "../../data/images";
 import { useState } from "react";
 import ProductAdded from "./../PopUps/ProductAdded";
 import { ProductListType } from "./../../utils/OrderInterfaces";
 import ProductDescription from "./../ConstantComponents/ProductDescription";
+import styles from "./../Product/ProductView.module.scss";
 
 interface ProductTypes {
   previewOnly?: boolean;
@@ -42,7 +42,7 @@ const ProductPreview = ({ previewOnly, productListUpdated, ID, addCartHandler }:
                   onClick={onImageClicked.bind(this, 0)}
                   className={mainPicture === 0 ? styles.activeImage : styles.clickableImage}
                 >
-                  <img className={styles.innerImage} src={productListUpdated[ID].imageProduct[0]} />
+                  <img alt=" " className={styles.innerImage} src={productListUpdated[ID].imageProduct[0]} />
                 </div>
                 <div
                   onClick={onImageClicked.bind(this, 1)}

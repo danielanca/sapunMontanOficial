@@ -1,5 +1,5 @@
-@import './../main.module.scss';
-@import './../data//themes.scss';
+@import "./../main.module.scss";
+@import "./../data//themes.scss";
 
 .blockContainer {
   @extend .row;
@@ -9,7 +9,7 @@
   display: flex;
   margin: 0;
   justify-content: center;
-  @include media('<tablet') {
+  @include media("<tablet") {
     margin: 0;
   }
 }
@@ -19,40 +19,40 @@
 }
 
 .testimonialSection {
-  padding: 76px 20px;
+  padding: 76px 8%;
   display: flex;
   justify-content: center;
   align-items: center;
-  @include media('<tablet') {
+  @include media("<tablet") {
     padding: 32px 10px;
   }
 }
 .titleNameStart {
   font-size: 2.75rem;
-  @include media('<tablet') {
+  @include media("<tablet") {
     text-align: center;
   }
 }
 .titleNameEnd {
   font-size: 2.75rem;
   text-align: end;
-  @include media('<tablet') {
+  @include media("<tablet") {
     text-align: center;
   }
 }
 .descriptionStart {
   font-size: 0.95rem;
   text-align: start;
-  font-family: 'Open Sans Regular';
-  @include media('<tablet') {
+  font-family: "Open Sans Regular";
+  @include media("<tablet") {
     line-height: 1em;
   }
 }
 .descriptionEnd {
   font-size: 0.95rem;
   text-align: end;
-  font-family: 'Open Sans Regular';
-  @include media('<tablet') {
+  font-family: "Open Sans Regular";
+  @include media("<tablet") {
     line-height: 1em;
   }
 }
@@ -64,7 +64,7 @@
 .imageContainer {
   width: 66%;
 
-  @include media('<tablet') {
+  @include media("<tablet") {
     width: 100%;
   }
 }

@@ -1,5 +1,4 @@
 import { HashLink } from "react-router-hash-link";
-import productList from "./../data/productList";
 
 import styles from "./../components/ProductItem.module.scss";
 

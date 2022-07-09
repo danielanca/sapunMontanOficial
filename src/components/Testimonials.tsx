@@ -1,4 +1,4 @@
-import MontanLanding from "./MontanLanding";
+import React from "react";
 
 import styles from "./../components/Testimonials.module.scss";
 import testimonial1 from "./../media/assets/pics/prezentareCarbune/Dovada2.jpg";
@@ -13,7 +13,7 @@ const Testimonials = () => {
         <div className={"row " + styles.testimonialSection}>
           <div className="col-sm-6 d-flex justify-content-center align-items-center ">
             <div className={styles.imageContainer}>
-              <img className={styles.testimonialPic} src={testimonial1} />
+              <img alt="picture" className={styles.testimonialPic} src={testimonial1} />
             </div>
           </div>
           <div className="col-sm-6 d-flex flex-column justify-content-center ">
