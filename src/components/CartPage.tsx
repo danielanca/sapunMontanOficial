@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { NavHashLink } from "react-router-hash-link";
 import { productConstants } from "../data/componentStrings";
 import ItemCartList from "./ItemCartList";
