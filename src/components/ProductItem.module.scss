@@ -50,7 +50,6 @@
   text-decoration: none;
   text-align: center;
   line-height: 27px;
-  margin-top: 10px;
   cursor: pointer;
   @include media("<tablet") {
     line-height: 29px;
@@ -101,9 +100,10 @@ a {
   height: 100px;
 }
 .imageWrap {
-  height: 45%;
   position: relative;
   padding: 20px;
+  padding: 10px 15px 0px;
+  height: 128px;
 }
 .priceWrap {
   position: relative;

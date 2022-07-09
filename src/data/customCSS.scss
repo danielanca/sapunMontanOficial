@@ -2,7 +2,7 @@
 
 .centerTextTitle {
   text-align: center;
-  font-family: "Roboto";
+  font-family: "Roboto Medium";
   @include media("<tablet") {
     font-size: 14px;
   }
@@ -11,14 +11,17 @@
   text-align: center;
   font-size: 17px;
   font-weight: bolder;
-  font-family: "Roboto";
+  font-family: "Roboto Medium";
 }
-
+.robotoLight {
+  font-family: "Roboto Light";
+  font-weight: 600;
+}
 .textSpaceMargins {
   padding-left: 20px;
   padding-right: 20px;
   max-width: 980px;
-  font-family: "Roboto";
+  font-family: "Roboto Medium";
   margin: auto;
   @include media("<800px") {
     max-width: 500px;
@@ -27,16 +30,18 @@
   p {
     line-height: 18px;
     text-indent: 50px;
+    font-family: "Roboto Light";
+    font-weight: 600;
   }
   strong,
   b {
-    font-family: "Roboto";
+    font-family: "Roboto Medium";
   }
   .justTextAlignCenter {
     text-align: center;
   }
   a {
-    font-family: "Roboto";
+    font-family: "Roboto Medium";
   }
 }
 .centerImageMedium {
@@ -64,12 +69,12 @@
 }
 .termsUl {
   li {
-    font-family: "Roboto";
+    font-family: "Roboto Medium";
   }
 }
 .lefter {
   text-align: start;
-  font-family: "Roboto";
+  font-family: "Roboto Medium";
 }
 .rightIndent {
   margin-left: 5%;
@@ -78,7 +83,7 @@
 //block content area
 
 .blogContent {
-  font-family: "Roboto";
+  font-family: "Roboto Medium";
   b,
   strong,
   p,
@@ -86,7 +91,7 @@
   h2,
   h3,
   h4 {
-    font-family: "Roboto";
+    font-family: "Roboto Medium";
   }
 
   .imageCenterMedium {

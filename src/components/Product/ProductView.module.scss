@@ -106,12 +106,9 @@
 }
 .starsContainer {
   display: flex;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 10px;
+
   height: 26px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  align-self: center;
 }
 .reviewStar {
   width: 25px;

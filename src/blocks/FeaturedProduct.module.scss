@@ -19,9 +19,9 @@
   }
 }
 .backText {
-  font-size: 27vw;
   text-align: center;
   opacity: 0.13;
+  font-size: clamp(50px, 27vw, 423px);
   @include media("<tablet") {
     font-size: 68vw;
     margin-left: -280px;
@@ -31,15 +31,14 @@
   font-size: 10vw;
 
   @include media(">=desktop") {
-    font-size: 6vw;
+    font-size: clamp(30px, 6vw, 125px);
   }
 }
 .textContainer {
   position: absolute;
   transform: translate(-50%, 0%);
   left: 50%;
-  top: 11vw;
-
+  top: clamp(20px, 11vw, 181px);
   @include media("<tablet") {
     height: 250px;
     top: 27vw;

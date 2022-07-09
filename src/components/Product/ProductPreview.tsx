@@ -76,9 +76,9 @@ const ProductPreview = ({ previewOnly, productListUpdated, ID, addCartHandler }:
               </div>
               <span className={styles.reviewHead}>
                 {productListUpdated != null
-                  ? productListUpdated[ID].hasOwnProperty("reviews")
+                  ? Object.values(productListUpdated[ID].reviews).length != 0
                     ? Object.values(productListUpdated[ID].reviews).length + " RECENZII"
-                    : " FARA RECENZII"
+                    : " Fii Primul ce lasa review!"
                   : ""}
               </span>
             </div>
