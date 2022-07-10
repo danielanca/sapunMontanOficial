@@ -38,7 +38,7 @@ const MenuMobileSide = () => {
           {Object.values(strings.navMenuMobile).map((item) => {
             if (item.ulItems === 0) {
               return (
-                <li className={styles.liMobile}>
+                <li key={uniqueId()} className={styles.liMobile}>
                   <NavHashLink onClick={closeBackdrop} className={styles.HashLinkStyle} to={`${item.link}`}>
                     {item.title}
                   </NavHashLink>
@@ -46,7 +46,7 @@ const MenuMobileSide = () => {
               );
             } else {
               return (
-                <label className={styles.liSubItem}>
+                <label key={uniqueId()} className={styles.liSubItem}>
                   <input type="checkbox" id="toggle" className={styles.visuallyHidden} />
                   <div className={styles.extendSub}>
                     {item.title}
@@ -55,7 +55,7 @@ const MenuMobileSide = () => {
 
                   <ul className={styles.subItemUL}>
                     {Object.values(item.ulItems).map((subItem) => (
-                      <NavHashLink onClick={closeBackdrop} replace to={`${subItem.link}`}>
+                      <NavHashLink key={uniqueId()} onClick={closeBackdrop} replace to={`${subItem.link}`}>
                         <li key={uniqueId()}>{subItem.title}</li>
                       </NavHashLink>
                     ))}

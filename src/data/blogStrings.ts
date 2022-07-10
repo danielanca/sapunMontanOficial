@@ -55,6 +55,7 @@ export const blogs = {
     "despre-viata": {
       link: "despre-viata",
       title: "Postul 4",
+      postCategory: "ingrijire faciala, creme fata",
       image:
         "https://elements-video-cover-images-0.imgix.net/files/02280f1f-ca00-4cd3-8712-63a84f9d1a91/inline_image_preview.jpg?auto=compress%2Cformat&fit=min&h=450&w=800&s=eca9652a2ab85301eb9744ea2ed75930",
       postedDate: "22.11.2021",

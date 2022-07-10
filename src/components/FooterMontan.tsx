@@ -9,19 +9,8 @@ import flagRomania from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
 
 const FooterMontan = () => {
   const [openedContainer, setContainer] = useState(0);
-  // const footerOpener = useRef(null);
-  const { pathname } = useLocation();
 
-  // const gotoElement = () => {
-  //   window.scrollTo({ top: footerOpener.current.scrollIntoView(), behavior: "smooth" });
-  // };
-  const clickHandler = (index: number) => {
-    if (index === openedContainer) setContainer(index);
-    else {
-      setContainer(index);
-      // gotoElement();
-    }
-  };
+  const { pathname } = useLocation();
 
   return (
     <>
@@ -47,7 +36,11 @@ const FooterMontan = () => {
                   <div className={"col " + styles.footItem}>
                     <h3 className={styles.footerTittleCenter}>{"Date Comerciale"}</h3>
                     {Object.values(footerData.companyData).map((item) => {
-                      return <p className={styles.classicText}>{item}</p>;
+                      return (
+                        <p key={uniqueId()} className={styles.classicText}>
+                          {item}
+                        </p>
+                      );
                     })}
                   </div>
                 </div>
@@ -58,7 +51,7 @@ const FooterMontan = () => {
                 <div className={"col " + styles.footItem}>
                   <h3 className={styles.footerTittleCenter}>{"MAGAZINUL NOSTRU"}</h3>
                   {Object.values(footerData.ourShop).map((item) => (
-                    <a href={item.link}>
+                    <a key={uniqueId()} href={item.link}>
                       <p className={styles.classicText}>{item.name}</p>
                     </a>
                   ))}
