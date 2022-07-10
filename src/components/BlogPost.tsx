@@ -49,9 +49,11 @@ const BlogPost = () => {
         <div className={styles.relatedContainer}>
           <h3>{"Subiecte similare"}</h3>
           <div className={styles.relatedListing}>
-            {Object.keys(blogs.posts).map((key) => (
-              <RelatedPost key={uniqueId()} blogLink={key} />
-            ))}
+            {Object.keys(blogs.posts).map((key, index) => {
+              if (index < 2) {
+                return <RelatedPost key={uniqueId()} blogLink={key} />;
+              }
+            })}
           </div>
         </div>
       </div>
