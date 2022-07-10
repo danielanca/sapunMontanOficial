@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, BrowserRouter, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import { uniqueId } from "lodash";
 
 import Relaxbar from "./MiniComponents/Footers/Relaxbar";
@@ -9,17 +9,17 @@ import flagRomania from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
 
 const FooterMontan = () => {
   const [openedContainer, setContainer] = useState(0);
-  const footerOpener = useRef(null);
+  // const footerOpener = useRef(null);
   const { pathname } = useLocation();
 
-  const gotoElement = () => {
-    window.scrollTo({ top: footerOpener.current.scrollIntoView(), behavior: "smooth" });
-  };
+  // const gotoElement = () => {
+  //   window.scrollTo({ top: footerOpener.current.scrollIntoView(), behavior: "smooth" });
+  // };
   const clickHandler = (index: number) => {
     if (index === openedContainer) setContainer(index);
     else {
       setContainer(index);
-      gotoElement();
+      // gotoElement();
     }
   };
 

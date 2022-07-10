@@ -1,0 +1,43 @@
+@import "../../../../node_modules/include-media//dist/include-media";
+@import "../../../../node_modules//bootstrap/scss//bootstrap.scss";
+
+@import "./../../../main.module.scss";
+
+.backText {
+  text-align: center;
+  opacity: 0.13;
+  font-size: clamp(50px, 27vw, 423px);
+  @include media("<tablet") {
+    font-size: 68vw;
+    margin-left: -280px;
+  }
+}
+.newProductTitle {
+  white-space: nowrap;
+  font-size: clamp(20px, 10vw, 31px);
+  @include media(">=desktop") {
+    font-size: clamp(30px, 6vw, 125px);
+  }
+}
+.textContainer {
+  position: absolute;
+  transform: translate(-50%, 0%);
+  left: 50%;
+  top: clamp(20px, 11vw, 181px);
+  padding: 0 5%;
+  @include media("<tablet") {
+    top: clamp(24px, 30vw, 186px);
+    width: 100%;
+    text-align: center;
+    padding: 0 5%;
+  }
+}
+.newProductText {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  @include media("<tablet") {
+    height: 264px;
+  }
+}

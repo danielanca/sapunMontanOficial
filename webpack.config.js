@@ -17,7 +17,9 @@ process.env.NODE_ENV = "development";
 module.exports = {
   // Environment mode
   mode: "development",
-
+  resolve: {
+    extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".scss"]
+  },
   // Entry point of app
   entry: resolveAppPath("src"),
 

@@ -26,16 +26,32 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 110px;
 }
 .textArea {
   max-width: 200px;
-
+  font-family: "Roboto Medium";
+  margin: 0;
+  line-height: 18px;
   p {
     text-align: center;
     line-height: 21px;
+    font-family: "Roboto Medium";
+    @include media("<tablet") {
+      margin: 0;
+      line-height: 14px;
+    }
 
     b {
-      font-family: "Roboto";
+      font-family: "Roboto Medium";
     }
+  }
+
+  @include media("<tablet") {
+    text-align: center;
+
+    font-family: "Roboto Medium";
+    font-size: 11px;
+    margin: 0;
   }
 }

@@ -1,7 +1,9 @@
-import styles from "./Relaxbar.module.scss";
+import React from "react";
+import { NavHashLink } from "react-router-hash-link";
+
 import images from "../../../data/images";
 import strings from "../../../data/strings.json";
-import { NavHashLink } from "react-router-hash-link";
+import styles from "./Relaxbar.module.scss";
 
 const Relaxbar = () => {
   const goToTop = () => {
