@@ -223,5 +223,27 @@ export const staticContent = {
 
 
     `
+  },
+
+  ContactSimple: {
+    title: "Sectiunea de Contact",
+    jsonContent: `
+    <div class="spacerPadder100"> </div>
+  
+    <div class="textSpaceMargins">
+    <h2 class="middleSubtext">IA LEGATURA CU NOI !</h2>
+
+    <p class="text-center">Daca ai intrebari despre noi, produsele noastre, sau pur si simplu vrei sa ne saluti, o poti face 
+    trimitand un email la adresa <a href="mailto:contact@montanair.ro">contact@montanair.ro </a> sau la numarul de telefon +40 759 791 474 
+    </p>
+
+    <div class="spacerPadder50"></div>
+   <p class="text-center">Ne mai poti gasi pe Instagram, Facebook si WhatsApp din sectiunea de mai jos </p> 
+    <div class="spacerPadder200"> </div>
+    </div>
+
+
+
+    `
   }
 };

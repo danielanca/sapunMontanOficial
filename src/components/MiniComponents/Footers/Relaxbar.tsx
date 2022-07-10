@@ -1,6 +1,6 @@
 import React from "react";
 import { NavHashLink } from "react-router-hash-link";
-
+import { uniqueId } from "lodash";
 import images from "../../../data/images";
 import strings from "../../../data/strings.json";
 import styles from "./Relaxbar.module.scss";
@@ -15,7 +15,7 @@ const Relaxbar = () => {
         <h3>{"Hai sa tinem legatura 😊"}</h3>
         <div className={styles.socialsTop}>
           {Object.values(strings.socialsInfo.socialLinks).map((item) => (
-            <a href={item.link}>
+            <a key={uniqueId()} href={item.link}>
               <img className={styles.iconStyle} src={images.socialIcons[item.image]} />
             </a>
           ))}
