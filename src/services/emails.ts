@@ -1,4 +1,4 @@
-import { orderProps, ProductModel } from "./../utils/OrderInterfaces";
+import { orderProps, ProductModel } from "../utils/OrderInterfaces";
 import { getCookie } from "../utils/functions";
 var destination: string = "";
 // const destination = "http://localhost:5000/sapunmontan/us-central1";

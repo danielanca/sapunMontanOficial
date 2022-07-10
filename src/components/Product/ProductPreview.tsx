@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import images from "../../data/images";
 import { useState } from "react";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import styles from "./ProductsGallery.module.scss";
 import ProductItem from "./../ProductItem";

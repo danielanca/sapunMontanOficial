@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import { HashLink, HashLink as Link, NavHashLink } from "react-router-hash-link";
 import ReactGA from "react-ga4";

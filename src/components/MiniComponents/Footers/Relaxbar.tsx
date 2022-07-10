@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import { NavHashLink } from "react-router-hash-link";
 import { uniqueId } from "lodash";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ProductItem from "../ProductItem";
 import { uniqueId } from "lodash";
 import { useEffect, useState } from "react";

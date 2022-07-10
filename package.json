@@ -57,11 +57,15 @@
     "styled-components": "^5.3.3",
     "tar": "^6.1.11",
     "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "webpack-node-externals": "^3.0.0"
   },
   "scripts": {
     "build": "react-scripts --openssl-legacy-provider build",
     "start": "react-scripts --openssl-legacy-provider start ",
+    "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development -w",
+    "dev:start": "nodemon ./server-build/index.js",
+    "dev": "npm-run-all --parallel build dev:*",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'"
@@ -91,6 +95,7 @@
     "@types/react-router-hash-link": "^2.4.4",
     "express": "^4.17.3",
     "nodemon": "^2.0.15",
+    "npm-run-all": "^4.1.5",
     "sass": "^1.49.9"
   }
 }

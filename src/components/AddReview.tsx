@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./AddReview.module.scss";
-import { sendReviewToBack } from "./../services/emails";
+import { sendReviewToBack } from "../services/emails";
 interface ReviewProps {
   name: string;
   email: string;

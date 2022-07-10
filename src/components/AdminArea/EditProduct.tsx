@@ -7,7 +7,7 @@ import parse from "html-react-parser";
 import { useParams } from "react-router-dom";
 import { getProductWithID } from "../../data/productList";
 import { useEffect, useState } from "react";
-import { updateProduct } from "./../../services/emails";
+import { updateProduct } from "../../services/emails";
 import { ProductListType, ProductModel } from "./../../utils/OrderInterfaces";
 
 import styles from "./EditProduct.module.scss";

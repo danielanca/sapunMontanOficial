@@ -1,3 +1,4 @@
+// @ts-nocheck
 import parse from "html-react-parser";
 import styles from "./Ingredients.module.scss";
 import images from "./../../../data/images";

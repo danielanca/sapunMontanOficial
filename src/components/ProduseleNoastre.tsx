@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import { getData } from "../data/productList";
 import { uniqueId } from "lodash";

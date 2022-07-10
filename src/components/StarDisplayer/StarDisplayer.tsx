@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styles from "./StarDisplayer.module.scss";
 
 import stars from "./../../media/assets/pics/prezentareCarbune/star_review.png";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { HashLink } from "react-router-hash-link";
 
 import styles from "./../components/ProductItem.module.scss";
