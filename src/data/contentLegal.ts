@@ -1,4 +1,4 @@
-export const staticContent = {
+export const staticContent: any = {
   Terms: {
     title: "Termeni si conditii",
     jsonContent: `

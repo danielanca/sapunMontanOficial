@@ -1,5 +1,7 @@
+// @ts-nocheck
 import React from "react";
 import { NavHashLink } from "react-router-hash-link";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import parse from "html-react-parser";
 import styles from "./BlogPost.module.scss";
@@ -25,11 +27,16 @@ const BlogPost = () => {
   console.log("BlogPost saying:", blogLinkBro);
 
   var dani: BlogContent = blogs.posts[blogLinkBro];
-  if (blogs.posts[blogLinkBro] != null) {
-  }
+  // if (blogs.posts[blogLinkBro] != null) {
+  // }
 
   return (
     <>
+      <Helmet>
+        <title>{blogs.posts[blogLinkBro].title}</title>
+        <meta property="og:title" content={blogs.posts[blogLinkBro].title} />
+        <meta property="og:image" content={blogs.posts[blogLinkBro].image} />
+      </Helmet>
       <div className={styles.container}>
         <div className={styles.blogPostCont}>
           <div className={styles.topTitle}>
@@ -49,11 +56,11 @@ const BlogPost = () => {
         <div className={styles.relatedContainer}>
           <h3>{"Subiecte similare"}</h3>
           <div className={styles.relatedListing}>
-            {Object.keys(blogs.posts).map((key, index) => {
+            {/* {Object.keys(blogs.posts).map((key, index) => {
               if (index < 2) {
                 return <RelatedPost key={uniqueId()} blogLink={key} />;
               }
-            })}
+            })} */}
           </div>
         </div>
       </div>

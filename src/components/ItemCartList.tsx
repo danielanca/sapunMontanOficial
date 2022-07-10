@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import { HashLink } from "react-router-hash-link";
 import styles from "./../components/ItemCartList.module.scss";

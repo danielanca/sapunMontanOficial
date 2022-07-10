@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect } from "react";
 import { NavHashLink } from "react-router-hash-link";
 import { productConstants } from "../data/componentStrings";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import OrderDone from "./OrderDone";
 import images from "./../../data/images";
 

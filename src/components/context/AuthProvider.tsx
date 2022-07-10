@@ -10,7 +10,7 @@ interface ProviInter {
   auth?: Provi;
   setAuth?: React.Dispatch<React.SetStateAction<Provi>>;
 }
-const AuthContext = createContext<ProviInter | null>(null);
+const AuthContext = createContext<ProviInter>({});
 
 export const AuthProvider: React.FC = ({ children }) => {
   var authoriseMe = false;

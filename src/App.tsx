@@ -93,53 +93,51 @@ function App() {
     <div className="App">
       {getCookieConsent() && <CookieConsent />}
       <header className="App-header">
-        <ProductsContext.Provider productsData={ssProducts}>
-          <React.Suspense fallback={Loading}>
-            <BrowserRouter basename="/">
-              <AuthProvider>
-                <Navbar clearNotif={letsCartHandler} />
-                <Routes>
-                  {/* protect this */}
+        <React.Suspense fallback={Loading}>
+          <BrowserRouter basename="/">
+            <AuthProvider>
+              <Navbar clearNotif={letsCartHandler} />
+              <Routes>
+                {/* protect this */}
 
-                  <Route element={<RequireAuth />}>
-                    <Route path="/admin" element={<AdminArea />} />
-                    <Route path="/admin/products" element={<UpdateProducts />} />
-                    <Route path="/admin/products/edit-:productID" element={<EditProduct editMode={true} />} />
-                    <Route path="/admin/products/add" element={<EditProduct editMode={false} />} />
-                  </Route>
-                  <Route element={<CheckAuth />}>
-                    <Route path="/login" element={<Login />} />
-                  </Route>
-                  {/* protect the above */}
+                <Route element={<RequireAuth />}>
+                  <Route path="/admin" element={<AdminArea />} />
+                  <Route path="/admin/products" element={<UpdateProducts />} />
+                  <Route path="/admin/products/edit-:productID" element={<EditProduct editMode={true} />} />
+                  <Route path="/admin/products/add" element={<EditProduct editMode={false} />} />
+                </Route>
+                <Route element={<CheckAuth />}>
+                  <Route path="/login" element={<Login />} />
+                </Route>
+                {/* protect the above */}
 
-                  <Route path={`${process.env.PUBLIC_URL}/produsele-noastre`} element={<ProduseleNoastre />} />
-                  <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />} />
-                  <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />} />
-                  <Route path="/finalizare-comanda" element={<FinishOrder clearNotification={CartHandler} />} />
+                <Route path={`${process.env.PUBLIC_URL}/produsele-noastre`} element={<ProduseleNoastre />} />
+                <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />} />
+                <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />} />
+                <Route path="/finalizare-comanda" element={<FinishOrder clearNotification={CartHandler} />} />
 
-                  <Route path="/blogs" element={<Blogs />} />
-                  <Route path="/blogid/:blogLink" element={<BlogPost />} />
-                  <Route path="/testimonials" element={<Testimonials />} />
-                  <Route path="/order/:orderID" element={<OrderView />} />
-                  <Route path="/" element={<MainNavigation />} />
+                <Route path="/blogs" element={<Blogs />} />
+                <Route path="/blogid/:blogLink" element={<BlogPost />} />
+                <Route path="/testimonials" element={<Testimonials />} />
+                <Route path="/order/:orderID" element={<OrderView />} />
+                <Route path="/" element={<MainNavigation />} />
 
-                  {/* Content Template*/}
-                  <Route path="/termeni-si-conditii" element={<SimpleContent type={"Terms"} />} />
-                  <Route path="/metode-plata" element={<SimpleContent type={"PaymentMethods"} />} />
-                  <Route path="/politica-retur" element={<SimpleContent type={"RefundPolicy"} />} />
-                  <Route path="/politica-confidentialitate" element={<SimpleContent type={"PrivacyPolicy"} />} />
-                  <Route path="/politica-de-cookies" element={<SimpleContent type={"CookiesPolicy"} />} />
-                  <Route path="/afiliere" element={<SimpleContent type={"AffiliateProgram"} />} />
-                  <Route path="/contact" element={<SimpleContent type={"ContactSimple"} />} />
-                  {/* Content Template*/}
+                {/* Content Template*/}
+                <Route path="/termeni-si-conditii" element={<SimpleContent type={"Terms"} />} />
+                <Route path="/metode-plata" element={<SimpleContent type={"PaymentMethods"} />} />
+                <Route path="/politica-retur" element={<SimpleContent type={"RefundPolicy"} />} />
+                <Route path="/politica-confidentialitate" element={<SimpleContent type={"PrivacyPolicy"} />} />
+                <Route path="/politica-de-cookies" element={<SimpleContent type={"CookiesPolicy"} />} />
+                <Route path="/afiliere" element={<SimpleContent type={"AffiliateProgram"} />} />
+                <Route path="/contact" element={<SimpleContent type={"ContactSimple"} />} />
+                {/* Content Template*/}
 
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-                <FooterMontan />
-              </AuthProvider>
-            </BrowserRouter>
-          </React.Suspense>
-        </ProductsContext.Provider>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+              <FooterMontan />
+            </AuthProvider>
+          </BrowserRouter>
+        </React.Suspense>
       </header>
     </div>
   );

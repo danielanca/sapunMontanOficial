@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { NavHashLink } from "react-router-hash-link";
 import { blogs } from "../../data/blogStrings";
 import styles from "./../../components/ConstantComponents/BlogItem.module.scss";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styles from "./SimpleContent.module.scss";
 
 import parse from "html-react-parser";
@@ -5,6 +6,12 @@ import { staticContent } from "./../data/contentLegal";
 import "./../data/customCSS.scss";
 interface SimpleProps {
   type: string;
+}
+interface staticContentProps {
+  [key: string]: {
+    title: string;
+    jsonContent: string;
+  };
 }
 
 const SimpleContent = ({ type }: SimpleProps) => {

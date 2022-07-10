@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect } from "react";
 import styles from "./UpdateProducts.module.scss";
 import { getData } from "../../data/productList";

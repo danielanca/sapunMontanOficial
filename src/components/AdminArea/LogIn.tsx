@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState, useRef } from "react";
 import useAuth from "./../hooks/useAuth";
 import { requestLoginAccess } from "../../services/emails";
