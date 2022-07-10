@@ -7,6 +7,12 @@
     font-size: 14px;
   }
 }
+.robotoMedium {
+  font-family: "Roboto Medium" !important;
+}
+.bebasMedium {
+  font-family: "Bebas Neue" !important;
+}
 .middleSubtext {
   text-align: center;
   font-size: 17px;
@@ -45,6 +51,7 @@
   }
 }
 .centerImageMedium {
+  display: table;
   width: 100%;
   max-width: 400px;
   min-width: 300px;
@@ -97,4 +104,7 @@
   .imageCenterMedium {
     width: 100px;
   }
+}
+.randNou {
+  text-indent: 50px;
 }

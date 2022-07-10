@@ -130,6 +130,7 @@ function App() {
                   <Route path="/politica-confidentialitate" element={<SimpleContent type={"PrivacyPolicy"} />} />
                   <Route path="/politica-de-cookies" element={<SimpleContent type={"CookiesPolicy"} />} />
                   <Route path="/afiliere" element={<SimpleContent type={"AffiliateProgram"} />} />
+                  <Route path="/contact" element={<SimpleContent type={"ContactSimple"} />} />
                   {/* Content Template*/}
 
                   <Route path="*" element={<NotFound />} />
