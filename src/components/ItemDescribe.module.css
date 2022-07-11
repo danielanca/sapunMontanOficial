@@ -11958,32 +11958,80 @@ fieldset:disabled .btn {
 }
 
 @font-face {
-  font-family: 'SallenasGrande Regular';
+  font-family: "Bebas Neue Regular";
+  src: url(./../fonts/BebasNeueRegular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "SallenasGrande Regular";
   src: url(./../fonts/SallenasGrandesRegular.ttf);
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Montserrat Regular';
+  font-family: "Montserrat Regular";
   src: url(./../fonts/MontserratRegular.ttf);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 @font-face {
-  font-family: 'Montserrat Light';
+  font-family: "Montserrat Light";
   src: url(./../fonts/MontserratLight.ttf);
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Montserrat Bold';
+  font-family: "Montserrat Bold";
   src: url(./../fonts/MontserratBold.ttf);
   font-weight: 400;
 }
 
+@font-face {
+  font-family: "Open Sans Regular";
+  src: url(./../fonts/OpenSansRegular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans Italic";
+  src: url(./../fonts/OpenSansItalic.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Black";
+  src: url(./../fonts/Roboto-Black.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Bold";
+  src: url(./../fonts/Roboto-Bold.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Thin";
+  src: url(./../fonts/Roboto-Thin.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Medium";
+  src: url(./../fonts/Roboto-Medium.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Regular";
+  src: url(./../fonts/Roboto-Regular.ttf);
+  font-weight: normal;
+}
+
 /* responsive declarations*/
 * {
-  font-family: 'Sallenas Grandes', cursive;
+  font-family: "Bebas Neue Regular", cursive;
 }
 
 .ItemContainer {
@@ -11992,18 +12040,17 @@ fieldset:disabled .btn {
   margin: 1.4vh auto;
 }
 
-@media (min-width: 340px) and (max-width: 427px) {
+@media (max-width: 575px) {
   .ItemContainer {
     display: none;
   }
 }
 
 .headTextStyle {
-  color: #caa987;
+  color: black;
 }
 
 .headerDescription {
-  font-family: 'Montserrat', 'Courier New', Courier, monospace;
   font-weight: 400;
   color: #524033;
 }

@@ -7,7 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./data/customCSS.scss";
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <React.StrictMode>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <App />

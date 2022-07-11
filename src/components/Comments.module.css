@@ -1,0 +1,59 @@
+.tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.tabButton, .activeTab {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+          box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  width: 130px;
+  border: 1.5px solid #3f3f3f;
+  text-align: center;
+  font-size: 1.3em;
+  background-color: white;
+  cursor: pointer;
+}
+
+.tabButton:hover, .activeTab:hover {
+  background-color: #313131;
+  color: white;
+}
+
+.tabButton:active, .activeTab:active {
+  background-color: red;
+}
+
+.activeTab {
+  background-color: #313131;
+  color: white;
+}
+
+.descriptionContainer {
+  width: 100%;
+  height: auto;
+  min-height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.innerDescription {
+  padding: 10px;
+}
+/*# sourceMappingURL=Comments.module.css.map */

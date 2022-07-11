@@ -53,9 +53,7 @@ const ProductView = lazy(() => import("./components/Product/ProductView"));
 
 const FooterMontan = lazy(() => import(/* webpackChunkName: "FooterMontan" */ "./components/FooterMontan"));
 
-const Loading = () => <div>LOADING</div>;
-
-function App() {
+const App = () => {
   const [letsCartHandler, CartHandler] = useState(1);
   const [ssProducts, setSSproducts] = useState<any>();
 
@@ -93,7 +91,7 @@ function App() {
     <div className="App">
       {getCookieConsent() && <CookieConsent />}
       <header className="App-header">
-        <React.Suspense fallback={Loading}>
+        <React.Suspense fallback={<div>Loading</div>}>
           <BrowserRouter basename="/">
             <AuthProvider>
               <Navbar clearNotif={letsCartHandler} />
@@ -141,6 +139,6 @@ function App() {
       </header>
     </div>
   );
-}
+};
 
 export default App;

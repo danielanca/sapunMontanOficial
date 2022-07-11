@@ -11958,56 +11958,217 @@ fieldset:disabled .btn {
 }
 
 @font-face {
-  font-family: 'SallenasGrande Regular';
+  font-family: "Bebas Neue Regular";
+  src: url(./../fonts/BebasNeueRegular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "SallenasGrande Regular";
   src: url(./../fonts/SallenasGrandesRegular.ttf);
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Montserrat Regular';
+  font-family: "Montserrat Regular";
   src: url(./../fonts/MontserratRegular.ttf);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 @font-face {
-  font-family: 'Montserrat Light';
+  font-family: "Montserrat Light";
   src: url(./../fonts/MontserratLight.ttf);
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Montserrat Bold';
+  font-family: "Montserrat Bold";
   src: url(./../fonts/MontserratBold.ttf);
   font-weight: 400;
+}
+
+@font-face {
+  font-family: "Open Sans Regular";
+  src: url(./../fonts/OpenSansRegular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans Italic";
+  src: url(./../fonts/OpenSansItalic.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Black";
+  src: url(./../fonts/Roboto-Black.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Bold";
+  src: url(./../fonts/Roboto-Bold.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Thin";
+  src: url(./../fonts/Roboto-Thin.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Medium";
+  src: url(./../fonts/Roboto-Medium.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Regular";
+  src: url(./../fonts/Roboto-Regular.ttf);
+  font-weight: normal;
 }
 
 /* responsive declarations*/
 * {
-  font-family: 'Sallenas Grandes', cursive;
+  font-family: "Bebas Neue Regular", cursive;
 }
 
 @font-face {
-  font-family: 'SallenasGrande Regular';
+  font-family: "Bebas Neue Regular";
+  src: url(./../fonts/BebasNeueRegular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "SallenasGrande Regular";
   src: url(./../fonts/SallenasGrandesRegular.ttf);
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Montserrat Regular';
+  font-family: "Montserrat Regular";
   src: url(./../fonts/MontserratRegular.ttf);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 @font-face {
-  font-family: 'Montserrat Light';
+  font-family: "Montserrat Light";
   src: url(./../fonts/MontserratLight.ttf);
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Montserrat Bold';
+  font-family: "Montserrat Bold";
   src: url(./../fonts/MontserratBold.ttf);
   font-weight: 400;
+}
+
+@font-face {
+  font-family: "Open Sans Regular";
+  src: url(./../fonts/OpenSansRegular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Open Sans Italic";
+  src: url(./../fonts/OpenSansItalic.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Black";
+  src: url(./../fonts/Roboto-Black.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Bold";
+  src: url(./../fonts/Roboto-Bold.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Thin";
+  src: url(./../fonts/Roboto-Thin.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Medium";
+  src: url(./../fonts/Roboto-Medium.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Roboto Regular";
+  src: url(./../fonts/Roboto-Regular.ttf);
+  font-weight: normal;
+}
+
+.jewel {
+  background-color: #00ac10;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  margin-left: -16px;
+  margin-top: -6px;
+  color: white;
+  text-align: center;
+  -webkit-box-shadow: 2px 10px 17px -3px rgba(0, 0, 0, 0.1);
+          box-shadow: 2px 10px 17px -3px rgba(0, 0, 0, 0.1);
+}
+
+.montanLogo {
+  font-weight: 500;
+  font-size: 36px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.roProduct {
+  width: 30px;
+  height: auto;
+}
+
+.WeRomanians {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (max-width: 575px) {
+  .WeRomanians {
+    display: none;
+  }
+}
+
+.backDropBackground {
+  display: none;
+  background-color: black;
+}
+
+@media (max-width: 991px) {
+  .backDropBackground {
+    opacity: 0.7;
+    width: 100vw;
+    position: absolute;
+    height: 185vh;
+    z-index: 8;
+  }
+}
+
+.active {
+  display: initial;
 }
 
 .middleNoUl {
@@ -12017,23 +12178,54 @@ fieldset:disabled .btn {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 70px;
+  height: auto;
 }
 
-@media (min-width: 340px) and (max-width: 1366px) {
+@media (max-width: 991px) {
   .middleNoUl {
-    width: 100%;
-    -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
+    display: table;
+    margin: 0 auto;
+    width: auto;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+}
+
+.wrapper {
+  background-color: rgba(239, 239, 239, 0.8);
+  width: 100%;
+  height: 54px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+@media (max-width: 575px) {
+  .wrapper {
+    height: 70px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 
 .navbarContainer {
   width: 100%;
-  height: 83px;
-  position: fixed;
-  background-color: rgba(255, 255, 255, 0.8);
+  max-width: 1808px;
+  height: auto;
+  margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12044,16 +12236,27 @@ fieldset:disabled .btn {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  z-index: 3;
+  z-index: 10;
 }
 
-@media (min-width: 340px) and (max-width: 1366px) {
+@media (max-width: 575px) {
+  .navbarContainer {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
   .navbarContainer {
     background-color: rgba(116, 51, 51, 0);
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+        -ms-flex-direction: row;
+            flex-direction: row;
     height: auto;
     width: 100vw;
     -ms-flex-pack: distribute;
@@ -12079,7 +12282,7 @@ fieldset:disabled .btn {
           align-items: center;
 }
 
-@media (min-width: 340px) and (max-width: 1366px) {
+@media (max-width: 991px) {
   .ulMenu, .ulMenuStart, .ulMenuEnd {
     display: none !important;
   }
@@ -12089,9 +12292,11 @@ fieldset:disabled .btn {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
+  width: auto;
 }
 
 .ulMenuEnd {
+  width: auto;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: end;
@@ -12117,14 +12322,15 @@ fieldset:disabled .btn {
 
 .burgerMenu {
   display: none;
-  border: 2px solid #caa987;
+  border: 2px solid black;
   background-color: white;
-  border-radius: 10px;
-  width: 70vw;
+  border-radius: 1px;
+  width: 80vw;
   margin-top: 1.3vw;
   font-size: 1.2em;
   font-weight: 500;
   opacity: 0;
+  z-index: 24;
   -webkit-transition: 0.6s ease-in;
   transition: 0.6s ease-in;
   animation: fadeIn 0.5s;
@@ -12134,17 +12340,12 @@ fieldset:disabled .btn {
   -ms-animation: fadeIn 0.5s;
 }
 
-@media (min-width: 340px) and (max-width: 428px) {
+@media (max-width: 991px) {
   .burgerMenu {
     width: 70vw;
     margin-top: 2.2vh;
-  }
-}
-
-@media (min-width: 429px) and (max-width: 1366px) {
-  .burgerMenu {
-    width: 37vw;
-    margin-top: 2.2vh;
+    position: absolute;
+    top: 140px;
   }
 }
 
@@ -12152,7 +12353,7 @@ fieldset:disabled .btn {
   display: block;
 }
 
-@media (min-width: 340px) and (max-width: 1366px) {
+@media (max-width: 991px) {
   .activeBurger {
     opacity: 1;
     -ms-flex-item-align: center;
@@ -12168,53 +12369,67 @@ fieldset:disabled .btn {
 }
 
 .liMobile {
-  color: #caa987;
+  color: black;
   font-weight: 500;
   margin-top: 1vw;
 }
 
-@media (min-width: 340px) and (max-width: 428px) {
+@media (max-width: 575px) {
   .liMobile {
-    font-size: 3.1vh;
+    font-size: calc(21px + 2vw);
   }
 }
 
-@media (min-width: 429px) and (max-width: 1366px) {
+@media (min-width: 576px) and (max-width: 992px) {
   .liMobile {
-    font-size: 2.3vh;
+    font-size: calc(20px + 2vw);
   }
 }
 
 .liItem {
-  font-weight: 600;
-  opacity: 0.8;
+  font-weight: 100;
+  opacity: 1;
   cursor: pointer;
-  font-size: 1.2em;
-  color: #caa987;
+  font-size: 1.4em;
+  color: #000000;
   margin: 0 0.8vw;
-  font-family: 'SallenasGrande Regular' !important;
+  font-family: "SallenasGrande Regular" !important;
   border-bottom: 5px solid transparent;
   white-space: nowrap;
 }
 
-.liItem:hover {
-  border-bottom: 4px solid #caa987;
-}
-
 .HashLinkStyle {
-  color: #caa987;
+  color: black;
   text-decoration: none;
 }
 
 .HashLinkStyle:hover {
-  color: #caa987;
+  color: black;
+  border-bottom: 2px solid black;
+}
+
+.logoHover {
+  color: black;
+  text-decoration: none;
+}
+
+.logoHover:hover {
+  color: gray;
+}
+
+.hashTransparent {
+  text-decoration: none;
+}
+
+.hashTransparent:hover {
+  text-decoration: none;
 }
 
 .navLogo {
   width: 25vw;
 }
 
-@media (min-width: 340px) and (max-width: 1366px) {
+@media (max-width: 991px) {
   .navLogo {
     width: 80vw;
     margin-top: 0px;
@@ -12222,65 +12437,156 @@ fieldset:disabled .btn {
 }
 
 .burgerElement {
-  display: none;
+  display: initial;
+  z-index: 24;
+  height: 36px;
+  width: 31px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
-@media (min-width: 340px) and (max-width: 1366px) {
+@media (max-width: 991px) {
   .burgerElement {
-    display: initial;
-    z-index: 5;
-    height: 36px;
-    width: 31px;
-    margin-top: 4%;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
   }
 }
 
-@media (min-width: 340px) and (max-width: 428px) {
+@media (max-width: 575px) {
   .bar1,
   .bar2,
   .bar3 {
-    width: 28px;
-    height: 2.5px;
-    background-color: white;
+    width: 32px;
+    height: 3.5px;
+    background-color: #00ac10;
     margin: 3px 0;
     -webkit-transition: 0.8s;
     transition: 0.8s;
   }
 }
 
-@media (min-width: 429px) and (max-width: 1366px) {
+@media (min-width: 576px) and (max-width: 991px) {
   .bar1,
   .bar2,
   .bar3 {
     width: 33px;
     height: 3.5px;
-    background-color: white;
+    background-color: #00ac10;
     margin: 5px 0;
     -webkit-transition: 0.8s;
     transition: 0.8s;
   }
 }
 
+.menuMobileContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (min-width: 992px) {
+  .menuMobileContainer {
+    display: none;
+  }
+}
+
 .bar1End {
-  -webkit-transform: rotate(90deg) translate(14.1px, 9px);
-  transform: rotate(90deg) translate(14.1px, 9px);
-  background-color: #caa987;
+  -webkit-transform: rotate(-45deg) translate(-5px, 2px);
+  transform: rotate(-45deg) translate(-5px, 2px);
+  background-color: white;
 }
 
 .bar2End {
-  -webkit-transform: rotate(90deg) translate(5.6px, 1px);
-  transform: rotate(90deg) translate(5.6px, 1px);
-  background-color: #caa987;
+  display: none;
 }
 
 .bar3End {
-  -webkit-transform: rotate(90deg) translate(-2px, -7px);
-  transform: rotate(90deg) translate(-2px, -7px);
-  background-color: #caa987;
+  -webkit-transform: rotate(45deg) translate(-2px, 0px);
+  transform: rotate(45deg) translate(-2px, 0px);
+  background-color: white;
 }
-/*# sourceMappingURL=NavBarResidence.module.css.map */
+
+.shopIcon {
+  width: 30px;
+  cursor: pointer;
+}
+
+.shopIcon:hover {
+  opacity: 0.7;
+}
+
+.sideLeftContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 991px) {
+  .sideLeftContainer {
+    display: none;
+  }
+}
+
+.sideRightContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 991px) {
+  .sideRightContainer {
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: end;
+    padding: 0 20px;
+    width: 80px;
+  }
+}
+
+.spanCart {
+  font-size: 1.2rem;
+  margin: 0 3%;
+  cursor: pointer;
+  color: green;
+}
+
+.spanCart:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 991px) {
+  .spanCart {
+    display: none;
+  }
+}
+/*# sourceMappingURL=Navbar.module.css.map */
