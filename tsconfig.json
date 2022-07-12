@@ -9,7 +9,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -24,6 +24,6 @@
     "./src/**/*.ts",
     "backend/server1.jsjss",
     "src/components/context/AuthProvider.tsx",
-    "src/services/routes.ts"
+    "src/services/routes.csj"
   ]
 }

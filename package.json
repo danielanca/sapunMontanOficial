@@ -70,7 +70,7 @@
     "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development -w",
     "dev:start": "nodemon ./server-build/index.js",
     "dev": "npm-run-all --parallel build dev:*",
-    "ssr": "node server/index.js",
+    "ssr": "node server/index.cjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'"
