@@ -11,7 +11,7 @@
 }
 .editableContainer {
   background-color: rgb(210, 253, 255);
-  font-family: "Roboto";
+  font-family: "Roboto Medium";
   word-wrap: normal;
 }
 .staticContainer {
@@ -32,7 +32,7 @@
   }
   div > input,
   textarea {
-    font-family: "Roboto";
+    font-family: "Roboto Medium";
     margin: auto;
     min-width: 150px;
     width: 100%;
@@ -51,7 +51,7 @@
     background-color: #f7f7f7;
     outline: none;
     border: 1px solid gray;
-    font-family: "Roboto";
+    font-family: "Roboto Medium";
     border-radius: 2px;
     padding: 5px 10px;
     min-width: 300px;

@@ -23966,7 +23966,7 @@ fieldset:disabled .btn {
   text-transform: uppercase;
   text-align: center;
   font-size: 30px;
-  font-family: "Bebas Neue";
+  font-family: "Bebas Neue Regular";
   font-size: 95px;
   color: white;
 }
@@ -23978,16 +23978,16 @@ fieldset:disabled .btn {
 }
 
 .brandContainer h3 b, .brandContainer .h3 b {
-  font-family: "Roboto";
+  font-family: "Roboto Medium";
 }
 
 .brandContainer h4, .brandContainer .h4 {
-  font-family: "Roboto";
+  font-family: "Roboto Medium";
   color: white;
 }
 
 .brandContainer h4 b, .brandContainer .h4 b {
-  font-family: "Roboto";
+  font-family: "Roboto Medium";
 }
 
 @media (max-width: 575px) {

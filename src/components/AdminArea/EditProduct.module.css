@@ -12118,7 +12118,7 @@ fieldset:disabled .btn {
 
 .editableContainer {
   background-color: #d2fdff;
-  font-family: "Roboto";
+  font-family: "Roboto Medium";
   word-wrap: normal;
 }
 
@@ -12142,7 +12142,7 @@ fieldset:disabled .btn {
 
 .addAreaContainer div > input,
 .addAreaContainer textarea {
-  font-family: "Roboto";
+  font-family: "Roboto Medium";
   margin: auto;
   min-width: 150px;
   width: 100%;
@@ -12163,7 +12163,7 @@ fieldset:disabled .btn {
   background-color: #f7f7f7;
   outline: none;
   border: 1px solid gray;
-  font-family: "Roboto";
+  font-family: "Roboto Medium";
   border-radius: 2px;
   padding: 5px 10px;
   min-width: 300px;
