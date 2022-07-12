@@ -10,7 +10,7 @@ import serialize from "serialize-javascript";
 import App from "../src/App";
 import Mapp from "../src/Mapp.cjs";
 
-const routes = require("../src/services/routes.cjs");
+import routes from "../src/services/routes.cjs";
 
 const PORT = process.env.PORT || 3006;
 const app = express();
@@ -18,9 +18,10 @@ const app = express();
 // matchPath(route.path, req.url)
 //console.log(`Routes: route.path: ${route.path} req.url ${req.url}`)
 app.get("*", (req, res, next) => {
-  const activeRoute = routes.default.find((route) => matchPath(route.path, req.url)) || {};
-
-  const promise = activeRoute.fetchInitialData ? activeRoute.fetchInitialData(req.path) : Promise.resolve();
+  console.log("Route contains", routes);
+  // const activeRoute = routes.default.find((route) => matchPath(route.path, req.url)) || {};
+  var promise = Promise.resolve();
+  // promise = activeRoute.fetchInitialData ? activeRoute.fetchInitialData(req.path) : Promise.resolve();
 
   promise
     .then((data) => {
@@ -39,7 +40,7 @@ app.get("*", (req, res, next) => {
           <body>
             <div id="app">${ReactDOMServer.renderToString(
               // <StaticRouter location={req.url}>
-              <Mapp />
+              <App />
               // </StaticRouter>
               // <div>
               //   <span>SICKA</span>
