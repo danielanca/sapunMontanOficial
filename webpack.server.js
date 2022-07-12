@@ -12,8 +12,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: "babel-loader"
+        test: /\.tsx$/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: { presets: ["solid"] }
+          },
+          {
+            loader: "ts-loader"
+          }
+        ]
       }
     ]
   }
