@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,WAAW,CAAC;EACV,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,GAAG;EACX,gBAAgB,EAAE,0BAA0B;EAC5C,UAAU,EAAE,IAAI;CACjB;;AACD,AAAA,aAAa,CAAC;EACZ,MAAM,EAAE,MAAM;EACd,eAAe,EAAE,MAAM;EACvB,OAAO,EAAE,IAAI;CACd",
-    "sources": [
-        "TheSeparator.module.scss"
-    ],
-    "names": [],
-    "file": "TheSeparator.module.css"
-}
