@@ -3,7 +3,7 @@ import { getData } from "../data/productList";
 import { uniqueId } from "lodash";
 import HeadlineTitle from "./HeadlineTitle";
 import ProductItem from "./ProductItem";
-
+import { Helmet } from "react-helmet";
 import { useEffect, useState } from "react";
 import styles from "./../components/ProduseleNoastre.module.scss";
 
@@ -23,6 +23,10 @@ const ProduseleNoastre = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{"Produsele Noastre - MontanAir.Ro"}</title>
+        <meta name="description" content={"Galeria produselor din magazin"} />
+      </Helmet>
       <HeadlineTitle title={"Produsele Noastre"} />
       <div className={styles.blockContainer}>
         <div className={styles.productList}>
