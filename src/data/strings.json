@@ -86,21 +86,7 @@
     "personalDetails": "Personal details",
     "otherDetails": "Other details: "
   },
-  "facilitiesComponent": {
-    "air": "Air Conditioner",
-    "park": "Underground Parking",
-    "self": "Self Check In",
-    "wash": "Washing Machine",
-    "hygiene": "Personal Hygiene Products",
-    "heat": "Floor Heating",
-    "security": "Security Barrier",
-    "netflix": "Netflix Account",
-    "balcony": "Balcony"
-  },
-  "photoGalleryComponent": {
-    "title": "Photo Gallery",
-    "close": "Close"
-  },
+
   "checkinComponent": {
     "checkIn": "Check In",
     "checkout": "Check Out",
