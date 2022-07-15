@@ -5,6 +5,7 @@ import parse from "html-react-parser";
 import styles from "./BlogPost.module.scss";
 import { uniqueId } from "lodash";
 import { blogs } from "./../data/blogStrings";
+import { Helmet } from "react-helmet";
 
 interface BlogContent {
   link: string;
@@ -30,6 +31,10 @@ const BlogPost = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{` ${blogs.posts[blogLinkBro].title} - MontanAir.Ro`}</title>
+        <meta name="description" content={blogs.posts[blogLinkBro].firstDescription.substr(0, 110)} />
+      </Helmet>
       <div className={styles.container}>
         <div className={styles.blogPostCont}>
           <div className={styles.topTitle}>
