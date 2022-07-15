@@ -1,5 +1,8 @@
 import { orderProps, ProductModel } from "./../utils/OrderInterfaces";
 import { getCookie } from "../utils/functions";
+
+import { NewsProps } from "../utils/NewsletterInterface";
+
 var destination: string = "";
 // const destination = "http://localhost:5000/sapunmontan/us-central1";
 if (process.env.NODE_ENV === "development") {
@@ -78,6 +81,17 @@ export const updateProduct = async (productModel: ProductModel) => {
     method: "POST",
     mode: "cors",
     body: JSON.stringify(productModel)
+  })
+    .then((res) => res)
+    .catch((error) => error);
+};
+
+export const addToNewsletter = async (subscriberData: NewsProps) => {
+  return await fetch(`${destination}/subscribeToNewsletter`, {
+    credentials: "include",
+    method: "POST",
+    mode: "cors",
+    body: JSON.stringify(subscriberData)
   })
     .then((res) => res)
     .catch((error) => error);

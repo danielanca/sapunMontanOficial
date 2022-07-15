@@ -4,6 +4,12 @@ import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import * as express from "express";
 
+interface subscriberProps {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
 const app = express();
@@ -118,6 +124,37 @@ const postReviewData = async (data: ReviewType) => {
 //     }
 //   }
 // })
+
+export const subscribeToNewsletter = functions.https.onRequest((request, response) => {
+  response.header("Access-Control-Allow-Origin", localHost);
+  response.header("Access-Control-Allow-Credentials", "true");
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
+  let subscriberData: subscriberProps = JSON.parse(request.body);
+
+  databasePost(subscriberData);
+  response.send({ subscribeToNewsletter: "SUBSCRIBED" });
+});
+
+const getTimestamp = () => {
+  let now = new Date();
+  return `${now.getDay()}/${now.getMonth()}/${now.getFullYear()}  ${now.getHours()}:${now.getMinutes()} `;
+};
+
+const databasePost = async (data: subscriberProps) => {
+  await admin
+    .firestore()
+    .collection("newsletterSubscribers")
+    .doc(data.email)
+    .set({
+      email: data.email,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      subscribeDate: getTimestamp()
+    })
+    .then((result) => result);
+};
+
 const getOrdersAdmin = async () => {
   const adminFirestore = admin.firestore();
   const collection = adminFirestore.collection("orders");

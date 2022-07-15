@@ -119,3 +119,16 @@ export const websiteContact = {
 export const TopBannerPromotional = {
   text: "Transport Grauit la comenzi peste 130 LEI"
 };
+
+export const newsletter = {
+  userSubscribe: {
+    notYet: "Aboneaza-te",
+    subscribed: "Felicitari!"
+  },
+  userMessage: {
+    notYet: "la newsletter",
+    subscribed: "Te-ai abonat cu succes"
+  },
+
+  bigText: "Ai acces la promotiile noastre <br /> la cele mai bune produse. Inscrie-te la newsletter!"
+};
