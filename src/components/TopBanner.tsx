@@ -1,23 +1,24 @@
 import React from "react";
 import styles from "./../components/TopBanner.module.scss";
 import images from "../data/images";
+import { websiteContact, TopBannerPromotional } from "../data/componentStrings";
 
 const TopBanner = () => {
   return (
     <div className={styles.bigBlanaBanner}>
-      <div className={styles.emailTop}>{"contact@sapun-montan.ro"}</div>
+      <div className={styles.emailTop}>{websiteContact.email}</div>
       <div className="col-md-6 ">
-        <p className={styles.headTitle}>{"Transport Gratuit la comenzi peste 130 lei"}</p>
+        <p className={styles.headTitle}>{TopBannerPromotional.text}</p>
       </div>
       <div className={styles.socialsTop}>
         <div className={styles.iconWrapper}>
-          <a href="https://facebook.com/montanAir">
+          <a href={websiteContact.socials.instagram}>
             <img alt="social montanair" className={styles.iconStyle} src={images.socialIcons.facebook} />
           </a>
-          <a href="https://facebook.com/montanAir">
+          <a href={websiteContact.socials.facebook}>
             <img alt="social montanair " className={styles.iconStyle} src={images.socialIcons.instagram} />
           </a>
-          <a href="https://facebook.com/montanAir">
+          <a href={websiteContact.socials.whatsapp}>
             <img alt="social montanair" className={styles.iconStyle} src={images.socialIcons.whatsapp} />
           </a>
         </div>

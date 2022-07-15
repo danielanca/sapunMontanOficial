@@ -167,7 +167,7 @@
     left: 0px;
     opacity: 1;
     align-self: center;
-    border-radius: 0px 14px 0px 0px;
+    border-radius: 0px 6px 0px 0px;
   }
 }
 .ulMobile {
@@ -396,6 +396,13 @@ input[type="checkbox"]:not(:checked) ~ .subItemUL {
   font-family: "Roboto Regular" !important;
   text-transform: uppercase;
   font-size: 22px;
+  border-bottom: none;
+}
+.liMobileItem {
+  font-family: "Roboto Regular" !important;
+  text-transform: uppercase;
+  font-size: 22px;
+  border-bottom: none;
 }
 .spanCart {
   font-size: 1.2rem;

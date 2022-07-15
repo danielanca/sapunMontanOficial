@@ -106,3 +106,16 @@ export const cookieConsent = {
 export const productConstants = {
   shippingFee: 15
 };
+
+export const websiteContact = {
+  email: "montanair.ro@gmail.com",
+  socials: {
+    instagram: "https://www.instagram.com/montanair.ro/",
+    facebook: "https://www.facebook.com/montanair.ro/",
+    whatsapp: "https://wa.me/40744444444"
+  }
+};
+
+export const TopBannerPromotional = {
+  text: "Transport Grauit la comenzi peste 130 LEI"
+};

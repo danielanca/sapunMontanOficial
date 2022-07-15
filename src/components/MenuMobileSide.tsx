@@ -55,7 +55,13 @@ const MenuMobileSide = () => {
 
                   <ul className={styles.subItemUL}>
                     {Object.values(item.ulItems).map((subItem) => (
-                      <NavHashLink key={uniqueId()} onClick={closeBackdrop} replace to={`${subItem.link}`}>
+                      <NavHashLink
+                        className={styles.hashTransparent}
+                        key={uniqueId()}
+                        onClick={closeBackdrop}
+                        replace
+                        to={`${subItem.link}`}
+                      >
                         <li key={uniqueId()}>{subItem.title}</li>
                       </NavHashLink>
                     ))}
