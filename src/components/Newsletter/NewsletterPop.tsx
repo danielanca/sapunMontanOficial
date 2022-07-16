@@ -17,6 +17,8 @@ const NewsletterPop = () => {
   const [userSubscribed, setSubscribed] = useState<"SUBSCRIBED" | "INITSTATE" | "ERROR">("INITSTATE");
   const [eventInsert, setEventInsert] = useState<EventInsert | null>(null);
   const [termsAccepted, setTermsAccepted] = useState<boolean>(false);
+  const [userTriedToSubscribe, setUserTriedToSubscribe] = useState<boolean>(false);
+
   const emailValidate = (email: string) => {
     if (validator.isEmail(email)) return true;
     else return false;
@@ -37,12 +39,24 @@ const NewsletterPop = () => {
     }));
   };
   const subscribeToNewsletter = () => {
-    addToNewsletter(newsletterData).then((result) => {
-      result.json().then((response: responseProps) => {
-        setSubscribed(response.subscribeToNewsletter);
-        console.log("subscribe response:", JSON.stringify(response));
-      });
-    });
+    setUserTriedToSubscribe(true);
+    if (termsAccepted && emailValid === "valid") {
+      try {
+        addToNewsletter(newsletterData).then((result) => {
+          try {
+            result.json().then((response: responseProps) => {
+              setSubscribed(response.subscribeToNewsletter);
+              console.log("subscribe response:", JSON.stringify(response));
+            });
+          } catch (e: any) {
+            console.log(e);
+            setSubscribed("SUBSCRIBED");
+          }
+        });
+      } catch (e: any) {
+        console.log("error:", e);
+      }
+    }
   };
 
   useEffect(() => {
@@ -64,13 +78,13 @@ const NewsletterPop = () => {
 
   return (
     <div className={styles.newsletterContainer}>
-      <div className={!userSubscribed ? styles.imageFeatured : styles.imageFeaturedTransition}>
+      <div className={userSubscribed !== "SUBSCRIBED" ? styles.imageFeatured : styles.imageFeaturedTransition}>
         <div className={styles.textArea}>
-          <h3 className={!userSubscribed ? styles.title : styles.titleSubscribed}>
-            {!userSubscribed ? newsletter.userSubscribe.subscribed : newsletter.userSubscribe.notYet}
+          <h3 className={userSubscribed !== "SUBSCRIBED" ? styles.title : styles.titleSubscribed}>
+            {userSubscribed !== "SUBSCRIBED" ? newsletter.userSubscribe.notYet : newsletter.userSubscribe.subscribed}
           </h3>
-          <h4 className={!userSubscribed ? styles.description : styles.descriptionSubscription}>
-            {!userSubscribed ? newsletter.userMessage.subscribed : newsletter.userMessage.notYet}
+          <h4 className={userSubscribed !== "SUBSCRIBED" ? styles.description : styles.descriptionSubscription}>
+            {userSubscribed !== "SUBSCRIBED" ? newsletter.userMessage.notYet : newsletter.userMessage.subscribed}
           </h4>
         </div>
       </div>
@@ -110,14 +124,31 @@ const NewsletterPop = () => {
             />
           </div>
           <div className={styles.termArea}>
-            <InputComponent theme={"blue"} typeOfInput="checkbox" onSwitchEnabled={setTermsAccepted} />
+            <InputComponent
+              theme={"blue"}
+              typeOfInput="checkbox"
+              onSwitchEnabled={(switchValue: boolean) => {
+                setUserTriedToSubscribe(false);
+                setTermsAccepted(switchValue);
+              }}
+            />
             <p className={styles.termsText}>
               {"Sunt de acord cu preluarea datelor cu caracter personal pentru a primi oferte personalizate"}
             </p>
           </div>
           <button onClick={subscribeToNewsletter} className={styles.newsSubscribeButton}>
-            {"Aboneaza-te"}
+            {"Ma Abonez"}
           </button>
+
+          <div className={styles.termsWarningContainer}>
+            {userTriedToSubscribe && !termsAccepted ? (
+              <p className={styles.termsWarning}>{"Trebuie sa fiti de acord cu prelucrarea datelor dvs."}</p>
+            ) : userTriedToSubscribe && (emailValid === "notvalid" || emailValid === "init") ? (
+              <p className={styles.termsWarning}>{"Datele pentru abonare trebuie sa fie valide"}</p>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -25,11 +25,12 @@
   @include media("<800px") {
     right: 10vw;
     height: 30px;
+    width: 30px;
+    background-color: #3dab00;
     border-radius: 50%;
     position: absolute;
     top: 20px;
     z-index: 1000;
-    background-color: #00739e;
     color: white;
     font-weight: bolder;
     display: flex;
