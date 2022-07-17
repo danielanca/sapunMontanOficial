@@ -1,6 +1,19 @@
 @import "./../main.module.scss";
 @import "./../data//themes.scss";
 
+.addReviewButton {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  min-width: 300px;
+  height: 40px;
+  border: none;
+  outline: none;
+  margin: 20px;
+  font-family: "Roboto Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
 .addSection {
   width: 100%;
   height: auto;
@@ -13,6 +26,15 @@
     font-family: "Roboto";
   }
 }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 .wrapper {
   width: 100%;
 
@@ -23,10 +45,18 @@
   align-items: center;
   flex-direction: column;
   border-radius: 5px;
+  opacity: 1;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  display: none;
   @include media("<tablet") {
     width: 100vw;
     min-width: 300px;
   }
+}
+.activeTransition {
+  @extend .wrapper;
+  display: inherit;
 }
 .inputContainer {
   display: flex;

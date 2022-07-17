@@ -12,7 +12,7 @@ interface PassingReview {
   productID: number;
 }
 const AddReview = ({ productID }: PassingReview) => {
-  console.log("We are getting:", productID);
+  const [openReviewComment, setOpenReviewComment] = useState(false);
   const [reviewBuffer, setReviewBuffer] = useState<ReviewProps>({
     reviewProductID: productID.toString() || "1994",
     name: "",
@@ -38,9 +38,18 @@ const AddReview = ({ productID }: PassingReview) => {
   const submitReviewToServer = () => {
     sendReviewToBack(reviewBuffer);
   };
+  const openReviewContainer = () => {
+    setOpenReviewComment(true);
+  };
   return (
     <div className={styles.addSection}>
-      <div className={styles.wrapper}>
+      {!openReviewComment && (
+        <button onClick={openReviewContainer} className={styles.addReviewButton}>
+          {"SCRIE REVIEW"}
+        </button>
+      )}
+
+      <div className={openReviewComment ? styles.activeTransition : styles.wrapper}>
         <div className={styles.inputContainer}>
           <span>{"Recenzia:"}</span>
           <textarea
