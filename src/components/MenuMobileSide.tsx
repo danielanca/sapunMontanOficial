@@ -16,24 +16,17 @@ const MenuMobileSide = () => {
   return (
     <>
       <div className={styles.menuMobileContainer}>
-        <div
-          className={styles.burgerElement}
-          onClick={() => {
-            burgerClickHandler(!BurgerOpen);
-          }}
-        >
-          <div className={BurgerOpen ? `${styles.bar1} ${styles.bar1End}` : `${styles.bar1}`}></div>
-          <div className={BurgerOpen ? `${styles.bar2} ${styles.bar2End}` : `${styles.bar2}`}></div>
-          <div className={BurgerOpen ? `${styles.bar3} ${styles.bar3End}` : `${styles.bar3}`}></div>
+        <div className={styles.burgerElement} onClick={burgerClickHandler.bind(this, !BurgerOpen)}>
+          <div className={BurgerOpen ? styles.bar1End : styles.bar1}></div>
+          <div className={BurgerOpen ? styles.bar2End : styles.bar2}></div>
+          <div className={BurgerOpen ? styles.bar3End : styles.bar3}></div>
         </div>
       </div>
       <div
-        onClick={() => {
-          burgerClickHandler(!BurgerOpen);
-        }}
-        className={BurgerOpen ? `${styles.backDropBackground} ${styles.active}` : `${styles.backDropBackground}`}
+        onClick={burgerClickHandler.bind(this, !BurgerOpen)}
+        className={BurgerOpen ? styles.active : styles.backDropBackground}
       />
-      <div className={BurgerOpen ? `${styles.burgerMenu} ${styles.activeBurger} ` : `${styles.burgerMenu}`}>
+      <div className={BurgerOpen ? styles.activeBurger : styles.burgerMenu}>
         <ul className={styles.ulMobile}>
           {Object.values(strings.navMenuMobile).map((item) => {
             if (item.ulItems === 0) {
@@ -80,12 +73,12 @@ const MenuMobileSide = () => {
             </NavHashLink>
           </li>
 
-          <li className={styles.individualItem}>
+          {/* <li className={styles.individualItem}>
             <NavHashLink className={styles.HashLinkStyleBottom} onClick={closeBackdrop} replace to={`favorite`}>
               <img className={styles.icon} src={images.heartIcon} />
               <span>{"Favorite"}</span>
             </NavHashLink>
-          </li>
+          </li> */}
         </ul>
       </div>
     </>

@@ -94,17 +94,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 150px;
+  height: 93px;
   background-color: azure;
   @include media("<tablet") {
     height: 85px;
   }
 }
 .statementRO {
-  text-transform: uppercase;
   margin-bottom: 0;
-  font-size: calc(10px + 2vw);
-  font-family: "Bebas Neue Regular";
+  font-size: calc(5px + 2vw);
+  font-weight: 400;
+  font-family: "Roboto Regular", sans-serif;
   @include media(">desktop") {
     font-size: calc(2px + 1vw);
   }

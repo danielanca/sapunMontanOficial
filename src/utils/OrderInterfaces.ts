@@ -39,7 +39,7 @@ export interface ProductListType {
     title: string;
     firstDescription: string;
     shortDescription: string;
-    imageProduct: [];
+    imageProduct: string[];
     jsonContent: string;
     price: string;
     reviews: {};

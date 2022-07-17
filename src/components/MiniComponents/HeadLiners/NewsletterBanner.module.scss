@@ -1,0 +1,40 @@
+@import "../../../main.module.scss";
+
+.newsletterContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #222222;
+
+  font-family: "Roboto Medium", sans-serif;
+  min-height: 40px;
+  max-height: 270px;
+  height: 100%;
+  color: white;
+  padding: 35px 0;
+
+  font-size: 20px;
+  * {
+    font-family: "Roboto Medium", sans-serif;
+    color: inherit;
+  }
+}
+
+.headTitle {
+  text-transform: uppercase;
+}
+.callToActtionMessage {
+  font-size: 20px;
+  text-align: center;
+}
+
+.subscribeButtonBlack {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  min-width: 300px;
+  height: 50px;
+  border: none;
+  outline: none;
+  margin: 20px;
+}

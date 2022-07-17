@@ -38,24 +38,17 @@ const ProductPreview = ({ previewOnly, productListUpdated, ID, addCartHandler }:
             )}
             {productListUpdated != null ? (
               <div className={styles.previewImageContainer}>
-                <div
-                  onClick={onImageClicked.bind(this, 0)}
-                  className={mainPicture === 0 ? styles.activeImage : styles.clickableImage}
-                >
-                  <img alt=" " className={styles.innerImage} src={productListUpdated[ID].imageProduct[0]} />
-                </div>
-                <div
-                  onClick={onImageClicked.bind(this, 1)}
-                  className={mainPicture === 1 ? styles.activeImage : styles.clickableImage}
-                >
-                  <img className={styles.innerImage} src={productListUpdated[ID].imageProduct[1]} />
-                </div>
-                <div
-                  onClick={onImageClicked.bind(this, 2)}
-                  className={mainPicture === 2 ? styles.activeImage : styles.clickableImage}
-                >
-                  <img className={styles.innerImage} src={productListUpdated[ID].imageProduct[2]} />
-                </div>
+                {productListUpdated[ID].imageProduct.length > 1 &&
+                  productListUpdated[ID].imageProduct.map((image, index) => {
+                    return (
+                      <div
+                        onClick={onImageClicked.bind(this, index)}
+                        className={mainPicture === index ? styles.activeImage : styles.clickableImage}
+                      >
+                        <img alt=" " className={styles.innerImage} src={productListUpdated[ID].imageProduct[0]} />
+                      </div>
+                    );
+                  })}
               </div>
             ) : (
               ""

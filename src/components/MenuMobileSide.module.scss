@@ -44,6 +44,7 @@
   }
 }
 .active {
+  @extend .backDropBackground;
   display: initial;
 }
 ///NEW
@@ -161,6 +162,7 @@
 }
 
 .activeBurger {
+  @extend .burgerMenu;
   display: none;
   @include media("<desktop") {
     display: block;
@@ -347,14 +349,17 @@ input[type="checkbox"]:not(:checked) ~ .subItemUL {
   }
 }
 .bar1End {
+  @extend .bar1;
   -webkit-transform: rotate(-45deg) translate(-5px, 2px);
   transform: rotate(-45deg) translate(-5px, 2px);
   background-color: map-get($map: $colors, $key: whitePure);
 }
 .bar2End {
+  @extend .bar2;
   display: none;
 }
 .bar3End {
+  @extend .bar3;
   -webkit-transform: rotate(45deg) translate(-2px, 0px);
   transform: rotate(45deg) translate(-2px, 0px);
   background-color: map-get($map: $colors, $key: whitePure);

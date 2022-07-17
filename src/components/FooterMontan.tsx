@@ -6,17 +6,23 @@ import Relaxbar from "./MiniComponents/Footers/Relaxbar";
 import { footerData } from "./../data/componentStrings";
 import styles from "./../components/FooterMontan.module.scss";
 import flagRomania from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
+import NewsletterBanner from "./MiniComponents/HeadLiners/NewsletterBanner";
+import allPathsURL from "./../data/allPathsURL";
 
 const FooterMontan = () => {
-  const [openedContainer, setContainer] = useState(0);
-
   const { pathname } = useLocation();
 
   return (
     <>
-      {!pathname.includes("/admin") && !pathname.includes("/login") && (
+      {!pathname.includes(allPathsURL.adminURL) && !pathname.includes(allPathsURL.loginURL) && (
         <div className={styles.fluidHandler}>
-          <Relaxbar />
+          {!pathname.includes(allPathsURL.cartPageURL) && (
+            <>
+              <Relaxbar />
+              <NewsletterBanner />
+            </>
+          )}
+
           <div className={"row " + styles.largeFooter}>
             <div className="col-md-4">
               <div className="row">
@@ -61,7 +67,7 @@ const FooterMontan = () => {
 
             <div className={styles.wideBanner}>
               <img className={styles.flagStyle} src={flagRomania} />
-              <p className={styles.statementRO}>{"Produs Românesti handmade"}</p>
+              <p className={styles.statementRO}>{"Făcute cu drag, in Romania"}</p>
             </div>
           </div>
         </div>

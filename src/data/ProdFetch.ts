@@ -1,11 +1,6 @@
-import images from "./../data/images";
 import { collection, doc, setDoc, getFirestore, getDoc } from "firebase/firestore";
 
 import app from "./../firebase";
-import { firebaseConfig } from "firebase-functions/v1";
-import { Item } from "react-html-email";
-import { forEach, values } from "lodash";
-import { title } from "process";
 
 const db = getFirestore(app);
 

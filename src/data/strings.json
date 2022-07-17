@@ -19,32 +19,24 @@
 
       "ulItems": {
         "one": {
-          "title": "TOATE",
+          "title": "Toate",
           "link": "/produsele-noastre"
         },
         "two": {
-          "title": "Creme faciale",
-          "link": "/creme"
-        },
-        "three": {
-          "title": "Scrub",
-          "link": "/scrub"
+          "title": "Pachete Promo",
+          "link": "/pachete-promo"
         }
       }
     },
-    "aboutUs": {
-      "title": "Despre noi",
-      "link": "/despre-noi",
-      "ulItems": 0
-    },
+
     "blog": {
       "title": "Blog",
       "link": "/blogs",
       "ulItems": 0
     },
     "testimonials": {
-      "title": "Recenzii",
-      "link": "/recenzii",
+      "title": "Testimoniale",
+      "link": "/testimonials",
       "ulItems": 0
     },
     "contactUs": {

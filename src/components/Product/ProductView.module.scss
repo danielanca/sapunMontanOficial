@@ -76,9 +76,8 @@
 .reviewContainer {
   display: flex;
   justify-content: start;
-  @include media("<tablet") {
-    flex-direction: column;
-  }
+  flex-direction: column;
+
   @include media(">=tablet", "<desktop") {
     justify-content: center;
   }
@@ -107,7 +106,7 @@
 .starsContainer {
   display: flex;
   margin: 0 10px;
-
+  justify-content: center;
   height: 26px;
 }
 .reviewStar {
@@ -156,6 +155,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  justify-content: center;
 }
 .clickableImage {
   border: 2px solid rgba(30, 30, 30, 0.3);

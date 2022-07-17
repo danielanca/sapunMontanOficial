@@ -9,7 +9,6 @@ interface CartProps {
   notifyMe?: React.Dispatch<React.SetStateAction<number>>;
 }
 const CartPage = ({ notifyMe }: CartProps) => {
-  const [totalCart, settotalCart] = useState(0);
   const [updateMade, setupdateMade] = useState(1);
   var subtotalPrepare = 0;
   var storedCart = [];
@@ -65,7 +64,7 @@ const CartPage = ({ notifyMe }: CartProps) => {
             </div>
           </div>
 
-          {subtotalPrepare != 0 ? (
+          {subtotalPrepare !== 0 ? (
             storedCart.map((item) => (
               <ItemCartList productID={item.id} amount={Number(item.itemNumber)} updateRequest={productNotification} />
             ))
@@ -73,7 +72,7 @@ const CartPage = ({ notifyMe }: CartProps) => {
             <div className={styles.emptyCart}>{"Cosul de cumparaturi este gol"}</div>
           )}
         </div>
-        {subtotalPrepare != 0 ? (
+        {subtotalPrepare !== 0 ? (
           <div className={"row " + styles.actualCheckout}>
             <div className={"col-sm-6 " + styles.bottomLeft}></div>
             <div className={"col-sm-6 " + styles.bottomRight}>
