@@ -32,9 +32,10 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding: 0 4%;
 }
 input[type="email"] {
-  width: 90%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px auto;
   display: inline-block;
@@ -44,7 +45,7 @@ input[type="email"] {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 input[type="password"] {
-  width: 90%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px auto;
   display: inline-block;

@@ -1,5 +1,10 @@
 {
   "cartPageURL": "/cosulmeu",
   "adminURL": "/admin",
-  "loginURL": "/login"
+  "loginURL": "/login",
+
+  "cookieConsentIgnoreList": {
+    "adminURL": "/admin",
+    "loginURL": "/login"
+  }
 }

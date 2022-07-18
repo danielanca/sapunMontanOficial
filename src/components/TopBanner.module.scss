@@ -12,10 +12,12 @@
   background-color: black;
   align-items: center;
   justify-content: center;
-
+  padding: 10px 8px;
   @include media("<tablet") {
-    height: 42px;
     flex-direction: column;
+    height: auto;
+    max-height: 70px;
+    padding: 10px 8px;
   }
   @include media(">=tablet", "<desktop") {
     justify-content: space-between;
@@ -41,6 +43,11 @@
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   font-weight: 600;
+
+  @include media("<tablet") {
+    inline-size: 280px;
+    overflow-wrap: break-word;
+  }
 }
 .emailTop {
   @extend .col-md-3;

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./../components/TopBanner.module.scss";
 import images from "../data/images";
+import parse from "html-react-parser";
 import { websiteContact, TopBannerPromotional } from "../data/componentStrings";
 
 const TopBanner = () => {
@@ -8,7 +9,7 @@ const TopBanner = () => {
     <div className={styles.bigBlanaBanner}>
       <div className={styles.emailTop}>{websiteContact.email}</div>
       <div className="col-md-6 ">
-        <p className={styles.headTitle}>{TopBannerPromotional.text}</p>
+        <p className={styles.headTitle}>{parse(TopBannerPromotional.text)}</p>
       </div>
       <div className={styles.socialsTop}>
         <div className={styles.iconWrapper}>

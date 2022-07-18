@@ -13,9 +13,9 @@
   }
 }
 .newProductTitle {
-  white-space: nowrap;
-  font-size: clamp(20px, 10vw, 31px);
+  font-size: clamp(18px, 9vw, 33px);
   @include media(">=desktop") {
+    white-space: nowrap;
     font-size: clamp(30px, 6vw, 125px);
   }
 }

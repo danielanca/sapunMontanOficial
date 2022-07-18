@@ -18,7 +18,7 @@ const NewsletterBanner = () => {
   };
 
   return (
-    <div className={styles.newsletterContainer}>
+    <div className={styles.newsletterBannerWrapper}>
       {newsletterPopModal && (
         <div ref={backdropRef} className={styles.backDrops}>
           <div className={styles.closePop} onClick={backdropClose}>

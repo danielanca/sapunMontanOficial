@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 
 import { getCookie, setCookie } from "./functions";
@@ -5,12 +6,16 @@ import { cookieConsent } from "../../data/componentStrings";
 import styles from "./CookieConsent.module.scss";
 
 import images from "../../data/images";
+import allPathsURL from "../../data/allPathsURL.json";
 
 const CookieConsent = () => {
-  const [renderConsent, setConsent] = useState<boolean>(true);
+  let pathname = window.location.pathname;
+  let pathToBeIgnored = Object.values(allPathsURL.cookieConsentIgnoreList).find((element) => element === pathname);
+
+  const [renderConsent, setConsent] = useState<boolean>();
 
   const getCookieConsent = () => {
-    if (getCookie("cookieConsentBrasov") === "userAccepted") return true;
+    if (getCookie("cookieConsentBrasov") === "userAccepted" || pathToBeIgnored !== undefined) return true;
     else return false;
   };
 

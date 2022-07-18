@@ -1,5 +1,5 @@
 import React from "react";
-
+import Helmet from "react-helmet";
 import styles from "./../components/Testimonials.module.scss";
 import testimonial1 from "./../media/assets/pics/prezentareCarbune/Dovada2.jpg";
 
@@ -7,6 +7,10 @@ import HeadlineTitle from "./HeadlineTitle";
 const Testimonials = () => {
   return (
     <>
+      <Helmet>
+        <title>{"Testimoniale - MontanAir.Ro"}</title>
+        <meta name="description" content={"Afla parerea clientilor despre produsele MontanAir!"} />
+      </Helmet>
       <HeadlineTitle title={"TESTIMONIALE"} />
 
       <div className={styles.blockContainer}>

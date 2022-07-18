@@ -8,6 +8,7 @@ import styles from "./../components/FooterMontan.module.scss";
 import flagRomania from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
 import NewsletterBanner from "./MiniComponents/HeadLiners/NewsletterBanner";
 import allPathsURL from "./../data/allPathsURL";
+import path from "path";
 
 const FooterMontan = () => {
   const { pathname } = useLocation();

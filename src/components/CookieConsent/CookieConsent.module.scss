@@ -22,6 +22,14 @@
     line-height: 17px;
     font-size: 14px;
     font-weight: bold;
+    a {
+      border-bottom: none;
+      color: inherit;
+    }
+    @include media("<tablet") {
+      line-height: 15px;
+      font-size: 11px;
+    }
   }
   img {
     margin: 5px;
