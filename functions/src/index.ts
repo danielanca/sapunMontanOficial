@@ -16,7 +16,7 @@ const app = express();
 var localHost = "";
 
 if (process.env.NODE_ENV === "production") {
-  localHost = "https://montanair.ro";
+  localHost = "https://diniubire.ro";
 } else {
   localHost = "http://localhost:3000";
 }

@@ -8,7 +8,7 @@ import styles from "./FeaturedProduct.module.scss";
 const FeaturedProduct = ({ content }: contentProps) => {
   return (
     <div className={styles.featuredContainer}>
-      <FeaturedText text={{ title: content.bigAnnouncement.background, textSmall: content.bigAnnouncement.title }} />
+      <FeaturedText text={{ title: "DinIubire", textSmall: "Produs Nou" }} />
       <div className={styles.bigPicture}>
         <div className={styles.roundCircle}>
           <img alt="Featured products" className={styles.featuredStyle} src={content.image} />

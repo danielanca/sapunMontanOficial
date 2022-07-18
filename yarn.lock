@@ -1730,6 +1730,11 @@
   resolved "https://registry.npmjs.org/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.6.1.tgz"
   integrity sha512-9FqhNjKQWpQ3fGnSOCovHOm+yhhiorKEqYLAfd525jWavunDJcx8rOW6i6ozAh+FbwcYMkL7b+3j4UR/30MpoQ==
 
+"@fontsource/luckiest-guy@^4.5.7":
+  "integrity" "sha512-mjOjMOXjS34yGvPzJWa6+h1EZsr23zsrjjJWZzg5K3JdcJlF9KN4it7a3osp7rt+PpEII0K00qQuiTdIkl2IZQ=="
+  "resolved" "https://registry.npmjs.org/@fontsource/luckiest-guy/-/luckiest-guy-4.5.7.tgz"
+  "version" "4.5.7"
+
 "@gar/promisify@^1.0.1":
   version "1.1.2"
   resolved "https://registry.npmjs.org/@gar/promisify/-/promisify-1.1.2.tgz"
