@@ -42,7 +42,10 @@ const ProductItem = ({ productObject, size }: ProdProps) => {
         </div>
 
         <div className={styles.priceWrap}>
-          <span className={styles.productPrice}>{productObject.price + " LEI"}</span>
+          <span className={styles.productPrice}>{productObject.price + " lei"}</span>
+        </div>
+        <div className={styles.discountWrap}>
+          <p className={styles.discountText}>{'REDUCERE'}</p>
         </div>
        
       </div>
