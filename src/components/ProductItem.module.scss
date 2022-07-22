@@ -37,9 +37,9 @@
   height: 335px;
 }
 .productImage {
-  width: 100%;
+  width: inherit;
   cursor: pointer;
-  height: 100%;
+  height: inherit;
 }
 .productImage:hover {
   opacity: 0.8;
@@ -101,9 +101,8 @@ a {
 }
 .imageWrap {
   position: relative;
-  padding: 20px;
-  padding: 10px 15px 0px;
-  height: 128px;
+  width: 223px;
+  height: 223px;
 }
 .priceWrap {
   position: relative;
