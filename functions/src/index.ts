@@ -13,8 +13,8 @@ interface subscriberProps {
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
 const app = express();
-// var localHost = "http://localhost:3000";
-var localHost = "https://montanair.ro";
+var localHost = "http://localhost:3000";
+// var localHost = "https://montanair.ro";
 
 functions.logger.info("localHost allow  origin:", process.env.NODE_ENV);
 app.use(cookieParser());
