@@ -1,3 +1,4 @@
+import React from "react";
 import { HashLink } from "react-router-hash-link";
 
 import styles from "./../components/ProductItem.module.scss";
@@ -41,13 +42,12 @@ const ProductItem = ({ productObject, size }: ProdProps) => {
         </div>
 
         <div className={styles.priceWrap}>
-          <span className={styles.productPrice}>{productObject.price + " LEI"}</span>
+          <span className={styles.productPrice}>{productObject.price + " lei"}</span>
         </div>
-        <div className={styles.addCartWrap}>
-          <div className={styles.addButtonCart}>
-            <span className={styles.textInside}>{"Vezi produs"}</span>
-          </div>
+        <div className={styles.discountWrap}>
+          <p className={styles.discountText}>{'REDUCERE'}</p>
         </div>
+       
       </div>
     </HashLink>
   );

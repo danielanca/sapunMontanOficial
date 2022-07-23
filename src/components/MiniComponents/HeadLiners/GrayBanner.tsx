@@ -6,7 +6,11 @@ interface BannerProps {
 }
 
 const GrayBanner = ({ text }: BannerProps) => {
-  return <div className={styles.grayBanner}>{parse(text)}</div>;
+  return (
+    <div className={styles.grayBanner}>
+      <p>{parse(text)}</p>
+    </div>
+  );
 };
 
 export default GrayBanner;
