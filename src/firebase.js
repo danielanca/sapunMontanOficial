@@ -2,14 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBU-XLXRpmXuGWH8D0XLFRGU4-UA-b_fbg",
-  authDomain: "sapunmontan.firebaseapp.com",
-  databaseURL: "https://sapunmontan-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "sapunmontan",
-  storageBucket: "sapunmontan.appspot.com",
-  messagingSenderId: "763434878339",
-  appId: "1:763434878339:web:287dd37cd472f368b5a2b6",
-  measurementId: "G-71TJGXC0TV"
+  apiKey: "AIzaSyDxmbqzBXpIUoYCevqizlncQ80CH9b8--s",
+  authDomain: "diniubire-89ce0.firebaseapp.com",
+  projectId: "diniubire-89ce0",
+  storageBucket: "diniubire-89ce0.appspot.com",
+  messagingSenderId: "207405173084",
+  appId: "1:207405173084:web:1bfdc7d5f35678d9789999",
+  measurementId: "G-WFWYP44Z7L"
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
