@@ -4,6 +4,7 @@
 @import "./../../../main.module.scss";
 
 .backText {
+  font-family: 'Luckiest Guy';
   text-align: center;
   opacity: 0.13;
   font-size: clamp(50px, 27vw, 423px);
@@ -13,6 +14,7 @@
   }
 }
 .newProductTitle {
+  font-family: 'Luckiest Guy';
   font-size: clamp(18px, 9vw, 33px);
   @include media(">=desktop") {
     white-space: nowrap;
@@ -33,6 +35,7 @@
   }
 }
 .newProductText {
+
   width: 100%;
   height: 400px;
   position: relative;

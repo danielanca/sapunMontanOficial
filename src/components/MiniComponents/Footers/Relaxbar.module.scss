@@ -10,8 +10,16 @@
   background-color: red;
   background-size: contain;
   overflow: hidden;
-  background: url("./../../../media/assets//pics/blocks/background_Montan.jpg");
+  // background: url("./../../../media/assets//pics/blocks/background_Montan.jpg");
+  background: hsla(4, 81%, 56%, 1);
 
+  background: linear-gradient(90deg, hsla(4, 81%, 56%, 1) 0%, hsla(0, 100%, 69%, 1) 79%);
+  
+  background: -moz-linear-gradient(90deg, hsla(4, 81%, 56%, 1) 0%, hsla(0, 100%, 69%, 1) 79%);
+  
+  background: -webkit-linear-gradient(90deg, hsla(4, 81%, 56%, 1) 0%, hsla(0, 100%, 69%, 1) 79%);
+  
+ 
   display: flex;
   align-items: center;
 }
