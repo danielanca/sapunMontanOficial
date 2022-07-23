@@ -14,7 +14,6 @@ import strings from "../data/strings.json";
 
 interface NavProps {
   updateNotification?: number;
-
   clearNotif?: number;
 }
 
@@ -59,7 +58,7 @@ const NavBar = ({ clearNotif }: NavProps) => {
 
               <div className={styles.middleNoUl}>
                 <HashLink className={styles.logoHover} to="/">
-                  <img className={styles.montanLogo} src={images.montanLogo} />
+                  <img className={styles.montanLogo} src={images.websiteLogo} />
                   <div className={styles.WeRomanians}>
                     <span>{"Produs Românesc"}</span>
                     <img className={styles.roProduct} src={roFLAG} />

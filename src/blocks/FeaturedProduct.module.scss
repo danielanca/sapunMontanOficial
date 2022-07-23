@@ -44,6 +44,7 @@
   font-size: 65px;
   margin-bottom: 0px;
   text-align: center;
+  font-family: 'Luckiest Guy';
 
   @include media("<tablet") {
     font-size: 46px;
@@ -51,6 +52,7 @@
 }
 
 .bottomTextFeatured {
+  
   text-align: center;
   font-size: 48px;
   font-weight: bolder;
