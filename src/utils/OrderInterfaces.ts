@@ -10,7 +10,7 @@ export interface orderProps {
   deliveryAddress: string;
   city: string;
   county: string;
-  phoneNo?: string;
+  phoneNo: string;
   emailAddress?: string;
   orderNotes?: string;
   cartProducts: string;
