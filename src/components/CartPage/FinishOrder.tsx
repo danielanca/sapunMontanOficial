@@ -299,31 +299,12 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
               <div>
                 <div className={styles.deliveryCheckbox}>
                   <span className={styles.paymentDetails}>{"MODALITATE DE PLATA"}</span>
-                  {/* <div className={styles.checkboxer}>
-                <input id="cardcheck" type="radio" name="radio" value="1" />
-                <label htmlFor="cardcheck">Plata prin Card</label>
-              </div> */}
+
                   <div className={styles.checkboxer}>
-                    <InputComponent
-                      // enabled={storeInputs != null ? item.isEnabled : null}
-                      onSwitchEnabled={paymentMethodHandler}
-                      title={"RambursPayment"}
-                      typeOfInput="checkbox"
-                    />
-                    {/* <input
-                      className={styles.radioButton}
-                      id="delivercheck"
-                      type="radioButton"
-                      name="radio"
-                      value={"Ramburs"}
-                      checked={orderData.paymentMethod != ""}
-                      onChange={(e) => {
-                        setorderData((orderData) => ({ ...orderData, paymentMethod: "rambursPayment" }));
-                      }}
-                    />
+                    <InputComponent onSwitchEnabled={paymentMethodHandler} typeOfInput="checkbox" />
                     <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
                       Plata Ramburs
-                    </label> */}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -355,13 +336,8 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
 
                 <div className={styles.groupInputTerms}>
                   <div className={styles.checkBoxStyle}>
-                    <input
-                      defaultChecked={completionState.termsAccepted}
-                      onChange={termAcceptHandler}
-                      name="acceptTerms"
-                      type={"checkbox"}
-                      className={styles.checkboxTerms}
-                    />
+                    <InputComponent onSwitchEnabled={paymentMethodHandler} typeOfInput="checkbox" />
+
                     <label htmlFor="acceptTerms" className={styles.acceptTerms}>
                       {"Am citit și sunt de acord cu termenii și condiții site-ului web "}
                     </label>
