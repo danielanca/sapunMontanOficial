@@ -44,10 +44,9 @@ const ProductItem = ({ productObject, size }: ProdProps) => {
         <div className={styles.priceWrap}>
           <span className={styles.productPrice}>{productObject.price + " lei"}</span>
         </div>
-        <div className={styles.discountWrap}>
+        {/* <div className={styles.discountWrap}>
           <p className={styles.discountText}>{'REDUCERE'}</p>
-        </div>
-       
+        </div> */}
       </div>
     </HashLink>
   );

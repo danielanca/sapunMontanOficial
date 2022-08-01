@@ -6,9 +6,9 @@ import { NewsProps } from "../utils/NewsletterInterface";
 var destination: string = "";
 // const destination = "http://localhost:5000/sapunmontan/us-central1";
 if (process.env.NODE_ENV === "development") {
-  destination = "http://localhost:5000/diniubire-89ce0/us-central1";
+  destination = "http://localhost:5000/sapunmontan/us-central1";
 } else {
-  destination = "https://us-central1-diniubire-89ce0.cloudfunctions.net";
+  destination = "https://us-central1-sapunmontan.cloudfunctions.net";
 }
 export const requestOrdersList = async () => {
   return await fetch(`${destination}/requestOrders`, {

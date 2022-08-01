@@ -8,7 +8,7 @@ import images from "../data/images";
 const FeaturedProduct = () => {
   return (
     <div className={styles.featuredContainer}>
-      <FeaturedText text={{ title: "DinIubire", textSmall: "Produs Nou" }} />
+      <FeaturedText text={{ title: "MontanAir", textSmall: "Produs Nou" }} />
       <div className={styles.bigPicture}>
         <div className={styles.roundCircle}>
           <img className={styles.featuredStyle} src={images.featuredProduct} />

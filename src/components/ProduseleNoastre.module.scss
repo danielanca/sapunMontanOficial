@@ -23,6 +23,6 @@
   max-width: 1000px;
   margin: auto;
   @include media("<tablet") {
-    flex-direction: row;
+    flex-direction: column;
   }
 }

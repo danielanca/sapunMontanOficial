@@ -94,11 +94,11 @@ input[type="checkbox"] {
 input[type="radio"] {
   clip: rect(0 0 0 0);
   clip-path: inset(20%);
-  height: 10px;
+  height: 1px;
   overflow: hidden;
   position: absolute;
   white-space: nowrap;
-  width: 10px;
+  width: 1px;
   border-radius: 50%;
 }
 .checkbox {
@@ -166,8 +166,8 @@ input[type="radio"] {
 .labelRow {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  width: 40px;
+  justify-content: flex-start;
+  width: 90px;
   padding: 0px;
   font-size: 12px;
   font-weight: 600;
