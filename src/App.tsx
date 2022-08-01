@@ -56,7 +56,7 @@ const FooterMontan = lazy(() => import(/* webpackChunkName: "FooterMontan" */ ".
 const Loading = () => <div>LOADING</div>;
 
 function App() {
-  const [letsCartHandler, CartHandler] = useState(1);
+  const [letsCartHandler, CartHandler] = useState(0);
   const [ssProducts, setSSproducts] = useState<any>();
 
   const getCookieConsent = () => {
@@ -83,7 +83,7 @@ function App() {
   useEffect(() => {
     if (ssProducts == null) {
       getData().then((finalData) => {
-        console.log("Loading in Session Storage data about products", finalData);
+        // console.log("Loading in Session Storage data about products", finalData);
         sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
       });
     }

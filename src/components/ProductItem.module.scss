@@ -16,19 +16,18 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
- 
+
   width: 250px;
   height: auto;
   min-height: 300px;
   position: relative;
   margin: 20px 15px;
-  @include media('<tablet'){
+  @include media("<tablet") {
     width: 162px;
     max-height: 400px;
-    min-height: 286px;margin: 8px 10px;
+    min-height: 286px;
+    margin: 8px 10px;
   }
-  
- 
 }
 .productItemSmall {
   @extend .productItem;
@@ -44,7 +43,7 @@
   opacity: 0.8;
 }
 .productTitle {
-  font-family: 'Open Sans Regular';
+  font-family: "Open Sans Regular";
   font-size: 0.9em;
   text-decoration: none;
   text-align: center;
@@ -57,15 +56,14 @@
   }
 }
 .productPrice {
-  font-family: 'Roboto Regular';
+  font-family: "Roboto Regular";
   font-weight: 600;
   font-size: 16px;
- 
 }
 .addButtonCart {
   width: 130px;
   height: 50px;
-  background-color: #FF5F5F;
+  background-color: #ff5f5f;
   color: white;
   cursor: pointer;
   display: flex;
@@ -74,7 +72,7 @@
   margin: auto;
 }
 .addButtonCart:hover {
-  background-color: #FF5F5F;
+  background-color: #ff5f5f;
   color: black;
 }
 .textInside {
@@ -105,7 +103,7 @@ a {
   width: inherit;
   height: 223px;
 
-  @include media('<tablet'){
+  @include media("<tablet") {
     height: 162px;
   }
 }
@@ -124,18 +122,17 @@ a {
   height: 120px;
 }
 
-.discountWrap{
-  width: 70px;
+.discountWrap {
+  width: 87px;
   height: 26px;
   background-color: #ec0000;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 6px 0;
-  
 }
-.discountText{
+.discountText {
   color: white;
   margin: 0;
- 
+  font-weight: 700;
 }

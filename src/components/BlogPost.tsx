@@ -23,7 +23,7 @@ const BlogPost = () => {
   let params = useParams();
   var blogLinkBro = "";
   blogLinkBro = params.blogLink != undefined ? params.blogLink : "";
-  console.log("BlogPost saying:", blogLinkBro);
+  // console.log("BlogPost saying:", blogLinkBro);
 
   var dani: BlogContent = blogs.posts[blogLinkBro];
   if (blogs.posts[blogLinkBro] != null) {

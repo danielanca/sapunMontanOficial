@@ -5,7 +5,7 @@ import styles from "./../components/ItemCartList.module.scss";
 import productList from "./../data/productList";
 
 interface itemCart {
-  productID: number;
+  productID: string;
   amount?: number;
   updateRequest?: () => void;
 }
@@ -29,7 +29,7 @@ const ItemCartList = ({ productID, amount, updateRequest }: itemCart) => {
     let expectedData = localStorage.getItem("cartData");
     storedCart = JSON.parse(expectedData);
     storedCart.map((item) => {
-      console.log(item);
+      // console.log(item);
       if (item.id === productID) {
         item.itemNumber = (Number(item.itemNumber) + 1).toString();
         value = item.itemNumber;

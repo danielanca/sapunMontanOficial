@@ -4,10 +4,11 @@ import images from "./../../data/images";
 import { componentStrings, productConstants } from "../../data/componentStrings";
 import React, { useState, useEffect } from "react";
 import { sendOrderConfirmation } from "./../../services/emails";
+import InputComponent from "./../MiniComponents/InputComponent";
 import styles from "./../CartPage/FinishOrder.module.scss";
 import { orderProps } from "./../../utils/OrderInterfaces";
 import { NavHashLink } from "react-router-hash-link";
-
+import { makeCheck } from "./../../functions/utilsFunc";
 interface ErrorProps {
   paymentSelected: boolean;
   termsAccepted: boolean;
@@ -21,25 +22,6 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   const [emailSentConfirmed, setSent] = useState(false);
   let productSessionStorage = JSON.parse(sessionStorage.getItem("productsFetched"));
   const [pendingRequest, setPendingReq] = useState(false);
-
-  // try {
-  //   await requestLoginAccess(userCredentials.email, userCredentials.password).then((dataResponse) => {
-  //     dataResponse.json().then((jsonResponse: ResponseServer) => {
-  //       if (jsonResponse.LOGIN_ANSWER === "SUCCESS") {
-  //         setAuth({
-  //           email: userCredentials.email,
-  //           password: userCredentials.password,
-  //           accesToken: jsonResponse.LOGIN_ANSWER
-  //         });
-  //         navigate(from, { replace: true });
-  //       } else {
-  //         console.log("Here is the result:", jsonResponse.LOGIN_ANSWER);
-  //       }
-  //     });
-  //   });
-  // } catch (error) {
-  //   console.log(error);
-  // }
 
   const handleSend = async () => {
     try {
@@ -65,6 +47,14 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
       setPendingReq(true);
 
       handleSend();
+    }
+  };
+
+  const paymentMethodHandler = (value: boolean, title: string) => {
+    if (value) {
+      setorderData((orderData) => ({ ...orderData, paymentMethod: title }));
+    } else {
+      setorderData((orderData) => ({ ...orderData, paymentMethod: "" }));
     }
   };
   const [orderData, setorderData] = useState<orderProps>({
@@ -106,14 +96,14 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
       clearNotification(Math.floor(Math.random() * 120));
     }
   }, [emailSentConfirmed]);
-  var storedCart = [];
+  var storedCart: any[] = [];
   var subtotalPrepare = 0;
   var deliveryFee = productConstants.shippingFee;
   let expectedData = localStorage.getItem("cartData");
   var explicitProductList = [];
   if (expectedData != null) {
     storedCart = JSON.parse(expectedData);
-
+    storedCart = makeCheck(productSessionStorage, storedCart);
     storedCart.map((item) => {
       subtotalPrepare += Number(productSessionStorage[item.id].price) * Number(item.itemNumber);
       explicitProductList.push({
@@ -309,21 +299,9 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
               <div>
                 <div className={styles.deliveryCheckbox}>
                   <span className={styles.paymentDetails}>{"MODALITATE DE PLATA"}</span>
-                  {/* <div className={styles.checkboxer}>
-                <input id="cardcheck" type="radio" name="radio" value="1" />
-                <label htmlFor="cardcheck">Plata prin Card</label>
-              </div> */}
+
                   <div className={styles.checkboxer}>
-                    <input
-                      id="delivercheck"
-                      type="radio"
-                      name="radio"
-                      value={"Ramburs"}
-                      checked={orderData.paymentMethod != ""}
-                      onChange={(e) => {
-                        setorderData((orderData) => ({ ...orderData, paymentMethod: "rambursPayment" }));
-                      }}
-                    />
+                    <InputComponent onSwitchEnabled={paymentMethodHandler} typeOfInput="checkbox" />
                     <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
                       Plata Ramburs
                     </label>
@@ -358,13 +336,8 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
 
                 <div className={styles.groupInputTerms}>
                   <div className={styles.checkBoxStyle}>
-                    <input
-                      defaultChecked={completionState.termsAccepted}
-                      onChange={termAcceptHandler}
-                      name="acceptTerms"
-                      type={"checkbox"}
-                      className={styles.checkboxTerms}
-                    />
+                    <InputComponent onSwitchEnabled={paymentMethodHandler} typeOfInput="checkbox" />
+
                     <label htmlFor="acceptTerms" className={styles.acceptTerms}>
                       {"Am citit și sunt de acord cu termenii și condiții site-ului web "}
                     </label>

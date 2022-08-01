@@ -147,8 +147,7 @@ label {
 .deliverOption {
   font-weight: bolder;
 }
-input[type="checkbox"] {
-}
+
 .checkboxTerms {
   width: 20px;
   height: 20px;
@@ -324,4 +323,34 @@ input[type="checkbox"] {
   font-weight: bolder;
   color: green;
   text-align: center;
+}
+
+input[type="checkbox"] {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+.radioButton {
+  clip: rect(0 0 0 0);
+  clip-path: inset(20%);
+  height: 10px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 10px;
+  border-radius: 50%;
+}
+input[type="radio"] {
+  clip: rect(0 0 0 0);
+  clip-path: inset(20%);
+  height: 10px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 10px;
+  border-radius: 50%;
 }
