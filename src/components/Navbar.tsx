@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HashLink, HashLink as Link, NavHashLink } from "react-router-hash-link";
 import ReactGA from "react-ga4";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
-
+import { getCartItems } from "./CartPage";
 import TopBanner from "./TopBanner";
 
 import MenuMobileSide from "./MenuMobileSide";
@@ -13,23 +13,18 @@ import images from "../data/images";
 import strings from "../data/strings.json";
 
 interface NavProps {
-  updateNotification?: number;
-
-  clearNotif?: number;
+  updateNotification?: () => void;
+  clearNotif: number;
 }
 
 const NavBar = ({ clearNotif }: NavProps) => {
   const { pathname } = useLocation();
-  var storedCart = [];
-  var totalItems = 0;
+  const [totalItems, setTotalItems] = useState<number>(getCartItems());
 
-  let expectedData = localStorage.getItem("cartData");
-  if (expectedData != null) {
-    storedCart = JSON.parse(expectedData);
-    storedCart.map((item) => {
-      totalItems = totalItems + Number(item.itemNumber);
-    });
-  }
+  useEffect(() => {
+    console.log("CLICKED", getCartItems());
+    setTotalItems(getCartItems());
+  }, [clearNotif]);
 
   const sendAnalyticsIdea = () => {
     ReactGA.event("User pressed on gallery");
@@ -59,7 +54,7 @@ const NavBar = ({ clearNotif }: NavProps) => {
 
               <div className={styles.middleNoUl}>
                 <HashLink className={styles.logoHover} to="/">
-                  <img className={styles.montanLogo} src={images.montanLogo} />
+                  <img className={styles.montanLogo} src={images.websiteLogo} />
                   <div className={styles.WeRomanians}>
                     <span>{"Produs Românesc"}</span>
                     <img className={styles.roProduct} src={roFLAG} />
