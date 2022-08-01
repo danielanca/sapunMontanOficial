@@ -83,6 +83,7 @@ function App() {
   useEffect(() => {
     if (ssProducts == null) {
       getData().then((finalData) => {
+        // console.log("Loading in Session Storage data about products", finalData);
         sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
       });
     }

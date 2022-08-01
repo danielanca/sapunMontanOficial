@@ -30,7 +30,7 @@ const makeCheck = (sessionData: ProductSessionProps, cartData: ProductCookiesPro
   let namesNotFound: string[] = [];
 
   cartData.forEach((item, index, object) => {
-    if (sessionData != null && !sessionData.hasOwnProperty(item.id)) {
+    if (!sessionData.hasOwnProperty(item.id)) {
       namesNotFound.push(item.id);
     }
   });
