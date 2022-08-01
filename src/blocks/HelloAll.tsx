@@ -5,7 +5,7 @@ const HelloAll = () => {
   return (
     <div className={styles.helloAll}>
       <div className={styles.featuredMessage}>
-        <h3>{"lumea cărbunelui"}</h3>
+        <h3>{"lumea cărbunelui "}</h3>
       </div>
     </div>
   );
