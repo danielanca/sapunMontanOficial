@@ -14,11 +14,11 @@
 .productItem {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   border: 1px solid gray;
   width: 240px;
-  height: 415px;
+  height: 340px;
   position: relative;
 
   margin: 10px 15px;
@@ -57,7 +57,7 @@
 }
 .productPrice {
   font-family: "Bebas Neue Regular", cursive;
-  font-size: 33px;
+  font-size: 24px;
   @include media("<tablet") {
     font-size: 3em;
   }
@@ -89,7 +89,7 @@ a {
   position: relative;
   padding: 20px;
   padding: 10px 15px 0px;
-  height: 128px;
+  height: 150px;
 }
 .priceWrap {
   position: relative;
