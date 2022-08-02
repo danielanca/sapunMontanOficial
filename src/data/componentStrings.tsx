@@ -108,10 +108,10 @@ export const productConstants = {
 };
 
 export const websiteContact = {
-  email: "contact@montanair.ro",
+  email: "contact@diniubire.ro",
   socials: {
-    instagram: "https://www.instagram.com/montanair.ro/",
-    facebook: "https://www.facebook.com/montanair.ro/",
+    instagram: "https://www.instagram.com/diniubire.ro/",
+    facebook: "https://www.facebook.com/diniubire.ro/",
     whatsapp: "https://wa.me/40745469907"
   }
 };

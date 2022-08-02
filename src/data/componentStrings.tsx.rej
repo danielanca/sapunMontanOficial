@@ -1,0 +1,9 @@
+diff a/src/data/componentStrings.tsx b/src/data/componentStrings.tsx	(rejected hunks)
+@@ -110,6 +110,7 @@
+ export const websiteContact = {
+   email: "contact@diniubire.ro",
+   socials: {
++    instagram: "https://www.instagram.com/diniubire.ro/",
+     facebook: "https://www.facebook.com/diniubire.ro/",
+     whatsapp: "https://wa.me/40745469907"
+   }
