@@ -52,10 +52,6 @@ const NavBar = ({ clearNotif }: NavProps) => {
               <div className={styles.middleNoUl}>
                 <HashLink className={styles.logoHover} to="/">
                   <img className={styles.montanLogo} src={images.websiteLogo} />
-                  <div className={styles.WeRomanians}>
-                    <span>{"Produs Românesc"}</span>
-                    <img className={styles.roProduct} src={images.ROFlag} />
-                  </div>
                 </HashLink>
               </div>
 
