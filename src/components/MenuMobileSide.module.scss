@@ -22,15 +22,7 @@
   width: 30px;
   height: auto;
 }
-.WeRomanians {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  @include media("<tablet") {
-    display: none;
-  }
-}
+
 .backDropBackground {
   display: none;
   background-color: black;

@@ -4,9 +4,7 @@ import ReactGA from "react-ga4";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import { getCartItems } from "./CartPage";
 import TopBanner from "./TopBanner";
-
 import MenuMobileSide from "./MenuMobileSide";
-import roFLAG from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
 
 import styles from "./Navbar.module.scss";
 import images from "../data/images";
@@ -22,7 +20,6 @@ const NavBar = ({ clearNotif }: NavProps) => {
   const [totalItems, setTotalItems] = useState<number>(getCartItems());
 
   useEffect(() => {
-    console.log("CLICKED", getCartItems());
     setTotalItems(getCartItems());
   }, [clearNotif]);
 
@@ -55,10 +52,6 @@ const NavBar = ({ clearNotif }: NavProps) => {
               <div className={styles.middleNoUl}>
                 <HashLink className={styles.logoHover} to="/">
                   <img className={styles.montanLogo} src={images.montanLogo} />
-                  <div className={styles.WeRomanians}>
-                    <span>{"Produs Românesc"}</span>
-                    <img className={styles.roProduct} src={roFLAG} />
-                  </div>
                 </HashLink>
               </div>
 
