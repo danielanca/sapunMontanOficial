@@ -51,7 +51,7 @@ const Navbar = lazy(() => import(/* webpackChunkName: "Navbar"  */ "./components
 
 const ProductView = lazy(() => import("./components/Product/ProductView"));
 
-const FooterMontan = lazy(() => import(/* webpackChunkName: "FooterMontan" */ "./components/FooterMontan"));
+const FooterIubire = lazy(() => import(/* webpackChunkName: "FooterIubire" */ "./components/FooterIubire"));
 
 const Loading = () => <div>LOADING</div>;
 
@@ -135,7 +135,7 @@ function App() {
 
                   <Route path="*" element={<NotFound />} />
                 </Routes>
-                <FooterMontan />
+                <FooterIubire />
               </AuthProvider>
             </BrowserRouter>
           </React.Suspense>
