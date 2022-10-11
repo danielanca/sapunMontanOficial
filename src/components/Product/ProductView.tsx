@@ -36,7 +36,7 @@ const ProductView = ({ notifyMe, productLink }: CartProps) => {
 
       localStorage.setItem("cartData", JSON.stringify(storedCart));
 
-      notifyMe(Math.floor(Math.random() * 100));
+      notifyMe(Math.floor(Math.random() * 100)); // not how it should be
       return;
     }
     var itemFound = false;
@@ -66,7 +66,7 @@ const ProductView = ({ notifyMe, productLink }: CartProps) => {
         )}
       </div>
       <div>
-        {productListUpdated != null ? (
+        {typeof productListUpdated !== "undefined" ? (
           <Comments
             productData={JSON.stringify(productListUpdated)}
             productID={ID}

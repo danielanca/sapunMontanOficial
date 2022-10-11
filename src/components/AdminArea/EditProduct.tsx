@@ -70,7 +70,7 @@ const EditProduct = ({ editMode }: EditProduct) => {
   }, [editSent]);
 
   const cancelOperation = () => {
-    window.location.reload();
+    window.location.href = "/admin/products";
   };
   useEffect(() => {
     if (editMode) {
