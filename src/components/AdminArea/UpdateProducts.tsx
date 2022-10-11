@@ -3,6 +3,12 @@ import styles from "./UpdateProducts.module.scss";
 import { getData } from "../../data/productList";
 import ShowProduct from "./ShowProduct";
 import { NavHashLink } from "react-router-hash-link";
+import PopModal from "./PopModal";
+
+type eventShot = {
+  eventType: string;
+  eventPayload: string;
+};
 
 interface productInterface {
   ID: string;
@@ -18,6 +24,10 @@ interface productInterface {
 const UpdateProducts = () => {
   const [productsOnline, setProductsOnline] = useState<any>();
 
+  const handleFire = (event: eventShot) => {
+    callDatabase({ eventType: event.eventType, eventPayload: event.eventPayload });
+    console.log("WE have a fire", event);
+  };
   useEffect(() => {
     if (productsOnline == null) {
       getData().then((finalData) => {
@@ -47,7 +57,9 @@ const UpdateProducts = () => {
           <th>Action</th>
         </tr>
 
-        {productsOnline != null ? Object.values(productsOnline).map((item) => <ShowProduct productName={item} />) : ""}
+        {productsOnline != null
+          ? Object.values(productsOnline).map((item) => <ShowProduct handleFire={handleFire} productName={item} />)
+          : ""}
       </table>
     </div>
   );

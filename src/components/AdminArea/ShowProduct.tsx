@@ -13,32 +13,45 @@ interface productInterface {
   shortDescription: string;
   title: string;
 }
+type eventShot = {
+  eventType: string;
+  eventPayload: string;
+};
 interface productProps {
   productName: productInterface;
+  handleFire: (event: eventShot) => void;
 }
-const ShowProduct = ({ productName }: productProps) => {
+const ShowProduct = ({ productName, handleFire }: productProps) => {
   return (
-    <tr className={styles.productRow}>
-      <td>
-        <div className={styles.imageWrap}>
-          <img className={styles.productImage} src={productName.imageProduct[0]}></img>
-        </div>
-      </td>
-      <td>
-        <div className={styles.titleWrap}>
-          <span className={styles.productTitle}>{productName.title}</span>
-        </div>
-      </td>
-      <td>
-        <HashLink className={styles.HashLinkStyle} to={"/admin/products/edit-" + productName.ID}>
-          <div className={styles.addCartWrap}>
-            <div className={styles.actionButton}>
-              <span className={styles.textInside}>{"EDITEAZA"}</span>
-            </div>
+    <>
+      <tr className={styles.productRow}>
+        <td>
+          <div className={styles.imageWrap}>
+            <img className={styles.productImage} src={productName.imageProduct[0]}></img>
           </div>
-        </HashLink>
-      </td>
-    </tr>
+        </td>
+        <td>
+          <div className={styles.titleWrap}>
+            <span className={styles.productTitle}>{productName.title}</span>
+          </div>
+        </td>
+        <td className={styles.actionAreaAdmin}>
+          <HashLink className={styles.HashLinkStyle} to={"/admin/products/edit-" + productName.ID}>
+            <div className={styles.addCartWrap}>
+              <div className={styles.actionButton}>
+                <span className={styles.textInside}>{"EDITEAZA"}</span>
+              </div>
+            </div>
+          </HashLink>
+          <div
+            onClick={(event) => handleFire({ eventType: "deleteProduct", eventPayload: productName.ID })}
+            className={styles.actionButtonAlert}
+          >
+            <span className={styles.textInside}>{"Sterge"}</span>
+          </div>
+        </td>
+      </tr>
+    </>
   );
 };
 // <HashLink onClick={gotoElement} className={styles.HashLinkStyle} to={"/produs/" + productName.ID}>

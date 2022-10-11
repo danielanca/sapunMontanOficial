@@ -81,6 +81,11 @@
   background-color: #39c948;
   color: black;
 }
+.actionButtonAlert {
+  @extend .actionButton;
+  width: 100px;
+  background-color: #ac2200;
+}
 .textInside {
   font-family: "Bebas Neue Regular", cursive;
   font-size: 20px;
@@ -101,7 +106,7 @@ a {
   height: 35px;
   padding: 0 10px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 .imageWrap {
@@ -115,4 +120,8 @@ a {
 .addCartWrap {
   height: 30%;
   position: relative;
+}
+.actionAreaAdmin {
+  display: flex;
+  flex-direction: row;
 }

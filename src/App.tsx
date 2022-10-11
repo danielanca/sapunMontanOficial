@@ -24,25 +24,25 @@ const CartPage = lazy(() => import(/*webpackPreload: true*/ "./components/CartPa
 const CheckAuth = lazy(() => import(/*webpackPreload: true*/ "./components/AdminArea/CheckAuth"));
 const Blogs = lazy(() => import(/* webpackPreload: true , webpackChunkName: "Blogs" */ "./components/Blogs"));
 const BlogPost = lazy(() => import(/* webpackPreload: true,  webpackChunkName: "BlogPost" */ "./components/BlogPost"));
-const ProduseleNoastre = lazy(
-  () => import(/*webpackPreload: true , webpackChunkName: "ProduseleNoastre" */ "./components/ProduseleNoastre")
+const ProduseleNoastre = lazy(() =>
+  import(/*webpackPreload: true , webpackChunkName: "ProduseleNoastre" */ "./components/ProduseleNoastre")
 );
-const AdminArea = lazy(
-  () => import(/* webpackPrefetch: true, webpackChunkName: "AdminArea" */ "./components/AdminArea/AdminArea")
+const AdminArea = lazy(() =>
+  import(/* webpackPrefetch: true, webpackChunkName: "AdminArea" */ "./components/AdminArea/AdminArea")
 );
-const RequireAuth = lazy(
-  () => import(/*webpackPrefetch: true , webpackChunkName: "RequireAuth"*/ "./components/AdminArea/RequireAuth")
+const RequireAuth = lazy(() =>
+  import(/*webpackPrefetch: true , webpackChunkName: "RequireAuth"*/ "./components/AdminArea/RequireAuth")
 );
 const Login = lazy(() => import(/*webpackPrefetch: true , webpackChunkName: "Login" */ "./components/AdminArea/LogIn"));
-const UpdateProducts = lazy(
-  () => import(/*webpackPrefetch: true , webpackChunkName: "UpdateProducts"  */ "./components/AdminArea/UpdateProducts")
+const UpdateProducts = lazy(() =>
+  import(/*webpackPrefetch: true , webpackChunkName: "UpdateProducts"  */ "./components/AdminArea/UpdateProducts")
 );
-const EditProduct = lazy(
-  () => import(/*webpackPrefetch: true , webpackChunkName: "EditProduct" */ "./components/AdminArea/EditProduct")
+const EditProduct = lazy(() =>
+  import(/*webpackPrefetch: true , webpackChunkName: "EditProduct" */ "./components/AdminArea/EditProduct")
 );
 const OrderView = lazy(() => import("./components/OrderView/OrderView"));
-const Testimonials = lazy(
-  () => import(/*webpackPrefetch: true , webpackChunkName: "Testimonials" */ "./components/Testimonials")
+const Testimonials = lazy(() =>
+  import(/*webpackPrefetch: true , webpackChunkName: "Testimonials" */ "./components/Testimonials")
 );
 
 const SimpleContent = lazy(() => import(/*webpackPrefetch: true*/ "./blocks/SimpleContent"));

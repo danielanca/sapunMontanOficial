@@ -9,7 +9,6 @@ interface subscriberProps {
   lastName: string;
   email: string;
 }
-
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
 const app = express();
