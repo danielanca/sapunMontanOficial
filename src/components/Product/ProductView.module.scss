@@ -95,7 +95,7 @@
   padding-left: 10px;
   line-height: 21px;
   padding: 10px 20px;
-  text-align: justify;
+  text-align: center;
 
   @include media(">=tablet", "<desktop") {
     line-height: initial;
