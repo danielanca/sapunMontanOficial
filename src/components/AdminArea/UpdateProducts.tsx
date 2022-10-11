@@ -3,8 +3,7 @@ import styles from "./UpdateProducts.module.scss";
 import { getData } from "../../data/productList";
 import ShowProduct from "./ShowProduct";
 import { NavHashLink } from "react-router-hash-link";
-import PopModal from "./PopModal";
-
+import { deleteProduct } from "./../../services/emails";
 type eventShot = {
   eventType: string;
   eventPayload: string;
@@ -22,12 +21,24 @@ interface productInterface {
   title: string;
 }
 const UpdateProducts = () => {
-  const [productsOnline, setProductsOnline] = useState<any>();
+  const [productsOnline, setProductsOnline] = useState<productInterface[]>();
 
   const handleFire = (event: eventShot) => {
-    callDatabase({ eventType: event.eventType, eventPayload: event.eventPayload });
-    console.log("WE have a fire", event);
+    console.log(event);
+    if (event.eventType === "deleteProduct") {
+      if (typeof productsOnline !== "undefined") {
+        let productToDelete = productsOnline[event.eventPayload];
+        deleteProduct(productToDelete);
+      }
+    }
   };
+
+  // const handleModal = (event: string, payload: string) => {
+  //   setConfirmDeleteModal(false);
+  //   if (event === "modal_Event") {
+  //     console.log("We have a modal", event, payload);
+  //   }
+  // };
   useEffect(() => {
     if (productsOnline == null) {
       getData().then((finalData) => {
@@ -38,30 +49,33 @@ const UpdateProducts = () => {
   }, [productsOnline]);
 
   return (
-    <div className={styles.productPanel}>
-      <div className={styles.controlArea}>
-        <h3>{"Product List"}</h3>
-        <div className={styles.otherActions}>
-          <NavHashLink replace to={"/admin/products/add"}>
-            <div className={styles.actionButton}>
-              <span className={styles.textInside}>{"Adauga "}</span>
-            </div>
-          </NavHashLink>
+    <>
+      {/* {confirmDeleteModal && <PopModal title={"Doresti sa stergi?"} eventHandler={handleModal} />} */}
+      <div className={styles.productPanel}>
+        <div className={styles.controlArea}>
+          <h3>{"Product List"}</h3>
+          <div className={styles.otherActions}>
+            <NavHashLink replace to={"/admin/products/add"}>
+              <div className={styles.actionButton}>
+                <span className={styles.textInside}>{"Adauga "}</span>
+              </div>
+            </NavHashLink>
+          </div>
         </div>
+
+        <table className={styles.tableStyle}>
+          <tr>
+            <th>Preview</th>
+            <th>Title</th>
+            <th>Action</th>
+          </tr>
+
+          {productsOnline != null
+            ? Object.values(productsOnline).map((item) => <ShowProduct handleFire={handleFire} productName={item} />)
+            : ""}
+        </table>
       </div>
-
-      <table className={styles.tableStyle}>
-        <tr>
-          <th>Preview</th>
-          <th>Title</th>
-          <th>Action</th>
-        </tr>
-
-        {productsOnline != null
-          ? Object.values(productsOnline).map((item) => <ShowProduct handleFire={handleFire} productName={item} />)
-          : ""}
-      </table>
-    </div>
+    </>
   );
 };
 

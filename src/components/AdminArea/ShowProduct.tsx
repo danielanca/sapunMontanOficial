@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ShowProduct.module.scss";
 import { HashLink, NavHashLink } from "react-router-hash-link";
+import PopModal from "./PopModal";
 
 interface productInterface {
   ID: string;
@@ -22,8 +23,18 @@ interface productProps {
   handleFire: (event: eventShot) => void;
 }
 const ShowProduct = ({ productName, handleFire }: productProps) => {
+  const [confirmDeleteModal, setConfirmDeleteModal] = useState<boolean>(false);
+
+  const handleModal = (event: string, payload: string) => {
+    if (event === "modal_Event" && payload === "YES") {
+      handleFire({ eventType: "deleteProduct", eventPayload: productName.ID });
+    }
+    setConfirmDeleteModal(false);
+  };
+
   return (
     <>
+      {confirmDeleteModal && <PopModal title={`Doresti sa stergi ${productName.title}?`} eventHandler={handleModal} />}
       <tr className={styles.productRow}>
         <td>
           <div className={styles.imageWrap}>
@@ -43,10 +54,7 @@ const ShowProduct = ({ productName, handleFire }: productProps) => {
               </div>
             </div>
           </HashLink>
-          <div
-            onClick={(event) => handleFire({ eventType: "deleteProduct", eventPayload: productName.ID })}
-            className={styles.actionButtonAlert}
-          >
+          <div onClick={() => setConfirmDeleteModal(true)} className={styles.actionButtonAlert}>
             <span className={styles.textInside}>{"Sterge"}</span>
           </div>
         </td>

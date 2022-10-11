@@ -67,3 +67,8 @@ tr:nth-child(even) {
   max-width: 765px;
   width: 100%;
 }
+.otherActions {
+  a {
+    text-decoration: none !important;
+  }
+}

@@ -19,7 +19,7 @@
     "@types/react-router-hash-link": "^2.4.5",
     "cookie-parser": "^1.4.6",
     "firebase-admin": "^10.2.0",
-    "firebase-functions": "^3.21.2",
+    "firebase-functions": "^3.24.1",
     "nodemailer": "^6.7.3"
   },
   "devDependencies": {

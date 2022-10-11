@@ -85,6 +85,17 @@ export const updateProduct = async (productModel: ProductModel) => {
     .then((res) => res)
     .catch((error) => error);
 };
+export const deleteProduct = async (productModel: ProductModel) => {
+  console.log("Sending to database to DELETE :", productModel.ID);
+  return await fetch(`${destination}/deleteProduct`, {
+    credentials: "include",
+    method: "POST",
+    mode: "cors",
+    body: JSON.stringify(productModel.ID)
+  })
+    .then((res) => res)
+    .catch((error) => error);
+};
 
 export const addToNewsletter = async (subscriberData: NewsProps) => {
   return await fetch(`${destination}/subscribeToNewsletter`, {
