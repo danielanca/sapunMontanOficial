@@ -180,3 +180,26 @@
   height: 100%;
   object-fit: contain;
 }
+
+.noProductFoundContainer {
+  margin: auto;
+  outline: 2px solid black;
+  width: 70vw;
+  max-width: 1200px;
+}
+.warningHeadline {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.noProductWrapper {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 25%;
+    aspect-ratio: 1/1;
+  }
+}
