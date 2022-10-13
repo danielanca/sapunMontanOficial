@@ -5,7 +5,7 @@
   @extend .col-md-3;
   color: map-get($map: $colors, $key: mainlyBlack);
   text-decoration: none !important;
-  width: none;
+  width: fit-content;
   &:hover {
     color: map-get($map: $colors, $key: mainlyBlack);
   }
@@ -56,8 +56,8 @@
   margin-top: 10px;
   cursor: pointer;
   @include media("<tablet") {
-    line-height: 29px;
-    font-size: 1.2em;
+    font-size: 4vw;
+    line-height: clamp(10px, 4vw, 19px);
   }
 }
 .productPrice {
@@ -76,10 +76,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include media("<tablet") {
+    width: min(5em, 17vw);
+  }
 }
 .actionButton:hover {
   background-color: #39c948;
   color: black;
+}
+.actionButtonAlert {
+  @extend .actionButton;
+  width: 100px;
+  background-color: #ac2200;
+  &:hover {
+    background-color: #c94839;
+  }
+
+  @include media("<tablet") {
+    width: min(5em, 17vw);
+  }
 }
 .textInside {
   font-family: "Bebas Neue Regular", cursive;
@@ -101,7 +117,7 @@ a {
   height: 35px;
   padding: 0 10px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 .imageWrap {
@@ -115,4 +131,8 @@ a {
 .addCartWrap {
   height: 30%;
   position: relative;
+}
+.actionAreaAdmin {
+  display: flex;
+  flex-direction: row;
 }

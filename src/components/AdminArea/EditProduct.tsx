@@ -8,7 +8,6 @@ import { getProductWithID } from "../../data/productList";
 import { useEffect, useState } from "react";
 import { updateProduct } from "./../../services/emails";
 import { ProductListType, ProductModel } from "./../../utils/OrderInterfaces";
-import DraftEdit from "./../DraftEdit/DraftEdit";
 import styles from "./EditProduct.module.scss";
 import ProductPreview from "../Product/ProductPreview";
 interface EditProduct {
@@ -71,7 +70,7 @@ const EditProduct = ({ editMode }: EditProduct) => {
   }, [editSent]);
 
   const cancelOperation = () => {
-    window.location.reload();
+    window.location.href = "/admin/products";
   };
   useEffect(() => {
     if (editMode) {
