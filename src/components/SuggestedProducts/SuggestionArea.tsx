@@ -1,6 +1,6 @@
 import ProductItem from "../ProductItem";
 import { uniqueId } from "lodash";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./SuggestionArea.module.scss";
 
 interface SuggestionProps {
@@ -25,9 +25,11 @@ const SuggestionArea = ({ productID }: SuggestionProps) => {
 
       <div className={styles.productArea}>
         {products != null
-          ? Object.values(products).map((item, index) => (
-              <ProductItem key={uniqueId()} size="small" productObject={item} />
-            ))
+          ? Object.values(products).map((item, index) => {
+              if (!productID.includes(item.ID)) {
+                return <ProductItem key={uniqueId()} size="small" productObject={item} />;
+              }
+            })
           : "LOADING PRODUCTS"}
       </div>
     </div>
