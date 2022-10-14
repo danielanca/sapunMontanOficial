@@ -15,4 +15,8 @@
     font-family: "Roboto Medium", sans-serif;
     color: inherit;
   }
+
+  @include media("<tablet") {
+    max-height: none;
+  }
 }
