@@ -28,7 +28,8 @@
   }
   @include media("<tablet") {
     width: calc(232px + 8.8vw);
-    height: calc(404px + 7vw);
+    height: auto;
+    padding: 5% 0;
   }
 }
 .productItemSmall {
@@ -59,7 +60,7 @@
   font-family: "Bebas Neue Regular", cursive;
   font-size: 24px;
   @include media("<tablet") {
-    font-size: 3em;
+    font-size: 2em;
   }
 }
 
@@ -84,6 +85,10 @@ a {
   justify-content: center;
   align-items: center;
   height: 100px;
+
+  @include media("<tablet") {
+    height: 58px;
+  }
 }
 .imageWrap {
   position: relative;
