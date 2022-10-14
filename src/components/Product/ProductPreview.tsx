@@ -15,15 +15,24 @@ interface ProductTypes {
 
 const ProductPreview = ({ previewOnly, productListUpdated, ID, addCartHandler }: ProductTypes) => {
   const [mainPicture, setmainPicture] = useState(0);
+  const [popProductInCart, setpopProductInCart] = useState(false);
+
   const onImageClicked = (event: number) => {
     setmainPicture(event);
     console.log(event);
   };
 
-  const [popProductInCart, setpopProductInCart] = useState(false);
+  const addToCartEvent = () => {
+    if (typeof addCartHandler === "function") {
+      addCartHandler();
+      setpopProductInCart(true);
+    }
+  };
+
   const animEnded = () => {
     setpopProductInCart(false);
   };
+
   return (
     <>
       <div className={"row " + styles.sectionParent}>
@@ -89,7 +98,7 @@ const ProductPreview = ({ previewOnly, productListUpdated, ID, addCartHandler }:
                   <div className={styles.productPrice}>{productListUpdated[ID].price + " LEI"}</div>
                 </div>
                 <div className={styles.actionContainer}>
-                  <button onClick={addCartHandler} className={styles.addToCart}>
+                  <button onClick={addToCartEvent} className={styles.addToCart}>
                     {"ADAUGĂ IN COȘ"}
                   </button>
                 </div>
