@@ -7,11 +7,11 @@
     }
   },
   "navMenu": {
-    "ourProducts": "PRODUSELE NOASTRE",
-    "aboutUs": "Despre noi",
-    "blog": "Blog",
-    "testimonials": "Testimoniale",
-    "contactUs": "Contact"
+    "ourProducts": { "name": "Produsele noastre", "link": "/produsele-noastre" },
+    "aboutUs": { "name": "Despre noi", "link": "/produsele-noastre" },
+    "blog": { "name": "Blog", "link": "/blog" },
+    "testimonials": { "name": "Testimoniale", "link": "/testimonials" },
+    "contactUs": { "name": "Contact", "link": "/contact" }
   },
   "navMenuMobile": {
     "ourProducts": {
@@ -31,19 +31,20 @@
 
     "blog": {
       "title": "Blog",
-      "link": "/blogs",
-      "ulItems": 0
+      "link": "/blogs"
     },
     "testimonials": {
       "title": "Testimoniale",
-      "link": "/testimonials",
-      "ulItems": 0
+      "link": "/testimonials"
     },
     "contactUs": {
       "title": "Contact",
-      "link": "/contact",
-      "ulItems": 0
+      "link": "/contact"
     }
+  },
+  "cart": {
+    "title": "Cosul meu",
+    "link": "/cosulmeu"
   },
 
   "legal": {

@@ -9,6 +9,7 @@ import MenuMobileSide from "./MenuMobileSide";
 import styles from "./Navbar.module.scss";
 import images from "../data/images";
 import strings from "../data/strings.json";
+// import strings from "../data/strings.json";
 
 interface NavProps {
   updateNotification?: () => void;
@@ -16,6 +17,7 @@ interface NavProps {
 }
 
 const NavBar = ({ clearNotif }: NavProps) => {
+  let { navMenu: navItems } = strings;
   const { pathname } = useLocation();
   const [totalItems, setTotalItems] = useState<number>(getCartItems());
 
@@ -38,13 +40,13 @@ const NavBar = ({ clearNotif }: NavProps) => {
               <div className={styles.sideLeftContainer}></div>
               <ul className={styles.ulMenuEnd}>
                 <li onClick={() => sendAnalyticsIdea()} className={styles.liItem}>
-                  <NavHashLink className={styles.HashLinkStyle} smooth to="/produsele-noastre">
-                    {strings.navMenu.ourProducts}
+                  <NavHashLink className={styles.HashLinkStyle} smooth to={navItems.ourProducts.link}>
+                    {navItems.ourProducts.name}
                   </NavHashLink>
                 </li>
                 <li className={styles.liItem}>
-                  <NavHashLink className={styles.HashLinkStyle} to="/blogs">
-                    {strings.navMenu.blog}
+                  <NavHashLink className={styles.HashLinkStyle} to={navItems.blog.link}>
+                    {navItems.blog.name}
                   </NavHashLink>
                 </li>
               </ul>
@@ -58,13 +60,13 @@ const NavBar = ({ clearNotif }: NavProps) => {
               <MenuMobileSide />
               <ul className={styles.ulMenuStart}>
                 <li className={styles.liItem}>
-                  <NavHashLink className={styles.HashLinkStyle} to="/testimonials">
-                    {strings.navMenu.testimonials}
+                  <NavHashLink className={styles.HashLinkStyle} to={navItems.testimonials.link}>
+                    {navItems.testimonials.name}
                   </NavHashLink>
                 </li>
                 <li className={styles.liItem}>
-                  <NavHashLink className={styles.HashLinkStyle} to="/contact">
-                    {strings.navMenu.contactUs}
+                  <NavHashLink className={styles.HashLinkStyle} to={navItems.contactUs.name}>
+                    {navItems.contactUs.name}
                   </NavHashLink>
                 </li>
               </ul>
