@@ -9,13 +9,15 @@ import { useProducts } from "./../components/hooks/useProducts";
 import FeaturedText from "../components/MiniComponents/Products/FeaturedText";
 import GrayBanner from "../components/MiniComponents/HeadLiners/GrayBanner";
 
+import featuredProducts from "../data/featuredProducts.json";
+
 const MainNavigation = () => {
   const products = useProducts();
 
   return (
     <>
       <HelloAll />
-      <FeaturedProduct />
+      <FeaturedProduct content={featuredProducts.featuredProducts.firstSapun} />
       <BrandDetails />
       <FeaturedText text={{ title: "MontanAir", textSmall: "DESCOPERA BENEFICIILE CARBUNELUI" }} />
       <ProductsGallery productsToShow={products} />
