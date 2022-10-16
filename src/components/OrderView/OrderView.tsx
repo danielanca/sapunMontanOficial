@@ -4,6 +4,8 @@ import styles from "./OrderView.module.scss";
 import { getOrderByID } from "./../../data/productList";
 import React, { useEffect, useState } from "react";
 import { componentStrings } from "./../../data/componentStrings";
+import strings from "../../data/strings.json";
+
 interface OrderInterface {
   lastName?: string;
   firstName?: string;
@@ -23,6 +25,7 @@ interface OrderInterface {
 }
 
 const OrderView = () => {
+  let { orderView: orderStr } = strings;
   let params = useParams();
   let orderID = params.orderID;
   const [invoiceData, setInvoiceData] = useState<OrderInterface>(null);
@@ -79,24 +82,23 @@ const OrderView = () => {
           </div>
           <div className={"row " + styles.clientInfo}>
             <div className={"col-6 " + styles.leftClient}>
-              <h3>{"Client"}</h3>
-              <p>{`Nume: ${invoiceData.firstName} ${invoiceData.lastName}`}</p>
-              <p>{`Comanda: ${invoiceData.invoiceID}`}</p>
-              <p>{`Telefon: ${invoiceData.phoneNo}`}</p>
-              <p>{`Data: ${invoiceData.timestamp}`}</p>
-              <p>{`Metoda de plata: ${invoiceData.paymentMethod}`}</p>
-              <p>{`Data: ${invoiceData.timestamp}`}</p>
+              <h3>{orderStr.clientSide.title}</h3>
+              <p>{`${orderStr.clientSide.name}: ${invoiceData.firstName} ${invoiceData.lastName}`}</p>
+              <p>{`${orderStr.clientSide.order}: ${invoiceData.invoiceID}`}</p>
+              <p>{`${orderStr.clientSide.phone}: ${invoiceData.phoneNo}`}</p>
+              <p>{`${orderStr.clientSide.date}: ${invoiceData.timestamp}`}</p>
+              <p>{`${orderStr.clientSide.paymentMethod}: ${invoiceData.paymentMethod}`}</p>
             </div>
             <div className={"col-6 " + styles.leftClient}>
-              <h3>{"Magazin"}</h3>
-              <p>{componentStrings.companyData.name}</p>
-              <p>{componentStrings.companyData.fiscal}</p>
-              <p>{componentStrings.companyData.number}</p>
-              <p>{componentStrings.companyData.address}</p>
+              <h3>{orderStr.ownerSide.title}</h3>
+              <p>{orderStr.ownerSide.companyName}</p>
+              <p>{orderStr.ownerSide.fiscal}</p>
+              <p>{orderStr.ownerSide.number}</p>
+              <p>{orderStr.ownerSide.address}</p>
             </div>
           </div>
-          <h4 className={styles.finalThanks}>{"Multumim pentru incredere!"}</h4>
-          <h5 className={styles.teamWeb}>{"Echipa MontanAir.Ro"}</h5>
+          <h4 className={styles.finalThanks}>{orderStr.thankYouMessage.title}</h4>
+          <h5 className={styles.teamWeb}>{orderStr.thankYouMessage.author}</h5>
         </div>
       );
     } else return <>{"Loading"}</>;

@@ -17,7 +17,7 @@ interface NavProps {
 }
 
 const NavBar = ({ clearNotif }: NavProps) => {
-  let { navMenu: navItems } = strings;
+  let { navMenu: navItems, cart } = strings;
   const { pathname } = useLocation();
   const [totalItems, setTotalItems] = useState<number>(getCartItems());
 
@@ -71,7 +71,7 @@ const NavBar = ({ clearNotif }: NavProps) => {
                 </li>
               </ul>
               <div className={styles.sideRightContainer}>
-                <NavHashLink className={styles.hashTransparent} to="/cosulmeu">
+                <NavHashLink className={styles.hashTransparent} to={cart.link}>
                   <img className={styles.shopIcon} src={images.cartLogo} />
                   <span className={styles.jewel}>{totalItems}</span>
                 </NavHashLink>

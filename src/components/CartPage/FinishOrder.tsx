@@ -9,6 +9,8 @@ import styles from "./../CartPage/FinishOrder.module.scss";
 import { orderProps } from "./../../utils/OrderInterfaces";
 import { NavHashLink } from "react-router-hash-link";
 import { makeCheck } from "./../../functions/utilsFunc";
+import strings from "../../data/strings.json";
+
 interface ErrorProps {
   paymentSelected: boolean;
   termsAccepted: boolean;
@@ -19,6 +21,7 @@ interface OrderProps {
 }
 
 const FinishOrder = ({ clearNotification }: OrderProps) => {
+  let { orderFinishPage: orderString } = strings;
   const [emailSentConfirmed, setSent] = useState(false);
   let productSessionStorage = JSON.parse(sessionStorage.getItem("productsFetched"));
   const [pendingRequest, setPendingReq] = useState(false);
@@ -93,7 +96,11 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     console.log(`Email state changed to: ${emailSentConfirmed} and removed items from localStorage`);
     if (emailSentConfirmed) {
       localStorage.removeItem("cartData");
-      clearNotification(Math.floor(Math.random() * 120));
+      if (typeof clearNotification === "function") {
+        clearNotification(Math.floor(Math.random() * 120));
+      } else {
+        new Error("clearNotification is not a function");
+      }
     }
   }, [emailSentConfirmed]);
   var storedCart: any[] = [];
@@ -158,22 +165,22 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
         <>
           <div className={styles.topTitle}>
             <div className={styles.cartLine} />
-            <h3 className={styles.finishOrderTitle}>{"Finalizeaza comanda"}</h3>
+            <h3 className={styles.finishOrderTitle}>{orderString.finishGuide}</h3>
             <div className={styles.cartLine} />
           </div>
           <div className={styles.infoBoxing}>
             <img src={images.finishOrder} />
-            <h3>{"Pregatim comanda de indata, ne mai lipsesc datele de livrare"}</h3>
+            <h3>{orderString.deliveringInfor}</h3>
           </div>
           <div className={"row " + styles.finishOrderContainer}>
             <div className={"col-sm-12  col-lg-6  " + styles.leftContainer}>
               <div>
-                <h3 className={styles.topBillText}>{"Detalii pentru facturare"}</h3>
+                <h3 className={styles.topBillText}>{orderString.invoiceDetails}</h3>
               </div>
               <div className={styles.groupInput}>
                 <div className={styles.inputBox}>
                   <label>
-                    {"Nume"}
+                    {orderString.inputsLabels.lastName}
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
 
@@ -181,7 +188,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                 </div>
                 <div className={styles.inputBox}>
                   <label>
-                    {"Prenume"}
+                    {orderString.inputsLabels.firstName}
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
                   <input name="lastName" type={"large"} onChange={inputHandler} value={orderData.lastName} />
@@ -190,7 +197,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
               <div className={styles.groupInput}>
                 <div className={styles.inputBox}>
                   <label>
-                    {"Strada"}
+                    {orderString.inputsLabels.street}
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
                   <input
@@ -204,7 +211,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
               <div className={styles.groupInput}>
                 <div className={styles.inputBox}>
                   <label>
-                    {"Oras"}
+                    {orderString.inputsLabels.city}
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
                   <input name="city" type={"large"} onChange={inputHandler} value={orderData.city} />
@@ -213,7 +220,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
               <div className={styles.groupInput}>
                 <div className={styles.inputBox}>
                   <label>
-                    {"Judet"}
+                    {orderString.inputsLabels.county}
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
                   <input
@@ -234,7 +241,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
               <div className={styles.groupInput}>
                 <div className={styles.inputBox}>
                   <label>
-                    {"Telefon"}
+                    {orderString.inputsLabels.phone}
                     <span className={styles.alertAsterisk}>{"*"}</span>
                   </label>
                   <input name="phoneNo" type={"large"} onChange={inputHandler}></input>
@@ -242,7 +249,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
               </div>
               <div className={styles.groupInput}>
                 <div className={styles.inputBox}>
-                  <label>{"Adresa de Email:"}</label>
+                  <label>{orderString.inputsLabels.emailAddress}</label>
                   <input name="emailAddress" type={"large"} onChange={inputHandler} value={orderData.emailAddress} />
                 </div>
               </div>
@@ -256,7 +263,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
               </div>
               <div className={styles.groupInput}>
                 <div className={styles.inputBox}>
-                  <label className={styles.optionalNote}>{"Note comandă [opțional]"}</label>
+                  <label className={styles.optionalNote}>{orderString.inputsLabels.orderMentions}</label>
                   <textarea
                     className={styles.textareaparticular}
                     spellCheck="false"
@@ -272,8 +279,8 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
             <div className={" col-lg-6  col-sm-12 " + styles.rightContainer}>
               <div className={styles.rightChild}>
                 <div className={styles.legendsTable}>
-                  <span>{"Produs"}</span>
-                  <span>{"Subtotal"}</span>
+                  <span>{orderString.totals.product}</span>
+                  <span>{orderString.totals.subTotal}</span>
                 </div>
                 <ul className={styles.itemUl}>
                   {storedCart.map((item) => (
@@ -284,33 +291,38 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                     </li>
                   ))}
                 </ul>
-                <span className={styles.subTotal}>{" Subtotal: RON  " + subtotalPrepare}</span>
-                <span className={styles.subTotal}>{" Transport: RON  " + deliveryFee}</span>
+                <span className={styles.subTotal}>
+                  {` ${orderString.totals.subTotal}: ${orderString.totals.currency}  ` + subtotalPrepare}
+                </span>
+                <span className={styles.subTotal}>
+                  {` ${orderString.totals.transport}: ${orderString.totals.currency} ` + deliveryFee}
+                </span>
                 <span className={styles.subTotal}>{" - - - - - - - - -  - - - -"}</span>
                 <span className={styles.subTotal}>
-                  {" Total:  RON " + (Number(subtotalPrepare) + Number(deliveryFee))}
+                  {` ${orderString.totals.total} : ${orderString.totals.currency} ` +
+                    (Number(subtotalPrepare) + Number(deliveryFee))}
                 </span>
-                <span className={styles.VATincluded}>{"TVA Inclus"}</span>
+                <span className={styles.VATincluded}>{orderString.totals.TVAincluded}</span>
               </div>
               <div>
-                <span className={styles.deliveryInfo}>{"Livrarea produselor se va face in 24-48 ore"}</span>
+                <span className={styles.deliveryInfo}>{orderString.shipping.estimation}</span>
                 <img className={styles.carShip} src={images.deliveryCar} />
               </div>
               <div>
                 <div className={styles.deliveryCheckbox}>
-                  <span className={styles.paymentDetails}>{"MODALITATE DE PLATA"}</span>
+                  <span className={styles.paymentDetails}>{orderString.shipping.paymentMethod}</span>
 
                   <div className={styles.checkboxer}>
                     <InputComponent onSwitchEnabled={paymentMethodHandler} typeOfInput="checkbox" />
                     <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
-                      Plata Ramburs
+                      {orderString.shipping.paymentMethodOptions.cash}
                     </label>
                   </div>
                 </div>
               </div>
               {finishOrderRequested && orderData.paymentMethod === "" ? (
                 <h4 className="text-center " style={{ color: "red" }}>
-                  {"Nu ati selectat metoda de plata!"}
+                  {orderString.shipping.paymentMethodError}
                 </h4>
               ) : (
                 ""
@@ -319,18 +331,16 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
             {finishOrderRequested >= 1 && !completionState.inputCompleted && (
               <div className="col-12">
                 <h4 className={styles.warningOrder} style={{ color: "red", margin: "auto", textAlign: "center" }}>
-                  {"Verificati datele introduse. Completarea spatilor cu * bulina sunt obligatorii"}
+                  {orderString.shipping.inputError}
                 </h4>
               </div>
             )}
             <div className={"col-12 " + styles.paymentShipContainer}>
               <div className={styles.paymentContainer}>
                 <p className={styles.GDPRNotify}>
-                  {
-                    "Datele dumneavoastre personale vor fi folosite pentru a vă procesa comanda, pentru a vă susține experiența pe tot acest site web și pentru alte scopuri descrise în "
-                  }
-                  <NavHashLink replace to={"/politica-confidentialitate"}>
-                    <a className={styles.extensiveGdpr}>{"politica de confidentialitate"}</a>
+                  {orderString.policyAgreementOrder}
+                  <NavHashLink replace to={orderString.policyAgremenet.link}>
+                    <a className={styles.extensiveGdpr}>{orderString.policyAgremenet.name}</a>
                   </NavHashLink>
                 </p>
 
@@ -339,19 +349,25 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                     <InputComponent onSwitchEnabled={paymentMethodHandler} typeOfInput="checkbox" />
 
                     <label htmlFor="acceptTerms" className={styles.acceptTerms}>
-                      {"Am citit și sunt de acord cu termenii și condiții site-ului web "}
+                      {orderString.policyAgremenet.constent.confirm}
                     </label>
                   </div>
                   {finishOrderRequested && !completionState.termsAccepted && (
-                    <h4 className={styles.termConditionAlert}>
-                      {"Trebuie sa fiti de-acord cu termenii si conditiile pentru a plasa comanda!"}
-                    </h4>
+                    <h4 className={styles.termConditionAlert}>{orderString.policyAgremenet.constent.error}</h4>
                   )}
                 </div>
                 <button onClick={sendOrderData} type="submit" className={styles.finishOrder}>
-                  {!pendingRequest ? <span>{"TRIMITE COMANDA"}</span> : <span>{". . ."}</span>}
+                  {!pendingRequest ? (
+                    <span>{orderString.orderItself.sendFinishOrder.nameButton}</span>
+                  ) : (
+                    <span>{". . ."}</span>
+                  )}
                 </button>
-                <div>{pendingRequest && <p className={styles.emailSendStyle}>{"Se trimite comanda..."}</p>}</div>
+                <div>
+                  {pendingRequest && (
+                    <p className={styles.emailSendStyle}>{orderString.orderItself.sendFinishOrder.pendingMessage}</p>
+                  )}
+                </div>
               </div>
             </div>
           </div>

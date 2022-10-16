@@ -1,4 +1,6 @@
 {
+  "websiteTitle": "MontanAir.Ro",
+
   "socialsInfo": {
     "socialLinks": {
       "instagram": { "link": "https://instagram.com/montanair.ro", "image": "instagram" },
@@ -9,7 +11,7 @@
   "navMenu": {
     "ourProducts": { "name": "Produsele noastre", "link": "/produsele-noastre" },
     "aboutUs": { "name": "Despre noi", "link": "/produsele-noastre" },
-    "blog": { "name": "Blog", "link": "/blog" },
+    "blog": { "name": "Blog", "link": "/blogs" },
     "testimonials": { "name": "Testimoniale", "link": "/testimonials" },
     "contactUs": { "name": "Contact", "link": "/contact" }
   },
@@ -71,5 +73,112 @@
     "number": "41030416",
     "fiscal": "F12/696/23.04.2019",
     "address": "str. LIVIU REBREANU loc. Turda, Cluj"
+  },
+
+  "footerText": {
+    "headLines": {
+      "links": "Link-uri utile",
+      "commercialData": "Date comerciale",
+      "ourShop": "Magazinul nostru",
+      "bottomMadeBy": "Făcut cu ❤️ in Romania"
+    }
+  },
+
+  "orderFinishPage": {
+    "finishGuide": "Finalizeaza comanda",
+    "deliveringInfor": "Pregatim comanda de indata, ne mai lipsesc datele de livrare",
+    "invoiceDetails": "Detalii factura",
+    "inputsLabels": {
+      "lastName": "Nume",
+      "firstName": "Prenume",
+      "street": "Strada",
+      "city": "Oras",
+      "county": "Judet",
+      "phone": "Telefon",
+      "emailAddress": "Email",
+      "orderMentions": "Note comandă [opțional]"
+    },
+
+    "totals": {
+      "product": "Produs",
+      "total": "Total",
+      "subTotal": "Subtotal",
+      "currency": "RON",
+      "TVAincluded": "TVA inclus",
+      "transport": "Transport"
+    },
+    "shipping": {
+      "estimation": "Livrarea produselor se va face in 24-48 ore",
+      "paymentMethod": "Metoda de plata",
+      "paymentMethodOptions": {
+        "cash": "Numerar",
+        "card": "Card",
+        "transfer": "Transfer bancar"
+      },
+      "paymentMethodError": "Nu ati selectat metoda de plata!",
+      "inputError": "Verificati datele introduse. Completarea spatilor cu * bulina sunt obligatorii"
+    },
+    "policyAgreementOrder": "Datele dumneavoastre personale vor fi folosite pentru a vă procesa comanda, pentru a vă susține experiența pe tot acest site web și pentru alte scopuri descrise în",
+    "policyAgremenet": {
+      "name": "politica de confidentialitate",
+      "link": "/politica-confidentialitate",
+      "constent": {
+        "confirm": "Am citit și sunt de acord cu termenii și condiții site-ului web ",
+        "error": "Trebuie sa fiti de-acord cu termenii si conditiile pentru a plasa comanda!"
+      }
+    },
+    "orderItself": {
+      "sendFinishOrder": {
+        "nameButton": "Trimite comanda",
+        "pendingMessage": "Se trimite comanda..."
+      }
+    }
+  },
+
+  "blogsArea": {
+    "blogTitle": "Blog",
+    "blogSubtitle": "Afla informatii noi!",
+    "blogLink": "/blogs",
+    "blogURLSuffix": "blogid",
+    "blogsInner": {
+      "similarPosts": "Postari similare",
+      "readArticle": "Citeste articol"
+    }
+  },
+
+  "testimonialsArea": {
+    "title": "Testimoniale",
+    "descriptionIntroduction": "Afla parerea clientilor despre produsele MontanAir!"
+  },
+
+  "orderView": {
+    "product": "Produs",
+    "unit": "buc",
+    "pricePerUnit": "Pret bucata",
+    "currency": "RON",
+    "subtotal": "Subtotal",
+    "shippingTax": "Taxa transport",
+    "total": "Total",
+
+    "clientSide": {
+      "title": "Client",
+      "name": "Nume",
+      "order": "Comanda",
+      "phone": "Telefon",
+      "date": "Data",
+      "paymentMethod": "Metoda de plata"
+    },
+    "ownerSide": {
+      "title": "Magazin",
+      "companyName": "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
+      "fiscal": "F12/696/23.04.2019",
+      "number": "41030416",
+      "address": "str. LIVIU REBREANU loc. Turda, Cluj "
+    },
+
+    "thankYouMessage": {
+      "title": "Multumim pentru incredere!",
+      "author": "Echipa MontanAir.Ro "
+    }
   }
 }
