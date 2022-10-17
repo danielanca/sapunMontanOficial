@@ -1,6 +1,7 @@
+import React from "react";
+import { uniqueId } from "lodash";
 import ReviewCard from "./../components/ReviewCard";
 import AddReview from "./AddReview";
-import { uniqueId } from "lodash";
 import styles from "./ReviewField.module.scss";
 
 interface ReviewsInterface {
