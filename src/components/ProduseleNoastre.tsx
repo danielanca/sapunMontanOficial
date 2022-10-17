@@ -1,10 +1,10 @@
-import React from "react";
-import { getData } from "../data/productList";
+import React, { useEffect, useState } from "react";
 import { uniqueId } from "lodash";
+import HelmetHead from "./MiniComponents/HelmetHead/HelmetHead";
 import HeadlineTitle from "./HeadlineTitle";
 import ProductItem from "./ProductItem";
-import { Helmet } from "react-helmet";
-import { useEffect, useState } from "react";
+
+import { getData } from "../data/productList";
 import styles from "./../components/ProduseleNoastre.module.scss";
 
 const ProduseleNoastre = () => {
@@ -23,10 +23,8 @@ const ProduseleNoastre = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{"Produsele Noastre - MontanAir.Ro"}</title>
-        <meta name="description" content={"Galeria produselor din magazin"} />
-      </Helmet>
+      <HelmetHead title="Produsele Noastre" description="Lista produse MontanAir.Ro" />
+
       <HeadlineTitle title={"Produsele Noastre"} />
       <div className={styles.blockContainer}>
         <div className={styles.productList}>

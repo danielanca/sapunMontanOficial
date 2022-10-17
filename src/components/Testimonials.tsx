@@ -1,5 +1,5 @@
 import React from "react";
-import Helmet from "react-helmet";
+import HelmetHead from "./MiniComponents/HelmetHead/HelmetHead";
 import styles from "./../components/Testimonials.module.scss";
 import strings from "../data/strings.json";
 import HeadlineTitle from "./HeadlineTitle";
@@ -10,10 +10,7 @@ const Testimonials = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{`${testimonialStr.title} - MontanAir.Ro`}</title>
-        <meta name="description" content={testimonialStr.descriptionIntroduction} />
-      </Helmet>
+      <HelmetHead title={testimonialStr.title} description={testimonialStr.descriptionIntroduction} />
       <HeadlineTitle title={testimonialStr.title} />
 
       <div className={styles.blockContainer}>

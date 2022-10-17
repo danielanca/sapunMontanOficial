@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./SimpleContent.module.scss";
 
 import parse from "html-react-parser";
-import Helmet from "react-helmet";
+import HelmetHead from "../components/MiniComponents/HelmetHead/HelmetHead";
 import { staticContent } from "./../data/contentLegal";
 import "./../data/customCSS.scss";
 
@@ -17,10 +17,8 @@ const SimpleContent = ({ type }: SimpleProps) => {
 
   return (
     <>
-      <Helmet>
-        <title>{staticContent[type].title}</title>
-        <meta name="description" content={staticContent[type].jsonContent} />
-      </Helmet>
+      <HelmetHead title={staticContent[type].title} description={staticContent[type].jsonContent} />
+
       <div className={styles.content}>
         <h3 className={styles.headTitle}>{staticContent[type].title.substring(0, 100)}</h3>
         <div className={styles.plainData}>{renderData()}</div>

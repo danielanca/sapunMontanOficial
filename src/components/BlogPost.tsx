@@ -5,7 +5,7 @@ import parse from "html-react-parser";
 import styles from "./BlogPost.module.scss";
 import { uniqueId } from "lodash";
 import { blogs } from "./../data/blogStrings";
-import { Helmet } from "react-helmet";
+import HelmetHead from "./MiniComponents/HelmetHead/HelmetHead";
 import strings from "./../data/strings.json";
 
 interface BlogContent {
@@ -25,7 +25,6 @@ const BlogPost = () => {
   let params = useParams();
   var thisBlogLink = "";
   thisBlogLink = params.blogLink != undefined ? params.blogLink : "";
-  console.log("BlogPost saying:", thisBlogLink);
 
   var dani: BlogContent = blogs.posts[thisBlogLink];
   if (blogs.posts[thisBlogLink] != null) {
@@ -33,10 +32,11 @@ const BlogPost = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{` ${blogs.posts[thisBlogLink].title} - MontanAir.Ro`}</title>
-        <meta name="description" content={blogs.posts[thisBlogLink].firstDescription.substr(0, 110)} />
-      </Helmet>
+      <HelmetHead
+        title={blogs.posts[thisBlogLink].title}
+        description={blogs.posts[thisBlogLink].firstDescription.substr(0, 110)}
+      />
+
       <div className={styles.container}>
         <div className={styles.blogPostCont}>
           <div className={styles.topTitle}>
