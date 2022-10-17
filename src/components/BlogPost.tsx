@@ -82,8 +82,8 @@ const RelatedPost = ({ blogLink }: RelatedPostProps) => {
         <div className={styles.pictureWrapper}>
           <img className={styles.pictureStyle} src={blogs.posts[blogLink].image} />
         </div>
-        <div>
-          <h3 className={styles.titlePost}>{blogs.posts[blogLink].title}</h3>
+        <div className={styles.titleWrapper}>
+          <h3 className={styles.titlePost}>{blogs.posts[blogLink].title.substr(0, 29)}</h3>
         </div>
       </NavHashLink>
     </div>
