@@ -10,8 +10,11 @@ if (process.env.NODE_ENV === "development") {
 } else {
   destination = "https://us-central1-sapunmontan.cloudfunctions.net";
 }
+
 export const requestOrdersList = async () => {
+  console.log("Request destination is:", destination);
   return await fetch(`${destination}/requestOrders`, {
+    credentials: "include",
     method: "POST",
     mode: "cors",
     body: JSON.stringify({
