@@ -88,6 +88,9 @@ th {
   @include media("<tablet") {
     min-height: 400px;
   }
+  @include media("<tablet") {
+    margin: auto;
+  }
 }
 .leftClient {
   display: flex;

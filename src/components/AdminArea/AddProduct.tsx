@@ -1,15 +1,9 @@
-import React from "react";
-
-import { useMemo } from "react";
-import { useCallback } from "react";
-import parse from "html-react-parser";
-import { useParams } from "react-router-dom";
-import { getProductWithID } from "../../data/productList";
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { updateProduct } from "./../../services/emails";
 import { ProductModel } from "./../../utils/OrderInterfaces";
 
 import styles from "./AddProduct.module.scss";
+
 const AddProduct = () => {
   const [editproductModel, setEditProductModel] = useState<ProductModel>({
     ID: "",
@@ -33,6 +27,7 @@ const AddProduct = () => {
     if (editproductModel.title != "") {
       updateProduct(editproductModel).then((response) => {
         console.log("Product addition request sent to Cloud!");
+        //needs to process the response
       });
     }
   };

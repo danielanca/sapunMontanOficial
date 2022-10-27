@@ -13,12 +13,18 @@ interface subscriberProps {
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
 const app = express();
-var localHost = "http://localhost:3000";
-// var localHost = "https://montanair.ro";
+var localHost = "";
 
-functions.logger.info("localHost allow  origin:", process.env.NODE_ENV);
+if (process.env.NODE_ENV === "production") {
+  localHost = "https://montanair.ro";
+} else {
+  localHost = "http://localhost:3000";
+}
+
+functions.logger.info("localHost allow  origin:", localHost);
+console.log("Localhost is:", localHost);
 app.use(cookieParser());
-const administratorEmail = "steptu94@gmail.com";
+const administratorEmail = "dinmunte@gmail.com";
 admin.initializeApp({
   credential: admin.credential.applicationDefault()
 });
@@ -46,9 +52,6 @@ const getAuthToken = (body: any) => {
   } else return false;
 };
 // process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
-
-// var localHost = "https://montanair.ro";
-// const localHost = "http://localhost:3000";
 
 interface ResponseObject {
   EMAILTO_CLIENT: string;
@@ -139,6 +142,8 @@ export const subscribeToNewsletter = functions.https.onRequest((request, respons
   response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
   let subscriberData: subscriberProps = JSON.parse(request.body);
 
+  functions.logger.info(` subscribeToNewsletter inside localhost Is ${localHost}`);
+  functions.logger.info("Pls subscribeToNewsletter headers:", response.getHeaders());
   databasePost(subscriberData);
   response.send({ subscribeToNewsletter: "SUBSCRIBED" });
 });
@@ -171,10 +176,13 @@ const getOrdersAdmin = async () => {
       ordersArray.push(doc.data());
     });
   });
+  functions.logger.info(` ORDERS ARRAY IS:  ${ordersArray}`);
   return ordersArray;
 };
 
 export const requestOrders = functions.https.onRequest((request, response) => {
+  functions.logger.info(` requestOrders inside localhost Is ${localHost}`);
+
   response.header("Access-Control-Allow-Origin", localHost);
   response.header("Access-Control-Allow-Credentials", "true");
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
