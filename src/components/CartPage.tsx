@@ -23,7 +23,6 @@ interface ProductCookiesProps {
 }
 interface CartProps {
   notifyMe: React.Dispatch<React.SetStateAction<number>>;
-  // notifyMe?: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const makeCheck = (sessionData: ProductSessionProps, cartData: ProductCookiesProps[]) => {

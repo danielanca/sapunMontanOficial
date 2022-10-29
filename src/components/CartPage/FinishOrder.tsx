@@ -346,7 +346,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
 
                 <div className={styles.groupInputTerms}>
                   <div className={styles.checkBoxStyle}>
-                    <InputComponent onSwitchEnabled={paymentMethodHandler} typeOfInput="checkbox" />
+                    <InputComponent onSwitchEnabled={termAcceptHandler} typeOfInput="checkbox" />
 
                     <label htmlFor="acceptTerms" className={styles.acceptTerms}>
                       {orderString.policyAgremenet.constent.confirm}
