@@ -24,12 +24,12 @@ if (process.env.NODE_ENV === "production") {
 functions.logger.info("localHost allow  origin:", localHost);
 console.log("Localhost is:", localHost);
 app.use(cookieParser());
-const administratorEmail = "dinmunte@gmail.com";
+const administratorEmail = "ancadaniel1994@gmail.com";
 admin.initializeApp({
   credential: admin.credential.applicationDefault()
 });
 
-const administratorPassword = "emilutdinmunte";
+const administratorPassword = "123";
 const SessionIDs = ["FlorinSalam2022", "GicaHagi232"];
 interface ReviewType {
   starsNumber: string;
