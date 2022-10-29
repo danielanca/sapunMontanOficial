@@ -66,8 +66,10 @@
   justify-content: space-between;
   width: 100%;
   max-width: 1010px;
-  padding: 0;
-
+  padding: 0 35px;
+  @include media("<desktop") {
+    padding: 0 2%;
+  }
   @include media("<tablet") {
     padding: 0 1%;
     flex-direction: column;
@@ -99,6 +101,8 @@
   }
   @include media(">=tablet", "<desktop") {
     margin: auto;
+    width: 80%;
+    max-width: 559px;
   }
 }
 .inputBox {
