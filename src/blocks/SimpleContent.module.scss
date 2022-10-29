@@ -1,10 +1,15 @@
 @import "./../main.module.scss";
+@import "./../data//themes.scss";
 
 .content {
   width: 100%;
   padding: 30px 8px;
   margin-top: 20px;
   margin-bottom: 40px;
+
+  @include media(">=tablet", "<desktop") {
+    padding: 30px 5%;
+  }
 }
 
 .headTitle {
