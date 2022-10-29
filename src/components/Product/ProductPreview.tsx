@@ -48,13 +48,13 @@ const ProductPreview = ({ previewOnly, productListUpdated, ID, addCartHandler }:
             {productListUpdated != null ? (
               <div className={styles.previewImageContainer}>
                 {productListUpdated[ID].imageProduct.length > 1 &&
-                  productListUpdated[ID].imageProduct.map((image, index) => {
+                  productListUpdated[ID].imageProduct.map((image: string, index: number) => {
                     return (
                       <div
                         onClick={onImageClicked.bind(this, index)}
                         className={mainPicture === index ? styles.activeImage : styles.clickableImage}
                       >
-                        <img alt=" " className={styles.innerImage} src={productListUpdated[ID].imageProduct[0]} />
+                        <img alt=" " className={styles.innerImage} src={productListUpdated[ID].imageProduct[index]} />
                       </div>
                     );
                   })}

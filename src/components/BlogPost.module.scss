@@ -9,7 +9,7 @@
 }
 .blogPostCont {
   @extend .centerFlex;
-  height: 500px;
+  height: 400px;
   row-gap: 65px;
 }
 .centerTitle {
@@ -53,7 +53,7 @@
   text-align: center;
 }
 .actualBlogContent {
-  min-height: 670px;
+  min-height: 265px;
 
   max-width: 966px;
   width: 100%;
@@ -61,7 +61,7 @@
   padding: 10px 14px;
 
   @include media("<tablet") {
-    min-height: 520px;
+    min-height: 320px;
   }
 }
 .pictureThumbnail {
