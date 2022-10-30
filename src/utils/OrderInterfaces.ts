@@ -3,7 +3,9 @@ interface DayTime {
   month: number;
   year: number;
 }
-
+export interface CartProps {
+  notifyMe: React.Dispatch<React.SetStateAction<number>>;
+}
 export interface orderProps {
   firstName: string;
   lastName: string;
