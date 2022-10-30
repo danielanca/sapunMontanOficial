@@ -4,11 +4,13 @@ import Comments from "../Comments";
 import ProductPreview from "./ProductPreview";
 import Loader from "../MiniComponents/Loader";
 import SuggestionArea from "../SuggestedProducts/SuggestionArea";
-import productList, { getProductWithID } from "../../data/productList";
+
+import { getProductWithID } from "../../data/productList";
+import { CartInfoItemCookie } from "./../../data/constants";
+import { ProductListType } from "./../../utils/OrderInterfaces";
+import { NotExistingProduct } from "../../data/strings";
 import images from "../../data/images";
 import styles from "./ProductView.module.scss";
-import { ProductListType } from "./../../utils/OrderInterfaces";
-
 interface CartProps {
   notifyMe: React.Dispatch<React.SetStateAction<number>>;
   productLink?: string;
@@ -23,7 +25,6 @@ const ProductView = ({ notifyMe, productLink }: CartProps) => {
   useEffect(() => {
     if (productListUpdated == null) {
       getProductWithID(ID).then((finalData) => {
-        console.log("DATA RETRIEVING TEST:", finalData);
         setProducts(finalData);
       });
     }
@@ -31,12 +32,10 @@ const ProductView = ({ notifyMe, productLink }: CartProps) => {
 
   const addCartHandler = () => {
     var storedCart: { id: string; itemNumber: string }[] = [];
-    let expectedData = localStorage.getItem("cartData");
+    let expectedData = localStorage.getItem(CartInfoItemCookie);
     if (expectedData === null) {
       storedCart.push({ id: ID, itemNumber: "1" });
-
-      localStorage.setItem("cartData", JSON.stringify(storedCart));
-
+      localStorage.setItem(CartInfoItemCookie, JSON.stringify(storedCart));
       notifyMe(Math.floor(Math.random() * 100)); // not how it should be
       return;
     }
@@ -52,8 +51,7 @@ const ProductView = ({ notifyMe, productLink }: CartProps) => {
     if (!itemFound) {
       storedCart.push({ id: ID, itemNumber: "1" });
     }
-    localStorage.setItem("cartData", JSON.stringify(storedCart));
-
+    localStorage.setItem(CartInfoItemCookie, JSON.stringify(storedCart));
     notifyMe(Math.floor(Math.random() * 100));
   };
 
@@ -73,29 +71,22 @@ const ProductView = ({ notifyMe, productLink }: CartProps) => {
             productID={ID}
             reviewsList={productListUpdated[ID].reviews}
           />
-        ) : typeof productListUpdated !== "undefined" && !productListUpdated.hasOwnProperty(ID) ? (
-          <div className={styles.noProductFoundContainer}>
-            <h2 className={styles.warningHeadline}>{"PRODUS INEXISTENT !"}</h2>
-            <div className={styles.noProductWrapper}>
-              <img src={images.noProduct} />
-            </div>
-            <h2 className={styles.warningHeadline}>{"Din pacate nu am gasit produsul"}</h2>
-          </div>
         ) : (
-          ""
+          typeof productListUpdated !== "undefined" &&
+          !productListUpdated.hasOwnProperty(ID) && (
+            <div className={styles.noProductFoundContainer}>
+              <h2 className={styles.warningHeadline}>{NotExistingProduct.warningHeadline}</h2>
+              <div className={styles.noProductWrapper}>
+                <img src={images.noProduct} />
+              </div>
+              <h2 className={styles.warningHeadline}>{NotExistingProduct.productNotFound}</h2>
+            </div>
+          )
         )}
       </div>
-      {productListUpdated != null ? <SuggestionArea productID={ID} /> : ""}
+      {productListUpdated && <SuggestionArea productID={ID} />}
     </>
   );
 };
 
 export default ProductView;
-
-// <div className={styles.noProductFoundContainer}>
-//             <h2 className={styles.warningHeadline}>{"PRODUS INEXISTENT !"}</h2>
-//             <div className={styles.noProductWrapper}>
-//               <img src={images.noProduct} />
-//             </div>
-//             <h2 className={styles.warningHeadline}>{"Din pacate nu am gasit produsul"}</h2>
-//           </div>
