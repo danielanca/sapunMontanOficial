@@ -34,7 +34,10 @@ export interface ProductModel {
   shortDescription: string;
   title: string;
 }
-
+export interface ProdItemProps {
+  productObject: ProductListType;
+  size?: string;
+}
 export interface ProductListType {
   [key: string]: {
     ID: string;
@@ -47,6 +50,17 @@ export interface ProductListType {
     reviews: {};
     ULbeneficii: [];
   };
+}
+export interface productObject {
+  ID: string;
+  title: string;
+  firstDescription: string;
+  shortDescription: string;
+  imageProduct: string[];
+  jsonContent: string;
+  price: string;
+  reviews: {};
+  ULbeneficii: [];
 }
 
 export interface ProductTypes {
