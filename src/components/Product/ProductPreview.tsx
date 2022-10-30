@@ -1,21 +1,16 @@
-import React from "react";
-import images from "../../data/images";
-import { useState } from "react";
+import React, { useState } from "react";
 import ProductAdded from "./../PopUps/ProductAdded";
-import { ProductListType } from "./../../utils/OrderInterfaces";
 import ProductDescription from "./../ConstantComponents/ProductDescription";
+import { ProductTypes } from "./../../utils/OrderInterfaces";
+
 import styles from "./../Product/ProductView.module.scss";
+import images from "../../data/images";
+import strings from "../../data/strings.json";
 
-interface ProductTypes {
-  previewOnly?: boolean;
-  productListUpdated?: ProductListType;
-  ID: string;
-  addCartHandler?: () => void;
-}
-
-const ProductPreview = ({ previewOnly, productListUpdated, ID, addCartHandler }: ProductTypes) => {
-  const [mainPicture, setmainPicture] = useState(0);
-  const [popProductInCart, setpopProductInCart] = useState(false);
+const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes) => {
+  let { ProductPreview: content } = strings;
+  const [mainPicture, setmainPicture] = useState<number>(0);
+  const [popProductInCart, setpopProductInCart] = useState<boolean>(false);
 
   const onImageClicked = (event: number) => {
     setmainPicture(event);
@@ -35,8 +30,8 @@ const ProductPreview = ({ previewOnly, productListUpdated, ID, addCartHandler }:
 
   return (
     <>
-      <div className={"row " + styles.sectionParent}>
-        <div className={"col-md-6 " + styles.leftSection}>
+      <div className={styles.sectionParent}>
+        <div className={styles.leftSection}>
           <div className={styles.leftContainer}>
             {productListUpdated != null ? (
               <div className={styles.imageActualContainer}>
@@ -65,7 +60,7 @@ const ProductPreview = ({ previewOnly, productListUpdated, ID, addCartHandler }:
           </div>
         </div>
 
-        <div className={"col-md-6 " + styles.rightSection}>
+        <div className={styles.rightSection}>
           <div className={styles.rightContainer}>
             <h3 className={styles.productTitle}>{productListUpdated != null ? productListUpdated[ID].title : "..."}</h3>
             <div className={styles.reviewContainer}>
@@ -79,47 +74,37 @@ const ProductPreview = ({ previewOnly, productListUpdated, ID, addCartHandler }:
               <span className={styles.reviewHead}>
                 {productListUpdated != null
                   ? Object.values(productListUpdated[ID].reviews).length != 0
-                    ? Object.values(productListUpdated[ID].reviews).length + " RECENZII"
-                    : " Fii Primul ce lasa review!"
+                    ? Object.values(productListUpdated[ID].reviews).length + ` ${content.reviewsText}`
+                    : content.callActionForReview
                   : ""}
               </span>
             </div>
-            {productListUpdated != null ? (
+            {productListUpdated && (
               <>
                 <div className={styles.shortDescription}>{productListUpdated[ID].shortDescription}</div>
                 <div className={styles.longDescription}>{productListUpdated[ID].firstDescription}</div>
               </>
-            ) : (
-              ""
             )}
-            {productListUpdated != null ? (
+            {productListUpdated && (
               <>
                 <div className={styles.priceWrapper}>
                   <div className={styles.productPrice}>{productListUpdated[ID].price + " LEI"}</div>
                 </div>
                 <div className={styles.actionContainer}>
                   <button onClick={addToCartEvent} className={styles.addToCart}>
-                    {"ADAUGĂ IN COȘ"}
+                    {content.addToCartText}
                   </button>
                 </div>
               </>
-            ) : (
-              ""
             )}
 
             {popProductInCart && <ProductAdded animFin={animEnded} id={ID} />}
           </div>
         </div>
-        {productListUpdated != null ? (
-          <ProductDescription productDescription={productListUpdated} productID={ID} />
-        ) : (
-          ""
-        )}
+        {productListUpdated && <ProductDescription productDescription={productListUpdated} productID={ID} />}
       </div>
     </>
   );
 };
-
-// export default React.memo(ProductPreview);
 
 export default ProductPreview;
