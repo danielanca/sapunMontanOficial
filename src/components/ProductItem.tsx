@@ -1,25 +1,11 @@
 import React from "react";
 import { HashLink } from "react-router-hash-link";
-
+import { ProdItemProps } from "../utils/OrderInterfaces";
 import styles from "./../components/ProductItem.module.scss";
+import strings from "./../data/strings.json";
 
-interface productObject {
-  ID: string;
-  ULbeneficii: [];
-  firstDescription: string;
-  imageProduct: [];
-  jsonContent: string;
-  price: string;
-  reviews: {};
-  shortDescription: string;
-  title: string;
-}
-
-interface ProdProps {
-  productObject: productObject;
-  size?: string;
-}
-const ProductItem = ({ productObject, size }: ProdProps) => {
+const ProductItem = ({ productObject, size }: ProdItemProps) => {
+  let { ProductItem: ProductItemStrings } = strings;
   const gotoElement = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -42,9 +28,9 @@ const ProductItem = ({ productObject, size }: ProdProps) => {
         </div>
 
         <div className={styles.priceWrap}>
-          <span className={styles.productPrice}>{productObject.price + " lei"}</span>
+          <span className={styles.productPrice}>{productObject.price + ` ${ProductItemStrings.Currency}`}</span>
         </div>
-        <button className={styles.addToCart}>{"VEZI PRODUS"}</button>
+        <button className={styles.addToCart}>{ProductItemStrings.SeeProduct}</button>
         {/* <div className={styles.discountWrap}>
           <p className={styles.discountText}>{'REDUCERE'}</p>
         </div> */}

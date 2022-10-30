@@ -9,7 +9,10 @@
   "GrayPromotion": {
     "text": "Am pregătit <strong>pachetele noastre </strong> pentru toată lumea care dorește să utilizeze mai multe produse la prețuri mai mici. Atunci când alegeți unul dintre aceste pachete, <strong>transportul este gratuit </strong>, prin urmare majoritatea clienților noștri aleg aceste oferte."
   },
-
+  "ProduseleNoastre": {
+    "title": "Produsele Noastre",
+    "metaDescription": "Lista produse MontanAir.Ro"
+  },
   "socialsInfo": {
     "socialLinks": {
       "instagram": { "link": "https://instagram.com/montanair.ro", "image": "instagram" },
@@ -199,5 +202,9 @@
   "NotExistingProduct": {
     "warningHeadline": "PRODUS INEXISTENT !",
     "productNotFound": "Din pacate nu am gasit produsul."
+  },
+  "ProductItem": {
+    "SeeProduct": "Vezi produs",
+    "Currency": "RON"
   }
 }
