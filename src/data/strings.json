@@ -103,10 +103,10 @@
     "inputsLabels": {
       "lastName": "Nume",
       "firstName": "Prenume",
-      "street": "Strada",
+      "deliveryAddress": "Strada",
       "city": "Oras",
       "county": "Judet",
-      "phone": "Telefon",
+      "phoneNo": "Telefon",
       "emailAddress": "Email",
       "orderMentions": "Note comandă [opțional]"
     },

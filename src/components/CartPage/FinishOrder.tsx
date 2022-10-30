@@ -1,30 +1,49 @@
-import OrderDone from "./OrderDone";
-import images from "./../../data/images";
-
-import { componentStrings, productConstants } from "../../data/componentStrings";
 import React, { useState, useEffect } from "react";
+import OrderDone from "./OrderDone";
 import { sendOrderConfirmation } from "./../../services/emails";
 import InputComponent from "./../MiniComponents/InputComponent";
-import styles from "./../CartPage/FinishOrder.module.scss";
+
 import { orderProps } from "./../../utils/OrderInterfaces";
 import { NavHashLink } from "react-router-hash-link";
 import { makeCheck } from "./../../functions/utilsFunc";
-import strings from "../../data/strings.json";
+import { ErrorProps, OrderProps, ExplicitProdListProps, PropertyInput, InputProps } from "./typeProps";
 
-interface ErrorProps {
-  paymentSelected: boolean;
-  termsAccepted: boolean;
-  inputCompleted: boolean;
-}
-interface OrderProps {
-  clearNotification?: React.Dispatch<React.SetStateAction<number>>;
-}
+import { componentStrings, productConstants } from "../../data/componentStrings";
+import strings from "../../data/strings.json";
+import { ProductsFromSessionStorage, CartInfoItemCookie } from "../../data/constants";
+import styles from "./../CartPage/FinishOrder.module.scss";
+import images from "./../../data/images";
 
 const FinishOrder = ({ clearNotification }: OrderProps) => {
   let { orderFinishPage: orderString } = strings;
   const [emailSentConfirmed, setSent] = useState(false);
-  let productSessionStorage = JSON.parse(sessionStorage.getItem("productsFetched"));
+  let itemsSessionStorage = sessionStorage.getItem(ProductsFromSessionStorage);
+  let productSessionStorage = itemsSessionStorage != null ? JSON.parse(itemsSessionStorage) : null;
   const [pendingRequest, setPendingReq] = useState(false);
+  var storedCart: any[] = [];
+  var subtotalPrepare = 0;
+  const [finishOrderRequested, setFinishRequested] = useState<number>(0);
+  const [completionState, setError] = useState<ErrorProps>({
+    paymentSelected: false,
+    termsAccepted: false,
+    inputCompleted: false
+  });
+  const [orderData, setorderData] = useState<orderProps>({
+    firstName: "",
+    lastName: "",
+    emailAddress: "",
+    deliveryAddress: "",
+    city: "",
+    county: "",
+    paymentMethod: "",
+    cartProducts: "",
+    phoneNo: "",
+    cartSum: subtotalPrepare,
+    shippingTax: productConstants.shippingFee,
+    orderNotes: "",
+    deliveryName: "DPD Curier",
+    paymentStatus: "NOT_PAID"
+  });
 
   const handleSend = async () => {
     try {
@@ -60,33 +79,9 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
       setorderData((orderData) => ({ ...orderData, paymentMethod: "" }));
     }
   };
-  const [orderData, setorderData] = useState<orderProps>({
-    firstName: "",
-    lastName: "",
-    emailAddress: "",
-    deliveryAddress: "",
-    city: "",
-    county: "",
-    paymentMethod: "",
-    cartProducts: "",
-    phoneNo: "",
-    cartSum: subtotalPrepare,
-    shippingTax: productConstants.shippingFee,
-    orderNotes: "",
-    deliveryName: "DPD Curier",
-    paymentStatus: "NOT_PAID"
-  });
-
-  const [finishOrderRequested, setFinishRequested] = useState<number>(null);
-  const [completionState, setError] = useState<ErrorProps>({
-    paymentSelected: false,
-    termsAccepted: false,
-    inputCompleted: false
-  });
 
   const inputHandler = (data: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = data.target;
-
     setorderData((orderData) => ({
       ...orderData,
       [name]: value
@@ -103,24 +98,28 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
       }
     }
   }, [emailSentConfirmed]);
-  var storedCart: any[] = [];
-  var subtotalPrepare = 0;
+
   var deliveryFee = productConstants.shippingFee;
-  let expectedData = localStorage.getItem("cartData");
-  var explicitProductList = [];
+  let expectedData = localStorage.getItem(CartInfoItemCookie);
+  var explicitProductList: ExplicitProdListProps[] = [];
   if (expectedData != null) {
     storedCart = JSON.parse(expectedData);
-    storedCart = makeCheck(productSessionStorage, storedCart);
-    storedCart.map((item) => {
-      subtotalPrepare += Number(productSessionStorage[item.id].price) * Number(item.itemNumber);
-      explicitProductList.push({
-        id: item.id,
-        name: productSessionStorage[item.id].title,
-        itemNumber: item.itemNumber,
-        imageProduct: productSessionStorage[item.id].imageProduct[0],
-        price: productSessionStorage[item.id].price
+    if (productSessionStorage != null) {
+      storedCart = makeCheck(productSessionStorage, storedCart);
+      storedCart.map((item: ExplicitProdListProps) => {
+        subtotalPrepare += Number(productSessionStorage[item.id].price) * Number(item.itemNumber);
+        explicitProductList.push({
+          id: item.id,
+          name: productSessionStorage[item.id].title,
+          itemNumber: item.itemNumber,
+          imageProduct: productSessionStorage[item.id].imageProduct[0],
+          price: productSessionStorage[item.id].price
+        });
       });
-    });
+    } else {
+      console.log("Product session storage is null");
+      new Error("Product Session Storage is null");
+    }
 
     console.log("EXPLICIT PRODS:", explicitProductList);
     console.log(orderData);
@@ -159,6 +158,67 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     }
     console.log("Finish order request", finishOrderRequested);
   }, [finishOrderRequested, orderData]);
+  const inputObject: InputProps = {
+    lastName: {
+      name: "lastName",
+      inputListener: inputHandler,
+      value: orderData.lastName,
+      labelText: orderString.inputsLabels.lastName,
+      mandatoryInput: true
+    },
+    firstName: {
+      name: "firstName",
+      inputListener: inputHandler,
+      value: orderData.firstName,
+      labelText: orderString.inputsLabels.firstName,
+      mandatoryInput: true
+    },
+    deliveryAddress: {
+      name: "deliveryAddress",
+      inputListener: inputHandler,
+      value: orderData.deliveryAddress,
+      labelText: orderString.inputsLabels.deliveryAddress,
+      mandatoryInput: true
+    },
+    city: {
+      name: "city",
+      inputListener: inputHandler,
+      value: orderData.city,
+      labelText: orderString.inputsLabels.city,
+      mandatoryInput: true
+    },
+    county: {
+      name: "county",
+      inputListener: inputHandler,
+      value: orderData.county,
+      labelText: orderString.inputsLabels.county,
+      mandatoryInput: true,
+      inputOptions: {
+        autoComplete: "false",
+        list: "county"
+      },
+      otherStructure: {
+        dataList: {
+          name: "county",
+          list: componentStrings.FinishOrder.countyList
+        }
+      }
+    },
+    phoneNo: {
+      name: "phoneNo",
+      inputListener: inputHandler,
+      value: orderData.phoneNo,
+      labelText: orderString.inputsLabels.phoneNo,
+      mandatoryInput: true
+    },
+    emailAddress: {
+      name: "emailAddress",
+      inputListener: inputHandler,
+      value: orderData.emailAddress,
+      labelText: orderString.inputsLabels.emailAddress,
+      mandatoryInput: false
+    }
+  };
   return (
     <div className={styles.FinishSection}>
       {!emailSentConfirmed ? (
@@ -172,95 +232,39 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
             <img src={images.finishOrder} />
             <h3>{orderString.deliveringInfor}</h3>
           </div>
-          <div className={"row " + styles.finishOrderContainer}>
-            <div className={"col-sm-12  col-lg-6  " + styles.leftContainer}>
+          <div className={styles.finishOrderContainer}>
+            <div className={styles.leftContainer}>
               <div>
                 <h3 className={styles.topBillText}>{orderString.invoiceDetails}</h3>
               </div>
-              <div className={styles.groupInput}>
-                <div className={styles.inputBox}>
-                  <label>
-                    {orderString.inputsLabels.lastName}
-                    <span className={styles.alertAsterisk}>{"*"}</span>
-                  </label>
+              {Object.values(inputObject).map((item: PropertyInput) => {
+                return (
+                  <div className={styles.groupInput}>
+                    <div className={styles.inputBox}>
+                      <label>
+                        {item.labelText}
+                        {item.mandatoryInput && <span className={styles.alertAsterisk}>{"*"}</span>}
+                      </label>
+                      <input
+                        name={item.name}
+                        type={"large"}
+                        onChange={item.inputListener}
+                        value={item.value}
+                        autoComplete={item.inputOptions?.autoComplete}
+                        list={item.inputOptions?.list}
+                      />
+                      {item.otherStructure?.dataList?.name && (
+                        <datalist id={item.otherStructure.dataList.name}>
+                          {Object.values(item.otherStructure.dataList.list).map((item) => (
+                            <option value={item} />
+                          ))}
+                        </datalist>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
 
-                  <input onChange={inputHandler} value={orderData.firstName} name="firstName" type={"large"} />
-                </div>
-                <div className={styles.inputBox}>
-                  <label>
-                    {orderString.inputsLabels.firstName}
-                    <span className={styles.alertAsterisk}>{"*"}</span>
-                  </label>
-                  <input name="lastName" type={"large"} onChange={inputHandler} value={orderData.lastName} />
-                </div>
-              </div>
-              <div className={styles.groupInput}>
-                <div className={styles.inputBox}>
-                  <label>
-                    {orderString.inputsLabels.street}
-                    <span className={styles.alertAsterisk}>{"*"}</span>
-                  </label>
-                  <input
-                    name="deliveryAddress"
-                    type={"large"}
-                    onChange={inputHandler}
-                    value={orderData.deliveryAddress}
-                  />
-                </div>
-              </div>
-              <div className={styles.groupInput}>
-                <div className={styles.inputBox}>
-                  <label>
-                    {orderString.inputsLabels.city}
-                    <span className={styles.alertAsterisk}>{"*"}</span>
-                  </label>
-                  <input name="city" type={"large"} onChange={inputHandler} value={orderData.city} />
-                </div>
-              </div>
-              <div className={styles.groupInput}>
-                <div className={styles.inputBox}>
-                  <label>
-                    {orderString.inputsLabels.county}
-                    <span className={styles.alertAsterisk}>{"*"}</span>
-                  </label>
-                  <input
-                    autoComplete="false"
-                    list={"county"}
-                    type={"large"}
-                    name="county"
-                    onChange={inputHandler}
-                    value={orderData.county}
-                  />
-                  <datalist id="county">
-                    {Object.values(componentStrings.FinishOrder.countyList).map((item) => (
-                      <option value={item} />
-                    ))}
-                  </datalist>
-                </div>
-              </div>
-              <div className={styles.groupInput}>
-                <div className={styles.inputBox}>
-                  <label>
-                    {orderString.inputsLabels.phone}
-                    <span className={styles.alertAsterisk}>{"*"}</span>
-                  </label>
-                  <input name="phoneNo" type={"large"} onChange={inputHandler}></input>
-                </div>
-              </div>
-              <div className={styles.groupInput}>
-                <div className={styles.inputBox}>
-                  <label>{orderString.inputsLabels.emailAddress}</label>
-                  <input name="emailAddress" type={"large"} onChange={inputHandler} value={orderData.emailAddress} />
-                </div>
-              </div>
-              <div className={styles.groupInput}>
-                {/* <div className={styles.checkBoxStyle}>
-              <input name="alternativeShipping" type={'checkbox'}></input>
-              <label htmlFor="alternativeShipping" className={styles.deliverOption}>
-                {'Livrare la altă adresa?'}
-              </label>
-            </div> */}
-              </div>
               <div className={styles.groupInput}>
                 <div className={styles.inputBox}>
                   <label className={styles.optionalNote}>{orderString.inputsLabels.orderMentions}</label>
@@ -276,7 +280,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                 </div>
               </div>
             </div>
-            <div className={" col-lg-6  col-sm-12 " + styles.rightContainer}>
+            <div className={styles.rightContainer}>
               <div className={styles.rightChild}>
                 <div className={styles.legendsTable}>
                   <span>{orderString.totals.product}</span>
@@ -320,12 +324,10 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                   </div>
                 </div>
               </div>
-              {finishOrderRequested && orderData.paymentMethod === "" ? (
+              {finishOrderRequested >= 1 && orderData.paymentMethod === "" && (
                 <h4 className="text-center " style={{ color: "red" }}>
                   {orderString.shipping.paymentMethodError}
                 </h4>
-              ) : (
-                ""
               )}
             </div>
             {finishOrderRequested >= 1 && !completionState.inputCompleted && (
@@ -335,7 +337,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                 </h4>
               </div>
             )}
-            <div className={"col-12 " + styles.paymentShipContainer}>
+            <div className={styles.paymentShipContainer}>
               <div className={styles.paymentContainer}>
                 <p className={styles.GDPRNotify}>
                   {orderString.policyAgreementOrder}
@@ -352,7 +354,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                       {orderString.policyAgremenet.constent.confirm}
                     </label>
                   </div>
-                  {finishOrderRequested && !completionState.termsAccepted && (
+                  {finishOrderRequested >= 1 && !completionState.termsAccepted && (
                     <h4 className={styles.termConditionAlert}>{orderString.policyAgremenet.constent.error}</h4>
                   )}
                 </div>
