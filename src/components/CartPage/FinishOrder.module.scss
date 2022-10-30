@@ -30,6 +30,8 @@
   flex-direction: column;
   margin: 50px 0px;
   padding: 2% 4%;
+  max-width: 560px;
+  width: 80%;
   img {
     width: 70px;
     height: 70px;
@@ -62,6 +64,7 @@
   }
 }
 .finishOrderContainer {
+  @extend .row;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -76,6 +79,8 @@
   }
 }
 .leftContainer {
+  @extend .col-sm-12;
+  @extend .col-lg-6;
   padding: 27px 10px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   max-width: 559px;
@@ -93,6 +98,8 @@
   }
 }
 .rightContainer {
+  @extend .col-lg-6;
+  @extend .col-sm-12;
   width: 422px;
   height: auto;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -229,6 +236,7 @@ label {
   padding: 20px;
 }
 .paymentShipContainer {
+  @extend .col-12;
   display: flex;
   justify-content: center;
   border: 1px gray solid;
