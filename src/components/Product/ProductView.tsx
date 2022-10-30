@@ -7,16 +7,12 @@ import SuggestionArea from "../SuggestedProducts/SuggestionArea";
 
 import { getProductWithID } from "../../data/productList";
 import { CartInfoItemCookie } from "./../../data/constants";
-import { ProductListType } from "./../../utils/OrderInterfaces";
-import { NotExistingProduct } from "../../data/strings";
+import { ProductListType, CartProps } from "./../../utils/OrderInterfaces";
+import { NotExistingProduct } from "../../data/strings.json";
 import images from "../../data/images";
 import styles from "./ProductView.module.scss";
-interface CartProps {
-  notifyMe: React.Dispatch<React.SetStateAction<number>>;
-  productLink?: string;
-}
 
-const ProductView = ({ notifyMe, productLink }: CartProps) => {
+const ProductView = ({ notifyMe }: CartProps) => {
   let params = useParams();
   var ID = params.productID !== undefined ? params.productID : "";
 
