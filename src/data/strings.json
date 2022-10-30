@@ -1,6 +1,15 @@
 {
   "websiteTitle": "MontanAir.Ro",
 
+  "DiscoverOurProducts": {
+    "title": "MontanAir",
+    "textSmall": "DESCOPERA BENEFICIILE CARBUNELUI"
+  },
+
+  "GrayPromotion": {
+    "text": "Am pregătit <strong>pachetele noastre </strong> pentru toată lumea care dorește să utilizeze mai multe produse la prețuri mai mici. Atunci când alegeți unul dintre aceste pachete, <strong>transportul este gratuit </strong>, prin urmare majoritatea clienților noștri aleg aceste oferte."
+  },
+
   "socialsInfo": {
     "socialLinks": {
       "instagram": { "link": "https://instagram.com/montanair.ro", "image": "instagram" },
