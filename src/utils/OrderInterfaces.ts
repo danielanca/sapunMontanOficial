@@ -6,6 +6,12 @@ interface DayTime {
 export interface CartProps {
   notifyMe: React.Dispatch<React.SetStateAction<number>>;
 }
+export interface LocalStorPropsCart {
+  name: string;
+  itemNumber: string;
+  price: string;
+  currency: string;
+}
 export interface orderProps {
   firstName: string;
   lastName: string;
@@ -67,4 +73,22 @@ export interface ProductTypes {
   productListUpdated?: ProductListType;
   ID: string;
   addCartHandler?: () => void;
+}
+
+export interface OrderViewProps {
+  lastName?: string;
+  firstName?: string;
+  phoneNo?: string;
+  deliveryAddress?: string;
+  emailAddress?: string;
+  city?: string;
+  county?: string;
+  paymentMethod?: string;
+  cartProducts?: LocalStorPropsCart;
+  shippingTax?: number;
+  cartSum?: number;
+  orderNotes?: string;
+  deliveryName?: string;
+  timestamp?: string;
+  invoiceID?: string;
 }
