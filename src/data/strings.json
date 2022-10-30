@@ -180,5 +180,11 @@
       "title": "Multumim pentru incredere!",
       "author": "Echipa MontanAir.Ro "
     }
+  },
+
+  "ProductPreview": {
+    "callActionForReview": "Scrie un review",
+    "reviewsText": "Recenzii",
+    "addToCartText": "Adauga in cos"
   }
 }

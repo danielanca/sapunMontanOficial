@@ -161,7 +161,7 @@ const EditProduct = ({ editMode }: EditProduct) => {
           ""
         )}
       </div>
-      {openPreviewArea && <ProductPreview previewOnly={true} ID={ID} productListUpdated={{ [ID]: editproductModel }} />}
+      {openPreviewArea && <ProductPreview ID={ID} productListUpdated={{ [ID]: editproductModel }} />}
     </div>
   );
 };

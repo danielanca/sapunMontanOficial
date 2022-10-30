@@ -46,3 +46,9 @@ export interface ProductListType {
     ULbeneficii: [];
   };
 }
+
+export interface ProductTypes {
+  productListUpdated?: ProductListType;
+  ID: string;
+  addCartHandler?: () => void;
+}
