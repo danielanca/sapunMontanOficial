@@ -35,7 +35,11 @@ const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes
           <div className={styles.leftContainer}>
             {productListUpdated != null ? (
               <div className={styles.imageActualContainer}>
-                <img className={styles.imageContainer} src={productListUpdated[ID].imageProduct[mainPicture]} />
+                <img
+                  alt="product for selling"
+                  className={styles.imageContainer}
+                  src={productListUpdated[ID].imageProduct[mainPicture]}
+                />
               </div>
             ) : (
               ""
@@ -49,7 +53,11 @@ const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes
                         onClick={onImageClicked.bind(this, index)}
                         className={mainPicture === index ? styles.activeImage : styles.clickableImage}
                       >
-                        <img alt=" " className={styles.innerImage} src={productListUpdated[ID].imageProduct[index]} />
+                        <img
+                          alt="product for selling"
+                          className={styles.innerImage}
+                          src={productListUpdated[ID].imageProduct[index]}
+                        />
                       </div>
                     );
                   })}
