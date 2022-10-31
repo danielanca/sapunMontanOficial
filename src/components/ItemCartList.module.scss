@@ -108,10 +108,12 @@
   }
 }
 .quantityBox {
+  @extend .col-sm-3;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 2%;
 }
 .cartPrice {
   width: 32px;

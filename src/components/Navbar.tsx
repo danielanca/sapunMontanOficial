@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { HashLink, HashLink as Link, NavHashLink } from "react-router-hash-link";
 import ReactGA from "react-ga4";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
-import { getCartItems } from "./CartPage";
+import { getCartItems } from "./CartPage/CartPage";
 import TopBanner from "./TopBanner";
 import MenuMobileSide from "./MenuMobileSide";
 
 import styles from "./Navbar.module.scss";
 import images from "../data/images";
 import strings from "../data/strings.json";
-// import strings from "../data/strings.json";
 
 interface NavProps {
   updateNotification?: () => void;

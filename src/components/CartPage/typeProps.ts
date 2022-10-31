@@ -35,3 +35,24 @@ export interface PropertyInput {
 export interface InputProps {
   [key: string]: PropertyInput;
 }
+
+export interface ProductSessionProps {
+  [key: string]: {
+    ID: string;
+    ULBeneficii: string[];
+    firstDescription: string;
+    imageProduct: string[];
+    jsonContent: string;
+    price: string;
+    reviews: {};
+    shortDescription: string;
+    title: string;
+  };
+}
+export interface ProductCookiesProps {
+  id: string;
+  itemNumber: string;
+}
+export interface CartProps {
+  notifyMe: React.Dispatch<React.SetStateAction<number>>;
+}

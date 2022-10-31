@@ -92,7 +92,7 @@ const ItemCartList = ({ productID, amount, updateRequest }: itemCart) => {
           </div>
         </HashLink>
       </div>
-      <div className={"col-sm-3 " + styles.quantityBox}>
+      <div className={styles.quantityBox}>
         <div className={styles.addRemoveCart}>
           <button onClick={addOneItem} className={styles.cartPlus}>
             {"+"}
