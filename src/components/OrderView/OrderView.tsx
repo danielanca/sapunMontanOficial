@@ -46,7 +46,8 @@ const OrderView = () => {
               <th>{orderStr.pricePerUnit}</th>
             </tr>
             {invoiceData.cartProducts &&
-              Object.values(invoiceData.cartProducts).map((item: LocalStorPropsCart) => (
+              typeof JSON.parse(invoiceData.cartProducts) === "object" &&
+              Object.values(JSON.parse(invoiceData.cartProducts)).map((item: any) => (
                 <tr>
                   <th>{item.name}</th>
                   <th>{item.itemNumber}</th>
