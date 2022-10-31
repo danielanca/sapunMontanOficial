@@ -20,7 +20,7 @@ import "./App.css";
 
 export const ProductsContext = React.createContext<any[]>([]);
 const FinishOrder = lazy(() => import(/*webpackPreload: true*/ "./components/CartPage/FinishOrder"));
-const CartPage = lazy(() => import(/*webpackPreload: true*/ "./components/CartPage"));
+const CartPage = lazy(() => import(/*webpackPreload: true*/ "./components/CartPage/CartPage"));
 const CheckAuth = lazy(() => import(/*webpackPreload: true*/ "./components/AdminArea/CheckAuth"));
 const Blogs = lazy(() => import(/* webpackPreload: true , webpackChunkName: "Blogs" */ "./components/Blogs"));
 const BlogPost = lazy(() => import(/* webpackPreload: true,  webpackChunkName: "BlogPost" */ "./components/BlogPost"));

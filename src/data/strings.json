@@ -206,5 +206,18 @@
   "ProductItem": {
     "SeeProduct": "Vezi produs",
     "Currency": "RON"
+  },
+  "MyCart": {
+    "quantity": "Cantitate",
+    "product": "Produse",
+    "finishOrder": { "text": "Finalizeaza comanda", "link": "/finalizare-comanda" },
+    "cartShopping": "Cos de cumparaturi",
+    "emptyCart": "Cosul de cumparaturi este gol",
+    "totalCart": "Total Cos",
+    "subTotal": "Subtotal",
+    "shippingTax": "Taxa transport",
+    "total": "Total",
+    "sendingInfo": "Livrare standard prin SameDay",
+    "VATincluded": "(include TVA)"
   }
 }

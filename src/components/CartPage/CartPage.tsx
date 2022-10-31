@@ -1,29 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NavHashLink } from "react-router-hash-link";
-import { productConstants } from "../data/componentStrings";
-import ItemCartList from "./ItemCartList";
-
+import { productConstants } from "../../data/componentStrings";
+import { CartInfoItemCookie, ProductsFromSessionStorage } from "../../data/constants";
+import ItemCartList from "../ItemCartList";
+import { ProductSessionProps, ProductCookiesProps, CartProps } from "./typeProps";
+import strings from "../../data/strings.json";
 import styles from "./CartPage.module.scss";
-interface ProductSessionProps {
-  [key: string]: {
-    ID: string;
-    ULBeneficii: string[];
-    firstDescription: string;
-    imageProduct: string[];
-    jsonContent: string;
-    price: string;
-    reviews: {};
-    shortDescription: string;
-    title: string;
-  };
-}
-interface ProductCookiesProps {
-  id: string;
-  itemNumber: string;
-}
-interface CartProps {
-  notifyMe: React.Dispatch<React.SetStateAction<number>>;
-}
 
 const makeCheck = (sessionData: ProductSessionProps, cartData: ProductCookiesProps[]) => {
   let namesNotFound: string[] = [];
@@ -38,13 +20,14 @@ const makeCheck = (sessionData: ProductSessionProps, cartData: ProductCookiesPro
 };
 
 const CartPage = ({ notifyMe }: CartProps) => {
+  let { MyCart: cartString } = strings;
   const [updateMade, setupdateMade] = useState<number>(1);
   var subtotalPrepare = 0;
-  var expectedData = localStorage.getItem("cartData");
+  var expectedData = localStorage.getItem(CartInfoItemCookie);
   var sessionProducts: ProductSessionProps | null;
   var storedCart: ProductCookiesProps[] | null = null;
   var shippingFee = productConstants.shippingFee;
-  let sessionFlat = sessionStorage.getItem("productsFetched");
+  let sessionFlat = sessionStorage.getItem(ProductsFromSessionStorage);
 
   if (typeof sessionFlat === "string") {
     sessionProducts = JSON.parse(sessionFlat);
@@ -70,8 +53,8 @@ const CartPage = ({ notifyMe }: CartProps) => {
   const displayFinishOrderDialog = () => {
     if (subtotalPrepare > 0) {
       return (
-        <NavHashLink className={styles.hashTransparent} to="/finalizare-comanda">
-          <button className={styles.finishOrder}>{"Finalizeaza comanda"}</button>
+        <NavHashLink className={styles.hashTransparent} to={cartString.finishOrder.link}>
+          <button className={styles.finishOrder}>{cartString.finishOrder.text}</button>
         </NavHashLink>
       );
     }
@@ -81,7 +64,7 @@ const CartPage = ({ notifyMe }: CartProps) => {
       <div className={styles.CartSection}>
         <div className={styles.topTitle}>
           <div className={styles.cartLine} />
-          <h3 className={styles.middleCosText}>{"Cos de cumparaturi"}</h3>
+          <h3 className={styles.middleCosText}>{cartString.cartShopping}</h3>
           <div className={styles.cartLine} />
         </div>
 
@@ -89,10 +72,10 @@ const CartPage = ({ notifyMe }: CartProps) => {
         <div className={styles.actualCartBox}>
           <div className={styles.topline}>
             <div className={"col-sm-8 "}>
-              <h3 className={styles.cartProductTitle}>{"Produse"}</h3>
+              <h3 className={styles.cartProductTitle}>{cartString.product}</h3>
             </div>
             <div className={"col-sm-3 "}>
-              <h3 className={styles.cartProductTitle}>{"Cantitate"}</h3>
+              <h3 className={styles.cartProductTitle}>{cartString.quantity}</h3>
             </div>
           </div>
 
@@ -102,45 +85,45 @@ const CartPage = ({ notifyMe }: CartProps) => {
               <ItemCartList productID={item.id} amount={Number(item.itemNumber)} updateRequest={productNotification} />
             ))
           ) : (
-            <div className={styles.emptyCart}>{"Cosul de cumparaturi este gol"}</div>
+            <div className={styles.emptyCart}>{cartString.emptyCart}</div>
           )}
         </div>
         {subtotalPrepare !== 0 ? (
-          <div className={"row " + styles.actualCheckout}>
-            <div className={"col-sm-6 " + styles.bottomLeft}></div>
-            <div className={"col-sm-6 " + styles.bottomRight}>
+          <div className={styles.actualCheckout}>
+            <div className={styles.bottomLeft}></div>
+            <div className={styles.bottomRight}>
               <div className={styles.checkoutTotal}>
-                <h3>{"Total Cos"}</h3>
+                <h3>{cartString.totalCart}</h3>
                 <div className={styles.subtotalContainer}>
                   <div className={styles.subtotalLine + " row "}>
                     <div className="col-sm-4 d-flex align-items-center justify-content-end">
-                      <p className={styles.toRight}>{"Subtotal:"}</p>
+                      <p className={styles.toRight}>{`${cartString.subTotal}:`}</p>
                     </div>
                     <div className={"col-sm-8 d-flex justify-content-start align-items-center "}>
                       <p className={styles.subtotalStyle}>{subtotalPrepare + " LEI"}</p>
                     </div>
                   </div>
-                  <div className={styles.deliveryLine + " row "}>
+                  <div className={styles.deliveryLine + " row"}>
                     <div className="col-sm-4 d-flex align-items-center justify-content-end">
-                      <p className={styles.toRight}>{"Subtotal:"}</p>
+                      <p className={styles.toRight}>{`${cartString.subTotal}:`}</p>
                     </div>
                     <div className="col-sm-8 d-flex justify-content-start align-items-center">
-                      <p className={styles.subtotalStyle}>
-                        {`Livrare standard prin SameDay:  ${shippingFee}.00 RON  Livrare oriunde in România.`}
-                      </p>
+                      <p className={styles.subtotalStyle}>{`Livrare standard prin SameDay:  ${shippingFee} LEI`}</p>
                     </div>
                   </div>
-                  <div className={styles.totalLine + " row "}>
+                  <div className={styles.totalLine + " row"}>
                     <div className="col-sm-4 d-flex align-items-center justify-content-end">
-                      <p className={styles.toRight}>{"TOTAL:"}</p>
+                      <p className={styles.toRight}>{`${cartString.total}:`}</p>
                     </div>
                     <div className="col-sm-8 d-flex justify-content-start align-items-center">
-                      <p className={styles.subtotalStyle}>{`${subtotalPrepare + shippingFee}.00 (include TVA)`}</p>
+                      <p className={styles.subtotalStyle}>{`${subtotalPrepare + shippingFee}.00 ${
+                        cartString.VATincluded
+                      }`}</p>
                     </div>
                   </div>
                   <div className={styles.finishTheOrderBox}>
-                    <NavHashLink className={styles.hashTransparent} to="/finalizare-comanda">
-                      <button className={styles.finishOrder}>{"Finalizeaza comanda"}</button>
+                    <NavHashLink className={styles.hashTransparent} to={cartString.finishOrder.link}>
+                      <button className={styles.finishOrder}>{cartString.finishOrder.text}</button>
                     </NavHashLink>
                   </div>
                 </div>
