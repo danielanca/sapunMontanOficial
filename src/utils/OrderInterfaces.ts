@@ -84,7 +84,7 @@ export interface OrderViewProps {
   city?: string;
   county?: string;
   paymentMethod?: string;
-  cartProducts?: LocalStorPropsCart;
+  cartProducts?: string;
   shippingTax?: number;
   cartSum?: number;
   orderNotes?: string;
