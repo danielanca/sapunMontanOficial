@@ -218,6 +218,7 @@
     "shippingTax": "Taxa transport",
     "total": "Total",
     "sendingInfo": "Livrare standard prin SameDay",
-    "VATincluded": "(include TVA)"
+    "VATincluded": "(include TVA)",
+    "currency": "RON"
   }
 }

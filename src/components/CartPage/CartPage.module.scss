@@ -189,3 +189,22 @@
   @extend .col-sm-6;
   padding: 20px;
 }
+
+.innerAlign {
+  display: flex;
+  @extend .col-sm-4;
+  align-items: center;
+  justify-content: flex-end;
+  @include media("<tablet") {
+    justify-content: flex-start;
+  }
+}
+.innerPrice {
+  display: flex;
+  @extend .col-sm-8;
+  justify-content: flex-start;
+  align-items: center;
+  @include media("<tablet") {
+    justify-content: flex-end;
+  }
+}

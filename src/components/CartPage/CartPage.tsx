@@ -40,7 +40,9 @@ const CartPage = ({ notifyMe }: CartProps) => {
     if (storedCart != null) {
       storedCart = makeCheck(sessionProducts, storedCart);
       storedCart.map((item) => {
-        subtotalPrepare += Number(sessionProducts[item.id].price) * Number(item.itemNumber);
+        if (sessionProducts != null) {
+          subtotalPrepare += Number(sessionProducts[item.id].price) * Number(item.itemNumber);
+        }
       });
     }
   }
@@ -88,7 +90,7 @@ const CartPage = ({ notifyMe }: CartProps) => {
             <div className={styles.emptyCart}>{cartString.emptyCart}</div>
           )}
         </div>
-        {subtotalPrepare !== 0 ? (
+        {subtotalPrepare > 0 && (
           <div className={styles.actualCheckout}>
             <div className={styles.bottomLeft}></div>
             <div className={styles.bottomRight}>
@@ -96,26 +98,28 @@ const CartPage = ({ notifyMe }: CartProps) => {
                 <h3>{cartString.totalCart}</h3>
                 <div className={styles.subtotalContainer}>
                   <div className={styles.subtotalLine + " row "}>
-                    <div className="col-sm-4 d-flex align-items-center justify-content-end">
+                    <div className={styles.innerAlign}>
                       <p className={styles.toRight}>{`${cartString.subTotal}:`}</p>
                     </div>
-                    <div className={"col-sm-8 d-flex justify-content-start align-items-center "}>
-                      <p className={styles.subtotalStyle}>{subtotalPrepare + " LEI"}</p>
+                    <div className={styles.innerPrice}>
+                      <p className={styles.subtotalStyle}>{`${subtotalPrepare} ${cartString.currency}`}</p>
                     </div>
                   </div>
                   <div className={styles.deliveryLine + " row"}>
-                    <div className="col-sm-4 d-flex align-items-center justify-content-end">
+                    <div className={styles.innerAlign}>
                       <p className={styles.toRight}>{`${cartString.subTotal}:`}</p>
                     </div>
-                    <div className="col-sm-8 d-flex justify-content-start align-items-center">
-                      <p className={styles.subtotalStyle}>{`Livrare standard prin SameDay:  ${shippingFee} LEI`}</p>
+                    <div className={styles.innerPrice}>
+                      <p
+                        className={styles.subtotalStyle}
+                      >{`${cartString.sendingInfo}:  ${shippingFee} ${cartString.currency}`}</p>
                     </div>
                   </div>
                   <div className={styles.totalLine + " row"}>
-                    <div className="col-sm-4 d-flex align-items-center justify-content-end">
+                    <div className={styles.innerAlign}>
                       <p className={styles.toRight}>{`${cartString.total}:`}</p>
                     </div>
-                    <div className="col-sm-8 d-flex justify-content-start align-items-center">
+                    <div className={styles.innerPrice}>
                       <p className={styles.subtotalStyle}>{`${subtotalPrepare + shippingFee}.00 ${
                         cartString.VATincluded
                       }`}</p>
@@ -130,8 +134,6 @@ const CartPage = ({ notifyMe }: CartProps) => {
               </div>
             </div>
           </div>
-        ) : (
-          ""
         )}
       </div>
     </>
@@ -141,12 +143,13 @@ const CartPage = ({ notifyMe }: CartProps) => {
 export default CartPage;
 
 export const getCartItems = () => {
-  var sessionProducts: ProductSessionProps = JSON.parse(sessionStorage.getItem("productsFetched"));
+  let itemFromSessionS = sessionStorage.getItem(ProductsFromSessionStorage);
+  var sessionProducts: ProductSessionProps | null = itemFromSessionS && JSON.parse(itemFromSessionS);
   var storedCart: ProductCookiesProps[] | null = null;
-  var expectedData = localStorage.getItem("cartData");
-  storedCart = JSON.parse(expectedData);
+  var expectedData = localStorage.getItem(CartInfoItemCookie);
+  storedCart = expectedData && JSON.parse(expectedData);
 
-  if (expectedData != null) {
+  if (expectedData != null && sessionProducts != null) {
     let totalItems = 0;
     let storedCart = JSON.parse(expectedData);
     storedCart = makeCheck(sessionProducts, storedCart);
