@@ -10,11 +10,13 @@ interface InputProps {
 }
 
 const InputComponent = ({ enabled, onSwitchEnabled, typeOfInput, title, theme }: InputProps) => {
-  const [isChecked, setIsChecked] = useState<boolean>(enabled != undefined ? enabled : false);
+  const [isChecked, setIsChecked] = useState<boolean>(enabled !== undefined ? enabled : false);
 
   const onChangeState = useCallback(() => {
-    onSwitchEnabled(!isChecked, title);
-    setIsChecked(!isChecked);
+    if (typeof onSwitchEnabled !== "undefined" && title !== undefined) {
+      onSwitchEnabled(!isChecked, title);
+      setIsChecked(!isChecked);
+    }
   }, [isChecked]);
 
   const themeLayout = () => {

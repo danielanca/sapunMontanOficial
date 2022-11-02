@@ -44,12 +44,12 @@
   max-width: 1242px;
   height: auto;
   border: 1px solid gray;
-  padding: 0 4%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   margin-top: 27px;
   margin-bottom: 27px;
+  padding: 3% 4%;
 
   @include media("<tablet") {
     width: 100%;

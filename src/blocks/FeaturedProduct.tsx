@@ -35,7 +35,7 @@ const FeaturedProduct = ({ content }: contentProps) => {
       <FeaturedText text={{ title: content.bigAnnouncement.background, textSmall: content.bigAnnouncement.title }} />
       <div className={styles.bigPicture}>
         <div className={styles.roundCircle}>
-          <img className={styles.featuredStyle} src={images.featuredProduct} />
+          <img alt="Featured products" className={styles.featuredStyle} src={images.featuredProduct} />
         </div>
         <h3 className={styles.topTextFeatured}>{content.title}</h3>
         <h3 className={styles.bottomTextFeatured}>{content.subTitle}</h3>

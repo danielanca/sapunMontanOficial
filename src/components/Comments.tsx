@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-import ProductDescription from "./ConstantComponents/ProductDescription";
+import React from "react";
 import ReviewField from "./ReviewField";
 import styles from "./../components/Comments.module.scss";
 

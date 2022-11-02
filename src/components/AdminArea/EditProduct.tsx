@@ -1,15 +1,10 @@
-import React, { useRef } from "react";
-
-import { useMemo } from "react";
-import { useCallback } from "react";
-import parse from "html-react-parser";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductWithID } from "../../data/productList";
-import { useEffect, useState } from "react";
-import { updateProduct } from "./../../services/emails";
-import { ProductListType, ProductModel } from "./../../utils/OrderInterfaces";
-import styles from "./EditProduct.module.scss";
 import ProductPreview from "../Product/ProductPreview";
+import { ProductListType, ProductModel } from "./../../utils/OrderInterfaces";
+import { getProductWithID } from "../../data/productList";
+import { updateProduct } from "./../../services/emails";
+import styles from "./EditProduct.module.scss";
 interface EditProduct {
   editMode: boolean;
 }
@@ -87,10 +82,6 @@ const EditProduct = ({ editMode }: EditProduct) => {
     }
   }, [productListUpdated]);
 
-  useEffect(() => {
-    console.log("Edit productModel", editproductModel);
-  }, [editproductModel]);
-
   return (
     <div>
       <div className={styles.editPage}>
@@ -167,28 +158,3 @@ const EditProduct = ({ editMode }: EditProduct) => {
 };
 
 export default EditProduct;
-
-{
-  /* <div
-        spellCheck={false}
-        contentEditable={editableTitle ? true : false}
-        className={editableTitle ? styles.editableContainer : styles.staticContainer}
-      >
-        {productListUpdated != null
-          ? editableTitle
-            ? productListUpdated[ID].jsonContent
-            : parse(productListUpdated[ID].jsonContent)
-          : ""}
-      </div> */
-}
-// const CodeElement = (props: any) => {
-//   return (
-//     <pre className={styles.codeElementStyle} {...props.attributes}>
-//       <code>{props.children}</code>
-//     </pre>
-//   );
-// };
-
-// const DefaultElement = (props: any) => {
-//   return <p {...props.attributes}>{props.children}</p>;
-// };
