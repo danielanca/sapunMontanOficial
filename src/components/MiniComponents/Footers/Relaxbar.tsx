@@ -16,7 +16,7 @@ const Relaxbar = () => {
         <div className={styles.socialsTop}>
           {Object.values(strings.socialsInfo.socialLinks).map((item) => (
             <a key={uniqueId()} href={item.link}>
-              <img className={styles.iconStyle} src={images.socialIcons[item.image]} />
+              <img alt="social icon" className={styles.iconStyle} src={images.socialIcons[item.image]} />
             </a>
           ))}
         </div>

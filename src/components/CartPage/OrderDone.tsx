@@ -1,23 +1,7 @@
-import { HashLink, HashLink as Link, NavHashLink } from "react-router-hash-link";
-import { getOrderByID } from "../../data/productList";
-import { useParams } from "react-router-dom";
-import styles from "./OrderDone.module.scss";
-import { useEffect, useState } from "react";
+import React from "react";
+import { HashLink as Link, NavHashLink } from "react-router-hash-link";
 
-interface OrderInterface {
-  deliveryName: string;
-  deliveryAddress: string;
-  emailAddress: string;
-  lastName: string;
-  firstName: string;
-  city: string;
-  county?: string;
-  paymentMethod: string;
-  shippingTax: number;
-  cartSum: number;
-  orderNotes: string;
-  phoneNo: string;
-}
+import styles from "./OrderDone.module.scss";
 
 const OrderDone = () => {
   return (

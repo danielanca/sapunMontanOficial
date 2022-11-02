@@ -1,12 +1,11 @@
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import styles from "./OrderView.module.scss";
 import { getOrderByID } from "./../../data/productList";
-import React, { useEffect, useState } from "react";
-import { componentStrings } from "./../../data/componentStrings";
-import { OrderViewProps, LocalStorPropsCart } from "../../utils/OrderInterfaces";
+import { OrderViewProps } from "../../utils/OrderInterfaces";
 import strings from "../../data/strings.json";
 import imageByString from "../../data/imageByString.json";
+import styles from "./OrderView.module.scss";
 
 const OrderView = () => {
   let { orderView: orderStr } = strings;
@@ -30,7 +29,7 @@ const OrderView = () => {
         <div className={styles.cardBoard}>
           <div className="row">
             <div className="col-12 d-flex justify-content-center ">
-              <img className={styles.logoInvoice} src={imageByString.invoiceLogo} />
+              <img alt="invoice data" className={styles.logoInvoice} src={imageByString.invoiceLogo} />
             </div>
             <div className="col-12 d-flex justify-content-center">
               <h3 className={styles.invoiceTitle}>{`Factura #${invoiceData.invoiceID}`}</h3>

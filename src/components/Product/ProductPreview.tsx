@@ -73,15 +73,15 @@ const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes
             <h3 className={styles.productTitle}>{productListUpdated != null ? productListUpdated[ID].title : "..."}</h3>
             <div className={styles.reviewContainer}>
               <div className={styles.starsContainer}>
-                <img className={styles.reviewStar} src={images.star} />
-                <img className={styles.reviewStar} src={images.star} />
-                <img className={styles.reviewStar} src={images.star} />
-                <img className={styles.reviewStar} src={images.star} />
-                <img className={styles.reviewStar} src={images.star} />
+                <img alt="stars icons" className={styles.reviewStar} src={images.star} />
+                <img alt="stars icons" className={styles.reviewStar} src={images.star} />
+                <img alt="stars icons" className={styles.reviewStar} src={images.star} />
+                <img alt="stars icons" className={styles.reviewStar} src={images.star} />
+                <img alt="stars icons" className={styles.reviewStar} src={images.star} />
               </div>
               <span className={styles.reviewHead}>
-                {productListUpdated != null
-                  ? Object.values(productListUpdated[ID].reviews).length != 0
+                {productListUpdated !== null
+                  ? Object.values(productListUpdated[ID].reviews).length !== 0
                     ? Object.values(productListUpdated[ID].reviews).length + ` ${content.reviewsText}`
                     : content.callActionForReview
                   : ""}

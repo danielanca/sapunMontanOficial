@@ -4,7 +4,6 @@ import { uniqueId } from "lodash";
 import styles from "./../components/MenuMobileSide.module.scss";
 import images from "../data/images";
 import strings from "../data/strings.json";
-import ItemCartList from "./ItemCartList";
 
 type MobileNavProps = {
   title: string;

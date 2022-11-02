@@ -1,17 +1,21 @@
+import React from "react";
+import { NavHashLink } from "react-router-hash-link";
+
+import { ProductsFromSessionStorage } from "../../data/constants";
 import styles from "./ProductAdded.module.scss";
 import images from "./../../data/images";
-import { NavHashLink } from "react-router-hash-link";
+import strings from "./../../data/strings.json";
 
 interface ProductProps {
   id: string;
   animFin: () => void;
 }
 const ProductAdded = ({ id, animFin }: ProductProps) => {
-  let sessionData = sessionStorage.getItem("productsFetched");
+  let { MyCart, cart } = strings;
+  let sessionData = sessionStorage.getItem(ProductsFromSessionStorage);
 
   let data = sessionData != null ? JSON.parse(sessionData) : null;
 
-  console.log("Product added", data[id].title);
   const animationFinished = () => {
     animFin();
   };
@@ -22,15 +26,15 @@ const ProductAdded = ({ id, animFin }: ProductProps) => {
       </div>
       <div className={styles.titleProduct}>{data != null ? data[id].title : ""}</div>
       <div className={styles.confirmMessage}>
-        <p className={styles.confirmMessage}>{"A fost adaugat cu succes in cosul tau de cumparaturi!"}</p>
+        <p className={styles.confirmMessage}>{cart.congratsMessage}</p>
       </div>
       <div className={styles.actionCallOut}>
-        <NavHashLink className={styles.hashTransparent} to="/cosulmeu">
-          <button className={styles.chillButton}>{"Vezi cosul"}</button>
+        <NavHashLink className={styles.hashTransparent} to={cart.link}>
+          <button className={styles.chillButton}>{cart.title}</button>
         </NavHashLink>
 
-        <NavHashLink className={styles.hashTransparent} to="/finalizare-comanda">
-          <button className={styles.takeActionButton}>{"Finalizează comanda"}</button>
+        <NavHashLink className={styles.hashTransparent} to={MyCart.finishOrder.link}>
+          <button className={styles.takeActionButton}>{MyCart.finishOrder.text}</button>
         </NavHashLink>
       </div>
     </div>

@@ -52,7 +52,7 @@ const NavBar = ({ clearNotif }: NavProps) => {
 
               <div className={styles.middleNoUl}>
                 <HashLink className={styles.logoHover} to="/">
-                  <img className={styles.montanLogo} src={images.montanLogo} />
+                  <img alt="logo" className={styles.montanLogo} src={images.montanLogo} />
                 </HashLink>
               </div>
 
@@ -71,7 +71,7 @@ const NavBar = ({ clearNotif }: NavProps) => {
               </ul>
               <div className={styles.sideRightContainer}>
                 <NavHashLink className={styles.hashTransparent} to={cart.link}>
-                  <img className={styles.shopIcon} src={images.cartLogo} />
+                  <img alt="cart icon" className={styles.shopIcon} src={images.cartLogo} />
                   <span className={styles.jewel}>{totalItems}</span>
                 </NavHashLink>
               </div>

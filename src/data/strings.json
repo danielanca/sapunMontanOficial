@@ -58,7 +58,8 @@
   },
   "cart": {
     "title": "Cosul meu",
-    "link": "/cosulmeu"
+    "link": "/cosulmeu",
+    "congratsMessage": "A fost adaugat cu succes in cosul tau de cumparaturi!"
   },
 
   "legal": {
