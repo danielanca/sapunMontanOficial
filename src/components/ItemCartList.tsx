@@ -1,68 +1,67 @@
-import React, { useState } from "react";
+import React from "react";
 import { HashLink } from "react-router-hash-link";
 import styles from "./../components/ItemCartList.module.scss";
-
-import productList from "./../data/productList";
+import { ProductsFromSessionStorage, CartInfoItemCookie } from "../data/constants";
 
 interface itemCart {
   productID: string;
-  amount?: number;
-  updateRequest?: () => void;
+  updateRequest: () => void;
 }
-const ItemCartList = ({ productID, amount, updateRequest }: itemCart) => {
-  var storedCart = [];
-  let sessionProducts = JSON.parse(sessionStorage.getItem("productsFetched"));
+interface LocalStorageProps {
+  id: string;
+  itemNumber: string;
+}
+const getCartData = () => {
+  let expectedData: string | null = localStorage.getItem(CartInfoItemCookie);
+  return expectedData !== null ? JSON.parse(expectedData) : null;
+};
+const ItemCartList = ({ productID, updateRequest }: itemCart) => {
+  var storedCart: LocalStorageProps[] = [];
+  let sessionFlat = sessionStorage.getItem(ProductsFromSessionStorage);
+  let sessionProducts = sessionFlat !== null ? JSON.parse(sessionFlat) : null;
 
-  var value = 0;
+  var value: number = 0;
 
-  let expectedData = localStorage.getItem("cartData");
-
-  storedCart = JSON.parse(expectedData);
+  storedCart = getCartData();
   storedCart.map((item) => {
     if (item.id === productID) {
-      amount = Number(item.itemNumber);
-      value = amount;
+      value = Number(item.itemNumber);
     }
   });
 
   const addOneItem = () => {
-    let expectedData = localStorage.getItem("cartData");
-    storedCart = JSON.parse(expectedData);
+    storedCart = getCartData();
     storedCart.map((item) => {
-      // console.log(item);
       if (item.id === productID) {
         item.itemNumber = (Number(item.itemNumber) + 1).toString();
-        value = item.itemNumber;
+        value = Number(item.itemNumber);
       }
     });
 
-    localStorage.setItem("cartData", JSON.stringify(storedCart));
-
+    localStorage.setItem(CartInfoItemCookie, JSON.stringify(storedCart));
     updateRequest();
   };
 
   const removeOneItem = () => {
-    let expectedData = localStorage.getItem("cartData");
-    storedCart = JSON.parse(expectedData);
-    storedCart.map((item) => {
-      console.log(item);
-      if (item.id === productID) {
-        if (item.itemNumber > 1) {
-          item.itemNumber = (Number(item.itemNumber) - 1).toString();
-
-          value = item.itemNumber;
+    storedCart = getCartData();
+    if (storedCart !== null) {
+      storedCart.map((item) => {
+        if (item.id === productID) {
+          if (Number(item.itemNumber) > 1) {
+            item.itemNumber = (Number(item.itemNumber) - 1).toString();
+            value = Number(item.itemNumber);
+          }
         }
-      }
-    });
-
-    localStorage.setItem("cartData", JSON.stringify(storedCart));
+      });
+      localStorage.setItem(CartInfoItemCookie, JSON.stringify(storedCart));
+    }
 
     updateRequest();
   };
+
   const deleteProduct = () => {
-    let expectedData = localStorage.getItem("cartData");
-    storedCart = JSON.parse(expectedData);
-    var index_del: number;
+    storedCart = getCartData();
+    var index_del: number = 0;
     storedCart.map((item, index) => {
       console.log(item);
       if (item.id === productID.toString()) {
@@ -70,7 +69,7 @@ const ItemCartList = ({ productID, amount, updateRequest }: itemCart) => {
       }
     });
     storedCart.splice(index_del, 1);
-    localStorage.setItem("cartData", JSON.stringify(storedCart));
+    localStorage.setItem(CartInfoItemCookie, JSON.stringify(storedCart));
     updateRequest();
   };
   return (
