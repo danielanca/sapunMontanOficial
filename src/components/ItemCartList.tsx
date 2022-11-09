@@ -23,7 +23,7 @@ const ItemCartList = ({ productID, updateRequest }: itemCart) => {
   var value: number = 0;
 
   storedCart = getCartData();
-  storedCart.map((item) => {
+  storedCart.forEach((item) => {
     if (item.id === productID) {
       value = Number(item.itemNumber);
     }
@@ -31,7 +31,7 @@ const ItemCartList = ({ productID, updateRequest }: itemCart) => {
 
   const addOneItem = () => {
     storedCart = getCartData();
-    storedCart.map((item) => {
+    storedCart.forEach((item) => {
       if (item.id === productID) {
         item.itemNumber = (Number(item.itemNumber) + 1).toString();
         value = Number(item.itemNumber);
@@ -45,7 +45,7 @@ const ItemCartList = ({ productID, updateRequest }: itemCart) => {
   const removeOneItem = () => {
     storedCart = getCartData();
     if (storedCart !== null) {
-      storedCart.map((item) => {
+      storedCart.forEach((item) => {
         if (item.id === productID) {
           if (Number(item.itemNumber) > 1) {
             item.itemNumber = (Number(item.itemNumber) - 1).toString();
@@ -62,7 +62,7 @@ const ItemCartList = ({ productID, updateRequest }: itemCart) => {
   const deleteProduct = () => {
     storedCart = getCartData();
     var index_del: number = 0;
-    storedCart.map((item, index) => {
+    storedCart.forEach((item, index) => {
       console.log(item);
       if (item.id === productID.toString()) {
         index_del = index;

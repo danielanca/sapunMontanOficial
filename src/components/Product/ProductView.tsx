@@ -38,7 +38,7 @@ const ProductView = ({ notifyMe }: CartProps) => {
     var itemFound = false;
     storedCart = JSON.parse(expectedData);
 
-    storedCart.map((item) => {
+    storedCart.forEach((item) => {
       if (item.id === ID.toString()) {
         item.itemNumber = (Number(item.itemNumber) + 1).toString();
         itemFound = true;

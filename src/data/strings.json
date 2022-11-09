@@ -221,5 +221,11 @@
     "sendingInfo": "Livrare standard prin SameDay",
     "VATincluded": "(include TVA)",
     "currency": "RON"
+  },
+
+  "OrderDone": {
+    "title": "Comanda a fost inregistrată!😃",
+    "subtitle": "Veti fi contactat telefonic pentru confirmarea comenzii",
+    "goHome": "Spre pagina principala"
   }
 }
