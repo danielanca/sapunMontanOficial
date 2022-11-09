@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavHashLink } from "react-router-hash-link";
 import { productConstants } from "../../data/componentStrings";
+import { uniqueId } from "lodash";
 import { CartInfoItemCookie, ProductsFromSessionStorage } from "../../data/constants";
 import ItemCartList from "../ItemCartList";
 import { ProductSessionProps, ProductCookiesProps, CartProps } from "./typeProps";
@@ -10,7 +11,7 @@ import styles from "./CartPage.module.scss";
 const makeCheck = (sessionData: ProductSessionProps, cartData: ProductCookiesProps[]) => {
   let namesNotFound: string[] = [];
 
-  cartData.forEach((item, index, object) => {
+  cartData.forEach((item) => {
     if (sessionData != null && !sessionData.hasOwnProperty(item.id)) {
       namesNotFound.push(item.id);
     }
@@ -84,7 +85,12 @@ const CartPage = ({ notifyMe }: CartProps) => {
           {subtotalPrepare !== 0 ? (
             storedCart != null &&
             storedCart.map((item) => (
-              <ItemCartList productID={item.id} amount={Number(item.itemNumber)} updateRequest={productNotification} />
+              <ItemCartList
+                key={uniqueId()}
+                productID={item.id}
+                amount={Number(item.itemNumber)}
+                updateRequest={productNotification}
+              />
             ))
           ) : (
             <div className={styles.emptyCart}>{cartString.emptyCart}</div>

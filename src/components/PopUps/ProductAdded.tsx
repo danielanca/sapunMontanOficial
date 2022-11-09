@@ -22,7 +22,7 @@ const ProductAdded = ({ id, animFin }: ProductProps) => {
   return (
     <div onAnimationEnd={animationFinished} className={styles.cartCardboard}>
       <div className={styles.cartLogoStyle}>
-        <img className={styles.cartIcon} src={images.cartLogo} />
+        <img alt="cart logo" className={styles.cartIcon} src={images.cartLogo} />
       </div>
       <div className={styles.titleProduct}>{data != null ? data[id].title : ""}</div>
       <div className={styles.confirmMessage}>

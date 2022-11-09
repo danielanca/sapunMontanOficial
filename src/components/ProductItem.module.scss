@@ -36,6 +36,10 @@
   @extend .productItem;
   width: 210px;
   height: 335px;
+  @include media("<tablet") {
+    width: 181px;
+    height: 290px;
+  }
 }
 .productImage {
   width: 100%;

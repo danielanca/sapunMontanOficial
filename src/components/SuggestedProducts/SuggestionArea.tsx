@@ -3,12 +3,13 @@ import { uniqueId } from "lodash";
 import React, { useEffect, useState } from "react";
 import styles from "./SuggestionArea.module.scss";
 import { ProductsFromSessionStorage } from "./../../data/constants";
+import { ProductListType, productObject } from "./../../utils/OrderInterfaces";
 interface SuggestionProps {
   productID: string;
 }
 
 const SuggestionArea = ({ productID }: SuggestionProps) => {
-  const [products, setProducts] = useState<any[]>();
+  const [products, setProducts] = useState<ProductListType[] | null>(null);
 
   useEffect(() => {
     let productsSession = sessionStorage.getItem(ProductsFromSessionStorage);
@@ -25,8 +26,8 @@ const SuggestionArea = ({ productID }: SuggestionProps) => {
       </div>
 
       <div className={styles.productArea}>
-        {products != null
-          ? Object.values(products).map((item, index) => {
+        {products !== null
+          ? Object.values(products).map((item: any, index) => {
               if (!productID.includes(item.ID)) {
                 return <ProductItem key={uniqueId()} size="small" productObject={item} />;
               }
