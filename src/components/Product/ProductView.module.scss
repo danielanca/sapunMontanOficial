@@ -69,6 +69,7 @@
     width: 100%;
     min-width: 300px;
     max-width: 500px;
+    padding: 0 8%;
   }
 }
 .productTitle {
@@ -158,10 +159,12 @@
   flex-direction: row;
   width: 100%;
   justify-content: center;
+  @include media("<tablet") {
+    padding: 0 8%;
+  }
 }
 .clickableImage {
   border: 2px solid rgba(30, 30, 30, 0.3);
-  width: 100%;
   height: 130px;
   opacity: 0.6;
   cursor: pointer;
@@ -176,6 +179,7 @@
 .activeImage {
   @extend .clickableImage;
   opacity: 1;
+  width: auto;
 }
 .innerImage {
   width: 100%;
