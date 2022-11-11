@@ -227,5 +227,18 @@
     "title": "Comanda a fost inregistrată!😃",
     "subtitle": "Veti fi contactat telefonic pentru confirmarea comenzii",
     "goHome": "Spre pagina principala"
+  },
+
+  "NewsletterTermsAccept": {
+    "subscribeConsent": "Sunt de acord cu preluarea datelor cu caracter personal pentru a primi oferte personalizate",
+    "SubscribeMe": "Ma abonez",
+    "warningConsent": "Trebuie sa fiti de acord cu prelucrarea datelor dvs.",
+    "detailsWarning": "Datele pentru abonare trebuie sa fie valide!"
+  },
+
+  "NewsletterSection": {
+    "title": "Newsletter",
+    "subscribeCall": "Aboneaza-te si primesti reducere 10% la urmatoarea ta comanda!",
+    "subscribeMe": "MĂ ABONEZ"
   }
 }
