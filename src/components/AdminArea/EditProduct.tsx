@@ -69,7 +69,7 @@ const EditProduct = ({ editMode }: EditProduct) => {
   };
   useEffect(() => {
     if (editMode) {
-      if (productListUpdated == null) {
+      if (productListUpdated === null) {
         getProductWithID(ID).then((finalData) => {
           setProducts(finalData);
         });
@@ -85,7 +85,7 @@ const EditProduct = ({ editMode }: EditProduct) => {
   return (
     <div>
       <div className={styles.editPage}>
-        {productListUpdated != null || !editMode ? (
+        {productListUpdated !== null || !editMode ? (
           <div className={styles.addAreaContainer}>
             <h2>{`${editMode ? "EDIT" : "ADD"} PRODUCT`}</h2>
 

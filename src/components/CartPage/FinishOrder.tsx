@@ -102,9 +102,9 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   var deliveryFee = productConstants.shippingFee;
   let expectedData = localStorage.getItem(CartInfoItemCookie);
   var explicitProductList: ExplicitProdListProps[] = [];
-  if (expectedData != null) {
+  if (expectedData !== null) {
     storedCart = JSON.parse(expectedData);
-    if (productSessionStorage != null) {
+    if (productSessionStorage !== null) {
       storedCart = makeCheck(productSessionStorage, storedCart);
       storedCart.map((item: ExplicitProdListProps) => {
         subtotalPrepare += Number(productSessionStorage[item.id].price) * Number(item.itemNumber);
