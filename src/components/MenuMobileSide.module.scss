@@ -22,15 +22,7 @@
   width: 30px;
   height: auto;
 }
-.WeRomanians {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  @include media("<tablet") {
-    display: none;
-  }
-}
+
 .backDropBackground {
   display: none;
   background-color: black;
@@ -115,13 +107,13 @@
 
 .ulMenuStart {
   @extend .ulMenu;
-  justify-content: start;
+  justify-content: flex-start;
   width: auto;
 }
 .ulMenuEnd {
   @extend .ulMenu;
   width: auto;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 @keyframes fadeIn {
@@ -391,7 +383,7 @@ input[type="checkbox"]:not(:checked) ~ .subItemUL {
   white-space: nowrap;
   @include media("<desktop") {
     order: 3;
-    justify-content: end;
+    justify-content: flex-end;
     padding: 0 20px;
     width: 80px;
   }

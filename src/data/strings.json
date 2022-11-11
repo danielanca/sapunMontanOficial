@@ -1,4 +1,18 @@
 {
+  "websiteTitle": "MontanAir.Ro",
+
+  "DiscoverOurProducts": {
+    "title": "MontanAir",
+    "textSmall": "DESCOPERA BENEFICIILE CARBUNELUI"
+  },
+
+  "GrayPromotion": {
+    "text": "Am pregătit <strong>pachetele noastre </strong> pentru toată lumea care dorește să utilizeze mai multe produse la prețuri mai mici. Atunci când alegeți unul dintre aceste pachete, <strong>transportul este gratuit </strong>, prin urmare majoritatea clienților noștri aleg aceste oferte."
+  },
+  "ProduseleNoastre": {
+    "title": "Produsele Noastre",
+    "metaDescription": "Lista produse MontanAir.Ro"
+  },
   "socialsInfo": {
     "socialLinks": {
       "instagram": { "link": "https://instagram.com/montanair.ro", "image": "instagram" },
@@ -7,11 +21,11 @@
     }
   },
   "navMenu": {
-    "ourProducts": "PRODUSELE NOASTRE",
-    "aboutUs": "Despre noi",
-    "blog": "Blog",
-    "testimonials": "Testimoniale",
-    "contactUs": "Contact"
+    "ourProducts": { "name": "Produsele noastre", "link": "/produsele-noastre" },
+    "aboutUs": { "name": "Despre noi", "link": "/produsele-noastre" },
+    "blog": { "name": "Blog", "link": "/blogs" },
+    "testimonials": { "name": "Testimoniale", "link": "/testimonials" },
+    "contactUs": { "name": "Contact", "link": "/contact" }
   },
   "navMenuMobile": {
     "ourProducts": {
@@ -31,19 +45,21 @@
 
     "blog": {
       "title": "Blog",
-      "link": "/blogs",
-      "ulItems": 0
+      "link": "/blogs"
     },
     "testimonials": {
       "title": "Testimoniale",
-      "link": "/testimonials",
-      "ulItems": 0
+      "link": "/testimonials"
     },
     "contactUs": {
       "title": "Contact",
-      "link": "/contact",
-      "ulItems": 0
+      "link": "/contact"
     }
+  },
+  "cart": {
+    "title": "Cosul meu",
+    "link": "/cosulmeu",
+    "congratsMessage": "A fost adaugat cu succes in cosul tau de cumparaturi!"
   },
 
   "legal": {
@@ -70,5 +86,159 @@
     "number": "41030416",
     "fiscal": "F12/696/23.04.2019",
     "address": "str. LIVIU REBREANU loc. Turda, Cluj"
+  },
+
+  "footerText": {
+    "headLines": {
+      "links": "Link-uri utile",
+      "commercialData": "Date comerciale",
+      "ourShop": "Magazinul nostru",
+      "bottomMadeBy": "Făcut cu ❤️ in Romania"
+    }
+  },
+
+  "orderFinishPage": {
+    "finishGuide": "Finalizeaza comanda",
+    "deliveringInfor": "Pregatim comanda de indata, ne mai lipsesc datele de livrare",
+    "invoiceDetails": "Detalii factura",
+    "inputsLabels": {
+      "lastName": "Nume",
+      "firstName": "Prenume",
+      "deliveryAddress": "Strada",
+      "city": "Oras",
+      "county": "Judet",
+      "phoneNo": "Telefon",
+      "emailAddress": "Email",
+      "orderMentions": "Note comandă [opțional]"
+    },
+
+    "totals": {
+      "product": "Produs",
+      "total": "Total",
+      "subTotal": "Subtotal",
+      "currency": "RON",
+      "TVAincluded": "TVA inclus",
+      "transport": "Transport"
+    },
+    "shipping": {
+      "estimation": "Livrarea produselor se va face in 24-48 ore",
+      "paymentMethod": "Metoda de plata",
+      "paymentMethodOptions": {
+        "cash": "Numerar",
+        "card": "Card",
+        "transfer": "Transfer bancar"
+      },
+      "paymentMethodError": "Nu ati selectat metoda de plata!",
+      "inputError": "Verificati datele introduse. Completarea spatilor cu * bulina sunt obligatorii"
+    },
+    "policyAgreementOrder": "Datele dumneavoastre personale vor fi folosite pentru a vă procesa comanda, pentru a vă susține experiența pe tot acest site web și pentru alte scopuri descrise în",
+    "policyAgremenet": {
+      "name": "politica de confidentialitate",
+      "link": "/politica-confidentialitate",
+      "constent": {
+        "confirm": "Am citit și sunt de acord cu termenii și condiții site-ului web ",
+        "error": "Trebuie sa fiti de-acord cu termenii si conditiile pentru a plasa comanda!"
+      }
+    },
+    "orderItself": {
+      "sendFinishOrder": {
+        "nameButton": "Trimite comanda",
+        "pendingMessage": "Se trimite comanda..."
+      }
+    }
+  },
+
+  "blogsArea": {
+    "blogTitle": "Blog",
+    "blogSubtitle": "Afla informatii noi!",
+    "blogLink": "/blogs",
+    "blogURLSuffix": "blogid",
+    "blogsInner": {
+      "similarPosts": "Postari similare",
+      "readArticle": "Citeste articol"
+    }
+  },
+
+  "testimonialsArea": {
+    "title": "Testimoniale",
+    "descriptionIntroduction": "Afla parerea clientilor despre produsele MontanAir!"
+  },
+
+  "orderView": {
+    "product": "Produs",
+    "unit": "buc",
+    "pricePerUnit": "Pret bucata",
+    "currency": "RON",
+    "subtotal": "Subtotal",
+    "shippingTax": "Taxa transport",
+    "total": "Total",
+
+    "clientSide": {
+      "title": "Client",
+      "name": "Nume",
+      "order": "Comanda",
+      "phone": "Telefon",
+      "date": "Data",
+      "paymentMethod": "Metoda de plata"
+    },
+    "ownerSide": {
+      "title": "Magazin",
+      "companyName": "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
+      "fiscal": "F12/696/23.04.2019",
+      "number": "41030416",
+      "address": "str. LIVIU REBREANU loc. Turda, Cluj "
+    },
+
+    "thankYouMessage": {
+      "title": "Multumim pentru incredere!",
+      "author": "Echipa MontanAir.Ro "
+    }
+  },
+
+  "ProductPreview": {
+    "callActionForReview": "Scrie un review",
+    "reviewsText": "Recenzii",
+    "addToCartText": "Adauga in cos"
+  },
+  "NotExistingProduct": {
+    "warningHeadline": "PRODUS INEXISTENT !",
+    "productNotFound": "Din pacate nu am gasit produsul."
+  },
+  "ProductItem": {
+    "SeeProduct": "Vezi produs",
+    "Currency": "RON"
+  },
+  "MyCart": {
+    "quantity": "Cantitate",
+    "product": "Produse",
+    "finishOrder": { "text": "Finalizeaza comanda", "link": "/finalizare-comanda" },
+    "cartShopping": "Cos de cumparaturi",
+    "emptyCart": "Cosul de cumparaturi este gol",
+    "totalCart": "Total Cos",
+    "subTotal": "Subtotal",
+    "shippingTax": "Taxa transport",
+    "total": "Total",
+    "sendingInfo": "Livrare standard prin SameDay",
+    "VATincluded": "(include TVA)",
+    "currency": "RON"
+  },
+
+  "OrderDone": {
+    "title": "Comanda a fost inregistrată!😃",
+    "subtitle": "Veti fi contactat telefonic pentru confirmarea comenzii",
+    "goHome": "Spre pagina principala"
+  },
+
+  "NewsletterTermsAccept": {
+    "subscribeConsent": "Sunt de acord cu preluarea datelor cu caracter personal pentru a primi oferte personalizate",
+    "SubscribeMe": "Ma abonez",
+    "warningConsent": "Trebuie sa fiti de acord cu prelucrarea datelor dvs.",
+    "detailsWarning": "Datele pentru abonare trebuie sa fie valide!"
+  },
+
+  "NewsletterSection": {
+    "title": "Newsletter",
+    "subscribeCall": "Aboneaza-te si primesti reducere 10% la urmatoarea ta comanda!",
+    "subscribeMe": "MĂ ABONEZ"
   }
 }

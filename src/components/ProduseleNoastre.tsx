@@ -1,38 +1,42 @@
-import React from "react";
-import { getData } from "../data/productList";
+import React, { useEffect, useState } from "react";
 import { uniqueId } from "lodash";
+import HelmetHead from "./MiniComponents/HelmetHead/HelmetHead";
 import HeadlineTitle from "./HeadlineTitle";
 import ProductItem from "./ProductItem";
-import { Helmet } from "react-helmet";
-import { useEffect, useState } from "react";
+import strings from "./../data/strings.json";
+import technicalStrings from "././../data/technicalStrings.json";
+import { getData } from "../data/productList";
+import { ProductsFromSessionStorage } from "../data/constants";
+import { ProductListType } from "../utils/OrderInterfaces";
 import styles from "./../components/ProduseleNoastre.module.scss";
 
 const ProduseleNoastre = () => {
-  const [products, setProducts] = useState(null);
-  var productsFetched = sessionStorage.getItem("productsFetched");
+  let { ProduseleNoastre } = strings;
+  const [products, setProducts] = useState<ProductListType[] | null>(null);
+  var productsFromSession = sessionStorage.getItem(ProductsFromSessionStorage);
 
   useEffect(() => {
-    if (productsFetched != null) {
-      setProducts(JSON.parse(productsFetched));
+    if (productsFromSession != null) {
+      setProducts(JSON.parse(productsFromSession));
     } else {
       getData().then((finalData) => {
         setProducts(JSON.parse(JSON.stringify(finalData)));
       });
     }
-  }, [productsFetched]);
+  }, [productsFromSession]);
 
   return (
     <>
-      <Helmet>
-        <title>{"Produsele Noastre - MontanAir.Ro"}</title>
-        <meta name="description" content={"Galeria produselor din magazin"} />
-      </Helmet>
-      <HeadlineTitle title={"Produsele Noastre"} />
+      <HelmetHead title={ProduseleNoastre.title} description={ProduseleNoastre.metaDescription} />
+
+      <HeadlineTitle title={ProduseleNoastre.title} />
       <div className={styles.blockContainer}>
         <div className={styles.productList}>
           {products != null
-            ? Object.values(products).map((item) => <ProductItem key={uniqueId()} productObject={item} />)
-            : "loading data..."}
+            ? Object.values(products).map((item: ProductListType) => (
+                <ProductItem key={uniqueId()} productObject={item} />
+              ))
+            : technicalStrings.loadingData}
         </div>
       </div>
     </>

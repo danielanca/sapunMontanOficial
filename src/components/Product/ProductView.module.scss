@@ -7,12 +7,14 @@
 }
 
 .sectionParent {
+  @extend .row;
   display: flex;
   justify-content: center;
   max-width: 1000px;
   margin: auto !important;
 }
 .leftSection {
+  @extend .col-md-6;
   display: flex;
   justify-content: center;
   padding: 0;
@@ -67,6 +69,7 @@
     width: 100%;
     min-width: 300px;
     max-width: 500px;
+    padding: 0 8%;
   }
 }
 .productTitle {
@@ -75,7 +78,7 @@
 }
 .reviewContainer {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: column;
 
   @include media(">=tablet", "<desktop") {
@@ -95,7 +98,7 @@
   padding-left: 10px;
   line-height: 21px;
   padding: 10px 20px;
-  text-align: justify;
+  text-align: center;
 
   @include media(">=tablet", "<desktop") {
     line-height: initial;
@@ -156,17 +159,19 @@
   flex-direction: row;
   width: 100%;
   justify-content: center;
+  @include media("<tablet") {
+    padding: 0 8%;
+  }
 }
 .clickableImage {
   border: 2px solid rgba(30, 30, 30, 0.3);
-  width: 100%;
   height: 130px;
   opacity: 0.6;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  max-width: 175px;
   &:hover {
     opacity: 1;
   }
@@ -174,9 +179,33 @@
 .activeImage {
   @extend .clickableImage;
   opacity: 1;
+  width: auto;
 }
 .innerImage {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.noProductFoundContainer {
+  margin: auto;
+  outline: 2px solid black;
+  width: 70vw;
+  max-width: 1200px;
+}
+.warningHeadline {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.noProductWrapper {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 25%;
+    aspect-ratio: 1/1;
+  }
 }

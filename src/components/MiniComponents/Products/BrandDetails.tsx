@@ -1,3 +1,4 @@
+import React from "react";
 import parse from "html-react-parser";
 import styles from "./BrandDetails.module.scss";
 const BrandDetails = () => {

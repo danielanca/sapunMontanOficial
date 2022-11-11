@@ -1,20 +1,10 @@
+import React from "react";
+import { uniqueId } from "lodash";
 import ReviewCard from "./../components/ReviewCard";
 import AddReview from "./AddReview";
-import { uniqueId } from "lodash";
 import styles from "./ReviewField.module.scss";
+import { ReviewsProps } from "../utils/ReviewsTypes";
 
-interface ReviewsInterface {
-  reviewActual: string;
-  date: string;
-  name: string;
-  starsNumber: string;
-  email: string;
-  reviewProductID: string;
-}
-interface ReviewsProps {
-  productIdentification: number;
-  productData?: ReviewsInterface;
-}
 const ReviewField = ({ productData, productIdentification }: ReviewsProps) => {
   return (
     <div className={styles.contain}>

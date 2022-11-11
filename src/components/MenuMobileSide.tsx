@@ -5,7 +5,19 @@ import styles from "./../components/MenuMobileSide.module.scss";
 import images from "../data/images";
 import strings from "../data/strings.json";
 
+type MobileNavProps = {
+  title: string;
+  link?: string;
+  ulItems?: {
+    [key: string]: {
+      title: string;
+      link: string;
+    };
+  };
+};
+
 const MenuMobileSide = () => {
+  let { navMenuMobile: navItems, cart } = strings;
   const [BurgerOpen, setBurgerOpen] = useState(false);
   const burgerClickHandler = (event: boolean) => {
     setBurgerOpen(!BurgerOpen);
@@ -28,8 +40,8 @@ const MenuMobileSide = () => {
       />
       <div className={BurgerOpen ? styles.activeBurger : styles.burgerMenu}>
         <ul className={styles.ulMobile}>
-          {Object.values(strings.navMenuMobile).map((item) => {
-            if (item.ulItems === 0) {
+          {Object.values(navItems).map((item: MobileNavProps) => {
+            if (!item.hasOwnProperty("ulItems")) {
               return (
                 <li key={uniqueId()} className={styles.liMobile}>
                   <NavHashLink onClick={closeBackdrop} className={styles.HashLinkStyle} to={`${item.link}`}>
@@ -47,17 +59,18 @@ const MenuMobileSide = () => {
                   </div>
 
                   <ul className={styles.subItemUL}>
-                    {Object.values(item.ulItems).map((subItem) => (
-                      <NavHashLink
-                        className={styles.hashTransparent}
-                        key={uniqueId()}
-                        onClick={closeBackdrop}
-                        replace
-                        to={`${subItem.link}`}
-                      >
-                        <li key={uniqueId()}>{subItem.title}</li>
-                      </NavHashLink>
-                    ))}
+                    {typeof item.ulItems !== "undefined" &&
+                      Object.values(item.ulItems).map((subItem) => (
+                        <NavHashLink
+                          className={styles.hashTransparent}
+                          key={uniqueId()}
+                          onClick={closeBackdrop}
+                          replace
+                          to={`${subItem.link}`}
+                        >
+                          <li key={uniqueId()}>{subItem.title}</li>
+                        </NavHashLink>
+                      ))}
                   </ul>
                 </label>
               );
@@ -67,9 +80,9 @@ const MenuMobileSide = () => {
 
         <ul className={styles.ulOthers}>
           <li className={styles.individualItem}>
-            <NavHashLink className={styles.HashLinkStyleBottom} onClick={closeBackdrop} replace to={`cosulmeu`}>
+            <NavHashLink className={styles.HashLinkStyleBottom} onClick={closeBackdrop} replace to={cart.link}>
               <img className={styles.icon} src={images.cartLogo} />
-              <span>{"Cosul Meu"}</span>
+              <span>{cart.title}</span>
             </NavHashLink>
           </li>
 

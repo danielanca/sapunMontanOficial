@@ -7,11 +7,13 @@ const images = {
   arrowRight: require("./../media/assets/pics/prezentareCarbune/next.png").default,
   heartIcon: require("./../media/assets/pics/prezentareCarbune/heart.png").default,
   montanLogo: require("./../media/assets/pics/prezentareCarbune/montanLogo.png").default,
+  ROFlag: require("../media/assets/pics/prezentareCarbune/flagRO.jpg").default,
   featuredProduct: require("./../media/assets/pics/prezentareCarbune/montanairFeatured.jpg").default,
   cookieIcon: require("./../media/assets/cookie.png").default,
   relaxBackground: require("./../media/assets/pics/blocks/background_Montan.jpg").default,
   coalCartoon: require("./../media/assets/coal_cartoon.png").default,
   finishOrder: require("./../media/assets/open-box.png").default,
+  noProduct: require("./../media/assets/pics/prezentareCarbune/noProduct.png").default,
   ingredients: {
     vitaminaC: require("./../media/assets/pics/prezentareCarbune/ingredients/vitaminaC.png").default,
     argila: require("./../media/assets/pics/prezentareCarbune/ingredients/argila.png").default,

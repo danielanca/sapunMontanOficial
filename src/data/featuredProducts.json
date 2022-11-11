@@ -1,0 +1,32 @@
+{
+  "featuredProducts": {
+    "firstSapun": {
+      "bigAnnouncement": { "background": "MontanAir", "title": "Produs Nou" },
+      "image": "",
+      "title": "Masca nutritionala",
+      "subTitle": "Reparatoare si anti-pete",
+      "text": "Oferă un efect vizibil de hidratare și reparare a pielii sensibile, uscate, predispusă la coșuri, acnee și puncte negre.",
+      "featureThings": {
+        "one": {
+          "image": "",
+          "title": "Vitamina C",
+          "text": "luminează petele post-acneice sau hiperpigmentare"
+        },
+        "two": {
+          "image": "",
+          "title": "Vitamina C",
+          "text": "luminează petele post-acneice sau hiperpigmentare"
+        },
+        "three": {
+          "image": "",
+          "title": "Vitamina C",
+          "text": "luminează petele post-acneice sau hiperpigmentare"
+        }
+      },
+      "actionButton": {
+        "textButton": " Vezi produsul",
+        "link": "produs/sapun-negru"
+      }
+    }
+  }
+}

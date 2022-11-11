@@ -81,6 +81,7 @@ th {
 }
 
 .clientInfo {
+  @extend .row;
   background-color: #dddddd;
   padding: 18px 6px;
   width: 100%;
@@ -88,14 +89,19 @@ th {
   @include media("<tablet") {
     min-height: 400px;
   }
+  @include media("<tablet") {
+    margin: auto;
+  }
 }
 .leftClient {
+  @extend .col-6;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   p {
     margin: 0px 20px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     @include media("<tablet") {
       margin: 0;
     }

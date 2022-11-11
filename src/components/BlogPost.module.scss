@@ -9,7 +9,7 @@
 }
 .blogPostCont {
   @extend .centerFlex;
-  height: 500px;
+  height: 400px;
   row-gap: 65px;
 }
 .centerTitle {
@@ -53,7 +53,7 @@
   text-align: center;
 }
 .actualBlogContent {
-  min-height: 670px;
+  min-height: 265px;
 
   max-width: 966px;
   width: 100%;
@@ -61,7 +61,7 @@
   padding: 10px 14px;
 
   @include media("<tablet") {
-    min-height: 520px;
+    min-height: 320px;
   }
 }
 .pictureThumbnail {
@@ -135,7 +135,11 @@
   @extend .col-6;
   margin: 0 4%;
   max-width: 310px;
-  height: 230px;
+  padding: 2%;
+  background-color: #e6e6e6;
+  &:hover {
+    opacity: 0.8;
+  }
   @include media("<tablet") {
     max-width: 174px;
     height: 130px;
@@ -155,7 +159,6 @@
 
 .pictureWrapper {
   height: 155px;
-  width: 300px;
   margin: auto;
   @include media("<tablet") {
     height: 100px;
@@ -165,6 +168,10 @@
     height: 100px;
     width: 170px;
   }
+}
+.titleWrapper {
+  outline: 1px solid gray;
+  margin: 3% 0;
 }
 .titlePost {
   font-family: "Roboto Medium";

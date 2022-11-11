@@ -32,6 +32,7 @@
   width: auto;
   display: flex;
   column-gap: 13px;
+  grid-column-gap: 13px;
   cursor: pointer;
   margin-right: 30px;
 }
@@ -65,7 +66,7 @@
   color: #eee6d3;
   display: flex;
   font-weight: 900;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   @include media("<tablet") {
     display: none;

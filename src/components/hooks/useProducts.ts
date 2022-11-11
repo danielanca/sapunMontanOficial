@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { ProductsFromSessionStorage } from "../../data/constants";
 import { getData } from "../../data/ProdFetch";
 
 export const useProducts = () => {
   const [products, setProducts] = useState({});
-  var productsFetched = sessionStorage.getItem("productsFetched");
+  var productsFetched = sessionStorage.getItem(ProductsFromSessionStorage);
 
   useEffect(() => {
     if (productsFetched != null) {

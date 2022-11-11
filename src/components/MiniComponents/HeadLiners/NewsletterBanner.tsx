@@ -3,8 +3,9 @@ import { useRef, useState } from "react";
 import NewsletterPop from "./../../../components/Newsletter/NewsletterPop";
 import { useOutsideClicker } from "../../../hooks/onScreen";
 import styles from "./NewsletterBanner.module.scss";
-
+import strings from "./../../../data/strings.json";
 const NewsletterBanner = () => {
+  const { NewsletterSection } = strings;
   const [newsletterPopModal, setNeModalletterPop] = useState<boolean>(false);
   const backdropRef = useRef(null);
   const backdropClose = () => {
@@ -27,15 +28,13 @@ const NewsletterBanner = () => {
           <NewsletterPop />
         </div>
       )}
-      <h3 className={styles.headTitle}>{"Newsletter"}</h3>
-      <h4 className={styles.callToActtionMessage}>
-        {"Aboneaza-te si primesti reducere 10% la urmatoarea ta comanda!"}
-      </h4>
+      <h3 className={styles.headTitle}>{NewsletterSection.title}</h3>
+      <h4 className={styles.callToActtionMessage}>{NewsletterSection.subscribeCall}</h4>
       <button onClick={openNewsletter} className={styles.subscribeButtonBlack}>
-        {"MĂ ABONEZ"}
+        {NewsletterSection.subscribeMe}
       </button>
     </div>
   );
 };
 
-export default NewsletterBanner;
+export default React.memo(NewsletterBanner);

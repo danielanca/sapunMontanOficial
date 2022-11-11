@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getCookie, setCookie } from "./functions";
 import { cookieConsent } from "../../data/componentStrings";
 import styles from "./CookieConsent.module.scss";
-
+import { CookiesTagConsent, userAcceptedCookies } from "../../data/constants";
 import images from "../../data/images";
 import allPathsURL from "../../data/allPathsURL.json";
 
@@ -15,12 +15,12 @@ const CookieConsent = () => {
   const [renderConsent, setConsent] = useState<boolean>();
 
   const getCookieConsent = () => {
-    if (getCookie("cookieConsentBrasov") === "userAccepted" || pathToBeIgnored !== undefined) return true;
+    if (getCookie(CookiesTagConsent) === userAcceptedCookies || pathToBeIgnored !== undefined) return true;
     else return false;
   };
 
   const acceptCookie = () => {
-    setCookie("cookieConsentBrasov", "userAccepted");
+    setCookie(CookiesTagConsent, userAcceptedCookies);
     setConsent(false);
   };
   useEffect(() => {

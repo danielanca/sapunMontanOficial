@@ -1,8 +1,8 @@
-import { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import useAuth from "./../hooks/useAuth";
 import { requestLoginAccess } from "../../services/emails";
 
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { setJWT } from "../../utils/functions";
 import styles from "./LogIn.module.scss";
 
@@ -25,10 +25,6 @@ const Login = () => {
 
   const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = "/";
-
-  const userRef = useRef();
 
   const requestAccess = async () => {
     try {

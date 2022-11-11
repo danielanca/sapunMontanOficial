@@ -106,7 +106,7 @@
   font-weight: 400;
   font-family: "Roboto Regular", sans-serif;
   @include media(">desktop") {
-    font-size: calc(2px + 1vw);
+    font-size: calc(2px + 100%);
   }
 }
 .flagStyle {

@@ -4,17 +4,15 @@ import Comments from "../Comments";
 import ProductPreview from "./ProductPreview";
 import Loader from "../MiniComponents/Loader";
 import SuggestionArea from "../SuggestedProducts/SuggestionArea";
+
 import { getProductWithID } from "../../data/productList";
-
+import { CartInfoItemCookie } from "./../../data/constants";
+import { ProductListType, CartProps } from "./../../utils/OrderInterfaces";
+import { NotExistingProduct } from "../../data/strings.json";
+import images from "../../data/images";
 import styles from "./ProductView.module.scss";
-import { ProductListType } from "./../../utils/OrderInterfaces";
 
-interface CartProps {
-  notifyMe: React.Dispatch<React.SetStateAction<number>>;
-  productLink?: string;
-}
-
-const ProductView = ({ notifyMe, productLink }: CartProps) => {
+const ProductView = ({ notifyMe }: CartProps) => {
   let params = useParams();
   var ID = params.productID !== undefined ? params.productID : "";
 
@@ -30,19 +28,17 @@ const ProductView = ({ notifyMe, productLink }: CartProps) => {
 
   const addCartHandler = () => {
     var storedCart: { id: string; itemNumber: string }[] = [];
-    let expectedData = localStorage.getItem("cartData");
+    let expectedData = localStorage.getItem(CartInfoItemCookie);
     if (expectedData === null) {
       storedCart.push({ id: ID, itemNumber: "1" });
-
-      localStorage.setItem("cartData", JSON.stringify(storedCart));
-
-      notifyMe(Math.floor(Math.random() * 100));
+      localStorage.setItem(CartInfoItemCookie, JSON.stringify(storedCart));
+      notifyMe(Math.floor(Math.random() * 100)); // not how it should be
       return;
     }
     var itemFound = false;
     storedCart = JSON.parse(expectedData);
 
-    storedCart.map((item) => {
+    storedCart.forEach((item) => {
       if (item.id === ID.toString()) {
         item.itemNumber = (Number(item.itemNumber) + 1).toString();
         itemFound = true;
@@ -51,32 +47,40 @@ const ProductView = ({ notifyMe, productLink }: CartProps) => {
     if (!itemFound) {
       storedCart.push({ id: ID, itemNumber: "1" });
     }
-    localStorage.setItem("cartData", JSON.stringify(storedCart));
-
+    localStorage.setItem(CartInfoItemCookie, JSON.stringify(storedCart));
     notifyMe(Math.floor(Math.random() * 100));
   };
 
   return (
     <>
       <div className={styles.padder}>
-        {productListUpdated != null ? (
+        {productListUpdated != null && productListUpdated.hasOwnProperty(ID) ? (
           <ProductPreview addCartHandler={addCartHandler} ID={ID} productListUpdated={productListUpdated} />
         ) : (
           <Loader />
         )}
       </div>
       <div>
-        {productListUpdated != null ? (
+        {typeof productListUpdated !== "undefined" && productListUpdated.hasOwnProperty(ID) ? (
           <Comments
             productData={JSON.stringify(productListUpdated)}
             productID={ID}
             reviewsList={productListUpdated[ID].reviews}
           />
         ) : (
-          ""
+          typeof productListUpdated !== "undefined" &&
+          !productListUpdated.hasOwnProperty(ID) && (
+            <div className={styles.noProductFoundContainer}>
+              <h2 className={styles.warningHeadline}>{NotExistingProduct.warningHeadline}</h2>
+              <div className={styles.noProductWrapper}>
+                <img src={images.noProduct} />
+              </div>
+              <h2 className={styles.warningHeadline}>{NotExistingProduct.productNotFound}</h2>
+            </div>
+          )
         )}
       </div>
-      {productListUpdated != null ? <SuggestionArea productID={ID} /> : ""}
+      {productListUpdated && <SuggestionArea productID={ID} />}
     </>
   );
 };

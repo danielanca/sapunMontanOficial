@@ -10,8 +10,11 @@ if (process.env.NODE_ENV === "development") {
 } else {
   destination = "https://us-central1-sapunmontan.cloudfunctions.net";
 }
+
 export const requestOrdersList = async () => {
+  console.log("Request destination is:", destination);
   return await fetch(`${destination}/requestOrders`, {
+    credentials: "include",
     method: "POST",
     mode: "cors",
     body: JSON.stringify({
@@ -81,6 +84,17 @@ export const updateProduct = async (productModel: ProductModel) => {
     method: "POST",
     mode: "cors",
     body: JSON.stringify(productModel)
+  })
+    .then((res) => res)
+    .catch((error) => error);
+};
+export const deleteProduct = async (productModel: ProductModel) => {
+  console.log("Sending to database to DELETE :", productModel.ID);
+  return await fetch(`${destination}/deleteProduct`, {
+    credentials: "include",
+    method: "POST",
+    mode: "cors",
+    body: JSON.stringify(productModel.ID)
   })
     .then((res) => res)
     .catch((error) => error);

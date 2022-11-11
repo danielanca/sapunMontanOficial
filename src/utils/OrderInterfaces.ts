@@ -3,7 +3,15 @@ interface DayTime {
   month: number;
   year: number;
 }
-
+export interface CartProps {
+  notifyMe: React.Dispatch<React.SetStateAction<number>>;
+}
+export interface LocalStorPropsCart {
+  name: string;
+  itemNumber: string;
+  price: string;
+  currency: string;
+}
 export interface orderProps {
   firstName: string;
   lastName: string;
@@ -32,7 +40,10 @@ export interface ProductModel {
   shortDescription: string;
   title: string;
 }
-
+export interface ProdItemProps {
+  productObject: ProductListType;
+  size?: string;
+}
 export interface ProductListType {
   [key: string]: {
     ID: string;
@@ -45,4 +56,39 @@ export interface ProductListType {
     reviews: {};
     ULbeneficii: [];
   };
+}
+export interface productObject {
+  ID: string;
+  title: string;
+  firstDescription: string;
+  shortDescription: string;
+  imageProduct: string[];
+  jsonContent: string;
+  price: string;
+  reviews: {};
+  ULbeneficii: [];
+}
+
+export interface ProductTypes {
+  productListUpdated?: ProductListType;
+  ID: string;
+  addCartHandler?: () => void;
+}
+
+export interface OrderViewProps {
+  lastName?: string;
+  firstName?: string;
+  phoneNo?: string;
+  deliveryAddress?: string;
+  emailAddress?: string;
+  city?: string;
+  county?: string;
+  paymentMethod?: string;
+  cartProducts?: string;
+  shippingTax?: number;
+  cartSum?: number;
+  orderNotes?: string;
+  deliveryName?: string;
+  timestamp?: string;
+  invoiceID?: string;
 }

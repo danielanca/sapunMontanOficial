@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { HashLink, HashLink as Link, NavHashLink } from "react-router-hash-link";
 import ReactGA from "react-ga4";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
-import { getCartItems } from "./CartPage";
+import { getCartItems } from "./CartPage/CartPage";
 import TopBanner from "./TopBanner";
-
 import MenuMobileSide from "./MenuMobileSide";
-import roFLAG from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
 
 import styles from "./Navbar.module.scss";
 import images from "../data/images";
@@ -18,11 +16,11 @@ interface NavProps {
 }
 
 const NavBar = ({ clearNotif }: NavProps) => {
+  let { navMenu: navItems, cart } = strings;
   const { pathname } = useLocation();
   const [totalItems, setTotalItems] = useState<number>(getCartItems());
 
   useEffect(() => {
-    console.log("CLICKED", getCartItems());
     setTotalItems(getCartItems());
   }, [clearNotif]);
 
@@ -41,43 +39,39 @@ const NavBar = ({ clearNotif }: NavProps) => {
               <div className={styles.sideLeftContainer}></div>
               <ul className={styles.ulMenuEnd}>
                 <li onClick={() => sendAnalyticsIdea()} className={styles.liItem}>
-                  <NavHashLink className={styles.HashLinkStyle} smooth to="/produsele-noastre">
-                    {strings.navMenu.ourProducts}
+                  <NavHashLink className={styles.HashLinkStyle} smooth to={navItems.ourProducts.link}>
+                    {navItems.ourProducts.name}
                   </NavHashLink>
                 </li>
                 <li className={styles.liItem}>
-                  <NavHashLink className={styles.HashLinkStyle} to="/blogs">
-                    {strings.navMenu.blog}
+                  <NavHashLink className={styles.HashLinkStyle} to={navItems.blog.link}>
+                    {navItems.blog.name}
                   </NavHashLink>
                 </li>
               </ul>
 
               <div className={styles.middleNoUl}>
                 <HashLink className={styles.logoHover} to="/">
-                  <img className={styles.montanLogo} src={images.montanLogo} />
-                  <div className={styles.WeRomanians}>
-                    <span>{"Produs Românesc"}</span>
-                    <img className={styles.roProduct} src={roFLAG} />
-                  </div>
+                  <img alt="logo" className={styles.montanLogo} src={images.montanLogo} />
                 </HashLink>
               </div>
 
               <MenuMobileSide />
               <ul className={styles.ulMenuStart}>
                 <li className={styles.liItem}>
-                  <NavHashLink className={styles.HashLinkStyle} to="/testimonials">
-                    {strings.navMenu.testimonials}
+                  <NavHashLink className={styles.HashLinkStyle} to={navItems.testimonials.link}>
+                    {navItems.testimonials.name}
                   </NavHashLink>
                 </li>
                 <li className={styles.liItem}>
-                  <NavHashLink className={styles.HashLinkStyle} to="/contact">
-                    {strings.navMenu.contactUs}
+                  <NavHashLink className={styles.HashLinkStyle} to={navItems.contactUs.name}>
+                    {navItems.contactUs.name}
                   </NavHashLink>
                 </li>
               </ul>
               <div className={styles.sideRightContainer}>
-                <NavHashLink className={styles.hashTransparent} to="/cosulmeu">
-                  <img className={styles.shopIcon} src={images.cartLogo} />
+                <NavHashLink className={styles.hashTransparent} to={cart.link}>
+                  <img alt="cart icon" className={styles.shopIcon} src={images.cartLogo} />
                   <span className={styles.jewel}>{totalItems}</span>
                 </NavHashLink>
               </div>

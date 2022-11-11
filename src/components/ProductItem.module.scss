@@ -14,11 +14,11 @@
 .productItem {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   border: 1px solid gray;
-  width: 240px;
-  height: 415px;
+  width: 201px;
+  height: 340px;
   position: relative;
 
   margin: 10px 15px;
@@ -27,14 +27,19 @@
     width: calc(130px + 10vw);
   }
   @include media("<tablet") {
-    width: calc(232px + 8.8vw);
-    height: calc(404px + 7vw);
+    width: calc(166px + 8.8vw);
+    padding: 5% 0;
+    height: 305px;
   }
 }
 .productItemSmall {
   @extend .productItem;
   width: 210px;
   height: 335px;
+  @include media("<tablet") {
+    width: 181px;
+    height: 290px;
+  }
 }
 .productImage {
   width: 100%;
@@ -51,15 +56,18 @@
   text-align: center;
   line-height: 27px;
   cursor: pointer;
+  font-size: clamp(18px, 5vw, 22px);
+
   @include media("<tablet") {
     line-height: 29px;
+    font-size: clamp(24px, 3vw, 28px);
   }
 }
 .productPrice {
   font-family: "Bebas Neue Regular", cursive;
-  font-size: 33px;
+  font-size: 24px;
   @include media("<tablet") {
-    font-size: 3em;
+    font-size: 2em;
   }
 }
 
@@ -84,12 +92,16 @@ a {
   justify-content: center;
   align-items: center;
   height: 100px;
+
+  @include media("<tablet") {
+    height: 58px;
+  }
 }
 .imageWrap {
   position: relative;
   padding: 20px;
   padding: 10px 15px 0px;
-  height: 128px;
+  height: 150px;
 }
 .priceWrap {
   position: relative;

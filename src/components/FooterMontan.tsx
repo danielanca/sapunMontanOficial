@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import { uniqueId } from "lodash";
 
 import Relaxbar from "./MiniComponents/Footers/Relaxbar";
 import { footerData } from "./../data/componentStrings";
 import styles from "./../components/FooterMontan.module.scss";
-import flagRomania from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
+import strings from "./../data/strings.json";
 import NewsletterBanner from "./MiniComponents/HeadLiners/NewsletterBanner";
 import allPathsURL from "./../data/allPathsURL";
-import path from "path";
 
 const FooterMontan = () => {
+  let { links, commercialData, ourShop, bottomMadeBy } = strings.footerText.headLines;
   const { pathname } = useLocation();
 
   return (
@@ -28,7 +28,7 @@ const FooterMontan = () => {
             <div className="col-md-4">
               <div className="row">
                 <div className={"col " + styles.footItem}>
-                  <h3 className={styles.footerTittleCenter}>{"LINK-URI UTILE"}</h3>
+                  <h3 className={styles.footerTittleCenter}>{links}</h3>
                   {Object.values(footerData.linkuriUtile).map((item) => (
                     <a key={uniqueId()} href={item.link}>
                       <p className={styles.classicText}>{item.name}</p>
@@ -41,7 +41,7 @@ const FooterMontan = () => {
               {
                 <div className="row">
                   <div className={"col " + styles.footItem}>
-                    <h3 className={styles.footerTittleCenter}>{"Date Comerciale"}</h3>
+                    <h3 className={styles.footerTittleCenter}>{commercialData}</h3>
                     {Object.values(footerData.companyData).map((item) => {
                       return (
                         <p key={uniqueId()} className={styles.classicText}>
@@ -56,7 +56,7 @@ const FooterMontan = () => {
             <div className="col-md-4">
               <div className="row">
                 <div className={"col " + styles.footItem}>
-                  <h3 className={styles.footerTittleCenter}>{"MAGAZINUL NOSTRU"}</h3>
+                  <h3 className={styles.footerTittleCenter}>{ourShop}</h3>
                   {Object.values(footerData.ourShop).map((item) => (
                     <a key={uniqueId()} href={item.link}>
                       <p className={styles.classicText}>{item.name}</p>
@@ -67,8 +67,7 @@ const FooterMontan = () => {
             </div>
 
             <div className={styles.wideBanner}>
-              <img className={styles.flagStyle} src={flagRomania} />
-              <p className={styles.statementRO}>{"Făcute cu drag, in Romania"}</p>
+              <p className={styles.statementRO}>{bottomMadeBy}</p>
             </div>
           </div>
         </div>

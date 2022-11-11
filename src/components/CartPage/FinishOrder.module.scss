@@ -29,7 +29,9 @@
   align-items: center;
   flex-direction: column;
   margin: 50px 0px;
-
+  padding: 2% 4%;
+  max-width: 560px;
+  width: 80%;
   img {
     width: 70px;
     height: 70px;
@@ -42,6 +44,7 @@
     margin-top: 20px;
     font-family: "Roboto";
     font-family: 20px;
+    text-align: center;
   }
 }
 .topTitle {
@@ -61,18 +64,23 @@
   }
 }
 .finishOrderContainer {
+  @extend .row;
   display: flex;
   justify-content: space-between;
   width: 100%;
   max-width: 1010px;
-  padding: 0;
-
+  padding: 0 35px;
+  @include media("<desktop") {
+    padding: 0 2%;
+  }
   @include media("<tablet") {
     padding: 0 1%;
     flex-direction: column;
   }
 }
 .leftContainer {
+  @extend .col-sm-12;
+  @extend .col-lg-6;
   padding: 27px 10px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   max-width: 559px;
@@ -90,6 +98,8 @@
   }
 }
 .rightContainer {
+  @extend .col-lg-6;
+  @extend .col-sm-12;
   width: 422px;
   height: auto;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -98,6 +108,8 @@
   }
   @include media(">=tablet", "<desktop") {
     margin: auto;
+    width: 80%;
+    max-width: 559px;
   }
 }
 .inputBox {
@@ -160,7 +172,7 @@ label {
 .optionalFormStyle {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .productIconFinish {
   width: 50px;
@@ -224,6 +236,7 @@ label {
   padding: 20px;
 }
 .paymentShipContainer {
+  @extend .col-12;
   display: flex;
   justify-content: center;
   border: 1px gray solid;

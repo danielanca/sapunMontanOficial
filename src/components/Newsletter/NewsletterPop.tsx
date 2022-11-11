@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ReactGA from "react-ga4";
 import validator from "validator";
 import styles from "./NewsletterPop.module.scss";
 import parse from "html-react-parser";
 import InputComponent from "./InputComponent";
 
-import { NewsProps, responseProps } from "../../utils/NewsletterInterface";
+import { SubscriptionType, Sub, emailValidType, inputStateEmail } from "../../data/constants";
+import { NewsProps, responseProps, EventInsert } from "../../utils/NewsletterInterface";
 import { addToNewsletter } from "../../services/emails";
+import strings from "../../data/strings.json";
 import { newsletter } from "./../../data/componentStrings";
-interface EventInsert {
-  [key: string]: string;
-}
+
 const NewsletterPop = () => {
-  const [emailValid, setEmailValid] = useState<"valid" | "notvalid" | "init">("init");
+  const { NewsletterTermsAccept: NewsletterString } = strings;
+  const [emailValid, setEmailValid] = useState<emailValidType>(inputStateEmail.init);
   const [newsletterData, setNewsletterData] = useState<NewsProps>({ firstName: "", lastName: "", email: "" });
-  const [userSubscribed, setSubscribed] = useState<"SUBSCRIBED" | "INITSTATE" | "ERROR">("INITSTATE");
+  const [userSubscribed, setSubscribed] = useState<SubscriptionType>(Sub.initState);
   const [eventInsert, setEventInsert] = useState<EventInsert | null>(null);
   const [termsAccepted, setTermsAccepted] = useState<boolean>(false);
   const [userTriedToSubscribe, setUserTriedToSubscribe] = useState<boolean>(false);
@@ -30,17 +31,20 @@ const NewsletterPop = () => {
     }
   };
 
-  const inputHandler = (data: React.ChangeEvent<HTMLInputElement>) => {
-    sendEvent(data.target.name);
-    const { name, value } = data.target;
-    setNewsletterData((newsletterData) => ({
-      ...newsletterData,
-      [name]: value
-    }));
-  };
+  const inputHandler = useCallback(
+    (data: React.ChangeEvent<HTMLInputElement>) => {
+      sendEvent(data.target.name);
+      const { name, value } = data.target;
+      setNewsletterData((newsletterData) => ({
+        ...newsletterData,
+        [name]: value
+      }));
+    },
+    [newsletterData]
+  );
   const subscribeToNewsletter = () => {
     setUserTriedToSubscribe(true);
-    if (termsAccepted && emailValid === "valid") {
+    if (termsAccepted && emailValid === inputStateEmail.valid) {
       try {
         addToNewsletter(newsletterData).then((result) => {
           try {
@@ -48,12 +52,12 @@ const NewsletterPop = () => {
               setSubscribed(response.subscribeToNewsletter);
               console.log("subscribe response:", JSON.stringify(response));
             });
-          } catch (e: any) {
+          } catch (e) {
             console.log(e);
-            setSubscribed("SUBSCRIBED");
+            setSubscribed(Sub.SubscribedState);
           }
         });
-      } catch (e: any) {
+      } catch (e) {
         console.log("error:", e);
       }
     }
@@ -61,15 +65,15 @@ const NewsletterPop = () => {
 
   useEffect(() => {
     if (emailValidate(newsletterData.email)) {
-      setEmailValid("valid");
+      setEmailValid(inputStateEmail.valid);
     } else if (newsletterData.email.length < 1) {
-      setEmailValid("init");
+      setEmailValid(inputStateEmail.init);
     } else {
-      setEmailValid("notvalid");
+      setEmailValid(inputStateEmail.notValid);
     }
   }, [newsletterData.email]);
   const layoutTransition = () => {
-    if (userSubscribed === "SUBSCRIBED") {
+    if (userSubscribed === Sub.SubscribedState) {
       return `${styles.rightPanel} ${styles.imageSubscribed}`;
     } else {
       return `${styles.rightPanel}`;
@@ -78,13 +82,15 @@ const NewsletterPop = () => {
 
   return (
     <div className={styles.newsletterContainer}>
-      <div className={userSubscribed !== "SUBSCRIBED" ? styles.imageFeatured : styles.imageFeaturedTransition}>
+      <div className={userSubscribed !== Sub.SubscribedState ? styles.imageFeatured : styles.imageFeaturedTransition}>
         <div className={styles.textArea}>
-          <h3 className={userSubscribed !== "SUBSCRIBED" ? styles.title : styles.titleSubscribed}>
-            {userSubscribed !== "SUBSCRIBED" ? newsletter.userSubscribe.notYet : newsletter.userSubscribe.subscribed}
+          <h3 className={userSubscribed !== Sub.SubscribedState ? styles.title : styles.titleSubscribed}>
+            {userSubscribed !== Sub.SubscribedState
+              ? newsletter.userSubscribe.notYet
+              : newsletter.userSubscribe.subscribed}
           </h3>
-          <h4 className={userSubscribed !== "SUBSCRIBED" ? styles.description : styles.descriptionSubscription}>
-            {userSubscribed !== "SUBSCRIBED" ? newsletter.userMessage.notYet : newsletter.userMessage.subscribed}
+          <h4 className={userSubscribed !== Sub.SubscribedState ? styles.description : styles.descriptionSubscription}>
+            {userSubscribed !== Sub.SubscribedState ? newsletter.userMessage.notYet : newsletter.userMessage.subscribed}
           </h4>
         </div>
       </div>
@@ -113,7 +119,9 @@ const NewsletterPop = () => {
               onChange={inputHandler}
             />
             <input
-              className={emailValid === "valid" || emailValid === "init" ? "" : styles.invalidEmail}
+              className={
+                emailValid === inputStateEmail.valid || emailValid === inputStateEmail.init ? "" : styles.invalidEmail
+              }
               type={"inputNewsletter"}
               autoComplete="off"
               id="email"
@@ -132,19 +140,18 @@ const NewsletterPop = () => {
                 setTermsAccepted(switchValue);
               }}
             />
-            <p className={styles.termsText}>
-              {"Sunt de acord cu preluarea datelor cu caracter personal pentru a primi oferte personalizate"}
-            </p>
+            <p className={styles.termsText}>{NewsletterString.subscribeConsent}</p>
           </div>
           <button onClick={subscribeToNewsletter} className={styles.newsSubscribeButton}>
-            {"Ma Abonez"}
+            {NewsletterString.SubscribeMe}
           </button>
 
           <div className={styles.termsWarningContainer}>
             {userTriedToSubscribe && !termsAccepted ? (
-              <p className={styles.termsWarning}>{"Trebuie sa fiti de acord cu prelucrarea datelor dvs."}</p>
-            ) : userTriedToSubscribe && (emailValid === "notvalid" || emailValid === "init") ? (
-              <p className={styles.termsWarning}>{"Datele pentru abonare trebuie sa fie valide"}</p>
+              <p className={styles.termsWarning}>{NewsletterString.warningConsent}</p>
+            ) : userTriedToSubscribe &&
+              (emailValid === inputStateEmail.notValid || emailValid === inputStateEmail.init) ? (
+              <p className={styles.termsWarning}>{NewsletterString.detailsWarning}</p>
             ) : (
               ""
             )}

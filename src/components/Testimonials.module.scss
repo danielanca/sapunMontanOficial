@@ -64,7 +64,28 @@
 .imageContainer {
   width: 66%;
 
-  @include media("<tablet") {
+  @include media("<desktop") {
+    width: 100%;
+  }
+}
+
+.colWrap {
+  @extend .col-sm-6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include media("<desktop") {
+    width: 100%;
+  }
+}
+
+.commentCol {
+  @extend .col-sm-6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @include media("<desktop") {
     width: 100%;
   }
 }

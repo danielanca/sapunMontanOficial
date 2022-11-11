@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardBody, Table, CardTitle, Col, Pagination, PaginationItem, PaginationLink } from "reactstrap";
 import { Link } from "react-router-dom";
-import { getAllOrders } from "../../../data/productList";
 import { requestOrdersList } from "../../../services/emails";
 const LatestTransaction = () => {
   const [ordersLocal, setOrdersLocal] = useState(null);
 
   useEffect(() => {
     requestOrdersList().then((res) => {
-      res.json().then((data) => {
-        console.log("transactions:", Object.values(data));
-        setOrdersLocal(Object.values(data)[0]);
-      });
+      if (typeof res === "object") {
+        res.json().then((data) => {
+          console.log("DATA NOW:", data);
+          setOrdersLocal(Object.values(data)[0]);
+        });
+      }
     });
   }, []);
+
   return (
     <Col lg={8}>
       <Card>
@@ -47,7 +49,7 @@ const LatestTransaction = () => {
                         <td>
                           <span
                             className={`badge badge-soft-${
-                              item.paymentStatus === "PAID" ? "succes" : "danger"
+                              item.paymentStatus === "PAID" ? "success" : "danger"
                             } font-size-20`}
                           >
                             {item.paymentStatus === "NOT_PAID" ? "Paid" : "Unpaid"}
