@@ -3,7 +3,7 @@ import { uniqueId } from "lodash";
 import React, { useEffect, useState } from "react";
 import styles from "./SuggestionArea.module.scss";
 import { ProductsFromSessionStorage } from "./../../data/constants";
-import { ProductListType, productObject } from "./../../utils/OrderInterfaces";
+import { ProductListType } from "./../../utils/OrderInterfaces";
 interface SuggestionProps {
   productID: string;
 }
@@ -27,7 +27,7 @@ const SuggestionArea = ({ productID }: SuggestionProps) => {
 
       <div className={styles.productArea}>
         {products !== null
-          ? Object.values(products).map((item: any, index) => {
+          ? Object.values(products).map((item: any) => {
               if (!productID.includes(item.ID)) {
                 return <ProductItem key={uniqueId()} size="small" productObject={item} />;
               }

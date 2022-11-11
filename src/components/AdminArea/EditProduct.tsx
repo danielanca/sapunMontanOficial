@@ -11,7 +11,7 @@ interface EditProduct {
 const EditProduct = ({ editMode }: EditProduct) => {
   const [openPreviewArea, setOpenPreviewArea] = useState<boolean>(false);
   let params = useParams();
-  var ID = params.productID != undefined ? params.productID : "";
+  var ID = params.productID !== undefined ? params.productID : "";
   const [productListUpdated, setProducts] = useState<ProductListType[]>();
 
   const [editSent, setEditSent] = useState<boolean>(false);
@@ -46,7 +46,7 @@ const EditProduct = ({ editMode }: EditProduct) => {
 
   const submitEditOperation = () => {
     setEditSent(true);
-    if (editproductModel.title != "") {
+    if (editproductModel.title !== "") {
       updateProduct(editproductModel).then((response) => {
         console.log("EDIT process sent to Cloud!");
       });

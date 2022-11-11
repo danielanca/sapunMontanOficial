@@ -1,14 +1,14 @@
 import React from "react";
 import ReviewField from "./ReviewField";
 import styles from "./../components/Comments.module.scss";
-
+import { ReviewsInterface } from "../utils/ReviewsTypes";
 interface CommentsProps {
   reviewsList: any;
   productID: string;
   productData?: string;
 }
 const Comments = ({ productData, reviewsList, productID }: CommentsProps) => {
-  var productReviews;
+  var productReviews: ReviewsInterface | null = null;
 
   if (productData != null) {
     productReviews = JSON.parse(productData)[productID].reviews;
@@ -19,7 +19,11 @@ const Comments = ({ productData, reviewsList, productID }: CommentsProps) => {
   return (
     <>
       <div className={styles.descriptionContainer}>
-        <ReviewField productData={productReviews} reviewsAr={reviewsList} productIdentification={productID} />
+        {productReviews != null ? (
+          <ReviewField productData={productReviews} reviewsAr={reviewsList} productIdentification={Number(productID)} />
+        ) : (
+          "NOTHING HERE - REVIEWS"
+        )}
       </div>
     </>
   );

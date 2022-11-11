@@ -6,3 +6,7 @@ export interface NewsProps {
 export interface responseProps {
   subscribeToNewsletter: "SUBSCRIBED" | "INITSTATE" | "ERROR";
 }
+
+export interface EventInsert {
+  [key: string]: string;
+}

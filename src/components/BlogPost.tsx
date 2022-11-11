@@ -24,7 +24,7 @@ const BlogPost = () => {
   let { blogsArea: blogStr } = strings;
   let params = useParams();
   var thisBlogLink = "";
-  thisBlogLink = params.blogLink != undefined ? params.blogLink : "";
+  thisBlogLink = params.blogLink !== undefined ? params.blogLink : "";
 
   var dani: BlogContent = blogs.posts[thisBlogLink];
   if (blogs.posts[thisBlogLink] != null) {
@@ -57,7 +57,7 @@ const BlogPost = () => {
           <h3>{blogStr.blogsInner.similarPosts}</h3>
           <div className={styles.relatedListing}>
             {Object.keys(blogs.posts)
-              .filter((key) => key != thisBlogLink)
+              .filter((key) => key !== thisBlogLink)
               .map((key, index) => {
                 if (index < 2) {
                   return <RelatedPost key={uniqueId()} blogLink={key} />;
