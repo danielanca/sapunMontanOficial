@@ -19,7 +19,13 @@
     font-family: "Roboto Medium", sans-serif;
   }
 }
-
+.bannerWrapperInside {
+  padding: 2% 4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .headTitle {
   text-transform: uppercase;
 }
@@ -36,6 +42,11 @@
   border: none;
   outline: none;
   margin: 20px;
+
+  @include media("<=tablet") {
+    min-width: 194px;
+    height: 33px;
+  }
 }
 .backDrops {
   width: 100%;
