@@ -16,12 +16,12 @@ import images from "./../../data/images";
 
 const FinishOrder = ({ clearNotification }: OrderProps) => {
   let { orderFinishPage: orderString } = strings;
-  const [emailSentConfirmed, setSent] = useState(false);
+  const [emailSentConfirmed, setSent] = useState<boolean>(false);
   let itemsSessionStorage = sessionStorage.getItem(ProductsFromSessionStorage);
   let productSessionStorage = itemsSessionStorage != null ? JSON.parse(itemsSessionStorage) : null;
-  const [pendingRequest, setPendingReq] = useState(false);
+  const [pendingRequest, setPendingReq] = useState<boolean>(false);
   var storedCart: any[] = [];
-  var subtotalPrepare = 0;
+  var subtotalPrepare: number = 0;
   const [finishOrderRequested, setFinishRequested] = useState<number>(0);
   const [completionState, setError] = useState<ErrorProps>({
     paymentSelected: false,

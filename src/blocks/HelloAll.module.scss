@@ -10,9 +10,9 @@
 .featuredMessage {
   margin: auto;
   h3 {
-    font-size: 6em;
-    color: rgb(255, 255, 255);
+    color: black;
     text-align: center;
     -webkit-text-stroke: 1px black;
+    font-size: clamp(50px, 17vw, 96px);
   }
 }
