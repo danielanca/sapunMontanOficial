@@ -2,25 +2,25 @@
   "featuredProducts": {
     "firstSapun": {
       "bigAnnouncement": { "background": "MontanAir", "title": "Produs Nou" },
-      "image": "",
+      "image": "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/montanAir%2FfeaturedProducts%2FmontanairFeatured.c3327001.jpg?alt=media&token=bb2bd93b-2416-4dae-97a1-1d4fc9331588",
       "title": "Masca nutritionala",
       "subTitle": "Reparatoare si anti-pete",
       "text": "Oferă un efect vizibil de hidratare și reparare a pielii sensibile, uscate, predispusă la coșuri, acnee și puncte negre.",
       "featureThings": {
         "one": {
-          "image": "",
-          "title": "Vitamina C",
+          "image": "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/montanAir%2FfeaturedProducts%2Fingredients%2FvitaminaC.f8044f9c.png?alt=media&token=b6a164a6-1068-40fa-98bf-450c005b8dc3",
+          "title": "Carbunele activ",
           "text": "luminează petele post-acneice sau hiperpigmentare"
         },
         "two": {
-          "image": "",
-          "title": "Vitamina C",
-          "text": "luminează petele post-acneice sau hiperpigmentare"
+          "image": "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/montanAir%2FfeaturedProducts%2Fingredients%2Fargila.f500c65d.png?alt=media&token=48d233c6-57e8-4538-9217-f218522c1865",
+          "title": "ARGILA",
+          "text": "desfundă și micșorează porii, oferind pielii matifiere"
         },
         "three": {
-          "image": "",
+          "image": "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/montanAir%2FfeaturedProducts%2Fingredients%2Fcarbon.b29e21b7.png?alt=media&token=b937b4e6-1ddf-40d9-9920-8a41f77433e4",
           "title": "Vitamina C",
-          "text": "luminează petele post-acneice sau hiperpigmentare"
+          "text": "asigura o exfoliere delicată"
         }
       },
       "actionButton": {

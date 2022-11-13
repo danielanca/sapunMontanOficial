@@ -1,5 +1,5 @@
-@import './../main.module.scss';
-@import './../data//themes.scss';
+@import "./../main.module.scss";
+@import "./../data//themes.scss";
 
 .banner {
   width: 100%;
@@ -8,5 +8,5 @@
 }
 .titleBanner {
   color: white;
-  font-size: 3rem;
+  font-size: clamp(31px, 10vw, 40px);
 }
