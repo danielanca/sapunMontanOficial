@@ -47,9 +47,9 @@ const BlogPost = () => {
               <span className={styles.postcategory}>{blogs.posts[thisBlogLink].postCategory}</span>
             )}
           </div>
-          <div className={styles.previewArea}>
-            <p className={styles.firstWords}>{}</p>
-          </div>
+          {/* <div className={styles.previewArea}>
+            <p className={styles.firstWords}>{parse(blogs.posts[thisBlogLink].previewArea)}</p>
+          </div> */}
         </div>
         <div className={styles.actualBlogContent}>{parse(dani.jsonContent)}</div>
         <div className={styles.endOfLine} />

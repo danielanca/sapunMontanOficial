@@ -35,10 +35,6 @@
         "one": {
           "title": "Toate",
           "link": "/produsele-noastre"
-        },
-        "two": {
-          "title": "Pachete Promo",
-          "link": "/pachete-promo"
         }
       }
     },
