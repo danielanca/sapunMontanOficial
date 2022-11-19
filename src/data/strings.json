@@ -127,7 +127,7 @@
       "paymentMethodError": "Nu ati selectat metoda de plata!",
       "inputError": "Verificati datele introduse. Completarea spatilor cu * bulina sunt obligatorii"
     },
-    "policyAgreementOrder": "Datele dumneavoastre personale vor fi folosite pentru a vă procesa comanda, pentru a vă susține experiența pe tot acest site web și pentru alte scopuri descrise în",
+    "policyAgreementOrder": "Datele dumneavoastre personale vor fi folosite pentru a vă procesa comanda, pentru a vă susține experiența pe tot acest site web și pentru alte scopuri descrise în ",
     "policyAgremenet": {
       "name": "politica de confidentialitate",
       "link": "/politica-confidentialitate",

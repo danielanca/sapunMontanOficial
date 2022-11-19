@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import OrderDone from "./OrderDone";
 import { sendOrderConfirmation } from "./../../services/emails";
-import InputComponent from "./../MiniComponents/InputComponent";
+import Checkboxer from "./../MiniComponents/Checkboxer";
 
 import { orderProps } from "./../../utils/OrderInterfaces";
 import { NavHashLink } from "react-router-hash-link";
@@ -72,9 +72,12 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     }
   };
 
-  const paymentMethodHandler = (value: boolean, title: string) => {
+  const paymentMethodHandler = (value: boolean, title: string | undefined) => {
     if (value) {
-      setorderData((orderData) => ({ ...orderData, paymentMethod: title }));
+      setorderData((orderData) => ({
+        ...orderData,
+        paymentMethod: typeof title === "string" ? title : "NOT_SPECIFIED"
+      }));
     } else {
       setorderData((orderData) => ({ ...orderData, paymentMethod: "" }));
     }
@@ -88,9 +91,9 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     }));
   };
   useEffect(() => {
-    console.log(`Email state changed to: ${emailSentConfirmed} and removed items from localStorage`);
     if (emailSentConfirmed) {
       localStorage.removeItem("cartData");
+      console.log(`Email state changed to: ${emailSentConfirmed} and removed items from localStorage`);
       if (typeof clearNotification === "function") {
         clearNotification(Math.floor(Math.random() * 120));
       } else {
@@ -317,7 +320,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                   <span className={styles.paymentDetails}>{orderString.shipping.paymentMethod}</span>
 
                   <div className={styles.checkboxer}>
-                    <InputComponent onSwitchEnabled={paymentMethodHandler} typeOfInput="checkbox" />
+                    <Checkboxer onSwitchEnabled={paymentMethodHandler} />
                     <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
                       {orderString.shipping.paymentMethodOptions.cash}
                     </label>
@@ -331,7 +334,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
               )}
             </div>
             {finishOrderRequested >= 1 && !completionState.inputCompleted && (
-              <div className="col-12">
+              <div className={styles.warningOrderWrapper}>
                 <h4 className={styles.warningOrder} style={{ color: "red", margin: "auto", textAlign: "center" }}>
                   {orderString.shipping.inputError}
                 </h4>
@@ -348,7 +351,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
 
                 <div className={styles.groupInputTerms}>
                   <div className={styles.checkBoxStyle}>
-                    <InputComponent onSwitchEnabled={termAcceptHandler} typeOfInput="checkbox" />
+                    <Checkboxer onSwitchEnabled={termAcceptHandler} />
 
                     <label htmlFor="acceptTerms" className={styles.acceptTerms}>
                       {orderString.policyAgremenet.constent.confirm}

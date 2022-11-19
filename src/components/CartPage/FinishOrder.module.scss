@@ -322,9 +322,17 @@ label {
     background-color: rgb(73, 73, 73);
   }
 }
-
+.warningOrderWrapper {
+  @extend .col-12;
+  margin: 3%;
+  @include media(">tablet", "<desktop") {
+    width: 60%;
+    margin: 3% auto;
+  }
+}
 .warningOrder {
   font-family: "Open Sans Regular";
+  font-size: clamp(10px, 4.3vw, 20px);
 }
 .termConditionAlert {
   color: red;
