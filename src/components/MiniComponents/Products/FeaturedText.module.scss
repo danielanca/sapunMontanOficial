@@ -35,13 +35,13 @@
     padding: 0 5%;
     width: 100%;
   }
+  @include media(">=tablet", "<desktop") {
+    width: 90%;
+  }
 }
 .newProductText {
   width: 100%;
   height: auto;
   position: relative;
   overflow: hidden;
-  @include media("<tablet") {
-    height: 264px;
-  }
 }
