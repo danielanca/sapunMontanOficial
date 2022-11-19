@@ -5,7 +5,7 @@ import * as admin from "firebase-admin";
 import * as express from "express";
 import { firestore } from "firebase-admin";
 import { remoteAddress, remoteAddressLocal } from "./constants/address";
-import { adminUser } from "./constants/credentials";
+import { adminUser, emailAuth } from "./constants/credentials";
 import { subscriberProps } from "./types/newsletterTypes";
 
 const cookieParser = require("cookie-parser");
@@ -216,8 +216,8 @@ const transport = nodemailer.createTransport({
   port: "465",
   secure: true,
   auth: {
-    user: "montanair.ro@gmail.com",
-    pass: "drzqeixyfxrqwcpq"
+    user: emailAuth.email,
+    pass: emailAuth.password
   }
 });
 
@@ -263,7 +263,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
 
   transport
     .sendMail({
-      from: "montanair.ro@gmail.com",
+      from: emailAuth.email,
       to: data.emailAddress,
       subject: "Comanda inregistrata, " + data.firstName,
       html:
@@ -646,7 +646,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
   const transmitToAdmin = () => {
     transport
       .sendMail({
-        from: "montanair.ro@gmail.com",
+        from: emailAuth.email,
         to: administratorEmail,
         subject: "Comanda noua - " + data.firstName,
         html:
