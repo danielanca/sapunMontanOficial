@@ -52,7 +52,7 @@ const NavBar = ({ clearNotif }: NavProps) => {
 
               <div className={styles.middleNoUl}>
                 <HashLink className={styles.logoHover} to="/">
-                  <img alt="logo" className={styles.montanLogo} src={images.montanLogo} />
+                  <img alt="logo" className={styles.montanLogo} src={images.websiteLogo} />
                 </HashLink>
               </div>
 
