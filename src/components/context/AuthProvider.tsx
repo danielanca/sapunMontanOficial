@@ -1,20 +1,12 @@
 import { createContext, useState } from "react";
 import { getCookie } from "./../../utils/functions";
-interface Provi {
-  email: string;
-  password: string;
-  accessToken: string;
-  authorise: boolean | null;
-}
-interface ProviInter {
-  auth?: Provi;
-  setAuth?: React.Dispatch<React.SetStateAction<Provi>>;
-}
+import { ProviInter, Provi } from "./ProviderTypes";
+
 const AuthContext = createContext<ProviInter | null>(null);
 
 export const AuthProvider: React.FC = ({ children }) => {
   var authoriseMe = false;
-  if (getCookie("jwt") === "FlorinSalam2022") {
+  if (getCookie("jwt") === "ABCJWT") {
     authoriseMe = true;
     // setAuth((auth) => ({ ...auth, email: "yeah", authorise: true }));
   }

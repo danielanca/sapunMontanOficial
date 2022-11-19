@@ -4,33 +4,26 @@ import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import * as express from "express";
 import { firestore } from "firebase-admin";
+import { remoteAddress, remoteAddressLocal } from "./constants/address";
+import { adminUser } from "./constants/credentials";
+import { subscriberProps } from "./types/newsletterTypes";
 
-interface subscriberProps {
-  firstName: string;
-  lastName: string;
-  email: string;
-}
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
 const app = express();
-var localHost = "";
 
-if (process.env.NODE_ENV === "production") {
-  localHost = "https://diniubire.ro";
-} else {
-  localHost = "http://localhost:3000";
-}
+const localHost = process.env.NODE_ENV === "production" ? remoteAddress : remoteAddressLocal;
 
 functions.logger.info("localHost allow  origin:", localHost);
 console.log("Localhost is:", localHost);
 app.use(cookieParser());
-const administratorEmail = "ancadaniel1994@gmail.com";
+const administratorEmail = adminUser.email;
+const administratorPassword = adminUser.password;
 admin.initializeApp({
   credential: admin.credential.applicationDefault()
 });
 
-const administratorPassword = "123";
-const SessionIDs = ["FlorinSalam2022", "GicaHagi232"];
+const SessionIDs = ["ABCJWT", "JWTABC"];
 interface ReviewType {
   starsNumber: string;
   reviewActual: string;
