@@ -106,10 +106,7 @@ input[type="radio"] {
   min-width: 20px;
   border-radius: 5px;
 }
-.checkboxBlue {
-  @extend .checkbox;
-  border: 1.5px solid #00739e;
-}
+
 .checkboxRound {
   @extend .checkbox;
   border-radius: 10px;
