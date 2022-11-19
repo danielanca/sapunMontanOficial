@@ -8,7 +8,6 @@ import styles from "./../components/FooterMontan.module.scss";
 import strings from "./../data/strings.json";
 import NewsletterBanner from "./MiniComponents/HeadLiners/NewsletterBanner";
 import allPathsURL from "./../data/allPathsURL";
-import path from "path";
 
 const FooterMontan = () => {
   let { links, commercialData, ourShop, bottomMadeBy } = strings.footerText.headLines;

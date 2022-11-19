@@ -9,7 +9,7 @@
   height: 45px;
   width: 100%;
   position: relative;
-  background-color: #ea4134;
+  background-color: black;
   align-items: center;
   justify-content: center;
   padding: 10px 8px;
@@ -39,11 +39,11 @@
 .headTitle {
   color: whitesmoke;
   text-align: center;
-  font-size: 21px;
+  font-size: 15px;
   margin: 0;
+  font-family: "Roboto", sans-serif;
   text-transform: uppercase;
-  font-weight: 200;
-  font-family: "Luckiest Guy";
+  font-weight: 600;
 
   @include media("<tablet") {
     inline-size: 280px;
