@@ -17,7 +17,7 @@
     width: 24px;
     background-color: white;
     border-radius: 50%;
-    border: 2px solid #f5002d;
+    border: 2px solid #00ce4f;
     margin-right: 2px;
   }
   .checkmark::after {
@@ -26,7 +26,7 @@
     display: none;
   }
   .checkmark:hover {
-    background-color: #f5002d;
+    background-color: #00f535;
   }
 
   input:checked ~ .checkmark {
@@ -69,7 +69,7 @@
     width: 24px;
     background-color: white;
     border-radius: 5px;
-    border: 2px solid #f5002d;
+    border: 2px solid #00c20a;
     margin-right: 2px;
   }
 
@@ -114,12 +114,12 @@ input[type="radio"] {
 
 .checkboxactive {
   @extend .checkbox;
-  border-color: #f5002d;
-  background-color: #f5002d;
+  border-color: map-get($map: $colors, $key: redBomb);
+  background-color: map-get($map: $colors, $key: redBomb);
 
   background-image: url("https://firebasestorage.googleapis.com/v0/b/brasovromanticapartment.appspot.com/o/checkedMark.svg?alt=media&token=4084d18b-5806-44be-8b00-3b77731f564c"),
-    linear-gradient(0, #f5002d 100%, #f5002d 100%);
-  border-color: #f5002d;
+    linear-gradient(0, map-get($map: $colors, $key: redBomb) 100%, #f5002d 100%);
+  border-color: map-get($map: $colors, $key: redBomb);
 
   background-repeat: no-repeat;
   background-size: contain;
@@ -127,9 +127,9 @@ input[type="radio"] {
 }
 
 .checkboxactiveRound {
-  border-color: #f5002d;
+  border-color: map-get($map: $colors, $key: redBomb);
   background-color: #ffffff;
-  border-color: #f5002d;
+  border-color: map-get($map: $colors, $key: redBomb);
 
   background-repeat: no-repeat;
   background-size: contain;
@@ -137,8 +137,8 @@ input[type="radio"] {
 }
 .checkboxactiveRound::after {
   content: "";
-  color: #f5002d;
-  background-color: #f5002d;
+  color: map-get($map: $colors, $key: redBomb);
+  background-color: map-get($map: $colors, $key: redBomb);
   position: absolute;
   margin: auto;
   margin-left: 2px;
