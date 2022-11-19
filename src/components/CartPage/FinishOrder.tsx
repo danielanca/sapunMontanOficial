@@ -107,7 +107,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   var explicitProductList: ExplicitProdListProps[] = [];
   if (expectedData != null) {
     storedCart = JSON.parse(expectedData);
-    if (productSessionStorage != null) {
+    if (productSessionStorage !== null) {
       storedCart = makeCheck(productSessionStorage, storedCart);
       storedCart.map((item: ExplicitProdListProps) => {
         subtotalPrepare += Number(productSessionStorage[item.id].price) * Number(item.itemNumber);
@@ -156,7 +156,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     } else {
       setError((completionState) => ({ ...completionState, inputCompleted: false }));
     }
-    if (orderData.paymentMethod != "") {
+    if (orderData.paymentMethod !== "") {
       setError((completionState) => ({ ...completionState, paymentSelected: true }));
     }
     console.log("Finish order request", finishOrderRequested);

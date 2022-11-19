@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import { uniqueId } from "lodash";
 
 import Relaxbar from "./MiniComponents/Footers/Relaxbar";
 import { footerData } from "./../data/componentStrings";
 import styles from "./../components/FooterIubire.module.scss";
-import flagRomania from "./../media/assets/pics/prezentareCarbune/flagRO.jpg";
 import NewsletterBanner from "./MiniComponents/HeadLiners/NewsletterBanner";
 import allPathsURL from "./../data/allPathsURL";
 
@@ -37,18 +36,16 @@ const FooterMontan = () => {
               </div>
             </div>
             <div className="col-md-4">
-              {
-                <div className="row">
-                  <div className={"col " + styles.footItem}>
-                    <h3 className={styles.footerTittleCenter}>{"AMINTIRE PENTRU TOTDEAUNA"}</h3>
-                    <p key={uniqueId()} className={styles.classicText}>
-                      {
-                        "Viziunea si scopul nostru este să vă oferim produse prin care puteti crea momente unice ce raman, alaturi de cei dragi. "
-                      }
-                    </p>
-                  </div>
+              <div className="row">
+                <div className={"col " + styles.footItem}>
+                  <h3 className={styles.footerTittleCenter}>{"AMINTIRE PENTRU TOTDEAUNA"}</h3>
+                  <p key={uniqueId()} className={styles.classicText}>
+                    {
+                      "Viziunea si scopul nostru este să vă oferim produse prin care puteti crea momente unice ce raman, alaturi de cei dragi. "
+                    }
+                  </p>
                 </div>
-              }
+              </div>
             </div>
             <div className="col-md-4 ">
               <div className="row">
