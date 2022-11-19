@@ -5,10 +5,11 @@ interface InputProps {
   typeOfInput?: string;
   title?: string;
   onSwitchEnabled?: (value: boolean, titleName?: string) => void;
+  theme?: string;
   enabled?: boolean;
 }
 
-const InputComponent = ({ enabled, onSwitchEnabled, typeOfInput, title }: InputProps) => {
+const InputComponent = ({ enabled, onSwitchEnabled, typeOfInput, title, theme }: InputProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(enabled !== undefined ? enabled : false);
 
   const onChangeState = useCallback(() => {
