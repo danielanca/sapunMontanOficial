@@ -1,8 +1,8 @@
 {
-  "websiteTitle": "MontanAir.Ro",
+  "websiteTitle": "DinIubire.Ro",
 
   "DiscoverOurProducts": {
-    "title": "MontanAir",
+    "title": "DinIubire.Ro",
     "textSmall": "DESCOPERA BENEFICIILE CARBUNELUI"
   },
 
@@ -11,13 +11,13 @@
   },
   "ProduseleNoastre": {
     "title": "Produsele Noastre",
-    "metaDescription": "Lista produse MontanAir.Ro"
+    "metaDescription": "Lista produse DinIubire.Ro"
   },
   "socialsInfo": {
     "socialLinks": {
-      "instagram": { "link": "https://instagram.com/montanair.ro", "image": "instagram" },
-      "facebook": { "link": "https://facebook.com/montanair.ro", "image": "facebook" },
-      "whatsapp": { "link": "https://whatsapp.com/montanair.ro", "image": "whatsapp" }
+      "instagram": { "link": "https://instagram.com/DinIubire.Ro", "image": "instagram" },
+      "facebook": { "link": "https://facebook.com/DinIubire.Ro", "image": "facebook" },
+      "whatsapp": { "link": "https://whatsapp.com/DinIubire.Ro", "image": "whatsapp" }
     }
   },
   "navMenu": {
@@ -78,10 +78,10 @@
   },
 
   "companyData": {
-    "name": "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
-    "number": "41030416",
+    "name": "ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA",
+    "number": "45044473",
     "fiscal": "F12/696/23.04.2019",
-    "address": "str. LIVIU REBREANU loc. Turda, Cluj"
+    "address": "str. Plopilor loc. Turda, Cluj"
   },
 
   "footerText": {
@@ -179,7 +179,7 @@
     },
     "ownerSide": {
       "title": "Magazin",
-      "companyName": "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
+      "companyName": "ANCA DANIEL EMANUEL PFA",
       "fiscal": "F12/696/23.04.2019",
       "number": "41030416",
       "address": "str. LIVIU REBREANU loc. Turda, Cluj "
@@ -187,7 +187,7 @@
 
     "thankYouMessage": {
       "title": "Multumim pentru incredere!",
-      "author": "Echipa MontanAir.Ro "
+      "author": "Echipa DinIubire.Ro "
     }
   },
 
