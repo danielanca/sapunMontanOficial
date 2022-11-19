@@ -15,6 +15,7 @@ import CookieConsent from "./components/CookieConsent/CookieConsent";
 import NotFound from "./components/NotFound/NotFound";
 
 import "./App.css";
+import FooterMontan from "./components/FooterMontan";
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
 
@@ -50,8 +51,6 @@ const SimpleContent = lazy(() => import(/*webpackPrefetch: true*/ "./blocks/Simp
 const Navbar = lazy(() => import(/* webpackChunkName: "Navbar"  */ "./components/Navbar"));
 
 const ProductView = lazy(() => import("./components/Product/ProductView"));
-
-const FooterIubire = lazy(() => import(/* webpackChunkName: "FooterIubire" */ "./components/FooterIubire"));
 
 const Loading = () => <div>LOADING</div>;
 
@@ -134,7 +133,7 @@ function App() {
 
                   <Route path="*" element={<NotFound />} />
                 </Routes>
-                <FooterIubire />
+                <FooterMontan />
               </AuthProvider>
             </BrowserRouter>
           </React.Suspense>
