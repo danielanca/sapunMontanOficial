@@ -10,7 +10,7 @@
   height: 100%;
   color: white;
 
-  font-size: 20px;
+  font-size: clamp(12px, 3vw, 20px);
   * {
     font-family: "Roboto Medium", sans-serif;
     color: inherit;

@@ -39,7 +39,7 @@
 .headTitle {
   color: whitesmoke;
   text-align: center;
-  font-size: 15px;
+  font-size: clamp(13.4px, 2.2vw, 24px);
   margin: 0;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
