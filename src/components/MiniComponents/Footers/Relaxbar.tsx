@@ -12,7 +12,7 @@ const Relaxbar = () => {
   return (
     <div className={styles.relaxSpace}>
       <div className={styles.cardobard}>
-        <h3>{"Hai sa tinem legatura 😊"}</h3>
+        <h3>{"Putem tine legatura si aici 😊"}</h3>
         <div className={styles.socialsTop}>
           {Object.values(strings.socialsInfo.socialLinks).map((item) => (
             <a key={uniqueId()} href={item.link}>

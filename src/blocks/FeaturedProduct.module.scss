@@ -18,7 +18,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 35px 0px;
+  padding: 1% 0px;
 }
 .roundCircle {
   border: 10px solid rgb(255, 255, 255);
@@ -44,7 +44,7 @@
   font-size: 65px;
   margin-bottom: 0px;
   text-align: center;
-  font-family: 'Luckiest Guy';
+  font-family: "Luckiest Guy";
 
   @include media("<tablet") {
     font-size: 46px;

@@ -6,7 +6,7 @@
 
 .relaxSpace {
   width: 100%;
-  height: 400px;
+  height: 250px;
   background-color: red;
   background-size: contain;
   overflow: hidden;
@@ -14,51 +14,57 @@
   background: hsla(4, 81%, 56%, 1);
 
   background: linear-gradient(90deg, hsla(4, 81%, 56%, 1) 0%, hsla(0, 100%, 69%, 1) 79%);
-  
+
   background: -moz-linear-gradient(90deg, hsla(4, 81%, 56%, 1) 0%, hsla(0, 100%, 69%, 1) 79%);
-  
+
   background: -webkit-linear-gradient(90deg, hsla(4, 81%, 56%, 1) 0%, hsla(0, 100%, 69%, 1) 79%);
-  
- 
+
   display: flex;
   align-items: center;
+  @include media("<tablet") {
+    height: 188px;
+  }
 }
 .cardobard {
   width: 100%;
-  max-width: 800px;
+  max-width: 588px;
 
-  height: 200px;
+  height: 130px;
   background-color: whitesmoke;
 
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px,
     rgba(17, 17, 26, 0.1) 0px 16px 56px;
   margin: auto;
-  padding: 50px;
+  padding: 29px;
+  @include media(">=tablet", "<desktop") {
+    padding: 4%;
+  }
 
   @include media("<tablet") {
     max-width: 320px;
-    height: 257px;
+    height: 112px;
+    padding: 2%;
   }
 }
 .cardobard {
   h3 {
     font-family: "Roboto";
     text-align: center;
-    font-size: 1.45rem;
+    font-size: clamp(15px, 3.1vw, 18px);
   }
 }
 
 .iconStyle {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  aspect-ratio: 1/1;
 }
 .socialsTop {
   width: 100%;
-  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   max-width: 220px;
+  margin: 0 auto;
   a > img {
     margin: 8px;
   }

@@ -7,7 +7,7 @@
   },
 
   "GrayPromotion": {
-    "text": "Am pregătit <strong>pachetele noastre </strong> pentru toată lumea care dorește să utilizeze mai multe produse la prețuri mai mici. Atunci când alegeți unul dintre aceste pachete, <strong>transportul este gratuit </strong>, prin urmare majoritatea clienților noștri aleg aceste oferte."
+    "text": "Un moment durează <strong> câteva secunde</strong>, dar amintirile rămân pentru totdeauna. - Lori Robinson"
   },
   "ProduseleNoastre": {
     "title": "Produsele Noastre",
@@ -236,5 +236,10 @@
     "title": "Newsletter",
     "subscribeCall": "Aboneaza-te si primesti reducere 10% la urmatoarea ta comanda!",
     "subscribeMe": "MĂ ABONEZ"
+  },
+
+  "BrandDetailsStr": {
+    "title": "DinIubire.Ro - creăm amintiri împreună",
+    "description": "Construim si optimizam constant ceea ce facem pentru ca tu sa poti avea parte de o amintire placuta cu persoanele dragi"
   }
 }
