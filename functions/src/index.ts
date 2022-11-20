@@ -4,9 +4,26 @@ import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import * as express from "express";
 import { firestore } from "firebase-admin";
-import { remoteAddress, remoteAddressLocal } from "./constants/address";
-import { adminUser, emailAuth } from "./constants/credentials";
-import { subscriberProps } from "./types/newsletterTypes";
+// import { remoteAddress, remoteAddressLocal } from "./constants/address";
+// import { adminUser, emailAuth } from "./constants/credentials";
+// import { subscriberProps } from "./types/newsletterTypes";
+interface subscriberProps {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+const remoteAddress = "https://diniubire.ro";
+const remoteAddressLocal = "http://localhost:3000";
+const adminUser = {
+  email: "ancadaniel1994@gmail.com",
+  password: "123"
+};
+const emailAuth = {
+  email: "diniubire.ro@gmail.com",
+  password: "jrffukuelpyknzks"
+};
+const SessionIDs = ["ABCJWT", "ABCJWT"];
 
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
@@ -23,7 +40,6 @@ admin.initializeApp({
   credential: admin.credential.applicationDefault()
 });
 
-const SessionIDs = ["ABCJWT", "JWTABC"];
 interface ReviewType {
   starsNumber: string;
   reviewActual: string;
