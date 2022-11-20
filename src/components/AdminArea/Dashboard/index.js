@@ -24,7 +24,7 @@ const Dashboard = () => {
         <Row>
           <div className="col-12">
             <div className="page-title-box d-flex align-items-center justify-content-between">
-              <h3 className={styles.adminText}>PANOUL ADMIN MONTANAIR.RO</h3>
+              <h3 className={styles.adminText}>PANOUL ADMIN Diniubire.RO</h3>
 
               <div className="page-title-right">
                 <ol className="breadcrumb m-0">

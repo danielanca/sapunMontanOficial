@@ -12,10 +12,10 @@ export const staticContent = {
         </p>
 
 
-        <p> <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA </b>garanteaza utilizatorului acces limitat, in interes personal (efectuarea de comenzi online, informare), pe site-ul <b>www.montanair.ro</b> si nu ii confera dreptul de a descarca sau de a modifica partial sau integral site-ul, de a reproduce partial sau integral site-ul, de a copia, de a vinde/revinde sau de a exploata site-ul in orice alta maniera, in scopuri comerciale sau fara acordul prealabil scris al acesteia.
-            Intregul continut al site-ului <b>www.montanair.ro</b> - imagini, texte, grafice, simboluri, elemente de grafica web, email-uri, scripturi, programe si alte date - este proprietatea <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA</b>  si a furnizorilor sai si este aparat de Legea pentru protectia drepturilor de autor (legea nr. 8/1996) si de legile privind proprietatea intelectuala si industriala. Folosirea fara acordul propietarului <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA</b>  a oricaror elemente enumerate mai sus se pedepseste conform legislatiei in vigoare.
-            <p><br> Domeniul <b>www.montanair.ro</b> este detinut de catre ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA Utilizarea acestei marci, a domeniului sau a numelor de comercializare, siglelor si emblemelor, in forma directa sau "ascunsa" (de tipul, dar nu limitat la, meta taguri sau alte tehnici de indexare, cautare web) fara permisiunea prealabila scrisa este interzisa si se pedepseste conform legii. </p>
-            <br>Produsele prezentate pe <b>www.montanair.ro</b> sunt produse si comercializare de ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA Preturile produselor pot fi schimbate oricand. Verificati pretul final de vanzare inainte de a achizitiona un produs. </p>
+        <p> <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA </b>garanteaza utilizatorului acces limitat, in interes personal (efectuarea de comenzi online, informare), pe site-ul <b>www.diniubire.ro</b> si nu ii confera dreptul de a descarca sau de a modifica partial sau integral site-ul, de a reproduce partial sau integral site-ul, de a copia, de a vinde/revinde sau de a exploata site-ul in orice alta maniera, in scopuri comerciale sau fara acordul prealabil scris al acesteia.
+            Intregul continut al site-ului <b>www.diniubire.ro</b> - imagini, texte, grafice, simboluri, elemente de grafica web, email-uri, scripturi, programe si alte date - este proprietatea <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA</b>  si a furnizorilor sai si este aparat de Legea pentru protectia drepturilor de autor (legea nr. 8/1996) si de legile privind proprietatea intelectuala si industriala. Folosirea fara acordul propietarului <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA</b>  a oricaror elemente enumerate mai sus se pedepseste conform legislatiei in vigoare.
+            <p><br> Domeniul <b>www.diniubire.ro</b> este detinut de catre ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA Utilizarea acestei marci, a domeniului sau a numelor de comercializare, siglelor si emblemelor, in forma directa sau "ascunsa" (de tipul, dar nu limitat la, meta taguri sau alte tehnici de indexare, cautare web) fara permisiunea prealabila scrisa este interzisa si se pedepseste conform legii. </p>
+            <br>Produsele prezentate pe <b>www.diniubire.ro</b> sunt produse si comercializare de ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA Preturile produselor pot fi schimbate oricand. Verificati pretul final de vanzare inainte de a achizitiona un produs. </p>
     
          <div class="spacerPadder100"> </div>
       
@@ -29,7 +29,7 @@ export const staticContent = {
     jsonContent: `
       <div class="spacerPadder50"> </div>
         <div class="textSpaceMargins d-flex flex-column ">
-        <p class='justTextAlignCenter'>Puteti cumpara produsele de pe site-ul MontanAir.Ro folosind urmatoarele </p>
+        <p class='justTextAlignCenter'>Puteti cumpara produsele de pe site-ul DinIubire.Ro folosind urmatoarele </p>
         <h4 class="middleSubtext"> Instrumente de plata </h4>
 
         <p class='justTextAlignCenter'> Ramburs (cash) la livrarea coletului </p>
@@ -114,13 +114,13 @@ export const staticContent = {
     <h4 class="middleSubtext">2. Scopurile si temeiurile de prelucrarii </h4>
     A. Daca sunteti client al site-ului, prelucreaza datele dumneavoastra cu caracter personal astfel:
     <p> Pentru desfasurarea relatiei contractuale dintre dumneavoastra si , respectiv pentru preluarea, validarea, expedierea si facturarea comenzii plasate pe site, informarea dumneavoastra asupra starii comenzii, organizarea returului de produse comandate etc.  </p>
-    <p> <b>Temei:</b> Prelucrarea datelor dumneavoastra in acest scop are la baza contractul incheiat intre dumneavoastra si , definit in cuprinsul Termenelor si Conditiilor http://montanair.ro/termeni-si-conditii. Furnizarea datelor dumneavoastra cu caracter personal este necesara pentru executarea acestui contract. Refuzul furnizarii datelor poate avea drept consecinta imposibilitatea derularii raporturilor contractuale dintre dumneavoastra si . </p>
+    <p> <b>Temei:</b> Prelucrarea datelor dumneavoastra in acest scop are la baza contractul incheiat intre dumneavoastra si , definit in cuprinsul Termenelor si Conditiilor http://diniubire.ro/termeni-si-conditii. Furnizarea datelor dumneavoastra cu caracter personal este necesara pentru executarea acestui contract. Refuzul furnizarii datelor poate avea drept consecinta imposibilitatea derularii raporturilor contractuale dintre dumneavoastra si . </p>
     <p> Pentru activitati de marketing, respectiv pentru transmiterea, prin intermediul mijloacelor de comunicare la distanta (e-mail, sms) de comunicari comerciale privind produsele si serviciile oferite de , prin intermediul site-ului. </p>
     
     
 
     <h4 class="middleSubtext">3. Durata pentru care va prelucram datele </h4>
-    <p> <b>MontanAir.ro</b> va prelucra datele dumneavoastra cu caracter personal atat cat este necesar pentru realizarea scopurilor de prelucrare mentionate mai sus.
+    <p> <b>www.diniubire.ro</b> va prelucra datele dumneavoastra cu caracter personal atat cat este necesar pentru realizarea scopurilor de prelucrare mentionate mai sus.
 
     In cazul in care sunteti client, vom prelucra datele dumneavoastra pe intreaga durata a raporturilor contractuale si ulterior conform obligatiilor legale care revin in sarcina (de ex, in cazul documentelor justificative financiar-contabile pentru care termenul de pastrare prevazut de lege este de 10 ani de la data incheierii exercitiului financiar in cursul caruia au fost intocmite).
     
@@ -160,7 +160,7 @@ export const staticContent = {
    <h4 class="middleSubtext">5. Modificari in politica de confidentialitate </h4>
    <p>Ne rezervam dreptul de a modifica aceasta politica de confidentialitate. In cazul unor modificari majore pe viitor vei fi instiintat pe email (daca este posibil) sau prin afisarea unui mesaj specific pe site. </p>
 
-    <p>Aceasta pagina de internet foloseste fisiere de tip cookie. Pentru mai multe informatii cu privire la modul in care se folosesc aceste fisiere, va rugam sa accesati urmatorul link: <a href="/politica-de-cookies"> <p>http://montanair.ro/politica-de-cookies </p></a>
+    <p>Aceasta pagina de internet foloseste fisiere de tip cookie. Pentru mai multe informatii cu privire la modul in care se folosesc aceste fisiere, va rugam sa accesati urmatorul link: <a href="/politica-de-cookies"> <p>http://diniubire.ro/politica-de-cookies </p></a>
 
 
    
@@ -234,7 +234,7 @@ export const staticContent = {
     <h2 class="middleSubtext">IA LEGATURA CU NOI !</h2>
 
     <p class="text-center">Daca ai intrebari despre noi, produsele noastre, sau pur si simplu vrei sa ne saluti, o poti face 
-    trimitand un email la adresa <a href="mailto:contact@montanair.ro">contact@montanair.ro </a> sau la numarul de telefon +40 759 791 474 
+    trimitand un email la adresa <a href="mailto:diniubire.ro@gmail.com">diniubire.ro@gmail.com </a> sau la numarul de telefon +40 759 791 474 
     </p>
 
     <div class="spacerPadder50"></div>

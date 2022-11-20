@@ -117,7 +117,7 @@ export const websiteContact = {
 };
 
 export const TopBannerPromotional = {
-  text: "Transport Gratuit la comenzi <wbr> peste 130 LEI "
+  text: "Transport Gratuit la comenzi <wbr> peste 90 LEI "
 };
 
 export const newsletter = {
