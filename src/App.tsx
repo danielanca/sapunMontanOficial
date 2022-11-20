@@ -15,8 +15,8 @@ import CookieConsent from "./components/CookieConsent/CookieConsent";
 import NotFound from "./components/NotFound/NotFound";
 
 import "./App.css";
-// ReactGA.initialize('G-2WGBH4M82T');
-// ReactGA.send('pageview');
+ReactGA.initialize("G-WFWYP44Z7L");
+ReactGA.send("page view bro");
 
 export const ProductsContext = React.createContext<any[]>([]);
 const FinishOrder = lazy(() => import(/*webpackPreload: true*/ "./components/CartPage/FinishOrder"));

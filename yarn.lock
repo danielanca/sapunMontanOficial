@@ -1730,10 +1730,10 @@
   resolved "https://registry.npmjs.org/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.6.1.tgz"
   integrity sha512-9FqhNjKQWpQ3fGnSOCovHOm+yhhiorKEqYLAfd525jWavunDJcx8rOW6i6ozAh+FbwcYMkL7b+3j4UR/30MpoQ==
 
-"@fontsource/luckiest-guy@^4.5.7":
-  "integrity" "sha512-mjOjMOXjS34yGvPzJWa6+h1EZsr23zsrjjJWZzg5K3JdcJlF9KN4it7a3osp7rt+PpEII0K00qQuiTdIkl2IZQ=="
-  "resolved" "https://registry.npmjs.org/@fontsource/luckiest-guy/-/luckiest-guy-4.5.7.tgz"
-  "version" "4.5.7"
+"@fontsource/luckiest-guy@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/luckiest-guy/-/luckiest-guy-4.5.9.tgz#5395d53279d4bc5aa3f5cc8a9f0496148e50da01"
+  integrity sha512-KwJhIUHoepczbQmukHBFHVU1N5NlSpS9EqwL9W/SXpWTxqh7RMk4dEE/IMwtp8F5DGUCxmfl5HVQYpQh5YE18Q==
 
 "@gar/promisify@^1.0.1":
   version "1.1.2"
@@ -2795,13 +2795,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-dom@^17.0.11":
-  version "17.0.18"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.18.tgz#8f7af38f5d9b42f79162eea7492e5a1caff70dc2"
-  integrity sha512-rLVtIfbwyur2iFKykP2w0pl/1unw26b5td16d5xMgp7/yjTHomkyxPYChFoCr/FtEX1lN9wY6lFj1qvKdS5kDw==
-  dependencies:
-    "@types/react" "^17"
-
 "@types/react-dom@^18.0.0":
   version "18.0.8"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.8.tgz#d2606d855186cd42cc1b11e63a71c39525441685"
@@ -2869,15 +2862,6 @@
   version "17.0.43"
   resolved "https://registry.npmjs.org/@types/react/-/react-17.0.43.tgz"
   integrity sha512-8Q+LNpdxf057brvPu1lMtC5Vn7J119xrP1aq4qiaefNioQUYANF/CYeK4NsKorSZyUGJ66g0IM+4bbjwx45o2A==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@^17", "@types/react@^17.0.38":
-  version "17.0.52"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.52.tgz#10d8b907b5c563ac014a541f289ae8eaa9bf2e9b"
-  integrity sha512-vwk8QqVODi0VaZZpDXQCmEmiOuyjEFPY7Ttaw5vjM112LOq37yz1CDJGrRJwA1fYEq4Iitd5rnjd1yWAc/bT+A==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -13123,17 +13107,6 @@ react-fast-compare@^3.0.1, react-fast-compare@^3.1.1:
   resolved "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.0.tgz"
   integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
 
-react-font-size-by-text-length@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/react-font-size-by-text-length/-/react-font-size-by-text-length-0.1.0.tgz#feefd4c2320b062759fe7665f59175be38c95e2a"
-  integrity sha512-at34bZHnhxTTG4devIv2UIRH0FpQ8AcQhbrfJb/iRCPchZCJuvEOvR6MSg8M0fIL/bnN7q/d9GF0m9XthnfE8Q==
-  dependencies:
-    "@types/react" "^17.0.38"
-    "@types/react-dom" "^17.0.11"
-    react "^17.0.2"
-    react-dom "^17.0.2"
-    typescript "^4.5.4"
-
 react-ga4@^1.4.1:
   version "1.4.1"
   resolved "https://registry.npmjs.org/react-ga4/-/react-ga4-1.4.1.tgz"
@@ -15559,11 +15532,6 @@ typescript@^4.1.2:
   version "4.4.4"
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.4.4.tgz"
   integrity sha512-DqGhF5IKoBl8WNf8C1gu8q0xZSInh9j1kJJMqT3a94w1JzVaBU4EXOSMrz9yDqMT0xt3selp83fuFMQ0uzv6qA==
-
-typescript@^4.5.4:
-  version "4.9.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.3.tgz#3aea307c1746b8c384435d8ac36b8a2e580d85db"
-  integrity sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==
 
 ua-parser-js@^0.7.18:
   version "0.7.31"
