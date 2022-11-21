@@ -792,7 +792,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
                </table> 
                <table cellpadding="0" cellspacing="0" class="es-content" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%"> 
                  <tr> 
-                  <td align="center" style="padding:0;Margin:0"> Comanda inreg
+                  <td align="center" style="padding:0;Margin:0"> Comanda receptionata!
                    <table bgcolor="#ffffff" class="es-content-body" align="center" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px"> 
                      <tr> 
                       <td align="left" style="padding:20px;Margin:0"> 
@@ -822,7 +822,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
                               <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: auto; width: auto;">
                                 <tbody>
                                   <tr>
-                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #e7e7e7;" valign="top" align="center" bgcolor="#e7e7e7"> <a href="https://montanair.ro/order/${invoiceNumberID}"  target="_blank" style="border: solid 1px #df94b3; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #181818; border-color: #ffffff; color: #ffffff;">Vezi comanda</a> </td>
+                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #e7e7e7;" valign="top" align="center" bgcolor="#e7e7e7"> <a href="https://diniubire.ro/order/${invoiceNumberID}"  target="_blank" style="border: solid 1px #df94b3; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #181818; border-color: #ffffff; color: #ffffff;">Vezi comanda</a> </td>
                                   </tr>
                                 </tbody>
                               </table>

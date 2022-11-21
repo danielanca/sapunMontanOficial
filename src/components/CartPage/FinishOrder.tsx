@@ -73,6 +73,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   };
 
   const paymentMethodHandler = (value: boolean, title: string | undefined) => {
+    console.log("Payment handler title is:", title);
     if (value) {
       setorderData((orderData) => ({
         ...orderData,
