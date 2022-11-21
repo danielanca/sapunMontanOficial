@@ -4,53 +4,27 @@ import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import * as express from "express";
 import { firestore } from "firebase-admin";
-import { remoteAddress, remoteAddressLocal } from "./constants/address";
-import { adminUser } from "./constants/credentials";
+// import { remoteAddress, remoteAddressLocal } from "./constants/address";
+import { adminUser, getSessionID, emailAuth, getAuthToken } from "./constants/credentials";
 import { subscriberProps } from "./types/newsletterTypes";
+import { applyCORSpolicy } from "./constants/corsFunc";
+import { ReviewType } from "./types/reviewTypes";
+import { ResponseObject } from "./constants/emailCons";
+import { getTimestamp, generateInvoiceID } from "./constants/utils";
+import { transportOptions } from "./constants/emailCons";
+import { ProductModel } from "./types/productTypes";
 
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
 const app = express();
 
-const localHost = process.env.NODE_ENV === "production" ? remoteAddress : remoteAddressLocal;
-
-functions.logger.info("localHost allow  origin:", localHost);
-console.log("Localhost is:", localHost);
 app.use(cookieParser());
-const administratorEmail = adminUser.email;
-const administratorPassword = adminUser.password;
+
 admin.initializeApp({
   credential: admin.credential.applicationDefault()
 });
 
-const SessionIDs = ["ABCJWT", "JWTABC"];
-interface ReviewType {
-  starsNumber: string;
-  reviewActual: string;
-  name: string;
-  email: string;
-  date?: string;
-  reviewProductID: string;
-}
-
-const getSessionID = () => {
-  return SessionIDs[0];
-};
-const getAuthToken = (body: any) => {
-  var authToken = JSON.parse(body);
-  var TOKEN = authToken.authCookie;
-
-  if (TOKEN === getSessionID()) {
-    return true;
-  } else return false;
-};
 // process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
-
-interface ResponseObject {
-  EMAILTO_CLIENT: string;
-  EMAILTO_ADMIN: string;
-}
-
 export const updateProduct = functions.https.onRequest((request, response) => {
   let requestParam = JSON.parse(request.body);
   console.log("updateProduct:", requestParam);
@@ -129,22 +103,14 @@ const postReviewData = async (data: ReviewType) => {
 // })
 
 export const subscribeToNewsletter = functions.https.onRequest((request, response) => {
-  response.header("Access-Control-Allow-Origin", localHost);
-  response.header("Access-Control-Allow-Credentials", "true");
-  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
+  applyCORSpolicy(response);
+
   let subscriberData: subscriberProps = JSON.parse(request.body);
 
-  functions.logger.info(` subscribeToNewsletter inside localhost Is ${localHost}`);
   functions.logger.info("Pls subscribeToNewsletter headers:", response.getHeaders());
   databasePost(subscriberData);
   response.send({ subscribeToNewsletter: "SUBSCRIBED" });
 });
-
-const getTimestamp = () => {
-  let now = new Date();
-  return `${now.getDay()}/${now.getMonth()}/${now.getFullYear()}  ${now.getHours()}:${now.getMinutes()} `;
-};
 
 const databasePost = async (data: subscriberProps) => {
   await admin
@@ -174,14 +140,11 @@ const getOrdersAdmin = async () => {
 };
 
 export const requestOrders = functions.https.onRequest((request, response) => {
-  functions.logger.info(` requestOrders inside localhost Is ${localHost}`);
+  applyCORSpolicy(response);
 
-  response.header("Access-Control-Allow-Origin", localHost);
-  response.header("Access-Control-Allow-Credentials", "true");
-  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
-  if (getAuthToken(request.body)) {
-    functions.logger.info(` TOKEN IS: ${getAuthToken(request.body)}`);
+  let authToken = getAuthToken(request.body);
+  if (authToken) {
+    functions.logger.info(` TOKEN IS: ${authToken}`);
   } else {
     functions.logger.info(` TOKEN INVALID `);
   }
@@ -197,12 +160,9 @@ export const requestOrders = functions.https.onRequest((request, response) => {
 export const requestAuth = functions.https.onRequest((request, response) => {
   var userData = JSON.parse(request.body);
   functions.logger.info("request Auth called, username and password are: ", userData.password);
-  response.header("Access-Control-Allow-Origin", localHost);
-  response.header("Access-Control-Allow-Credentials", "true");
-  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
+  applyCORSpolicy(response);
 
-  if (userData.password === administratorPassword && userData.email === administratorEmail) {
+  if (userData.password === adminUser.password && userData.email === adminUser.email) {
     // response.cookie("jwt", getSessionID(), { sameSite: "none", secure: true, maxAge: 900 * 25 * 60 * 1000 });
     response.send({ LOGIN_ANSWER: "SUCCESS", LOGIN_TOKEN: getSessionID() });
   } else {
@@ -210,20 +170,7 @@ export const requestAuth = functions.https.onRequest((request, response) => {
   }
 });
 
-const transport = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  service: "gmail",
-  port: "465",
-  secure: true,
-  auth: {
-    user: "montanair.ro@gmail.com",
-    pass: "drzqeixyfxrqwcpq"
-  }
-});
-
-const generateInvoiceID = () => {
-  return Math.ceil(Math.random() * 15044332);
-};
+const transport = nodemailer.createTransport(transportOptions);
 
 const postOrderToDB = async (invoiceID: number, dataObject: any, todayDate: Date) => {
   dataObject.invoiceID = `${invoiceID}`;
@@ -238,10 +185,7 @@ const postOrderToDB = async (invoiceID: number, dataObject: any, todayDate: Date
     .then((result) => functions.logger.info("POST_To_DB: ", result));
 };
 export const sendEmail = functions.https.onRequest((request, response) => {
-  response.header("Access-Control-Allow-Origin", localHost);
-  response.header("Access-Control-Allow-Credentials", "true");
-  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
+  applyCORSpolicy(response);
 
   var ResponseData: ResponseObject = {
     EMAILTO_ADMIN: "EMPTY",
@@ -646,8 +590,8 @@ export const sendEmail = functions.https.onRequest((request, response) => {
   const transmitToAdmin = () => {
     transport
       .sendMail({
-        from: "montanair.ro@gmail.com",
-        to: administratorEmail,
+        from: emailAuth.email,
+        to: adminUser.email,
         subject: "Comanda noua - " + data.firstName,
         html:
           ` <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -1020,18 +964,6 @@ export const sendEmail = functions.https.onRequest((request, response) => {
       });
   };
 });
-interface ProductModel {
-  ID: string;
-  title: string;
-  shortDescription: string;
-  price: string;
-  firstDescription: string;
-  reviews: {};
-  // reviews: { [key:string]: };
-  jsonContent: string;
-  imageProduct: [];
-  ULbeneficii: [];
-}
 
 const createNewProduct = async (modelID: ProductModel) => {
   console.log("create new product received:", JSON.stringify(modelID));
