@@ -92,6 +92,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   };
   useEffect(() => {
     if (emailSentConfirmed) {
+      window.scrollTo(0, 0);
       localStorage.removeItem("cartData");
       console.log(`Email state changed to: ${emailSentConfirmed} and removed items from localStorage`);
       if (typeof clearNotification === "function") {

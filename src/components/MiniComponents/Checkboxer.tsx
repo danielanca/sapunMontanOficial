@@ -2,15 +2,20 @@ import React, { useCallback, useEffect, useState } from "react";
 import styles from "./Checkboxer.module.scss";
 
 interface InputProps {
+  name?: string;
   onSwitchEnabled: (value: boolean, optionChoosed?: string) => void;
   enabled?: boolean;
 }
 
-const Checkboxer = ({ enabled, onSwitchEnabled }: InputProps) => {
+const Checkboxer = ({ name, enabled, onSwitchEnabled }: InputProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(enabled !== undefined ? enabled : false);
 
   const onChangeState = useCallback(() => {
-    onSwitchEnabled(!isChecked);
+    if (typeof name === "string") {
+      onSwitchEnabled(!isChecked, name);
+    } else {
+      onSwitchEnabled(!isChecked);
+    }
     setIsChecked(!isChecked);
   }, [isChecked]);
 
