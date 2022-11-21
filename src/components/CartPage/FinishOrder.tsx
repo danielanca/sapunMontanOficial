@@ -321,7 +321,10 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                   <span className={styles.paymentDetails}>{orderString.shipping.paymentMethod}</span>
 
                   <div className={styles.checkboxer}>
-                    <Checkboxer onSwitchEnabled={paymentMethodHandler} />
+                    <Checkboxer
+                      onSwitchEnabled={paymentMethodHandler}
+                      name={orderString.shipping.paymentMethodOptions.cash}
+                    />
                     <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
                       {orderString.shipping.paymentMethodOptions.cash}
                     </label>
