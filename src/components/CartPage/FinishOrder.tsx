@@ -224,6 +224,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
       mandatoryInput: false
     }
   };
+
   return (
     <div className={styles.FinishSection}>
       {!emailSentConfirmed ? (
@@ -332,19 +333,26 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                   </div>
                 </div>
               </div>
-              {finishOrderRequested >= 1 && orderData.paymentMethod === "" && (
-                <h4 className="text-center " style={{ color: "red" }}>
-                  {orderString.shipping.paymentMethodError}
-                </h4>
-              )}
-            </div>
-            {finishOrderRequested >= 1 && !completionState.inputCompleted && (
-              <div className={styles.warningOrderWrapper}>
-                <h4 className={styles.warningOrder} style={{ color: "red", margin: "auto", textAlign: "center" }}>
-                  {orderString.shipping.inputError}
-                </h4>
+              <div className={styles.filledSpacePaymentMtd}>
+                {finishOrderRequested >= 1 && orderData.paymentMethod === "" && (
+                  <h4 className="text-center " style={{ color: "red" }}>
+                    {orderString.shipping.paymentMethodError}
+                  </h4>
+                )}
               </div>
-            )}
+            </div>
+
+            <div
+              style={{
+                visibility: finishOrderRequested >= 1 && !completionState.inputCompleted ? "visible" : "hidden"
+              }}
+              className={styles.warningOrderWrapper}
+            >
+              <h4 className={styles.warningOrder} style={{ color: "red", margin: "auto", textAlign: "center" }}>
+                {orderString.shipping.inputError}
+              </h4>
+            </div>
+
             <div className={styles.paymentShipContainer}>
               <div className={styles.paymentContainer}>
                 <p className={styles.GDPRNotify}>
@@ -362,9 +370,11 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                       {orderString.policyAgremenet.constent.confirm}
                     </label>
                   </div>
-                  {finishOrderRequested >= 1 && !completionState.termsAccepted && (
-                    <h4 className={styles.termConditionAlert}>{orderString.policyAgremenet.constent.error}</h4>
-                  )}
+                  <div className={styles.filledSpaceTCAlert}>
+                    {finishOrderRequested >= 1 && !completionState.termsAccepted && (
+                      <h4 className={styles.termConditionAlert}>{orderString.policyAgremenet.constent.error}</h4>
+                    )}
+                  </div>
                 </div>
                 <button onClick={sendOrderData} type="submit" className={styles.finishOrder}>
                   {!pendingRequest ? (
