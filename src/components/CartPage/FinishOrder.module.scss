@@ -12,7 +12,7 @@
   align-items: center;
 }
 .cartLine {
-  width: calc(76px + 3.2vw);
+  width: clamp(30px, 17vw, 65px);
   height: 4px;
   background-color: rgba(0, 0, 0, 0.4);
   margin: 10px;
