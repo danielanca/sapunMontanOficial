@@ -119,8 +119,7 @@ const databasePost = async (data: subscriberProps) => {
     .doc(data.email)
     .set({
       email: data.email,
-      firstName: data.firstName,
-      lastName: data.lastName,
+      fullName: data.fullName,
       subscribeDate: getTimestamp()
     })
     .then((result) => result);

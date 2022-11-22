@@ -14,7 +14,7 @@ import { newsletter } from "./../../data/componentStrings";
 const NewsletterPop = () => {
   const { NewsletterTermsAccept: NewsletterString } = strings;
   const [emailValid, setEmailValid] = useState<emailValidType>(inputStateEmail.init);
-  const [newsletterData, setNewsletterData] = useState<NewsProps>({ firstName: "", lastName: "", email: "" });
+  const [newsletterData, setNewsletterData] = useState<NewsProps>({ fullName: "", email: "" });
   const [userSubscribed, setSubscribed] = useState<SubscriptionType>(Sub.initState);
   const [eventInsert, setEventInsert] = useState<EventInsert | null>(null);
   const [termsAccepted, setTermsAccepted] = useState<boolean>(false);
@@ -72,12 +72,18 @@ const NewsletterPop = () => {
       setEmailValid(inputStateEmail.notValid);
     }
   }, [newsletterData.email]);
+
   const layoutTransition = () => {
     if (userSubscribed === Sub.SubscribedState) {
       return `${styles.rightPanel} ${styles.imageSubscribed}`;
     } else {
       return `${styles.rightPanel}`;
     }
+  };
+
+  const switchHandler = (switchValue: boolean) => {
+    setUserTriedToSubscribe(false);
+    setTermsAccepted(switchValue);
   };
 
   return (
@@ -103,19 +109,10 @@ const NewsletterPop = () => {
             <input
               type={"inputNewsletter"}
               autoComplete="off"
-              id="lastName"
-              name="lastName"
+              id="fullName"
+              name="fullName"
               placeholder={"Nume"}
-              value={newsletterData.lastName}
-              onChange={inputHandler}
-            />
-            <input
-              type={"inputNewsletter"}
-              autoComplete="off"
-              id="firstName"
-              name="firstName"
-              placeholder={"Prenume"}
-              value={newsletterData.firstName}
+              value={newsletterData.fullName}
               onChange={inputHandler}
             />
             <input
@@ -132,14 +129,7 @@ const NewsletterPop = () => {
             />
           </div>
           <div className={styles.termArea}>
-            <InputComponent
-              theme={"blue"}
-              typeOfInput="checkbox"
-              onSwitchEnabled={(switchValue: boolean) => {
-                setUserTriedToSubscribe(false);
-                setTermsAccepted(switchValue);
-              }}
-            />
+            <InputComponent theme={"blue"} typeOfInput="checkbox" onSwitchEnabled={switchHandler} />
             <p className={styles.termsText}>{NewsletterString.subscribeConsent}</p>
           </div>
           <button onClick={subscribeToNewsletter} className={styles.newsSubscribeButton}>
@@ -149,11 +139,11 @@ const NewsletterPop = () => {
           <div className={styles.termsWarningContainer}>
             {userTriedToSubscribe && !termsAccepted ? (
               <p className={styles.termsWarning}>{NewsletterString.warningConsent}</p>
-            ) : userTriedToSubscribe &&
-              (emailValid === inputStateEmail.notValid || emailValid === inputStateEmail.init) ? (
-              <p className={styles.termsWarning}>{NewsletterString.detailsWarning}</p>
             ) : (
-              ""
+              userTriedToSubscribe &&
+              (emailValid === inputStateEmail.notValid || emailValid === inputStateEmail.init) && (
+                <p className={styles.termsWarning}>{NewsletterString.detailsWarning}</p>
+              )
             )}
           </div>
         </div>

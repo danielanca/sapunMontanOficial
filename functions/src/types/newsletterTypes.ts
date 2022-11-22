@@ -1,5 +1,4 @@
 export interface subscriberProps {
-  firstName: string;
-  lastName: string;
+  fullName: string;
   email: string;
 }
