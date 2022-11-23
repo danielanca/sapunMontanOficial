@@ -1,6 +1,6 @@
 import { orderProps, ProductModel } from "./../utils/OrderInterfaces";
 import { getCookie } from "../utils/functions";
-
+import { ReviewsInterface } from "../utils/ReviewsTypes";
 import { NewsProps } from "../utils/NewsletterInterface";
 
 var destination: string = "";
@@ -26,10 +26,12 @@ export const requestOrdersList = async () => {
     .catch((error) => error);
 };
 
-export const sendReviewToBack = async (reviewObj: any) => {
+export const sendReviewToBack = async (reviewObj: ReviewsInterface) => {
+  console.log("SendReviewToBack received will send:", reviewObj);
   return await fetch(`${destination}/sendReviewToServer`, {
+    credentials: "include",
     method: "POST",
-    mode: "no-cors",
+    mode: "cors",
     body: JSON.stringify({
       name: reviewObj.name,
       starsNumber: reviewObj.starsNumber,
@@ -38,8 +40,8 @@ export const sendReviewToBack = async (reviewObj: any) => {
       reviewProductID: reviewObj.reviewProductID
     })
   })
-    .then(() => true)
-    .catch(() => false);
+    .then((res) => res)
+    .catch((error) => error);
 };
 
 export const sendOrderConfirmation = async (data: orderProps) => {

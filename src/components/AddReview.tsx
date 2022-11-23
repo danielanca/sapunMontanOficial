@@ -9,12 +9,12 @@ interface ReviewProps {
   starsNumber: string;
 }
 interface PassingReview {
-  productID: number;
+  productID: string;
 }
 const AddReview = ({ productID }: PassingReview) => {
   const [openReviewComment, setOpenReviewComment] = useState(false);
   const [reviewBuffer, setReviewBuffer] = useState<ReviewProps>({
-    reviewProductID: productID.toString() || "1994",
+    reviewProductID: productID,
     name: "",
     starsNumber: "",
     reviewActual: "",
