@@ -6,3 +6,11 @@ export interface ReviewType {
   date?: string;
   reviewProductID: string;
 }
+
+export interface ReviewToPostType {
+  starsNumber: string;
+  reviewActual: string;
+  name: string;
+  email: string;
+  date?: string;
+}
