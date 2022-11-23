@@ -7,6 +7,6 @@ export interface ReviewsInterface {
   reviewProductID: string;
 }
 export interface ReviewsProps {
-  productIdentification: number;
+  productIdentification: string;
   productData?: ReviewsInterface;
 }

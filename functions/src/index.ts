@@ -8,7 +8,7 @@ import { firestore } from "firebase-admin";
 import { adminUser, getSessionID, emailAuth, getAuthToken } from "./constants/credentials";
 import { subscriberProps } from "./types/newsletterTypes";
 import { applyCORSpolicy } from "./constants/corsFunc";
-import { ReviewType } from "./types/reviewTypes";
+import { ReviewType, ReviewToPostType } from "./types/reviewTypes";
 import { ResponseObject } from "./constants/emailCons";
 import { getTimestamp, generateInvoiceID } from "./constants/utils";
 import { transportOptions } from "./constants/emailCons";
@@ -40,15 +40,15 @@ export const deleteProduct = functions.https.onRequest((request, response) => {
 });
 
 export const sendReviewToServer = functions.https.onRequest((request, response) => {
+  applyCORSpolicy(response);
   let requestParam = JSON.parse(request.body);
-  console.log("endReviewToServer:", requestParam);
-  postReviewData(requestParam);
+  console.log("INCOMING Review for ", requestParam);
+  postReviewData(requestParam).then((result) => console.log("RESPONSE:", result));
 });
 const postReviewData = async (data: ReviewType) => {
   data.date = new Date().toISOString().slice(0, 10);
 
   var newReview: ReviewType = data;
-  console.log("newReview param:", newReview);
   var theResult = await admin
     .firestore()
     .collection("products")
@@ -57,40 +57,33 @@ const postReviewData = async (data: ReviewType) => {
     .then((result) => {
       let dataObject = JSON.stringify(result.data());
 
-      let parsableData = JSON.parse(dataObject);
-
-      if (dataObject !== undefined) {
-        let reviewsList: ReviewType[];
-        reviewsList = parsableData[0].reviews;
-        //  Object.values(reviewsList).forEach((item) => console.log("reviewsList", item));
-
-        console.log("New review is:", newReview);
-
-        reviewsList[(Array.from(reviewsList).length + 1).toString() as unknown as number] = {
+      const incomingProducts = JSON.parse(dataObject);
+      console.log("Response of postReviewData is:", incomingProducts[data.reviewProductID]);
+      if (typeof incomingProducts !== "undefined") {
+        let reviewsOfProduct: ReviewToPostType[] = Array.from(incomingProducts[data.reviewProductID].reviews);
+        console.log("THE TYPE OF reviewsOfProduct is ", reviewsOfProduct);
+        reviewsOfProduct.push({
           email: newReview.email,
           date: newReview.date,
           reviewActual: newReview.reviewActual,
           name: newReview.name,
-          reviewProductID: newReview.reviewProductID,
           starsNumber: newReview.starsNumber
-        };
-        // console.log("reviewList:", reviewsList);
-        return reviewsList;
+        });
+
+        incomingProducts[data.reviewProductID].reviews = reviewsOfProduct;
+        return incomingProducts[data.reviewProductID];
       } else {
-        functions.logger.info("sendReviewToServer response: ", parsableData);
+        functions.logger.info("sendReviewToServer response: ", incomingProducts);
         return null;
       }
     });
-
-  console.log("YAYA ", theResult);
+  console.log(`Sending back to DB ${data.reviewProductID}`, +theResult);
   await admin
     .firestore()
     .collection("products")
     .doc("activeProds")
     .update({
-      [data.reviewProductID]: {
-        reviews: theResult
-      }
+      [data.reviewProductID]: theResult
     });
 };
 
