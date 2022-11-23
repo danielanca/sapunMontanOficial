@@ -48,7 +48,6 @@ const postReviewData = async (data: ReviewType) => {
   data.date = new Date().toISOString().slice(0, 10);
 
   var newReview: ReviewType = data;
-  console.log("newReview param:", newReview);
   var theResult = await admin
     .firestore()
     .collection("products")
@@ -64,8 +63,6 @@ const postReviewData = async (data: ReviewType) => {
         reviewsList = parsableData[0].reviews;
         //  Object.values(reviewsList).forEach((item) => console.log("reviewsList", item));
 
-        console.log("New review is:", newReview);
-
         reviewsList[(Array.from(reviewsList).length + 1).toString() as unknown as number] = {
           email: newReview.email,
           date: newReview.date,
@@ -74,7 +71,6 @@ const postReviewData = async (data: ReviewType) => {
           reviewProductID: newReview.reviewProductID,
           starsNumber: newReview.starsNumber
         };
-        // console.log("reviewList:", reviewsList);
         return reviewsList;
       } else {
         functions.logger.info("sendReviewToServer response: ", parsableData);
