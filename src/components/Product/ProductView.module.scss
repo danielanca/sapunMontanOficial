@@ -78,8 +78,8 @@
 }
 .reviewContainer {
   display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
+  justify-content: center;
+  flex-direction: row;
 
   @include media(">=tablet", "<desktop") {
     justify-content: center;
@@ -120,6 +120,10 @@
   font-size: 20px;
   align-self: center;
   font-family: "Roboto";
+  cursor: pointer;
+  &:hover {
+    color: rgba(54, 54, 54, 0.797);
+  }
 }
 .priceWrapper {
   width: 100%;
@@ -130,7 +134,7 @@
 }
 .productPrice {
   font-size: 3rem;
-  color: #FF5F5F;
+  color: #ff5f5f;
 }
 .actionContainer {
   width: 100%;
@@ -140,7 +144,7 @@
   height: 115px;
 }
 .addToCart {
-  background-color: #FF5F5F;
+  background-color: #ff5f5f;
   color: white;
   outline: none;
   border-style: none;

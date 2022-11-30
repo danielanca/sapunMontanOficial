@@ -37,7 +37,8 @@ export const sendReviewToBack = async (reviewObj: ReviewsInterface) => {
       starsNumber: reviewObj.starsNumber,
       reviewActual: reviewObj.reviewActual,
       email: reviewObj.email,
-      reviewProductID: reviewObj.reviewProductID
+      reviewProductID: reviewObj.reviewProductID,
+      mediaLink: reviewObj.mediaLink
     })
   })
     .then((res) => res)

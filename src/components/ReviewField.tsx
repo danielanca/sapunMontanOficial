@@ -9,12 +9,10 @@ const ReviewField = ({ productData, productIdentification }: ReviewsProps) => {
   return (
     <div className={styles.contain}>
       <div className={styles.reviewContainer}>
-        {productData != null
-          ? Object.values(productData).map((item) => <ReviewCard key={uniqueId()} testimonials={item} />)
-          : ""}
-
-        <AddReview productID={productIdentification} />
+        {productData != null &&
+          Object.values(productData).map((item) => <ReviewCard key={uniqueId()} testimonials={item} />)}
       </div>
+      <AddReview productID={productIdentification} />
     </div>
   );
 };

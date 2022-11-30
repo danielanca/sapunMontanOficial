@@ -22,6 +22,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 2%;
   button {
     font-family: "Roboto";
   }
@@ -73,7 +74,7 @@
 }
 
 .submitButton {
-  background-color: #FF5F5F !important;
+  background-color: #ff5f5f !important;
   color: white;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -95,4 +96,17 @@ input[type="credentialsInput"] {
 }
 .textarea {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.uploadButton {
+  position: relative;
+  outline: 2px solid green;
+}
+.inputTypeFile {
+  position: absolute;
+  // opacity: 0;
+  // visibility: hidden;
+}
+.fileUploadContainer {
+  position: relative;
 }

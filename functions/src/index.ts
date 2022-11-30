@@ -58,7 +58,7 @@ const postReviewData = async (data: ReviewType) => {
       let dataObject = JSON.stringify(result.data());
 
       const incomingProducts = JSON.parse(dataObject);
-      console.log("Response of postReviewData is:", incomingProducts[data.reviewProductID]);
+      console.log("Response of postReviewData is:", incomingProducts);
       if (typeof incomingProducts !== "undefined") {
         let reviewsOfProduct: ReviewToPostType[] = Array.from(incomingProducts[data.reviewProductID].reviews);
         console.log("THE TYPE OF reviewsOfProduct is ", reviewsOfProduct);
@@ -67,7 +67,8 @@ const postReviewData = async (data: ReviewType) => {
           date: newReview.date,
           reviewActual: newReview.reviewActual,
           name: newReview.name,
-          starsNumber: newReview.starsNumber
+          starsNumber: newReview.starsNumber,
+          mediaLink: newReview.mediaLink
         });
 
         incomingProducts[data.reviewProductID].reviews = reviewsOfProduct;
