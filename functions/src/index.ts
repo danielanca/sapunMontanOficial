@@ -13,6 +13,7 @@ import { ResponseObject } from "./constants/emailCons";
 import { getTimestamp, generateInvoiceID } from "./constants/utils";
 import { transportOptions } from "./constants/emailCons";
 import { ProductModel } from "./types/productTypes";
+import { result } from "lodash";
 
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
@@ -43,7 +44,12 @@ export const sendReviewToServer = functions.https.onRequest((request, response) 
   applyCORSpolicy(response);
   let requestParam = JSON.parse(request.body);
   console.log("INCOMING Review for ", requestParam);
-  postReviewData(requestParam).then((result) => console.log("RESPONSE:", result));
+  postReviewData(requestParam)
+    .then((result) => {
+      console.log("RESPONSE [postReviewData]", result);
+      response.send({ response: "SENT" });
+    })
+    .catch((err) => response.send({ response: "reviewErrorServer" }));
 });
 const postReviewData = async (data: ReviewType) => {
   data.date = new Date().toISOString().slice(0, 10);
@@ -79,13 +85,15 @@ const postReviewData = async (data: ReviewType) => {
       }
     });
   console.log(`Sending back to DB ${data.reviewProductID}`, +theResult);
-  await admin
+  return await admin
     .firestore()
     .collection("products")
     .doc("activeProds")
     .update({
       [data.reviewProductID]: theResult
-    });
+    })
+    .then((response) => response)
+    .catch((err) => err);
 };
 
 // .update({

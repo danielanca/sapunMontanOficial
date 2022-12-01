@@ -10,6 +10,7 @@ interface ReviewerInterface {
   starsNumber: string;
   email: string;
   reviewProductID: string;
+  mediaLink?: string;
 }
 
 interface CommProps {
@@ -32,11 +33,7 @@ const CommContainer = ({ reviewItem, containerHandler }: CommProps) => {
           <div className={styles.sideLeft}>
             <img onClick={onClosePop} className={styles.closeStyle} src={images.closeIcon} />
 
-            <img
-              className={styles.imageContainer}
-              height={"100%"}
-              src="https://images.loox.io/uploads/2022/3/25/EJwMFVIGh_mid.jpg"
-            />
+            <img className={styles.imageContainer} height={"100%"} src={reviewItem.mediaLink} />
           </div>
           <div className={styles.sideRight}>
             <div className={styles.authorStyle}>

@@ -15,7 +15,8 @@ interface ReviewerInterface {
 interface IProps {
   testimonials: ReviewerInterface;
 }
-
+//https://extensions.dev/extensions/firebase/storage-resize-images
+//Image processing for media upload
 const ReviewCard = ({ testimonials }: IProps) => {
   const [isOpen, setisOpen] = useState<boolean>(false);
   const openComment = () => {
@@ -24,7 +25,9 @@ const ReviewCard = ({ testimonials }: IProps) => {
 
   return (
     <>
-      {isOpen && <CommContainer reviewItem={testimonials} containerHandler={setisOpen} />}
+      {isOpen && testimonials.hasOwnProperty("mediaLink") && (
+        <CommContainer reviewItem={testimonials} containerHandler={setisOpen} />
+      )}
       <div className={styles.commentBoard}>
         <div className={styles.rowInside}>
           <div className={styles.colItem}>

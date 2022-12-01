@@ -58,6 +58,7 @@
 .activeTransition {
   @extend .wrapper;
   display: inherit;
+  min-height: 152px;
 }
 .inputContainer {
   display: flex;
@@ -103,10 +104,7 @@ input[type="credentialsInput"] {
   outline: 2px solid green;
 }
 .inputTypeFile {
-  position: absolute;
-  // opacity: 0;
-  // visibility: hidden;
 }
 .fileUploadContainer {
-  position: relative;
+  width: auto;
 }
