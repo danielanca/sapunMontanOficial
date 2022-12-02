@@ -6,18 +6,18 @@ import styles from "./ReviewField.module.scss";
 import { ReviewsProps } from "../utils/ReviewsTypes";
 
 const ReviewField = ({ productData, productIdentification }: ReviewsProps) => {
-  console.log("Review Component:", productData);
+  let reviewsList = Object.values(productData);
   return (
     <div className={styles.contain}>
-      {productData != null && Object.values(productData).length > 1 ? (
+      {productData != null && reviewsList.length >= 1 ? (
         <div className={styles.reviewContainer}>
-          {Object.values(productData).map((item) => (
+          {reviewsList.map((item) => (
             <ReviewCard key={uniqueId()} testimonials={item} />
           ))}
         </div>
       ) : (
         <div className={styles.noReviewsComponent}>
-          <h2>{"nu exista recenzii"}</h2>
+          <h2>{"Nu exista recenzii"}</h2>
         </div>
       )}
 

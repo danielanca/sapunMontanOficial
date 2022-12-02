@@ -79,9 +79,9 @@
   @include media("<tablet") {
     height: auto;
     text-align: start;
-    padding: 5%;
     line-height: clamp(12px, 2vw, 16px);
     font-size: clamp(11px, 0.9vw, 18px);
+    padding: 5% 0;
   }
 }
 .reviewStars {

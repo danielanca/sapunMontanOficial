@@ -53,6 +53,12 @@
   position: relative;
   width: 100%;
   height: auto;
+
+  @include media(">=tablet", "<desktop") {
+    width: 65%;
+    width: clamp(300px, 90%, 514px);
+    margin: auto;
+  }
 }
 .imageContainer {
   height: 100%;
@@ -73,8 +79,10 @@
   }
 }
 .productTitle {
-  font-size: 3rem;
   text-align: center;
+  font-family: "Luckiest Guy" !important;
+  text-transform: uppercase;
+  font-size: clamp(28px, 3vw, 43px);
 }
 .reviewContainer {
   display: flex;

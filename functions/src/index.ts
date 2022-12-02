@@ -13,7 +13,6 @@ import { ResponseObject } from "./constants/emailCons";
 import { getTimestamp, generateInvoiceID } from "./constants/utils";
 import { transportOptions } from "./constants/emailCons";
 import { ProductModel } from "./types/productTypes";
-import { result } from "lodash";
 
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");

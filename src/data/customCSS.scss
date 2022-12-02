@@ -57,6 +57,10 @@
   min-width: 300px;
   margin: auto;
 }
+.centerImageLarge {
+  @extend .centerImageMedium;
+  max-width: 576px;
+}
 .spacerPadder50 {
   width: 100%;
   height: 50px;
@@ -110,4 +114,12 @@
 }
 .randNou {
   text-indent: 50px;
+}
+
+.recipes {
+  li {
+    font-family: "Roboto Medium";
+    font-weight: 300;
+    line-height: 1.2em;
+  }
 }

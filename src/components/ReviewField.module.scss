@@ -45,4 +45,7 @@
   h2 {
     margin-bottom: 0;
   }
+  @include media("<tablet") {
+    width: clamp(300px, 66%, 800px);
+  }
 }

@@ -94,6 +94,7 @@ const EditProduct = ({ editMode }: EditProduct) => {
                 <label htmlFor="imageProduct">{"Images"}</label>
                 <p>{"Linkurile spre imagini trebuie separate de virgula"}</p>
                 <textarea
+                  spellCheck="false"
                   className={styles.imageTextArea}
                   onChange={separatorHandler}
                   name="imageProduct"
@@ -119,17 +120,32 @@ const EditProduct = ({ editMode }: EditProduct) => {
               <div className={styles.rowSpacerTextArea}>
                 <div className={styles.inputFielderTextArea}>
                   <label htmlFor="shortDescription">{"short Description"}</label>
-                  <textarea onChange={inputHandler} name="shortDescription" value={editproductModel.shortDescription} />
+                  <textarea
+                    spellCheck="false"
+                    onChange={inputHandler}
+                    name="shortDescription"
+                    value={editproductModel.shortDescription}
+                  />
                 </div>
                 <div className={styles.inputFielderTextArea}>
                   <label htmlFor="firstDescription">{"first Description"}</label>
-                  <textarea onChange={inputHandler} name="firstDescription" value={editproductModel.firstDescription} />
+                  <textarea
+                    spellCheck="false"
+                    onChange={inputHandler}
+                    name="firstDescription"
+                    value={editproductModel.firstDescription}
+                  />
                 </div>
               </div>
 
               <div className={styles.editorElement}>
                 <label htmlFor="jsonContent">{"Full description HTML"}</label>
-                <textarea onChange={inputHandler} name="jsonContent" value={editproductModel.jsonContent} />
+                <textarea
+                  spellCheck="false"
+                  onChange={inputHandler}
+                  name="jsonContent"
+                  value={editproductModel.jsonContent}
+                />
               </div>
 
               <div className={styles.actionControl}>

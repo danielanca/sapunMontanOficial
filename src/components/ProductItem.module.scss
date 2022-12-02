@@ -37,8 +37,9 @@
   width: 210px;
   height: 335px;
   @include media("<tablet") {
-    width: 181px;
-    height: 290px;
+    width: 154px;
+    height: 265px;
+    margin: 0;
   }
 }
 .productImage {
@@ -50,17 +51,17 @@
   opacity: 0.8;
 }
 .productTitle {
-  font-family: "Bebas Neue Regular", cursive;
   font-size: 1.8em;
   text-decoration: none;
   text-align: center;
   line-height: 27px;
   cursor: pointer;
   font-size: clamp(18px, 5vw, 22px);
-
+  font-family: "Luckiest Guy" !important;
+  color: #312828e0;
   @include media("<tablet") {
     line-height: 29px;
-    font-size: clamp(24px, 3vw, 28px);
+    font-size: clamp(17px, 3vw, 28px);
   }
 }
 .productPrice {

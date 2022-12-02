@@ -80,7 +80,7 @@ const AddProduct = () => {
 
         <div className={"d-flex flex-column"}>
           <label htmlFor="jsonContent">{"Full description HTML"}</label>
-          <textarea onChange={inputHandler} name="jsonContent"></textarea>
+          <textarea spellCheck="false" onChange={inputHandler} name="jsonContent"></textarea>
         </div>
 
         <div className={styles.actionControl}>

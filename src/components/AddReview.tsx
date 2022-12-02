@@ -111,6 +111,7 @@ const AddReview = ({ productID }: PassingReview) => {
             <div className={styles.inputContainer}>
               <span>{"Recenzia:"}</span>
               <textarea
+                spellCheck="false"
                 rows={5}
                 onChange={reviewInputer}
                 className={styles.textarea}

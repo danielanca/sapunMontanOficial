@@ -20,7 +20,7 @@ const Comments = ({ productData, reviewsList, productID }: CommentsProps) => {
     <>
       <div className={styles.descriptionContainer}>
         {productReviews != null ? (
-          <ReviewField productData={productReviews} reviewsAr={reviewsList} productIdentification={productID} />
+          <ReviewField productData={productReviews} productIdentification={productID} />
         ) : (
           "NOTHING HERE - REVIEWS"
         )}

@@ -2,7 +2,7 @@
 @import "./../data/themes.scss";
 
 .jewel {
-  background-color: #FF5F5F;
+  background-color: #ff5f5f;
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -254,6 +254,8 @@ input[type="checkbox"]:not(:checked) ~ .subItemUL {
   font-family: "SallenasGrande Regular" !important;
   border-bottom: 5px solid transparent;
   white-space: nowrap;
+  font-family: fantasy !important;
+  text-transform: uppercase;
 }
 .HashLinkStyle {
   color: #ea4134;

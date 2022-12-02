@@ -28,4 +28,8 @@
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   align-items: center;
   flex-wrap: wrap;
+
+  @include media("<tablet") {
+    column-gap: 2%;
+  }
 }
