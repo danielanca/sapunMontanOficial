@@ -6,15 +6,22 @@ import styles from "./ReviewField.module.scss";
 import { ReviewsProps } from "../utils/ReviewsTypes";
 
 const ReviewField = ({ productData, productIdentification }: ReviewsProps) => {
+  let reviewsList = Object.values(productData);
   return (
     <div className={styles.contain}>
-      <div className={styles.reviewContainer}>
-        {productData != null
-          ? Object.values(productData).map((item) => <ReviewCard key={uniqueId()} testimonials={item} />)
-          : ""}
+      {productData != null && reviewsList.length >= 1 ? (
+        <div className={styles.reviewContainer}>
+          {reviewsList.map((item) => (
+            <ReviewCard key={uniqueId()} testimonials={item} />
+          ))}
+        </div>
+      ) : (
+        <div className={styles.noReviewsComponent}>
+          <h2>{"Nu exista recenzii"}</h2>
+        </div>
+      )}
 
-        <AddReview productID={productIdentification} />
-      </div>
+      <AddReview productID={productIdentification} />
     </div>
   );
 };

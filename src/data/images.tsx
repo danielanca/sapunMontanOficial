@@ -15,6 +15,8 @@ const images = {
   bear404: require("./../media/assets/404urs.png").default,
   finishOrder: require("./../media/assets/open-box.png").default,
   noProduct: require("./../media/assets/pics/prezentareCarbune/noProduct.png").default,
+  verifiedPurchase: require("./../media/assets/checked.png").default,
+  closeIcon: require("./../media/assets/closeIcon.png").default,
   ingredients: {
     vitaminaC: require("./../media/assets/pics/prezentareCarbune/ingredients/vitaminaC.png").default,
     argila: require("./../media/assets/pics/prezentareCarbune/ingredients/argila.png").default,

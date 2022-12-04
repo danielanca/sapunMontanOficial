@@ -43,7 +43,12 @@ export const sendReviewToServer = functions.https.onRequest((request, response) 
   applyCORSpolicy(response);
   let requestParam = JSON.parse(request.body);
   console.log("INCOMING Review for ", requestParam);
-  postReviewData(requestParam).then((result) => console.log("RESPONSE:", result));
+  postReviewData(requestParam)
+    .then((result) => {
+      console.log("RESPONSE [postReviewData]", result);
+      response.send({ response: "SENT" });
+    })
+    .catch((err) => response.send({ response: "reviewErrorServer" }));
 });
 const postReviewData = async (data: ReviewType) => {
   data.date = new Date().toISOString().slice(0, 10);
@@ -58,7 +63,7 @@ const postReviewData = async (data: ReviewType) => {
       let dataObject = JSON.stringify(result.data());
 
       const incomingProducts = JSON.parse(dataObject);
-      console.log("Response of postReviewData is:", incomingProducts[data.reviewProductID]);
+      console.log("Response of postReviewData is:", incomingProducts);
       if (typeof incomingProducts !== "undefined") {
         let reviewsOfProduct: ReviewToPostType[] = Array.from(incomingProducts[data.reviewProductID].reviews);
         console.log("THE TYPE OF reviewsOfProduct is ", reviewsOfProduct);
@@ -67,7 +72,8 @@ const postReviewData = async (data: ReviewType) => {
           date: newReview.date,
           reviewActual: newReview.reviewActual,
           name: newReview.name,
-          starsNumber: newReview.starsNumber
+          starsNumber: newReview.starsNumber,
+          mediaLink: newReview.mediaLink
         });
 
         incomingProducts[data.reviewProductID].reviews = reviewsOfProduct;
@@ -78,13 +84,15 @@ const postReviewData = async (data: ReviewType) => {
       }
     });
   console.log(`Sending back to DB ${data.reviewProductID}`, +theResult);
-  await admin
+  return await admin
     .firestore()
     .collection("products")
     .doc("activeProds")
     .update({
       [data.reviewProductID]: theResult
-    });
+    })
+    .then((response) => response)
+    .catch((err) => err);
 };
 
 // .update({

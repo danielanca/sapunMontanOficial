@@ -1,25 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./AddReview.module.scss";
 import { sendReviewToBack } from "./../services/emails";
+import { storage } from "./../firebase";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 interface ReviewProps {
   name: string;
   email: string;
   reviewActual: string;
   reviewProductID: string;
   starsNumber: string;
+  mediaLink?: string;
 }
 interface PassingReview {
   productID: string;
 }
+
 const AddReview = ({ productID }: PassingReview) => {
+  const [image, setImage] = useState<any>(null);
   const [openReviewComment, setOpenReviewComment] = useState(false);
   const [reviewBuffer, setReviewBuffer] = useState<ReviewProps>({
     reviewProductID: productID,
     name: "",
     starsNumber: "",
     reviewActual: "",
-    email: ""
+    email: "",
+    mediaLink: ""
   });
+  const [reviewStatus, setReviewStatus] = useState("NOT_SENT");
 
   const reviewInputer = (data: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = data.target;
@@ -35,9 +42,58 @@ const AddReview = ({ productID }: PassingReview) => {
       [name]: value
     }));
   };
-  const submitReviewToServer = () => {
-    sendReviewToBack(reviewBuffer);
+  const handleUploadChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
   };
+
+  useEffect(() => {
+    console.log("IMage local:", image);
+  }, [image]);
+  useEffect(() => {
+    console.log("ReviewBuffer:", reviewBuffer);
+  }, [reviewBuffer]);
+  const submitReviewToServer = () => {
+    if (image != null) {
+      const storageRef = ref(storage, `/reviewsMedia/${image.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, image);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {},
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            setReviewBuffer((reviewBuffer) => ({ ...reviewBuffer, mediaLink: url }));
+            console.log("Result stored as:", reviewBuffer);
+          });
+        }
+      );
+    } else {
+      sendReviewToBack(reviewBuffer).then((response) =>
+        response.json().then((responseInside) => {
+          console.log("Response inside:", responseInside.response);
+          if (responseInside.response === "SENT") {
+            setReviewStatus(responseInside.response);
+          }
+        })
+      );
+    }
+  };
+  useEffect(() => {
+    if (reviewBuffer.mediaLink !== "") {
+      sendReviewToBack(reviewBuffer).then((response) =>
+        response.json().then((responseInside) => {
+          console.log("Response inside:", responseInside.response);
+          if (responseInside.response === "SENT") {
+            setReviewStatus(responseInside.response);
+          }
+        })
+      );
+    }
+  }, [reviewBuffer.mediaLink]);
   const openReviewContainer = () => {
     setOpenReviewComment(true);
   };
@@ -50,24 +106,45 @@ const AddReview = ({ productID }: PassingReview) => {
       )}
 
       <div className={openReviewComment ? styles.activeTransition : styles.wrapper}>
-        <div className={styles.inputContainer}>
-          <span>{"Recenzia:"}</span>
-          <textarea
-            rows={5}
-            onChange={reviewInputer}
-            className={styles.textarea}
-            name="reviewActual"
-            id="reviewActual"
-            placeholder="Introduceti mesajul cu privire la experienta dvs. "
-          />
-          <span>{"Numele dvs:"}</span>
-          <input onChange={identificationInserter} name="name" id="name" placeholder="Nume*"></input>
-          <span>{"Email:"}</span>
-          <input onChange={identificationInserter} name={"email"} id="email" placeholder="Email:*"></input>
-        </div>
-        <button onClick={submitReviewToServer} className={styles.submitButton}>
-          {"TRIMITE"}
-        </button>
+        {reviewStatus === "NOT_SENT" ? (
+          <>
+            <div className={styles.inputContainer}>
+              <span>{"Recenzia:"}</span>
+              <textarea
+                spellCheck="false"
+                rows={5}
+                onChange={reviewInputer}
+                className={styles.textarea}
+                name="reviewActual"
+                id="reviewActual"
+                placeholder="Introduceti mesajul cu privire la experienta dvs. "
+              />
+              {/* <button onClick={handleUpload}>{"Uploadv"}</button> */}
+              <span>{"Numele dvs:"}</span>
+              <input onChange={identificationInserter} name="name" id="name" placeholder="Nume*" />
+              <span>{"Email:"}</span>
+              <input onChange={identificationInserter} name={"email"} id="email" placeholder="Email:*" />
+              <span>{"Media:"}</span>
+              <div className={styles.fileUploadContainer}>
+                <input
+                  className={styles.inputTypeFile}
+                  onChange={handleUploadChange}
+                  type="file"
+                  name={"media"}
+                  id="media"
+                  placeholder="Poza:"
+                />
+              </div>
+            </div>
+            <button onClick={submitReviewToServer} className={styles.submitButton}>
+              {"TRIMITE"}
+            </button>
+          </>
+        ) : reviewStatus === "SENT" ? (
+          <h2>{"Recenzia a fost trimisa"}</h2>
+        ) : (
+          <h2>{"NOTHING HERE"}</h2>
+        )}
       </div>
     </div>
   );

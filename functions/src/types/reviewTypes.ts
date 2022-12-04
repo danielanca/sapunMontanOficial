@@ -5,6 +5,7 @@ export interface ReviewType {
   email: string;
   date?: string;
   reviewProductID: string;
+  mediaLink?: string;
 }
 
 export interface ReviewToPostType {
@@ -13,4 +14,5 @@ export interface ReviewToPostType {
   name: string;
   email: string;
   date?: string;
+  mediaLink?: string;
 }
