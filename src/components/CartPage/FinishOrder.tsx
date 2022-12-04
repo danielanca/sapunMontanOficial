@@ -22,9 +22,9 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   const [emailSentConfirmed, setSent] = useState<boolean>(false);
   let itemsSessionStorage = sessionStorage.getItem(ProductsFromSessionStorage);
   let productSessionStorage = itemsSessionStorage != null ? JSON.parse(itemsSessionStorage) : null;
-  const [pendingRequest, setPendingReq] = useState<boolean>(false);
   var storedCart: any[] = [];
   var subtotalPrepare: number = 0;
+  const [pendingRequest, setPendingReq] = useState<boolean>(false);
   const [finishOrderRequested, setFinishRequested] = useState<number>(0);
   const [completionState, setError] = useState<ErrorProps>({
     paymentSelected: false,
@@ -50,18 +50,18 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     }
   };
   const sendOrderData = () => {
-    setFinishRequested(finishOrderRequested + 1);
+    setFinishRequested((prevState) => prevState + 1);
+  };
 
+  useEffect(() => {
     if (completionState.inputCompleted && completionState.paymentSelected && completionState.termsAccepted) {
-      console.log(orderData);
       setPendingReq(true);
 
       handleSend();
     }
-  };
+  }, [finishOrderRequested]);
 
   const paymentMethodHandler = (value: boolean, title: string | undefined) => {
-    console.log("Payment handler title is:", title);
     if (value) {
       setorderData((orderData) => ({
         ...orderData,
@@ -82,8 +82,8 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   useEffect(() => {
     if (emailSentConfirmed) {
       window.scrollTo(0, 0);
-      localStorage.removeItem("cartData");
-      console.log(`Email state changed to: ${emailSentConfirmed} and removed items from localStorage`);
+      localStorage.removeItem(CartInfoItemCookie);
+
       if (typeof clearNotification === "function") {
         clearNotification(Math.floor(Math.random() * 120));
       } else {
@@ -114,8 +114,8 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
       new Error("Product Session Storage is null");
     }
 
-    console.log("EXPLICIT PRODS:", explicitProductList);
-    console.log(orderData);
+    // console.log("EXPLICIT PRODS:", explicitProductList);
+    // console.log(orderData);
   }
   const termAcceptHandler = () => {
     setError((completionState) => ({ ...completionState, termsAccepted: !completionState.termsAccepted }));
