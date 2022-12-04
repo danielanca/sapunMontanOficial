@@ -8,11 +8,14 @@ import { NavHashLink } from "react-router-hash-link";
 import { makeCheck } from "./../../functions/utilsFunc";
 import { ErrorProps, OrderProps, ExplicitProdListProps, PropertyInput, InputProps } from "./typeProps";
 
-import { componentStrings, productConstants } from "../../data/componentStrings";
+import { productConstants } from "../../data/componentStrings";
 import strings from "../../data/strings.json";
 import { ProductsFromSessionStorage, CartInfoItemCookie } from "../../data/constants";
 import styles from "./../CartPage/FinishOrder.module.scss";
 import images from "./../../data/images";
+import { useOrderObject } from "./useOrderData";
+import { getInputFields } from "./inputFields";
+import { areInputsValid } from "./funcs";
 
 const FinishOrder = ({ clearNotification }: OrderProps) => {
   let { orderFinishPage: orderString } = strings;
@@ -28,22 +31,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     termsAccepted: false,
     inputCompleted: false
   });
-  const [orderData, setorderData] = useState<orderProps>({
-    firstName: "",
-    lastName: "",
-    emailAddress: "",
-    deliveryAddress: "",
-    city: "",
-    county: "",
-    paymentMethod: "",
-    cartProducts: "",
-    phoneNo: "",
-    cartSum: subtotalPrepare,
-    shippingTax: productConstants.shippingFee,
-    orderNotes: "",
-    deliveryName: "DPD Curier",
-    paymentStatus: "NOT_PAID"
-  });
+  const { orderData, setorderData } = useOrderObject();
 
   const handleSend = async () => {
     try {
@@ -146,14 +134,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     if (finishOrderRequested === 0) {
       return;
     }
-    if (
-      orderData.firstName.length >= 2 &&
-      orderData.lastName.length >= 2 &&
-      orderData.city.length >= 2 &&
-      orderData.county.length >= 2 &&
-      orderData.phoneNo.length >= 2 &&
-      orderData.deliveryAddress.length >= 2
-    ) {
+    if (areInputsValid(orderData)) {
       setError((completionState) => ({ ...completionState, inputCompleted: true }));
     } else {
       setError((completionState) => ({ ...completionState, inputCompleted: false }));
@@ -163,67 +144,8 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     }
     console.log("Finish order request", finishOrderRequested);
   }, [finishOrderRequested, orderData]);
-  const inputObject: InputProps = {
-    lastName: {
-      name: "lastName",
-      inputListener: inputHandler,
-      value: orderData.lastName,
-      labelText: orderString.inputsLabels.lastName,
-      mandatoryInput: true
-    },
-    firstName: {
-      name: "firstName",
-      inputListener: inputHandler,
-      value: orderData.firstName,
-      labelText: orderString.inputsLabels.firstName,
-      mandatoryInput: true
-    },
-    deliveryAddress: {
-      name: "deliveryAddress",
-      inputListener: inputHandler,
-      value: orderData.deliveryAddress,
-      labelText: orderString.inputsLabels.deliveryAddress,
-      mandatoryInput: true
-    },
-    city: {
-      name: "city",
-      inputListener: inputHandler,
-      value: orderData.city,
-      labelText: orderString.inputsLabels.city,
-      mandatoryInput: true
-    },
-    county: {
-      name: "county",
-      inputListener: inputHandler,
-      value: orderData.county,
-      labelText: orderString.inputsLabels.county,
-      mandatoryInput: true,
-      inputOptions: {
-        autoComplete: "false",
-        list: "county"
-      },
-      otherStructure: {
-        dataList: {
-          name: "county",
-          list: componentStrings.FinishOrder.countyList
-        }
-      }
-    },
-    phoneNo: {
-      name: "phoneNo",
-      inputListener: inputHandler,
-      value: orderData.phoneNo,
-      labelText: orderString.inputsLabels.phoneNo,
-      mandatoryInput: true
-    },
-    emailAddress: {
-      name: "emailAddress",
-      inputListener: inputHandler,
-      value: orderData.emailAddress,
-      labelText: orderString.inputsLabels.emailAddress,
-      mandatoryInput: false
-    }
-  };
+
+  const inputObject = getInputFields(orderData, inputHandler);
 
   return (
     <div className={styles.FinishSection}>
