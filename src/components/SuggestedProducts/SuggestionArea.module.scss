@@ -31,5 +31,6 @@
 
   @include media("<tablet") {
     column-gap: 2%;
+    row-gap: 10px;
   }
 }
