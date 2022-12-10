@@ -3,7 +3,6 @@ import OrderDone from "./OrderDone";
 import { sendOrderConfirmation } from "./../../services/emails";
 import Checkboxer from "./../MiniComponents/Checkboxer";
 
-import { orderProps } from "./../../utils/OrderInterfaces";
 import { NavHashLink } from "react-router-hash-link";
 import { makeCheck } from "./../../functions/utilsFunc";
 import { ErrorProps, OrderProps, ExplicitProdListProps, PropertyInput, InputProps } from "./typeProps";
@@ -53,14 +52,6 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     setFinishRequested((prevState) => prevState + 1);
   };
 
-  useEffect(() => {
-    if (completionState.inputCompleted && completionState.paymentSelected && completionState.termsAccepted) {
-      setPendingReq(true);
-
-      handleSend();
-    }
-  }, [finishOrderRequested]);
-
   const paymentMethodHandler = (value: boolean, title: string | undefined) => {
     if (value) {
       setorderData((orderData) => ({
@@ -79,18 +70,6 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
       [name]: value
     }));
   };
-  useEffect(() => {
-    if (emailSentConfirmed) {
-      window.scrollTo(0, 0);
-      localStorage.removeItem(CartInfoItemCookie);
-
-      if (typeof clearNotification === "function") {
-        clearNotification(Math.floor(Math.random() * 120));
-      } else {
-        new Error("clearNotification is not a function");
-      }
-    }
-  }, [emailSentConfirmed]);
 
   var deliveryFee = productConstants.shippingFee;
   let expectedData = localStorage.getItem(CartInfoItemCookie);
@@ -113,14 +92,31 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
       console.log("Product session storage is null");
       new Error("Product Session Storage is null");
     }
-
-    // console.log("EXPLICIT PRODS:", explicitProductList);
-    // console.log(orderData);
   }
   const termAcceptHandler = () => {
     setError((completionState) => ({ ...completionState, termsAccepted: !completionState.termsAccepted }));
   };
 
+  useEffect(() => {
+    if (completionState.inputCompleted && completionState.paymentSelected && completionState.termsAccepted) {
+      setPendingReq(true);
+
+      handleSend();
+    }
+  }, [finishOrderRequested]);
+
+  useEffect(() => {
+    if (emailSentConfirmed) {
+      window.scrollTo(0, 0);
+      localStorage.removeItem(CartInfoItemCookie);
+
+      if (typeof clearNotification === "function") {
+        clearNotification(Math.floor(Math.random() * 120));
+      } else {
+        new Error("clearNotification is not a function");
+      }
+    }
+  }, [emailSentConfirmed]);
   useEffect(() => {
     setorderData((orderData) => ({
       ...orderData,

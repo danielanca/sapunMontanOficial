@@ -5,13 +5,14 @@
 
 .ingredientsContainer {
   width: 100%;
-  height: 200px;
+  height: 258px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   column-gap: 43px;
   padding: 12px;
+  margin: 2% 0;
   @include media("<tablet") {
     column-gap: 0px;
     grid-column-gap: 0px;
@@ -20,6 +21,19 @@
 .iconImage {
   width: 80px;
   height: 80px;
+}
+.imageWrap {
+}
+.textWrap {
+  height: 90px;
+
+  @include media("<tablet") {
+    height: 54px;
+    padding: 5%;
+  }
+  p {
+    line-height: 17px;
+  }
 }
 .productList {
   display: flex;
@@ -30,6 +44,13 @@
 }
 .titleText {
   font-weight: bolder;
+  margin: 0;
+}
+.titleWrap {
+  height: 50px;
+  @include media("<tablet") {
+    height: 33px;
+  }
 }
 .textArea {
   max-width: 200px;
@@ -40,6 +61,7 @@
     text-align: center;
     line-height: 21px;
     font-family: "Roboto Medium";
+    margin: 0;
     @include media("<tablet") {
       margin: 0;
       line-height: 14px;
