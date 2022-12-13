@@ -109,6 +109,7 @@ const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes
             {popProductInCart && <ProductAdded animFin={animEnded} id={ID} />}
           </div>
         </div>
+
         {productListUpdated && <ProductDescription productDescription={productListUpdated} productID={ID} />}
       </div>
     </>

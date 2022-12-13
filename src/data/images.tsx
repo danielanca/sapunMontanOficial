@@ -17,6 +17,8 @@ const images = {
   noProduct: require("./../media/assets/pics/prezentareCarbune/noProduct.png").default,
   verifiedPurchase: require("./../media/assets/checked.png").default,
   closeIcon: require("./../media/assets/closeIcon.png").default,
+  refundIcon:
+    "https://firebasestorage.googleapis.com/v0/b/diniubire-89ce0.appspot.com/o/icons%2FRectangle%202.png?alt=media&token=4ec69e4d-eebc-477e-ab7c-fdf07c5f1a99",
   ingredients: {
     vitaminaC: require("./../media/assets/pics/prezentareCarbune/ingredients/vitaminaC.png").default,
     argila: require("./../media/assets/pics/prezentareCarbune/ingredients/argila.png").default,
