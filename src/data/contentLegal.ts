@@ -53,10 +53,24 @@ export const staticContent = {
 
     <h4 class="middleSubtext"> CONDITII PENTRU RETURNAREA PRODUSELOR </h4>
 
-    <p><b>Conform Ordonantei nr. 130/2000 </b> privind regimul juridic al contractelor la distanta <b>"Consumatorul are dreptul sa notifice in scris comerciantului ca renunta la cumparare, fara penalitati si fara invocarea unui motiv, in termen de 10 zile lucratoare de la primirea produsului </b>. Notificarea se va da, semna si trimite de catre Dumneavoastra prin posta la adresa: <b>localitatea Turda, strada Plopilor, nr.3 bl.l1  Judet. Cluj. In situatia mentionata mai sus </b>, Dumneavoastra veti returna, in termenul prevazut mai sus, produsul cumparat in ambalajul original, fara sa prezinte nici o urma de deteriorare sau uzura. Cheltuielile de expeditie vor fi suportate de Dumneavoastra. Produsele trebuie returnate in ambalajul lor original. Prin deschiderea ambalajelor individuale in care au fost livrate produsele comandate inseamna ca sunteti de acord cu aceste conditii de utilizare si ca produsele sunt cele comandate si corespund cerintelor dumneavoastra. <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA </b> se obliga sa restituie clientului sumele incasate pentru produsele returnate, in termen de maxim 30 de zile de la data denuntarii de catre Dvs a contractului. </p>
-    <p>Orice conflict aparut intre <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA </b> si clienti se incearca a fi rezolvat pe cale amiabila prin intelegere intre cele doua parti. In cazul in care acest lucru nu este posibil se vor aplica prevederile legale romanesti din acest domeniu, iar solutionarea conflictelor este de competenta instantelor romanesti. </p>  <p>Daca oricare dintre clauzele de mai sus va fi gasita nula sau nevalida, indiferent de cauza, aceasta clauza nu va afecta valabilitatea celorlalte clauze. Odata cu cumpararea si lansarea comenzii, clientul accepta fara obiectiuni conditiile si termenii de utilizare, valoarea acestora fiind aceeasi cu un contract valabil incheiat. </p>
+    <p><b>Conform Ordonantei nr. 130/2000 </b> privind regimul juridic al contractelor la distanta <b>"Consumatorul are dreptul sa notifice in scris comerciantului 
+    ca renunta la cumparare, fara penalitati si fara invocarea unui motiv, in termen de 10 zile lucratoare de la primirea produsului </b>. Notificarea se va da, semna si 
+    trimite de catre Dumneavoastra prin posta la adresa: <b>localitatea Turda, strada Plopilor, nr.3 bl.l1  Judet. Cluj. In situatia mentionata mai sus </b>, Dumneavoastra veti
+    returna, in termenul prevazut mai sus, produsul cumparat in ambalajul original, fara sa prezinte nici o urma de deteriorare sau uzura. Cheltuielile de expeditie vor fi suportate de Dumneavoastra.
+    Produsele trebuie returnate in ambalajul lor original. Prin deschiderea ambalajelor individuale in care au fost livrate produsele comandate inseamna ca sunteti de acord cu aceste conditii de utilizare 
+    si ca produsele sunt cele comandate si corespund cerintelor dumneavoastra. <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA </b> se obliga sa restituie clientului sumele incasate pentru produsele returnate, 
+    in termen de maxim 30 de zile de la data denuntarii de catre Dvs a contractului. </p>
+    <p>Orice conflict aparut intre <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA </b> si clienti se incearca a fi rezolvat pe cale amiabila prin intelegere intre cele doua parti. In cazul in care acest 
+    lucru nu este posibil se vor aplica prevederile legale romanesti din acest domeniu, iar solutionarea conflictelor este de competenta instantelor romanesti. </p>  <p>Daca oricare dintre clauzele de mai sus va fi
+    gasita nula sau nevalida, indiferent de cauza, aceasta clauza nu va afecta valabilitatea celorlalte clauze. Odata cu cumpararea si lansarea comenzii, clientul accepta fara obiectiuni conditiile si termenii de utilizare, 
+    valoarea acestora fiind aceeasi cu un contract valabil incheiat. </p>
     
 
+    <h2>Garantie 100% retur pentru mulaje</h2>
+    <p>Cumparatorul beneficiaza de returnarea banilor integral, daca, incluzand deschiderea coletului si realizarea procesului de mulaj, acesta nu satisface multumirea cumparatorului. </p>
+    <p>Pentru ca cumparatorul se beneficieze de returul integral al banilor, acesta are obligatia de a <strong>returna toate produsele si accesoriile din kit</strong>, acestea fiind specificate in descrierea produsului, aici se include si mulajul nedorit de cumparator"
+    </p>
+    <p>In termen de 5 zile dupa ce produsul a fost returnat catre magazin, clientul primeste suma de bani inapoi in cont sau ramburs, cu modalitatea de plata initial realizata.</p>
     Date de contact:
     
     <b>Daniel Anca
@@ -184,21 +198,21 @@ export const staticContent = {
   <h4 class="middleSubtext">CUM SE OPRESC COOKIURILE</h4>
 
 
-<p>Cookie-urile sunt salvate în memoria cache a browserului dvs. Aceasta înseamnă că puteți decide dacă editorii de site-uri web vor ști ce părți ale site-ului web utilizați. Cookie-urile permit editorilor să vă arate cel mai interesant conținut pe baza acțiunilor dvs. anterioare. Pentru a afișa conținut personalizat așa cum va vedea utilizatorul pentru prima dată, mai întâi trebuie să ștergeți informațiile despre cookie-uri în browserul dvs. - Firefox, Internet Explorer, Chrome etc. - de pe computer sau telefon. Informațiile colectate prin intermediul cookie-urilor pot fi utilizate pentru a colecta informații în scopuri comerciale și pot fi utilizate de agenții de publicitate, cum ar fi Google AdChoices, pentru a ajusta reclamele afișate.</p>
+  <p>Cookie-urile sunt salvate în memoria cache a browserului dvs. Aceasta înseamnă că puteți decide dacă editorii de site-uri web vor ști ce părți ale site-ului web utilizați. Cookie-urile permit editorilor să vă arate cel mai interesant conținut pe baza acțiunilor dvs. anterioare. Pentru a afișa conținut personalizat așa cum va vedea utilizatorul pentru prima dată, mai întâi trebuie să ștergeți informațiile despre cookie-uri în browserul dvs. - Firefox, Internet Explorer, Chrome etc. - de pe computer sau telefon. Informațiile colectate prin intermediul cookie-urilor pot fi utilizate pentru a colecta informații în scopuri comerciale și pot fi utilizate de agenții de publicitate, cum ar fi Google AdChoices, pentru a ajusta reclamele afișate.</p>
 
-<p>Cum să dezactivați cookie-urile în anumite browsere:</p>
+  <p>Cum să dezactivați cookie-urile în anumite browsere:</p>
 
-<p>Puteți dezactiva cookie-urile pentru un anumit site web sau pentru toate conexiunile din browserul dvs.</p>
+  <p>Puteți dezactiva cookie-urile pentru un anumit site web sau pentru toate conexiunile din browserul dvs.</p>
 
-<p> <b>1. În Mozilla Firefox: </b> În meniul Instrumente, faceți clic pe Opțiuni și selectați fila Confidențialitate. Browserul vă permite să dezactivați complet urmărirea sau să ștergeți cookie-urile anumitor site-uri.</p>
-<p> <b>2. În Microsoft Internet Explorer:</b> În meniul Instrumente, faceți clic pe Opțiuni Internet, apoi pe fila Confidențialitate. Puteți ajusta nivelul general de confidențialitate cu un glisor special sau puteți face clic pe butonul Site-uri pentru a gestiona setările pentru site-uri web individuale.</p>
-<p> <b>3. În Google Chrome</b> În meniul de sub cele trei linii orizontale din colțul din dreapta sus, selectați Instrumente, apoi Ștergeți datele de navigare. În afară de opțiunea de ștergere a cookie-urilor, puteți face clic și pe Mai multe informații pentru a vedea o descriere detaliată a opțiunilor de confidențialitate.</p>
-<p> <b>4. În Opera </b> Click Opera din colțul din stânga sus, alegeți Setări, apoi Ștergeți datele de navigare. În afară de opțiunea de ștergere a cookie-urilor deja create, puteți face clic și pe Gestionare cookie-uri pentru a accesa opțiuni mai avansate pentru site-uri individuale.</p>
-<p> <b>5. În Safari </b> În meniul Safari, selectați Preferințe, apoi fila Confidențialitate. Puteți găsi multe opțiuni cu privire la cookie-uri acolo.</p>
-<p> <b>6. La telefoane  tablete și alte dispozitive mobile:</b> fiecare model de telefon poate gestiona această funcție diferit. Vă recomandăm să verificați setările de confidențialitate din documentația de pe site-ul web al producătorului dispozitivului dvs. mobil</p>
+  <p> <b>1. În Mozilla Firefox: </b> În meniul Instrumente, faceți clic pe Opțiuni și selectați fila Confidențialitate. Browserul vă permite să dezactivați complet urmărirea sau să ștergeți cookie-urile anumitor site-uri.</p>
+  <p> <b>2. În Microsoft Internet Explorer:</b> În meniul Instrumente, faceți clic pe Opțiuni Internet, apoi pe fila Confidențialitate. Puteți ajusta nivelul general de confidențialitate cu un glisor special sau puteți face clic pe butonul Site-uri pentru a gestiona setările pentru site-uri web individuale.</p>
+  <p> <b>3. În Google Chrome</b> În meniul de sub cele trei linii orizontale din colțul din dreapta sus, selectați Instrumente, apoi Ștergeți datele de navigare. În afară de opțiunea de ștergere a cookie-urilor, puteți face clic și pe Mai multe informații pentru a vedea o descriere detaliată a opțiunilor de confidențialitate.</p>
+  <p> <b>4. În Opera </b> Click Opera din colțul din stânga sus, alegeți Setări, apoi Ștergeți datele de navigare. În afară de opțiunea de ștergere a cookie-urilor deja create, puteți face clic și pe Gestionare cookie-uri pentru a accesa opțiuni mai avansate pentru site-uri individuale.</p>
+  <p> <b>5. În Safari </b> În meniul Safari, selectați Preferințe, apoi fila Confidențialitate. Puteți găsi multe opțiuni cu privire la cookie-uri acolo.</p>
+  <p> <b>6. La telefoane  tablete și alte dispozitive mobile:</b> fiecare model de telefon poate gestiona această funcție diferit. Vă recomandăm să verificați setările de confidențialitate din documentația de pe site-ul web al producătorului dispozitivului dvs. mobil</p>
 
-</div>
-<div class="spacerPadder50"> 
+  </div>
+  <div class="spacerPadder50"> 
 
 
 

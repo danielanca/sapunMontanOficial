@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import validator from "validator";
 import styles from "./AddReview.module.scss";
 import { sendReviewToBack } from "./../services/emails";
 import { storage } from "./../firebase";
@@ -27,6 +28,7 @@ const AddReview = ({ productID }: PassingReview) => {
     mediaLink: ""
   });
   const [reviewStatus, setReviewStatus] = useState("NOT_SENT");
+  const [reviewState, setReviewState] = useState<"pressed" | "pending" | "init" | "invalidInput">("init");
 
   const reviewInputer = (data: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = data.target;
@@ -53,7 +55,27 @@ const AddReview = ({ productID }: PassingReview) => {
   }, [image]);
   useEffect(() => {
     console.log("ReviewBuffer:", reviewBuffer);
+
+    if (reviewState === "invalidInput") {
+      setReviewState("init");
+    }
   }, [reviewBuffer]);
+
+  useEffect(() => {
+    if (reviewState === "pressed") {
+      if (!validator.isEmail(reviewBuffer.email) || reviewBuffer.reviewActual === "" || reviewBuffer.name === "") {
+        setReviewState("invalidInput");
+      } else {
+        setReviewState("pending");
+        submitReviewToServer();
+      }
+    }
+  }, [reviewState]);
+
+  const onReviewButtonClick = () => {
+    setReviewState("pressed");
+  };
+
   const submitReviewToServer = () => {
     if (image != null) {
       const storageRef = ref(storage, `/reviewsMedia/${image.name}`);
@@ -136,9 +158,14 @@ const AddReview = ({ productID }: PassingReview) => {
                 />
               </div>
             </div>
-            <button onClick={submitReviewToServer} className={styles.submitButton}>
-              {"TRIMITE"}
+            <button
+              onClick={onReviewButtonClick}
+              className={reviewState === "pending" ? styles.pendingSubmitButton : styles.submitButton}
+            >
+              {reviewState === "init" ? "TRIMITE" : "..."}
             </button>
+            {reviewState === "pending" && <p>{"Se trimite recenzia..."}</p>}
+            {reviewState === "invalidInput" && <p>{"Datele introduse nu sunt valide"}</p>}
           </>
         ) : reviewStatus === "SENT" ? (
           <h2>{"Recenzia a fost trimisa"}</h2>

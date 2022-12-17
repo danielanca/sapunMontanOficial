@@ -11,7 +11,7 @@ import { getData } from "./data/productList";
 import { AuthProvider } from "./components/context/AuthProvider";
 import { getCookie } from "./components/CookieConsent/functions";
 import CookieConsent from "./components/CookieConsent/CookieConsent";
-
+import VideoInstructions from "./components/VideoInstructions/VideoInstructions";
 import NotFound from "./components/NotFound/NotFound";
 
 import "./App.css";
@@ -120,6 +120,7 @@ function App() {
                   <Route path="/blogid/:blogLink" element={<BlogPost />} />
                   <Route path="/testimonials" element={<Testimonials />} />
                   <Route path="/order/:orderID" element={<OrderView />} />
+                  <Route path="/instructiuni-video" element={<VideoInstructions />} />
                   <Route path="/" element={<MainNavigation />} />
 
                   {/* Content Template*/}
