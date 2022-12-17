@@ -24,7 +24,9 @@
     "ourProducts": { "name": "Produsele noastre", "link": "/produsele-noastre" },
     "aboutUs": { "name": "Despre noi", "link": "/produsele-noastre" },
     "blog": { "name": "Blog", "link": "/blogs" },
-    "testimonials": { "name": "Testimoniale", "link": "/testimonials" },
+    "middleNOUI": { "name": "middle" },
+    "intrebariFrecvente": { "name": "Intrebari frecvente", "link": "/intrebari" },
+    "testimonials": { "name": "Testimoniale", "link": "/testimonials", "hide": "true" },
     "contactUs": { "name": "Contact", "link": "/contact" }
   },
   "navMenuMobile": {
@@ -43,13 +45,9 @@
       "title": "Blog",
       "link": "/blogs"
     },
-    "testimonials": {
-      "title": "Testimoniale",
-      "link": "/testimonials"
-    },
-    "contactUs": {
-      "title": "Contact",
-      "link": "/contact"
+    "intrebari-frecvente": {
+      "title": "Intrebari",
+      "link": "/intrebari"
     }
   },
   "cart": {
@@ -241,5 +239,24 @@
   "BrandDetailsStr": {
     "title": "DinIubire.Ro - creăm amintiri împreună",
     "description": "Construim si optimizam constant ceea ce facem pentru ca tu sa poti avea parte de o amintire placuta cu persoanele dragi"
+  },
+
+  "FAQ": {
+    "topText": "FAQ",
+    "bottomText": "Intrebari frecvente",
+    "questionList": {
+      "questionOne": {
+        "question": "In cat timp soseste kit-ul?",
+        "answer": "Coletul ajunge de obicei la client in 1-2 zile din momentul plasarii comenzii."
+      },
+      "questionTwo": {
+        "question": "Este complicat realizarea unui mulaj ?",
+        "answer": "In kit-ul de mulaj sunt incluse atat insutrctiuni pe foaie, dar si VIDEO. Veti primi pe hartie un link pe care trebuie sa-l accesati ca sa vizionati instructiunile video. Instructiunile sunt realizate pas cu pas, in asa fel incat sa puteti parcurge toti pasii fara nici o problema, bucurandu-va in final de mulajul mainilor voastre."
+      },
+      "questionThree": {
+        "question": "Ce inseamna Garantie 100 % Retur la produse?",
+        "answer": " Oferim clientilor nostri dreptul de a returna kit-ul, chiar daca l-ati deschis, si ati realizat mulajul. Returnati tot kit-ul folosit, iar noi va vom returna suma de bani pentru produs, prin metoda de plata selectat initial la comanda."
+      }
+    }
   }
 }

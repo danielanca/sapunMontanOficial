@@ -5,13 +5,20 @@ import AddReview from "./AddReview";
 import styles from "./ReviewField.module.scss";
 import { ReviewsProps } from "../utils/ReviewsTypes";
 
-const ReviewField = ({ productData, productIdentification }: ReviewsProps) => {
+const ReviewField = ({ productData, productIdentification, allReviews }: ReviewsProps) => {
   let reviewsList = Object.values(productData);
+
   return (
     <div className={styles.contain}>
-      {productData != null && reviewsList.length >= 1 ? (
+      {productData != null && reviewsList.length >= 2 ? (
         <div className={styles.reviewContainer}>
           {reviewsList.map((item) => (
+            <ReviewCard key={uniqueId()} testimonials={item} />
+          ))}
+        </div>
+      ) : productData != null && reviewsList.length <= 1 ? (
+        <div className={styles.reviewContainer}>
+          {allReviews.map((item) => (
             <ReviewCard key={uniqueId()} testimonials={item} />
           ))}
         </div>

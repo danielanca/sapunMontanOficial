@@ -7,6 +7,7 @@ const images = {
   arrowRight: require("./../media/assets/pics/prezentareCarbune/next.png").default,
   heartIcon: require("./../media/assets/pics/prezentareCarbune/heart.png").default,
   montanLogo: require("./../media/assets/pics/prezentareCarbune/montanLogo.png").default,
+  arrowDown: require("./../media/assets/pics/prezentareCarbune/pinkArrowDown.svg").default,
   websiteLogo: require("./../media/assets/logo.png").default,
   bearPicture: require("./../media/assets/bear.png").default,
   featuredProduct: require("./../media/assets/pics/prezentareCarbune/montanairFeatured.jpg").default,

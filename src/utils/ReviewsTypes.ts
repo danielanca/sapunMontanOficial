@@ -9,4 +9,5 @@ export interface ReviewsInterface {
 export interface ReviewsProps {
   productIdentification: string;
   productData: ReviewsInterface;
+  allReviews: any;
 }

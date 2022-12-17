@@ -15,6 +15,7 @@ import VideoInstructions from "./components/VideoInstructions/VideoInstructions"
 import NotFound from "./components/NotFound/NotFound";
 
 import "./App.css";
+import FAQBlock from "./components/FAQBlock/FAQBlock";
 ReactGA.initialize("G-WFWYP44Z7L");
 ReactGA.send("page view bro");
 
@@ -121,6 +122,7 @@ function App() {
                   <Route path="/testimonials" element={<Testimonials />} />
                   <Route path="/order/:orderID" element={<OrderView />} />
                   <Route path="/instructiuni-video" element={<VideoInstructions />} />
+                  <Route path="/intrebari" element={<FAQBlock />} />
                   <Route path="/" element={<MainNavigation />} />
 
                   {/* Content Template*/}

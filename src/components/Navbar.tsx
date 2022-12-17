@@ -59,8 +59,8 @@ const NavBar = ({ clearNotif }: NavProps) => {
               <MenuMobileSide />
               <ul className={styles.ulMenuStart}>
                 <li className={styles.liItem}>
-                  <NavHashLink className={styles.HashLinkStyle} to={navItems.testimonials.link}>
-                    {navItems.testimonials.name}
+                  <NavHashLink className={styles.HashLinkStyle} to={navItems.intrebariFrecvente.link}>
+                    {navItems.intrebariFrecvente.name}
                   </NavHashLink>
                 </li>
                 <li className={styles.liItem}>
