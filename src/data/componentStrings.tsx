@@ -104,20 +104,20 @@ export const cookieConsent = {
 };
 
 export const productConstants = {
-  shippingFee: 15
+  shippingFee: 9
 };
 
 export const websiteContact = {
-  email: "contact@diniubire.ro",
+  email: "diniubire.ro@gmail.com",
   socials: {
     instagram: "https://www.instagram.com/diniubire.ro/",
-    facebook: "https://www.facebook.com/diniubire.ro/",
+
     whatsapp: "https://wa.me/40745469907"
   }
 };
 
 export const TopBannerPromotional = {
-  text: "Transport 9 lei  "
+  text: `Transport ${productConstants.shippingFee} lei  `
 };
 
 export const newsletter = {

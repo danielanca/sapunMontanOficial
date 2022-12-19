@@ -52,10 +52,7 @@ const TopBanner = () => {
       <div className={styles.socialsTop}>
         <div className={styles.iconWrapper}>
           <a href={websiteContact.socials.instagram}>
-            <img alt="social diniubire" className={styles.iconStyle} src={images.socialIcons.facebook} />
-          </a>
-          <a href={websiteContact.socials.facebook}>
-            <img alt="social diniubire " className={styles.iconStyle} src={images.socialIcons.instagram} />
+            <img alt="social diniubire" className={styles.iconStyle} src={images.socialIcons.instagram} />
           </a>
           <a href={websiteContact.socials.whatsapp}>
             <img alt="social diniubire" className={styles.iconStyle} src={images.socialIcons.whatsapp} />

@@ -248,11 +248,11 @@ export const staticContent = {
     <h2 class="middleSubtext">IA LEGATURA CU NOI !</h2>
 
     <p class="text-center">Daca ai intrebari despre noi, produsele noastre, sau pur si simplu vrei sa ne saluti, o poti face 
-    trimitand un email la adresa <a href="mailto:diniubire.ro@gmail.com">diniubire.ro@gmail.com </a> sau la numarul de telefon +40 759 791 474 
+    trimitand un email la adresa <a href="mailto:diniubire.ro@gmail.com">diniubire.ro@gmail.com </a> sau la numarul de telefon +40 745 469 907 
     </p>
 
     <div class="spacerPadder50"></div>
-   <p class="text-center">Ne mai poti gasi pe Instagram, Facebook si WhatsApp din sectiunea de mai jos </p> 
+   <p class="text-center">Ne mai poti gasi pe Instagram si WhatsApp </p> 
     <div class="spacerPadder200"> </div>
     </div>
 
