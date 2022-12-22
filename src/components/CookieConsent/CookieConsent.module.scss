@@ -13,6 +13,7 @@
   padding: 20px;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
   @include media("<800px") {
     flex-direction: column;
   }
@@ -35,7 +36,7 @@
     margin: 5px;
   }
   h4 {
-    color: #FF5F5F;
+    color: #ff5f5f;
     text-align: start;
     font-weight: bold;
     @include media("<tablet") {
@@ -47,7 +48,7 @@
   }
 
   button {
-    background-color: #FF5F5F;
+    background-color: #ff5f5f;
     border-radius: 2px;
     width: 200px;
     height: 56px;
