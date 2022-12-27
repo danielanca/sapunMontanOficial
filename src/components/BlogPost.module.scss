@@ -17,7 +17,7 @@
   font-size: 50px;
 
   @include media("<tablet") {
-    font-size: calc(20px + 8vw);
+    font-size: clamp(39px, 8vw, 44px);
   }
 }
 .topTitle {
