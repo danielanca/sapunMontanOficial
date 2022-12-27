@@ -18,13 +18,21 @@ import { areInputsValid } from "./funcs";
 
 const FinishOrder = ({ clearNotification }: OrderProps) => {
   let { orderFinishPage: orderString } = strings;
-  const [emailSentConfirmed, setSent] = useState<boolean>(false);
   let itemsSessionStorage = sessionStorage.getItem(ProductsFromSessionStorage);
   let productSessionStorage = itemsSessionStorage != null ? JSON.parse(itemsSessionStorage) : null;
   var storedCart: any[] = [];
   var subtotalPrepare: number = 0;
-  const [pendingRequest, setPendingReq] = useState<boolean>(false);
-  const [finishOrderRequested, setFinishRequested] = useState<number>(0);
+
+  const [orderState, setOrderState] = useState<
+    | "initState"
+    | "requestState"
+    | "validRequestState"
+    | "pendingState"
+    | "errorState"
+    | "triggeredState"
+    | "finishState"
+  >("initState");
+
   const [completionState, setError] = useState<ErrorProps>({
     paymentSelected: false,
     termsAccepted: false,
@@ -37,11 +45,12 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
       return await sendOrderConfirmation(orderData)
         .then((response) => {
           response.json().then((jsonResponse: any) => {
-            console.log("Whole Object:", jsonResponse);
-            console.log("Is Email to Client sent? : ", jsonResponse.EMAILTO_CLIENT);
-            console.log("Is Email to Admin sent? : ", jsonResponse.EMAILTO_ADMIN);
+            // console.log("Whole Object:", jsonResponse);
+            // console.log("Is Email to Client sent? : ", jsonResponse.EMAILTO_CLIENT);
+            // console.log("Is Email to Admin sent? : ", jsonResponse.EMAILTO_ADMIN);
           });
-          setSent(true);
+
+          setOrderState("finishState");
         })
         .catch((error) => console.log(error));
     } catch (error) {
@@ -49,7 +58,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     }
   };
   const sendOrderData = () => {
-    setFinishRequested((prevState) => prevState + 1);
+    setOrderState("triggeredState");
   };
 
   const paymentMethodHandler = (value: boolean, title: string | undefined) => {
@@ -74,6 +83,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   var deliveryFee = productConstants.shippingFee;
   let expectedData = localStorage.getItem(CartInfoItemCookie);
   var explicitProductList: ExplicitProdListProps[] = [];
+
   if (expectedData != null) {
     storedCart = JSON.parse(expectedData);
     if (productSessionStorage !== null) {
@@ -98,15 +108,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   };
 
   useEffect(() => {
-    if (completionState.inputCompleted && completionState.paymentSelected && completionState.termsAccepted) {
-      setPendingReq(true);
-
-      handleSend();
-    }
-  }, [finishOrderRequested]);
-
-  useEffect(() => {
-    if (emailSentConfirmed) {
+    if (orderState == "finishState") {
       window.scrollTo(0, 0);
       localStorage.removeItem(CartInfoItemCookie);
 
@@ -116,7 +118,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
         new Error("clearNotification is not a function");
       }
     }
-  }, [emailSentConfirmed]);
+  }, [orderState]);
   useEffect(() => {
     setorderData((orderData) => ({
       ...orderData,
@@ -127,25 +129,49 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   }, [subtotalPrepare]);
 
   useEffect(() => {
-    if (finishOrderRequested === 0) {
-      return;
+    // if (orderState === "initState") {
+    //   return;
+    // }
+    if (orderState == "initState" || orderState == "requestState" || orderState == "errorState") {
+      if (areInputsValid(orderData)) {
+        setError((completionState) => ({ ...completionState, inputCompleted: true }));
+      } else {
+        setError((completionState) => ({ ...completionState, inputCompleted: false }));
+      }
+      if (orderData.paymentMethod !== "") {
+        setError((completionState) => ({ ...completionState, paymentSelected: true }));
+      }
     }
-    if (areInputsValid(orderData)) {
-      setError((completionState) => ({ ...completionState, inputCompleted: true }));
-    } else {
-      setError((completionState) => ({ ...completionState, inputCompleted: false }));
+
+    console.log("ORDER STATE: ", orderState);
+  }, [orderState, orderData]);
+
+  useEffect(() => {
+    console.log("ERRORS are:", completionState);
+  }, [completionState]);
+
+  useEffect(() => {
+    if (orderState === "triggeredState") {
+      if (completionState.inputCompleted && completionState.paymentSelected && completionState.termsAccepted) {
+        setOrderState("validRequestState");
+      } else {
+        setOrderState("errorState");
+      }
     }
-    if (orderData.paymentMethod !== "") {
-      setError((completionState) => ({ ...completionState, paymentSelected: true }));
+    if (orderState === "validRequestState") {
+      //this will be next-time
+      setOrderState("pendingState");
+      handleSend();
     }
-    console.log("Finish order request", finishOrderRequested);
-  }, [finishOrderRequested, orderData]);
+
+    console.log("ORDER STATE: ", orderState);
+  }, [orderState]);
 
   const inputObject = getInputFields(orderData, inputHandler);
 
   return (
     <div className={styles.FinishSection}>
-      {!emailSentConfirmed ? (
+      {orderState !== "finishState" ? (
         <>
           <div className={styles.topTitle}>
             <div className={styles.cartLine} />
@@ -214,7 +240,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                   {storedCart.map((item) => (
                     <li className={styles.itemLi}>
                       <span className={styles.productSummarizeTitle}>{productSessionStorage[item.id].title}</span>
-                      <span className={styles.count}>{Number(item.itemNumber) + " x"}</span>
+                      <span className={styles.count}>{Number(item.itemNumber) + "x"}</span>
                       <span className={styles.price}>{Number(productSessionStorage[item.id].price)}</span>
                     </li>
                   ))}
@@ -252,7 +278,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                 </div>
               </div>
               <div className={styles.filledSpacePaymentMtd}>
-                {finishOrderRequested >= 1 && orderData.paymentMethod === "" && (
+                {orderState === "errorState" && orderData.paymentMethod === "" && (
                   <h4 className="text-center " style={{ color: "red" }}>
                     {orderString.shipping.paymentMethodError}
                   </h4>
@@ -262,7 +288,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
 
             <div
               style={{
-                visibility: finishOrderRequested >= 1 && !completionState.inputCompleted ? "visible" : "hidden"
+                visibility: orderState === "errorState" && !completionState.inputCompleted ? "visible" : "hidden"
               }}
               className={styles.warningOrderWrapper}
             >
@@ -289,20 +315,20 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                     </label>
                   </div>
                   <div className={styles.filledSpaceTCAlert}>
-                    {finishOrderRequested >= 1 && !completionState.termsAccepted && (
+                    {orderState === "errorState" && !completionState.termsAccepted && (
                       <h4 className={styles.termConditionAlert}>{orderString.policyAgremenet.constent.error}</h4>
                     )}
                   </div>
                 </div>
                 <button onClick={sendOrderData} type="submit" className={styles.finishOrder}>
-                  {!pendingRequest ? (
+                  {orderState != "pendingState" ? (
                     <span>{orderString.orderItself.sendFinishOrder.nameButton}</span>
                   ) : (
                     <span>{". . ."}</span>
                   )}
                 </button>
                 <div>
-                  {pendingRequest && (
+                  {orderState == "pendingState" && (
                     <p className={styles.emailSendStyle}>{orderString.orderItself.sendFinishOrder.pendingMessage}</p>
                   )}
                 </div>

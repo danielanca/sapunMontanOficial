@@ -20,6 +20,7 @@ export interface PropertyInput {
   value: string | undefined;
   labelText: string;
   mandatoryInput: boolean;
+  capitaliseText?: string;
   inputOptions?: {
     autoComplete: string;
     list: string;

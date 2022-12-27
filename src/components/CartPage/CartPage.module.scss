@@ -25,8 +25,11 @@
   padding: 20px;
   color: rgba(0, 0, 0, 0.4);
   width: 100%;
+  font-family: "Roboto Medium";
+  align-items: center;
 }
 .finishOrder {
+  font-family: "Roboto Medium";
   background-color: rgb(0, 170, 0);
   width: 204px;
   height: 40px;
@@ -91,6 +94,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  font-family: "Roboto Medium";
 }
 .subtotalContainer {
   border: 1px solid gray;
@@ -173,6 +177,7 @@
 .middleCosText {
   text-align: center;
   white-space: nowrap;
+  margin: 0;
 }
 
 .emptyCart {
@@ -181,6 +186,7 @@
   margin-bottom: 20px;
   font-size: 1.5rem;
   color: red;
+  font-family: "Roboto Medium";
 }
 .bottomLeft {
   @extend .col-sm-6;

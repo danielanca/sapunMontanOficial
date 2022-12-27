@@ -10,23 +10,26 @@ const ReviewField = ({ productData, productIdentification, allReviews }: Reviews
 
   return (
     <div className={styles.contain}>
-      {productData != null && reviewsList.length >= 2 ? (
-        <div className={styles.reviewContainer}>
-          {reviewsList.map((item) => (
-            <ReviewCard key={uniqueId()} testimonials={item} />
-          ))}
-        </div>
-      ) : productData != null && reviewsList.length <= 1 ? (
-        <div className={styles.reviewContainer}>
-          {allReviews.map((item) => (
-            <ReviewCard key={uniqueId()} testimonials={item} />
-          ))}
-        </div>
-      ) : (
-        <div className={styles.noReviewsComponent}>
-          <h2>{"Nu exista recenzii"}</h2>
-        </div>
-      )}
+      {
+        // productData != null && reviewsList.length >= 2 ? (
+        //   <div className={styles.reviewContainer}>
+        //     {reviewsList.map((item) => (
+        //       <ReviewCard key={uniqueId()} testimonials={item} />
+        //     ))}
+        //   </div>
+        // ) :
+        productData != null && allReviews.length >= 1 ? (
+          <div className={styles.reviewContainer}>
+            {allReviews.map((item) => (
+              <ReviewCard key={uniqueId()} testimonials={item} />
+            ))}
+          </div>
+        ) : (
+          <div className={styles.noReviewsComponent}>
+            <h2>{"Nu exista recenzii"}</h2>
+          </div>
+        )
+      }
 
       <AddReview productID={productIdentification} />
     </div>

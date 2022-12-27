@@ -1,14 +1,11 @@
 import React from "react";
-import { NavHashLink } from "react-router-hash-link";
-import { uniqueId } from "lodash";
-import images from "../../../data/images";
-import strings from "../../../data/strings.json";
+
 import styles from "./Relaxbar.module.scss";
 
 const Relaxbar = () => {
-  const goToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  // const goToTop = () => {
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  // };
   return (
     <div className={styles.relaxSpace}>
       <div className={styles.cardobard}>

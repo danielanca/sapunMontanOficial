@@ -52,12 +52,12 @@
 }
 
 .bottomTextFeatured {
-  
   text-align: center;
   font-size: 48px;
   font-weight: bolder;
   color: black;
   margin-top: 0px;
+  font-family: "Roboto Medium";
 
   @include media("<tablet") {
     font-size: 34px;

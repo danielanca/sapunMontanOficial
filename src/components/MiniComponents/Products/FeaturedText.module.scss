@@ -7,7 +7,7 @@
   font-family: "Luckiest Guy";
   text-align: center;
   opacity: 0.13;
-  font-size: clamp(50px, 27vw, 423px);
+  font-size: clamp(50px, 21vw, 423px);
   @include media("<tablet") {
     font-size: 68vw;
     margin-left: -280px;

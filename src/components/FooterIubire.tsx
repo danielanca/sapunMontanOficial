@@ -6,7 +6,7 @@ import Relaxbar from "./MiniComponents/Footers/Relaxbar";
 import { footerData } from "./../data/componentStrings";
 import styles from "./../components/FooterIubire.module.scss";
 import NewsletterBanner from "./MiniComponents/HeadLiners/NewsletterBanner";
-import allPathsURL from "./../data/allPathsURL";
+import allPathsURL from "./../data/allPathsURL.json";
 
 const FooterMontan = () => {
   const { pathname } = useLocation();
@@ -15,7 +15,7 @@ const FooterMontan = () => {
     <>
       {!pathname.includes(allPathsURL.adminURL) && !pathname.includes(allPathsURL.loginURL) && (
         <div className={styles.fluidHandler}>
-          {!pathname.includes(allPathsURL.cartPageURL) && (
+          {!pathname.includes(allPathsURL.cartPageURL) && !pathname.includes(allPathsURL.finishOrderURL) && (
             <>
               <Relaxbar />
               <NewsletterBanner />
