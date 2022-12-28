@@ -1,10 +1,10 @@
-@import "./../../main.module.scss";
-@import "./../../data//themes.scss";
+@import "./../main.module.scss";
+@import "./../data///themes.scss";
 
-.blogItem {
+.blogItemRelated {
   @extend .col-4;
   width: 100%;
-  max-width: 371px;
+  max-width: 258px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   display: table;
   padding: 2% 3%;
@@ -13,7 +13,7 @@
 
   @include media(">=tablet", "<desktop") {
     width: 80%;
-    max-width: 358px;
+    max-width: 268px;
     margin: 10px 10px;
   }
   @include media("<tablet") {
@@ -21,7 +21,7 @@
   }
 }
 
-.HashLinkStyle {
+.HashLinkStyleRelated {
   color: map-get($map: $colors, $key: mainlyBlack);
 
   text-decoration: none;
@@ -29,39 +29,45 @@
     color: map-get($map: $colors, $key: mainlyBlack);
   }
 }
-.hashTransparent {
+.hashTransparentRelated {
   text-decoration: none;
   &:hover {
     text-decoration: none;
   }
 }
-.thumbnailWrapper {
-  width: 286px;
+.thumbnailWrapperRelated {
   aspect-ratio: 1/0.6;
-
+  width: 214px;
+  @include media(">=tablet", "<desktop") {
+    width: 227px;
+  }
   @include media("<tablet") {
     width: 197px;
   }
 }
 
-.floaterThumbnail {
+.floaterThumbnailRelated {
   border-radius: 3%;
   overflow: hidden;
   position: absolute;
   box-shadow: rgba(50, 50, 93, 0.45) 0px 6px 12px -2px, rgba(0, 0, 0, 0.6) 0px 3px 7px -3px;
-  margin-top: max(-4%, -60px);
-  margin-left: min(1.5%, 30px);
+
+  margin-top: max(-5.2%, -54px);
+  margin-left: min(0.2%, 30px);
+  @include media(">tablet", "<desktop") {
+    margin-top: max(-4.2%, -54px);
+  }
   @include media("<tablet") {
     margin-top: -8%;
   }
 }
-.topPart {
+.topPartRelated {
   width: 100%;
   aspect-ratio: 2/1;
   overflow: hidden;
   height: 33%;
 }
-.thumbnailImage {
+.thumbnailImageRelated {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -89,19 +95,19 @@
   }
 }
 
-.bottomPart {
+.bottomPartRelated {
   display: flex;
   justify-content: center;
   flex-direction: column;
   height: 65%;
 }
-.readMore {
+.readMoreRelated {
   display: table;
   font-size: clamp(13px, 1vw, 18px);
   cursor: pointer;
   font-family: "Roboto Medium";
 }
-.previewPost {
+.previewPostRelated {
   min-height: 106px;
 
   p {
@@ -123,7 +129,7 @@
   }
 }
 
-.highlighter {
+.highlighterRelated {
   // outline: 2px solid black;
   width: 100%;
   .labelCategory {
@@ -132,7 +138,7 @@
     text-align: start;
   }
 }
-.titleArea {
+.titleAreaRelated {
   // outline: 2px solid black;
   width: 100%;
   padding: 3% 0;
@@ -141,7 +147,7 @@
     height: 54px;
   }
 }
-.titlePost {
+.titlePostRelated {
   display: table;
   cursor: pointer;
   font-family: "Roboto Medium";
