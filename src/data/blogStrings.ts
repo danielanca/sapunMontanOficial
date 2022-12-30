@@ -70,11 +70,7 @@ export const blogs = {
       jsonContent: `
       <div class="blogContent">
       <p> Să petreci timp de calitate cu cei dragi este unul dintre cele mai bune moduri de a reduce factorul de stres din viața ta.  De multe ori găsirea unei activități  care să fie interesantă, creativă și distractivă poate fi dificil. In continuare vrem sa îți oferim câteva idei de activități pe care le poți face cu cei dragi. </p>
-     <p> <strong>Efecte farmacologice:</strong> -capacitate mare de absorbtie, are capacitatea de a absoarbe gazele intestinale, toxinele. </p>
 
-     <p> <strong>Sapunul cu carbune </strong> este un sapun purifiant pentru corp, matefiant pentru ten si  ideal pentru parul foarte gras. </p>
-   
-     
      <div class="centerTextTitle h1 bebasMedium">1.	PREGĂTIȚI MASA DE PRÂNZ ORI CINĂ ÎMPREUNĂ</div>
      <p class="randNou">Vă puteți închide în casă, mai precis în bucătărie, și să pregătiți împreună câteva rețete de mancare. Gătitul  în familie este amuzant, creativ, te forțează sa lucrezi în echipă, și la sfârșit se termină cu ceva delicios (I’m still talking about food)! Nu știi de unde sa începi? Îți recomand eu: poți încerca ceva nou, cum ar fi casă, sau ceva clasic, la cuptor, care ar merge bine cu o supă sau un desert. </p>
     
