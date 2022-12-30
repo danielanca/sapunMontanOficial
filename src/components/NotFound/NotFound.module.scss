@@ -24,7 +24,6 @@
   flex-direction: column;
 
   .messageWrap {
-    outline: 2px solid black;
     max-width: 500px;
     @include media("<tablet") {
       max-width: 300px;
