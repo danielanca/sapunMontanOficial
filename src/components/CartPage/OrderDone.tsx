@@ -6,7 +6,7 @@ import styles from "./OrderDone.module.scss";
 const OrderDone = () => {
   let { OrderDone: doneString } = strings;
   return (
-    <div className={"row " + styles.confirmContainer}>
+    <div role={"contentinfo"} className={"row " + styles.confirmContainer}>
       <div className={styles.horizontalAlign}>
         <p className={styles.text}>{doneString.title}</p>
         <p className={styles.miniText}>{doneString.subtitle}</p>
