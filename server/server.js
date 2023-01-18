@@ -20,7 +20,7 @@ const app = express();
 app.get("*", (req, res, next) => {
   console.log("Route contains", routes);
   // const activeRoute = routes.default.find((route) => matchPath(route.path, req.url)) || {};
-  var promise = Promise.resolve();
+  let promise = Promise.resolve();
   // promise = activeRoute.fetchInitialData ? activeRoute.fetchInitialData(req.path) : Promise.resolve();
 
   promise

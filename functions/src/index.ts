@@ -53,8 +53,8 @@ export const sendReviewToServer = functions.https.onRequest((request, response) 
 const postReviewData = async (data: ReviewType) => {
   data.date = new Date().toISOString().slice(0, 10);
 
-  var newReview: ReviewType = data;
-  var theResult = await admin
+  let newReview: ReviewType = data;
+  let theResult = await admin
     .firestore()
     .collection("products")
     .doc("activeProds")
@@ -129,7 +129,7 @@ const databasePost = async (data: subscriberProps) => {
 const getOrdersAdmin = async () => {
   const adminFirestore = admin.firestore();
   const collection = adminFirestore.collection("orders");
-  var ordersArray: any = [];
+  let ordersArray: any = [];
   await collection.get().then((snapshot) => {
     snapshot.forEach((doc) => {
       ordersArray.push(doc.data());
@@ -158,7 +158,7 @@ export const requestOrders = functions.https.onRequest((request, response) => {
 // https://stackoverflow.com/questions/57253593/cross-domain-state-cookie-issue-for-oauth-using-firebase-functions-while-on-the
 /* response.cookie can not be used because it will return cookies with firebase domain, and we need montanair.ro domain */
 export const requestAuth = functions.https.onRequest((request, response) => {
-  var userData = JSON.parse(request.body);
+  let userData = JSON.parse(request.body);
   functions.logger.info("request Auth called, username and password are: ", userData.password);
   applyCORSpolicy(response);
 
@@ -187,7 +187,7 @@ const postOrderToDB = async (invoiceID: number, dataObject: any, todayDate: Date
 export const sendEmail = functions.https.onRequest((request, response) => {
   applyCORSpolicy(response);
 
-  var ResponseData: ResponseObject = {
+  let ResponseData: ResponseObject = {
     EMAILTO_ADMIN: "EMPTY",
     EMAILTO_CLIENT: "EMPTY"
   };
@@ -195,7 +195,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
   const invoiceNumberID = generateInvoiceID();
   const TodayDate = new Date();
 
-  var DateAndTime = `${TodayDate.getDate()}/${
+  let DateAndTime = `${TodayDate.getDate()}/${
     TodayDate.getMonth() + 1
   }/${TodayDate.getFullYear()} ${TodayDate.getHours()}:${TodayDate.getMinutes()}`;
 
@@ -203,7 +203,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
 
   postOrderToDB(invoiceNumberID, data, TodayDate);
 
-  var cartProd = JSON.parse(data.cartProducts);
+  let cartProd = JSON.parse(data.cartProducts);
 
   transport
     .sendMail({

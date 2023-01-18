@@ -23,11 +23,11 @@ const makeCheck = (sessionData: ProductSessionProps, cartData: ProductCookiesPro
 const CartPage = ({ notifyMe }: CartProps) => {
   let { MyCart: cartString } = strings;
   const [updateMade, setupdateMade] = useState<number>(1);
-  var subtotalPrepare = 0;
-  var expectedData = localStorage.getItem(CartInfoItemCookie);
-  var sessionProducts: ProductSessionProps | null;
-  var storedCart: ProductCookiesProps[] | null = null;
-  var shippingFee = productConstants.shippingFee;
+  let subtotalPrepare = 0;
+  let expectedData = localStorage.getItem(CartInfoItemCookie);
+  let sessionProducts: ProductSessionProps | null;
+  let storedCart: ProductCookiesProps[] | null = null;
+  let shippingFee = productConstants.shippingFee;
   let sessionFlat = sessionStorage.getItem(ProductsFromSessionStorage);
 
   if (typeof sessionFlat === "string") {
@@ -157,9 +157,9 @@ export default CartPage;
 
 export const getCartItems = () => {
   let itemFromSessionS = sessionStorage.getItem(ProductsFromSessionStorage);
-  var sessionProducts: ProductSessionProps | null = itemFromSessionS && JSON.parse(itemFromSessionS);
-  var storedCart: ProductCookiesProps[] | null = null;
-  var expectedData = localStorage.getItem(CartInfoItemCookie);
+  let sessionProducts: ProductSessionProps | null = itemFromSessionS && JSON.parse(itemFromSessionS);
+  let storedCart: ProductCookiesProps[] | null = null;
+  let expectedData = localStorage.getItem(CartInfoItemCookie);
   storedCart = expectedData && JSON.parse(expectedData);
 
   if (expectedData != null && sessionProducts != null) {

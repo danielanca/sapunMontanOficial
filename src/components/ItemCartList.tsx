@@ -16,11 +16,11 @@ const getCartData = () => {
   return expectedData !== null ? JSON.parse(expectedData) : null;
 };
 const ItemCartList = ({ productID, updateRequest }: itemCart) => {
-  var storedCart: LocalStorageProps[] = [];
+  let storedCart: LocalStorageProps[] = [];
   let sessionFlat = sessionStorage.getItem(ProductsFromSessionStorage);
   let sessionProducts = sessionFlat !== null ? JSON.parse(sessionFlat) : null;
 
-  var value: number = 0;
+  let value: number = 0;
 
   storedCart = getCartData();
   storedCart.forEach((item) => {
@@ -61,7 +61,7 @@ const ItemCartList = ({ productID, updateRequest }: itemCart) => {
 
   const deleteProduct = () => {
     storedCart = getCartData();
-    var index_del: number = 0;
+    let index_del: number = 0;
     storedCart.forEach((item, index) => {
       console.log(item);
       if (item.id === productID.toString()) {

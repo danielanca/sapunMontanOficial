@@ -5,7 +5,7 @@ import { ProviInter, Provi } from "./ProviderTypes";
 const AuthContext = createContext<ProviInter | null>(null);
 
 export const AuthProvider: React.FC = ({ children }) => {
-  var authoriseMe = false;
+  let authoriseMe = false;
   if (getCookie("jwt") === "ABCJWT") {
     authoriseMe = true;
     // setAuth((auth) => ({ ...auth, email: "yeah", authorise: true }));

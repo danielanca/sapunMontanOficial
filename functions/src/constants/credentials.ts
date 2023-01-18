@@ -9,8 +9,8 @@ export const getSessionID = () => {
 };
 
 export const getAuthToken = (body: any) => {
-  var authToken = JSON.parse(body);
-  var TOKEN = authToken.authCookie;
+  let authToken = JSON.parse(body);
+  let TOKEN = authToken.authCookie;
 
   if (TOKEN === getSessionID()) {
     return true;

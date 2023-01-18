@@ -9,7 +9,7 @@ interface CommentsProps {
   productData?: string;
 }
 const Comments = ({ productData, reviewsList, productID }: CommentsProps) => {
-  var productReviews: ReviewsInterface | null = null;
+  let productReviews: ReviewsInterface | null = null;
   const allReviews: any = [];
 
   if (productData != null) {

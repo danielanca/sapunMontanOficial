@@ -1,7 +1,7 @@
 import { collection, doc, getFirestore, getDoc, getDocs } from "firebase/firestore";
 import app from "./../firebase";
 
-var productList = [];
+let productList = [];
 
 const db = getFirestore(app);
 
@@ -19,7 +19,7 @@ interface productType {
 export const getOrderByID = async (invoiceID: number) => {
   const productData = doc(db, "orders", invoiceID.toString());
   const snap = await getDoc(productData);
-  var productsAreHere;
+  let productsAreHere;
   if (snap.exists()) {
     productsAreHere = snap.data();
   }
@@ -28,7 +28,7 @@ export const getOrderByID = async (invoiceID: number) => {
 };
 export const getAllOrders = async () => {
   const snapShot = await getDocs(collection(db, "orders"));
-  var dataProducts = [];
+  let dataProducts = [];
 
   snapShot.forEach((doc) => {
     dataProducts.push(doc.data());
@@ -38,7 +38,7 @@ export const getAllOrders = async () => {
 };
 export const getData = async () => {
   const snapShot = await getDocs(collection(db, "products"));
-  var dataProducts = {};
+  let dataProducts = {};
 
   snapShot.forEach((doc) => {
     Object.values(doc.data()).forEach((itemData: productType) => {
@@ -66,7 +66,7 @@ export const getProductWithID = async (productID: string) => {
   //here productID might be ''
   const productData = doc(db, "products", "activeProds");
   const snap = await getDoc(productData);
-  var productsAreHere;
+  let productsAreHere;
   if (snap.exists()) {
     Object.values(snap.data()).map((item: productType) => {
       productsAreHere = {
@@ -95,7 +95,7 @@ export const getProductWithID = async (productID: string) => {
 const getallPr = async () => {
   const productData = doc(db, "products", "activeProds");
   const snap = await getDoc(productData);
-  var productsAreHere = [];
+  let productsAreHere: any[] = [];
   if (snap.exists()) {
     productsAreHere = Object.values(snap.data());
   }

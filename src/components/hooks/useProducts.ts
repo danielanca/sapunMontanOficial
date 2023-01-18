@@ -4,7 +4,7 @@ import { getData } from "../../data/ProdFetch";
 
 export const useProducts = () => {
   const [products, setProducts] = useState({});
-  var productsFetched = sessionStorage.getItem(ProductsFromSessionStorage);
+  let productsFetched = sessionStorage.getItem(ProductsFromSessionStorage);
 
   useEffect(() => {
     if (productsFetched != null) {
