@@ -10,7 +10,7 @@
   transform: translate(-50%);
   left: 50%;
   border-radius: 2px;
-  padding: 20px;
+  padding: 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -28,7 +28,7 @@
       color: inherit;
     }
     @include media("<tablet") {
-      line-height: 15px;
+      line-height: 13px;
       font-size: 11px;
     }
   }
@@ -40,7 +40,7 @@
     text-align: start;
     font-weight: bold;
     @include media("<tablet") {
-      text-align: center;
+      font-size: 1em;
     }
   }
   a {
@@ -82,4 +82,9 @@
 .cookieIcon {
   width: 34px;
   height: 34px;
+  @include media("<tablet") {
+    width: 20px;
+    aspect-ratio: 1/1;
+    height: unset;
+  }
 }

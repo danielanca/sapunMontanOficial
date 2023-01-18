@@ -25,10 +25,10 @@ interface RelatedPostProps {
 const BlogPost = () => {
   let { blogsArea: blogStr } = strings;
   let params = useParams();
-  var thisBlogLink = "";
+  let thisBlogLink = "";
   thisBlogLink = params.blogLink !== undefined ? params.blogLink : "";
 
-  var dani: BlogContent = blogs.posts[thisBlogLink];
+  let dani: BlogContent = blogs.posts[thisBlogLink];
   if (blogs.posts[thisBlogLink] != null) {
   }
 

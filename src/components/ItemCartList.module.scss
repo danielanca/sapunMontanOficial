@@ -38,8 +38,11 @@
   margin: 0;
   font-family: "Roboto Medium";
   font-size: 1.3em;
+  @include media("<desktop") {
+    font-size: 1em;
+  }
   @include media("<tablet") {
-    font-size: 1.5em;
+    font-size: 1em;
   }
 }
 .priceInCart {
@@ -50,7 +53,7 @@
   flex-direction: row;
   font-family: "Roboto Medium";
   @include media("<tablet") {
-    font-size: clamp(14px, 5vw, 20px);
+    font-size: clamp(13px, 4.4vw, 20px);
   }
 }
 .quietPadder {
@@ -140,10 +143,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-
-  @include media("<tablet") {
-    width: 100%;
-  }
 }
 .updateProductCart {
   cursor: pointer;
@@ -162,6 +161,7 @@
   @include media("<tablet") {
     padding-left: 8px;
     padding-right: 5px;
+    font-size: 0.8em;
   }
 
   &:hover {

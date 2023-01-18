@@ -73,8 +73,9 @@ const ItemCartList = ({ productID, updateRequest }: itemCart) => {
     updateRequest();
   };
   return (
-    <div className={styles.cartWrapper}>
-      <div className={"col-sm-8 col-xs-12 " + styles.productItem}>
+    //styles.cartWrapper +
+    <div className={" row "}>
+      <div className={"col-sm-8 col-6 " + styles.productItem}>
         <HashLink className={styles.HashLinkStyle} to={"/produs/" + productID}>
           <div className={styles.productBox}>
             <div className={styles.imageContainer}>
@@ -91,7 +92,7 @@ const ItemCartList = ({ productID, updateRequest }: itemCart) => {
           </div>
         </HashLink>
       </div>
-      <div className={"col-sm-4 col-xs-12 " + styles.quantityBox}>
+      <div className={"col-sm-4 col-6 " + styles.quantityBox}>
         <div className={styles.addRemoveCart}>
           <button onClick={addOneItem} className={styles.cartPlus}>
             {"+"}

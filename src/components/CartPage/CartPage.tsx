@@ -78,11 +78,11 @@ const CartPage = ({ notifyMe }: CartProps) => {
 
         {displayFinishOrderDialog()}
         <div className={styles.actualCartBox}>
-          <div className={styles.topline}>
-            <div className={"col-sm-8 "}>
+          <div className={"row " + styles.topline}>
+            <div className={"col-sm-8 col-6"}>
               <h3 className={styles.cartProductTitle}>{cartString.product}</h3>
             </div>
-            <div className={"col-sm-3 "}>
+            <div className={"col-sm-4 col-6"}>
               <h3 className={styles.cartProductTitle}>{cartString.quantity}</h3>
             </div>
           </div>
