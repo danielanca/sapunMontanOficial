@@ -37,8 +37,9 @@
 .titleInCart {
   margin: 0;
   font-family: "Roboto Medium";
+  font-size: 1.3em;
   @include media("<tablet") {
-    font-size: calc(13px + 1vw);
+    font-size: 1.5em;
   }
 }
 .priceInCart {

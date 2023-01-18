@@ -14,7 +14,7 @@ import styles from "./ProductView.module.scss";
 
 const ProductView = ({ notifyMe }: CartProps) => {
   let params = useParams();
-  var ID = params.productID !== undefined ? params.productID : "";
+  let ID = params.productID !== undefined ? params.productID : "";
 
   const [productListUpdated, setProducts] = useState<ProductListType>();
 
@@ -27,7 +27,7 @@ const ProductView = ({ notifyMe }: CartProps) => {
   });
 
   const addCartHandler = () => {
-    var storedCart: { id: string; itemNumber: string }[] = [];
+    let storedCart: { id: string; itemNumber: string }[] = [];
     let expectedData = localStorage.getItem(CartInfoItemCookie);
     if (expectedData === null) {
       storedCart.push({ id: ID, itemNumber: "1" });
@@ -35,7 +35,7 @@ const ProductView = ({ notifyMe }: CartProps) => {
       notifyMe(Math.floor(Math.random() * 100)); // not how it should be
       return;
     }
-    var itemFound = false;
+    let itemFound = false;
     storedCart = JSON.parse(expectedData);
 
     storedCart.forEach((item) => {

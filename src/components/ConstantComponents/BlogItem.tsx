@@ -17,7 +17,7 @@ interface BlogItemsProps {
 
 const BlogItem = ({ data }: BlogProps) => {
   let { blogsArea: blogStr } = strings;
-  var blogData: BlogItemsProps = JSON.parse(data);
+  let blogData: BlogItemsProps = JSON.parse(data);
   console.log("BLOG ITEM:", blogData.link);
   console.log("BLOG image:", blogs.posts[blogData.link].image);
 

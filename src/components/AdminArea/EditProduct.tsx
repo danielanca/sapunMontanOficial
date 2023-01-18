@@ -11,7 +11,7 @@ interface EditProductProps {
 const EditProduct = ({ editMode }: EditProductProps) => {
   const [openPreviewArea, setOpenPreviewArea] = useState<boolean>(false);
   let params = useParams();
-  var ID = params.productID !== undefined ? params.productID : "";
+  let ID = params.productID !== undefined ? params.productID : "";
   const [productListUpdated, setProducts] = useState<ProductListType[]>();
 
   const [editSent, setEditSent] = useState<boolean>(false);
