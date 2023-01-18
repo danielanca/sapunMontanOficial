@@ -2,8 +2,8 @@
   "websiteTitle": "MontanAir.Ro",
 
   "DiscoverOurProducts": {
-    "title": "MontanAir",
-    "textSmall": "DESCOPERA BENEFICIILE CARBUNELUI"
+    "title": "MontanAir.Ro",
+    "textSmall": "Produse Naturale pentru Tine"
   },
 
   "GrayPromotion": {
@@ -15,16 +15,18 @@
   },
   "socialsInfo": {
     "socialLinks": {
-      "instagram": { "link": "https://instagram.com/montanair.ro", "image": "instagram" },
-      "facebook": { "link": "https://facebook.com/montanair.ro", "image": "facebook" },
-      "whatsapp": { "link": "https://whatsapp.com/montanair.ro", "image": "whatsapp" }
+      "instagram": { "link": "https://instagram.com/MontanAir.Ro", "image": "instagram" },
+      "facebook": { "link": "https://facebook.com/MontanAir.Ro", "image": "facebook" },
+      "whatsapp": { "link": "https://whatsapp.com/MontanAir.Ro", "image": "whatsapp" }
     }
   },
   "navMenu": {
     "ourProducts": { "name": "Produsele noastre", "link": "/produsele-noastre" },
     "aboutUs": { "name": "Despre noi", "link": "/produsele-noastre" },
     "blog": { "name": "Blog", "link": "/blogs" },
-    "testimonials": { "name": "Testimoniale", "link": "/testimonials" },
+    "middleNOUI": { "name": "middle" },
+    "intrebariFrecvente": { "name": "Intrebari frecvente", "link": "/intrebari" },
+    "testimonials": { "name": "Testimoniale", "link": "/testimonials", "hide": "true" },
     "contactUs": { "name": "Contact", "link": "/contact" }
   },
   "navMenuMobile": {
@@ -33,7 +35,7 @@
 
       "ulItems": {
         "one": {
-          "title": "Toate",
+          "title": "Kituri mulaj",
           "link": "/produsele-noastre"
         }
       }
@@ -43,13 +45,9 @@
       "title": "Blog",
       "link": "/blogs"
     },
-    "testimonials": {
-      "title": "Testimoniale",
-      "link": "/testimonials"
-    },
-    "contactUs": {
-      "title": "Contact",
-      "link": "/contact"
+    "intrebari-frecvente": {
+      "title": "Intrebari",
+      "link": "/intrebari"
     }
   },
   "cart": {
@@ -78,10 +76,10 @@
   },
 
   "companyData": {
-    "name": "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
-    "number": "41030416",
+    "name": "RUS EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
+    "number": "45044473",
     "fiscal": "F12/696/23.04.2019",
-    "address": "str. LIVIU REBREANU loc. Turda, Cluj"
+    "address": "str. Liviu Rebreanu loc. Turda, Cluj"
   },
 
   "footerText": {
@@ -151,13 +149,13 @@
     "blogURLSuffix": "blogid",
     "blogsInner": {
       "similarPosts": "Postari similare",
-      "readArticle": "Citeste articol"
+      "readArticle": "Citeste mai mult..."
     }
   },
 
   "testimonialsArea": {
     "title": "Testimoniale",
-    "descriptionIntroduction": "Afla parerea clientilor despre produsele MontanAir!"
+    "descriptionIntroduction": "Afla parerea clientilor despre produsele MontanAir.Ro!"
   },
 
   "orderView": {
@@ -179,7 +177,7 @@
     },
     "ownerSide": {
       "title": "Magazin",
-      "companyName": "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
+      "companyName": "Rus EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
       "fiscal": "F12/696/23.04.2019",
       "number": "41030416",
       "address": "str. LIVIU REBREANU loc. Turda, Cluj "
@@ -193,7 +191,7 @@
 
   "ProductPreview": {
     "callActionForReview": "Scrie un review",
-    "reviewsText": "Recenzii",
+
     "addToCartText": "Adauga in cos"
   },
   "NotExistingProduct": {
@@ -234,12 +232,31 @@
 
   "NewsletterSection": {
     "title": "Newsletter",
-    "subscribeCall": "Aboneaza-te si primesti reducere 10% la urmatoarea ta comanda!",
+    "subscribeCall": "Aboneaza-te la Newsletter-ul nostru si fii la curent cu noile promotii!",
     "subscribeMe": "MĂ ABONEZ"
   },
 
   "BrandDetailsStr": {
     "title": "MontanAir.Ro - produse premium pentru tine",
-    "description": "Construim si optimizam constant ceea ce facem pentru ca tu sa poti avea parte de o amintire placuta cu persoanele dragi"
+    "description": "Construim si optimizam produsele ceea ce facem pentru ca tu sa poti avea parte de o amintire placuta cu persoanele dragi"
+  },
+
+  "FAQ": {
+    "topText": "FAQ",
+    "bottomText": "Intrebari frecvente",
+    "questionList": {
+      "questionOne": {
+        "question": "In cat timp soseste pachetul?",
+        "answer": "Coletul ajunge de obicei la client in 1-2 zile din momentul plasarii comenzii."
+      },
+      "questionTwo": {
+        "question": "Sunt produse naturale ?",
+        "answer": "Da da, foarte naturale"
+      },
+      "questionThree": {
+        "question": "Ce inseamna Garantie 100 % Retur la produse?",
+        "answer": " Oferim clientilor nostri dreptul de a returna kit-ul, chiar daca l-ati deschis, si ati realizat mulajul. Returnati tot kit-ul folosit, iar noi va vom returna suma de bani pentru produs, prin metoda de plata selectat initial la comanda."
+      }
+    }
   }
 }

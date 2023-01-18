@@ -4,7 +4,6 @@ import images from "./../../data/images";
 import { NavHashLink } from "react-router-hash-link";
 import { sendReviewToBack } from "../../services/emails";
 const NotFound = () => {
-  sendReviewToBack({});
   return (
     <div className={styles.NotFoundContainer}>
       <div className={styles.carbunelWrap}>

@@ -113,7 +113,7 @@ input[type="radio"] {
 }
 .checkboxBlue {
   @extend .checkbox;
-  border: 1.5px solid #00ad17;
+  border: 1.5px solid #009719;
 }
 .checkboxRound {
   @extend .checkbox;
@@ -158,9 +158,9 @@ input[type="radio"] {
 .checkboxblueActive {
   @extend .checkboxactive;
   background-image: url("https://firebasestorage.googleapis.com/v0/b/brasovromanticapartment.appspot.com/o/checkedMark.svg?alt=media&token=4084d18b-5806-44be-8b00-3b77731f564c"),
-    linear-gradient(0, green 100%, green 100%);
-  border-color: green;
-  background-color: green;
+    linear-gradient(0, #008b09 100%, #008b09 100%);
+  border-color: #008b09;
+  background-color: #008b09;
 }
 
 .labelRow {

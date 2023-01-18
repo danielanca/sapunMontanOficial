@@ -36,7 +36,7 @@
 }
 .titleInCart {
   margin: 0;
-
+  font-family: "Roboto Medium";
   @include media("<tablet") {
     font-size: calc(13px + 1vw);
   }
@@ -47,6 +47,7 @@
   font-size: 1.4rem;
   display: flex;
   flex-direction: row;
+  font-family: "Roboto Medium";
   @include media("<tablet") {
     font-size: clamp(14px, 5vw, 20px);
   }
@@ -95,6 +96,9 @@
   width: 32px;
   height: 34px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
     color: white;
   }

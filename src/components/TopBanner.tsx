@@ -24,29 +24,13 @@ const TopBanner = () => {
 
   const [bannerSize] = useGetContainerDimensions("topBannerCol");
 
-  // const computeResponsiveFont = (containerDimensions: number, minFontSize: number, maxFontSize: number) => {
-  //   let fontSize = minFontSize;
-  //   if (containerDimensions > 50) {
-  //     fontSize = containerDimensions / 33;
-  //   }
-  //   if (fontSize > minFontSize && fontSize < maxFontSize) {
-  //     return { fontSize: fontSize + "px" };
-  //   } else if (fontSize <= minFontSize) {
-  //     return { fontSize: minFontSize + "px" };
-  //   } else {
-  //     return { fontSize: maxFontSize + "px" };
-  //   }
-  // };
-
   const getFontSizeByTextLength = (text: string, width: number) => {
     let fontSize = 12;
     if (width > 50 && text.length < 150) {
-      fontSize = width / (text.length / 1.57) > 12 ? width / (text.length / 1.47) : 12;
+      fontSize = width / (text.length / 1.77) > 12 ? width / (text.length / 1.47) : 12;
     } else {
       fontSize = 20;
     }
-    // console.log(`String length: ${text.length} and width of Div: ${width}, result of FontSize will be ${fontSize}`);
-
     return { fontSize: fontSize + "px" };
   };
 
@@ -65,10 +49,7 @@ const TopBanner = () => {
       <div className={styles.socialsTop}>
         <div className={styles.iconWrapper}>
           <a href={websiteContact.socials.instagram}>
-            <img alt="social montanair" className={styles.iconStyle} src={images.socialIcons.facebook} />
-          </a>
-          <a href={websiteContact.socials.facebook}>
-            <img alt="social montanair " className={styles.iconStyle} src={images.socialIcons.instagram} />
+            <img alt="social montanair" className={styles.iconStyle} src={images.socialIcons.instagram} />
           </a>
           <a href={websiteContact.socials.whatsapp}>
             <img alt="social montanair" className={styles.iconStyle} src={images.socialIcons.whatsapp} />

@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 58px;
 }
 .cartLine {
   width: clamp(30px, 17vw, 65px);
@@ -32,6 +33,7 @@
   padding: 2% 4%;
   max-width: 560px;
   width: 80%;
+  font-family: "Roboto Medium";
   img {
     width: 70px;
     height: 70px;
@@ -42,7 +44,7 @@
   }
   h3 {
     margin-top: 20px;
-    font-family: "Roboto";
+
     font-family: 20px;
     text-align: center;
   }
@@ -52,7 +54,7 @@
   justify-content: center;
   padding: 20px;
   color: rgba(0, 0, 0, 0.4);
-
+  align-items: center;
   @include media("<tablet") {
     padding: 20px 0;
   }
@@ -143,7 +145,6 @@ input {
 input[type="large"] {
   width: 100%;
   font-family: "Open Sans Regular";
-  text-transform: capitalize;
 }
 label {
   font-family: "Open Sans Regular";
@@ -210,6 +211,7 @@ label {
 .finishOrderTitle {
   text-align: center;
   white-space: nowrap;
+  margin: 0;
 }
 .rightChild {
   display: flex;

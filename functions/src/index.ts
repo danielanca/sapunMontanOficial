@@ -24,7 +24,7 @@ admin.initializeApp({
   credential: admin.credential.applicationDefault()
 });
 
-// process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 export const updateProduct = functions.https.onRequest((request, response) => {
   let requestParam = JSON.parse(request.body);
   console.log("updateProduct:", requestParam);
@@ -43,7 +43,12 @@ export const sendReviewToServer = functions.https.onRequest((request, response) 
   applyCORSpolicy(response);
   let requestParam = JSON.parse(request.body);
   console.log("INCOMING Review for ", requestParam);
-  postReviewData(requestParam).then((result) => console.log("RESPONSE:", result));
+  postReviewData(requestParam)
+    .then((result) => {
+      console.log("RESPONSE [postReviewData]", result);
+      response.send({ response: "SENT" });
+    })
+    .catch((err) => response.send({ response: "reviewErrorServer" }));
 });
 const postReviewData = async (data: ReviewType) => {
   data.date = new Date().toISOString().slice(0, 10);
@@ -58,7 +63,7 @@ const postReviewData = async (data: ReviewType) => {
       let dataObject = JSON.stringify(result.data());
 
       const incomingProducts = JSON.parse(dataObject);
-      console.log("Response of postReviewData is:", incomingProducts[data.reviewProductID]);
+      console.log("Response of postReviewData is:", incomingProducts);
       if (typeof incomingProducts !== "undefined") {
         let reviewsOfProduct: ReviewToPostType[] = Array.from(incomingProducts[data.reviewProductID].reviews);
         console.log("THE TYPE OF reviewsOfProduct is ", reviewsOfProduct);
@@ -67,7 +72,8 @@ const postReviewData = async (data: ReviewType) => {
           date: newReview.date,
           reviewActual: newReview.reviewActual,
           name: newReview.name,
-          starsNumber: newReview.starsNumber
+          starsNumber: newReview.starsNumber,
+          mediaLink: newReview.mediaLink
         });
 
         incomingProducts[data.reviewProductID].reviews = reviewsOfProduct;
@@ -78,13 +84,15 @@ const postReviewData = async (data: ReviewType) => {
       }
     });
   console.log(`Sending back to DB ${data.reviewProductID}`, +theResult);
-  await admin
+  return await admin
     .firestore()
     .collection("products")
     .doc("activeProds")
     .update({
       [data.reviewProductID]: theResult
-    });
+    })
+    .then((response) => response)
+    .catch((err) => err);
 };
 
 // .update({
@@ -199,7 +207,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
 
   transport
     .sendMail({
-      from: "montanair.ro@gmail.com",
+      from: emailAuth.email,
       to: data.emailAddress,
       subject: "Comanda inregistrata, " + data.firstName,
       html:
@@ -295,7 +303,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
                         <td class="es-m-p0r" valign="top" align="center" style="padding:0;Margin:0;width:560px"> 
                          <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                            <tr> 
-                            <td align="center" style="padding:0;Margin:0;padding-bottom:10px;font-size:0px"><img src="https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/logo%2Fmontanair.png?alt=media&token=f42ebf81-1205-44d2-806b-7130100adda7" alt="Logo" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" width="200" title="Logo"></td> 
+                            <td align="center" style="padding:0;Margin:0;padding-bottom:10px;font-size:0px"><img src="https://firebasestorage.googleapis.com/v0/b/diniubire-89ce0.appspot.com/o/emailTemplate%2FdinIubireLogoBro.png?alt=media&token=f9fe0cb8-7f70-4c1b-bd71-cc751f796d6e" alt="Logo" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" width="200" title="Logo"></td> 
                            </tr> 
                          </table></td> 
                        </tr> 
@@ -474,7 +482,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
                         <td align="left" style="padding:0;Margin:0;width:560px"> 
                          <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                            <tr> 
-                            <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Aveti intrebari? Nu ezitati sa ne contactati pe montanair.ro/contact sau la numarul de telefon +40 759 796 202</p></td> 
+                            <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Aveti intrebari? Nu ezitati sa ne contactati pe diniubire.ro/contact sau la numarul de telefon +40 759 796 202</p></td> 
                            </tr> 
                          </table></td> 
                        </tr> 
@@ -497,8 +505,8 @@ export const sendEmail = functions.https.onRequest((request, response) => {
                             <td align="center" style="padding:0;Margin:0;padding-top:15px;padding-bottom:15px;font-size:0"> 
                              <table cellpadding="0" cellspacing="0" class="es-table-not-adapt es-social" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                                <tr> 
-                                <td align="center" valign="top" style="padding:0;Margin:0;padding-right:40px"><a target="_blank" href="https://facebook.com/montanair" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#333333;font-size:12px"><img title="Facebook" src="https://jbbqqc.stripocdn.email/content/assets/img/social-icons/logo-black/facebook-logo-black.png" alt="Fb" width="32" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a></td> 
-                                <td align="center" valign="top" style="padding:0;Margin:0"><a target="_blank" href="https://instagram.com/montanair" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#333333;font-size:12px"><img title="Instagram" src="https://jbbqqc.stripocdn.email/content/assets/img/social-icons/logo-black/instagram-logo-black.png" alt="Inst" width="32" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a></td> 
+                                <td align="center" valign="top" style="padding:0;Margin:0;padding-right:40px"><a target="_blank" href="https://facebook.com/diniubire.ro" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#333333;font-size:12px"><img title="Facebook" src="https://jbbqqc.stripocdn.email/content/assets/img/social-icons/logo-black/facebook-logo-black.png" alt="Fb" width="32" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a></td> 
+                                <td align="center" valign="top" style="padding:0;Margin:0"><a target="_blank" href="https://instagram.com/diniubire.ro" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#333333;font-size:12px"><img title="Instagram" src="https://jbbqqc.stripocdn.email/content/assets/img/social-icons/logo-black/instagram-logo-black.png" alt="Inst" width="32" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a></td> 
                                </tr> 
                              </table></td> 
                            </tr> 
@@ -678,7 +686,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
                           <td class="es-m-p0r" valign="top" align="center" style="padding:0;Margin:0;width:560px"> 
                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                              <tr> 
-                              <td align="center" style="padding:0;Margin:0;padding-bottom:10px;font-size:0px"><img src="https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/logo%2Fmontanair.png?alt=media&token=f42ebf81-1205-44d2-806b-7130100adda7" alt="Logo" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" width="200" title="Logo"></td> 
+                              <td align="center" style="padding:0;Margin:0;padding-bottom:10px;font-size:0px"><img src="https://firebasestorage.googleapis.com/v0/b/diniubire-89ce0.appspot.com/o/emailTemplate%2FdinIubireLogoBro.png?alt=media&token=f9fe0cb8-7f70-4c1b-bd71-cc751f796d6e" alt="Logo" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;font-size:12px" width="200" title="Logo"></td> 
                              </tr> 
                            </table></td> 
                          </tr> 
@@ -712,7 +720,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
                </table> 
                <table cellpadding="0" cellspacing="0" class="es-content" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%"> 
                  <tr> 
-                  <td align="center" style="padding:0;Margin:0"> Comanda inreg
+                  <td align="center" style="padding:0;Margin:0"> Comanda receptionata!
                    <table bgcolor="#ffffff" class="es-content-body" align="center" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px"> 
                      <tr> 
                       <td align="left" style="padding:20px;Margin:0"> 
@@ -742,7 +750,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
                               <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: auto; width: auto;">
                                 <tbody>
                                   <tr>
-                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #e7e7e7;" valign="top" align="center" bgcolor="#e7e7e7"> <a href="https://montanair.ro/order/${invoiceNumberID}"  target="_blank" style="border: solid 1px #df94b3; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #181818; border-color: #ffffff; color: #ffffff;">Vezi comanda</a> </td>
+                                    <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #e7e7e7;" valign="top" align="center" bgcolor="#e7e7e7"> <a href="https://diniubire.ro/order/${invoiceNumberID}"  target="_blank" style="border: solid 1px #df94b3; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #181818; border-color: #ffffff; color: #ffffff;">Vezi comanda</a> </td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -874,7 +882,7 @@ export const sendEmail = functions.https.onRequest((request, response) => {
                           <td align="left" style="padding:0;Margin:0;width:560px"> 
                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                              <tr> 
-                              <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Aveti intrebari? Nu ezitati sa ne contactati pe montanair.ro/contact sau la numarul de telefon +40 759 796 202</p></td> 
+                              <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Aveti intrebari? Nu ezitati sa ne contactati pe diniubire.ro/contact sau la numarul de telefon +40 759 796 202</p></td> 
                              </tr> 
                            </table></td> 
                          </tr> 
@@ -897,8 +905,8 @@ export const sendEmail = functions.https.onRequest((request, response) => {
                               <td align="center" style="padding:0;Margin:0;padding-top:15px;padding-bottom:15px;font-size:0"> 
                                <table cellpadding="0" cellspacing="0" class="es-table-not-adapt es-social" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                                  <tr> 
-                                  <td align="center" valign="top" style="padding:0;Margin:0;padding-right:40px"><a target="_blank" href="https://facebook.com/montanair" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#333333;font-size:12px"><img title="Facebook" src="https://jbbqqc.stripocdn.email/content/assets/img/social-icons/logo-black/facebook-logo-black.png" alt="Fb" width="32" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a></td> 
-                                  <td align="center" valign="top" style="padding:0;Margin:0"><a target="_blank" href="https://instagram.com/montanair" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#333333;font-size:12px"><img title="Instagram" src="https://jbbqqc.stripocdn.email/content/assets/img/social-icons/logo-black/instagram-logo-black.png" alt="Inst" width="32" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a></td> 
+                                  <td align="center" valign="top" style="padding:0;Margin:0;padding-right:40px"><a target="_blank" href="https://facebook.com/diniubire.ro" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#333333;font-size:12px"><img title="Facebook" src="https://jbbqqc.stripocdn.email/content/assets/img/social-icons/logo-black/facebook-logo-black.png" alt="Fb" width="32" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a></td> 
+                                  <td align="center" valign="top" style="padding:0;Margin:0"><a target="_blank" href="https://instagram.com/diniubire.ro" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#333333;font-size:12px"><img title="Instagram" src="https://jbbqqc.stripocdn.email/content/assets/img/social-icons/logo-black/instagram-logo-black.png" alt="Inst" width="32" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a></td> 
                                  </tr> 
                                </table></td> 
                              </tr> 

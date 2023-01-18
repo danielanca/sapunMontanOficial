@@ -1,4 +1,5 @@
 {
+  "finishOrderURL": "/finalizare-comanda",
   "cartPageURL": "/cosulmeu",
   "adminURL": "/admin",
   "loginURL": "/login",

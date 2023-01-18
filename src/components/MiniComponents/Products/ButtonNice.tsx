@@ -8,7 +8,7 @@ interface ButtonNiceProps {
 
 const ButtonNice = ({ title, urlSufix }: ButtonNiceProps) => {
   return (
-    <a className={styles.buttonStyle} href={"https://montanair.ro/" + urlSufix}>
+    <a className={styles.buttonStyle} href={"https://diniubire.ro/" + urlSufix}>
       <button>{title}</button>
     </a>
   );

@@ -16,7 +16,6 @@
 .middleSubtext {
   text-align: center;
   font-size: 17px;
-  font-weight: bolder;
   font-family: "Roboto Medium";
 }
 .robotoLight {
@@ -57,22 +56,39 @@
   min-width: 300px;
   margin: auto;
 }
+.centerImageLarge {
+  @extend .centerImageMedium;
+  max-width: 576px;
+}
 .spacerPadder50 {
   width: 100%;
   height: 50px;
+  @include media("<tablet") {
+    height: 36px;
+  }
 }
 .spacerPadder100 {
   width: 100%;
   height: 100px;
+  @include media("<tablet") {
+    height: 60px;
+  }
 }
 .spacerPadder200 {
   width: 100%;
   height: 200px;
+  @include media("<tablet") {
+    height: 140px;
+  }
 }
 
 .spacerPadder300 {
   width: 100%;
   height: 300px;
+
+  @include media("<tablet") {
+    height: 190px;
+  }
 }
 .imageProductFeatured {
   margin: 20px auto;
@@ -110,4 +126,45 @@
 }
 .randNou {
   text-indent: 50px;
+}
+
+.recipes {
+  li {
+    font-family: "Roboto Medium";
+    font-weight: 300;
+    line-height: 1.2em;
+  }
+}
+.benefitsImage {
+  width: 25%;
+  aspect-ratio: 1/1;
+
+  @include media("<tablet") {
+    width: 38%;
+  }
+}
+.rowBenefits {
+  width: 70%;
+  margin: auto;
+  row-gap: 12px;
+  @include media("<desktop") {
+    width: 100%;
+  }
+}
+.benefitsText {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    text-indent: 0;
+    text-align: center;
+    margin: 0;
+    @include media("<tablet") {
+      font-size: 13px;
+    }
+  }
+}
+.benefitsImage {
+  // width: 30%;
 }

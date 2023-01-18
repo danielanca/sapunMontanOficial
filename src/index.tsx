@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "@fontsource/luckiest-guy";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./data/customCSS.scss";
 

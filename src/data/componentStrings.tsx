@@ -104,7 +104,7 @@ export const cookieConsent = {
 };
 
 export const productConstants = {
-  shippingFee: 15
+  shippingFee: 9
 };
 
 export const websiteContact = {

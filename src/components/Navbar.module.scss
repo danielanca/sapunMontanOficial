@@ -180,15 +180,13 @@
   font-size: 1.4em;
   color: #000000;
   margin: 0 0.8vw;
-  font-family: "SallenasGrande Regular" !important;
+  font-family: "Bebas Neue" !important;
   border-bottom: 5px solid transparent;
   white-space: nowrap;
-  &:hover {
-  }
+  text-transform: uppercase;
 }
 .HashLinkStyle {
   color: map-get($map: $colors, $key: mainlyBlack);
-
   text-decoration: none;
   &:hover {
     color: map-get($map: $colors, $key: mainlyBlack);

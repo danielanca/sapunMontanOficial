@@ -17,7 +17,7 @@
   font-size: 50px;
 
   @include media("<tablet") {
-    font-size: calc(20px + 8vw);
+    font-size: clamp(39px, 8vw, 44px);
   }
 }
 .topTitle {
@@ -115,9 +115,6 @@
   padding: 4% 0;
   flex-direction: column;
   flex-wrap: wrap;
-  h3 {
-    text-align: center;
-  }
 }
 .container {
   @extend .container;
@@ -129,7 +126,14 @@
   justify-content: center;
   align-items: center;
   min-height: 200px;
-  max-height: 250px;
+  max-height: 405px;
+  column-gap: 25px;
+  row-gap: 10px;
+
+  @include media("<tablet") {
+    max-height: none;
+    padding: 3% 0;
+  }
 }
 .relPostItem {
   @extend .col-6;

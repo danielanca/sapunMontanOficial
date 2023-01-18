@@ -53,6 +53,11 @@ const CartPage = ({ notifyMe }: CartProps) => {
     notifyMe(updateMade);
   };
 
+  const goToPage = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.location.href = cartString.finishOrder.link;
+  };
+
   const displayFinishOrderDialog = () => {
     if (subtotalPrepare > 0) {
       return (
@@ -133,7 +138,9 @@ const CartPage = ({ notifyMe }: CartProps) => {
                   </div>
                   <div className={styles.finishTheOrderBox}>
                     <NavHashLink className={styles.hashTransparent} to={cartString.finishOrder.link}>
-                      <button className={styles.finishOrder}>{cartString.finishOrder.text}</button>
+                      <button onClick={goToPage} className={styles.finishOrder}>
+                        {cartString.finishOrder.text}
+                      </button>
                     </NavHashLink>
                   </div>
                 </div>

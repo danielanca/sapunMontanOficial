@@ -1,0 +1,30 @@
+@import "./../../main.module.scss";
+
+.questionsBlock {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bookTextTop {
+  color: #000000;
+  font-weight: bolder;
+  font-size: calc(45px + 1.2vw) !important;
+  margin: 20px 0px;
+}
+.bookTextDown {
+  font-size: clamp(16px, 10vw, 23px);
+  margin: -10px 0 0;
+  color: #000000;
+}
+.cardsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 15px;
+  margin-top: 30px;
+  margin-bottom: 82px;
+}

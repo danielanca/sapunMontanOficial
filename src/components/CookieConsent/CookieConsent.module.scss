@@ -13,6 +13,7 @@
   padding: 20px;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
   @include media("<800px") {
     flex-direction: column;
   }
@@ -21,7 +22,7 @@
     color: #0c0c0c;
     line-height: 17px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 400;
     a {
       border-bottom: none;
       color: inherit;

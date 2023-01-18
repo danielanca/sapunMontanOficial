@@ -11,10 +11,10 @@ import { getData } from "./data/productList";
 import { AuthProvider } from "./components/context/AuthProvider";
 import { getCookie } from "./components/CookieConsent/functions";
 import CookieConsent from "./components/CookieConsent/CookieConsent";
-
 import NotFound from "./components/NotFound/NotFound";
 
 import "./App.css";
+import FAQBlock from "./components/FAQBlock/FAQBlock";
 import FooterMontan from "./components/FooterMontan";
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
@@ -119,6 +119,7 @@ function App() {
                   <Route path="/blogid/:blogLink" element={<BlogPost />} />
                   <Route path="/testimonials" element={<Testimonials />} />
                   <Route path="/order/:orderID" element={<OrderView />} />
+                  <Route path="/intrebari" element={<FAQBlock />} />
                   <Route path="/" element={<MainNavigation />} />
 
                   {/* Content Template*/}

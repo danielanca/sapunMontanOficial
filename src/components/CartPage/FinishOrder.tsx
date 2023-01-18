@@ -3,58 +3,54 @@ import OrderDone from "./OrderDone";
 import { sendOrderConfirmation } from "./../../services/emails";
 import Checkboxer from "./../MiniComponents/Checkboxer";
 
-import { orderProps } from "./../../utils/OrderInterfaces";
 import { NavHashLink } from "react-router-hash-link";
 import { makeCheck } from "./../../functions/utilsFunc";
 import { ErrorProps, OrderProps, ExplicitProdListProps, PropertyInput, InputProps } from "./typeProps";
 
-import { componentStrings, productConstants } from "../../data/componentStrings";
+import { productConstants } from "../../data/componentStrings";
 import strings from "../../data/strings.json";
 import { ProductsFromSessionStorage, CartInfoItemCookie } from "../../data/constants";
 import styles from "./../CartPage/FinishOrder.module.scss";
 import images from "./../../data/images";
+import { useOrderObject } from "./useOrderData";
+import { getInputFields } from "./inputFields";
+import { areInputsValid } from "./funcs";
 
 const FinishOrder = ({ clearNotification }: OrderProps) => {
   let { orderFinishPage: orderString } = strings;
-  const [emailSentConfirmed, setSent] = useState<boolean>(false);
   let itemsSessionStorage = sessionStorage.getItem(ProductsFromSessionStorage);
   let productSessionStorage = itemsSessionStorage != null ? JSON.parse(itemsSessionStorage) : null;
-  const [pendingRequest, setPendingReq] = useState<boolean>(false);
   var storedCart: any[] = [];
   var subtotalPrepare: number = 0;
-  const [finishOrderRequested, setFinishRequested] = useState<number>(0);
+
+  const [orderState, setOrderState] = useState<
+    | "initState"
+    | "requestState"
+    | "validRequestState"
+    | "pendingState"
+    | "errorState"
+    | "triggeredState"
+    | "finishState"
+  >("initState");
+
   const [completionState, setError] = useState<ErrorProps>({
     paymentSelected: false,
     termsAccepted: false,
     inputCompleted: false
   });
-  const [orderData, setorderData] = useState<orderProps>({
-    firstName: "",
-    lastName: "",
-    emailAddress: "",
-    deliveryAddress: "",
-    city: "",
-    county: "",
-    paymentMethod: "",
-    cartProducts: "",
-    phoneNo: "",
-    cartSum: subtotalPrepare,
-    shippingTax: productConstants.shippingFee,
-    orderNotes: "",
-    deliveryName: "DPD Curier",
-    paymentStatus: "NOT_PAID"
-  });
+  const { orderData, setorderData } = useOrderObject();
 
   const handleSend = async () => {
     try {
       return await sendOrderConfirmation(orderData)
         .then((response) => {
           response.json().then((jsonResponse: any) => {
-            console.log("Whole Object:", jsonResponse);
-            console.log("Is Email to Client sent? : ", jsonResponse.EMAILTO_CLIENT);
-            console.log("Is Email to Admin sent? : ", jsonResponse.EMAILTO_ADMIN);
+            // console.log("Whole Object:", jsonResponse);
+            // console.log("Is Email to Client sent? : ", jsonResponse.EMAILTO_CLIENT);
+            // console.log("Is Email to Admin sent? : ", jsonResponse.EMAILTO_ADMIN);
           });
-          setSent(true);
+
+          setOrderState("finishState");
         })
         .catch((error) => console.log(error));
     } catch (error) {
@@ -62,14 +58,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     }
   };
   const sendOrderData = () => {
-    setFinishRequested(finishOrderRequested + 1);
-
-    if (completionState.inputCompleted && completionState.paymentSelected && completionState.termsAccepted) {
-      console.log(orderData);
-      setPendingReq(true);
-
-      handleSend();
-    }
+    setOrderState("triggeredState");
   };
 
   const paymentMethodHandler = (value: boolean, title: string | undefined) => {
@@ -90,25 +79,14 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
       [name]: value
     }));
   };
-  useEffect(() => {
-    if (emailSentConfirmed) {
-      window.scrollTo(0, 0);
-      localStorage.removeItem("cartData");
-      console.log(`Email state changed to: ${emailSentConfirmed} and removed items from localStorage`);
-      if (typeof clearNotification === "function") {
-        clearNotification(Math.floor(Math.random() * 120));
-      } else {
-        new Error("clearNotification is not a function");
-      }
-    }
-  }, [emailSentConfirmed]);
 
   var deliveryFee = productConstants.shippingFee;
   let expectedData = localStorage.getItem(CartInfoItemCookie);
   var explicitProductList: ExplicitProdListProps[] = [];
+
   if (expectedData != null) {
     storedCart = JSON.parse(expectedData);
-    if (productSessionStorage != null) {
+    if (productSessionStorage !== null) {
       storedCart = makeCheck(productSessionStorage, storedCart);
       storedCart.map((item: ExplicitProdListProps) => {
         subtotalPrepare += Number(productSessionStorage[item.id].price) * Number(item.itemNumber);
@@ -124,14 +102,23 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
       console.log("Product session storage is null");
       new Error("Product Session Storage is null");
     }
-
-    console.log("EXPLICIT PRODS:", explicitProductList);
-    console.log(orderData);
   }
   const termAcceptHandler = () => {
     setError((completionState) => ({ ...completionState, termsAccepted: !completionState.termsAccepted }));
   };
 
+  useEffect(() => {
+    if (orderState == "finishState") {
+      window.scrollTo(0, 0);
+      localStorage.removeItem(CartInfoItemCookie);
+
+      if (typeof clearNotification === "function") {
+        clearNotification(Math.floor(Math.random() * 120));
+      } else {
+        new Error("clearNotification is not a function");
+      }
+    }
+  }, [orderState]);
   useEffect(() => {
     setorderData((orderData) => ({
       ...orderData,
@@ -142,91 +129,49 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   }, [subtotalPrepare]);
 
   useEffect(() => {
-    if (finishOrderRequested === 0) {
-      return;
-    }
-    if (
-      orderData.firstName.length >= 2 &&
-      orderData.lastName.length >= 2 &&
-      orderData.city.length >= 2 &&
-      orderData.county.length >= 2 &&
-      orderData.phoneNo.length >= 2 &&
-      orderData.deliveryAddress.length >= 2
-    ) {
-      setError((completionState) => ({ ...completionState, inputCompleted: true }));
-    } else {
-      setError((completionState) => ({ ...completionState, inputCompleted: false }));
-    }
-    if (orderData.paymentMethod != "") {
-      setError((completionState) => ({ ...completionState, paymentSelected: true }));
-    }
-    console.log("Finish order request", finishOrderRequested);
-  }, [finishOrderRequested, orderData]);
-  const inputObject: InputProps = {
-    lastName: {
-      name: "lastName",
-      inputListener: inputHandler,
-      value: orderData.lastName,
-      labelText: orderString.inputsLabels.lastName,
-      mandatoryInput: true
-    },
-    firstName: {
-      name: "firstName",
-      inputListener: inputHandler,
-      value: orderData.firstName,
-      labelText: orderString.inputsLabels.firstName,
-      mandatoryInput: true
-    },
-    deliveryAddress: {
-      name: "deliveryAddress",
-      inputListener: inputHandler,
-      value: orderData.deliveryAddress,
-      labelText: orderString.inputsLabels.deliveryAddress,
-      mandatoryInput: true
-    },
-    city: {
-      name: "city",
-      inputListener: inputHandler,
-      value: orderData.city,
-      labelText: orderString.inputsLabels.city,
-      mandatoryInput: true
-    },
-    county: {
-      name: "county",
-      inputListener: inputHandler,
-      value: orderData.county,
-      labelText: orderString.inputsLabels.county,
-      mandatoryInput: true,
-      inputOptions: {
-        autoComplete: "false",
-        list: "county"
-      },
-      otherStructure: {
-        dataList: {
-          name: "county",
-          list: componentStrings.FinishOrder.countyList
-        }
+    // if (orderState === "initState") {
+    //   return;
+    // }
+    if (orderState == "initState" || orderState == "requestState" || orderState == "errorState") {
+      if (areInputsValid(orderData)) {
+        setError((completionState) => ({ ...completionState, inputCompleted: true }));
+      } else {
+        setError((completionState) => ({ ...completionState, inputCompleted: false }));
       }
-    },
-    phoneNo: {
-      name: "phoneNo",
-      inputListener: inputHandler,
-      value: orderData.phoneNo,
-      labelText: orderString.inputsLabels.phoneNo,
-      mandatoryInput: true
-    },
-    emailAddress: {
-      name: "emailAddress",
-      inputListener: inputHandler,
-      value: orderData.emailAddress,
-      labelText: orderString.inputsLabels.emailAddress,
-      mandatoryInput: false
+      if (orderData.paymentMethod !== "") {
+        setError((completionState) => ({ ...completionState, paymentSelected: true }));
+      }
     }
-  };
+
+    console.log("ORDER STATE: ", orderState);
+  }, [orderState, orderData]);
+
+  useEffect(() => {
+    console.log("ERRORS are:", completionState);
+  }, [completionState]);
+
+  useEffect(() => {
+    if (orderState === "triggeredState") {
+      if (completionState.inputCompleted && completionState.paymentSelected && completionState.termsAccepted) {
+        setOrderState("validRequestState");
+      } else {
+        setOrderState("errorState");
+      }
+    }
+    if (orderState === "validRequestState") {
+      //this will be next-time
+      setOrderState("pendingState");
+      handleSend();
+    }
+
+    console.log("ORDER STATE: ", orderState);
+  }, [orderState]);
+
+  const inputObject = getInputFields(orderData, inputHandler);
 
   return (
     <div className={styles.FinishSection}>
-      {!emailSentConfirmed ? (
+      {orderState !== "finishState" ? (
         <>
           <div className={styles.topTitle}>
             <div className={styles.cartLine} />
@@ -295,7 +240,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                   {storedCart.map((item) => (
                     <li className={styles.itemLi}>
                       <span className={styles.productSummarizeTitle}>{productSessionStorage[item.id].title}</span>
-                      <span className={styles.count}>{Number(item.itemNumber) + " x"}</span>
+                      <span className={styles.count}>{Number(item.itemNumber) + "x"}</span>
                       <span className={styles.price}>{Number(productSessionStorage[item.id].price)}</span>
                     </li>
                   ))}
@@ -333,7 +278,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                 </div>
               </div>
               <div className={styles.filledSpacePaymentMtd}>
-                {finishOrderRequested >= 1 && orderData.paymentMethod === "" && (
+                {orderState === "errorState" && orderData.paymentMethod === "" && (
                   <h4 className="text-center " style={{ color: "red" }}>
                     {orderString.shipping.paymentMethodError}
                   </h4>
@@ -343,7 +288,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
 
             <div
               style={{
-                visibility: finishOrderRequested >= 1 && !completionState.inputCompleted ? "visible" : "hidden"
+                visibility: orderState === "errorState" && !completionState.inputCompleted ? "visible" : "hidden"
               }}
               className={styles.warningOrderWrapper}
             >
@@ -370,20 +315,20 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                     </label>
                   </div>
                   <div className={styles.filledSpaceTCAlert}>
-                    {finishOrderRequested >= 1 && !completionState.termsAccepted && (
+                    {orderState === "errorState" && !completionState.termsAccepted && (
                       <h4 className={styles.termConditionAlert}>{orderString.policyAgremenet.constent.error}</h4>
                     )}
                   </div>
                 </div>
                 <button onClick={sendOrderData} type="submit" className={styles.finishOrder}>
-                  {!pendingRequest ? (
+                  {orderState != "pendingState" ? (
                     <span>{orderString.orderItself.sendFinishOrder.nameButton}</span>
                   ) : (
                     <span>{". . ."}</span>
                   )}
                 </button>
                 <div>
-                  {pendingRequest && (
+                  {orderState == "pendingState" && (
                     <p className={styles.emailSendStyle}>{orderString.orderItself.sendFinishOrder.pendingMessage}</p>
                   )}
                 </div>

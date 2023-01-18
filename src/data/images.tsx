@@ -5,6 +5,7 @@ const images = {
   star: require("./../media/assets/pics/prezentareCarbune/star_review.png").default,
   cartLogo: require("./../media/assets/cart.png").default,
   arrowRight: require("./../media/assets/pics/prezentareCarbune/next.png").default,
+  arrowDown: require("./../media/assets/pics/prezentareCarbune/arrowDown.png").default,
   heartIcon: require("./../media/assets/pics/prezentareCarbune/heart.png").default,
   montanLogo: require("./../media/assets/pics/prezentareCarbune/montanLogo.png").default,
   ROFlag: require("../media/assets/pics/prezentareCarbune/flagRO.jpg").default,
@@ -14,6 +15,11 @@ const images = {
   coalCartoon: require("./../media/assets/coal_cartoon.png").default,
   finishOrder: require("./../media/assets/open-box.png").default,
   noProduct: require("./../media/assets/pics/prezentareCarbune/noProduct.png").default,
+  verifiedPurchase: require("./../media/assets/checked.png").default,
+  closeIcon: require("./../media/assets/closeIcon.png").default,
+  newsletterHands: require("./../media/assets/handsNewsletter.webp").default,
+  refundIcon:
+    "https://firebasestorage.googleapis.com/v0/b/diniubire-89ce0.appspot.com/o/icons%2FRectangle%202.png?alt=media&token=4ec69e4d-eebc-477e-ab7c-fdf07c5f1a99",
   ingredients: {
     vitaminaC: require("./../media/assets/pics/prezentareCarbune/ingredients/vitaminaC.png").default,
     argila: require("./../media/assets/pics/prezentareCarbune/ingredients/argila.png").default,

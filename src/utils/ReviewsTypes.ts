@@ -1,12 +1,13 @@
 export interface ReviewsInterface {
-  reviewActual: string;
-  date: string;
   name: string;
-  starsNumber: string;
   email: string;
+  reviewActual: string;
   reviewProductID: string;
+  starsNumber: string;
+  mediaLink?: string;
 }
 export interface ReviewsProps {
   productIdentification: string;
-  productData?: ReviewsInterface;
+  productData: ReviewsInterface;
+  allReviews: any;
 }
