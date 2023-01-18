@@ -4,21 +4,21 @@
 @keyframes fadeIn {
   0% {
     opacity: 0;
-    right: 100vw;
+    right: -100vw;
     @include media("<tablet") {
       left: 100vw;
     }
   }
   7% {
     opacity: 1;
-    right: 0vw;
+    right: 0;
     @include media("<tablet") {
       left: 0vw;
     }
   }
   93% {
     opacity: 1;
-    right: 0vw;
+    right: 0;
     @include media("<tablet") {
       left: 0vw;
     }
@@ -26,7 +26,7 @@
 
   100% {
     opacity: 0;
-    right: 100vw;
+    right: -100vw;
     @include media("<tablet") {
       left: 100vw;
     }
@@ -53,11 +53,11 @@
 }
 .cartCardboard {
   right: 20px;
-  width: 28vw;
+  width: 400px;
   height: auto;
   position: fixed;
   right: 0;
-  top: 260px;
+  top: 110px;
   background: #ececec;
   z-index: 100;
 
@@ -69,8 +69,9 @@
   // opacity: 1;
   // animation-name: none;
   // animation-duration: unset;
+  // right: 0;
   @include media("<desktop") {
-    width: 36vw;
+    width: 45vw;
   }
   @include media("<tablet") {
     width: 100vw;
@@ -123,6 +124,9 @@
 .outerProductTitle {
   width: -webkit-fill-available;
   padding: 6% 4%;
+  @include media(">=tablet", "<desktop") {
+    padding: 2% 4% 14%;
+  }
 }
 .confirmMessage {
   text-align: center;

@@ -37,6 +37,9 @@
     text-indent: 50px;
     font-family: "Roboto Light";
     font-weight: 600;
+    @include media("<tablet") {
+      text-indent: 25px;
+    }
   }
   strong,
   b {
