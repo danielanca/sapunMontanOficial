@@ -17,14 +17,13 @@ import { ProductModel } from "./types/productTypes";
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
 const app = express();
-
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 app.use(cookieParser());
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault()
 });
 
-process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 export const updateProduct = functions.https.onRequest((request, response) => {
   let requestParam = JSON.parse(request.body);
   console.log("updateProduct:", requestParam);

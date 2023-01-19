@@ -24,3 +24,20 @@ tbody > tr > td > a {
   flex-direction: column;
   align-items: center;
 }
+
+/* Date Input Calendar*/
+.inputDateContainer {
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  column-gap: 5px;
+  margin: 0 2%;
+  label {
+    margin-bottom: 0;
+  }
+}
+.dateInputs {
+  display: flex;
+  flex-direction: row;
+}
