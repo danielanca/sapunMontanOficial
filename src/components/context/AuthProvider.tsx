@@ -3,15 +3,17 @@ import { getCookie } from "./../../utils/functions";
 import { ProviInter, Provi } from "./ProviderTypes";
 
 const AuthContext = createContext<ProviInter | null>(null);
-
-export const AuthProvider: React.FC = ({ children }) => {
-  let authoriseMe = false;
-  if (getCookie("jwt") === "ABCJWT") {
-    authoriseMe = true;
-    // setAuth((auth) => ({ ...auth, email: "yeah", authorise: true }));
-  }
+interface AuthProps {
+  children: React.ReactNode;
+}
+export const AuthProvider = ({ children }: AuthProps) => {
   //you have to learn React lifecycle
-  const [auth, setAuth] = useState<Provi>({ email: "", password: "", accessToken: "", authorise: authoriseMe });
+  const [auth, setAuth] = useState<Provi>({
+    email: "",
+    password: "",
+    accessToken: "",
+    authorise: getCookie("jwt") === "ABCJWT"
+  });
 
   return <AuthContext.Provider value={{ auth, setAuth }}>{children}</AuthContext.Provider>;
 };
