@@ -3,7 +3,7 @@ import { getCookie } from "../utils/functions";
 import { ReviewsInterface } from "../utils/ReviewsTypes";
 import { NewsProps } from "../utils/NewsletterInterface";
 
-var destination: string = "";
+let destination: string = "";
 // const destination = "http://localhost:5000/sapunmontan/us-central1";
 if (process.env.NODE_ENV === "development") {
   destination = "http://localhost:5000/diniubire-89ce0/us-central1";

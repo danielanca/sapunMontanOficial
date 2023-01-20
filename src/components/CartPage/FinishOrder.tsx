@@ -20,8 +20,8 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   let { orderFinishPage: orderString } = strings;
   let itemsSessionStorage = sessionStorage.getItem(ProductsFromSessionStorage);
   let productSessionStorage = itemsSessionStorage != null ? JSON.parse(itemsSessionStorage) : null;
-  var storedCart: any[] = [];
-  var subtotalPrepare: number = 0;
+  let storedCart: any[] = [];
+  let subtotalPrepare: number = 0;
 
   const [orderState, setOrderState] = useState<
     | "initState"
@@ -80,9 +80,9 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     }));
   };
 
-  var deliveryFee = productConstants.shippingFee;
+  let deliveryFee = productConstants.shippingFee;
   let expectedData = localStorage.getItem(CartInfoItemCookie);
-  var explicitProductList: ExplicitProdListProps[] = [];
+  let explicitProductList: ExplicitProdListProps[] = [];
 
   if (expectedData != null) {
     storedCart = JSON.parse(expectedData);
