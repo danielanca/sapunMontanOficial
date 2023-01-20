@@ -1,4 +1,4 @@
-@import './../main.module.scss';
+@import "./../main.module.scss";
 
 .cardboard {
   @extend .col;
@@ -9,7 +9,7 @@
   border: 2px solid map-get($map: $colors, $key: headColor);
   cursor: default;
 
-  @include media('>=phone', '<=desktopSmall') {
+  @include media(">=phone", "<=desktopSmall") {
     width: 96vw;
     height: 28vw;
   }
@@ -18,10 +18,10 @@
   white-space: nowrap;
   font-size: 80%;
 
-  @include media('>=phone', '<=tablet') {
+  @include media(">=phone", "<=tablet") {
     font-size: 2.4em;
   }
-  @include media('>tablet', '<=desktopSmall') {
+  @include media(">tablet", "<=desktopSmall") {
     font-size: 1.8em;
   }
 }
@@ -29,7 +29,7 @@
   width: auto;
   height: 100%;
 
-  @include media('>=phone', '<=desktopSmall') {
+  @include media(">=phone", "<=desktopSmall") {
     width: default;
     height: default;
     background-size: cover;
@@ -42,10 +42,10 @@
   font-weight: 500;
   white-space: nowrap;
   font-size: 1.3em;
-  @include media('>=phone', '<=tablet') {
+  @include media(">=phone", "<=tablet") {
     font-size: 3.3em;
   }
-  @include media('>tablet', '<=desktopSmall') {
+  @include media(">tablet", "<=desktopSmall") {
     font-size: 2.6em;
   }
 }
@@ -56,7 +56,7 @@
   justify-content: center;
   align-items: center;
   font-size: 1.2vw;
-  @include media('>=tablet', '<desktopSmall') {
+  @include media(">=tablet", "<desktopSmall") {
     font-size: 0.8vw;
   }
 }
@@ -76,10 +76,10 @@
   font-size: 1.3em;
   margin-bottom: 3%;
 
-  @include media('>=phone', '<=tablet') {
+  @include media(">=phone", "<=tablet") {
     font-size: 4.5em;
   }
-  @include media('>tablet', '<=desktopSmall') {
+  @include media(">tablet", "<=desktopSmall") {
     font-size: 2.3em;
   }
 }
