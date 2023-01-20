@@ -8,3 +8,6 @@ export interface ProviInter {
   auth?: Provi;
   setAuth?: React.Dispatch<React.SetStateAction<Provi>>;
 }
+export interface AuthProps {
+  children: React.ReactNode;
+}
