@@ -1,7 +1,7 @@
 const images = {
   sapunCarbune: require("./../media/assets/pics/prezentareCarbune/carbune.png").default,
   deliveryCar: require("./../media/assets/pics/prezentareCarbune/delivery.png").default,
-  logo: require("./../media/assets/oasis_header.svg").default,
+  logo: require("./../media/assets/montanAirLogo.png").default,
   star: require("./../media/assets/pics/prezentareCarbune/star_review.png").default,
   cartLogo: require("./../media/assets/cart.png").default,
   arrowRight: require("./../media/assets/pics/prezentareCarbune/next.png").default,

@@ -1,71 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
 
 import { getOrderByID } from "./../../data/productList";
 import { OrderViewProps } from "../../utils/OrderInterfaces";
 import strings from "../../data/strings.json";
-import imageByString from "../../data/imageByString.json";
+import images from "../../data/images";
 import styles from "./OrderView.module.scss";
-
-const stylesPDF = StyleSheet.create({
-  body: {
-    paddingTop: 35,
-    paddingBottom: 65,
-    paddingHorizontal: 35
-  },
-  title: {
-    fontSize: 24,
-    textAlign: "center",
-    fontFamily: "Oswald"
-  },
-  author: {
-    fontSize: 12,
-    textAlign: "center",
-    marginBottom: 40
-  },
-  subtitle: {
-    fontSize: 18,
-    margin: 12,
-    fontFamily: "Oswald"
-  },
-  text: {
-    margin: 12,
-    fontSize: 14,
-    textAlign: "justify",
-    fontFamily: "Times-Roman"
-  },
-  image: {
-    marginVertical: 15,
-    marginHorizontal: 100
-  },
-  header: {
-    fontSize: 12,
-    marginBottom: 20,
-    textAlign: "center",
-    color: "grey"
-  },
-  pageNumber: {
-    position: "absolute",
-    fontSize: 12,
-    bottom: 30,
-    left: 0,
-    right: 0,
-    textAlign: "center",
-    color: "grey"
-  }
-});
-
-const generatePDF = () => (
-  <Document>
-    <Page size="A4" style={{ backgroundColor: "tomato" }}>
-      <View style={{ color: "white", textAlign: "center", margin: 30 }}>
-        <Text>Section #1</Text>
-        <Text>Section #1</Text>
-      </View>
-    </Page>
-  </Document>
-);
+import { View } from "./pdfview";
 
 const OrderView = () => {
   let { orderView: orderStr } = strings;
@@ -85,7 +26,11 @@ const OrderView = () => {
 
   const displayInvoiceData = () => {
     if (invoiceData != null) {
-      return generatePDF();
+      return (
+        <div>
+          <View invoiceObject={invoiceData} />
+        </div>
+      );
       // <div className={styles.cardBoard}>
       //   <div className="row">
       //     <div className="col-12 d-flex justify-content-center ">
@@ -148,11 +93,7 @@ const OrderView = () => {
     } else return <>{"Loading"}</>;
   };
 
-  return (
-    <div className={styles.orderViewContainer}>
-      <div>{displayInvoiceData()}</div>
-    </div>
-  );
+  return <div className={styles.orderViewContainer}>{displayInvoiceData()}</div>;
 };
 
 export default OrderView;

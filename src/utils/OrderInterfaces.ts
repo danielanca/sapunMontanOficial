@@ -92,3 +92,28 @@ export interface OrderViewProps {
   timestamp?: string;
   invoiceID?: string;
 }
+export interface InvoiceOrderProps {
+  invoiceObject: {
+    lastName?: string;
+    firstName?: string;
+    phoneNo?: string;
+    deliveryAddress?: string;
+    emailAddress?: string;
+    city?: string;
+    county?: string;
+    paymentMethod?: string;
+    cartProducts?: string;
+    shippingTax?: number;
+    cartSum?: number;
+    orderNotes?: string;
+    deliveryName?: string;
+    timestamp?: string;
+    invoiceID?: string;
+  };
+  companyInfo: {
+    name: string;
+    number: string;
+    fiscal: string;
+    address: string;
+  };
+}
