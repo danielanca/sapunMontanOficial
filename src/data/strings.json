@@ -1,6 +1,39 @@
 {
   "websiteTitle": "MontanAir.Ro",
 
+  "elasticGallery": {
+    "sapunCosmetic": {
+      "name": "Sapun Cosmetic",
+      "link": "sapun-carbune",
+      "image": "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/montanAir%2FcategoriiPoze%2Fcleansing-scrub-presenting-female-cosmetic-product-woman-use-face-cream_545934-26939.webp?alt=media&token=9eb71783-90bb-44e1-b403-b353be7bd0fb",
+      "text": " "
+    },
+    "scrubNatural": {
+      "name": "Scrub Natural",
+      "link": "sapun-carbune",
+      "image": "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/montanAir%2FcategoriiPoze%2Ffacial-care-female-applying-cream-smiling-portrait-young-woman-cosmetic-skin-closeup-beautiful-girl-wi-beauty-170374576.jpg?alt=media&token=af845bf4-ad6a-45b0-af55-ad61304fc296",
+      "text": " "
+    },
+    "pastaDinti": {
+      "name": "Sapun Cosmetic",
+      "link": "sapun-carbune",
+      "image": "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/montanAir%2FcategoriiPoze%2Fistockphoto-1208515511-612x612.jpg?alt=media&token=bd02902c-31b1-4474-bc9e-a3de116589c7",
+      "text": " "
+    },
+    "cremaNoapte": {
+      "name": "Scrub Natural",
+      "link": "sapun-carbune",
+      "image": "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/montanAir%2FcategoriiPoze%2Fistockphoto-1290579053-612x612.jpg?alt=media&token=d6077525-5df0-4ab2-91bb-e7cc95a93f3f",
+      "text": " "
+    },
+    "cremaZi": {
+      "name": "Scrub Zi",
+      "link": "sapun-carbune",
+      "image": "https://firebasestorage.googleapis.com/v0/b/sapunmontan.appspot.com/o/montanAir%2FcategoriiPoze%2Fistockphoto-1290579053-612x612.jpg?alt=media&token=d6077525-5df0-4ab2-91bb-e7cc95a93f3f",
+      "text": " "
+    }
+  },
+
   "DiscoverOurProducts": {
     "title": "MontanAir.Ro",
     "textSmall": "Produse Naturale pentru Tine"
