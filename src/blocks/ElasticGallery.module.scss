@@ -1,0 +1,72 @@
+@import "./../main.module.scss";
+
+.cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 0;
+  list-style: none;
+  max-width: 1300px;
+  padding: 5%;
+
+  column-gap: 0.7%;
+  row-gap: 0.4vw;
+
+  :nth-child(-n + 2) {
+    width: 47%;
+  }
+
+  @include media("<tablet") {
+    row-gap: 5px;
+    :nth-child(n) {
+      width: 100%;
+      aspect-ratio: 1.6/1;
+    }
+  }
+}
+.hashTransparentRelated {
+  width: inherit;
+  height: inherit;
+}
+.cardItem {
+  width: 31.3%;
+  line-height: 150px;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  &:hover {
+    color: white;
+  }
+}
+.headline {
+  position: absolute;
+  width: 100% !important;
+  bottom: 1px;
+  z-index: 100;
+  text-transform: uppercase;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  aspect-ratio: unset !important; // nthcild will also come here
+  @include media("<desktop") {
+    font-size: 2.9vw;
+  }
+  @include media("<tablet") {
+    font-size: 30px;
+  }
+}
+.imageContainer {
+  object-fit: cover;
+  height: 107%;
+  width: 100% !important;
+  outline: 2px solid white;
+  filter: brightness(0.94);
+  &:hover {
+    cursor: pointer;
+    filter: brightness(1);
+    filter: saturate(1.1);
+  }
+}
