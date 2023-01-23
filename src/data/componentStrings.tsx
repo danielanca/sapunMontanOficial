@@ -1,3 +1,5 @@
+import strings from "./strings.json";
+
 export const componentStrings = {
   FinishOrder: {
     countyList: {
@@ -47,10 +49,10 @@ export const componentStrings = {
   },
 
   companyData: {
-    name: "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
-    number: "41030416",
-    fiscal: "F12/696/23.04.2019",
-    address: "str. LIVIU REBREANU loc. Turda, Cluj"
+    name: strings.companyData.name,
+    number: strings.companyData.number,
+    fiscal: strings.companyData.fiscal,
+    address: strings.companyData.address
   }
 };
 
@@ -72,10 +74,10 @@ export const footerData = {
   },
 
   companyData: {
-    name: "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
-    number: "41030416",
-    fiscal: "F12/696/23.04.2019",
-    address: "str. LIVIU REBREANU loc. Turda, Cluj"
+    name: strings.companyData.name,
+    number: strings.companyData.number,
+    fiscal: strings.companyData.fiscal,
+    address: strings.companyData.address
   },
 
   ourShop: {

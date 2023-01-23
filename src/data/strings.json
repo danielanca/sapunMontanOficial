@@ -76,10 +76,11 @@
   },
 
   "companyData": {
-    "name": "RUS EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
-    "number": "45044473",
-    "fiscal": "F12/696/23.04.2019",
-    "address": "str. Liviu Rebreanu loc. Turda, Cluj"
+    "name": "ELYS MOMOANE S.R.L",
+    "number": "RO46091570",
+    "fiscal": "J12/2529/10.05.2022",
+    "address": "str. Fragariste nr.28 loc. Turda, Cluj",
+    "phoneNumber": "+40 759 796 202"
   },
 
   "footerText": {
@@ -258,5 +259,11 @@
         "answer": " Oferim clientilor nostri dreptul de a returna kit-ul, chiar daca l-ati deschis, si ati realizat mulajul. Returnati tot kit-ul folosit, iar noi va vom returna suma de bani pentru produs, prin metoda de plata selectat initial la comanda."
       }
     }
+  },
+
+  "invoiceTemplate": {
+    "headerTextInvoice": "MontanAir.Ro - Cosmetice Naturale",
+    "thankYouMessage": "Va multumim de comanda!",
+    "authorSignature": "MontanAir.Ro"
   }
 }

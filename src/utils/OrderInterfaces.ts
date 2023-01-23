@@ -110,10 +110,10 @@ export interface InvoiceOrderProps {
     timestamp?: string;
     invoiceID?: string;
   };
-  companyInfo: {
-    name: string;
-    number: string;
-    fiscal: string;
-    address: string;
-  };
+  // companyInfo: {
+  //   name: string;
+  //   number: string;
+  //   fiscal: string;
+  //   address: string;
+  // };
 }

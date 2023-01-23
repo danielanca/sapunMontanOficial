@@ -62,7 +62,7 @@ const stylesPDF = StyleSheet.create({
   },
   headerLeft: {
     fontSize: 12,
-    marginBottom: 8,
+    marginBottom: 4,
     textAlign: "left",
     color: "grey"
   },
@@ -75,6 +75,9 @@ const stylesPDF = StyleSheet.create({
     textAlign: "center",
     color: "grey"
   },
+  invoiceHeader: {
+    height: "15%"
+  },
   firstRow: {
     display: "flex",
     flexDirection: "row",
@@ -83,16 +86,27 @@ const stylesPDF = StyleSheet.create({
   },
   secondRow: {
     display: "flex",
-    border: "1px solid red",
-    height: "50%",
+    height: "45%",
     alignItems: "flex-start",
     justifyContent: "flex-start"
   },
   thirdRow: {
     display: "flex",
     flexDirection: "row",
-    height: "20%",
-    border: "1.5px solid black"
+    height: "15%",
+    borderTop: "1.5px solid black"
+  },
+  fourthRow: {
+    height: "10%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  footerText: {
+    textAlign: "center",
+    width: "100%",
+    padding: "0 2%",
+    fontSize: "12px"
   },
   productText: {
     fontSize: 16,
@@ -114,34 +128,40 @@ const stylesPDF = StyleSheet.create({
     border: "0.5px solid black",
     width: "25%",
     textAlign: "center"
-  }
+  },
+  totals: { width: "50%", padding: "0 2%", fontSize: "16px" }
 });
 
-const PDF = ({ invoiceObject, companyInfo }: InvoiceOrderProps) => {
+const PDF = ({ invoiceObject }: InvoiceOrderProps) => {
   let productsListInvoice: any[] =
     typeof invoiceObject.cartProducts === "string" ? JSON.parse(invoiceObject.cartProducts) : null;
-
+  let companyInfo = strings.companyData;
   return (
     <Document>
-      <Page debug size={"A4"} style={stylesPDF.body}>
-        <View>
+      <Page size={"A4"} style={stylesPDF.body}>
+        <View style={stylesPDF.invoiceHeader}>
           <Text style={stylesPDF.header} fixed>
-            MontanAir.Ro - Cosmetice Naturale
+            {strings.invoiceTemplate.headerTextInvoice}
           </Text>
           <Text style={stylesPDF.title}>{`Factura #${invoiceObject.invoiceID}`}</Text>
-          <Text style={stylesPDF.author}>MontanAir.Ro</Text>
+          <Text style={stylesPDF.author}>{strings.invoiceTemplate.authorSignature}</Text>
         </View>
         <View style={stylesPDF.firstRow}>
           <View style={{ width: "50%" }}>
-            <Text style={stylesPDF.headerLeft}>{` ${invoiceObject.firstName} ${invoiceObject.lastName}`}</Text>
+            <Text style={stylesPDF.headerLeft}>{`Nume: ${invoiceObject.firstName} ${invoiceObject.lastName}`}</Text>
             <Text
               style={stylesPDF.headerLeft}
-            >{` Adresa:${invoiceObject.deliveryAddress} jud.${invoiceObject.county}`}</Text>
+            >{`Adresa:${invoiceObject.deliveryAddress} jud.${invoiceObject.county}`}</Text>
             <Text style={stylesPDF.headerLeft}>{`Loc:${invoiceObject.city} jud.${invoiceObject.county}`}</Text>
+            <Text style={stylesPDF.headerLeft}>{`Email:${invoiceObject.emailAddress}`}</Text>
+            <Text style={stylesPDF.headerLeft}>{`Tel:${invoiceObject.phoneNo}`}</Text>
           </View>
           <View style={{ width: "50%" }}>
             <Text style={stylesPDF.headerLeft}>{"Furnizor: "}</Text>
             <Text style={stylesPDF.headerLeft}>{`${companyInfo.name}`}</Text>
+            <Text style={stylesPDF.headerLeft}>{`${companyInfo.address}`}</Text>
+            <Text style={stylesPDF.headerLeft}>{`${companyInfo.fiscal} CUI: ${companyInfo.number}`}</Text>
+            <Text style={stylesPDF.headerLeft}>{`${companyInfo.phoneNumber}`}</Text>
           </View>
         </View>
         <View style={stylesPDF.secondRow}>
@@ -172,26 +192,29 @@ const PDF = ({ invoiceObject, companyInfo }: InvoiceOrderProps) => {
                     <Text style={stylesPDF.productPrice}>{`${item.price} RON`}</Text>
                   </View>
                 ))
-              : ""}
-            {/* <Text style={stylesPDF.headerLeft}>{`${invoiceObject.cartProducts}`}</Text> */}
+              : "Factura eronata! Contactati administratorul"}
           </View>
         </View>
         <View style={stylesPDF.thirdRow}>
           <View style={{ width: "50%" }}>{/* <Text style={stylesPDF.productText}>{"TEST"}</Text> */}</View>
-          <View style={{ width: "50%" }}>
+          <View style={{ width: "50%", marginTop: "10px" }}>
             <View style={{ display: "flex", flexDirection: "row" }}>
-              <Text style={{ width: "50%", padding: "0 2%" }}>{`Subtotal  `}</Text>
-              <Text style={{ width: "50%", padding: "0 2%" }}>{`${invoiceObject.cartSum} RON`}</Text>
+              <Text style={stylesPDF.totals}>{`Subtotal  `}</Text>
+              <Text style={stylesPDF.totals}>{`${invoiceObject.cartSum} RON`}</Text>
             </View>
             <View style={{ display: "flex", flexDirection: "row" }}>
-              <Text style={{ width: "50%", padding: "0 2%" }}>{`Taxa de livrare  `}</Text>
-              <Text style={{ width: "50%", padding: "0 2%" }}>{`${invoiceObject.shippingTax} RON `}</Text>
+              <Text style={stylesPDF.totals}>{`Taxa de livrare  `}</Text>
+              <Text style={stylesPDF.totals}>{`${invoiceObject.shippingTax} RON `}</Text>
             </View>
             <View style={{ display: "flex", flexDirection: "row", borderTop: "1px solid black" }}>
-              <Text style={{ width: "50%", padding: "0 2%" }}>{`TOTAL:  `}</Text>
-              <Text style={{ width: "50%", padding: "0 2%" }}>{`${invoiceObject.cartSum} RON `}</Text>
+              <Text style={stylesPDF.totals}>{`TOTAL:  `}</Text>
+              <Text style={stylesPDF.totals}>{`${invoiceObject.cartSum} RON `}</Text>
             </View>
           </View>
+        </View>
+        <View style={stylesPDF.fourthRow}>
+          <Text style={stylesPDF.footerText}>{strings.invoiceTemplate.thankYouMessage}</Text>
+          <Text style={stylesPDF.footerText}>{strings.invoiceTemplate.authorSignature}</Text>
         </View>
       </Page>
     </Document>
@@ -203,10 +226,10 @@ const PDFView = ({ invoiceObject }: InvoiceOrderProps) => {
   // useEffect(() => {
   //   setClient(true);
   // }, []);
-  let companyInfo = strings.companyData;
+
   return (
     <PDFViewer width={"600px"} height={"860px"} showToolbar={false}>
-      <PDF invoiceObject={invoiceObject} companyInfo={companyInfo} />
+      <PDF invoiceObject={invoiceObject} />
     </PDFViewer>
   );
 };
