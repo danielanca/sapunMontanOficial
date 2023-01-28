@@ -53,6 +53,8 @@ const Navbar = lazy(() => import(/* webpackChunkName: "Navbar"  */ "./components
 
 const ProductView = lazy(() => import("./components/Product/ProductView"));
 
+const EditStrings = lazy(() => import("./components/AdminArea/EditStrings/EditStrings"));
+
 const Loading = () => <div>LOADING</div>;
 
 function App() {
@@ -93,7 +95,7 @@ function App() {
       {getCookieConsent() && <CookieConsent />}
       <header className="App-header">
         <ProductsContext.Provider productsData={ssProducts}>
-          <React.Suspense fallback={Loading}>
+          <React.Suspense fallback={Loading()}>
             <BrowserRouter basename="/">
               <AuthProvider>
                 <Navbar clearNotif={letsCartHandler} />
@@ -105,6 +107,7 @@ function App() {
                     <Route path="/admin/products" element={<UpdateProducts />} />
                     <Route path="/admin/products/edit-:productID" element={<EditProduct editMode={true} />} />
                     <Route path="/admin/products/add" element={<EditProduct editMode={false} />} />
+                    <Route path="/admin/lists" element={<EditStrings />} />
                   </Route>
                   <Route element={<CheckAuth />}>
                     <Route path="/login" element={<Login />} />

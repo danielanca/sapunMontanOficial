@@ -1,25 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./HelloAll.module.scss";
+import { HereInterface } from "../components/AdminArea/EditStrings/TableTypes";
 import ElasticGallery from "./ElasticGallery";
-import { GalleryProps } from "./ElasticTypes";
+import { getStringsList } from "../services/emails";
+import stringify from "json-stable-stringify";
+import { getType } from "../components/AdminArea/EditStrings/TableTypes";
 import strings from "./../data/strings.json";
-const HelloAll = () => {
-  return (
-    <MediaItems />
-    // <div className={styles.helloAll}>
-    //   <div className={styles.featuredMessage}>
-    //     <h3>{"lumea cărbunelui  "}</h3>
-    //   </div>
-    // </div>
-  );
-};
 
-const MediaItems = () => {
-  let galleryInputList = Object.values(strings.elasticGallery);
+const HelloAll = () => {
+  const [theObject, setObject] = useState<HereInterface | null>(null);
+
+  useEffect(() => {
+    getStringsList("categoriesList").then((result: getType) => {
+      setObject(JSON.parse(stringify(result.resultSent)));
+      console.log("result is:", result);
+    });
+
+    setObject(theObject);
+  }, []);
+
+  return <MediaItems list={theObject} />;
+};
+interface MediaProps {
+  list: HereInterface | null;
+}
+const MediaItems = ({ list }: MediaProps) => {
+  let galleryInputList = list != null ? Object.values(list) : null;
   return (
-    <div className={styles.helloDarker}>
-      <ElasticGallery galleryList={galleryInputList} />
-    </div>
+    <div className={styles.helloDarker}>{galleryInputList && <ElasticGallery galleryList={galleryInputList} />}</div>
   );
 };
 export default HelloAll;

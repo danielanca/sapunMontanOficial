@@ -4,16 +4,16 @@ import ProductItem from "./../ProductItem";
 import { uniqueId } from "lodash";
 
 interface ProductsGalleryProps {
-  productsToShow: {};
+  productsToShow: { [key: string]: any } | null;
 }
 
 const ProductsGallery = ({ productsToShow }: ProductsGalleryProps) => {
   return (
     <div className={styles.blockContainer}>
       <div className={styles.productList}>
-        {productsToShow != null
+        {productsToShow
           ? Object.values(productsToShow).map((item) => <ProductItem key={uniqueId()} productObject={item} />)
-          : "loading data..."}
+          : "LOADING Data..."}
       </div>
     </div>
   );
