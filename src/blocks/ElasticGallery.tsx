@@ -1,19 +1,23 @@
 import React from "react";
-import styles from "./ElasticGallery.module.scss";
 import { GalleryProps } from "./ElasticTypes";
 import { NavHashLink } from "react-router-hash-link";
-//input { array of media with links}
-// { name ,image, link, text }
+import styles from "./ElasticGallery.module.scss";
 
 const ElasticGallery = ({ galleryList }: GalleryProps) => {
   const goToTop = (_) => window.scrollTo({ top: 0, behavior: "smooth" });
+
   return (
     <div className={styles.cards}>
       {galleryList.map((item) => (
-        <NavHashLink onClick={goToTop} className={styles.cardItem} to={`/produs/` + item.link}>
+        <div
+          className={styles.cardItem}
+          style={{
+            backgroundImage: `linear-gradient(rgb(255 255 255 / 0%), rgb(0 0 0 / 17%)), url(${item.image})`
+          }}
+        >
+          <NavHashLink className={styles.inheritAll} onClick={goToTop} to={`/produs/` + item.link}></NavHashLink>
           <h2 className={styles.headline}>{item.name}</h2>
-          <img className={styles.imageContainer} src={item.image}></img>
-        </NavHashLink>
+        </div>
       ))}
     </div>
   );

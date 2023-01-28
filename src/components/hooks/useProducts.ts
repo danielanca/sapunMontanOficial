@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { ProductsFromSessionStorage } from "../../data/constants";
+import { DocumentData } from "firebase/firestore";
 import { getData } from "../../data/ProdFetch";
 
 export const useProducts = () => {
-  const [products, setProducts] = useState({});
-  let productsFetched = sessionStorage.getItem(ProductsFromSessionStorage);
+  const [products, setProducts] = useState<DocumentData | null>({});
+  const productsFetched = sessionStorage.getItem(ProductsFromSessionStorage);
 
   useEffect(() => {
-    if (productsFetched != null) {
+    if (productsFetched) {
       setProducts(JSON.parse(productsFetched));
     } else {
-      getData().then((finalData) => {
-        setProducts(JSON.parse(JSON.stringify(finalData)));
-      });
+      getData()
+        .then((finalData) => {
+          setProducts(finalData);
+        })
+        .catch((error) => console.log("There is an error on useProducts hook", error));
     }
   }, []);
 
