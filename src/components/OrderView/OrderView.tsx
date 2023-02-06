@@ -29,7 +29,9 @@ const OrderView = () => {
       <div className={styles.cardBoard}>
         <div className={styles.details}>
           <h2>{"Detalii despre comanda"}</h2>
-          <button onClick={downloadPDF.bind(0, invoiceData.invoiceID)}>{"Vezi factura"}</button>
+          <button className="mb-2 mr-1 btn text-white btn-info" onClick={downloadPDF.bind(0, invoiceData.invoiceID)}>
+            {"Vezi factura"}
+          </button>
         </div>
 
         {/* <button onClick={downloadPDF}>{"Vezi factura"}</button> */}

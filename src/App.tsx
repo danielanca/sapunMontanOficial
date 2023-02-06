@@ -40,9 +40,7 @@ const Login = lazy(() => import(/*webpackPrefetch: true , webpackChunkName: "Log
 const UpdateProducts = lazy(() =>
   import(/*webpackPrefetch: true , webpackChunkName: "UpdateProducts"  */ "./components/AdminArea/UpdateProducts")
 );
-const EditProduct = lazy(() =>
-  import(/*webpackPrefetch: true , webpackChunkName: "EditProduct" */ "./components/AdminArea/EditProduct")
-);
+
 const OrderView = lazy(() => import("./components/OrderView/OrderView"));
 // const Testimonials = lazy(() =>
 //   import(/*webpackPrefetch: true , webpackChunkName: "Testimonials" */ "./components/Testimonials")
@@ -56,8 +54,7 @@ const ProductView = lazy(() => import("./components/Product/ProductView"));
 
 const EditStrings = lazy(() => import("./components/AdminArea/EditStrings/EditStrings"));
 import { DefaultLayout } from "./components/AdminArea/ShardsDesign/layouts";
-import BlogOverview from "./components/AdminArea/ShardsDesign/views/BlogOverview";
-import AddNewPost from "./components/AdminArea/ShardsDesign/views/AddNewPost";
+import EditProduct from "./components/AdminArea/EditProduct";
 import adminRoutes from "./components/AdminArea/ShardsDesign/routes";
 
 const Loading = () => <div>LOADING</div>;
@@ -110,7 +107,7 @@ function App() {
                   <Route element={<RequireAuth />}>
                     <Route path="/admin" element={<AdminArea />} />
                     <Route path="/admin/products" element={<UpdateProducts />} />
-                    <Route path="/admin/products/edit-:productID" element={<EditProduct editMode={true} />} />
+
                     <Route path="/admin/products/add" element={<EditProduct editMode={false} />} />
                     <Route path="/admin/lists" element={<EditStrings />} />
                     <Route path="/admin/newPanel" element={<Dashboard />}>
@@ -127,22 +124,6 @@ function App() {
                           />
                         );
                       })}
-                      {/* <Route
-                        path="main"
-                        element={
-                          <DefaultLayout>
-                            <BlogOverview />
-                          </DefaultLayout>
-                        }
-                      />
-                      <Route
-                        path="addpost"
-                        element={
-                          <DefaultLayout>
-                            <AddNewPost />
-                          </DefaultLayout>
-                        }
-                      /> */}
                     </Route>
                   </Route>
                   <Route element={<CheckAuth />}>

@@ -47,7 +47,7 @@ const ShowProduct = ({ productName, handleFire }: productProps) => {
           </div>
         </td>
         <td className={styles.actionAreaAdmin}>
-          <HashLink className={styles.HashLinkStyle} to={"/admin/products/edit-" + productName.ID}>
+          <HashLink className={styles.HashLinkStyle} to={"/admin/products/edit/" + productName.ID}>
             <div className={styles.addCartWrap}>
               <div className={styles.actionButton}>
                 <span className={styles.textInside}>{"EDITEAZA"}</span>

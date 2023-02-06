@@ -15,6 +15,11 @@ export default function () {
       title: "Add Blog Post",
       htmlBefore: '<i class="material-icons">note_add</i>',
       to: "/admin/newPanel/addpost"
+    },
+    {
+      title: "Products",
+      htmlBefore: '<i class="material-icons">table_chart</i>',
+      to: "/admin/newPanel/manage-product"
     }
   ];
 }

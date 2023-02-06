@@ -4,7 +4,9 @@ import { Redirect } from "react-router-dom";
 import { DefaultLayout } from "./layouts";
 import BlogOverview from "./views/BlogOverview";
 import AddNewPost from "./views/AddNewPost";
-import Tables from "./views/Tables";
+import OrdersTable from "./views/OrdersTable";
+import ProductsPage from './views/ProductsPage';
+import EditProduct from "../EditProduct";
 
 export default [
   {
@@ -20,6 +22,16 @@ export default [
   {
     path: "orders",
     layout: DefaultLayout,
-    component: Tables
+    component: OrdersTable
+  },
+  { 
+    path:'manage-product',
+    layout: DefaultLayout,
+    component: ProductsPage
+  },
+  { 
+    path:'edit/:productID',
+    layout: DefaultLayout,
+    component: EditProduct
   }
 ];
