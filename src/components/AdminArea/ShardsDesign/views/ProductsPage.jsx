@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, CardHeader, CardBody } from "shards-react";
 import PageTitle from "../components/common/PageTitle";
 import { getData } from "../../../../data/ProdFetch";
 import { Link } from "react-router-dom";
+import { deleteProduct } from "../../../../services/emails";
 import PopModal from "../../PopModal";
 const ProductsPage = () => {
   const [productsOnline, setProductsOnline] = useState();
@@ -20,20 +21,38 @@ const ProductsPage = () => {
       productLink: data.productToDelete.productID,
       popUp:true
     })
-    console.log("Requesting deteling the product:", data);
 
+  }
+  const dialogPopup = (event, payload)=>{ 
+    if(event==='modal_Event'){
+      if(payload==='YES'){
+        console.log("DELETE THE PRODUCT CALL");
+      }else{
+        setDeletePopup((delPopUp)=>({...delPopUp,
+          productInfo: null,
+          productLink:null,
+          popUp: false
+        }));
+      }
+    }
   }
 
   return (
     <Container fluid className="main-content-container px-4">
-     {delPopUp.popUp && <PopModal title={`Doresti sa stergi ${delPopUp.productInfo}?`} />}
+     {delPopUp.popUp && <PopModal title={`Doresti sa stergi ${delPopUp.productInfo}?`} eventHandler={dialogPopup} />}
       <Row noGutters className="page-header py-4">
         <PageTitle sm="4" title="Product List" subtitle="View & Edit Products" className="text-sm-left" />
       </Row>
       <Row>{/* <RangeDatePicker  onValues={handleDateInputs}/> */}</Row>
-      {/* Default Light Table */}
       <Row>
+        <Col lg={5} sm={12} xs={12} className="my-2 d-sm-flex d-md-block flex-sm-row "> 
+          <button className="btn btn-sm btn-primary  mx-1 ">Add product</button>
+          <button className="btn btn-sm btn-secondary  mx-1">Something else</button>
+        </Col>
        
+      </Row>
+      <Row>
+        
         <Col>
           <Card small className="mb-4">
             <CardHeader className="border-bottom">
@@ -60,7 +79,7 @@ const ProductsPage = () => {
                           <Link  to={`/admin/newPanel/edit/${item.ID}`} className="btn btn-primary btn-sm">
                             EDITEAZA
                           </Link>
-                          <Link  onClick={ ()=> deleteProduct( {productToDelete: {title:item.title, productID: item.ID}})} className="btn btn-danger btn-sm mx-1">
+                          <Link   onClick={ ()=> deleteProduct( {productToDelete: {title:item.title, productID: item.ID}})} className="btn btn-danger btn-sm mx-md-1">
                             STERGE
                           </Link>
                         </td>
