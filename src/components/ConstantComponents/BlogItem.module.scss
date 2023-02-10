@@ -3,8 +3,8 @@
 
 .blogItem {
   @extend .col-4;
-  width: 100%;
-  max-width: 371px;
+  width: 100% !important;
+  max-width: 371px !important;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   display: table;
   padding: 2% 3%;
@@ -12,12 +12,12 @@
   margin-top: 45px;
 
   @include media(">=tablet", "<desktop") {
-    width: 80%;
-    max-width: 358px;
-    margin: 10px 10px;
+    width: 80% !important;
+    max-width: 358px !important;
+    margin: 10px 10px !important;
   }
   @include media("<tablet") {
-    width: clamp(234px, 30vw, 342px);
+    width: clamp(234px, 30vw, 342px) !important;
   }
 }
 
@@ -102,7 +102,7 @@
   font-family: "Roboto Medium";
 }
 .previewPost {
-  min-height: 106px;
+  min-height: 54px;
 
   p {
     font-family: "Roboto", Calibri, "Trebuchet MS", sans-serif;

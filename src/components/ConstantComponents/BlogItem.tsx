@@ -3,7 +3,7 @@ import { NavHashLink } from "react-router-hash-link";
 import { blogs } from "../../data/blogStrings";
 import styles from "./../../components/ConstantComponents/BlogItem.module.scss";
 import strings from "../../data/strings.json";
-
+import "./../../data/customCSS.scss";
 interface BlogProps {
   data: string;
 }
@@ -26,7 +26,7 @@ const BlogItem = ({ data }: BlogProps) => {
   };
 
   return (
-    <div className={styles.blogItem}>
+    <div className={styles.blogItem + " my-5 "}>
       <NavHashLink
         onClick={gotoElement}
         className={styles.HashLinkStyle}
