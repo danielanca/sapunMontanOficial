@@ -3,7 +3,6 @@ import parse from "html-react-parser";
 
 import styles from "./../ConstantComponents/DescriptionStyles.module.scss";
 import { ProductListType } from "./../../utils/OrderInterfaces";
-import RefundReturn from "./RefundReturn";
 interface ProductProps {
   productID: string;
   productDescription: ProductListType;

@@ -4,7 +4,6 @@ export default function () {
       title: "Main Panel",
       to: "/admin/newPanel/",
       htmlBefore: '<i class="material-icons">edit</i>',
-      htmlAfter: ""
     },
     {
       title: "Orders",
@@ -18,8 +17,13 @@ export default function () {
     },
     {
       title: "Products",
-      htmlBefore: '<i class="material-icons">table_chart</i>',
+      htmlBefore: '<i class="material-icons">note_add</i>',
       to: "/admin/newPanel/manage-product"
+    },
+    {
+      title: "Content Strings",
+      htmlBefore: '<i class="material-icons">table_chart</i>',
+      to: "/admin/newPanel/content-list"
     }
   ];
 }

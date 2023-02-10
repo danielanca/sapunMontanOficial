@@ -5,7 +5,6 @@ import ElasticGallery from "./ElasticGallery";
 import { getStringsList } from "../services/emails";
 import stringify from "json-stable-stringify";
 import { getType } from "../components/AdminArea/EditStrings/TableTypes";
-import strings from "./../data/strings.json";
 
 const HelloAll = () => {
   const [theObject, setObject] = useState<HereInterface | null>(null);

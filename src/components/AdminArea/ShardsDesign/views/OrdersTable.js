@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Row, Col, Card, CardHeader, CardBody } from "shards-react";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import RangeDatePicker from "../components/common/RangeDatePicker";
-import { Link } from "react-router-dom";
 import PageTitle from "../components/common/PageTitle";
 import { requestOrdersList } from "../../../../services/emails";
 import { convertDate } from "../../Dashboard/funcs";
@@ -76,7 +76,7 @@ const OrdersTable = () => {
             <h6 className="m-0">Active Users</h6>
           </CardHeader>
           <CardBody className="p-0 pb-3">
-            <table className="table mb-0">
+            <table className="table p-0 mb-0">
               <thead className="bg-light">
                 <tr>
                   <th scope="col" className="border-0">
@@ -101,9 +101,9 @@ const OrdersTable = () => {
               </thead>
               <tbody>
                 { ordersList?.map( item=>{
-                    return <tr className={today }>
+                    return  <tr className={today}>
                             <td>{item.timestamp}</td>
-                            <td className="font-weight-bold">{`${item.firstName} ${item.lastName}`}</td>
+                            <td className="font-weight-bold p-0">{`${item.firstName} ${item.lastName}`}</td>
                             <td>{`${item.shippingTax + item.cartSum} RON `}</td>
                             <td>
                             <button
@@ -131,5 +131,6 @@ const OrdersTable = () => {
     </Row>
   </Container>)
 };
+
 
 export default OrdersTable;

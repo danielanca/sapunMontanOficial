@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { getOrderByID } from "./../../data/productList";
 import { OrderViewProps } from "../../utils/OrderInterfaces";
 import strings from "../../data/strings.json";
-import images from "../../data/images";
 import styles from "./OrderView.module.scss";
 
 const OrderView = () => {

@@ -2,21 +2,20 @@ import React from "react";
 import parse from "html-react-parser";
 import styles from "./Ingredients.module.scss";
 
-interface ingredientsProps {
-  [key: string]: {
-    title: string;
-    text: string;
-    image: string;
-  };
-}
 interface Proper {
-  contentIngredients: ingredientsProps;
+  contentIngredients: {
+    [key: string]: {
+      title: string;
+      text: string;
+      image: string;
+    };
+  };
 }
 const Ingredients = ({ contentIngredients }: Proper) => {
   return (
     <div className={styles.ingredientsContainer}>
-      {Object.values(contentIngredients).map((item) => (
-        <div className={styles.productList}>
+      {Object.values(contentIngredients).map((item, index: number) => (
+        <div key={index} className={styles.productList}>
           <div className={styles.imageWrap}>
             <img className={styles.iconImage} src={item.image} />
           </div>

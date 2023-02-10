@@ -1,7 +1,13 @@
-import { collection, doc, getFirestore, getDoc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getFirestore,
+  getDoc,
+  getDocs,
+  DocumentData,
+  QueryDocumentSnapshot
+} from "firebase/firestore";
 import app from "./../firebase";
-
-let productList = [];
 
 const db = getFirestore(app);
 
@@ -30,7 +36,7 @@ export const getAllOrders = async () => {
   const snapShot = await getDocs(collection(db, "orders"));
   let dataProducts = [];
 
-  snapShot.forEach((doc) => {
+  snapShot.forEach((doc: QueryDocumentSnapshot<DocumentData>) => {
     dataProducts.push(doc.data());
   });
 
@@ -58,7 +64,6 @@ export const getData = async () => {
       };
     });
   });
-  console.log("End of ", dataProducts);
   return dataProducts;
 };
 
@@ -92,24 +97,16 @@ export const getProductWithID = async (productID: string) => {
 
   return productsAreHere;
 };
-const getallPr = async () => {
-  const productData = doc(db, "products", "activeProds");
-  const snap = await getDoc(productData);
-  let productsAreHere: any[] = [];
-  if (snap.exists()) {
-    productsAreHere = Object.values(snap.data());
-  }
-  //Here we need to make the call for a specific ID, not for the whole collection of products.
-  //but till then, we will do this way.
-  console.log("getProductWithID will return :", productsAreHere);
+// const getallPr = async () => {
+//   const productData = doc(db, "products", "activeProds");
+//   const snap = await getDoc(productData);
+//   let productsAreHere: any[] = [];
+//   if (snap.exists()) {
+//     productsAreHere = Object.values(snap.data());
+//   }
+//   //Here we need to make the call for a specific ID, not for the whole collection of products.
+//   //but till then, we will do this way.
+//   console.log("getProductWithID will return :", productsAreHere);
 
-  return productsAreHere;
-};
-
-console.log("ProductList is loading...");
-getallPr().then((data) => {
-  productList = data;
-  console.log("Done");
-});
-
-export default productList;
+//   return productsAreHere;
+// };

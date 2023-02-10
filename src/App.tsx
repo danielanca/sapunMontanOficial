@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
-import React, { useEffect, useState, Suspense, lazy } from "react";
+import React, { useEffect, useState, lazy } from "react";
 import ReactGA from "react-ga4";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -53,10 +53,10 @@ const Navbar = lazy(() => import(/* webpackChunkName: "Navbar"  */ "./components
 const ProductView = lazy(() => import("./components/Product/ProductView"));
 
 const EditStrings = lazy(() => import("./components/AdminArea/EditStrings/EditStrings"));
-import { DefaultLayout } from "./components/AdminArea/ShardsDesign/layouts";
 import EditProduct from "./components/AdminArea/EditProduct";
 import adminRoutes from "./components/AdminArea/ShardsDesign/routes";
 
+import { ProductsFromSessionStorage } from "./data/constants";
 const Loading = () => <div>LOADING</div>;
 
 function App() {
@@ -87,7 +87,7 @@ function App() {
   useEffect(() => {
     if (ssProducts == null) {
       getData().then((finalData) => {
-        sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
+        sessionStorage.setItem(ProductsFromSessionStorage, JSON.stringify(finalData));
       });
     }
   }, [ssProducts]);

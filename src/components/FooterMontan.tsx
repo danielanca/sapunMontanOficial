@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import { uniqueId } from "lodash";
 
@@ -8,10 +8,18 @@ import styles from "./../components/FooterMontan.module.scss";
 import strings from "./../data/strings.json";
 import NewsletterBanner from "./MiniComponents/HeadLiners/NewsletterBanner";
 import allPathsURL from "./../data/allPathsURL";
+import { getStringsList } from "../services/emails";
+import { getType } from "./AdminArea/EditStrings/TableTypes";
 
 const FooterMontan = () => {
   let { links, commercialData, ourShop, bottomMadeBy } = strings.footerText.headLines;
   const { pathname } = useLocation();
+  const [footerFetch, setFooterFetch] = useState({});
+  useEffect(() => {
+    getStringsList("legalInfo").then((result: getType) => {
+      setFooterFetch(JSON.parse(JSON.stringify(result.resultSent.legalData)));
+    });
+  }, []);
 
   return (
     <>
@@ -42,7 +50,7 @@ const FooterMontan = () => {
                 <div className="row">
                   <div className={"col " + styles.footItem}>
                     <h3 className={styles.footerTittleCenter}>{commercialData}</h3>
-                    {Object.values(footerData.companyData).map((item) => {
+                    {Object.values(footerFetch).map((item) => {
                       return (
                         <p key={uniqueId()} className={styles.classicText}>
                           {item}
@@ -65,7 +73,6 @@ const FooterMontan = () => {
                 </div>
               </div>
             </div>
-
             <div className={styles.wideBanner}>
               <p className={styles.statementRO}>{bottomMadeBy}</p>
             </div>
