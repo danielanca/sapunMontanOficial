@@ -33,12 +33,6 @@ const UpdateProducts = () => {
     }
   };
 
-  // const handleModal = (event: string, payload: string) => {
-  //   setConfirmDeleteModal(false);
-  //   if (event === "modal_Event") {
-  //     console.log("We have a modal", event, payload);
-  //   }
-  // };
   useEffect(() => {
     if (productsOnline == null) {
       getData().then((finalData) => {
@@ -50,7 +44,6 @@ const UpdateProducts = () => {
 
   return (
     <>
-      {/* {confirmDeleteModal && <PopModal title={"Doresti sa stergi?"} eventHandler={handleModal} />} */}
       <div className={styles.productPanel}>
         <div className={styles.controlArea}>
           <h3>{"Product List"}</h3>

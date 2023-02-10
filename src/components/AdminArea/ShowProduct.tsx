@@ -38,7 +38,7 @@ const ShowProduct = ({ productName, handleFire }: productProps) => {
       <tr className={styles.productRow}>
         <td>
           <div className={styles.imageWrap}>
-            <img className={styles.productImage} src={productName.imageProduct[0]}></img>
+            <img className={styles.productImage} src={Array.from(productName.imageProduct)[0]}></img>
           </div>
         </td>
         <td>
