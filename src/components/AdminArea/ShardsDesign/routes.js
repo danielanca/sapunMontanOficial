@@ -7,6 +7,7 @@ import AddNewPost from "./views/AddNewPost";
 import OrdersTable from "./views/OrdersTable";
 import ProductsPage from './views/ProductsPage';
 import EditProduct from "../EditProduct";
+import EditStrings from "../EditStrings/EditStrings";
 
 export default [
   {
@@ -33,5 +34,10 @@ export default [
     path:'edit/:productID',
     layout: DefaultLayout,
     component: EditProduct
+  },
+  { 
+    path:'content-list',
+    layout: DefaultLayout,
+    component: EditStrings
   }
 ];

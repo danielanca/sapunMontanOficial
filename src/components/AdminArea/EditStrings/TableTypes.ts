@@ -1,4 +1,4 @@
-export type getType = { resultSent: unknown };
+export type getType = { resultSent: any };
 
 export type disState = {
   internalState: string;
