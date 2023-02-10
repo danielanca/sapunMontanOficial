@@ -15,6 +15,7 @@ const Relaxbar = () => {
             <div className={styles.leftBro}>
               <img
                 className={styles.mediaSocial}
+                loading={"lazy"}
                 src={
                   "https://firebasestorage.googleapis.com/v0/b/diniubire-89ce0.appspot.com/o/ProductMedia%2FinstagramPNG.png?alt=media&token=a6742b2a-702b-4aef-85fa-a54ae52a1495"
                 }
@@ -25,6 +26,7 @@ const Relaxbar = () => {
             <div className={styles.rightBro}>
               <div className={styles.socialLogo}>
                 <img
+                  loading={"lazy"}
                   className={styles.picImage}
                   src={
                     "https://firebasestorage.googleapis.com/v0/b/diniubire-89ce0.appspot.com/o/ProductMedia%2FRectangle%205.png?alt=media&token=fcc5fa21-7677-488c-9296-4f49d1b4628a"

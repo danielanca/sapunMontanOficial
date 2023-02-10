@@ -1,8 +1,8 @@
 /* eslint-disable */
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
-import React, { useEffect, useState, Suspense, lazy } from "react";
+import React, { useEffect, useState, lazy } from "react";
 import ReactGA from "react-ga4";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 import MainNavigation from "./Navigation/MainNavigation";
 
@@ -17,6 +17,7 @@ import "./App.css";
 import FAQBlock from "./components/FAQBlock/FAQBlock";
 import FooterMontan from "./components/FooterMontan";
 import InvoiceView from "./components/OrderView/InvoiceView";
+import Dashboard from "./components/AdminArea/ShardsDesign/Dashboard";
 // ReactGA.initialize('G-2WGBH4M82T');
 // ReactGA.send('pageview');
 
@@ -39,13 +40,11 @@ const Login = lazy(() => import(/*webpackPrefetch: true , webpackChunkName: "Log
 const UpdateProducts = lazy(() =>
   import(/*webpackPrefetch: true , webpackChunkName: "UpdateProducts"  */ "./components/AdminArea/UpdateProducts")
 );
-const EditProduct = lazy(() =>
-  import(/*webpackPrefetch: true , webpackChunkName: "EditProduct" */ "./components/AdminArea/EditProduct")
-);
+
 const OrderView = lazy(() => import("./components/OrderView/OrderView"));
-const Testimonials = lazy(() =>
-  import(/*webpackPrefetch: true , webpackChunkName: "Testimonials" */ "./components/Testimonials")
-);
+// const Testimonials = lazy(() =>
+//   import(/*webpackPrefetch: true , webpackChunkName: "Testimonials" */ "./components/Testimonials")
+// );
 
 const SimpleContent = lazy(() => import(/*webpackPrefetch: true*/ "./blocks/SimpleContent"));
 
@@ -54,7 +53,10 @@ const Navbar = lazy(() => import(/* webpackChunkName: "Navbar"  */ "./components
 const ProductView = lazy(() => import("./components/Product/ProductView"));
 
 const EditStrings = lazy(() => import("./components/AdminArea/EditStrings/EditStrings"));
+import EditProduct from "./components/AdminArea/EditProduct";
+import adminRoutes from "./components/AdminArea/ShardsDesign/routes";
 
+import { ProductsFromSessionStorage } from "./data/constants";
 const Loading = () => <div>LOADING</div>;
 
 function App() {
@@ -85,7 +87,7 @@ function App() {
   useEffect(() => {
     if (ssProducts == null) {
       getData().then((finalData) => {
-        sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
+        sessionStorage.setItem(ProductsFromSessionStorage, JSON.stringify(finalData));
       });
     }
   }, [ssProducts]);
@@ -105,9 +107,24 @@ function App() {
                   <Route element={<RequireAuth />}>
                     <Route path="/admin" element={<AdminArea />} />
                     <Route path="/admin/products" element={<UpdateProducts />} />
-                    <Route path="/admin/products/edit-:productID" element={<EditProduct editMode={true} />} />
+
                     <Route path="/admin/products/add" element={<EditProduct editMode={false} />} />
                     <Route path="/admin/lists" element={<EditStrings />} />
+                    <Route path="/admin/newPanel" element={<Dashboard />}>
+                      {adminRoutes.map((item, index) => {
+                        return (
+                          <Route
+                            key={index}
+                            path={item.path}
+                            element={
+                              <item.layout>
+                                <item.component />
+                              </item.layout>
+                            }
+                          />
+                        );
+                      })}
+                    </Route>
                   </Route>
                   <Route element={<CheckAuth />}>
                     <Route path="/login" element={<Login />} />
@@ -121,7 +138,7 @@ function App() {
 
                   <Route path="/blogs" element={<Blogs />} />
                   <Route path="/blogid/:blogLink" element={<BlogPost />} />
-                  <Route path="/testimonials" element={<Testimonials />} />
+                  {/* <Route path="/testimonials" element={<Testimonials />} /> */}
                   <Route path="/order/:orderID" element={<OrderView />} />
                   <Route path="/invoice/:orderID" element={<InvoiceView />} />
                   <Route path="/intrebari" element={<FAQBlock />} />

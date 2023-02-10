@@ -82,7 +82,7 @@ $checkColor: map-get(
     opacity: 0;
   }
 }
-input[type="checkbox"] {
+input[type="checkbox"].inputCustom {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;

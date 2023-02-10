@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { getOrderByID } from "./../../data/productList";
 import { OrderViewProps } from "../../utils/OrderInterfaces";
 import strings from "../../data/strings.json";
-import images from "../../data/images";
 import styles from "./OrderView.module.scss";
 
 const OrderView = () => {
@@ -29,7 +28,9 @@ const OrderView = () => {
       <div className={styles.cardBoard}>
         <div className={styles.details}>
           <h2>{"Detalii despre comanda"}</h2>
-          <button onClick={downloadPDF.bind(0, invoiceData.invoiceID)}>{"Vezi factura"}</button>
+          <button className="mb-2 mr-1 btn text-white btn-info" onClick={downloadPDF.bind(0, invoiceData.invoiceID)}>
+            {"Vezi factura"}
+          </button>
         </div>
 
         {/* <button onClick={downloadPDF}>{"Vezi factura"}</button> */}
