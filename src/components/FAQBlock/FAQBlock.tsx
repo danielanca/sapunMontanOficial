@@ -2,20 +2,12 @@ import React, { useEffect, useRef } from "react";
 import QuestionCardboard from "./QuestionCardboard";
 import { FAQ } from "./../../data/strings.json";
 import { uniqueId } from "lodash";
-import ReactGA from "react-ga4";
 import styles from "./FAQBlock.module.scss";
-
-// import { useOnScreen } from "../hooks/onScreen";
+import { useSenseScreen } from "../hooks/senseHook/useScrollSense";
 
 const FAQBlock = () => {
   const ref = useRef(null);
-  // const isVisible = useOnScreen(ref);
-
-  // useEffect(() => {
-  //   if (isVisible) {
-  //     ReactGA.event("user_scrollOn_FAQ");
-  //   }
-  // }, [isVisible]);
+  useSenseScreen(ref, window.location.pathname);
 
   return (
     <div ref={ref} className={styles.questionsBlock}>

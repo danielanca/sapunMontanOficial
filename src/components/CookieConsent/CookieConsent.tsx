@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 
 import { getCookie, setCookie } from "./functions";
 import { cookieConsent } from "../../data/componentStrings";
-import styles from "./CookieConsent.module.scss";
 import { CookiesTagConsent, userAcceptedCookies } from "../../data/constants";
+import styles from "./CookieConsent.module.scss";
 import images from "../../data/images";
 import allPathsURL from "../../data/allPathsURL.json";
 

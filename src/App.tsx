@@ -2,7 +2,6 @@
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 import React, { useEffect, useState, lazy } from "react";
 import ReactGA from "react-ga4";
-// import "bootstrap/dist/css/bootstrap.min.css";
 
 import MainNavigation from "./Navigation/MainNavigation";
 
@@ -18,8 +17,6 @@ import FAQBlock from "./components/FAQBlock/FAQBlock";
 import FooterMontan from "./components/FooterMontan";
 import InvoiceView from "./components/OrderView/InvoiceView";
 import Dashboard from "./components/AdminArea/ShardsDesign/Dashboard";
-// ReactGA.initialize('G-2WGBH4M82T');
-// ReactGA.send('pageview');
 
 export const ProductsContext = React.createContext<any[]>([]);
 const FinishOrder = lazy(() => import(/*webpackPreload: true*/ "./components/CartPage/FinishOrder"));
@@ -55,34 +52,25 @@ const ProductView = lazy(() => import("./components/Product/ProductView"));
 const EditStrings = lazy(() => import("./components/AdminArea/EditStrings/EditStrings"));
 import EditProduct from "./components/AdminArea/EditProduct";
 import adminRoutes from "./components/AdminArea/ShardsDesign/routes";
-
-import { ProductsFromSessionStorage } from "./data/constants";
+import { useScrollSense } from "./components/hooks/senseHook/useScrollSense";
+import { CookiesTagConsent, ProductsFromSessionStorage } from "./data/constants";
 const Loading = () => <div>LOADING</div>;
+
+// ReactGA.initialize('G-2WGBH4M82T');
+// ReactGA.send('pageview');
 
 function App() {
   const [letsCartHandler, CartHandler] = useState(0);
   const [ssProducts, setSSproducts] = useState<any>();
 
+  useScrollSense(() => {
+    ReactGA.event(`User scrolled to bottom on [${window.location.pathname}]`);
+  });
+
   const getCookieConsent = () => {
-    if (getCookie("cookieConsentBrasov") === "userAccepted") return false;
+    if (getCookie(CookiesTagConsent) === "userAccepted") return false;
     else return true;
   };
-
-  const handleScroll = () => {
-    const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
-
-    if (bottom) {
-      ReactGA.event("User scrolled to bottom");
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, {
-      passive: true
-    });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
     if (ssProducts == null) {
