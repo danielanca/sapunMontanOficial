@@ -16,11 +16,11 @@ const QuestionCardboard = ({ theQuestion }: cardBoardProps) => {
   const [cardboardOpen, setCardOn] = useState<boolean>(false);
   const clickHandler = () => {
     setCardOn(!cardboardOpen);
-    ReactGA.event(`user_FAQ_clickQuestion`);
+    ReactGA.event(`user_FAQ_clickedQuestion_${theQuestion.question.substring(0, 16)}`);
   };
 
   return (
-    <div key={uniqueId()} onClick={clickHandler} className={cardboardOpen ? styles.questionCard : styles.collapsed}>
+    <div onClick={clickHandler} className={cardboardOpen ? styles.questionCard : styles.collapsed}>
       <div className={styles.primaryLine}>
         <p className={styles.questionText}>{theQuestion.question}</p>
         <div className={styles.detailsPadder}>
