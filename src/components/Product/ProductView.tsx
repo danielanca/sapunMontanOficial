@@ -1,22 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import Comments from "../Comments";
 import ProductPreview from "./ProductPreview";
 import Loader from "../MiniComponents/Loader";
 import SuggestionArea from "../SuggestedProducts/SuggestionArea";
-
+import ReactGA from "react-ga4";
 import { getProductWithID } from "../../data/productList";
 import { CartInfoItemCookie } from "./../../data/constants";
 import { ProductListType, CartProps } from "./../../utils/OrderInterfaces";
 import { NotExistingProduct } from "../../data/strings.json";
 import images from "../../data/images";
 import styles from "./ProductView.module.scss";
+import { useScrollSense, useSenseScreen } from "../hooks/senseHook/useScrollSense";
 
 const ProductView = ({ notifyMe }: CartProps) => {
   let params = useParams();
   let ID = params.productID !== undefined ? params.productID : "";
+  const ref = useRef(null);
 
   const [productListUpdated, setProducts] = useState<ProductListType>();
+
+  useScrollSense(() => {
+    ReactGA.event(`User scrolled to bottom on [${window.location.pathname}]`);
+    console.log(`User scrolled to bottom on [${window.location.pathname}]`);
+  });
+  useSenseScreen(ref, window.location.pathname);
 
   useEffect(() => {
     if (productListUpdated == null) {
@@ -53,7 +61,7 @@ const ProductView = ({ notifyMe }: CartProps) => {
 
   return (
     <>
-      <div className={styles.padder}>
+      <div ref={ref} className={styles.padder}>
         {productListUpdated != null && productListUpdated.hasOwnProperty(ID) ? (
           <ProductPreview addCartHandler={addCartHandler} ID={ID} productListUpdated={productListUpdated} />
         ) : (
