@@ -7,7 +7,7 @@ import { ReviewsProps } from "../utils/ReviewsTypes";
 
 const ReviewField = ({ productData, productIdentification, allReviews }: ReviewsProps) => {
   return (
-    <div className={styles.contain}>
+    <div data-testid="review-card" className={styles.contain}>
       {productData != null && allReviews.length >= 1 ? (
         <div className={styles.reviewContainer}>
           {allReviews.map((item) => (

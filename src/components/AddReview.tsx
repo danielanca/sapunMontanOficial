@@ -51,11 +51,7 @@ const AddReview = ({ productID }: PassingReview) => {
   };
 
   useEffect(() => {
-    console.log("IMage local:", image);
-  }, [image]);
-  useEffect(() => {
     console.log("ReviewBuffer:", reviewBuffer);
-
     if (reviewState === "invalidInput") {
       setReviewState("init");
     }
@@ -120,7 +116,7 @@ const AddReview = ({ productID }: PassingReview) => {
     setOpenReviewComment(true);
   };
   return (
-    <div className={styles.addSection}>
+    <div data-testid="add-review" className={styles.addSection}>
       {!openReviewComment && (
         <button onClick={openReviewContainer} className={styles.addReviewButton}>
           {"SCRIE REVIEW"}
