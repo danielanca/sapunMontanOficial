@@ -42,7 +42,7 @@ export const componentStrings = {
       39: "Tulcea",
       40: "Valcea",
       41: "Vaslui",
-      42: "Vrancee"
+      42: "Vrancea"
     }
   },
 

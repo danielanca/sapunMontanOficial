@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProductAdded from "./../PopUps/ProductAdded";
 import ProductDescription from "./../ConstantComponents/ProductDescription";
 import { ProductTypes } from "./../../utils/OrderInterfaces";
-
+import parse from "html-react-parser";
 import styles from "./../Product/ProductView.module.scss";
 import images from "../../data/images";
 import strings from "../../data/strings.json";
@@ -89,8 +89,10 @@ const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes
             </div>
             {productListUpdated && (
               <>
-                <div className={styles.shortDescription}>{productListUpdated[ID].shortDescription}</div>
-                <div className={styles.longDescription}>{productListUpdated[ID].firstDescription}</div>
+                <div className={styles.shortDescription}>
+                  <p>{parse(productListUpdated[ID].shortDescription)}</p>
+                </div>
+                <div className={styles.longDescription}>{parse(productListUpdated[ID].firstDescription)}</div>
               </>
             )}
             {productListUpdated && (

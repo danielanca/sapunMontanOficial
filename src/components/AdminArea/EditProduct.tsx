@@ -5,10 +5,10 @@ import { ProductListType, ProductModel } from "./../../utils/OrderInterfaces";
 import { getProductWithID } from "../../data/productList";
 import { updateProduct } from "./../../services/emails";
 import styles from "./EditProduct.module.scss";
-interface EditProduct {
+interface EditProductProps {
   editMode: boolean;
 }
-const EditProduct = ({ editMode }: EditProduct) => {
+const EditProduct = ({ editMode }: EditProductProps) => {
   const [openPreviewArea, setOpenPreviewArea] = useState<boolean>(false);
   let params = useParams();
   let ID = params.productID !== undefined ? params.productID : "";

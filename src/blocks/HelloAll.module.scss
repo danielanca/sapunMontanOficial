@@ -34,10 +34,11 @@
   text-align: center;
   -webkit-text-stroke: 1px black;
   font-family: "Luckiest Guy";
-  font-size: 4em;
+  font-size: 3.5em;
   padding: 30px;
   @include media("<tablet") {
-    font-size: 38px;
+    font-size: 2rem;
+    padding: 20px 0px;
   }
 }
 
