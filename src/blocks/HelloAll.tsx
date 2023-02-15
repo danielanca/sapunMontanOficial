@@ -6,7 +6,7 @@ const HelloAll = () => {
     <div className={styles.helloAll}>
       <div className={styles.featuredMessage}>
         <img alt="bear logo" className={styles.bearLogo} src={images.bearPicture} />
-        <h3 className={styles.textWelcome}>{"Cadouri pentru cei dragi"}</h3>
+        <h3 className={styles.textWelcome}>{"Creati Amintiri cu cei dragi"}</h3>
       </div>
     </div>
   );

@@ -100,6 +100,10 @@
   @include media("<tablet") {
     padding: 0 30px;
   }
+
+  p {
+    line-height: 1.3rem;
+  }
 }
 .longDescription {
   font-family: "Open Sans Regular", Georgia, Times, "Times New Roman", serif;
@@ -157,11 +161,14 @@
   color: white;
   outline: none;
   border-style: none;
-  font-size: 1.6em;
+  font-size: 1.2rem;
   width: 250px;
   height: 50px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   font-family: "Roboto Medium";
+  @include media("<tablet") {
+    font-size: 1.1em;
+  }
   &:hover {
     background-color: rgb(73, 73, 73);
   }

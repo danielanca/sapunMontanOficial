@@ -322,9 +322,9 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                 </div>
                 <button onClick={sendOrderData} type="submit" className={styles.finishOrder}>
                   {orderState != "pendingState" ? (
-                    <span>{orderString.orderItself.sendFinishOrder.nameButton}</span>
+                    <p>{orderString.orderItself.sendFinishOrder.nameButton}</p>
                   ) : (
-                    <span>{". . ."}</span>
+                    <p>{". . ."}</p>
                   )}
                 </button>
                 <div>

@@ -102,7 +102,7 @@
       "city": "Oras",
       "county": "Judet",
       "phoneNo": "Telefon",
-      "emailAddress": "Email",
+      "emailAddress": "Email [opțional]",
       "orderMentions": "Note comandă [opțional]"
     },
 
@@ -219,7 +219,7 @@
 
   "OrderDone": {
     "title": "Comanda a fost inregistrată!😃",
-    "subtitle": "Veti fi contactat telefonic pentru confirmarea comenzii",
+    "subtitle": "Pregatim coletul! <strong> Va multumim! </strong>",
     "goHome": "Spre pagina principala"
   },
 
