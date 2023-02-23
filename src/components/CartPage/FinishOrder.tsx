@@ -230,7 +230,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                 </div>
               </div>
             </div>
-            <div className={styles.rightContainer}>
+            <div data-testid="rightContainer" className={styles.rightContainer}>
               <div className={styles.rightChild}>
                 <div className={styles.legendsTable}>
                   <span>{orderString.totals.product}</span>

@@ -25,7 +25,7 @@ const Checkboxer = ({ name, enabled, onSwitchEnabled }: InputProps) => {
 
   return (
     <label className={styles.labelRow}>
-      <input className={styles.checkboxer} type={"checkbox"} onChange={onChangeState}></input>
+      <input className={styles.checkboxer} checked={isChecked} type={"checkbox"} onChange={onChangeState}></input>
       <path
         className={`${styles.checkbox} ${isChecked ? styles.checkboxactive : ""}`}
         aria-hidden="true"

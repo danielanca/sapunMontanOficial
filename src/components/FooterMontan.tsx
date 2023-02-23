@@ -15,10 +15,19 @@ const FooterMontan = () => {
   let { links, commercialData, ourShop, bottomMadeBy } = strings.footerText.headLines;
   const { pathname } = useLocation();
   const [footerFetch, setFooterFetch] = useState({});
+
   useEffect(() => {
-    getStringsList("legalInfo").then((result: getType) => {
-      setFooterFetch(JSON.parse(JSON.stringify(result.resultSent.legalData)));
-    });
+    const fetchStringList = async () => {
+      try {
+        const result = await getStringsList("legalInfo");
+        console.log("FooterMontan:", result);
+        setFooterFetch(JSON.parse(JSON.stringify(result.resultSent.legalData)));
+      } catch (error) {
+        setFooterFetch({ message: "EROARE DE AFISARE Date Comerciale. Contactati administratorul" });
+        // sendAlertEmail_To_Administrator(error);
+      }
+    };
+    fetchStringList();
   }, []);
 
   return (
@@ -32,7 +41,7 @@ const FooterMontan = () => {
             </>
           )}
 
-          <div className={"row " + styles.largeFooter}>
+          <div data-testid="footer-container" className={"row " + styles.largeFooter}>
             <div className="col-md-4">
               <div className="row">
                 <div className={"col " + styles.footItem}>
