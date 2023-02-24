@@ -12,12 +12,11 @@ import { NotExistingProduct } from "../../data/strings.json";
 import images from "../../data/images";
 import styles from "./ProductView.module.scss";
 import { useScrollSense, useSenseScreen } from "../hooks/senseHook/useScrollSense";
-
+import VideoPlayer from "./../MiniComponents/VideoPlayer/VideoPlayer";
 const ProductView = ({ notifyMe }: CartProps) => {
   let params = useParams();
   let ID = params.productID !== undefined ? params.productID : "";
   const ref = useRef(null);
-
   const [productListUpdated, setProducts] = useState<ProductListType>();
 
   useScrollSense(() => {
@@ -67,7 +66,11 @@ const ProductView = ({ notifyMe }: CartProps) => {
         ) : (
           <Loader />
         )}
+        <div className={styles.playerContainer}>
+          <VideoPlayer />
+        </div>
       </div>
+
       <div>
         {typeof productListUpdated !== "undefined" && productListUpdated.hasOwnProperty(ID) ? (
           <Comments

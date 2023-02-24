@@ -19,12 +19,13 @@ export const useScrollSense = (callBk: () => void) => {
   }, []);
 };
 
-export const useSenseScreen = (ref: any, path: any) => {
+export const useSenseScreen = (ref: any, path: any, funcCall?: () => void) => {
   const isVisible = useOnScreen(ref);
 
   useEffect(() => {
     if (isVisible) {
-      console.log("User is interacting with:", path);
+      console.log("User is interacting with:", path, funcCall);
+      if (funcCall) funcCall();
     }
   }, [isVisible]);
 };

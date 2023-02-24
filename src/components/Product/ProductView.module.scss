@@ -5,7 +5,16 @@
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+.playerContainer{
+  width: 100%;
+  padding: 4% 0;
+  // outline: 2px solid black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
 
+}
 .sectionParent {
   @extend .row;
   display: flex;

@@ -1,0 +1,155 @@
+@import "./../../../main.module.scss";
+
+.playButton {
+    z-index: 3;
+    position: absolute;
+    display: flex;
+    width: 60px;
+    height: 60px;
+    top: 45%;
+    font-size: 1.3vw;
+    color: rgba(255, 255, 255, 0.5);
+    left: 50%;
+    transform: translate(-50%, 0);
+    cursor: pointer;
+   
+    @include media('<desktop') {
+      display: none;
+    }
+  }
+  
+  .oasisVideo {
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    
+    
+  }
+  .videoPlayer {
+    // outline: 2px solid black;
+    width: 100%;
+    top: 0;
+    max-width: 802px;
+    display: table;
+    margin: auto;
+    padding: 1%;
+    @include media('<desktop'){
+      padding: 3%;
+    }
+  }
+  .fullScreenButton {
+    background-color: transparent;
+    width: 50px;
+    cursor: pointer;
+    @include media('>tablet', '<=desktop') {
+      @media (orientation: landscape) {
+      }
+      width: 40px;
+    }
+    @include media('<=tablet') {
+      @media (orientation: landscape) {
+      }
+      width: 30px;
+    }
+  }
+  
+  .videoButtons {
+    align-self: flex-end;
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
+    contain: content;
+    position: relative;
+    width: 100%;
+    top: -10px;
+    padding-left: 10%;
+    padding-right: 10%;
+  
+    @include media('>tablet', '<=desktop') {
+      @media (orientation: landscape) {
+        bottom: 0;
+        padding-left: 13%;
+        padding-right: 13%;
+        top: -17vh;
+      }
+      top: -11vh;
+    }
+    @include media('<=tablet') {
+      @media (orientation: landscape) {
+      }
+      padding-left: 5%;
+      padding-right: 5%;
+      top: -7vh;
+    }
+  }
+  
+  .volumeSlider {
+    background-color: transparent;
+    width: 150px;
+    @include media('>tablet', '<=desktop') {
+      @media (orientation: landscape) {
+      }
+      width: 120px;
+    }
+    @include media('<=tablet') {
+      @media (orientation: landscape) {
+      }
+      width: 60px;
+    }
+  }
+  input[type='range'] {
+    -webkit-appearance: none;
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 5px;
+    background: map-get($map: $colors, $key: headColor);
+    border: none;
+    border-radius: 3px;
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: rgb(201, 195, 195);
+    box-shadow: 2px 0 0 -150px map-get($map: $colors, $key: headColor);
+    margin-top: -6px;
+  }
+  
+  input[type='range']:focus {
+    outline: none;
+  }
+  
+  input[type='range']:focus::-webkit-slider-runnable-track {
+    background: map-get($map: $colors, $key: headColor);
+  }
+  
+  input[type='range']::-moz-range-track {
+    height: 5px;
+    background: map-get($map: $colors, $key: headColor);
+    border: none;
+    border-radius: 3px;
+  }
+  
+  input[type='range']::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: map-get($map: $colors, $key: headColor);
+  }
+  
+  input[type='range']:-moz-focusring {
+    outline: none;
+    outline-offset: -1px;
+  }
+  
+  input[type='range']:focus::-moz-range-track {
+    background: map-get($map: $colors, $key: headColor);
+  }
+  
