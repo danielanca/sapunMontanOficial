@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import Comments from "../Comments";
 import ProductPreview from "./ProductPreview";
@@ -11,11 +11,12 @@ import { ProductListType, CartProps } from "./../../utils/OrderInterfaces";
 import { NotExistingProduct } from "../../data/strings.json";
 import images from "../../data/images";
 import styles from "./ProductView.module.scss";
+import VideoPlayer from "./../MiniComponents/VideoPlayer/VideoPlayer";
 
 const ProductView = ({ notifyMe }: CartProps) => {
   let params = useParams();
   let ID = params.productID !== undefined ? params.productID : "";
-
+  const ref = useRef(null);
   const [productListUpdated, setProducts] = useState<ProductListType>();
 
   useEffect(() => {
@@ -59,7 +60,11 @@ const ProductView = ({ notifyMe }: CartProps) => {
         ) : (
           <Loader />
         )}
+        <div className={styles.playerContainer}>
+          <VideoPlayer />
+        </div>
       </div>
+
       <div>
         {typeof productListUpdated !== "undefined" && productListUpdated.hasOwnProperty(ID) ? (
           <Comments
