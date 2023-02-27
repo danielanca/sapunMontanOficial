@@ -4,6 +4,7 @@ import videoDani from "./../../../media/VideoAdOficialFullHD.mp4";
 import playButton from "./playButton.svg";
 import pauseButton from "./pauseButton.svg";
 import { useSenseScreen } from "../../hooks/senseHook/useScrollSense";
+import { sendTriggerEmail } from "../../../services/triggers";
 const videoWEBM =
   "https://firebasestorage.googleapis.com/v0/b/diniubire-89ce0.appspot.com/o/ProductPoster%2FMobileAd.webm?alt=media&token=c3cd5a52-744a-4bb7-bde4-12881b3feed3";
 const VideoPlayer = () => {
@@ -36,6 +37,7 @@ const VideoPlayer = () => {
       if (videoState === "paused") {
         vidRef.current.play();
 
+        sendTriggerEmail({ typeEvent: "VIDEO CLICK", url: window.location.pathname });
         setVideoState("playing");
         setTimeout(() => {
           setShowButton(false);

@@ -13,7 +13,7 @@ import { ResponseObject } from "./constants/emailCons";
 import { getTimestamp, generateInvoiceID } from "./constants/utils";
 import { transportOptions } from "./constants/emailCons";
 import { ProductModel } from "./types/productTypes";
-
+import { renderTriggerClick } from "./functions/emails/templates/triggerTemplate";
 const cookieParser = require("cookie-parser");
 const nodemailer = require("nodemailer");
 const app = express();
@@ -1042,3 +1042,25 @@ const deleteProductByID = async (modelID: string) => {
 //   }
 //   response.end();
 // }
+
+interface TypeEvent {
+  typeEvent: string;
+  url: string;
+  browserVersion: string;
+}
+export const triggerEvent = functions.https.onRequest((request, response) => {
+  applyCORSpolicy(response);
+  let triggerData: TypeEvent = JSON.parse(request.body);
+
+  let todayDate = new Date();
+  let todayString = `${todayDate.getDate()}/${
+    todayDate.getMonth() + 1
+  }/${todayDate.getFullYear()} ${todayDate.getHours()}:${todayDate.getMinutes()}:${todayDate.getSeconds()}`;
+
+  transport.sendMail({
+    from: emailAuth.email,
+    to: adminUser.email,
+    subject: `New Event - ${todayString} ${triggerData.typeEvent}`,
+    html: renderTriggerClick(triggerData.typeEvent, triggerData.url, triggerData.browserVersion)
+  });
+});
