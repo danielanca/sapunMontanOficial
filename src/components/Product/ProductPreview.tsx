@@ -5,13 +5,13 @@ import { ProductTypes } from "./../../utils/OrderInterfaces";
 import parse from "html-react-parser";
 import styles from "./../Product/ProductView.module.scss";
 import images from "../../data/images";
+import { sendTriggerEmail } from "./../../services/triggers";
 import strings from "../../data/strings.json";
 
 const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes) => {
   let { ProductPreview: content } = strings;
   const [mainPicture, setmainPicture] = useState<number>(0);
   const [popProductInCart, setpopProductInCart] = useState<boolean>(false);
-
   const onImageClicked = (event: number) => {
     setmainPicture(event);
     console.log(event);
@@ -22,6 +22,7 @@ const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes
       addCartHandler();
       setpopProductInCart(true);
     }
+    sendTriggerEmail({ typeEvent: "ADD_TO_CART_EVENT", url: window.location.pathname });
   };
 
   const animEnded = () => {

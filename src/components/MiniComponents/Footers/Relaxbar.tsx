@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./Relaxbar.module.scss";
-
+import { sendTriggerEmail } from "../../../services/triggers";
 const Relaxbar = () => {
   // const goToTop = () => {
   //   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -33,7 +33,12 @@ const Relaxbar = () => {
               </div>
               <div className={styles.actionWrapper}>
                 <a href="https://instagram.com/diniubire.ro" target={"_blank"}>
-                  <button className={styles.instagramButton}>Viziteaza-ne</button>
+                  <button
+                    onClick={() => sendTriggerEmail({ typeEvent: "INSTA_CLICK", url: window.location.pathname })}
+                    className={styles.instagramButton}
+                  >
+                    Viziteaza-ne
+                  </button>
                 </a>
               </div>
             </div>
