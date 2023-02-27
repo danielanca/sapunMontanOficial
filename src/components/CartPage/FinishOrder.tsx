@@ -203,13 +203,13 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                         autoComplete={item.inputOptions?.autoComplete}
                         list={item.inputOptions?.list}
                       />
-                      {item.otherStructure?.dataList?.name && (
+                      {/* {item.otherStructure?.dataList?.name && (
                         <datalist id={item.otherStructure.dataList.name}>
                           {Object.values(item.otherStructure.dataList.list).map((item) => (
                             <option value={item} />
                           ))}
                         </datalist>
-                      )}
+                      )} */}
                     </div>
                   </div>
                 );
