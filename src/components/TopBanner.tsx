@@ -32,14 +32,9 @@ const TopBanner = () => {
     } else {
       fontSize = 20;
     }
-    console.log(`String length: ${text.length} and width of Div: ${width}, result of FontSize will be ${fontSize}`);
-
     return { fontSize: fontSize + "px" };
   };
 
-  useEffect(() => {
-    console.log("Baner size is:", bannerSize);
-  }, [bannerSize]);
   return (
     <div className={styles.bigBlanaBanner}>
       <div className={styles.emailTop}>{websiteContact.email}</div>

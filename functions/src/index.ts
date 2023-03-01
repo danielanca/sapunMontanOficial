@@ -27,14 +27,12 @@ admin.initializeApp({
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 export const updateProduct = functions.https.onRequest((request, response) => {
   let requestParam = JSON.parse(request.body);
-  console.log("updateProduct:", requestParam);
 
   createNewProduct(requestParam);
 });
 
 export const deleteProduct = functions.https.onRequest((request, response) => {
   let requestParam = JSON.parse(request.body);
-  console.log("deleteProduct:", requestParam);
   functions.logger.info("deleteProduct is SAYING: ", requestParam);
   deleteProductByID(requestParam);
 });
@@ -42,7 +40,6 @@ export const deleteProduct = functions.https.onRequest((request, response) => {
 export const sendReviewToServer = functions.https.onRequest((request, response) => {
   applyCORSpolicy(response);
   let requestParam = JSON.parse(request.body);
-  console.log("INCOMING Review for ", requestParam);
   postReviewData(requestParam)
     .then((result) => {
       console.log("RESPONSE [postReviewData]", result);
@@ -83,7 +80,6 @@ const postReviewData = async (data: ReviewType) => {
         return null;
       }
     });
-  console.log(`Sending back to DB ${data.reviewProductID}`, +theResult);
   return await admin
     .firestore()
     .collection("products")
@@ -945,7 +941,6 @@ export const sendEmail = functions.https.onRequest((request, response) => {
 });
 
 const createNewProduct = async (modelID: ProductModel) => {
-  console.log("create new product received:", JSON.stringify(modelID));
   await admin
     .firestore()
     .collection("products")

@@ -5,6 +5,6 @@ export interface Provi {
   authorise: boolean | null;
 }
 export interface ProviInter {
-  auth?: Provi;
+  auth: Provi;
   setAuth?: React.Dispatch<React.SetStateAction<Provi>>;
 }

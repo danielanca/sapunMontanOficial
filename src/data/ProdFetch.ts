@@ -11,7 +11,6 @@ export const getData = async () => {
 
   if (docSnap.exists()) {
     fetchedData = docSnap.data();
-    console.log("Data arrived:", fetchedData);
   } else {
     console.log("No documents found");
   }

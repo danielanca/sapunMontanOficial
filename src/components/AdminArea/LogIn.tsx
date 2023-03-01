@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import useAuth from "./../hooks/useAuth";
 import { requestLoginAccess } from "../../services/emails";
 import { Credentials, ResponseServer } from "./AdminTypes";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { setJWT } from "../../utils/functions";
 import styles from "./LogIn.module.scss";
 
@@ -11,10 +11,6 @@ const Login = () => {
 
   const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = "/";
-
-  const userRef = useRef();
 
   const requestAccess = async () => {
     try {
@@ -27,7 +23,6 @@ const Login = () => {
               password: userCredentials.password,
               accessToken: jsonResponse.LOGIN_TOKEN
             }));
-            console.log("RESPONSE:", jsonResponse.LOGIN_TOKEN);
             setJWT("jwt", jsonResponse.LOGIN_TOKEN, 1).then((confirmation) => {
               if (confirmation) {
                 navigate("/admin", { replace: true });

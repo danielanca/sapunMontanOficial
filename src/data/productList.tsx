@@ -1,6 +1,6 @@
 import { collection, doc, getFirestore, getDoc, getDocs } from "firebase/firestore";
 import app from "./../firebase";
-
+import { devConsole } from "./../functions/utilsFunc";
 let productList = [];
 
 const db = getFirestore(app);
@@ -58,7 +58,6 @@ export const getData = async () => {
       };
     });
   });
-  console.log("End of ", dataProducts);
   return dataProducts;
 };
 
@@ -101,12 +100,12 @@ const getallPr = async () => {
   }
   //Here we need to make the call for a specific ID, not for the whole collection of products.
   //but till then, we will do this way.
-  console.log("getProductWithID will return :", productsAreHere);
 
   return productsAreHere;
 };
 
-console.log("ProductList is loading...");
+devConsole("Product is loading...");
+
 getallPr().then((data) => {
   productList = data;
   console.log("Done");
