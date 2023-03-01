@@ -5,7 +5,7 @@
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
-.playerContainer{
+.playerContainer {
   width: 100%;
   padding: 4% 0;
   // outline: 2px solid black;
@@ -13,7 +13,6 @@
   justify-content: center;
   flex-direction: column;
   position: relative;
-
 }
 .sectionParent {
   @extend .row;
@@ -204,6 +203,13 @@
   &:hover {
     opacity: 1;
   }
+}
+.starsContainerLow {
+  @extend .starsContainer;
+  height: 20px;
+}
+.reviewStar {
+  aspect-ratio: 1/1;
 }
 .activeImage {
   @extend .clickableImage;
