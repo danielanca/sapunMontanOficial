@@ -75,7 +75,7 @@
 .actualComment {
   line-height: 16px;
   font-family: "Roboto Regular";
-  font-size: clamp(9px, 0.9vw, 18px);
+  font-size: 1rem;
   @include media("<tablet") {
     height: auto;
     text-align: start;

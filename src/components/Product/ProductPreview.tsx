@@ -79,13 +79,13 @@ const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes
                 <img alt="stars icons" className={styles.reviewStar} src={images.star} />
                 <img alt="stars icons" className={styles.reviewStar} src={images.star} />
               </div>
-              <span className={styles.reviewHead}>
+              {/* <span className={styles.reviewHead}>
                 {productListUpdated != null
                   ? Object.values(productListUpdated[ID].reviews).length !== 0
                     ? `(${Object.values(productListUpdated[ID].reviews).length})`
                     : content.callActionForReview
                   : ""}
-              </span>
+              </span> */}
             </div>
             {productListUpdated && (
               <>

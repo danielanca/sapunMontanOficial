@@ -8,8 +8,12 @@
 }
 .titleProducts {
   text-align: center;
-  font-size: 35px;
+  font-size: 1.5rem;
   margin-top: 30px;
+
+  @include media("<tablet") {
+    font-size: 1rem;
+  }
 }
 .productHead {
   width: auto;
