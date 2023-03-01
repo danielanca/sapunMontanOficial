@@ -18,8 +18,6 @@ interface BlogItemsProps {
 const BlogItem = ({ data }: BlogProps) => {
   let { blogsArea: blogStr } = strings;
   let blogData: BlogItemsProps = JSON.parse(data);
-  console.log("BLOG ITEM:", blogData.link);
-  console.log("BLOG image:", blogs.posts[blogData.link].image);
 
   const gotoElement = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

@@ -51,11 +51,6 @@ const AddReview = ({ productID }: PassingReview) => {
   };
 
   useEffect(() => {
-    console.log("IMage local:", image);
-  }, [image]);
-  useEffect(() => {
-    console.log("ReviewBuffer:", reviewBuffer);
-
     if (reviewState === "invalidInput") {
       setReviewState("init");
     }
@@ -89,14 +84,12 @@ const AddReview = ({ productID }: PassingReview) => {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
             setReviewBuffer((reviewBuffer) => ({ ...reviewBuffer, mediaLink: url }));
-            console.log("Result stored as:", reviewBuffer);
           });
         }
       );
     } else {
       sendReviewToBack(reviewBuffer).then((response) =>
         response.json().then((responseInside) => {
-          console.log("Response inside:", responseInside.response);
           if (responseInside.response === "SENT") {
             setReviewStatus(responseInside.response);
           }
@@ -108,7 +101,6 @@ const AddReview = ({ productID }: PassingReview) => {
     if (reviewBuffer.mediaLink !== "") {
       sendReviewToBack(reviewBuffer).then((response) =>
         response.json().then((responseInside) => {
-          console.log("Response inside:", responseInside.response);
           if (responseInside.response === "SENT") {
             setReviewStatus(responseInside.response);
           }

@@ -12,7 +12,6 @@ if (process.env.NODE_ENV === "development") {
 }
 
 export const requestOrdersList = async () => {
-  console.log("Request destination is:", destination);
   return await fetch(`${destination}/requestOrders`, {
     credentials: "include",
     method: "POST",
@@ -27,7 +26,6 @@ export const requestOrdersList = async () => {
 };
 
 export const sendReviewToBack = async (reviewObj: ReviewsInterface) => {
-  console.log("SendReviewToBack received will send:", reviewObj);
   return await fetch(`${destination}/sendReviewToServer`, {
     credentials: "include",
     method: "POST",

@@ -18,7 +18,7 @@ const Comments = ({ productData, reviewsList, productID }: CommentsProps) => {
 
     Object.values(allRevs).forEach((item) =>
       Object.values(item.reviews).length >= 1
-        ? console.log(Object.values(item.reviews).forEach((item) => allReviews.push(item)))
+        ? Object.values(item.reviews).forEach((item) => allReviews.push(item))
         : ""
     );
   }

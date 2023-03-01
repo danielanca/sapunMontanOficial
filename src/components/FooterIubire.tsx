@@ -41,7 +41,7 @@ const FooterMontan = () => {
                   <h3 className={styles.footerTittleCenter}>{"AMINTIRE PENTRU TOTDEAUNA"}</h3>
                   <p key={uniqueId()} className={styles.classicText}>
                     {
-                      "Viziunea si scopul nostru este să vă oferim produse prin care puteti crea momente unice ce raman, alaturi de cei dragi. "
+                      "Scopul nostru este să oferim produse prin care puteti crea momente unice ce rămân, alături de cei dragi. "
                     }
                   </p>
                 </div>

@@ -14,7 +14,6 @@ const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes
   const [popProductInCart, setpopProductInCart] = useState<boolean>(false);
   const onImageClicked = (event: number) => {
     setmainPicture(event);
-    console.log(event);
   };
 
   const addToCartEvent = () => {

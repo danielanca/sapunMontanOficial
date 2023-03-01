@@ -142,13 +142,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
         setError((completionState) => ({ ...completionState, paymentSelected: true }));
       }
     }
-
-    console.log("ORDER STATE: ", orderState);
   }, [orderState, orderData]);
-
-  useEffect(() => {
-    console.log("ERRORS are:", completionState);
-  }, [completionState]);
 
   useEffect(() => {
     if (orderState === "triggeredState") {
@@ -163,8 +157,6 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
       setOrderState("pendingState");
       handleSend();
     }
-
-    console.log("ORDER STATE: ", orderState);
   }, [orderState]);
 
   const inputObject = getInputFields(orderData, inputHandler);

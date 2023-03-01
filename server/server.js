@@ -18,7 +18,6 @@ const app = express();
 // matchPath(route.path, req.url)
 //console.log(`Routes: route.path: ${route.path} req.url ${req.url}`)
 app.get("*", (req, res, next) => {
-  console.log("Route contains", routes);
   // const activeRoute = routes.default.find((route) => matchPath(route.path, req.url)) || {};
   let promise = Promise.resolve();
   // promise = activeRoute.fetchInitialData ? activeRoute.fetchInitialData(req.path) : Promise.resolve();
