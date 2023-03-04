@@ -5,5 +5,5 @@ interface GalleryType {
   text: string;
 }
 export interface GalleryProps {
-  [name: string]: GalleryType[];
+  [name: string]: GalleryType;
 }

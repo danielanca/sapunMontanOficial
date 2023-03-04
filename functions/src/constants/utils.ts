@@ -6,9 +6,9 @@ export const generateInvoiceID = () => {
   return Math.ceil(Math.random() * 15044332);
 };
 
-export const getDateAndHour = ()=>{
+export const getDateAndHour = () => {
   let TodayDate = new Date();
   return `${TodayDate.getDate()}/${
     TodayDate.getMonth() + 1
   }/${TodayDate.getFullYear()} ${TodayDate.getHours()}:${TodayDate.getMinutes()}`;
-}
+};
