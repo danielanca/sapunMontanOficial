@@ -1,20 +1,4 @@
 import strings from "./strings.json";
-import images from "./images";
-
-export const socialString = {
-  instagram: {
-    imageSrc: images.socials.instagram,
-    link: "https://instagram.com/riona.ro"
-  },
-  facebook: {
-    imageSrc: images.socials.facebook,
-    link: "https://facebook.com/riona.ro"
-  },
-  twitter: {
-    imageSrc: images.socials.twitter,
-    link: "https://twitter.com/riona.ro"
-  }
-};
 
 export const componentStrings = {
   FinishOrder: {

@@ -1,12 +1,25 @@
-.App {
-  /* max-width: 1920px; */
-  margin: auto;
-  font-family: "DM Sans Regular";
+@font-face {
+  font-family: "SallenasGrande Regular";
+  src: url(fonts/SallenasGrandesRegular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Montserrat Regular";
+  src: url(fonts/MontserratRegular.ttf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Montserrat Light";
+  src: url(fonts/MontserratLight.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Montserrat Bold";
+  src: url(fonts/MontserratBold.ttf);
+  font-weight: 400;
 }
 
-.orange {
-  color: orange;
-}
-.blueTheme {
-  color: #003554;
+.App {
+  max-width: 1920px;
+  margin: auto;
 }

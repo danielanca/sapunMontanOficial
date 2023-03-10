@@ -1,5 +1,5 @@
 export const adminUser = {
-  email: "admin@riona.ro",
+  email: "ancadaniel1994@gmail.com",
   password: "123"
 };
 
@@ -18,6 +18,6 @@ export const getAuthToken = (body: any) => {
 };
 
 export const emailAuth = {
-  email: "somethingelse@gmail.com",
-  password: "yuppassowrd"
+  email: "montanair.ro@gmail.com",
+  password: "drzqeixyfxrqwcpq"
 };
