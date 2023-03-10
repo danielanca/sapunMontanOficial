@@ -1,4 +1,18 @@
 const images = {
+  rionaLogo: require("./../media/riona/riona_alb.svg").default,
+  rionaLogoBlack: require("./../media/riona/riona_negru.svg").default,
+  heroBoy: require("./../media/riona/heroBoy.svg").default,
+  logoBrands: require("./../media/riona/icons/logoBrands.svg").default,
+  arrowRiona: require("./../media/riona/arrow.svg").default,
+  mic: require("./../media/riona/mic.svg").default,
+  medii: require("./../media/riona/medii.svg").default,
+  mare: require("./../media/riona/mare.svg").default,
+  socials: {
+    instagram: require("./../media/riona/icons/instagram.svg").default,
+    facebook: require("./../media/riona/icons/facebook.svg").default,
+    twitter: require("./../media/riona/icons/twitter.svg").default
+  },
+
   sapunCarbune: require("./../media/assets/pics/prezentareCarbune/carbune.png").default,
   deliveryCar: require("./../media/assets/pics/prezentareCarbune/delivery.png").default,
   logo: require("./../media/assets/montanAirLogo.png").default,

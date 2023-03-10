@@ -63,6 +63,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 5%;
   }
 }
 .navbarContainer {
@@ -311,6 +312,7 @@ input[type="checkbox"]:not(:checked) ~ .subItemUL {
 
   @include media("<desktop") {
     order: 1;
+    position: relative;
   }
 }
 
@@ -318,11 +320,11 @@ input[type="checkbox"]:not(:checked) ~ .subItemUL {
 .bar2,
 .bar3 {
   @include media("<tablet") {
-    width: 32px;
-    height: 3.5px;
-    background-color: map-get($map: $colors, $key: redBomb);
+    width: 28px;
+    height: 3px;
     margin: 3px 0;
     transition: 0.4s;
+    margin-left: auto;
   }
 
   @include media(">=tablet", "<desktop") {
@@ -333,11 +335,23 @@ input[type="checkbox"]:not(:checked) ~ .subItemUL {
     transition: 0.4s;
   }
 }
+.bar1,
+.bar3 {
+  background-color: #ff8c33;
+  margin-left: auto;
+}
+.bar2 {
+  background-color: #003554;
+}
+
+.bar3 {
+  width: 19px;
+}
 .menuMobileContainer {
   display: flex;
-  width: 80px;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  grid-column: span 8;
   @include media(">=desktop") {
     display: none;
   }

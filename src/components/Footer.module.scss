@@ -1,0 +1,138 @@
+@import "./../main.module.scss";
+@import "./../data//themes.scss";
+
+.footerArea {
+  @extend .container-fluid;
+
+  display: flex;
+  flex-direction: row;
+}
+.footerBlock {
+  width: 100vw;
+  margin: auto;
+  background-color: #1d3557;
+}
+.fluidHandler {
+  max-width: 2000px;
+  width: 100%;
+  margin: auto;
+  height: 400px;
+
+  display: grid;
+  // grid-template-columns: 1fr 1fr 1fr 1fr;
+  // grid-template-rows: 1.5fr 1fr 1fr 1.3fr;
+  grid-template-columns: repeat(10, 1fr);
+
+  div {
+    color: white;
+  }
+
+  @include media("<tablet") {
+    height: 287px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.9fr 0.4fr 0.5fr 0.6fr;
+  }
+}
+.logoContainer {
+  // grid-column: 1/-1;
+  // grid-row: 1/2;
+  grid-column: span 10;
+  // outline: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    @include media("<tablet") {
+      opacity: 0.7;
+    }
+    height: 87px;
+  }
+}
+.description {
+  // grid-column: 1/-1;
+  // grid-row: 2/3;
+  // outline: 2px solid white;
+  padding: 0 10%;
+  grid-column: span 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    text-align: center;
+    font-size: 0.8em;
+    margin-bottom: 0px;
+    @include media("<tablet") {
+      opacity: 0.7;
+      font-size: 7px;
+      line-height: initial;
+    }
+  }
+}
+.navItems {
+  // grid-column: 1/-1;
+  // grid-row: 3/4;
+  grid-column: span 10;
+  // outline: 2px solid white;
+
+  @include media("<tablet") {
+    // order: 2;
+  }
+}
+.logoSocials {
+  // grid-column: 1/-1;
+  // grid-row: 4/-1;
+  grid-column: span 10;
+  // order: 0;
+  // outline: 2px solid white;
+}
+
+.navItemsUL {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 0px;
+  column-gap: 1%;
+  height: 100%;
+  padding: 0;
+  @include media("<tablet") {
+    opacity: 0.7;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    min-width: 120px;
+    white-space: nowrap;
+    &:hover {
+      font-weight: bold;
+    }
+
+    @include media("<tablet") {
+      margin: 0 2%;
+      font-size: 12px;
+      min-width: 10px;
+    }
+  }
+}
+
+.socialsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20%;
+  height: 100%;
+  width: 200px;
+  margin: auto;
+
+  img {
+    height: 40px;
+    @include media("<tablet") {
+      height: 28px;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,4 +1,31 @@
 {
+  "navItemsFooter": {
+    "campaigns": {
+      "text": "Campaigns",
+      "link": "/campanii"
+    },
+    "emailMarketing": {
+      "text": "Marketing",
+      "link": "/marketing"
+    },
+    "branding": {
+      "text": "Branding",
+      "link": "/branding"
+    },
+    "offline": {
+      "text": "Offline",
+      "link": "/marketing"
+    },
+    "contact": {
+      "text": "Contact",
+      "link": "/marketing"
+    },
+    "faq": {
+      "text": "FAQ",
+      "link": "/faq"
+    }
+  },
+
   "websiteTitle": "MontanAir.Ro",
 
   "elasticGallery": {

@@ -1,0 +1,113 @@
+@import "./../main.module.scss";
+@import "./../data//themes.scss";
+
+.servicesBlock {
+  height: 500px;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  column-gap: 3%;
+  outline: 2px solid black;
+  margin: auto;
+  max-width: 1200px;
+  align-items: center;
+
+  @include media("<tablet") {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2%;
+  }
+}
+
+.cardBlock {
+  width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10%;
+  height: 339px;
+  padding: 2%;
+  position: relative;
+
+  border-radius: 24px 20px 0px 0px;
+  //   outline: 7px solid #ff9900;
+  //   border-image: linear-gradient(to bottom, #dadada, #dad2c600);
+  background: rgb(248, 248, 248);
+  background: linear-gradient(
+    180deg,
+    rgba(248, 248, 248, 1) 0%,
+    rgba(248, 248, 248, 0.7008053221288515) 54%,
+    rgba(248, 248, 248, 0.4375) 70%,
+    rgba(248, 248, 248, 0) 100%
+  );
+  border-top: 5px solid #ff9900;
+  border-right: linear-gradient(to bottom, #ff9900, #00dd1d);
+  border-right: 3px solid #ff9900;
+  border-left: 3px solid #ff9900;
+
+  @include media("<tablet") {
+    background: #003554;
+    width: 100%;
+    border: none;
+    border-radius: 29px;
+    padding-right: 40%;
+    padding-left: 7%;
+    row-gap: 0%;
+    justify-content: center;
+    height: 240px;
+  }
+
+  h2 {
+    font-family: "blemo";
+    font-size: 1.5em;
+    width: 100%;
+
+    @include media("<tablet") {
+      color: white;
+    }
+  }
+  span {
+    font-family: "Questrial Regular";
+    line-height: 0.9em;
+    height: 21%;
+    outline: 2px solid black;
+    @include media("<tablet") {
+      color: rgb(185, 185, 185);
+    }
+  }
+
+  button {
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 9px 28px;
+  }
+  .arrowStyle {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+
+    @include media("<tablet") {
+      filter: invert(1);
+      width: 11%;
+    }
+  }
+  .building {
+    position: absolute;
+    bottom: 5%;
+    right: 2%;
+    margin-right: -12%;
+    margin-bottom: -45%;
+    width: 44%;
+
+    @include media("<tablet") {
+      margin-right: 0%;
+      margin-bottom: -15%;
+    }
+  }
+}

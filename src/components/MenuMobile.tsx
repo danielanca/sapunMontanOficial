@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { HashLink as Link, NavHashLink } from "react-router-hash-link";
 
-import styles from "./../components/Navbar.module.scss";
+import styles from "./MenuMobileSide.module.scss";
 
 import strings from "../data/strings.json";
 
@@ -37,27 +37,27 @@ const MenuMobile = () => {
         <ul className={styles.ulMobile}>
           <li className={styles.liMobile}>
             <NavHashLink onClick={closeBackdrop} className={styles.HashLinkStyle} to="/produsele-noastre">
-              {strings.navMenu.ourProducts}
+              {"Danut"}
             </NavHashLink>
           </li>
           <li className={styles.liMobile}>
             <NavHashLink onClick={closeBackdrop} className={styles.HashLinkStyle} to="/despre-noi">
-              {strings.navMenu.aboutUs}
+              {"Danut"}
             </NavHashLink>
           </li>
           <li className={styles.liMobile}>
             <NavHashLink onClick={closeBackdrop} className={styles.HashLinkStyle} to="/blogs">
-              {strings.navMenu.blog}
+              {"Danut"}
             </NavHashLink>
           </li>
           <li className={styles.liMobile}>
             <NavHashLink onClick={closeBackdrop} className={styles.HashLinkStyle} to="/testimonials">
-              {strings.navMenu.testimonials}
+              {"Danut"}
             </NavHashLink>
           </li>
           <li className={styles.liMobile}>
             <NavHashLink onClick={closeBackdrop} className={styles.HashLinkStyle} to="#contactus">
-              {strings.navMenu.contactUs}
+              {"Danut"}
             </NavHashLink>
           </li>
         </ul>

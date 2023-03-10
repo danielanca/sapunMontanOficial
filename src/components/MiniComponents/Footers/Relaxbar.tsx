@@ -1,5 +1,4 @@
 import React from "react";
-
 import styles from "./Relaxbar.module.scss";
 
 const Relaxbar = () => {

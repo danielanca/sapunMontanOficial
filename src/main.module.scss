@@ -6,3 +6,9 @@ $breakpoints: (
   tablet: 576px,
   desktop: 992px
 );
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
