@@ -24,7 +24,7 @@ export const useSenseScreen = (ref: any, path: any, funcCall?: () => void) => {
 
   useEffect(() => {
     if (isVisible) {
-      console.log("User is interacting with:", path, funcCall);
+      // console.log("User is interacting with:", path, funcCall);
       if (funcCall) funcCall();
     }
   }, [isVisible]);

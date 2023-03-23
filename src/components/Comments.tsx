@@ -2,7 +2,10 @@ import React from "react";
 import ReviewField from "./ReviewField";
 import styles from "./../components/Comments.module.scss";
 import { ReviewsInterface } from "../utils/ReviewsTypes";
+import { useRef } from "react";
+import { useSenseScreen } from "./hooks/senseHook/useScrollSense";
 import { ProductListType, ProductModel } from "../utils/OrderInterfaces";
+import { sendTriggerEmail } from "../services/triggers";
 interface CommentsProps {
   reviewsList: any;
   productID: string;
@@ -11,6 +14,14 @@ interface CommentsProps {
 const Comments = ({ productData, reviewsList, productID }: CommentsProps) => {
   let productReviews: ReviewsInterface | null = null;
   const allReviews: any = [];
+  const senseReviewContainer = useRef<HTMLDivElement | null>(null);
+
+  useSenseScreen(senseReviewContainer, window.location.pathname, () => {
+    if (senseReviewContainer.current) {
+      console.log("User is viewing Reviews on ", window.location.pathname);
+      sendTriggerEmail({ typeEvent: "REVIEWS_VIEW", url: window.location.pathname });
+    }
+  });
 
   if (productData != null) {
     productReviews = JSON.parse(productData)[productID].reviews;
@@ -25,7 +36,7 @@ const Comments = ({ productData, reviewsList, productID }: CommentsProps) => {
 
   return (
     <>
-      <div className={styles.descriptionContainer}>
+      <div ref={senseReviewContainer} className={styles.descriptionContainer}>
         {productReviews != null ? (
           <ReviewField allReviews={allReviews} productData={productReviews} productIdentification={productID} />
         ) : (

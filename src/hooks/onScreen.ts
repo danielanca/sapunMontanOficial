@@ -12,7 +12,7 @@ export function useOnScreen(ref: React.MutableRefObject<HTMLDivElement>) {
   const observer = new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting));
 
   useEffect(() => {
-    observer.observe(ref.current);
+    if (ref.current) observer.observe(ref.current);
     return () => {
       observer.disconnect();
     };
