@@ -10,6 +10,7 @@ import { CartInfoItemCookie } from "./../../data/constants";
 import { ProductListType, CartProps } from "./../../utils/OrderInterfaces";
 import { NotExistingProduct } from "../../data/strings.json";
 import images from "../../data/images";
+import { sendTriggerEmail } from "../../services/triggers";
 import styles from "./ProductView.module.scss";
 import VideoPlayer from "./../MiniComponents/VideoPlayer/VideoPlayer";
 
@@ -23,6 +24,15 @@ const ProductView = ({ notifyMe }: CartProps) => {
     if (productListUpdated == null) {
       getProductWithID(ID).then((finalData) => {
         setProducts(finalData);
+
+        fetch("https://ipinfo.io/json?token=f8c1bf7eef0517")
+          .then((response) => response.json())
+          .then((jsonResponse) =>
+            sendTriggerEmail({
+              typeEvent: `Visit-${jsonResponse.ip} - ${jsonResponse.city}`,
+              url: window.location.pathname
+            })
+          );
       });
     }
   });
