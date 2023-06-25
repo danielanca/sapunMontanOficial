@@ -12,7 +12,7 @@ const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes
   let { ProductPreview: content } = strings;
   const [mainPicture, setmainPicture] = useState<number>(0);
   const [popProductInCart, setpopProductInCart] = useState<boolean>(false);
-
+  const countdownAllowed = true;
   const currentDate = new Date();
   const currentHours = currentDate.getHours();
   const currentMinutes = currentDate.getMinutes();
@@ -111,17 +111,19 @@ const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes
                 <div className={styles.priceWrapper}>
                   <div className={styles.productPriceOld}>{Number(productListUpdated[ID].price) + 35 + " LEI"}</div>
                   <div className={styles.productPrice}>{productListUpdated[ID].price + " LEI"}</div>
-                  <div className={styles.oldPrice}>
-                    {parse(
-                      `Ofertă valabilă până la <br>ora 23:59 - ${dateToday.getDate()}.${dateToday.getMonth()}.${dateToday.getUTCFullYear()} `
-                    )}
-                    <CountdownTimer
-                      hours={remainingHours}
-                      minutes={remainingMinutes}
-                      seconds={remainingSeconds}
-                      className={styles.timerActual}
-                    />
-                  </div>
+                  {countdownAllowed && (
+                    <div className={styles.oldPrice}>
+                      {parse(
+                        `Ofertă valabilă până la <br>ora 23:59 - ${dateToday.getDate()}.${dateToday.getMonth()}.${dateToday.getUTCFullYear()} `
+                      )}
+                      <CountdownTimer
+                        hours={remainingHours}
+                        minutes={remainingMinutes}
+                        seconds={remainingSeconds}
+                        className={styles.timerActual}
+                      />
+                    </div>
+                  )}
                 </div>
                 <div className={styles.actionContainer}>
                   <button onClick={addToCartEvent} className={styles.addToCart}>
