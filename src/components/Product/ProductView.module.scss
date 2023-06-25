@@ -145,17 +145,43 @@
     color: rgba(54, 54, 54, 0.797);
   }
 }
+
 .priceWrapper {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 30px;
+  flex-direction: column;
+}
+.oldPrice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bolder;
+}
+.timerActual {
+  color: red;
 }
 .productPrice {
   font-size: 2rem;
   color: #ff5f5f;
   font-family: "Roboto Medium";
+}
+.productPriceOld {
+  color: #000000;
+  font-weight: bold;
+  font-size: 0.9rem;
+  font-family: "Roboto Medium";
+  text-decoration: line-through;
+  margin-bottom: -6px;
+  @include media(">tablet") {
+    margin-bottom: -12px;
+  }
+  @include media("<tablet") {
+    font-size: 1.1rem;
+  }
 }
 .actionContainer {
   width: 100%;
