@@ -1,12 +1,12 @@
 import * as functions from "firebase-functions";
-import { applyCORSpolicy } from "../../constants/corsFunc";
-import { ResponseObject, transportOptions } from "../../constants/emailCons";
-import { generateInvoiceID } from "../../constants/utils";
+import { applyCORSpolicy } from "../../../constants/corsFunc";
+import { ResponseObject, transportOptions } from "../../../constants/emailCons";
+import { generateInvoiceID } from "../../../constants/utils";
 import { postOrderToDB } from "./dbEmail";
-import { emailAuth, adminUser } from "../../constants/credentials";
-import { renderClientMail } from "./templates/clientOrderTemplate";
-import { renderAdminTemplate } from "./templates/admOrderConf";
-import { getDateAndHour } from "./../../constants/utils";
+import { emailAuth, adminUser } from "../../../constants/credentials";
+import { getDateAndHour } from "./../../../constants/utils";
+import { renderClientMail } from "./clientOrderTemplate";
+import { renderAdminTemplate } from "./admOrderConf";
 
 const nodemailer = require("nodemailer");
 const transport = nodemailer.createTransport(transportOptions);

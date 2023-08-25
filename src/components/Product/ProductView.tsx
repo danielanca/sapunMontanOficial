@@ -71,12 +71,14 @@ const ProductView = ({ notifyMe }: CartProps) => {
           <Loader />
         )}
         <div className={styles.playerContainer}>
-          <VideoPlayer />
+          {(ID === "mulaj-cuplu" || ID === "mulaj-familie") && <VideoPlayer />}
         </div>
       </div>
 
       <div>
-        {typeof productListUpdated !== "undefined" && productListUpdated.hasOwnProperty(ID) ? (
+        {typeof productListUpdated !== "undefined" &&
+        productListUpdated.hasOwnProperty(ID) &&
+        (ID === "mulaj-cuplu" || ID === "mulaj-familie") ? (
           <Comments
             productData={JSON.stringify(productListUpdated)}
             productID={ID}

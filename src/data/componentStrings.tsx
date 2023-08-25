@@ -80,18 +80,18 @@ export const footerData = {
 
   ourShop: {
     affiliate: {
-      name: "Program Afiliere",
-      link: "/afiliere"
+      name: "Politica Confidentialitate",
+      link: "/politica-confidentialitate"
     },
     paymentMethods: {
-      name: "Politica de retur",
+      name: "Politica de livrare & retur",
       link: "/politica-retur"
     },
     onlineDispute: {
       name: "Politica de Cookies",
       link: "/politica-de-cookies"
     },
-    anpc: { name: "Scrie-ne !", link: "/contact" }
+    anpc: { name: "Contact", link: "/contact" }
   }
 };
 
@@ -104,7 +104,7 @@ export const cookieConsent = {
 };
 
 export const productConstants = {
-  shippingFee: 19
+  shippingFee: 12
 };
 
 export const websiteContact = {
