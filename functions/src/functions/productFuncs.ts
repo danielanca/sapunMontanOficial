@@ -5,7 +5,13 @@ import { ProductModel } from "../types/productTypes";
 
 export const updateProduct = functions.https.onRequest((request, response) => {
   let requestParam = JSON.parse(request.body);
-  console.log("updateProduct:", requestParam);
+  console.log("Updating the product:", requestParam);
+
+  editExistingProduct(requestParam);
+});
+export const addProduct = functions.https.onRequest((request, response) => {
+  let requestParam = JSON.parse(request.body);
+  console.log("Creating new product:", requestParam);
 
   createNewProduct(requestParam);
 });
@@ -32,18 +38,28 @@ const createNewProduct = async (modelID: ProductModel) => {
         price: modelID.price,
         firstDescription: modelID.firstDescription,
         reviews: {},
-        // reviews: {
-        //   0: {
-        //     reviewActual: "Sunt ok produsele, un pic cam scump",
-        //     starsNumber: "3",
-        //     name: "Lips Mihai",
-        //     date: "19.02.2020",
-        //     reviewProductID: "0"
-        //   }
-        // },
-
         jsonContent: modelID.jsonContent,
+        imageProduct: modelID.imageProduct,
+        ULbeneficii: modelID.ULbeneficii
+      }
+    })
+    .then((result) => functions.logger.info("sendReviewToServer response: ", result));
+};
 
+const editExistingProduct = async (modelID: ProductModel) => {
+  console.log("create new product received:", JSON.stringify(modelID));
+  await admin
+    .firestore()
+    .collection("products")
+    .doc("activeProds")
+    .update({
+      [modelID.ID]: {
+        ID: modelID.ID,
+        title: modelID.title,
+        shortDescription: modelID.shortDescription,
+        price: modelID.price,
+        firstDescription: modelID.firstDescription,
+        jsonContent: modelID.jsonContent,
         imageProduct: modelID.imageProduct,
         ULbeneficii: modelID.ULbeneficii
       }

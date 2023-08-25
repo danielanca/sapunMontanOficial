@@ -109,7 +109,9 @@ const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes
             {productListUpdated && (
               <>
                 <div className={styles.priceWrapper}>
-                  <div className={styles.productPriceOld}>{Number(productListUpdated[ID].price) + 35 + " LEI"}</div>
+                  <div className={styles.productPriceOld}>
+                    {Number(productListUpdated[ID].price) + Number(productListUpdated[ID].price) * 0.45 + " LEI"}
+                  </div>
                   <div className={styles.productPrice}>{productListUpdated[ID].price + " LEI"}</div>
                   {countdownAllowed && (
                     <div className={styles.oldPrice}>

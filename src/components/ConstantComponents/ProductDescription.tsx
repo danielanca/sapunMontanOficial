@@ -30,8 +30,7 @@ const ProductDescription = ({ productDescription, productID }: ProductProps) => 
           </div>
         </div>
       </div>
-
-      <RefundReturn />
+      {productID && (productID === "mulaj-cuplu" || productID === "mulaj-familie") && <RefundReturn />}
     </>
   );
 };

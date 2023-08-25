@@ -13,6 +13,16 @@
     height: 430px;
   }
 }
+.blockPageSupliment {
+  justify-content: center;
+  display: flex;
+  background-color: rgb(198, 178, 0);
+  padding-top: 200px;
+  padding-bottom: 100px;
+  width: 100%;
+  height: auto;
+  align-items: center;
+}
 .videoContainer {
   width: clamp(700px, 80vw, 900px);
   padding: 0 2%;
