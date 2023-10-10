@@ -16,7 +16,7 @@ let mockObject = {
   cartProducts: "",
   phoneNo: "",
   cartSum: 0,
-  shippingTax: 15,
+  shippingTax: 12,
   orderNotes: "",
   deliveryName: "DPD Curier",
   paymentStatus: "NOT_PAID"

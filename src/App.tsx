@@ -16,6 +16,7 @@ import NotFound from "./components/NotFound/NotFound";
 
 import "./App.css";
 import FAQBlock from "./components/FAQBlock/FAQBlock";
+import VideoInstructionsSupliment from "./components/VideoInstructions/VideoInstructionsSupliment";
 ReactGA.initialize("G-WFWYP44Z7L");
 ReactGA.send("page view bro");
 
@@ -104,7 +105,7 @@ function App() {
                   <Route element={<RequireAuth />}>
                     <Route path="/admin" element={<AdminArea />} />
                     <Route path="/admin/products" element={<UpdateProducts />} />
-                    <Route path="/admin/products/edit-:productID" element={<EditProduct editMode={true} />} />
+                    <Route path="/admin/products/edit/:productID" element={<EditProduct editMode={true} />} />
                     <Route path="/admin/products/add" element={<EditProduct editMode={false} />} />
                   </Route>
                   <Route element={<CheckAuth />}>
@@ -122,6 +123,7 @@ function App() {
                   <Route path="/testimonials" element={<Testimonials />} />
                   <Route path="/order/:orderID" element={<OrderView />} />
                   <Route path="/instructiuni-video" element={<VideoInstructions />} />
+                  <Route path="/video-suplimentar" element={<VideoInstructionsSupliment />} />
                   <Route path="/intrebari" element={<FAQBlock />} />
                   <Route path="/" element={<MainNavigation />} />
 
