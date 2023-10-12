@@ -20,23 +20,6 @@ export const sendEmail = functions.https.onRequest(async (request, response) => 
     EMAILTO_CLIENT: "EMPTY"
   };
 
-  const data = JSON.parse(request.body);
-  console.log("DANUUUUUUUUUUUUUUUUUUT", data);
-  await postOrderToDB(invoiceNumberID, data, getDateAndHour());
-  let cartProd = JSON.parse(data.cartProducts);
-
-  transport
-    .sendMail({
-      from: emailAuth.email,
-      to: data.emailAddress,
-      subject: "Comanda inregistrata, " + data.firstName,
-      html: renderClientMail(cartProd, invoiceNumberID, data)
-    })
-    .then((emailClientResponse: any) => {
-      ResponseData.EMAILTO_CLIENT = emailClientResponse;
-      transmitToAdmin();
-    });
-
   const transmitToAdmin = () => {
     transport
       .sendMail({
@@ -51,4 +34,26 @@ export const sendEmail = functions.https.onRequest(async (request, response) => 
         response.send(ResponseData);
       });
   };
+
+  const data = JSON.parse(request.body);
+  console.log("DANUUUUUUUUUUUUUUUUUUT", data);
+  await postOrderToDB(invoiceNumberID, data, getDateAndHour());
+  let cartProd = JSON.parse(data.cartProducts);
+
+  if (!data.emailAddress) {
+    console.error("No recipients defined");
+    transmitToAdmin();
+    return;
+  }
+  transport
+    .sendMail({
+      from: emailAuth.email,
+      to: data.emailAddress,
+      subject: "Comanda inregistrata, " + data.firstName,
+      html: renderClientMail(cartProd, invoiceNumberID, data)
+    })
+    .then((emailClientResponse: any) => {
+      ResponseData.EMAILTO_CLIENT = emailClientResponse;
+      transmitToAdmin();
+    });
 });
