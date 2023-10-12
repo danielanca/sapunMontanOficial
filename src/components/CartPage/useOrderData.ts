@@ -17,7 +17,9 @@ export const useOrderObject = () => {
     shippingTax: productConstants.shippingFee,
     orderNotes: "",
     deliveryName: "DPD Curier",
-    paymentStatus: "NOT_PAID"
+    paymentStatus: "NOT_PAID",
+    deliveryMethod: "NOT_SPECIFIED",
+    lockerName: ""
   });
 
   return { orderData, setorderData };

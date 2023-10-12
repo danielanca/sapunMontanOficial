@@ -27,6 +27,8 @@ export interface orderProps {
   paymentMethod: string;
   deliveryName?: string;
   paymentStatus?: string;
+  deliveryMethod?: string;
+  lockerName?: string;
 }
 
 export interface ProductModel {

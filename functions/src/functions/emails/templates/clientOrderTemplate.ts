@@ -1,9 +1,8 @@
-import {getDateAndHour} from './../../../constants/utils';
+import { getDateAndHour } from "./../../../constants/utils";
 
-export const renderClientMail = (cartProd:any,invoiceNumberID:any, data:any )=>{
-
-
-return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+export const renderClientMail = (cartProd: any, invoiceNumberID: any, data: any) => {
+  return (
+    `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="font-family:arial, 'helvetica neue', helvetica, sans-serif"> 
          <head> 
           <meta charset="UTF-8"> 
@@ -139,8 +138,8 @@ return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://w
                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                              <tr> 
                               <td align="center" class="es-m-txt-c" style="padding:0;Margin:0"><h2 style="Margin:0;line-height:31px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:26px;font-style:normal;font-weight:bold;color:#333333">Comanda cu numarul&nbsp;<a target="_blank" href="" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:26px">#` +
-          invoiceNumberID +
-          `</a></h2></td> 
+    invoiceNumberID +
+    `</a></h2></td> 
                              </tr> 
                              <tr> 
                               <td align="center" class="es-m-p0r es-m-p0l" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:40px;padding-right:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">${getDateAndHour()}</p></td> 
@@ -153,8 +152,8 @@ return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://w
                        </table></td> 
                      </tr> 
                      ` +
-          ` ${Object.values(cartProd).map(
-            (item: any) => `<tr> 
+    ` ${Object.values(cartProd).map(
+      (item: any) => `<tr> 
           <td class="esdev-adapt-off" align="left" style="Margin:0;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px"> 
            <table cellpadding="0" cellspacing="0" class="esdev-mso-table" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:560px"> 
              <tr> 
@@ -211,8 +210,8 @@ return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://w
              </tr> 
            </table></td> 
          </tr>`
-          )}` +
-          `
+    )}` +
+    `
                      <tr> 
                       <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-left:20px;padding-right:20px"> 
                        <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
@@ -223,10 +222,10 @@ return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://w
                               <td align="right" class="es-m-txt-r" style="padding:0;Margin:0;padding-top:10px;padding-bottom:20px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Subtotal:&nbsp;<strong>${
                                 data.cartSum
                               } RON</strong><br>Taxa Transport:&nbsp;<strong>${
-            data.shippingTax
-          } RON</strong><br>Total (TVA inclus):&nbsp;<strong>${
-            Number(data.cartSum) + Number(data.shippingTax)
-          } RON</strong></p></td> 
+      data.shippingTax
+    } RON</strong><br>Total (TVA inclus):&nbsp;<strong>${
+      Number(data.cartSum) + Number(data.shippingTax)
+    } RON</strong></p></td> 
                              </tr> 
                            </table></td> 
                          </tr> 
@@ -242,12 +241,14 @@ return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://w
                               <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Client: <strong>${
                                 data.firstName
                               } ${
-            data.lastName
-          }</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Comanda :&nbsp;<strong>${invoiceNumberID}</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Data facturarii:&nbsp;<strong>${getDateAndHour()}</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Metoda de plata:&nbsp;<strong>${
-            data.paymentMethod
-          }</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Telefon:&nbsp;<strong>${
-            data.phoneNo
-          }</strong></p></td> 
+      data.lastName
+    }</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Comanda :&nbsp;<strong>${invoiceNumberID}</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Data facturarii:&nbsp;<strong>${getDateAndHour()}</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Metoda de plata:&nbsp;<strong>${
+      data.paymentMethod
+    }</strong><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Locatie easybox?:&nbsp;<strong>${
+      data.lockerName
+    }</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Telefon:&nbsp;<strong>${
+      data.phoneNo
+    }</strong></p></td> 
                              </tr> 
                            </table></td> 
                          </tr> 
@@ -260,8 +261,8 @@ return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://w
                               <td align="left" class="es-m-txt-l" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Curier: <strong>${
                                 data.deliveryName
                               }</strong></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Adresa de livrare:</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>${
-            data.deliveryAddress
-          },<br>${data.city},<br>${data.county}</strong></p></td> 
+      data.deliveryAddress
+    },<br>${data.city},<br>${data.county}</strong></p></td> 
                              </tr> 
                            </table></td> 
                          </tr> 
@@ -349,7 +350,5 @@ return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://w
           </div>  
          </body>
         </html>`
-
-
-
-}
+  );
+};

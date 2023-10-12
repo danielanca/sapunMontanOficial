@@ -19,7 +19,9 @@ export const sendEmail = functions.https.onRequest(async (request, response) => 
     EMAILTO_ADMIN: "EMPTY",
     EMAILTO_CLIENT: "EMPTY"
   };
+
   const data = JSON.parse(request.body);
+  console.log("DANUUUUUUUUUUUUUUUUUUT", data);
   await postOrderToDB(invoiceNumberID, data, getDateAndHour());
   let cartProd = JSON.parse(data.cartProducts);
 

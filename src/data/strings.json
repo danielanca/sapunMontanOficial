@@ -103,7 +103,8 @@
       "county": "Judet",
       "phoneNo": "Telefon",
       "emailAddress": "Email [opțional]",
-      "orderMentions": "Note comandă [opțional]"
+      "orderMentions": "Note comandă [opțional]",
+      "lockerDelivery": "Scrie numele easybox-ului și orasul"
     },
 
     "totals": {
@@ -121,6 +122,10 @@
         "cash": "Numerar",
         "card": "Card",
         "transfer": "Transfer bancar"
+      },
+      "deliveryMethods":{
+        "courierDelivery" : "Livrare_CURIER",
+        "easyboxDelivery" : "Easybox"
       },
       "paymentMethodError": "Nu ati selectat metoda de plata!",
       "inputError": "Verificati datele introduse. Completarea spatilor cu * bulina sunt obligatorii"
