@@ -22,7 +22,21 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   let productSessionStorage = itemsSessionStorage != null ? JSON.parse(itemsSessionStorage) : null;
   let storedCart: any[] = [];
   let subtotalPrepare: number = 0;
+  const [isEasyboxSelected, setSelectEasybox] = useState(false);
+  const [search, setSearch] = useState("");
+  const [results, setResults] = useState<string[]>([]);
+  const easyboxList: string[] = [];
 
+  const url = "https://api.smartship.ro/geolocation/easybox";
+  const options = { method: "GET", headers: { "X-API-KEY": " d7cc7d6074ec087be903ca30d35c9696" } };
+
+  const handleSearch = (query: string) => {
+    console.log("We are searching for:", query, results["easybox"]);
+    const filteredResults = easyboxList["easybox"].filter((item: any) =>
+      item.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setResults(filteredResults);
+  };
   const [orderState, setOrderState] = useState<
     | "initState"
     | "requestState"
@@ -42,6 +56,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
 
   const handleSend = async () => {
     try {
+      console.log("Sending data:", orderData);
       return await sendOrderConfirmation(orderData)
         .then((response) => {
           response.json().then((jsonResponse: any) => {
@@ -70,6 +85,19 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     } else {
       setorderData((orderData) => ({ ...orderData, paymentMethod: "" }));
     }
+  };
+  const deliveryMethodHandler = (value: boolean, title: string | undefined) => {
+    if (value) {
+      setorderData((orderData) => ({
+        ...orderData,
+        deliveryMethod: typeof title === "string" ? title : "NOT_SPECIFIED"
+      }));
+    }
+    if (title === orderString.shipping.deliveryMethods.easyboxDelivery) {
+      setSelectEasybox(true);
+      return;
+    }
+    setSelectEasybox(false);
   };
 
   const inputHandler = (data: React.ChangeEvent<HTMLInputElement>) => {
@@ -159,6 +187,23 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     }
   }, [orderState]);
 
+  useEffect(() => {
+    (async () => {
+      // Your snippet here
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+        setResults(data);
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    console.log("Results are:", results);
+  }, [results]);
   const inputObject = getInputFields(orderData, inputHandler);
 
   return (
@@ -275,6 +320,70 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                     {orderString.shipping.paymentMethodError}
                   </h4>
                 )}
+              </div>
+              <div>
+                <div className={styles.deliveryCheckbox}>
+                  <span className={styles.paymentDetails}>{"Metoda de livrare"}</span>
+
+                  <div className={styles.checkboxer}>
+                    <Checkboxer
+                      onSwitchEnabled={deliveryMethodHandler}
+                      name={orderString.shipping.deliveryMethods.courierDelivery}
+                    />
+                    <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
+                      {"Curier"}
+                    </label>
+                  </div>
+                  <div className={styles.checkboxer}>
+                    <Checkboxer
+                      onSwitchEnabled={deliveryMethodHandler}
+                      name={orderString.shipping.deliveryMethods.easyboxDelivery}
+                    />
+                    <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
+                      <img
+                        width={100}
+                        height={50}
+                        src="https://firebasestorage.googleapis.com/v0/b/diniubire-89ce0.appspot.com/o/ProductMedia%2Feasybox.svg?alt=media&token=3f1610ed-956c-4234-b45e-4429e3dace3b"
+                      />
+                    </label>
+                  </div>
+                  {isEasyboxSelected && (
+                    <div className={styles.groupInput}>
+                      <div className={styles.inputBox}>
+                        <label className={styles.optionalNote}>{orderString.inputsLabels.lockerDelivery}</label>
+                        <input
+                          type="text"
+                          value={orderData.lockerName}
+                          name="lockerName"
+                          onChange={inputHandler}
+                          // onChange={(e) => {
+                          //   // setSearch(e.target.value);
+                          //   // handleSearch(e.target.value);
+                          //   lockerInputHandler(e.target.value);
+                          // }}
+                        />
+                        {/* {results.length > 0 && (
+                          <div className={styles.dropdown}>
+                            {results.map((result, index) => (
+                              <div key={index} className={styles.dropdownItem}>
+                                {result}
+                              </div>
+                            ))}
+                          </div>
+                        )} */}
+                        {/* <textarea
+                          className={styles.textareaparticular}
+                          spellCheck="false"
+                          rows={2}
+                          onChange={(event) => {
+                            setorderData((orderData) => ({ ...orderData, orderNotes: event.target.value }));
+                          }}
+                          value={orderData.orderNotes}
+                        /> */}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 

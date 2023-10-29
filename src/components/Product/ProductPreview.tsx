@@ -116,7 +116,9 @@ const ProductPreview = ({ productListUpdated, ID, addCartHandler }: ProductTypes
                   {countdownAllowed && (
                     <div className={styles.oldPrice}>
                       {parse(
-                        `Ofertă valabilă până la <br>ora 23:59 - ${dateToday.getDate()}.${dateToday.getMonth()}.${dateToday.getUTCFullYear()} `
+                        `Ofertă valabilă până la <br>ora 23:59 - ${dateToday.getDate()}.${
+                          dateToday.getMonth() + 1
+                        }.${dateToday.getUTCFullYear()} `
                       )}
                       <CountdownTimer
                         hours={remainingHours}

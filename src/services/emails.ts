@@ -61,7 +61,9 @@ export const sendOrderConfirmation = async (data: orderProps) => {
       cartSum: data.cartSum,
       shippingTax: data.shippingTax,
       cartProducts: data.cartProducts,
-      paymentStatus: data.paymentStatus
+      paymentStatus: data.paymentStatus,
+      lockerName: data.lockerName,
+      deliveryMethod: data.deliveryMethod
     })
   })
     .then((res) => res)

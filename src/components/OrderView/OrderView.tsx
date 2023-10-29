@@ -28,9 +28,7 @@ const OrderView = () => {
       return (
         <div className={styles.cardBoard}>
           <div className="row">
-            <div className="col-12 d-flex justify-content-center ">
-              <img alt="invoice data" className={styles.logoInvoice} src={imageByString.invoiceLogo} />
-            </div>
+            <div className="col-12 d-flex justify-content-center "></div>
             <div className="col-12 d-flex justify-content-center">
               <h3 className={styles.invoiceTitle}>{`Factura #${invoiceData.invoiceID}`}</h3>
             </div>
@@ -86,7 +84,7 @@ const OrderView = () => {
           <h5 className={styles.teamWeb}>{orderStr.thankYouMessage.author}</h5>
         </div>
       );
-    } else return <>{"Loading"}</>;
+    } else return <>{"Loading  "}</>;
   };
 
   return (

@@ -17,7 +17,7 @@ const ProductDescription = ({ productDescription, productID }: ProductProps) => 
         <img src="https://firebasestorage.googleapis.com/v0/b/diniubire-89ce0.appspot.com/o/icons%2Fdog.svg?alt=media&token=9671d8e4-d066-4554-bc15-d4a6e19583cc" />
         <p>
           {parse(
-            `Cumpărând acest produs, redirecționăm <strong>5 RON</strong> spre<Br> <strong>Asociația “Arca lui Noe”</strong>, pentru hrană animăluțelor abandonate.`
+            `Cumpărând acest produs, oferim <strong>un bol de hrană</strong> animăluțelor de la <Br> <strong>Asociația “Andreea & Benji Happy Dogs”</strong>.`
           )}
         </p>
         <img src="https://firebasestorage.googleapis.com/v0/b/diniubire-89ce0.appspot.com/o/icons%2Fdog2.svg?alt=media&token=43dde796-490c-49be-bfa4-ee67d680e3ca" />

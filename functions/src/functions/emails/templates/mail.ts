@@ -22,7 +22,7 @@ export const sendEmail = functions.https.onRequest(async (request, response) => 
   const data = JSON.parse(request.body);
   await postOrderToDB(invoiceNumberID, data, getDateAndHour());
   let cartProd = JSON.parse(data.cartProducts);
-
+  functions.logger.info("Data from client:", data);
   transport
     .sendMail({
       from: emailAuth.email,
