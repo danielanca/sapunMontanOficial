@@ -3,8 +3,10 @@ import { getCookie } from "./../../utils/functions";
 import { ProviInter, Provi } from "./ProviderTypes";
 
 const AuthContext = createContext<ProviInter | null>(null);
-
-export const AuthProvider: React.FC = ({ children }) => {
+interface AuthProviderProps {
+  children: React.ReactNode; // This line explicitly types the `children` prop
+}
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   let authoriseMe = false;
   if (getCookie("jwt") === "ABCJWT") {
     authoriseMe = true;
