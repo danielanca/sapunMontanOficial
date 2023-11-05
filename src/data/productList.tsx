@@ -5,6 +5,29 @@ let productList = [];
 
 const db = getFirestore(app);
 
+interface InvoiceModel {
+  client: {
+    fullName: string;
+    CUI: string;
+    banca: string;
+    adresa: string;
+    email: string;
+    telefon: string;
+  };
+  provider: {
+    fullName: string;
+    adresa: string;
+    telefon: string;
+  };
+  items: InvoiceItem[];
+  ID: string;
+}
+interface InvoiceItem {
+  product: string;
+  price: number;
+  quantity: number;
+}
+
 interface productType {
   ID: string;
   ULbeneficii: [];
@@ -103,8 +126,59 @@ const getallPr = async () => {
 
   return productsAreHere;
 };
+export const getInvoiceByID = async (ID: string) => {
+  const invoiceData = doc(db, "invoice", "activeInvoice");
+  const snapInvoice = await getDoc(invoiceData);
+  var invoicesAreHere;
+  if (snapInvoice.exists()) {
+    Object.values(snapInvoice.data()).map(async (invoice: InvoiceModel) => {
+      invoicesAreHere = {
+        ...invoicesAreHere,
+        [invoice.ID]: {
+          ID: invoice.ID,
+          clientName: invoice.client.fullName,
+          clientCUI: invoice.client.CUI,
+          clientBanca: invoice.client.banca,
+          clientAdresa: invoice.client.adresa,
+          clientTelefon: invoice.client.telefon,
+          clientEmail: invoice.client.email,
+          providerName: invoice.provider.fullName,
+          providerAdresa: invoice.provider.adresa,
+          providerTelefon: invoice.provider.telefon,
+          items: invoice.items
+        }
+      };
+    });
+  }
+  console.log("getInvoiceByID will return :", invoicesAreHere);
 
-devConsole("Product is loading...");
+  return invoicesAreHere;
+};
+export const getObjectByID = (id: string): Promise<any> => {
+  const documentRef = doc(db, "orders", id);
+
+  return new Promise((resolve, reject) => {
+    getDoc(documentRef)
+      .then((documentSnapshot) => {
+        if (documentSnapshot.exists()) {
+          const objectData = documentSnapshot.data();
+          console.log("Object data is:", objectData);
+          // Process the object or perform any necessary transformations
+          resolve(objectData);
+        } else {
+          // Handle the case when the document does not exist
+          resolve(null);
+        }
+      })
+      .catch((error) => {
+        // Handle any errors that occur during the retrieval process
+        console.error("Error fetching object from Firebase:", error);
+        reject(error);
+      });
+  });
+};
+
+// devConsole("Product is loading...");
 
 getallPr().then((data) => {
   productList = data;

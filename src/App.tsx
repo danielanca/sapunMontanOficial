@@ -13,10 +13,11 @@ import { getCookie } from "./components/CookieConsent/functions";
 import CookieConsent from "./components/CookieConsent/CookieConsent";
 import VideoInstructions from "./components/VideoInstructions/VideoInstructions";
 import NotFound from "./components/NotFound/NotFound";
-
+import InvoiceView from "./components/Invoice/OrderView/InvoiceView";
 import "./App.css";
 import FAQBlock from "./components/FAQBlock/FAQBlock";
 import VideoInstructionsSupliment from "./components/VideoInstructions/VideoInstructionsSupliment";
+import InvoiceGeneratorView from "./components/Invoice/InvoiceGeneratorView";
 ReactGA.initialize("G-WFWYP44Z7L");
 ReactGA.send("page view bro");
 
@@ -125,6 +126,8 @@ function App() {
                   <Route path="/instructiuni-video" element={<VideoInstructions />} />
                   <Route path="/video-suplimentar" element={<VideoInstructionsSupliment />} />
                   <Route path="/intrebari" element={<FAQBlock />} />
+                  <Route path="/invoice" element={<InvoiceGeneratorView />} />
+                  <Route path="/factura/:orderID" element={<InvoiceView />} />
                   <Route path="/" element={<MainNavigation />} />
 
                   {/* Content Template*/}
