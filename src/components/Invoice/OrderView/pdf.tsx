@@ -86,15 +86,15 @@ const stylesPDF = StyleSheet.create({
   },
   secondRow: {
     display: "flex",
-    height: "45%",
-    alignItems: "flex-start",
-    justifyContent: "flex-start"
+    flexDirection: "row",
+    borderBottom: "0.7px solid black",
+    justifyContent: "space-evenly"
   },
   thirdRow: {
     display: "flex",
     flexDirection: "row",
-    height: "15%",
-    borderTop: "1.5px solid black"
+    borderBottom: "0.7px solid black",
+    justifyContent: "space-evenly"
   },
   fourthRow: {
     height: "10%",
@@ -138,7 +138,7 @@ const PDF = ({ invoiceObject }: InvoiceOrderProps) => {
   let companyInfo = strings.companyData;
   return (
     <Document>
-      <Page size={"A4"} style={stylesPDF.body}>
+      <Page size={{ width: 595, height: 842 }} style={stylesPDF.body}>
         <View style={stylesPDF.invoiceHeader}>
           <Text style={stylesPDF.header} fixed>
             {strings.invoiceTemplate.headerTextInvoice}
@@ -195,6 +195,22 @@ const PDF = ({ invoiceObject }: InvoiceOrderProps) => {
               : "Factura eronata! Contactati administratorul"}
           </View>
         </View>
+        <View style={stylesPDF.secondRow}>
+          <View style={{ width: "100%", margin: "3% auto" }}>
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                border: "2px solid black",
+                borderBottom: "2px solid black"
+              }}
+            >
+              <Text style={stylesPDF.productText}>{"Denumire produs"}</Text>
+              <Text style={stylesPDF.productItemNumber}>{"buc."}</Text>
+              <Text style={stylesPDF.productPrice}>{"Pret unitar"}</Text>
+            </View>
+          </View>
+        </View>
         <View style={stylesPDF.thirdRow}>
           <View style={{ width: "50%", marginTop: "10px" }}>
             <View style={{ display: "flex", flexDirection: "row" }}>
@@ -211,10 +227,10 @@ const PDF = ({ invoiceObject }: InvoiceOrderProps) => {
             </View>
           </View>
         </View>
-        <View style={stylesPDF.fourthRow}>
+        {/* <View style={stylesPDF.fourthRow}>
           <Text style={stylesPDF.footerText}>{strings.invoiceTemplate.thankYouMessage}</Text>
           <Text style={stylesPDF.footerText}>{strings.invoiceTemplate.authorSignature}</Text>
-        </View>
+        </View> */}
       </Page>
     </Document>
   );
