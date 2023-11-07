@@ -14,11 +14,16 @@ const InvoiceView = () => {
     if (!isNaN(Number(orderID))) {
       getOrderByID(Number(orderID))
         .then((response) => {
+          console.log("Getting the response as:", response);
           setInvoiceData(response);
         })
         .catch((error) => error);
     }
   }, []);
+
+  useEffect(() => {
+    console.log("useEffect:", invoiceData);
+  }, [invoiceData]);
   return (
     <div className={styles.centerPdf}>
       <div>

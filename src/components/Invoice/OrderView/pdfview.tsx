@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
-import { OrderViewProps } from "../../utils/OrderInterfaces";
+import { OrderViewProps } from "../../../utils/OrderInterfaces";
 import PDFView from "./pdf";
 // import { PDFDownloadLink } from "@react-pdf/renderer";
 // const InvoicePDF = dynamic(() => import("./pdf"), { ssr: false });

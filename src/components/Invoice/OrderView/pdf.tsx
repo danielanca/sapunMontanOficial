@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import images from "./../../data/images";
-import { InvoiceOrderProps } from "../../utils/OrderInterfaces";
+
+import { InvoiceOrderProps } from "../../../utils/OrderInterfaces";
 import { PDFViewer, Page, Text, View, Image, Document, StyleSheet, Font } from "@react-pdf/renderer";
 import strings from "./../../../data/strings.json";
 
@@ -16,8 +16,8 @@ const stylesPDF = StyleSheet.create({
   page: {
     flexDirection: "row",
     backgroundColor: "#E4E4E4",
-    width: "800px",
-    height: "900px"
+    width: "595px",
+    height: "842px"
   },
   body: {
     paddingTop: 35,
@@ -26,8 +26,8 @@ const stylesPDF = StyleSheet.create({
     backgroundColor: "white",
     display: "flex",
     flexDirection: "column",
-    width: "800px",
-    height: "900px"
+    width: "595px",
+    height: "842px"
   },
   title: {
     fontSize: 24,
@@ -159,9 +159,9 @@ const PDF = ({ invoiceObject }: InvoiceOrderProps) => {
           <View style={{ width: "50%" }}>
             <Text style={stylesPDF.headerLeft}>{"Furnizor: "}</Text>
             <Text style={stylesPDF.headerLeft}>{`${companyInfo.name}`}</Text>
-            <Text style={stylesPDF.headerLeft}>{`${companyInfo.address}`}</Text>
+            <Text style={stylesPDF.headerLeft}>{`Adresa: ${companyInfo.address}`}</Text>
             <Text style={stylesPDF.headerLeft}>{`${companyInfo.fiscal} CUI: ${companyInfo.number}`}</Text>
-            <Text style={stylesPDF.headerLeft}>{`${companyInfo.phoneNumber}`}</Text>
+            <Text style={stylesPDF.headerLeft}>{`Tel: ${companyInfo.phoneNumber}`}</Text>
           </View>
         </View>
         <View style={stylesPDF.secondRow}>
@@ -196,7 +196,6 @@ const PDF = ({ invoiceObject }: InvoiceOrderProps) => {
           </View>
         </View>
         <View style={stylesPDF.thirdRow}>
-          <View style={{ width: "50%" }}>{/* <Text style={stylesPDF.productText}>{"TEST"}</Text> */}</View>
           <View style={{ width: "50%", marginTop: "10px" }}>
             <View style={{ display: "flex", flexDirection: "row" }}>
               <Text style={stylesPDF.totals}>{`Subtotal  `}</Text>
@@ -222,13 +221,13 @@ const PDF = ({ invoiceObject }: InvoiceOrderProps) => {
 };
 
 const PDFView = ({ invoiceObject }: InvoiceOrderProps) => {
-  // const [client, setClient] = useState(false);
-  // useEffect(() => {
-  //   setClient(true);
-  // }, []);
+  const [client, setClient] = useState(false);
+  useEffect(() => {
+    setClient(true);
+  }, []);
 
   return (
-    <PDFViewer width={"600px"} height={"860px"} showToolbar={false}>
+    <PDFViewer width={"800px"} height={"1260px"} showToolbar={false}>
       <PDF invoiceObject={invoiceObject} />
     </PDFViewer>
   );

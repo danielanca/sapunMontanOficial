@@ -117,3 +117,40 @@ export interface InvoiceItem {
   price: number;
   quantity: number;
 }
+
+export interface OrderViewProps {
+  lastName?: string;
+  firstName?: string;
+  phoneNo?: string;
+  deliveryAddress?: string;
+  emailAddress?: string;
+  city?: string;
+  county?: string;
+  paymentMethod?: string;
+  cartProducts?: string;
+  shippingTax?: number;
+  cartSum?: number;
+  orderNotes?: string;
+  deliveryName?: string;
+  timestamp?: string;
+  invoiceID?: string;
+}
+export interface InvoiceOrderProps {
+  invoiceObject: {
+    lastName?: string;
+    firstName?: string;
+    phoneNo?: string;
+    deliveryAddress?: string;
+    emailAddress?: string;
+    city?: string;
+    county?: string;
+    paymentMethod?: string;
+    cartProducts?: string;
+    shippingTax?: number;
+    cartSum?: number;
+    orderNotes?: string;
+    deliveryName?: string;
+    timestamp?: string;
+    invoiceID?: string;
+  };
+}

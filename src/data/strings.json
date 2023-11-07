@@ -79,7 +79,8 @@
     "name": "ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA",
     "number": "45044473",
     "fiscal": "F12/696/23.04.2019",
-    "address": "str. Plopilor loc. Turda, Cluj"
+    "address": "str. Plopilor loc. Turda, Cluj",
+    "phoneNumber": "0745 469 907"
   },
 
   "footerText": {
@@ -123,9 +124,9 @@
         "card": "Card",
         "transfer": "Transfer bancar"
       },
-      "deliveryMethods":{
-        "courierDelivery" : "Livrare_CURIER",
-        "easyboxDelivery" : "Easybox"
+      "deliveryMethods": {
+        "courierDelivery": "Livrare_CURIER",
+        "easyboxDelivery": "Easybox"
       },
       "paymentMethodError": "Nu ati selectat metoda de plata!",
       "inputError": "Verificati datele introduse. Completarea spatilor cu * bulina sunt obligatorii"
@@ -263,5 +264,10 @@
         "answer": " Oferim clientilor nostri dreptul de a returna kit-ul, chiar daca l-ati deschis, si ati realizat mulajul. Returnati tot kit-ul folosit, iar noi va vom returna suma de bani pentru produs, prin metoda de plata selectat initial la comanda."
       }
     }
+  },
+  "invoiceTemplate": {
+    "headerTextInvoice": "DinIubire.Ro - Cadouri pentru suflet",
+    "thankYouMessage": "Va multumim de comanda!",
+    "authorSignature": "DinIubire.Ro"
   }
 }
