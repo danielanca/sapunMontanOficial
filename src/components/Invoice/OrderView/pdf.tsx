@@ -171,7 +171,7 @@ const PDF = ({ invoiceObject }: InvoiceOrderProps) => {
                 display: "flex",
                 flexDirection: "row",
                 border: "0.6px solid black",
-                borderBottom: "2px solid black"
+                borderBottom: "0.7px solid black"
               }}
             >
               <Text style={stylesPDF.productText}>{"Denumire produs"}</Text>
@@ -193,22 +193,6 @@ const PDF = ({ invoiceObject }: InvoiceOrderProps) => {
                   </View>
                 ))
               : "Factura eronata! Contactati administratorul"}
-          </View>
-        </View>
-        <View style={stylesPDF.secondRow}>
-          <View style={{ width: "100%", margin: "3% auto" }}>
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                border: "2px solid black",
-                borderBottom: "2px solid black"
-              }}
-            >
-              <Text style={stylesPDF.productText}>{"Denumire produs"}</Text>
-              <Text style={stylesPDF.productItemNumber}>{"buc."}</Text>
-              <Text style={stylesPDF.productPrice}>{"Pret unitar"}</Text>
-            </View>
           </View>
         </View>
         <View style={stylesPDF.thirdRow}>
