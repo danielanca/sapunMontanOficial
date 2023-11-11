@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { InvoiceOrderProps } from "../../../utils/OrderInterfaces";
-import { PDFViewer, Page, Text, View, Image, Document, StyleSheet, Font } from "@react-pdf/renderer";
+import { PDFViewer, Page, Text, View, Image, Document, StyleSheet, Font, BlobProvider } from "@react-pdf/renderer";
 import strings from "./../../../data/strings.json";
 
 Font.register({
@@ -39,6 +39,14 @@ const stylesPDF = StyleSheet.create({
     textAlign: "center",
     marginBottom: 40
   },
+  dataHeadline: {
+    fontSize: 12,
+    textAlign: "center"
+  },
+  timestamp: {
+    fontSize: 12,
+    textAlign: "center"
+  },
   subtitle: {
     fontSize: 18,
     margin: 12,
@@ -66,6 +74,13 @@ const stylesPDF = StyleSheet.create({
     textAlign: "left",
     color: "grey"
   },
+  headerLeftBold: {
+    fontSize: 12,
+    marginBottom: 4,
+    textAlign: "left",
+    color: "black",
+    fontWeight: "bold"
+  },
   pageNumber: {
     position: "absolute",
     fontSize: 12,
@@ -76,19 +91,24 @@ const stylesPDF = StyleSheet.create({
     color: "grey"
   },
   invoiceHeader: {
-    height: "15%"
+    height: "15%",
+    border: "2px solid pink",
+    display: "flex",
+    flexDirection: "column"
   },
   firstRow: {
     display: "flex",
     flexDirection: "row",
-    borderBottom: "0.7px solid black",
+    border: "1.5px solid #44A4DD",
+    padding: "10px",
     justifyContent: "space-evenly"
   },
   secondRow: {
     display: "flex",
     flexDirection: "row",
-    borderBottom: "0.7px solid black",
-    justifyContent: "space-evenly"
+    border: "1px solid #44A4DD",
+    justifyContent: "space-evenly",
+    height: "400px"
   },
   thirdRow: {
     display: "flex",
@@ -108,28 +128,77 @@ const stylesPDF = StyleSheet.create({
     padding: "0 2%",
     fontSize: "12px"
   },
+  productNrCrtHeadline: {
+    fontSize: 16,
+    fontFamily: "Times-Roman",
+    border: "0.5px solid #44A4DD",
+    width: "15%",
+    padding: "0 2%",
+    color: "white",
+    backgroundColor: "#44A4DD"
+  },
+  productNrCrt: {
+    fontSize: 16,
+    fontFamily: "Times-Roman",
+    border: "0.5px solid #44A4DD",
+    width: "15%",
+    padding: "0 2%"
+  },
   productText: {
     fontSize: 16,
     fontFamily: "Times-Roman",
-    border: "0.5px solid black",
+    border: "0.5px solid #44A4DD",
     width: "50%",
-    padding: "0 2%"
+    padding: "0 2%",
+    color: "white",
+    backgroundColor: "#44A4DD"
   },
   productPrice: {
     fontSize: 16,
     fontFamily: "Times-Roman",
-    border: "0.5px solid black",
+    border: "0.5px solid #44A4DD",
     width: "25%",
-    padding: "0 2%"
+    padding: "0 2%",
+    color: "white",
+    backgroundColor: "#44A4DD"
   },
   productItemNumber: {
     fontSize: 16,
     fontFamily: "Times-Roman",
-    border: "0.5px solid black",
+    border: "0.5px solid #44A4DD",
     width: "25%",
-    textAlign: "center"
+    textAlign: "center",
+    color: "white",
+    backgroundColor: "#44A4DD"
   },
-  totals: { width: "50%", padding: "0 2%", fontSize: "16px" }
+  productTextResult: {
+    fontSize: 16,
+    fontFamily: "Times-Roman",
+    border: "0.5px solid #44A4DD",
+    width: "50%",
+    padding: "0 2%",
+    color: "black",
+    backgroundColor: "white"
+  },
+  productPriceResult: {
+    fontSize: 16,
+    fontFamily: "Times-Roman",
+    border: "0.5px solid #44A4DD",
+    width: "25%",
+    padding: "0 2%",
+    color: "black",
+    backgroundColor: "white"
+  },
+  productItemNumberResult: {
+    fontSize: 16,
+    fontFamily: "Times-Roman",
+    border: "0.5px solid #44A4DD",
+    width: "25%",
+    textAlign: "center",
+    color: "black",
+    backgroundColor: "white"
+  },
+  totals: { width: "100%", fontSize: "16px", flexWrap: "nowrap" }
 });
 
 const PDF = ({ invoiceObject }: InvoiceOrderProps) => {
@@ -140,28 +209,29 @@ const PDF = ({ invoiceObject }: InvoiceOrderProps) => {
     <Document>
       <Page size={{ width: 595, height: 842 }} style={stylesPDF.body}>
         <View style={stylesPDF.invoiceHeader}>
-          <Text style={stylesPDF.header} fixed>
-            {strings.invoiceTemplate.headerTextInvoice}
-          </Text>
-          <Text style={stylesPDF.title}>{`Factura #${invoiceObject.invoiceID}`}</Text>
-          <Text style={stylesPDF.author}>{strings.invoiceTemplate.authorSignature}</Text>
+          <Text style={stylesPDF.header}>{strings.invoiceTemplate.headerTextInvoice}</Text>
+          <Text style={stylesPDF.title}>{`Factura nr.${invoiceObject.invoiceID}`}</Text>
+
+          <Text style={stylesPDF.timestamp}>{`Data:  ${invoiceObject.timestamp}`}</Text>
         </View>
         <View style={stylesPDF.firstRow}>
           <View style={{ width: "50%" }}>
-            <Text style={stylesPDF.headerLeft}>{`Nume: ${invoiceObject.firstName} ${invoiceObject.lastName}`}</Text>
+            <Text style={stylesPDF.headerLeftBold}>{`CLIENT:`}</Text>
+            <Text style={stylesPDF.headerLeft}>{`${invoiceObject.firstName} ${invoiceObject.lastName}`}</Text>
             <Text
               style={stylesPDF.headerLeft}
             >{`Adresa:${invoiceObject.deliveryAddress} jud.${invoiceObject.county}`}</Text>
             <Text style={stylesPDF.headerLeft}>{`Loc:${invoiceObject.city} jud.${invoiceObject.county}`}</Text>
-            <Text style={stylesPDF.headerLeft}>{`Email:${invoiceObject.emailAddress}`}</Text>
-            <Text style={stylesPDF.headerLeft}>{`Tel:${invoiceObject.phoneNo}`}</Text>
           </View>
           <View style={{ width: "50%" }}>
-            <Text style={stylesPDF.headerLeft}>{"Furnizor: "}</Text>
+            <Text style={stylesPDF.headerLeftBold}>{"FURNIZOR: "}</Text>
             <Text style={stylesPDF.headerLeft}>{`${companyInfo.name}`}</Text>
+            <Text style={stylesPDF.headerLeft}>{`Reg.com: ${companyInfo.fiscal}`}</Text>
+            <Text style={stylesPDF.headerLeft}>{`CUI: ${companyInfo.number}`}</Text>
             <Text style={stylesPDF.headerLeft}>{`Adresa: ${companyInfo.address}`}</Text>
-            <Text style={stylesPDF.headerLeft}>{`${companyInfo.fiscal} CUI: ${companyInfo.number}`}</Text>
             <Text style={stylesPDF.headerLeft}>{`Tel: ${companyInfo.phoneNumber}`}</Text>
+            <Text style={stylesPDF.headerLeftBold}>{`Cont bancar: ANCA DANIEL-EMANUEL`}</Text>
+            <Text style={stylesPDF.headerLeftBold}>{`IBAN: RO80BTRLRONCRT00M5700202`}</Text>
           </View>
         </View>
         <View style={stylesPDF.secondRow}>
@@ -174,12 +244,13 @@ const PDF = ({ invoiceObject }: InvoiceOrderProps) => {
                 borderBottom: "0.7px solid black"
               }}
             >
+              <Text style={stylesPDF.productNrCrtHeadline}>{"Nr. crt"}</Text>
               <Text style={stylesPDF.productText}>{"Denumire produs"}</Text>
               <Text style={stylesPDF.productItemNumber}>{"buc."}</Text>
               <Text style={stylesPDF.productPrice}>{"Pret unitar"}</Text>
             </View>
             {productsListInvoice != null
-              ? productsListInvoice.map((item) => (
+              ? productsListInvoice.map((item, index) => (
                   <View
                     style={{
                       display: "flex",
@@ -187,49 +258,55 @@ const PDF = ({ invoiceObject }: InvoiceOrderProps) => {
                       border: "0.6px solid black"
                     }}
                   >
-                    <Text style={stylesPDF.productText}>{item.name}</Text>
-                    <Text style={stylesPDF.productItemNumber}>{item.itemNumber}</Text>
-                    <Text style={stylesPDF.productPrice}>{`${item.price} RON`}</Text>
+                    <Text style={stylesPDF.productNrCrt}>{index}</Text>
+                    <Text style={stylesPDF.productTextResult}>{item.name}</Text>
+                    <Text style={stylesPDF.productItemNumberResult}>{item.itemNumber}</Text>
+                    <Text style={stylesPDF.productPriceResult}>{`${item.price} RON`}</Text>
                   </View>
                 ))
               : "Factura eronata! Contactati administratorul"}
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                border: "0.6px solid black"
+              }}
+            >
+              <Text style={stylesPDF.productNrCrt}>{productsListInvoice.length}</Text>
+              <Text style={stylesPDF.productTextResult}>{"Servicii de curierat"}</Text>
+              <Text style={stylesPDF.productItemNumberResult}>{"1"}</Text>
+              <Text style={stylesPDF.productPriceResult}>{`${invoiceObject.shippingTax} RON`}</Text>
+            </View>
           </View>
         </View>
         <View style={stylesPDF.thirdRow}>
-          <View style={{ width: "50%", marginTop: "10px" }}>
-            <View style={{ display: "flex", flexDirection: "row" }}>
-              <Text style={stylesPDF.totals}>{`Subtotal  `}</Text>
-              <Text style={stylesPDF.totals}>{`${invoiceObject.cartSum} RON`}</Text>
-            </View>
-            <View style={{ display: "flex", flexDirection: "row" }}>
-              <Text style={stylesPDF.totals}>{`Taxa de livrare  `}</Text>
-              <Text style={stylesPDF.totals}>{`${invoiceObject.shippingTax} RON `}</Text>
-            </View>
-            <View style={{ display: "flex", flexDirection: "row", borderTop: "1px solid black" }}>
-              <Text style={stylesPDF.totals}>{`TOTAL:  `}</Text>
-              <Text style={stylesPDF.totals}>{`${invoiceObject.cartSum} RON `}</Text>
+          <View style={{ width: "100%", marginTop: "10px" }}>
+            <View
+              style={{
+                display: "flex",
+                position: "absolute",
+                right: "0px",
+                border: "1.5px solid #44A4DD",
+                width: "200px",
+                marginTop: "5px"
+              }}
+            >
+              <Text style={stylesPDF.totals}>{`TOTAL:  ${
+                Number(invoiceObject.cartSum) + Number(invoiceObject.shippingTax)
+              } RON `}</Text>
             </View>
           </View>
         </View>
-        {/* <View style={stylesPDF.fourthRow}>
-          <Text style={stylesPDF.footerText}>{strings.invoiceTemplate.thankYouMessage}</Text>
-          <Text style={stylesPDF.footerText}>{strings.invoiceTemplate.authorSignature}</Text>
-        </View> */}
       </Page>
     </Document>
   );
 };
 
-const PDFView = ({ invoiceObject }: InvoiceOrderProps) => {
-  const [client, setClient] = useState(false);
-  useEffect(() => {
-    setClient(true);
-  }, []);
-
+const PDFView = React.memo(({ invoiceObject }: InvoiceOrderProps) => {
   return (
     <PDFViewer width={"800px"} height={"1260px"} showToolbar={false}>
       <PDF invoiceObject={invoiceObject} />
     </PDFViewer>
   );
-};
-export default PDFView;
+});
+export { PDF, PDFView };
