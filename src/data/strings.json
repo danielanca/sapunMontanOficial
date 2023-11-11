@@ -78,8 +78,8 @@
   "companyData": {
     "name": "ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA",
     "number": "45044473",
-    "fiscal": "F12/696/23.04.2019",
-    "address": "str. Plopilor loc. Turda, Cluj",
+    "fiscal": "F12/2218/12.10.2021",
+    "address": "str. Plopilor nr.3 loc. Turda, Cluj",
     "phoneNumber": "0745 469 907"
   },
 
@@ -266,7 +266,7 @@
     }
   },
   "invoiceTemplate": {
-    "headerTextInvoice": "DinIubire.Ro - Cadouri pentru suflet",
+    "headerTextInvoice": "DinIubire.Ro ",
     "thankYouMessage": "Va multumim de comanda!",
     "authorSignature": "DinIubire.Ro"
   }
