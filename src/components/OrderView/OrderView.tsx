@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import { getOrderByID } from "./../../data/productList";
 import { OrderViewProps } from "../../utils/OrderInterfaces";
 import strings from "../../data/strings.json";
-import imageByString from "../../data/imageByString.json";
 import styles from "./OrderView.module.scss";
 
 const OrderView = () => {
