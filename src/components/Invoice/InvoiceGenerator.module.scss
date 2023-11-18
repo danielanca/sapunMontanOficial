@@ -1,0 +1,200 @@
+@import "./../../main.module.scss";
+@import "./../../data//themes.scss";
+
+.editPage {
+  min-height: 500px;
+  width: 100%;
+}
+.codeElementStyle {
+  background-color: rgb(206, 244, 255);
+}
+.editableContainer {
+  background-color: rgb(210, 253, 255);
+  font-family: "Roboto";
+  word-wrap: normal;
+}
+.staticContainer {
+  background-color: rgb(255, 251, 245);
+}
+
+.addAreaContainer {
+  min-height: 100%;
+  width: 100%;
+  padding: 30px 30px;
+  background-color: white;
+
+  h3 {
+    text-align: left;
+    color: rgba(9, 43, 98, 1);
+    font-size: 40px;
+  }
+  div > input,
+  textarea {
+    font-family: "Roboto";
+    margin: auto;
+    min-width: 150px;
+    width: 100%;
+    background-color: white;
+    border: 1px solid rgb(180, 177, 177);
+  }
+  textarea {
+    height: 550px;
+  }
+  div > label {
+    font-weight: 700;
+    color: rgba(9, 43, 98, 1);
+    max-width: 300px;
+  }
+
+  input {
+    background-color: #f7f7f7;
+    outline: none;
+    border: 1px solid gray;
+    font-family: "Roboto";
+    border-radius: 2px;
+    padding: 5px 10px;
+    min-width: 300px;
+  }
+}
+.confirmationSaveText {
+  text-align: center;
+  font-weight: bolder;
+  color: rgb(10, 175, 10);
+}
+.dialogSpace {
+  height: 50px;
+}
+.inputFielder {
+  display: flex;
+  flex-direction: column;
+
+  display: flex;
+  flex-direction: column;
+  max-width: 305px;
+  width: 100%;
+
+  label {
+    text-align: start;
+  }
+
+  p {
+    line-height: 20px;
+    color: rgb(233, 178, 0);
+    font-weight: bold;
+  }
+}
+.imageContainer {
+  textarea {
+    max-height: 150px;
+    resize: none;
+    background-color: #f7f7f7;
+  }
+}
+.inputFielderTextArea {
+  @extend .inputFielder;
+  textarea {
+    max-height: 180px;
+    width: 100%;
+    min-height: 120px;
+    max-width: 500px;
+
+    resize: none;
+    background-color: #f7f7f7;
+  }
+}
+.imageTextArea {
+  min-width: 400px;
+  max-width: 700px;
+}
+.rowSpacerTextArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.editorElement {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.rowSpacer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.rowSpacerProduct {
+  display: flex;
+  justify-content: space-evenly;
+  // gap: 5%;
+  flex-wrap: wrap;
+}
+
+.inputContainer {
+  max-width: 1250px;
+  padding: 26px 0;
+  margin: 30px auto;
+  display: flex;
+  min-height: 200px;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: white;
+}
+.actionControl {
+  margin: auto;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+
+  @include media("<tablet") {
+    width: 100%;
+  }
+  button {
+    outline: none;
+    border: none;
+    width: 220px;
+    height: 45px;
+
+    color: white;
+    margin: 10px 20px;
+  }
+  .generatePdf {
+    background-color: rgba(23, 111, 255, 1);
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
+
+.addBtn {
+  border: none;
+  background-color: rgba(23, 111, 255, 1);
+  padding: 1% 5%;
+  color: white;
+  text-transform: uppercase;
+}
+
+.buttonContainer {
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.removeContainer {
+  padding-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeBtn {
+  border: 2px solid red;
+  background-color: white;
+  color: white;
+  text-transform: uppercase;
+  padding: 0.7rem 1rem;
+}

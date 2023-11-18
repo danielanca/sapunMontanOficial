@@ -94,3 +94,63 @@ export interface OrderViewProps {
   timestamp?: string;
   invoiceID?: string;
 }
+
+export interface InvoiceModel {
+  client: {
+    fullName: string;
+    CUI: string;
+    banca: string;
+    adresa: string;
+    email: string;
+    telefon: string;
+  };
+  provider: {
+    fullName: string;
+    adresa: string;
+    telefon: string;
+  };
+  items: InvoiceItem[];
+}
+
+export interface InvoiceItem {
+  product: string;
+  price: number;
+  quantity: number;
+}
+
+export interface OrderViewProps {
+  lastName?: string;
+  firstName?: string;
+  phoneNo?: string;
+  deliveryAddress?: string;
+  emailAddress?: string;
+  city?: string;
+  county?: string;
+  paymentMethod?: string;
+  cartProducts?: string;
+  shippingTax?: number;
+  cartSum?: number;
+  orderNotes?: string;
+  deliveryName?: string;
+  timestamp?: string;
+  invoiceID?: string;
+}
+export interface InvoiceOrderProps {
+  invoiceObject: {
+    lastName?: string;
+    firstName?: string;
+    phoneNo?: string;
+    deliveryAddress?: string;
+    emailAddress?: string;
+    city?: string;
+    county?: string;
+    paymentMethod?: string;
+    cartProducts?: string;
+    shippingTax?: number;
+    cartSum?: number;
+    orderNotes?: string;
+    deliveryName?: string;
+    timestamp?: string;
+    invoiceID?: string;
+  };
+}
