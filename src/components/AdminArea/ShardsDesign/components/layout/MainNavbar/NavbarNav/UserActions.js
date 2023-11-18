@@ -32,7 +32,7 @@ export default class UserActions extends React.Component {
             Sierra Brooks
           </span>
         </DropdownToggle>
-        <Collapse tag={DropdownMenu} right small open={this.state.visible}>
+        <Collapse right small open={this.state.visible}>
           {/* <DropdownItem tag={Link} to="user-profile">
             <i className="material-icons">&#xE7FD;</i> Profile
           </DropdownItem> */}
@@ -46,9 +46,9 @@ export default class UserActions extends React.Component {
             <i className="material-icons">&#xE896;</i> Transactions
           </DropdownItem>
           <DropdownItem divider /> */}
-          <DropdownItem tag={Link} to="/" className="text-danger">
+          {/* <DropdownItem tag={Link} to="/" className="text-danger">
             <i className="material-icons text-danger">&#xE879;</i> Logout
-          </DropdownItem>
+          </DropdownItem> */}
         </Collapse>
       </NavItem>
     );

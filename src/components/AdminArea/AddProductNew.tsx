@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ProductPreview from "../Product/ProductPreview";
-import { ProductListType, ProductModel } from "./../../utils/OrderInterfaces";
+import { ProductModel, authorInitialProduct } from "./../../utils/OrderInterfaces";
 import { getProductWithID } from "../../data/productList";
 import { addProduct } from "./../../services/emails";
-import { Container, Row, Col, Card, CardHeader, CardBody } from "shards-react";
+import { Container, Row, Col } from "shards-react";
 import PageTitle from "../AdminArea/ShardsDesign/components/common/PageTitle";
 import styles from "./EditProduct.module.scss";
 
@@ -12,17 +12,7 @@ const EditProduct = () => {
   const [openPreviewArea, setOpenPreviewArea] = useState<boolean>(false);
   const [productListUpdated, setProducts] = useState<any>();
   const [editSent, setEditSent] = useState<boolean>(false);
-  const [editproductModel, setEditProductModel] = useState<ProductModel>({
-    ID: "",
-    price: "",
-    ULbeneficii: [],
-    firstDescription: "",
-    imageProduct: [],
-    jsonContent: "",
-    reviews: {},
-    shortDescription: "",
-    title: ""
-  });
+  const [editproductModel, setEditProductModel] = useState<ProductModel>(authorInitialProduct);
 
   const navigate = useNavigate();
 
@@ -42,20 +32,6 @@ const EditProduct = () => {
       return { ...prevFormData, [name]: dataValues };
     });
   };
-
-  // const inputHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-  //   const { name, type, value } = event.target;
-  //   let finalVal: string | boolean = value; // Allow both string and boolean types
-
-  //   if (event.target instanceof HTMLInputElement && type === "checkbox") {
-  //     finalVal = event.target.checked;
-  //     console.log("Checkbox updated to:", finalVal);
-  //   }
-
-  //   setEditProductModel((prevFormData) => {
-  //     return { ...prevFormData, [name]: finalVal };
-  //   });
-  // };
 
   const separatorHandler = (data: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = data.target;
@@ -93,12 +69,19 @@ const EditProduct = () => {
   };
 
   useEffect(() => {
-    if (productListUpdated == null) {
-      getProductWithID(ID).then((finalData) => {
-        setProducts(finalData);
-      });
+    async function fetchProductData() {
+      try {
+        if (productListUpdated == null) {
+          const finalData = await getProductWithID(ID);
+          setProducts(finalData);
+        }
+      } catch (error) {
+        console.error("Failed to fetch product data:", error);
+      }
     }
-  });
+
+    fetchProductData();
+  }, [ID, productListUpdated]);
 
   return (
     <Container fluid className="main-content-container px-4">

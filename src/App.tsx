@@ -21,7 +21,6 @@ import InvoiceGeneratorView from "./components/Invoice/InvoiceGeneratorView";
 import Dashboard from "./components/AdminArea/ShardsDesign/Dashboard";
 import adminRoutes from "./components/AdminArea/ShardsDesign/routes";
 ReactGA.initialize("G-WFWYP44Z7L");
-ReactGA.send("page view bro");
 
 export const ProductsContext = React.createContext<any[]>([]);
 const FinishOrder = lazy(() => import(/*webpackPreload: true*/ "./components/CartPage/FinishOrder"));
@@ -64,10 +63,7 @@ function App() {
   const [letsCartHandler, CartHandler] = useState(0);
   const [ssProducts, setSSproducts] = useState<any>();
 
-  const getCookieConsent = () => {
-    if (getCookie("cookieConsentBrasov") === "userAccepted") return false;
-    else return true;
-  };
+  const getCookieConsent = () => getCookie("cookieConsentBrasov") !== "userAccepted";
 
   const handleScroll = () => {
     const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
@@ -85,20 +81,20 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    if (ssProducts == null) {
-      getData().then((finalData) => {
-        sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
-      });
-    }
-  }, [ssProducts]);
+  // useEffect(() => {
+  //   if (ssProducts == null) {
+  //     getData().then((finalData) => {
+  //       sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
+  //     });
+  //   }
+  // }, [ssProducts]);
 
   return (
     <div className="App">
       {getCookieConsent() && <CookieConsent />}
       <header className="App-header">
-        <ProductsContext.Provider productsData={ssProducts}>
-          <React.Suspense fallback={Loading()}>
+        <ProductsContext.Provider value={[ssProducts, setSSproducts]}>
+          <React.Suspense fallback={<Loading />}>
             <BrowserRouter basename="/">
               <AuthProvider>
                 <Navbar clearNotif={letsCartHandler} />

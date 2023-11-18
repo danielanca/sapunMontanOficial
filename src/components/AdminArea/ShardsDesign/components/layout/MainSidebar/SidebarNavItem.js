@@ -5,7 +5,7 @@ import { NavItem, NavLink } from "shards-react";
 
 const SidebarNavItem = ({ item }) => (
   <NavItem>
-    <NavLink className="d-flex" tag={RouteNavLink} to={item.to}>
+    <NavLink className="d-flex" to={item.to}>
       {item.htmlBefore && (
         <div className="d-inline-block item-icon-wrapper" dangerouslySetInnerHTML={{ __html: item.htmlBefore }} />
       )}

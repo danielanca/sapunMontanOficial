@@ -100,8 +100,6 @@ class SmallStats extends React.Component {
       "stats-small__percentage",
       `stats-small__percentage--${increase ? "increase" : "decrease"}`
     );
-
-    console.log("URS", percentageClasses);
     const canvasHeight = variation === "1" ? 120 : 60;
 
     return (
