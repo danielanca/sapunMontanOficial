@@ -18,6 +18,8 @@ import "./App.css";
 import FAQBlock from "./components/FAQBlock/FAQBlock";
 import VideoInstructionsSupliment from "./components/VideoInstructions/VideoInstructionsSupliment";
 import InvoiceGeneratorView from "./components/Invoice/InvoiceGeneratorView";
+import Dashboard from "./components/AdminArea/ShardsDesign/Dashboard";
+import adminRoutes from "./components/AdminArea/ShardsDesign/routes";
 ReactGA.initialize("G-WFWYP44Z7L");
 ReactGA.send("page view bro");
 
@@ -47,7 +49,7 @@ const OrderView = lazy(() => import("./components/OrderView/OrderView"));
 const Testimonials = lazy(() =>
   import(/*webpackPrefetch: true , webpackChunkName: "Testimonials" */ "./components/Testimonials")
 );
-
+const EditStrings = lazy(() => import("./components/AdminArea/EditStrings/EditStrings"));
 const SimpleContent = lazy(() => import(/*webpackPrefetch: true*/ "./blocks/SimpleContent"));
 
 const Navbar = lazy(() => import(/* webpackChunkName: "Navbar"  */ "./components/Navbar"));
@@ -96,7 +98,7 @@ function App() {
       {getCookieConsent() && <CookieConsent />}
       <header className="App-header">
         <ProductsContext.Provider productsData={ssProducts}>
-          <React.Suspense fallback={Loading}>
+          <React.Suspense fallback={Loading()}>
             <BrowserRouter basename="/">
               <AuthProvider>
                 <Navbar clearNotif={letsCartHandler} />
@@ -104,10 +106,24 @@ function App() {
                   {/* protect this */}
 
                   <Route element={<RequireAuth />}>
-                    <Route path="/admin" element={<AdminArea />} />
+                    <Route path="/admin/old" element={<AdminArea />} />
                     <Route path="/admin/products" element={<UpdateProducts />} />
-                    <Route path="/admin/products/edit/:productID" element={<EditProduct editMode={true} />} />
-                    <Route path="/admin/products/add" element={<EditProduct editMode={false} />} />
+                    <Route path="/admin/lists" element={<EditStrings />} />
+                    <Route path="/admin" element={<Dashboard />}>
+                      {adminRoutes.map((item: any, index) => {
+                        return (
+                          <Route
+                            key={index}
+                            path={item.path}
+                            element={
+                              <item.layout>
+                                <item.component />
+                              </item.layout>
+                            }
+                          />
+                        );
+                      })}
+                    </Route>
                   </Route>
                   <Route element={<CheckAuth />}>
                     <Route path="/login" element={<Login />} />

@@ -2,6 +2,7 @@ import { orderProps, ProductModel } from "./../utils/OrderInterfaces";
 import { getCookie } from "../utils/functions";
 import { ReviewsInterface } from "../utils/ReviewsTypes";
 import { NewsProps } from "../utils/NewsletterInterface";
+import { getType } from "../components/AdminArea/EditStrings/TableTypes";
 
 let destination: string = "";
 // const destination = "http://localhost:5000/sapunmontan/us-central1";
@@ -91,6 +92,17 @@ export const updateProduct = async (productModel: ProductModel) => {
     .then((res) => res)
     .catch((error) => error);
 };
+export const addProduct = async (productModel: ProductModel) => {
+  return await fetch(`${destination}/addProduct`, {
+    credentials: "include",
+    method: "POST",
+    mode: "cors",
+    body: JSON.stringify(productModel)
+  })
+    .then((res) => res)
+    .catch((error) => error);
+};
+
 export const deleteProduct = async (productModel: ProductModel) => {
   console.log("Sending to database to DELETE :", productModel.ID);
   return await fetch(`${destination}/deleteProduct`, {
@@ -111,5 +123,26 @@ export const addToNewsletter = async (subscriberData: NewsProps) => {
     body: JSON.stringify(subscriberData)
   })
     .then((res) => res)
+    .catch((error) => error);
+};
+
+export const getStringsList = async (type: string): Promise<getType> => {
+  return await fetch(`${destination}/getStringsList`, {
+    credentials: "include",
+    method: "POST",
+    mode: "cors",
+    body: JSON.stringify({ stringRequest: type })
+  })
+    .then((result) => result.json().then((resultString: getType) => resultString))
+    .catch((error) => error);
+};
+export const sendStringsList = async (type: string, payload: string): Promise<getType> => {
+  return await fetch(`${destination}/sendStringsList`, {
+    credentials: "include",
+    method: "POST",
+    mode: "cors",
+    body: JSON.stringify({ stringRequest: type, payload })
+  })
+    .then((result) => result.json().then((resultString) => resultString))
     .catch((error) => error);
 };
