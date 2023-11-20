@@ -138,7 +138,7 @@ function App() {
                   <Route path="/instructiuni-video" element={<VideoInstructions />} />
                   <Route path="/video-suplimentar" element={<VideoInstructionsSupliment />} />
                   <Route path="/intrebari" element={<FAQBlock />} />
-                  <Route path="/invoice" element={<InvoiceGeneratorView />} />
+                  {/* <Route path="/invoice" element={<InvoiceGeneratorView />} /> */}
                   <Route path="/factura/:orderID" element={<InvoiceView />} />
                   <Route path="/" element={<MainNavigation />} />
 
