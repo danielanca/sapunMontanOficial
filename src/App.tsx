@@ -81,13 +81,14 @@ function App() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   if (ssProducts == null) {
-  //     getData().then((finalData) => {
-  //       sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
-  //     });
-  //   }
-  // }, [ssProducts]);
+  //This will set put the products into the sessionStorage so we have a faster acces to the products items.
+  useEffect(() => {
+    if (ssProducts == null) {
+      getData().then((finalData) => {
+        sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
+      });
+    }
+  }, [ssProducts]);
 
   return (
     <div className="App">
@@ -138,7 +139,7 @@ function App() {
                   <Route path="/instructiuni-video" element={<VideoInstructions />} />
                   <Route path="/video-suplimentar" element={<VideoInstructionsSupliment />} />
                   <Route path="/intrebari" element={<FAQBlock />} />
-                  <Route path="/invoice" element={<InvoiceGeneratorView />} />
+                  {/* <Route path="/invoice" element={<InvoiceGeneratorView />} /> */}
                   <Route path="/factura/:orderID" element={<InvoiceView />} />
                   <Route path="/" element={<MainNavigation />} />
 

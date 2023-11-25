@@ -70,9 +70,9 @@ const ProductView = ({ notifyMe }: CartProps) => {
         ) : (
           <Loader />
         )}
-        <div className={styles.playerContainer}>
+        {/* <div className={styles.playerContainer}>
           {(ID === "mulaj-cuplu" || ID === "mulaj-familie") && <VideoPlayer />}
-        </div>
+        </div> */}
       </div>
 
       <div>
