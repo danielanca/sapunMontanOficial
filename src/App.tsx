@@ -81,13 +81,14 @@ function App() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   if (ssProducts == null) {
-  //     getData().then((finalData) => {
-  //       sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
-  //     });
-  //   }
-  // }, [ssProducts]);
+  //This will set put the products into the sessionStorage so we have a faster acces to the products items.
+  useEffect(() => {
+    if (ssProducts == null) {
+      getData().then((finalData) => {
+        sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
+      });
+    }
+  }, [ssProducts]);
 
   return (
     <div className="App">
