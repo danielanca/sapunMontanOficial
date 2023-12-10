@@ -94,8 +94,8 @@
 
   "orderFinishPage": {
     "finishGuide": "Finalizeaza comanda",
-    "deliveringInfor": "Pregatim comanda de indata, ne mai lipsesc datele de livrare",
-    "invoiceDetails": "Detalii factura",
+    "deliveringInfor": "",
+    "invoiceDetails": "Detalii livrare",
     "inputsLabels": {
       "lastName": "Nume",
       "firstName": "Prenume",
@@ -117,7 +117,7 @@
       "transport": "Transport"
     },
     "shipping": {
-      "estimation": "Livrarea produselor se va face in 24-48 ore",
+      "estimation": "Expediere zilnică Luni-Vineri",
       "paymentMethod": "Metoda de plata",
       "paymentMethodOptions": {
         "cash": "Numerar",
@@ -224,7 +224,7 @@
   },
 
   "OrderDone": {
-    "title": "Comanda a fost inregistrată!😃",
+    "title": "Comandă finalizată!😃",
     "subtitle": "Pregatim coletul! <strong> Va multumim! </strong>",
     "goHome": "Spre pagina principala"
   },

@@ -17,7 +17,7 @@ import InvoiceView from "./components/Invoice/OrderView/InvoiceView";
 import "./App.css";
 import FAQBlock from "./components/FAQBlock/FAQBlock";
 import VideoInstructionsSupliment from "./components/VideoInstructions/VideoInstructionsSupliment";
-import InvoiceGeneratorView from "./components/Invoice/InvoiceGeneratorView";
+// import InvoiceGeneratorView from "./components/Invoice/InvoiceGeneratorView";
 import Dashboard from "./components/AdminArea/ShardsDesign/Dashboard";
 import adminRoutes from "./components/AdminArea/ShardsDesign/routes";
 ReactGA.initialize("G-WFWYP44Z7L");

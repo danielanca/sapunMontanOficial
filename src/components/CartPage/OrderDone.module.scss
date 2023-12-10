@@ -2,9 +2,10 @@
 
 .text {
   font-weight: 500;
-  font-size: 33px;
+  font-size: 24px;
   color: green;
   text-align: center;
+  font-family: "Roboto Medium";
 }
 
 .horizontalAlign {
@@ -16,7 +17,6 @@
 
   a {
     width: 224px;
-    outline: 2px solid black;
   }
 }
 .miniText {
@@ -28,16 +28,18 @@
   color: ghostwhite;
   padding: 6% 15%;
   white-space: nowrap;
-  border: none;
+  border: 1px solid black;
 }
 .boldText {
   font-weight: bolder;
 }
 .confirmContainer {
+  margin-top: 100px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Roboto Black";
 }
 
 .titleConfirm {

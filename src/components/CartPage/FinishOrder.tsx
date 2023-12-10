@@ -23,20 +23,20 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   let storedCart: any[] = [];
   let subtotalPrepare: number = 0;
   const [isEasyboxSelected, setSelectEasybox] = useState(false);
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
   const [results, setResults] = useState<string[]>([]);
-  const easyboxList: string[] = [];
+  // const easyboxList: string[] = [];
 
   const url = "https://api.smartship.ro/geolocation/easybox";
   const options = { method: "GET", headers: { "X-API-KEY": " d7cc7d6074ec087be903ca30d35c9696" } };
 
-  const handleSearch = (query: string) => {
-    console.log("We are searching for:", query, results["easybox"]);
-    const filteredResults = easyboxList["easybox"].filter((item: any) =>
-      item.name.toLowerCase().includes(query.toLowerCase())
-    );
-    setResults(filteredResults);
-  };
+  // const handleSearch = (query: string) => {
+  //   console.log("We are searching for:", query, results["easybox"]);
+  //   const filteredResults = easyboxList["easybox"].filter((item: any) =>
+  //     item.name.toLowerCase().includes(query.toLowerCase())
+  //   );
+  //   setResults(filteredResults);
+  // };
   const [orderState, setOrderState] = useState<
     | "initState"
     | "requestState"
@@ -45,7 +45,9 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     | "errorState"
     | "triggeredState"
     | "finishState"
-  >("initState");
+  >("finishState");
+  //initState old
+  //finishState for testing
 
   const [completionState, setError] = useState<ErrorProps>({
     paymentSelected: false,
@@ -60,9 +62,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
       return await sendOrderConfirmation(orderData)
         .then((response) => {
           response.json().then((jsonResponse: any) => {
-            // console.log("Whole Object:", jsonResponse);
-            // console.log("Is Email to Client sent? : ", jsonResponse.EMAILTO_CLIENT);
-            // console.log("Is Email to Admin sent? : ", jsonResponse.EMAILTO_ADMIN);
+            console.log("Sending the order:", orderData, jsonResponse);
           });
 
           setOrderState("finishState");
@@ -157,9 +157,6 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   }, [subtotalPrepare]);
 
   useEffect(() => {
-    // if (orderState === "initState") {
-    //   return;
-    // }
     if (orderState == "initState" || orderState == "requestState" || orderState == "errorState") {
       if (areInputsValid(orderData)) {
         setError((completionState) => ({ ...completionState, inputCompleted: true }));
@@ -217,7 +214,6 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
           </div>
           <div className={styles.infoBoxing}>
             <img src={images.finishOrder} />
-            <h3>{orderString.deliveringInfor}</h3>
           </div>
           <div className={styles.finishOrderContainer}>
             <div className={styles.leftContainer}>
@@ -237,7 +233,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                         type={"large"}
                         onChange={item.inputListener}
                         value={item.value}
-                        autoComplete={item.inputOptions?.autoComplete}
+                        autoComplete="true"
                         list={item.inputOptions?.list}
                       />
                       {/* {item.otherStructure?.dataList?.name && (

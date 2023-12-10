@@ -17,6 +17,11 @@
   font-size: 36px;
   height: 40px;
   cursor: pointer;
+
+  @include media("<tablet") {
+    width: 130px;
+    height: 26px;
+  }
 }
 .roProduct {
   width: 30px;

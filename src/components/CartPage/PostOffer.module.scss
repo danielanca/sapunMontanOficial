@@ -1,0 +1,166 @@
+@import "./../../main.module.scss";
+
+.backgroundOffer {
+  @include media(">desktop") {
+    display: none;
+  }
+  background: rgb(0, 52, 255);
+  background: linear-gradient(86deg, rgba(0, 52, 255, 1) 2%, rgba(221, 0, 249, 1) 100%);
+  width: 100vw;
+
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+  padding-bottom: 80px;
+  position: relative;
+
+  .heart,
+  .heartYellow {
+    position: absolute;
+    right: 10%;
+    width: 12vw;
+    margin-top: 0px;
+  }
+  .heartYellow {
+    left: 5%;
+    right: 0;
+    margin-top: 15%;
+    width: 10vw;
+  }
+  .heartYellowSecond {
+    position: absolute;
+
+    margin-bottom: 10%;
+    bottom: 0;
+    left: 10%;
+    width: 8vw;
+  }
+
+  .titleWrap {
+    display: block;
+    margin: 0 auto;
+    .firstHead,
+    .secondHead {
+      font-size: 52px;
+      color: white;
+    }
+    .firstHead {
+      margin-left: -16vw;
+    }
+    .secondHead {
+      margin-right: -16vw;
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .middlePitch {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 10%;
+    h2 {
+      width: fit-content;
+      color: white;
+      font-size: 1em;
+      &.qty {
+        font-size: 0.9em;
+      }
+    }
+  }
+
+  .imageArea {
+    width: 100vw;
+    outline: 2px solid white;
+    .featuredImage {
+      width: 90%;
+      display: block;
+
+      margin: 20px auto;
+      filter: drop-shadow(5px 5px 17px #000000);
+    }
+  }
+
+  .pitchText {
+    margin-top: 40px;
+    .pitchFirst {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 500;
+      p {
+        text-align: center;
+        color: white;
+        width: 80%;
+        line-height: 16px;
+      }
+    }
+    .pitchSecond {
+      text-align: center;
+      color: white;
+    }
+    .priceWrapper {
+      h2 {
+        text-align: center;
+        color: white;
+        font-size: 2.5em;
+      }
+    }
+  }
+
+  .actionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 600px;
+    margin-top: 40px;
+    button {
+      width: 90%;
+      max-width: 280px;
+      padding: 8px 20px;
+      border: none;
+      color: white;
+      height: 40px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: 14px;
+      white-space: nowrap;
+
+      &.descriptionButton {
+        background-color: blueviolet;
+        color: whitesmoke;
+        outline: 1px solid white;
+      }
+      &.addToOrder {
+        background-color: green;
+        font-weight: bold;
+        color: white;
+        outline: 2px solid white;
+      }
+    }
+    .notifyCTA {
+      display: flex;
+      justify-content: center;
+      margin: 40px 0;
+      flex-direction: column;
+      white-space: nowrap;
+      width: 100%;
+      .warning {
+        background-color: yellow;
+        text-align: center;
+        font-weight: bolder;
+        padding: 2% 4%;
+        flex-wrap: nowrap;
+        color: black;
+      }
+      .info {
+        text-align: center;
+        font-weight: 500;
+        padding: 1% 1%;
+        color: white;
+      }
+    }
+  }
+}
