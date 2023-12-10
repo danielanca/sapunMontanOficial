@@ -95,6 +95,9 @@
         color: white;
         width: 80%;
         line-height: 16px;
+        &.yellow {
+          color: rgb(255, 230, 0);
+        }
       }
     }
     .pitchSecond {
@@ -134,7 +137,7 @@
         outline: 1px solid white;
       }
       &.addToOrder {
-        background-color: green;
+        background-color: rgb(0, 168, 0);
         font-weight: bold;
         color: white;
         outline: 2px solid white;

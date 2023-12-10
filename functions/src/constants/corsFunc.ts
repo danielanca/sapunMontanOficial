@@ -4,6 +4,7 @@ const localHost = process.env.NODE_ENV === "production" ? remoteAddress : remote
 console.log("Local host is:", localHost);
 export const applyCORSpolicy = (response: functions.Response<any>) => {
   response.header("Access-Control-Allow-Origin", localHost);
+  response.header("Access-Control-Allow-Origin", "http://192.168.0.192:3000");
   response.header("Access-Control-Allow-Credentials", "true");
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   response.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");

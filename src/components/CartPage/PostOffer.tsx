@@ -2,15 +2,58 @@ import React, { useEffect } from "react";
 import styles from "./PostOffer.module.scss";
 import heart from "./../../img/heart.svg";
 import heartYellow from "./../../img/heart_yellow.svg";
+import { useState } from "react";
 import parse from "html-react-parser";
+import { CookiesPostOrder } from "../../data/constants";
+import { getCookie } from "../../utils/functions";
+import { postOrderSend } from "../../services/emails";
 const PostOffer = () => {
+  const [orderState, setOrderState] = useState<
+    "initState" | "requestState" | "pendingState" | "errorState" | "finishState"
+  >("initState");
+
   useEffect(() => {
     const removeBannerUp = () => {
       const headTitle = document.querySelectorAll("[class^='TopBanner_bigBlanaBanner__']");
-      headTitle[0].remove();
+      if (headTitle[0]) {
+        headTitle[0].remove();
+      }
     };
     removeBannerUp();
   }, []);
+
+  useEffect(() => {
+    if (orderState === "finishState") {
+    }
+  }, [orderState]);
+
+  const handleSend = async () => {
+    setOrderState("pendingState");
+    if (getCookie(CookiesPostOrder) !== "Nothing") {
+      console.log("Cookie post order is:", JSON.parse(getCookie(CookiesPostOrder)));
+      try {
+        const postOrderData = getCookie(CookiesPostOrder);
+        console.log("[PostOrder] Sending data:", postOrderData);
+        const postOrderDataObject = JSON.parse(postOrderData);
+
+        return await postOrderSend({ firstName: postOrderDataObject.firstName, lastName: postOrderDataObject.lastName })
+          .then((response) => {
+            response.json().then((jsonResponse: any) => {
+              console.log("Sending the postOrder order:", postOrderDataObject, jsonResponse);
+            });
+
+            setOrderState("finishState");
+          })
+          .catch((error) => {
+            setOrderState("errorState");
+            console.log(error);
+          });
+      } catch (error) {
+        setOrderState("errorState");
+        console.log(error);
+      }
+    }
+  };
   return (
     <>
       <div className={styles.backgroundOffer}>
@@ -33,7 +76,7 @@ const PostOffer = () => {
         <div className={styles.pitchText}>
           <div className={styles.pitchFirst}>
             <p>{parse("Ofera <strong>partenerului timpul si atentia ta</strong>, <br>prin cupoanele de iubire")}</p>
-            <p>
+            <p className={styles.yellow}>
               {parse(
                 "Un mesaj sau o cina in oras, <strong>partenerul tau</strong> <br> va putea alege din <strong>20 cupoane</strong> ce vor fi <br>pentru tine o sarcina ce trebuie indeplinita"
               )}
@@ -49,10 +92,23 @@ const PostOffer = () => {
           </div>
           <div className={styles.actionContainer}>
             {/* <button className={styles.descriptionButton}>{"DESCRIERE PRODUS"}</button> */}
-            <button className={styles.addToOrder}>{"ADAUGĂ LA COMANDA PLASATĂ"}</button>
+            <button
+              style={{
+                backgroundColor: orderState === "finishState" ? "yellow" : "",
+                color: orderState === "finishState" ? "black" : ""
+              }}
+              onClick={handleSend}
+              className={styles.addToOrder}
+            >
+              {orderState === "initState"
+                ? "ADAUGĂ LA COMANDA PLASATĂ"
+                : orderState === "pendingState"
+                ? "SE TRIMITE..."
+                : "COMANDĂ RECEPTIONATĂ"}
+            </button>
             <div className={styles.notifyCTA}>
               <span className={styles.warning}>{"SE ADAUGĂ LA COMANDA ANTERIOARĂ"}</span>
-              <span className={styles.info}>{"Nu mai este necesar re-completarea datelor"}</span>
+              <span className={styles.info}>{"Nu mai este necesară re-completarea datelor"}</span>
             </div>
           </div>
           <div className="pitchSecond"></div>

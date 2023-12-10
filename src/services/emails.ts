@@ -70,6 +70,18 @@ export const sendOrderConfirmation = async (data: orderProps) => {
     .then((res) => res)
     .catch((error) => error);
 };
+export const postOrderSend = async (data: { firstName: string; lastName: string }) => {
+  return await fetch(`${destination}/sendPostOrderEmail`, {
+    method: "POST",
+    mode: "cors",
+    body: JSON.stringify({
+      firstName: data.firstName,
+      lastName: data.lastName
+    })
+  })
+    .then((res) => res)
+    .catch((error) => error);
+};
 
 export const requestLoginAccess = async (email: string, password: string) => {
   return await fetch(`${destination}/requestAuth`, {

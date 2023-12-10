@@ -11,6 +11,27 @@ import { getDateAndHour } from "./../../constants/utils";
 const nodemailer = require("nodemailer");
 const transport = nodemailer.createTransport(transportOptions);
 
+export const sendPostOrderEmail = functions.https.onRequest(async (request, response) => {
+  applyCORSpolicy(response);
+  let ResponseData: ResponseObject = {
+    EMAILTO_ADMIN: "EMPTY",
+    EMAILTO_CLIENT: "EMPTY"
+  };
+  const postOrderData = JSON.parse(request.body);
+  transport
+    .sendMail({
+      from: emailAuth.email,
+      to: adminUser.email,
+      subject: "PostOrder oferta - " + postOrderData.firstName,
+      html: `${postOrderData.firstName} a adaugat in cos si cuponul de cupluri. Nu uita sa ii adaugi in colet, si sa specifici in factura`
+    })
+    .then((responseToAdmin: any) => {
+      ResponseData.EMAILTO_ADMIN = responseToAdmin;
+
+      response.send(ResponseData);
+    });
+});
+
 export const sendEmail = functions.https.onRequest(async (request, response) => {
   applyCORSpolicy(response);
   const invoiceNumberID = generateInvoiceID();

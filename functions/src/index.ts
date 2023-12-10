@@ -9,7 +9,7 @@ import { updateProduct, deleteProduct } from "./functions/productFuncs";
 import { requestOrders } from "./functions/admin/adminFuncs";
 import { requestAuth } from "./functions/admin/auth";
 import { subscribeToNewsletter } from "./functions/newsletterFuncs";
-import { sendEmail } from "./functions/emails/mail";
+import { sendEmail, sendPostOrderEmail } from "./functions/emails/mail";
 import { triggerEvent } from "./functions/eventFuncs";
 
 const cookieParser = require("cookie-parser");
@@ -29,4 +29,4 @@ export { updateProduct, deleteProduct };
 //Front end interface
 export { subscribeToNewsletter };
 export { sendReviewToServer };
-export { sendEmail, triggerEvent };
+export { sendEmail, triggerEvent, sendPostOrderEmail };

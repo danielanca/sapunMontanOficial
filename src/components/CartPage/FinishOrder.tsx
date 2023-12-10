@@ -9,12 +9,13 @@ import { ErrorProps, OrderProps, ExplicitProdListProps, PropertyInput, InputProp
 
 import { productConstants } from "../../data/componentStrings";
 import strings from "../../data/strings.json";
-import { ProductsFromSessionStorage, CartInfoItemCookie } from "../../data/constants";
+import { ProductsFromSessionStorage, CartInfoItemCookie, CookiesPostOrder } from "../../data/constants";
 import styles from "./../CartPage/FinishOrder.module.scss";
 import images from "./../../data/images";
 import { useOrderObject } from "./useOrderData";
 import { getInputFields } from "./inputFields";
 import { areInputsValid } from "./funcs";
+import { setCookieWithPeriod } from "../CookieConsent/functions";
 
 const FinishOrder = ({ clearNotification }: OrderProps) => {
   let { orderFinishPage: orderString } = strings;
@@ -45,7 +46,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     | "errorState"
     | "triggeredState"
     | "finishState"
-  >("finishState");
+  >("initState");
   //initState old
   //finishState for testing
 
@@ -138,6 +139,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   useEffect(() => {
     if (orderState == "finishState") {
       window.scrollTo(0, 0);
+      setCookieWithPeriod(CookiesPostOrder, JSON.stringify(orderData), 1);
       localStorage.removeItem(CartInfoItemCookie);
 
       if (typeof clearNotification === "function") {
