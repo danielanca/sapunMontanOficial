@@ -7,15 +7,15 @@ export const staticContent = {
     
     <h4 class="middleSubtext"> Condiții generale </h4> 
         <p>
-            Folosirea acestui site implica acceptarea termenilor si conditiilor de mai jos. Recomandam citirea cu atentie a acestora. <strong>RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA</strong> isi asuma dreptul de a modifica aceste prevederi fara o alta notificare. Cea mai recenta versiune poate fi accesata in aceasta pagina.
+            Folosirea acestui site implica acceptarea termenilor si conditiilor de mai jos. Recomandam citirea cu atentie a acestora. <strong>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA</strong> isi asuma dreptul de a modifica aceste prevederi fara o alta notificare. Cea mai recenta versiune poate fi accesata in aceasta pagina.
             Accesul/vizitarea acestui website de catre dumneavoastra se supune <strong>Termenilor si conditiilor de utilizare</strong>, si implica acceptul explicit al dumneavoastra cu privire la acestea si reprezinta intelegerea dintre parti.
         </p>
 
 
-        <p> <b>RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA </b>garanteaza utilizatorului acces limitat, in interes personal (efectuarea de comenzi online, informare), pe site-ul <b>www.montanair.ro</b> si nu ii confera dreptul de a descarca sau de a modifica partial sau integral site-ul, de a reproduce partial sau integral site-ul, de a copia, de a vinde/revinde sau de a exploata site-ul in orice alta maniera, in scopuri comerciale sau fara acordul prealabil scris al acesteia.
-            Intregul continut al site-ului <b>www.montanair.ro</b> - imagini, texte, grafice, simboluri, elemente de grafica web, email-uri, scripturi, programe si alte date - este proprietatea <b>RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA</b>  si a furnizorilor sai si este aparat de Legea pentru protectia drepturilor de autor (legea nr. 8/1996) si de legile privind proprietatea intelectuala si industriala. Folosirea fara acordul propietarului <b>RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA</b>  a oricaror elemente enumerate mai sus se pedepseste conform legislatiei in vigoare.
-            <p><br> Domeniul <b>www.montanair.ro</b> este detinut de catre RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA Utilizarea acestei marci, a domeniului sau a numelor de comercializare, siglelor si emblemelor, in forma directa sau "ascunsa" (de tipul, dar nu limitat la, meta taguri sau alte tehnici de indexare, cautare web) fara permisiunea prealabila scrisa este interzisa si se pedepseste conform legii. </p>
-            <br>Produsele prezentate pe <b>www.montanair.ro</b> sunt produse si comercializare de RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA Preturile produselor pot fi schimbate oricand. Verificati pretul final de vanzare inainte de a achizitiona un produs. </p>
+        <p> <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA </b>garanteaza utilizatorului acces limitat, in interes personal (efectuarea de comenzi online, informare), pe site-ul <b>www.diniubire.ro</b> si nu ii confera dreptul de a descarca sau de a modifica partial sau integral site-ul, de a reproduce partial sau integral site-ul, de a copia, de a vinde/revinde sau de a exploata site-ul in orice alta maniera, in scopuri comerciale sau fara acordul prealabil scris al acesteia.
+            Intregul continut al site-ului <b>www.diniubire.ro</b> - imagini, texte, grafice, simboluri, elemente de grafica web, email-uri, scripturi, programe si alte date - este proprietatea <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA</b>  si a furnizorilor sai si este aparat de Legea pentru protectia drepturilor de autor (legea nr. 8/1996) si de legile privind proprietatea intelectuala si industriala. Folosirea fara acordul propietarului <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA</b>  a oricaror elemente enumerate mai sus se pedepseste conform legislatiei in vigoare.
+            <p><br> Domeniul <b>www.diniubire.ro</b> este detinut de catre ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA Utilizarea acestei marci, a domeniului sau a numelor de comercializare, siglelor si emblemelor, in forma directa sau "ascunsa" (de tipul, dar nu limitat la, meta taguri sau alte tehnici de indexare, cautare web) fara permisiunea prealabila scrisa este interzisa si se pedepseste conform legii. </p>
+            <br>Produsele prezentate pe <b>www.diniubire.ro</b> sunt produse si comercializare de ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA Preturile produselor pot fi schimbate oricand. Verificati pretul final de vanzare inainte de a achizitiona un produs. </p>
     
          <div class="spacerPadder100"> </div>
       
@@ -29,7 +29,7 @@ export const staticContent = {
     jsonContent: `
       <div class="spacerPadder50"> </div>
         <div class="textSpaceMargins d-flex flex-column ">
-        <p class='justTextAlignCenter'>Puteti cumpara produsele de pe site-ul MontanAir.Ro folosind urmatoarele </p>
+        <p class='justTextAlignCenter'>Puteti cumpara produsele de pe site-ul DinIubire.Ro folosind urmatoarele </p>
         <h4 class="middleSubtext"> Instrumente de plata </h4>
 
         <p class='justTextAlignCenter'> Ramburs (cash) la livrarea coletului </p>
@@ -53,15 +53,29 @@ export const staticContent = {
 
     <h4 class="middleSubtext"> CONDITII PENTRU RETURNAREA PRODUSELOR </h4>
 
-    <p><b>Conform Ordonantei nr. 130/2000 </b> privind regimul juridic al contractelor la distanta <b>"Consumatorul are dreptul sa notifice in scris comerciantului ca renunta la cumparare, fara penalitati si fara invocarea unui motiv, in termen de 10 zile lucratoare de la primirea produsului </b>. Notificarea se va da, semna si trimite de catre Dumneavoastra prin posta la adresa: <b>localitatea Turda, strada Liviu Rebreanu, nr.21 Judet. Cluj. In situatia mentionata mai sus </b>, Dumneavoastra veti returna, in termenul prevazut mai sus, produsul cumparat in ambalajul original, fara sa prezinte nici o urma de deteriorare sau uzura. Cheltuielile de expeditie vor fi suportate de Dumneavoastra. Produsele trebuie returnate in ambalajul lor original. Prin deschiderea ambalajelor individuale in care au fost livrate produsele comandate inseamna ca sunteti de acord cu aceste conditii de utilizare si ca produsele sunt cele comandate si corespund cerintelor dumneavoastra. <b>RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA </b> se obliga sa restituie clientului sumele incasate pentru produsele returnate, in termen de maxim 30 de zile de la data denuntarii de catre Dvs a contractului. </p>
-    <p>Orice conflict aparut intre <b>RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA </b> si clienti se incearca a fi rezolvat pe cale amiabila prin intelegere intre cele doua parti. In cazul in care acest lucru nu este posibil se vor aplica prevederile legale romanesti din acest domeniu, iar solutionarea conflictelor este de competenta instantelor romanesti. </p>  <p>Daca oricare dintre clauzele de mai sus va fi gasita nula sau nevalida, indiferent de cauza, aceasta clauza nu va afecta valabilitatea celorlalte clauze. Odata cu cumpararea si lansarea comenzii, clientul accepta fara obiectiuni conditiile si termenii de utilizare, valoarea acestora fiind aceeasi cu un contract valabil incheiat. </p>
+    <p><b>Conform Ordonantei nr. 130/2000 </b> privind regimul juridic al contractelor la distanta <b>"Consumatorul are dreptul sa notifice in scris comerciantului 
+    ca renunta la cumparare, fara penalitati si fara invocarea unui motiv, in termen de 10 zile lucratoare de la primirea produsului </b>. Notificarea se va da, semna si 
+    trimite de catre Dumneavoastra prin posta la adresa: <b>localitatea Turda, strada Plopilor, nr.3 bl.l1  Judet. Cluj. In situatia mentionata mai sus </b>, Dumneavoastra veti
+    returna, in termenul prevazut mai sus, produsul cumparat in ambalajul original, fara sa prezinte nici o urma de deteriorare sau uzura. Cheltuielile de expeditie vor fi suportate de Dumneavoastra.
+    Produsele trebuie returnate in ambalajul lor original. Prin deschiderea ambalajelor individuale in care au fost livrate produsele comandate inseamna ca sunteti de acord cu aceste conditii de utilizare 
+    si ca produsele sunt cele comandate si corespund cerintelor dumneavoastra. <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA </b> se obliga sa restituie clientului sumele incasate pentru produsele returnate, 
+    in termen de maxim 30 de zile de la data denuntarii de catre Dvs a contractului. </p>
+    <p>Orice conflict aparut intre <b>ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA </b> si clienti se incearca a fi rezolvat pe cale amiabila prin intelegere intre cele doua parti. In cazul in care acest 
+    lucru nu este posibil se vor aplica prevederile legale romanesti din acest domeniu, iar solutionarea conflictelor este de competenta instantelor romanesti. </p>  <p>Daca oricare dintre clauzele de mai sus va fi
+    gasita nula sau nevalida, indiferent de cauza, aceasta clauza nu va afecta valabilitatea celorlalte clauze. Odata cu cumpararea si lansarea comenzii, clientul accepta fara obiectiuni conditiile si termenii de utilizare, 
+    valoarea acestora fiind aceeasi cu un contract valabil incheiat. </p>
     
 
+    <h2>Garantie 100% retur pentru mulaje</h2>
+    <p>Cumparatorul beneficiaza de returnarea banilor integral, daca, incluzand deschiderea coletului si realizarea procesului de mulaj, acesta nu satisface multumirea cumparatorului. </p>
+    <p>Pentru ca cumparatorul se beneficieze de returul integral al banilor, acesta are obligatia de a <strong>returna toate produsele si accesoriile din kit</strong>, acestea fiind specificate in descrierea produsului, aici se include si mulajul nedorit de cumparator"
+    </p>
+    <p>In termen de 5 zile dupa ce produsul a fost returnat catre magazin, clientul primeste suma de bani inapoi in cont sau ramburs, cu modalitatea de plata initial realizata.</p>
     Date de contact:
     
-    <b>Emil Cristian
+    <b>Daniel Anca
         <br>
-    +40 759 796 202 </b>
+    +40 745 469 907 </b>
 
     </p>
     </div>
@@ -76,9 +90,9 @@ export const staticContent = {
 
 
 
-    <p>Confidentialitatea datelor dumneavoastra cu caracter personal reprezinta una dintre preocuparile principale ale RUS EMIL CRISTIAN INTREPRINDERE INDIVIDUALA , cu sediul in localitatea Turda, strada Liviu Rebreanu, nr.21 Judet. Cluj. in calitate de operator de date.
+    <p>Confidentialitatea datelor dumneavoastra cu caracter personal reprezinta una dintre preocuparile principale ale ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA , cu sediul in localitatea Turda, strada Liviu Rebreanu, nr.21 Judet. Cluj. in calitate de operator de date.
 
-    Acest document are rolul de a va informa cu privire la prelucrarea datelor dumneavoastra cu caracter personal, in contextul utilizarii paginii de internet https://www.dinmunte.ro, la care ne vom referi in continuare cu denumirea "site-ul". </p>
+    Acest document are rolul de a va informa cu privire la prelucrarea datelor dumneavoastra cu caracter personal, in contextul utilizarii paginii de internet https://www.diniubire.ro, la care ne vom referi in continuare cu denumirea "site-ul". </p>
     <h4 class="lefter"> Cuprins </h4>
     <ul class="termsUl">
     <li>Categoriile de date cu caracter personal prelucrate </li>
@@ -114,13 +128,13 @@ export const staticContent = {
     <h4 class="middleSubtext">2. Scopurile si temeiurile de prelucrarii </h4>
     A. Daca sunteti client al site-ului, prelucreaza datele dumneavoastra cu caracter personal astfel:
     <p> Pentru desfasurarea relatiei contractuale dintre dumneavoastra si , respectiv pentru preluarea, validarea, expedierea si facturarea comenzii plasate pe site, informarea dumneavoastra asupra starii comenzii, organizarea returului de produse comandate etc.  </p>
-    <p> <b>Temei:</b> Prelucrarea datelor dumneavoastra in acest scop are la baza contractul incheiat intre dumneavoastra si , definit in cuprinsul Termenelor si Conditiilor http://montanair.ro/termeni-si-conditii. Furnizarea datelor dumneavoastra cu caracter personal este necesara pentru executarea acestui contract. Refuzul furnizarii datelor poate avea drept consecinta imposibilitatea derularii raporturilor contractuale dintre dumneavoastra si . </p>
+    <p> <b>Temei:</b> Prelucrarea datelor dumneavoastra in acest scop are la baza contractul incheiat intre dumneavoastra si , definit in cuprinsul Termenelor si Conditiilor http://diniubire.ro/termeni-si-conditii. Furnizarea datelor dumneavoastra cu caracter personal este necesara pentru executarea acestui contract. Refuzul furnizarii datelor poate avea drept consecinta imposibilitatea derularii raporturilor contractuale dintre dumneavoastra si . </p>
     <p> Pentru activitati de marketing, respectiv pentru transmiterea, prin intermediul mijloacelor de comunicare la distanta (e-mail, sms) de comunicari comerciale privind produsele si serviciile oferite de , prin intermediul site-ului. </p>
     
     
 
     <h4 class="middleSubtext">3. Durata pentru care va prelucram datele </h4>
-    <p> <b>MontanAir.ro</b> va prelucra datele dumneavoastra cu caracter personal atat cat este necesar pentru realizarea scopurilor de prelucrare mentionate mai sus.
+    <p> <b>www.diniubire.ro</b> va prelucra datele dumneavoastra cu caracter personal atat cat este necesar pentru realizarea scopurilor de prelucrare mentionate mai sus.
 
     In cazul in care sunteti client, vom prelucra datele dumneavoastra pe intreaga durata a raporturilor contractuale si ulterior conform obligatiilor legale care revin in sarcina (de ex, in cazul documentelor justificative financiar-contabile pentru care termenul de pastrare prevazut de lege este de 10 ani de la data incheierii exercitiului financiar in cursul caruia au fost intocmite).
     
@@ -160,7 +174,7 @@ export const staticContent = {
    <h4 class="middleSubtext">5. Modificari in politica de confidentialitate </h4>
    <p>Ne rezervam dreptul de a modifica aceasta politica de confidentialitate. In cazul unor modificari majore pe viitor vei fi instiintat pe email (daca este posibil) sau prin afisarea unui mesaj specific pe site. </p>
 
-    <p>Aceasta pagina de internet foloseste fisiere de tip cookie. Pentru mai multe informatii cu privire la modul in care se folosesc aceste fisiere, va rugam sa accesati urmatorul link: <a href="/politica-de-cookies"> <p>http://montanair.ro/politica-de-cookies </p></a>
+    <p>Aceasta pagina de internet foloseste fisiere de tip cookie. Pentru mai multe informatii cu privire la modul in care se folosesc aceste fisiere, va rugam sa accesati urmatorul link: <a href="/politica-de-cookies"> <p>http://diniubire.ro/politica-de-cookies </p></a>
 
 
    
@@ -184,21 +198,21 @@ export const staticContent = {
   <h4 class="middleSubtext">CUM SE OPRESC COOKIURILE</h4>
 
 
-<p>Cookie-urile sunt salvate în memoria cache a browserului dvs. Aceasta înseamnă că puteți decide dacă editorii de site-uri web vor ști ce părți ale site-ului web utilizați. Cookie-urile permit editorilor să vă arate cel mai interesant conținut pe baza acțiunilor dvs. anterioare. Pentru a afișa conținut personalizat așa cum va vedea utilizatorul pentru prima dată, mai întâi trebuie să ștergeți informațiile despre cookie-uri în browserul dvs. - Firefox, Internet Explorer, Chrome etc. - de pe computer sau telefon. Informațiile colectate prin intermediul cookie-urilor pot fi utilizate pentru a colecta informații în scopuri comerciale și pot fi utilizate de agenții de publicitate, cum ar fi Google AdChoices, pentru a ajusta reclamele afișate.</p>
+  <p>Cookie-urile sunt salvate în memoria cache a browserului dvs. Aceasta înseamnă că puteți decide dacă editorii de site-uri web vor ști ce părți ale site-ului web utilizați. Cookie-urile permit editorilor să vă arate cel mai interesant conținut pe baza acțiunilor dvs. anterioare. Pentru a afișa conținut personalizat așa cum va vedea utilizatorul pentru prima dată, mai întâi trebuie să ștergeți informațiile despre cookie-uri în browserul dvs. - Firefox, Internet Explorer, Chrome etc. - de pe computer sau telefon. Informațiile colectate prin intermediul cookie-urilor pot fi utilizate pentru a colecta informații în scopuri comerciale și pot fi utilizate de agenții de publicitate, cum ar fi Google AdChoices, pentru a ajusta reclamele afișate.</p>
 
-<p>Cum să dezactivați cookie-urile în anumite browsere:</p>
+  <p>Cum să dezactivați cookie-urile în anumite browsere:</p>
 
-<p>Puteți dezactiva cookie-urile pentru un anumit site web sau pentru toate conexiunile din browserul dvs.</p>
+  <p>Puteți dezactiva cookie-urile pentru un anumit site web sau pentru toate conexiunile din browserul dvs.</p>
 
-<p> <b>1. În Mozilla Firefox: </b> În meniul Instrumente, faceți clic pe Opțiuni și selectați fila Confidențialitate. Browserul vă permite să dezactivați complet urmărirea sau să ștergeți cookie-urile anumitor site-uri.</p>
-<p> <b>2. În Microsoft Internet Explorer:</b> În meniul Instrumente, faceți clic pe Opțiuni Internet, apoi pe fila Confidențialitate. Puteți ajusta nivelul general de confidențialitate cu un glisor special sau puteți face clic pe butonul Site-uri pentru a gestiona setările pentru site-uri web individuale.</p>
-<p> <b>3. În Google Chrome</b> În meniul de sub cele trei linii orizontale din colțul din dreapta sus, selectați Instrumente, apoi Ștergeți datele de navigare. În afară de opțiunea de ștergere a cookie-urilor, puteți face clic și pe Mai multe informații pentru a vedea o descriere detaliată a opțiunilor de confidențialitate.</p>
-<p> <b>4. În Opera </b> Click Opera din colțul din stânga sus, alegeți Setări, apoi Ștergeți datele de navigare. În afară de opțiunea de ștergere a cookie-urilor deja create, puteți face clic și pe Gestionare cookie-uri pentru a accesa opțiuni mai avansate pentru site-uri individuale.</p>
-<p> <b>5. În Safari </b> În meniul Safari, selectați Preferințe, apoi fila Confidențialitate. Puteți găsi multe opțiuni cu privire la cookie-uri acolo.</p>
-<p> <b>6. La telefoane  tablete și alte dispozitive mobile:</b> fiecare model de telefon poate gestiona această funcție diferit. Vă recomandăm să verificați setările de confidențialitate din documentația de pe site-ul web al producătorului dispozitivului dvs. mobil</p>
+  <p> <b>1. În Mozilla Firefox: </b> În meniul Instrumente, faceți clic pe Opțiuni și selectați fila Confidențialitate. Browserul vă permite să dezactivați complet urmărirea sau să ștergeți cookie-urile anumitor site-uri.</p>
+  <p> <b>2. În Microsoft Internet Explorer:</b> În meniul Instrumente, faceți clic pe Opțiuni Internet, apoi pe fila Confidențialitate. Puteți ajusta nivelul general de confidențialitate cu un glisor special sau puteți face clic pe butonul Site-uri pentru a gestiona setările pentru site-uri web individuale.</p>
+  <p> <b>3. În Google Chrome</b> În meniul de sub cele trei linii orizontale din colțul din dreapta sus, selectați Instrumente, apoi Ștergeți datele de navigare. În afară de opțiunea de ștergere a cookie-urilor, puteți face clic și pe Mai multe informații pentru a vedea o descriere detaliată a opțiunilor de confidențialitate.</p>
+  <p> <b>4. În Opera </b> Click Opera din colțul din stânga sus, alegeți Setări, apoi Ștergeți datele de navigare. În afară de opțiunea de ștergere a cookie-urilor deja create, puteți face clic și pe Gestionare cookie-uri pentru a accesa opțiuni mai avansate pentru site-uri individuale.</p>
+  <p> <b>5. În Safari </b> În meniul Safari, selectați Preferințe, apoi fila Confidențialitate. Puteți găsi multe opțiuni cu privire la cookie-uri acolo.</p>
+  <p> <b>6. La telefoane  tablete și alte dispozitive mobile:</b> fiecare model de telefon poate gestiona această funcție diferit. Vă recomandăm să verificați setările de confidențialitate din documentația de pe site-ul web al producătorului dispozitivului dvs. mobil</p>
 
-</div>
-<div class="spacerPadder50"> 
+  </div>
+  <div class="spacerPadder50"> 
 
 
 
@@ -234,11 +248,11 @@ export const staticContent = {
     <h2 class="middleSubtext">IA LEGATURA CU NOI !</h2>
 
     <p class="text-center">Daca ai intrebari despre noi, produsele noastre, sau pur si simplu vrei sa ne saluti, o poti face 
-    trimitand un email la adresa <a href="mailto:contact@montanair.ro">contact@montanair.ro </a> sau la numarul de telefon +40 759 791 474 
+    trimitand un email la adresa <a href="mailto:diniubire.ro@gmail.com">diniubire.ro@gmail.com </a> sau la numarul de telefon +40 745 469 907 
     </p>
 
     <div class="spacerPadder50"></div>
-   <p class="text-center">Ne mai poti gasi pe Instagram, Facebook si WhatsApp din sectiunea de mai jos </p> 
+   <p class="text-center">Ne mai poti gasi pe Instagram si WhatsApp </p> 
     <div class="spacerPadder200"> </div>
     </div>
 

@@ -28,11 +28,13 @@ const NewsletterBanner = () => {
           <NewsletterPop />
         </div>
       )}
-      <h3 className={styles.headTitle}>{NewsletterSection.title}</h3>
-      <h4 className={styles.callToActtionMessage}>{NewsletterSection.subscribeCall}</h4>
-      <button onClick={openNewsletter} className={styles.subscribeButtonBlack}>
-        {NewsletterSection.subscribeMe}
-      </button>
+      <div className={styles.bannerWrapperInside}>
+        <h3 className={styles.headTitle}>{NewsletterSection.title}</h3>
+        <h4 className={styles.callToActtionMessage}>{NewsletterSection.subscribeCall}</h4>
+        <button onClick={openNewsletter} className={styles.subscribeButtonBlack}>
+          {NewsletterSection.subscribeMe}
+        </button>
+      </div>
     </div>
   );
 };

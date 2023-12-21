@@ -3,9 +3,17 @@
 
 .padder {
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
-
+.playerContainer {
+  width: 100%;
+  padding: 4% 0;
+  // outline: 2px solid black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
 .sectionParent {
   @extend .row;
   display: flex;
@@ -53,6 +61,12 @@
   position: relative;
   width: 100%;
   height: auto;
+
+  @include media(">=tablet", "<desktop") {
+    width: 65%;
+    width: clamp(300px, 90%, 514px);
+    margin: auto;
+  }
 }
 .imageContainer {
   height: 100%;
@@ -73,13 +87,15 @@
   }
 }
 .productTitle {
-  font-size: 3rem;
   text-align: center;
+  font-family: "Luckiest Guy" !important;
+  text-transform: uppercase;
+  font-size: clamp(28px, 3vw, 43px);
 }
 .reviewContainer {
   display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
+  justify-content: center;
+  flex-direction: row;
 
   @include media(">=tablet", "<desktop") {
     justify-content: center;
@@ -91,6 +107,10 @@
 
   @include media("<tablet") {
     padding: 0 30px;
+  }
+
+  p {
+    line-height: 1.3rem;
   }
 }
 .longDescription {
@@ -120,17 +140,48 @@
   font-size: 20px;
   align-self: center;
   font-family: "Roboto";
+  cursor: pointer;
+  &:hover {
+    color: rgba(54, 54, 54, 0.797);
+  }
 }
+
 .priceWrapper {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 30px;
+  flex-direction: column;
+}
+.oldPrice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bolder;
+}
+.timerActual {
+  color: red;
 }
 .productPrice {
-  font-size: 3rem;
-  color: #00ac10;
+  font-size: 2rem;
+  color: #ff5f5f;
+  font-family: "Roboto Medium";
+}
+.productPriceOld {
+  color: #000000;
+  font-weight: bold;
+  font-size: 0.9rem;
+  font-family: "Roboto Medium";
+  text-decoration: line-through;
+  margin-bottom: -6px;
+  @include media(">tablet") {
+    margin-bottom: -12px;
+  }
+  @include media("<tablet") {
+    font-size: 1.1rem;
+  }
 }
 .actionContainer {
   width: 100%;
@@ -140,15 +191,18 @@
   height: 115px;
 }
 .addToCart {
-  background-color: #00ac10;
+  background-color: #ff5f5f;
   color: white;
   outline: none;
   border-style: none;
-  font-size: 1.6em;
+  font-size: 1.2rem;
   width: 250px;
   height: 50px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-
+  font-family: "Roboto Medium";
+  @include media("<tablet") {
+    font-size: 1.1em;
+  }
   &:hover {
     background-color: rgb(73, 73, 73);
   }
@@ -176,6 +230,13 @@
     opacity: 1;
   }
 }
+.starsContainerLow {
+  @extend .starsContainer;
+  height: 20px;
+}
+.reviewStar {
+  aspect-ratio: 1/1;
+}
 .activeImage {
   @extend .clickableImage;
   opacity: 1;
@@ -184,7 +245,8 @@
 .innerImage {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  aspect-ratio: 1/1;
 }
 
 .noProductFoundContainer {

@@ -1,8 +1,10 @@
 import React from "react";
+import BlogItem from "./ConstantComponents/BlogItem";
 import { NavHashLink } from "react-router-hash-link";
 import { useParams } from "react-router-dom";
 import parse from "html-react-parser";
 import styles from "./BlogPost.module.scss";
+import stylesRelated from "./../components/RelatedPost.module.scss";
 import { uniqueId } from "lodash";
 import { blogs } from "./../data/blogStrings";
 import HelmetHead from "./MiniComponents/HelmetHead/HelmetHead";
@@ -47,9 +49,6 @@ const BlogPost = () => {
               <span className={styles.postcategory}>{blogs.posts[thisBlogLink].postCategory}</span>
             )}
           </div>
-          <div className={styles.previewArea}>
-            <p className={styles.firstWords}>{}</p>
-          </div>
         </div>
         <div className={styles.actualBlogContent}>{parse(dani.jsonContent)}</div>
         <div className={styles.endOfLine} />
@@ -72,18 +71,40 @@ const BlogPost = () => {
 
 const RelatedPost = ({ blogLink }: RelatedPostProps) => {
   let { blogsArea: blogStr } = strings;
+
   const gotoElement = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <div className={styles.relPostItem}>
-      <NavHashLink onClick={gotoElement} className={styles.HashLinkStyle} to={`/${blogStr.blogURLSuffix}/${blogLink}`}>
-        <div className={styles.pictureWrapper}>
-          <img className={styles.pictureStyle} src={blogs.posts[blogLink].image} />
+    <div className={stylesRelated.blogItemRelated}>
+      <NavHashLink
+        onClick={gotoElement}
+        className={stylesRelated.HashLinkStyleRelated}
+        to={`/${blogStr.blogURLSuffix}/` + blogs.posts[blogLink].link}
+      >
+        <div className={stylesRelated.topPartRelated}>
+          <div className={stylesRelated.floaterThumbnailRelated}>
+            <div className={stylesRelated.thumbnailWrapperRelated}>
+              <img
+                alt={blogs.posts[blogLink].link}
+                className={stylesRelated.thumbnailImageRelated}
+                src={blogs.posts[blogLink].image}
+              />
+            </div>
+          </div>
         </div>
-        <div className={styles.titleWrapper}>
-          <h3 className={styles.titlePost}>{blogs.posts[blogLink].title.substr(0, 29)}</h3>
+        <div className={stylesRelated.bottomPartRelated}>
+          <div className={stylesRelated.highlighterRelated}>
+            <h3 className={stylesRelated.labelCategory}>{"GANDURI"}</h3>
+          </div>
+          <div className={stylesRelated.titleAreaRelated}>
+            <h3 className={stylesRelated.titlePostRelated}>{blogs.posts[blogLink].title}</h3>
+          </div>
+          <div className={stylesRelated.previewPostRelated}>
+            <p className={stylesRelated.excerptTextRelated}>{blogs.posts[blogLink].firstDescription}</p>
+            <span className={stylesRelated.readMoreRelated}>{blogStr.blogsInner.readArticle}</span>
+          </div>
         </div>
       </NavHashLink>
     </div>

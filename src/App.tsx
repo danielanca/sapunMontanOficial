@@ -13,10 +13,14 @@ import { getCookie } from "./components/CookieConsent/functions";
 import CookieConsent from "./components/CookieConsent/CookieConsent";
 import { ProductsFromSessionStorage } from "./data/constants";
 import NotFound from "./components/NotFound/NotFound";
-
+import InvoiceView from "./components/Invoice/OrderView/InvoiceView";
 import "./App.css";
-// ReactGA.initialize('G-2WGBH4M82T');
-// ReactGA.send('pageview');
+import FAQBlock from "./components/FAQBlock/FAQBlock";
+import VideoInstructionsSupliment from "./components/VideoInstructions/VideoInstructionsSupliment";
+import InvoiceGeneratorView from "./components/Invoice/InvoiceGeneratorView";
+import Dashboard from "./components/AdminArea/ShardsDesign/Dashboard";
+import adminRoutes from "./components/AdminArea/ShardsDesign/routes";
+ReactGA.initialize("G-WFWYP44Z7L");
 
 export const ProductsContext = React.createContext<any[]>([]);
 const FinishOrder = lazy(() => import(/*webpackPreload: true*/ "./components/CartPage/FinishOrder"));
@@ -24,34 +28,34 @@ const CartPage = lazy(() => import(/*webpackPreload: true*/ "./components/CartPa
 const CheckAuth = lazy(() => import(/*webpackPreload: true*/ "./components/AdminArea/CheckAuth"));
 const Blogs = lazy(() => import(/* webpackPreload: true , webpackChunkName: "Blogs" */ "./components/Blogs"));
 const BlogPost = lazy(() => import(/* webpackPreload: true,  webpackChunkName: "BlogPost" */ "./components/BlogPost"));
-const ProduseleNoastre = lazy(() =>
-  import(/*webpackPreload: true , webpackChunkName: "ProduseleNoastre" */ "./components/ProduseleNoastre")
+const ProduseleNoastre = lazy(
+  () => import(/*webpackPreload: true , webpackChunkName: "ProduseleNoastre" */ "./components/ProduseleNoastre")
 );
-const AdminArea = lazy(() =>
-  import(/* webpackPrefetch: true, webpackChunkName: "AdminArea" */ "./components/AdminArea/AdminArea")
+const AdminArea = lazy(
+  () => import(/* webpackPrefetch: true, webpackChunkName: "AdminArea" */ "./components/AdminArea/AdminArea")
 );
-const RequireAuth = lazy(() =>
-  import(/*webpackPrefetch: true , webpackChunkName: "RequireAuth"*/ "./components/AdminArea/RequireAuth")
+const RequireAuth = lazy(
+  () => import(/*webpackPrefetch: true , webpackChunkName: "RequireAuth"*/ "./components/AdminArea/RequireAuth")
 );
 const Login = lazy(() => import(/*webpackPrefetch: true , webpackChunkName: "Login" */ "./components/AdminArea/LogIn"));
-const UpdateProducts = lazy(() =>
-  import(/*webpackPrefetch: true , webpackChunkName: "UpdateProducts"  */ "./components/AdminArea/UpdateProducts")
+const UpdateProducts = lazy(
+  () => import(/*webpackPrefetch: true , webpackChunkName: "UpdateProducts"  */ "./components/AdminArea/UpdateProducts")
 );
-const EditProduct = lazy(() =>
-  import(/*webpackPrefetch: true , webpackChunkName: "EditProduct" */ "./components/AdminArea/EditProduct")
+const EditProduct = lazy(
+  () => import(/*webpackPrefetch: true , webpackChunkName: "EditProduct" */ "./components/AdminArea/EditProduct")
 );
 const OrderView = lazy(() => import("./components/OrderView/OrderView"));
-const Testimonials = lazy(() =>
-  import(/*webpackPrefetch: true , webpackChunkName: "Testimonials" */ "./components/Testimonials")
+const Testimonials = lazy(
+  () => import(/*webpackPrefetch: true , webpackChunkName: "Testimonials" */ "./components/Testimonials")
 );
-
+const EditStrings = lazy(() => import("./components/AdminArea/EditStrings/EditStrings"));
 const SimpleContent = lazy(() => import(/*webpackPrefetch: true*/ "./blocks/SimpleContent"));
 
 const Navbar = lazy(() => import(/* webpackChunkName: "Navbar"  */ "./components/Navbar"));
 
 const ProductView = lazy(() => import("./components/Product/ProductView"));
 
-const FooterMontan = lazy(() => import(/* webpackChunkName: "FooterMontan" */ "./components/FooterMontan"));
+const FooterIubire = lazy(() => import(/* webpackChunkName: "FooterIubire" */ "./components/FooterIubire"));
 
 const Loading = () => <div>LOADING</div>;
 
@@ -59,10 +63,7 @@ function App() {
   const [letsCartHandler, CartHandler] = useState(0);
   const [ssProducts, setSSproducts] = useState<any>();
 
-  const getCookieConsent = () => {
-    if (getCookie("cookieConsentBrasov") === "userAccepted") return false;
-    else return true;
-  };
+  const getCookieConsent = () => getCookie("cookieConsentBrasov") !== "userAccepted";
 
   const handleScroll = () => {
     const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
@@ -80,6 +81,7 @@ function App() {
     };
   }, []);
 
+  //This will set put the products into the sessionStorage so we have a faster acces to the products items.
   useEffect(() => {
     if (ssProducts == null) {
       getData().then((finalData) => {
@@ -92,8 +94,8 @@ function App() {
     <div className="App">
       {getCookieConsent() && <CookieConsent />}
       <header className="App-header">
-        <ProductsContext.Provider productsData={ssProducts}>
-          <React.Suspense fallback={Loading}>
+        <ProductsContext.Provider value={[ssProducts, setSSproducts]}>
+          <React.Suspense fallback={<Loading />}>
             <BrowserRouter basename="/">
               <AuthProvider>
                 <Navbar clearNotif={letsCartHandler} />
@@ -101,10 +103,24 @@ function App() {
                   {/* protect this */}
 
                   <Route element={<RequireAuth />}>
-                    <Route path="/admin" element={<AdminArea />} />
+                    <Route path="/admin/old" element={<AdminArea />} />
                     <Route path="/admin/products" element={<UpdateProducts />} />
-                    <Route path="/admin/products/edit-:productID" element={<EditProduct editMode={true} />} />
-                    <Route path="/admin/products/add" element={<EditProduct editMode={false} />} />
+                    <Route path="/admin/lists" element={<EditStrings />} />
+                    <Route path="/admin" element={<Dashboard />}>
+                      {adminRoutes.map((item: any, index) => {
+                        return (
+                          <Route
+                            key={index}
+                            path={item.path}
+                            element={
+                              <item.layout>
+                                <item.component />
+                              </item.layout>
+                            }
+                          />
+                        );
+                      })}
+                    </Route>
                   </Route>
                   <Route element={<CheckAuth />}>
                     <Route path="/login" element={<Login />} />
@@ -120,6 +136,11 @@ function App() {
                   <Route path="/blogid/:blogLink" element={<BlogPost />} />
                   <Route path="/testimonials" element={<Testimonials />} />
                   <Route path="/order/:orderID" element={<OrderView />} />
+                  <Route path="/instructiuni-video" element={<VideoInstructions />} />
+                  <Route path="/video-suplimentar" element={<VideoInstructionsSupliment />} />
+                  <Route path="/intrebari" element={<FAQBlock />} />
+                  {/* <Route path="/invoice" element={<InvoiceGeneratorView />} /> */}
+                  <Route path="/factura/:orderID" element={<InvoiceView />} />
                   <Route path="/" element={<MainNavigation />} />
 
                   {/* Content Template*/}
@@ -134,7 +155,7 @@ function App() {
 
                   <Route path="*" element={<NotFound />} />
                 </Routes>
-                <FooterMontan />
+                <FooterIubire />
               </AuthProvider>
             </BrowserRouter>
           </React.Suspense>

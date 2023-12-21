@@ -6,20 +6,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { setJWT } from "../../utils/functions";
 import styles from "./LogIn.module.scss";
 
-interface Credentials {
-  email: string;
-  password: string;
-  accessToken: string;
-}
-interface ResponseServer {
-  LOGIN_ANSWER: string;
-  LOGIN_TOKEN: string;
-}
-interface Provi {
-  email: string;
-  password: string;
-  accessToken: string;
-}
 const Login = () => {
   const [userCredentials, setuserCredentials] = useState<Credentials>({ email: "", password: "", accessToken: "" });
 
@@ -37,7 +23,6 @@ const Login = () => {
               password: userCredentials.password,
               accessToken: jsonResponse.LOGIN_TOKEN
             }));
-            console.log("RESPONSE:", jsonResponse.LOGIN_TOKEN);
             setJWT("jwt", jsonResponse.LOGIN_TOKEN, 1).then((confirmation) => {
               if (confirmation) {
                 navigate("/admin", { replace: true });

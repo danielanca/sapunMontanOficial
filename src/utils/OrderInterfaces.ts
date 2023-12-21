@@ -27,6 +27,8 @@ export interface orderProps {
   paymentMethod: string;
   deliveryName?: string;
   paymentStatus?: string;
+  deliveryMethod?: string;
+  lockerName?: string;
 }
 
 export interface ProductModel {
@@ -92,3 +94,59 @@ export interface OrderViewProps {
   timestamp?: string;
   invoiceID?: string;
 }
+
+export interface InvoiceModel {
+  client: {
+    fullName: string;
+    CUI: string;
+    banca: string;
+    adresa: string;
+    email: string;
+    telefon: string;
+  };
+  provider: {
+    fullName: string;
+    adresa: string;
+    telefon: string;
+  };
+  items: InvoiceItem[];
+}
+
+export interface InvoiceItem {
+  product: string;
+  price: number;
+  quantity: number;
+}
+
+export interface InvoiceOrderProps {
+  invoiceObject: {
+    lastName?: string;
+    firstName?: string;
+    phoneNo?: string;
+    deliveryAddress?: string;
+    emailAddress?: string;
+    city?: string;
+    county?: string;
+    paymentMethod?: string;
+    cartProducts?: string;
+    shippingTax?: number;
+    cartSum?: number;
+    orderNotes?: string;
+    deliveryName?: string;
+    timestamp?: string;
+    invoiceID?: string;
+  };
+}
+
+// Define the initial states here:
+export const authorInitialProduct: ProductModel = {
+  ID: "",
+  price: "",
+  ULbeneficii: [],
+  firstDescription: "",
+  imageProduct: [],
+  jsonContent: "",
+  reviews: {},
+  shortDescription: "",
+  title: ""
+};

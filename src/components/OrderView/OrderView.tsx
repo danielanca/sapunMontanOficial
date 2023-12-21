@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import { getOrderByID } from "./../../data/productList";
 import { OrderViewProps } from "../../utils/OrderInterfaces";
 import strings from "../../data/strings.json";
-import imageByString from "../../data/imageByString.json";
 import styles from "./OrderView.module.scss";
 
 const OrderView = () => {
@@ -28,9 +26,7 @@ const OrderView = () => {
       return (
         <div className={styles.cardBoard}>
           <div className="row">
-            <div className="col-12 d-flex justify-content-center ">
-              <img alt="invoice data" className={styles.logoInvoice} src={imageByString.invoiceLogo} />
-            </div>
+            <div className="col-12 d-flex justify-content-center "></div>
             <div className="col-12 d-flex justify-content-center">
               <h3 className={styles.invoiceTitle}>{`Factura #${invoiceData.invoiceID}`}</h3>
             </div>
@@ -86,7 +82,7 @@ const OrderView = () => {
           <h5 className={styles.teamWeb}>{orderStr.thankYouMessage.author}</h5>
         </div>
       );
-    } else return <>{"Loading"}</>;
+    } else return <>{"Loading  "}</>;
   };
 
   return (

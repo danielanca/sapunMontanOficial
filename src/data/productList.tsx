@@ -1,9 +1,32 @@
 import { collection, doc, getFirestore, getDoc, getDocs } from "firebase/firestore";
 import app from "./../firebase";
-
-var productList = [];
+import { devConsole } from "./../functions/utilsFunc";
+let productList = [];
 
 const db = getFirestore(app);
+
+interface InvoiceModel {
+  client: {
+    fullName: string;
+    CUI: string;
+    banca: string;
+    adresa: string;
+    email: string;
+    telefon: string;
+  };
+  provider: {
+    fullName: string;
+    adresa: string;
+    telefon: string;
+  };
+  items: InvoiceItem[];
+  ID: string;
+}
+interface InvoiceItem {
+  product: string;
+  price: number;
+  quantity: number;
+}
 
 interface productType {
   ID: string;
@@ -19,7 +42,7 @@ interface productType {
 export const getOrderByID = async (invoiceID: number) => {
   const productData = doc(db, "orders", invoiceID.toString());
   const snap = await getDoc(productData);
-  var productsAreHere;
+  let productsAreHere;
   if (snap.exists()) {
     productsAreHere = snap.data();
   }
@@ -28,7 +51,7 @@ export const getOrderByID = async (invoiceID: number) => {
 };
 export const getAllOrders = async () => {
   const snapShot = await getDocs(collection(db, "orders"));
-  var dataProducts = [];
+  let dataProducts = [];
 
   snapShot.forEach((doc) => {
     dataProducts.push(doc.data());
@@ -38,7 +61,7 @@ export const getAllOrders = async () => {
 };
 export const getData = async () => {
   const snapShot = await getDocs(collection(db, "products"));
-  var dataProducts = {};
+  let dataProducts = {};
 
   snapShot.forEach((doc) => {
     Object.values(doc.data()).forEach((itemData: productType) => {
@@ -58,7 +81,6 @@ export const getData = async () => {
       };
     });
   });
-  console.log("End of ", dataProducts);
   return dataProducts;
 };
 
@@ -66,7 +88,7 @@ export const getProductWithID = async (productID: string) => {
   //here productID might be ''
   const productData = doc(db, "products", "activeProds");
   const snap = await getDoc(productData);
-  var productsAreHere;
+  let productsAreHere;
   if (snap.exists()) {
     Object.values(snap.data()).map((item: productType) => {
       productsAreHere = {
@@ -95,18 +117,69 @@ export const getProductWithID = async (productID: string) => {
 const getallPr = async () => {
   const productData = doc(db, "products", "activeProds");
   const snap = await getDoc(productData);
-  var productsAreHere = [];
+  let productsAreHere: any[] = [];
   if (snap.exists()) {
     productsAreHere = Object.values(snap.data());
   }
   //Here we need to make the call for a specific ID, not for the whole collection of products.
   //but till then, we will do this way.
-  console.log("getProductWithID will return :", productsAreHere);
 
   return productsAreHere;
 };
+export const getInvoiceByID = async (ID: string) => {
+  const invoiceData = doc(db, "invoice", "activeInvoice");
+  const snapInvoice = await getDoc(invoiceData);
+  var invoicesAreHere;
+  if (snapInvoice.exists()) {
+    Object.values(snapInvoice.data()).map(async (invoice: InvoiceModel) => {
+      invoicesAreHere = {
+        ...invoicesAreHere,
+        [invoice.ID]: {
+          ID: invoice.ID,
+          clientName: invoice.client.fullName,
+          clientCUI: invoice.client.CUI,
+          clientBanca: invoice.client.banca,
+          clientAdresa: invoice.client.adresa,
+          clientTelefon: invoice.client.telefon,
+          clientEmail: invoice.client.email,
+          providerName: invoice.provider.fullName,
+          providerAdresa: invoice.provider.adresa,
+          providerTelefon: invoice.provider.telefon,
+          items: invoice.items
+        }
+      };
+    });
+  }
+  console.log("getInvoiceByID will return :", invoicesAreHere);
 
-console.log("ProductList is loading...");
+  return invoicesAreHere;
+};
+export const getObjectByID = (id: string): Promise<any> => {
+  const documentRef = doc(db, "orders", id);
+
+  return new Promise((resolve, reject) => {
+    getDoc(documentRef)
+      .then((documentSnapshot) => {
+        if (documentSnapshot.exists()) {
+          const objectData = documentSnapshot.data();
+          console.log("Object data is:", objectData);
+          // Process the object or perform any necessary transformations
+          resolve(objectData);
+        } else {
+          // Handle the case when the document does not exist
+          resolve(null);
+        }
+      })
+      .catch((error) => {
+        // Handle any errors that occur during the retrieval process
+        console.error("Error fetching object from Firebase:", error);
+        reject(error);
+      });
+  });
+};
+
+// devConsole("Product is loading...");
+
 getallPr().then((data) => {
   productList = data;
   console.log("Done");

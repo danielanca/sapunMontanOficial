@@ -24,7 +24,6 @@ const UpdateProducts = () => {
   const [productsOnline, setProductsOnline] = useState<productInterface[]>();
 
   const handleFire = (event: eventShot) => {
-    console.log(event);
     if (event.eventType === "deleteProduct") {
       if (typeof productsOnline !== "undefined") {
         let productToDelete = productsOnline[event.eventPayload];

@@ -13,7 +13,7 @@ import styles from "./../components/ProduseleNoastre.module.scss";
 const ProduseleNoastre = () => {
   let { ProduseleNoastre } = strings;
   const [products, setProducts] = useState<ProductListType[] | null>(null);
-  var productsFromSession = sessionStorage.getItem(ProductsFromSessionStorage);
+  let productsFromSession = sessionStorage.getItem(ProductsFromSessionStorage);
 
   useEffect(() => {
     if (productsFromSession != null) {

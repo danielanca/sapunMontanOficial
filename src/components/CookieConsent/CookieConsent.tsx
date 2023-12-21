@@ -36,13 +36,16 @@ const CookieConsent = () => {
         </h4>
         <p>
           {cookieConsent.mainText}
+          <br />
           <a target={"_blank"} href="/termeni-si-conditii">
             {cookieConsent.secondText}
           </a>
         </p>
       </div>
       <div className={styles.acceptWrap}>
-        <button onClick={acceptCookie}>{cookieConsent.acceptButton}</button>
+        <button className={styles.acceptCookiesBtn} onClick={acceptCookie}>
+          {cookieConsent.acceptButton}
+        </button>
       </div>
     </div>
   ) : (

@@ -42,7 +42,7 @@ export const componentStrings = {
       39: "Tulcea",
       40: "Valcea",
       41: "Vaslui",
-      42: "Vrancee"
+      42: "Vrancea"
     }
   },
 
@@ -80,18 +80,18 @@ export const footerData = {
 
   ourShop: {
     affiliate: {
-      name: "Program Afiliere",
-      link: "/afiliere"
+      name: "Politica Confidentialitate",
+      link: "/politica-confidentialitate"
     },
     paymentMethods: {
-      name: "Politica de retur",
+      name: "Politica de livrare & retur",
       link: "/politica-retur"
     },
     onlineDispute: {
       name: "Politica de Cookies",
       link: "/politica-de-cookies"
     },
-    anpc: { name: "Scrie-ne !", link: "/contact" }
+    anpc: { name: "Contact", link: "/contact" }
   }
 };
 
@@ -104,20 +104,20 @@ export const cookieConsent = {
 };
 
 export const productConstants = {
-  shippingFee: 15
+  shippingFee: 12
 };
 
 export const websiteContact = {
-  email: "contact@montanair.ro",
+  email: "diniubire.ro@gmail.com",
   socials: {
-    instagram: "https://www.instagram.com/montanair.ro/",
-    facebook: "https://www.facebook.com/montanair.ro/",
+    instagram: "https://www.instagram.com/diniubire.ro/",
+
     whatsapp: "https://wa.me/40745469907"
   }
 };
 
 export const TopBannerPromotional = {
-  text: "Transport Gratuit la comenzi <wbr> peste 130 LEI"
+  text: `Transport ${productConstants.shippingFee} lei  `
 };
 
 export const newsletter = {

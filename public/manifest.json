@@ -1,6 +1,6 @@
 {
-  "short_name": "MontanAir.Ro ",
-  "name": "MontanAir.Ro cosmetice realizate handmade in Romania",
+  "short_name": "DinIubire.Ro ",
+  "name": "DinIubire.Ro kit mulaje",
   "icons": [
     {
       "src": "favicon.ico",
@@ -16,6 +16,11 @@
       "src": "512icon.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
     }
   ],
   "start_url": ".",

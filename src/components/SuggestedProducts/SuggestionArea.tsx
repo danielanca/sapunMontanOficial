@@ -17,20 +17,19 @@ const SuggestionArea = ({ productID }: SuggestionProps) => {
       let productSessionStorage = JSON.parse(productsSession);
       setProducts(productSessionStorage);
     }
+    console.log("Suggestion area triggered");
   }, [products]);
 
   return (
     <div className={styles.relatedContainer}>
       <div className={styles.productHead}>
-        <h3 className={styles.titleProducts}>{"RECOMANDARI"}</h3>
+        <h3 className={styles.titleProducts}>{"ALTE PRODUSE"}</h3>
       </div>
 
       <div className={styles.productArea}>
         {products !== null
-          ? Object.values(products).map((item: any) => {
-              if (!productID.includes(item.ID)) {
-                return <ProductItem key={uniqueId()} size="small" productObject={item} />;
-              }
+          ? Object.values(products).map((item: ProductListType) => {
+              return <ProductItem key={uniqueId()} size="small" productObject={item} />;
             })
           : "LOADING PRODUCTS"}
       </div>

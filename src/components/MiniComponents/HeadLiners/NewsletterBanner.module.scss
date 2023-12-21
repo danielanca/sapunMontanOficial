@@ -12,14 +12,20 @@
   max-height: 270px;
   height: 100%;
   color: white;
-  padding: 35px 0;
+  padding: 2% 0;
 
   font-size: 20px;
   * {
     font-family: "Roboto Medium", sans-serif;
   }
 }
-
+.bannerWrapperInside {
+  padding: 1% 4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .headTitle {
   text-transform: uppercase;
 }
@@ -36,6 +42,41 @@
   border: none;
   outline: none;
   margin: 20px;
+
+  @include media("<=tablet") {
+    min-width: 194px;
+    height: 33px;
+  }
+}
+.backDrops {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 300;
+  background-color: rgba(0, 0, 0, 0.527);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  left: 0px;
+}
+.closePop {
+  @include media("<800px") {
+    right: 10vw;
+    height: 30px;
+    width: 30px;
+    background-color: #3dab00;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    z-index: 1000;
+    color: white;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
 }
 .backDrops {
   width: 100%;

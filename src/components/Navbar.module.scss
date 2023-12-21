@@ -1,7 +1,7 @@
 @import "./../main.module.scss";
 @import "./../data/themes.scss";
 .jewel {
-  background-color: #00ac10;
+  background-color: #ff5f5f;
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -180,15 +180,15 @@
   font-size: 1.4em;
   color: #000000;
   margin: 0 0.8vw;
-  font-family: "SallenasGrande Regular" !important;
+  // font-family: "SallenasGrande Regular" !important;
   border-bottom: 5px solid transparent;
   white-space: nowrap;
-  &:hover {
-  }
+  font-family: "Luckiest Guy" !important;
+  text-transform: uppercase;
 }
 .HashLinkStyle {
   color: map-get($map: $colors, $key: mainlyBlack);
-
+  font-family: "Luckiest Guy" !important;
   text-decoration: none;
   &:hover {
     color: map-get($map: $colors, $key: mainlyBlack);

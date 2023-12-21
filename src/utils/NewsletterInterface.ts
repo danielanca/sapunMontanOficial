@@ -1,6 +1,5 @@
 export interface NewsProps {
-  firstName: string;
-  lastName: string;
+  fullName: string;
   email: string;
 }
 export interface responseProps {

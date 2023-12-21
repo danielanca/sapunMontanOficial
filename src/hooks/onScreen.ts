@@ -4,13 +4,15 @@ import { v4 as uuid } from "uuid";
 const generateUserID = () => {
   return "BRWD-" + uuid().slice(0, 8);
 };
-
+export const getUserBrowser = () => {
+  return navigator.userAgent;
+};
 export function useOnScreen(ref: React.MutableRefObject<HTMLDivElement>) {
   const [isIntersecting, setIntersecting] = useState(false);
   const observer = new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting));
 
   useEffect(() => {
-    observer.observe(ref.current);
+    if (ref.current) observer.observe(ref.current);
     return () => {
       observer.disconnect();
     };
