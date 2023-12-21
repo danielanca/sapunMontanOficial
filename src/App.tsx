@@ -11,7 +11,7 @@ import { getData } from "./data/productList";
 import { AuthProvider } from "./components/context/AuthProvider";
 import { getCookie } from "./components/CookieConsent/functions";
 import CookieConsent from "./components/CookieConsent/CookieConsent";
-import VideoInstructions from "./components/VideoInstructions/VideoInstructions";
+import { ProductsFromSessionStorage } from "./data/constants";
 import NotFound from "./components/NotFound/NotFound";
 import InvoiceView from "./components/Invoice/OrderView/InvoiceView";
 import "./App.css";
@@ -85,7 +85,7 @@ function App() {
   useEffect(() => {
     if (ssProducts == null) {
       getData().then((finalData) => {
-        sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
+        sessionStorage.setItem(ProductsFromSessionStorage, JSON.stringify(finalData));
       });
     }
   }, [ssProducts]);
