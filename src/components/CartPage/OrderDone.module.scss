@@ -4,6 +4,7 @@
   font-weight: 500;
   font-size: 33px;
   color: green;
+  text-align: center;
 }
 
 .horizontalAlign {
@@ -12,11 +13,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  a {
+    width: 224px;
+    outline: 2px solid black;
+  }
 }
 .miniText {
   font-weight: bold;
+  text-align: center;
 }
 .buttonToHome {
+  background-color: #ff6161;
+  color: ghostwhite;
+  padding: 6% 15%;
+  white-space: nowrap;
+  border: none;
 }
 .boldText {
   font-weight: bolder;

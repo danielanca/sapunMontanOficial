@@ -1,5 +1,5 @@
 export const getCookie = (name: string) => {
-  var parts;
+  let parts;
   const value = `; ${document.cookie}`;
   parts = value.split(`; ${name}=`);
   if (parts.length === 2) return parts.pop()?.split(";").shift();
@@ -8,7 +8,6 @@ export const getCookie = (name: string) => {
 
 export const setJWT = (cname: string, cvalue: string, expireHours: number) => {
   return new Promise(function (resolve, reject) {
-    console.log("We set your cookie");
     const d = new Date();
     d.setTime(d.getTime() + expireHours * 60 * 60 * 1000);
     let expires = "expires=" + d.toUTCString();

@@ -13,6 +13,7 @@
   padding: 20px;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
   @include media("<800px") {
     flex-direction: column;
   }
@@ -21,7 +22,7 @@
     color: #0c0c0c;
     line-height: 17px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 400;
     a {
       border-bottom: none;
       color: inherit;
@@ -35,7 +36,7 @@
     margin: 5px;
   }
   h4 {
-    color: #00ac10;
+    color: #ff5f5f;
     text-align: start;
     font-weight: bold;
     @include media("<tablet") {
@@ -47,13 +48,18 @@
   }
 
   button {
-    background-color: #00ac10;
+    background-color: #ff5f5f;
     border-radius: 2px;
     width: 200px;
     height: 56px;
     color: white;
     outline: none;
     border: none;
+
+    @include media("<tablet") {
+      height: 34px;
+      width: 120px;
+    }
   }
   .acceptWrap {
     display: flex;

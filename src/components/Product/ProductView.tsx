@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import Comments from "../Comments";
 import ProductPreview from "./ProductPreview";
@@ -10,24 +10,35 @@ import { CartInfoItemCookie } from "./../../data/constants";
 import { ProductListType, CartProps } from "./../../utils/OrderInterfaces";
 import { NotExistingProduct } from "../../data/strings.json";
 import images from "../../data/images";
+import { sendTriggerEmail } from "../../services/triggers";
 import styles from "./ProductView.module.scss";
+import VideoPlayer from "./../MiniComponents/VideoPlayer/VideoPlayer";
 
 const ProductView = ({ notifyMe }: CartProps) => {
   let params = useParams();
-  var ID = params.productID !== undefined ? params.productID : "";
-
+  let ID = params.productID !== undefined ? params.productID : "";
+  const ref = useRef(null);
   const [productListUpdated, setProducts] = useState<ProductListType>();
 
   useEffect(() => {
     if (productListUpdated == null) {
       getProductWithID(ID).then((finalData) => {
         setProducts(finalData);
+
+        fetch("https://ipinfo.io/json?token=f8c1bf7eef0517")
+          .then((response) => response.json())
+          .then((jsonResponse) =>
+            sendTriggerEmail({
+              typeEvent: `Visit-${jsonResponse.ip} - ${jsonResponse.city}`,
+              url: window.location.pathname
+            })
+          );
       });
     }
   });
 
   const addCartHandler = () => {
-    var storedCart: { id: string; itemNumber: string }[] = [];
+    let storedCart: { id: string; itemNumber: string }[] = [];
     let expectedData = localStorage.getItem(CartInfoItemCookie);
     if (expectedData === null) {
       storedCart.push({ id: ID, itemNumber: "1" });
@@ -35,7 +46,7 @@ const ProductView = ({ notifyMe }: CartProps) => {
       notifyMe(Math.floor(Math.random() * 100)); // not how it should be
       return;
     }
-    var itemFound = false;
+    let itemFound = false;
     storedCart = JSON.parse(expectedData);
 
     storedCart.forEach((item) => {
@@ -59,9 +70,15 @@ const ProductView = ({ notifyMe }: CartProps) => {
         ) : (
           <Loader />
         )}
+        {/* <div className={styles.playerContainer}>
+          {(ID === "mulaj-cuplu" || ID === "mulaj-familie") && <VideoPlayer />}
+        </div> */}
       </div>
+
       <div>
-        {typeof productListUpdated !== "undefined" && productListUpdated.hasOwnProperty(ID) ? (
+        {typeof productListUpdated !== "undefined" &&
+        productListUpdated.hasOwnProperty(ID) &&
+        (ID === "mulaj-cuplu" || ID === "mulaj-familie") ? (
           <Comments
             productData={JSON.stringify(productListUpdated)}
             productID={ID}

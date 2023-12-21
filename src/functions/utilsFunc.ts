@@ -27,3 +27,14 @@ export const makeCheck = (sessionData: ProductSessionProps, cartData: ProductCoo
 
   return cartData.filter((filterItem) => !namesNotFound.includes(filterItem.id));
 };
+
+export const devConsole = (data: any) => {
+  if (process.env.NODE_ENV === "development") {
+    console.log(data);
+  }
+};
+export const prodConsole = (data: any) => {
+  if (process.env.NODE_ENV === "production") {
+    console.log(data);
+  }
+};

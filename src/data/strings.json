@@ -1,30 +1,32 @@
 {
-  "websiteTitle": "MontanAir.Ro",
+  "websiteTitle": "DinIubire.Ro",
 
   "DiscoverOurProducts": {
-    "title": "MontanAir",
-    "textSmall": "DESCOPERA BENEFICIILE CARBUNELUI"
+    "title": "DinIubire.Ro",
+    "textSmall": "amintire pentru totdeauna"
   },
 
   "GrayPromotion": {
-    "text": "Am pregătit <strong>pachetele noastre </strong> pentru toată lumea care dorește să utilizeze mai multe produse la prețuri mai mici. Atunci când alegeți unul dintre aceste pachete, <strong>transportul este gratuit </strong>, prin urmare majoritatea clienților noștri aleg aceste oferte."
+    "text": "Un moment durează <strong> câteva secunde</strong>, dar amintirile rămân pentru totdeauna. - Lori Robinson"
   },
   "ProduseleNoastre": {
     "title": "Produsele Noastre",
-    "metaDescription": "Lista produse MontanAir.Ro"
+    "metaDescription": "Lista produse DinIubire.Ro"
   },
   "socialsInfo": {
     "socialLinks": {
-      "instagram": { "link": "https://instagram.com/montanair.ro", "image": "instagram" },
-      "facebook": { "link": "https://facebook.com/montanair.ro", "image": "facebook" },
-      "whatsapp": { "link": "https://whatsapp.com/montanair.ro", "image": "whatsapp" }
+      "instagram": { "link": "https://instagram.com/DinIubire.Ro", "image": "instagram" },
+      "facebook": { "link": "https://facebook.com/DinIubire.Ro", "image": "facebook" },
+      "whatsapp": { "link": "https://whatsapp.com/DinIubire.Ro", "image": "whatsapp" }
     }
   },
   "navMenu": {
     "ourProducts": { "name": "Produsele noastre", "link": "/produsele-noastre" },
     "aboutUs": { "name": "Despre noi", "link": "/produsele-noastre" },
     "blog": { "name": "Blog", "link": "/blogs" },
-    "testimonials": { "name": "Testimoniale", "link": "/testimonials" },
+    "middleNOUI": { "name": "middle" },
+    "intrebariFrecvente": { "name": "Intrebari frecvente", "link": "/intrebari" },
+    "testimonials": { "name": "Testimoniale", "link": "/testimonials", "hide": "true" },
     "contactUs": { "name": "Contact", "link": "/contact" }
   },
   "navMenuMobile": {
@@ -33,12 +35,8 @@
 
       "ulItems": {
         "one": {
-          "title": "Toate",
+          "title": "Kituri mulaj",
           "link": "/produsele-noastre"
-        },
-        "two": {
-          "title": "Pachete Promo",
-          "link": "/pachete-promo"
         }
       }
     },
@@ -47,13 +45,9 @@
       "title": "Blog",
       "link": "/blogs"
     },
-    "testimonials": {
-      "title": "Testimoniale",
-      "link": "/testimonials"
-    },
-    "contactUs": {
-      "title": "Contact",
-      "link": "/contact"
+    "intrebari-frecvente": {
+      "title": "Intrebari",
+      "link": "/intrebari"
     }
   },
   "cart": {
@@ -82,10 +76,11 @@
   },
 
   "companyData": {
-    "name": "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
-    "number": "41030416",
-    "fiscal": "F12/696/23.04.2019",
-    "address": "str. LIVIU REBREANU loc. Turda, Cluj"
+    "name": "ANCA DANIEL-EMANUEL PERSOANA FIZICA AUTORIZATA",
+    "number": "45044473",
+    "fiscal": "F12/2218/12.10.2021",
+    "address": "str. Plopilor nr.3 loc. Turda, Cluj",
+    "phoneNumber": "0745 469 907"
   },
 
   "footerText": {
@@ -108,8 +103,9 @@
       "city": "Oras",
       "county": "Judet",
       "phoneNo": "Telefon",
-      "emailAddress": "Email",
-      "orderMentions": "Note comandă [opțional]"
+      "emailAddress": "Email [opțional]",
+      "orderMentions": "Note comandă [opțional]",
+      "lockerDelivery": "Scrie numele easybox-ului și orasul"
     },
 
     "totals": {
@@ -128,10 +124,14 @@
         "card": "Card",
         "transfer": "Transfer bancar"
       },
+      "deliveryMethods": {
+        "courierDelivery": "Livrare_CURIER",
+        "easyboxDelivery": "Easybox"
+      },
       "paymentMethodError": "Nu ati selectat metoda de plata!",
       "inputError": "Verificati datele introduse. Completarea spatilor cu * bulina sunt obligatorii"
     },
-    "policyAgreementOrder": "Datele dumneavoastre personale vor fi folosite pentru a vă procesa comanda, pentru a vă susține experiența pe tot acest site web și pentru alte scopuri descrise în",
+    "policyAgreementOrder": "Datele dumneavoastre personale vor fi folosite pentru a vă procesa comanda, pentru a vă susține experiența pe tot acest site web și pentru alte scopuri descrise în ",
     "policyAgremenet": {
       "name": "politica de confidentialitate",
       "link": "/politica-confidentialitate",
@@ -155,13 +155,13 @@
     "blogURLSuffix": "blogid",
     "blogsInner": {
       "similarPosts": "Postari similare",
-      "readArticle": "Citeste articol"
+      "readArticle": "Citeste mai mult..."
     }
   },
 
   "testimonialsArea": {
     "title": "Testimoniale",
-    "descriptionIntroduction": "Afla parerea clientilor despre produsele MontanAir!"
+    "descriptionIntroduction": "Afla parerea clientilor despre produsele DinIubire.Ro!"
   },
 
   "orderView": {
@@ -183,21 +183,21 @@
     },
     "ownerSide": {
       "title": "Magazin",
-      "companyName": "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
-      "fiscal": "F12/696/23.04.2019",
-      "number": "41030416",
-      "address": "str. LIVIU REBREANU loc. Turda, Cluj "
+      "companyName": "ANCA DANIEL EMANUEL PFA",
+      "fiscal": "F12/2218/12.10.2021",
+      "number": "45044473",
+      "address": "str. Plopilor nr.3 loc. Turda, Cluj "
     },
 
     "thankYouMessage": {
       "title": "Multumim pentru incredere!",
-      "author": "Echipa MontanAir.Ro "
+      "author": "Echipa DinIubire.Ro "
     }
   },
 
   "ProductPreview": {
     "callActionForReview": "Scrie un review",
-    "reviewsText": "Recenzii",
+
     "addToCartText": "Adauga in cos"
   },
   "NotExistingProduct": {
@@ -225,7 +225,7 @@
 
   "OrderDone": {
     "title": "Comanda a fost inregistrată!😃",
-    "subtitle": "Veti fi contactat telefonic pentru confirmarea comenzii",
+    "subtitle": "Pregatim coletul! <strong> Va multumim! </strong>",
     "goHome": "Spre pagina principala"
   },
 
@@ -238,7 +238,36 @@
 
   "NewsletterSection": {
     "title": "Newsletter",
-    "subscribeCall": "Aboneaza-te si primesti reducere 10% la urmatoarea ta comanda!",
+    "subscribeCall": "Aboneaza-te la Newsletter-ul nostru si fii la curent cu noile promotii!",
     "subscribeMe": "MĂ ABONEZ"
+  },
+
+  "BrandDetailsStr": {
+    "title": "DinIubire.Ro - cream amintiri impreuna",
+    "description": "Psihologul William James spunea, <br> <i>'Mergi in viata cu un zambet pe fata si cu un scop maret in inima'.</i><br> Noi avem deja unul, <br>sa va ajutam sa creati momente cu cei dragi,<br> pentru totdeauna."
+  },
+
+  "FAQ": {
+    "topText": "FAQ",
+    "bottomText": "Intrebari frecvente",
+    "questionList": {
+      "questionOne": {
+        "question": "In cat timp soseste kit-ul?",
+        "answer": "Coletul ajunge de obicei la client in 1-2 zile din momentul plasarii comenzii."
+      },
+      "questionTwo": {
+        "question": "Este complicat realizarea unui mulaj ?",
+        "answer": "In kit-ul de mulaj sunt incluse atat insutrctiuni pe foaie, dar si VIDEO. Veti primi pe hartie un link pe care trebuie sa-l accesati ca sa vizionati instructiunile video. Instructiunile sunt realizate pas cu pas, in asa fel incat sa puteti parcurge toti pasii fara nici o problema, bucurandu-va in final de mulajul mainilor voastre."
+      },
+      "questionThree": {
+        "question": "Ce inseamna Garantie 100 % Retur la produse?",
+        "answer": " Oferim clientilor nostri dreptul de a returna kit-ul, chiar daca l-ati deschis, si ati realizat mulajul. Returnati tot kit-ul folosit, iar noi va vom returna suma de bani pentru produs, prin metoda de plata selectat initial la comanda."
+      }
+    }
+  },
+  "invoiceTemplate": {
+    "headerTextInvoice": "DinIubire.Ro ",
+    "thankYouMessage": "Va multumim de comanda!",
+    "authorSignature": "DinIubire.Ro"
   }
 }

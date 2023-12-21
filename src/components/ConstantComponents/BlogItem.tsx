@@ -17,9 +17,7 @@ interface BlogItemsProps {
 
 const BlogItem = ({ data }: BlogProps) => {
   let { blogsArea: blogStr } = strings;
-  var blogData: BlogItemsProps = JSON.parse(data);
-  console.log("BLOG ITEM:", blogData.link);
-  console.log("BLOG image:", blogs.posts[blogData.link].image);
+  let blogData: BlogItemsProps = JSON.parse(data);
 
   const gotoElement = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -33,12 +31,21 @@ const BlogItem = ({ data }: BlogProps) => {
         to={`/${blogStr.blogURLSuffix}/` + blogData.link}
       >
         <div className={styles.topPart}>
-          <img alt={blogData.link} className={styles.thumbnailImage} src={blogs.posts[blogData.link].image} />
+          <div className={styles.floaterThumbnail}>
+            <div className={styles.thumbnailWrapper}>
+              <img alt={blogData.link} className={styles.thumbnailImage} src={blogs.posts[blogData.link].image} />
+            </div>
+          </div>
         </div>
         <div className={styles.bottomPart}>
-          <h3 className={styles.titlePost}>{blogData.title}</h3>
+          <div className={styles.highlighter}>
+            <h3 className={styles.labelCategory}>{"GANDURI"}</h3>
+          </div>
+          <div className={styles.titleArea}>
+            <h3 className={styles.titlePost}>{blogData.title}</h3>
+          </div>
           <div className={styles.previewPost}>
-            <p>{blogData.firstDescription}</p>
+            <p className={styles.excerptText}>{blogData.firstDescription}</p>
             <span className={styles.readMore}>{blogStr.blogsInner.readArticle}</span>
           </div>
         </div>

@@ -4,19 +4,22 @@
 @import "./../../../main.module.scss";
 
 .backText {
+  font-family: "Luckiest Guy";
   text-align: center;
   opacity: 0.13;
-  font-size: clamp(50px, 27vw, 423px);
+  font-size: clamp(50px, 21vw, 423px);
   @include media("<tablet") {
     font-size: 68vw;
     margin-left: -280px;
   }
 }
 .newProductTitle {
+  font-family: "Luckiest Guy";
   font-size: clamp(18px, 9vw, 33px);
+  text-align: center;
   @include media(">=desktop") {
     white-space: nowrap;
-    font-size: clamp(30px, 6vw, 125px);
+    font-size: clamp(30px, 6vw, 78px);
   }
 }
 .textContainer {
@@ -30,14 +33,15 @@
     width: 100%;
     text-align: center;
     padding: 0 5%;
+    width: 100%;
+  }
+  @include media(">=tablet", "<desktop") {
+    width: 90%;
   }
 }
 .newProductText {
   width: 100%;
-  height: 400px;
+  height: auto;
   position: relative;
   overflow: hidden;
-  @include media("<tablet") {
-    height: 264px;
-  }
 }

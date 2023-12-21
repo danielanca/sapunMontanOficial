@@ -36,9 +36,10 @@
 }
 .titleInCart {
   margin: 0;
-
+  font-family: "Roboto Medium";
+  font-size: 1.3em;
   @include media("<tablet") {
-    font-size: calc(13px + 1vw);
+    font-size: 1.1em;
   }
 }
 .priceInCart {
@@ -47,6 +48,7 @@
   font-size: 1.4rem;
   display: flex;
   flex-direction: row;
+  font-family: "Roboto Medium";
   @include media("<tablet") {
     font-size: clamp(14px, 5vw, 20px);
   }
@@ -95,6 +97,9 @@
   width: 32px;
   height: 34px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
     color: white;
   }
@@ -116,7 +121,6 @@
   }
 }
 .quantityBox {
-  @extend .col-sm-3;
   display: flex;
   align-items: center;
   justify-content: center;

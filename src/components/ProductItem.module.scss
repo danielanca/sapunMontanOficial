@@ -24,10 +24,10 @@
   margin: 10px 15px;
   @include media(">=tablet", "<desktop") {
     max-width: 250px;
-    width: calc(130px + 10vw);
+    width: clamp(90px, 32vw, 175px);
   }
   @include media("<tablet") {
-    width: calc(166px + 8.8vw);
+    width: clamp(170px, 30vw, 203px);
     padding: 5% 0;
     height: 305px;
   }
@@ -37,38 +37,53 @@
   width: 210px;
   height: 335px;
   @include media("<tablet") {
-    width: 181px;
-    height: 290px;
+    width: 154px;
+    height: 265px;
+    margin: 0;
   }
 }
 .productImage {
   width: 100%;
   cursor: pointer;
   height: 100%;
+  object-fit: cover;
 }
 .productImage:hover {
   opacity: 0.8;
 }
 .productTitle {
-  font-family: "Bebas Neue Regular", cursive;
   font-size: 1.8em;
   text-decoration: none;
   text-align: center;
   line-height: 27px;
   cursor: pointer;
   font-size: clamp(18px, 5vw, 22px);
-
+  font-family: "Luckiest Guy" !important;
+  color: #312828e0;
   @include media("<tablet") {
-    line-height: 29px;
-    font-size: clamp(24px, 3vw, 28px);
+    line-height: 13px;
+    font-size: clamp(13px, 5vw, 16px);
   }
 }
 .productPrice {
-  font-family: "Bebas Neue Regular", cursive;
-  font-size: 24px;
-  @include media("<tablet") {
-    font-size: 2em;
-  }
+  font-family: "Roboto Medium";
+  font-weight: 600;
+  font-size: 16px;
+}
+.addButtonCart {
+  width: 130px;
+  height: 50px;
+  background-color: #ff5f5f;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.addButtonCart:hover {
+  background-color: #ff5f5f;
+  color: black;
 }
 
 .textInside {

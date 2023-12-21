@@ -1,20 +1,14 @@
 import { createContext, useState } from "react";
 import { getCookie } from "./../../utils/functions";
-interface Provi {
-  email: string;
-  password: string;
-  accessToken: string;
-  authorise: boolean | null;
-}
-interface ProviInter {
-  auth?: Provi;
-  setAuth?: React.Dispatch<React.SetStateAction<Provi>>;
-}
-const AuthContext = createContext<ProviInter | null>(null);
+import { ProviInter, Provi } from "./ProviderTypes";
 
-export const AuthProvider: React.FC = ({ children }) => {
-  var authoriseMe = false;
-  if (getCookie("jwt") === "FlorinSalam2022") {
+const AuthContext = createContext<ProviInter | null>(null);
+interface AuthProviderProps {
+  children: React.ReactNode; // This line explicitly types the `children` prop
+}
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  let authoriseMe = false;
+  if (getCookie("jwt") === "ABCJWT") {
     authoriseMe = true;
     // setAuth((auth) => ({ ...auth, email: "yeah", authorise: true }));
   }

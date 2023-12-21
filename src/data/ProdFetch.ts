@@ -6,12 +6,11 @@ const db = getFirestore(app);
 
 export const getData = async () => {
   const documentRef = doc(db, "products", "activeProds");
-  var fetchedData = null;
+  let fetchedData = null;
   const docSnap = await getDoc(documentRef);
 
   if (docSnap.exists()) {
     fetchedData = docSnap.data();
-    console.log("Data arrived:", fetchedData);
   } else {
     console.log("No documents found");
   }
