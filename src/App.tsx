@@ -18,8 +18,9 @@ import "./App.css";
 import FAQBlock from "./components/FAQBlock/FAQBlock";
 import VideoInstructionsSupliment from "./components/VideoInstructions/VideoInstructionsSupliment";
 import InvoiceGeneratorView from "./components/Invoice/InvoiceGeneratorView";
+import Dashboard from "./components/AdminArea/ShardsDesign/Dashboard";
+import adminRoutes from "./components/AdminArea/ShardsDesign/routes";
 ReactGA.initialize("G-WFWYP44Z7L");
-ReactGA.send("page view bro");
 
 export const ProductsContext = React.createContext<any[]>([]);
 const FinishOrder = lazy(() => import(/*webpackPreload: true*/ "./components/CartPage/FinishOrder"));
@@ -47,7 +48,7 @@ const OrderView = lazy(() => import("./components/OrderView/OrderView"));
 const Testimonials = lazy(() =>
   import(/*webpackPrefetch: true , webpackChunkName: "Testimonials" */ "./components/Testimonials")
 );
-
+const EditStrings = lazy(() => import("./components/AdminArea/EditStrings/EditStrings"));
 const SimpleContent = lazy(() => import(/*webpackPrefetch: true*/ "./blocks/SimpleContent"));
 
 const Navbar = lazy(() => import(/* webpackChunkName: "Navbar"  */ "./components/Navbar"));
@@ -62,10 +63,7 @@ function App() {
   const [letsCartHandler, CartHandler] = useState(0);
   const [ssProducts, setSSproducts] = useState<any>();
 
-  const getCookieConsent = () => {
-    if (getCookie("cookieConsentBrasov") === "userAccepted") return false;
-    else return true;
-  };
+  const getCookieConsent = () => getCookie("cookieConsentBrasov") !== "userAccepted";
 
   const handleScroll = () => {
     const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
@@ -83,6 +81,7 @@ function App() {
     };
   }, []);
 
+  //This will set put the products into the sessionStorage so we have a faster acces to the products items.
   useEffect(() => {
     if (ssProducts == null) {
       getData().then((finalData) => {
@@ -95,8 +94,8 @@ function App() {
     <div className="App">
       {getCookieConsent() && <CookieConsent />}
       <header className="App-header">
-        <ProductsContext.Provider productsData={ssProducts}>
-          <React.Suspense fallback={Loading}>
+        <ProductsContext.Provider value={[ssProducts, setSSproducts]}>
+          <React.Suspense fallback={<Loading />}>
             <BrowserRouter basename="/">
               <AuthProvider>
                 <Navbar clearNotif={letsCartHandler} />
@@ -104,10 +103,24 @@ function App() {
                   {/* protect this */}
 
                   <Route element={<RequireAuth />}>
-                    <Route path="/admin" element={<AdminArea />} />
+                    <Route path="/admin/old" element={<AdminArea />} />
                     <Route path="/admin/products" element={<UpdateProducts />} />
-                    <Route path="/admin/products/edit/:productID" element={<EditProduct editMode={true} />} />
-                    <Route path="/admin/products/add" element={<EditProduct editMode={false} />} />
+                    <Route path="/admin/lists" element={<EditStrings />} />
+                    <Route path="/admin" element={<Dashboard />}>
+                      {adminRoutes.map((item: any, index) => {
+                        return (
+                          <Route
+                            key={index}
+                            path={item.path}
+                            element={
+                              <item.layout>
+                                <item.component />
+                              </item.layout>
+                            }
+                          />
+                        );
+                      })}
+                    </Route>
                   </Route>
                   <Route element={<CheckAuth />}>
                     <Route path="/login" element={<Login />} />
@@ -126,7 +139,7 @@ function App() {
                   <Route path="/instructiuni-video" element={<VideoInstructions />} />
                   <Route path="/video-suplimentar" element={<VideoInstructionsSupliment />} />
                   <Route path="/intrebari" element={<FAQBlock />} />
-                  <Route path="/invoice" element={<InvoiceGeneratorView />} />
+                  {/* <Route path="/invoice" element={<InvoiceGeneratorView />} /> */}
                   <Route path="/factura/:orderID" element={<InvoiceView />} />
                   <Route path="/" element={<MainNavigation />} />
 

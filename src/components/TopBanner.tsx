@@ -37,7 +37,7 @@ const TopBanner = () => {
 
   return (
     <div className={styles.bigBlanaBanner}>
-      <div className={styles.emailTop}>{websiteContact.email}</div>
+      <div className={styles.emailTop}>{""}</div>
       <div id="topBannerCol" className="col-md-6 ">
         {/* <p style={computeResponsiveFont(bannerSize, 10, 25)} className={styles.headTitle}> */}
         <p style={getFontSizeByTextLength(TopBannerPromotional.text, bannerSize)} className={styles.headTitle}>
