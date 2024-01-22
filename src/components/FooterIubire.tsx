@@ -38,12 +38,12 @@ const FooterMontan = () => {
             <div className="col-md-4">
               <div className="row">
                 <div className={"col " + styles.footItem}>
-                  <h3 className={styles.footerTittleCenter}>{"AMINTIRE PENTRU TOTDEAUNA"}</h3>
-                  <p key={uniqueId()} className={styles.classicText}>
-                    {
-                      "Viziunea si scopul nostru este să vă oferim produse prin care puteti crea momente unice ce raman, alaturi de cei dragi. "
-                    }
-                  </p>
+                  <h3 className={styles.footerTittleCenter}>{"DETALII COMERCIALE"}</h3>
+                  {Object.values(footerData.companyData).map((item) => (
+                    <a key={uniqueId()}>
+                      <p className={styles.classicText}>{item}</p>
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>

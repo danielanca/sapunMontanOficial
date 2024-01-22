@@ -44,5 +44,26 @@ module.exports = {
 
     // Public path is root of content base
     publicPath: "/"
-  }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: babel - loader,
+          /* This configuration aids babel-preset-env to disable transpiling of import or export modules to commonJS */
+          options: {
+            presets: [["es2015", { modules: false }]]
+          }
+        }
+      }
+    ]
+  },
+  plugin: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+      fileName: "./index.html"
+    })
+  ]
 };

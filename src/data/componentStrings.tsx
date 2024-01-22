@@ -72,10 +72,10 @@ export const footerData = {
   },
 
   companyData: {
-    name: "RUS L. EMIL CRISTIAN INTREPRINDERE INDIVIDUALA",
-    number: "41030416",
-    fiscal: "F12/696/23.04.2019",
-    address: "str. LIVIU REBREANU loc. Turda, Cluj"
+    name: "ANCA DANIEL-EMANUEL P.F.A.",
+    number: "45044473",
+    fiscal: "F12/2218/12.10.2021",
+    address: "str. Plopilor loc. Turda, Cluj"
   },
 
   ourShop: {

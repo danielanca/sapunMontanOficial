@@ -7,7 +7,7 @@ const appDirectory = fs.realpathSync(process.cwd());
 
 // Gets absolute path of file within app directory
 const resolveAppPath = (relativePath) => path.resolve(appDirectory, relativePath);
-
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 // Host
 const host = process.env.HOST || "localhost";
 
@@ -27,7 +27,7 @@ module.exports = {
     // Development filename output
     filename: "static/js/bundle.js"
   },
-
+  plugins: [new BundleAnalyzerPlugin()],
   devServer: {
     // Serve index.html as the base
     contentBase: resolveAppPath("public"),
