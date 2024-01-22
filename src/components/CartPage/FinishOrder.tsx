@@ -15,6 +15,7 @@ import images from "./../../data/images";
 import { useOrderObject } from "./useOrderData";
 import { getInputFields } from "./inputFields";
 import { areInputsValid } from "./funcs";
+import CityInput from "../Inputs/CityInput";
 
 const FinishOrder = ({ clearNotification }: OrderProps) => {
   let { orderFinishPage: orderString } = strings;
@@ -27,16 +28,6 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   const [results, setResults] = useState<string[]>([]);
   const easyboxList: string[] = [];
 
-  const url = "https://api.smartship.ro/geolocation/easybox";
-  const options = { method: "GET", headers: { "X-API-KEY": " d7cc7d6074ec087be903ca30d35c9696" } };
-
-  const handleSearch = (query: string) => {
-    console.log("We are searching for:", query, results["easybox"]);
-    const filteredResults = easyboxList["easybox"].filter((item: any) =>
-      item.name.toLowerCase().includes(query.toLowerCase())
-    );
-    setResults(filteredResults);
-  };
   const [orderState, setOrderState] = useState<
     | "initState"
     | "requestState"
@@ -100,6 +91,9 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     setSelectEasybox(false);
   };
 
+  const easyboxHandler = (easybox: any) => {
+    console.log("Easybox selected:", easybox);
+  };
   const inputHandler = (data: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = data.target;
     setorderData((orderData) => ({
@@ -187,23 +181,23 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     }
   }, [orderState]);
 
-  useEffect(() => {
-    (async () => {
-      // Your snippet here
-      try {
-        const response = await fetch(url, options);
-        const data = await response.json();
-        setResults(data);
-        console.log(data);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     // Your snippet here
+  //     try {
+  //       const response = await fetch(API_EASYBOX_CALL, options);
+  //       const data = await response.json();
+  //       setResults(data);
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   })();
+  // }, []);
 
-  useEffect(() => {
-    console.log("Results are:", results);
-  }, [results]);
+  // useEffect(() => {
+  //   console.log("Results are:", results);
+  // }, [results]);
   const inputObject = getInputFields(orderData, inputHandler);
 
   return (
@@ -350,19 +344,12 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                   {isEasyboxSelected && (
                     <div className={styles.groupInput}>
                       <div className={styles.inputBox}>
+                        <CityInput onEasyboxSelect={easyboxHandler} />
+                      </div>
+                      {/* <div className={styles.inputBox}>
                         <label className={styles.optionalNote}>{orderString.inputsLabels.lockerDelivery}</label>
-                        <input
-                          type="text"
-                          value={orderData.lockerName}
-                          name="lockerName"
-                          onChange={inputHandler}
-                          // onChange={(e) => {
-                          //   // setSearch(e.target.value);
-                          //   // handleSearch(e.target.value);
-                          //   lockerInputHandler(e.target.value);
-                          // }}
-                        />
-                        {/* {results.length > 0 && (
+                        <input type="text" value={orderData.lockerName} name="lockerName" onChange={lockerHandler} />
+                        {results.length > 0 && (
                           <div className={styles.dropdown}>
                             {results.map((result, index) => (
                               <div key={index} className={styles.dropdownItem}>
@@ -370,17 +357,8 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                               </div>
                             ))}
                           </div>
-                        )} */}
-                        {/* <textarea
-                          className={styles.textareaparticular}
-                          spellCheck="false"
-                          rows={2}
-                          onChange={(event) => {
-                            setorderData((orderData) => ({ ...orderData, orderNotes: event.target.value }));
-                          }}
-                          value={orderData.orderNotes}
-                        /> */}
-                      </div>
+                        )}
+                      </div> */}
                     </div>
                   )}
                 </div>

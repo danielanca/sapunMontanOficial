@@ -105,7 +105,8 @@
       "phoneNo": "Telefon",
       "emailAddress": "Email [opțional]",
       "orderMentions": "Note comandă [opțional]",
-      "lockerDelivery": "Scrie numele easybox-ului și orasul"
+      "lockerDelivery": "Scrie numele easybox-ului și orasul",
+      "locateCounty": "Introduceti JUDETUL"
     },
 
     "totals": {
