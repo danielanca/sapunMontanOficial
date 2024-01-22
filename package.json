@@ -89,8 +89,8 @@
     "pdfjs-dist": "2.16.105"
   },
   "scripts": {
-    "build": "react-scripts build --openssl-legacy-provide --stats",
-    "start": "react-scripts start --openssl-legacy-provider",
+    "build": "react-scripts --openssl-legacy-provide build  --stats",
+    "start": "react-scripts --openssl-legacy-provider start ",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "analyze": "webpack-bundle-analyzer build/bundle-stats.json"
