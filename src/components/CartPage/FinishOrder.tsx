@@ -24,9 +24,6 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   let storedCart: any[] = [];
   let subtotalPrepare: number = 0;
   const [isEasyboxSelected, setSelectEasybox] = useState(false);
-  const [search, setSearch] = useState("");
-  const [results, setResults] = useState<string[]>([]);
-  const easyboxList: string[] = [];
 
   const [orderState, setOrderState] = useState<
     | "initState"
@@ -45,6 +42,10 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   });
   const { orderData, setorderData } = useOrderObject();
 
+  useEffect(() => {
+    if (!isEasyboxSelected) {
+    }
+  }, [isEasyboxSelected]);
   const handleSend = async () => {
     try {
       console.log("Sending data:", orderData);
@@ -86,7 +87,6 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     }
     if (title === orderString.shipping.deliveryMethods.easyboxDelivery) {
       setSelectEasybox(true);
-      return;
     }
     setSelectEasybox(false);
   };
@@ -181,23 +181,6 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     }
   }, [orderState]);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     // Your snippet here
-  //     try {
-  //       const response = await fetch(API_EASYBOX_CALL, options);
-  //       const data = await response.json();
-  //       setResults(data);
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   })();
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log("Results are:", results);
-  // }, [results]);
   const inputObject = getInputFields(orderData, inputHandler);
 
   return (
