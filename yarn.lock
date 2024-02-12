@@ -2781,10 +2781,10 @@
   dependencies:
     browserify-zlib "^0.2.0"
 
-"@react-pdf/png-js@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@react-pdf/png-js/-/png-js-2.3.0.tgz#48043849513ab909250e67120b3874c326e48b71"
-  integrity sha512-+HLW7JZ09P8isxFq3hJJ9ppdCyQWLErfekkQHKNdpxoVW9S3tokJmaKofTvhAy6XA4Yd1QlN9en0iJ8V5mDdQA==
+"@react-pdf/png-js@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@react-pdf/png-js/-/png-js-2.3.1.tgz#5381d5443ac1134e98fc446fa1debb45950665bc"
+  integrity sha512-pEZ18I4t1vAUS4lmhvXPmXYP4PHeblpWP/pAlMMRkEyP7tdAeHUN7taQl9sf9OPq7YITMY3lWpYpJU6t4CZgZg==
   dependencies:
     browserify-zlib "^0.2.0"
 
@@ -10584,6 +10584,13 @@ jalaali-js@^1.1.0:
   resolved "https://registry.yarnpkg.com/jalaali-js/-/jalaali-js-1.2.6.tgz#f4ee4bf686ed32bb9656f101225be4b7a1c3fd21"
   integrity sha512-io974va+Qyu+UfuVX3UIAgJlxLhAMx9Y8VMfh+IG00Js7hXQo1qNQuwSiSa0xxco0SVgx5HWNkaiCcV+aZ8WPw==
 
+jay-peg@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/jay-peg/-/jay-peg-1.0.1.tgz#f09b8615886cb1ce61c364c16e203f566eeaa779"
+  integrity sha512-zBfjkGbuuNXk8JW+rEePpPEbRRjupS8q+5yPak7kjy3e2GvvNwsLle9okEFvfGyZA6HvtSSiYrVd1/jgnYebaQ==
+  dependencies:
+    restructure "^3.0.0"
+
 jest-changed-files@^26.6.2:
   version "26.6.2"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-26.6.2.tgz#f6198479e1cc66f22f9ae1e22acaa0b429c042d0"
@@ -11169,11 +11176,6 @@ jose@^2.0.6:
   integrity sha512-FVoPY7SflDodE4lknJmbAHSUjLCzE2H1F6MS0RYKMQ8SR+lNccpMf8R4eqkNYyyUjR5qZReOzZo5C5YiHOCjjg==
   dependencies:
     "@panva/asn1.js" "^1.0.0"
-
-jpeg-exif@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/jpeg-exif/-/jpeg-exif-1.1.4.tgz#781a65b6cd74f62cb1c493511020f8d3577a1c2b"
-  integrity sha512-a+bKEcCjtuW5WTdgeXFzswSrdqi0jk4XlEtZlx5A94wCoBpFjfFTbo/Tra5SpNCl/YFZPvcV1dJc+TAYeg6ROQ==
 
 js-sha3@0.8.0:
   version "0.8.0"

@@ -54,7 +54,7 @@ export const staticContent = {
     <h4 class="middleSubtext"> CONDITII PENTRU RETURNAREA PRODUSELOR </h4>
 
     <p><b>Conform Ordonantei nr. 130/2000 </b> privind regimul juridic al contractelor la distanta <b>"Consumatorul are dreptul sa notifice in scris comerciantului 
-    ca renunta la cumparare, fara penalitati si fara invocarea unui motiv, in termen de 10 zile lucratoare de la primirea produsului </b>. Notificarea se va da, semna si 
+    ca renunta la cumparare, fara penalitati si fara invocarea unui motiv, in termen de 30 zile lucratoare de la primirea produsului </b>. Notificarea se va da, semna si 
     trimite de catre Dumneavoastra prin posta la adresa: <b>localitatea Turda, strada Plopilor, nr.3 bl.l1  Judet. Cluj. In situatia mentionata mai sus </b>, Dumneavoastra veti
     returna, in termenul prevazut mai sus, produsul cumparat in ambalajul original, fara sa prezinte nici o urma de deteriorare sau uzura. Cheltuielile de expeditie vor fi suportate de Dumneavoastra.
     Produsele trebuie returnate in ambalajul lor original. Prin deschiderea ambalajelor individuale in care au fost livrate produsele comandate inseamna ca sunteti de acord cu aceste conditii de utilizare 
