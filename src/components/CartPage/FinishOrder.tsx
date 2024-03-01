@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import OrderDone from "./OrderDone";
 import { sendOrderConfirmation } from "./../../services/emails";
+import { useNavigate } from "react-router-dom";
+
 import Checkboxer from "./../MiniComponents/Checkboxer";
 
 import { NavHashLink } from "react-router-hash-link";
@@ -22,6 +24,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   let productSessionStorage = itemsSessionStorage != null ? JSON.parse(itemsSessionStorage) : null;
   let storedCart: any[] = [];
   let subtotalPrepare: number = 0;
+  const navigate = useNavigate();
   const [isEasyboxSelected, setSelectEasybox] = useState(false);
   const [search, setSearch] = useState("");
   const [results, setResults] = useState<string[]>([]);
@@ -136,6 +139,12 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
   };
 
   useEffect(() => {
+    if (orderState === "finishState") {
+      navigate("/thank-you");
+    }
+  }, [orderState, navigate]);
+
+  useEffect(() => {
     if (orderState == "finishState") {
       window.scrollTo(0, 0);
       localStorage.removeItem(CartInfoItemCookie);
@@ -201,6 +210,37 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
     })();
   }, []);
 
+  // useEffect(() => {
+  //   if (orderState === "finishState") {
+  //     // Dynamically inject the conversion tracking script when the order is finished
+  //     const script = document.createElement("script");
+  //     script.text = `
+  //       (function waitForGtag() {
+  //         console.log("Executing achizitie conversion tracking...");
+  //         if (typeof gtag === "function") {
+  //           gtag('event', 'conversion', {
+  //             'send_to': 'AW-10941123412/ww8eCM7HiakYENSWkeEo',
+  //             'value': 0.0,
+  //             'currency': 'RON',
+  //             'transaction_id': ''
+  //           });
+  //         } else {
+  //           console.log("The GTAG not loaded, retrying in 100 ms");
+  //           setTimeout(waitForGtag, 100); // Check again in 100ms
+  //         }
+  //       })();
+  //     `;
+  //     document.body.appendChild(script);
+
+  //     // Cleanup to remove the script when the component unmounts or orderState changes
+  //     return () => {
+  //       document.body.removeChild(script);
+  //     };
+  //   }
+  //   // Since we're dealing with external scripts and the DOM directly, there's no dependency array needed here.
+  //   // However, if `orderState` or any other relevant state/props change and you want to re-run this effect, include them in the dependency array.
+  // }, [orderState]);
+
   useEffect(() => {
     console.log("Results are:", results);
   }, [results]);
@@ -208,161 +248,160 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
 
   return (
     <div className={styles.FinishSection}>
-      {orderState !== "finishState" ? (
-        <>
-          <div className={styles.topTitle}>
-            <div className={styles.cartLine} />
-            <h3 className={styles.finishOrderTitle}>{orderString.finishGuide}</h3>
-            <div className={styles.cartLine} />
-          </div>
-          <div className={styles.infoBoxing}>
-            <img src={images.finishOrder} />
-            <h3>{orderString.deliveringInfor}</h3>
-          </div>
-          <div className={styles.finishOrderContainer}>
-            <div className={styles.leftContainer}>
-              <div>
-                <h3 className={styles.topBillText}>{orderString.invoiceDetails}</h3>
-              </div>
-              {Object.values(inputObject).map((item: PropertyInput) => {
-                return (
-                  <div className={styles.groupInput}>
-                    <div className={styles.inputBox}>
-                      <label>
-                        {item.labelText}
-                        {item.mandatoryInput && <span className={styles.alertAsterisk}>{"*"}</span>}
-                      </label>
-                      <input
-                        name={item.name}
-                        type={"large"}
-                        onChange={item.inputListener}
-                        value={item.value}
-                        autoComplete={item.inputOptions?.autoComplete}
-                        list={item.inputOptions?.list}
-                      />
-                      {/* {item.otherStructure?.dataList?.name && (
+      <>
+        <div className={styles.topTitle}>
+          <div className={styles.cartLine} />
+          <h3 className={styles.finishOrderTitle}>{orderString.finishGuide}</h3>
+          <div className={styles.cartLine} />
+        </div>
+        <div className={styles.infoBoxing}>
+          <img src={images.finishOrder} />
+          <h3>{orderString.deliveringInfor}</h3>
+        </div>
+        <div className={styles.finishOrderContainer}>
+          <div className={styles.leftContainer}>
+            <div>
+              <h3 className={styles.topBillText}>{orderString.invoiceDetails}</h3>
+            </div>
+            {Object.values(inputObject).map((item: PropertyInput) => {
+              return (
+                <div className={styles.groupInput}>
+                  <div className={styles.inputBox}>
+                    <label>
+                      {item.labelText}
+                      {item.mandatoryInput && <span className={styles.alertAsterisk}>{"*"}</span>}
+                    </label>
+                    <input
+                      name={item.name}
+                      type={"large"}
+                      onChange={item.inputListener}
+                      value={item.value}
+                      autoComplete={item.inputOptions?.autoComplete}
+                      list={item.inputOptions?.list}
+                    />
+                    {/* {item.otherStructure?.dataList?.name && (
                         <datalist id={item.otherStructure.dataList.name}>
                           {Object.values(item.otherStructure.dataList.list).map((item) => (
                             <option value={item} />
                           ))}
                         </datalist>
                       )} */}
-                    </div>
                   </div>
-                );
-              })}
+                </div>
+              );
+            })}
 
-              <div className={styles.groupInput}>
-                <div className={styles.inputBox}>
-                  <label className={styles.optionalNote}>{orderString.inputsLabels.orderMentions}</label>
-                  <textarea
-                    className={styles.textareaparticular}
-                    spellCheck="false"
-                    rows={2}
-                    onChange={(event) => {
-                      setorderData((orderData) => ({ ...orderData, orderNotes: event.target.value }));
-                    }}
-                    value={orderData.orderNotes}
+            <div className={styles.groupInput}>
+              <div className={styles.inputBox}>
+                <label className={styles.optionalNote}>{orderString.inputsLabels.orderMentions}</label>
+                <textarea
+                  className={styles.textareaparticular}
+                  spellCheck="false"
+                  rows={2}
+                  onChange={(event) => {
+                    setorderData((orderData) => ({ ...orderData, orderNotes: event.target.value }));
+                  }}
+                  value={orderData.orderNotes}
+                />
+              </div>
+            </div>
+          </div>
+          <div className={styles.rightContainer}>
+            <div className={styles.rightChild}>
+              <div className={styles.legendsTable}>
+                <span>{orderString.totals.product}</span>
+                <span>{orderString.totals.subTotal}</span>
+              </div>
+              <ul className={styles.itemUl}>
+                {storedCart.map((item) => (
+                  <li className={styles.itemLi}>
+                    <span className={styles.productSummarizeTitle}>{productSessionStorage[item.id].title}</span>
+                    <span className={styles.count}>{Number(item.itemNumber) + "x"}</span>
+                    <span className={styles.price}>{Number(productSessionStorage[item.id].price)}</span>
+                  </li>
+                ))}
+              </ul>
+              <span className={styles.subTotal}>
+                {` ${orderString.totals.subTotal}: ${orderString.totals.currency}  ` + subtotalPrepare}
+              </span>
+              <span className={styles.subTotal}>
+                {` ${orderString.totals.transport}: ${orderString.totals.currency} ` + deliveryFee}
+              </span>
+              <span className={styles.subTotal}>{" - - - - - - - - -  - - - -"}</span>
+              <span className={styles.subTotal}>
+                {` ${orderString.totals.total} : ${orderString.totals.currency} ` +
+                  (Number(subtotalPrepare) + Number(deliveryFee))}
+              </span>
+              <span className={styles.VATincluded}>{orderString.totals.TVAincluded}</span>
+            </div>
+            <div>
+              <span className={styles.deliveryInfo}>{orderString.shipping.estimation}</span>
+              <img className={styles.carShip} src={images.deliveryCar} />
+            </div>
+            <div>
+              <div className={styles.deliveryCheckbox}>
+                <span className={styles.paymentDetails}>{orderString.shipping.paymentMethod}</span>
+
+                <div className={styles.checkboxer}>
+                  <Checkboxer
+                    onSwitchEnabled={paymentMethodHandler}
+                    name={orderString.shipping.paymentMethodOptions.cash}
                   />
+                  <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
+                    {orderString.shipping.paymentMethodOptions.cash}
+                  </label>
                 </div>
               </div>
             </div>
-            <div className={styles.rightContainer}>
-              <div className={styles.rightChild}>
-                <div className={styles.legendsTable}>
-                  <span>{orderString.totals.product}</span>
-                  <span>{orderString.totals.subTotal}</span>
-                </div>
-                <ul className={styles.itemUl}>
-                  {storedCart.map((item) => (
-                    <li className={styles.itemLi}>
-                      <span className={styles.productSummarizeTitle}>{productSessionStorage[item.id].title}</span>
-                      <span className={styles.count}>{Number(item.itemNumber) + "x"}</span>
-                      <span className={styles.price}>{Number(productSessionStorage[item.id].price)}</span>
-                    </li>
-                  ))}
-                </ul>
-                <span className={styles.subTotal}>
-                  {` ${orderString.totals.subTotal}: ${orderString.totals.currency}  ` + subtotalPrepare}
-                </span>
-                <span className={styles.subTotal}>
-                  {` ${orderString.totals.transport}: ${orderString.totals.currency} ` + deliveryFee}
-                </span>
-                <span className={styles.subTotal}>{" - - - - - - - - -  - - - -"}</span>
-                <span className={styles.subTotal}>
-                  {` ${orderString.totals.total} : ${orderString.totals.currency} ` +
-                    (Number(subtotalPrepare) + Number(deliveryFee))}
-                </span>
-                <span className={styles.VATincluded}>{orderString.totals.TVAincluded}</span>
-              </div>
-              <div>
-                <span className={styles.deliveryInfo}>{orderString.shipping.estimation}</span>
-                <img className={styles.carShip} src={images.deliveryCar} />
-              </div>
-              <div>
-                <div className={styles.deliveryCheckbox}>
-                  <span className={styles.paymentDetails}>{orderString.shipping.paymentMethod}</span>
+            <div className={styles.filledSpacePaymentMtd}>
+              {orderState === "errorState" && orderData.paymentMethod === "" && (
+                <h4 className="text-center " style={{ color: "red" }}>
+                  {orderString.shipping.paymentMethodError}
+                </h4>
+              )}
+            </div>
+            <div>
+              <div className={styles.deliveryCheckbox}>
+                <span className={styles.paymentDetails}>{"Metoda de livrare"}</span>
 
-                  <div className={styles.checkboxer}>
-                    <Checkboxer
-                      onSwitchEnabled={paymentMethodHandler}
-                      name={orderString.shipping.paymentMethodOptions.cash}
-                    />
-                    <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
-                      {orderString.shipping.paymentMethodOptions.cash}
-                    </label>
-                  </div>
+                <div className={styles.checkboxer}>
+                  <Checkboxer
+                    onSwitchEnabled={deliveryMethodHandler}
+                    name={orderString.shipping.deliveryMethods.courierDelivery}
+                  />
+                  <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
+                    {"Curier"}
+                  </label>
                 </div>
-              </div>
-              <div className={styles.filledSpacePaymentMtd}>
-                {orderState === "errorState" && orderData.paymentMethod === "" && (
-                  <h4 className="text-center " style={{ color: "red" }}>
-                    {orderString.shipping.paymentMethodError}
-                  </h4>
-                )}
-              </div>
-              <div>
-                <div className={styles.deliveryCheckbox}>
-                  <span className={styles.paymentDetails}>{"Metoda de livrare"}</span>
-
-                  <div className={styles.checkboxer}>
-                    <Checkboxer
-                      onSwitchEnabled={deliveryMethodHandler}
-                      name={orderString.shipping.deliveryMethods.courierDelivery}
+                <div className={styles.checkboxer}>
+                  <Checkboxer
+                    onSwitchEnabled={deliveryMethodHandler}
+                    name={orderString.shipping.deliveryMethods.easyboxDelivery}
+                  />
+                  <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
+                    <img
+                      width={100}
+                      height={50}
+                      src="https://firebasestorage.googleapis.com/v0/b/diniubire-89ce0.appspot.com/o/ProductMedia%2Feasybox.svg?alt=media&token=3f1610ed-956c-4234-b45e-4429e3dace3b"
                     />
-                    <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
-                      {"Curier"}
-                    </label>
-                  </div>
-                  <div className={styles.checkboxer}>
-                    <Checkboxer
-                      onSwitchEnabled={deliveryMethodHandler}
-                      name={orderString.shipping.deliveryMethods.easyboxDelivery}
-                    />
-                    <label className={styles.methodPaymentCheck} htmlFor="delivercheck">
-                      <img
-                        width={100}
-                        height={50}
-                        src="https://firebasestorage.googleapis.com/v0/b/diniubire-89ce0.appspot.com/o/ProductMedia%2Feasybox.svg?alt=media&token=3f1610ed-956c-4234-b45e-4429e3dace3b"
+                  </label>
+                </div>
+                {isEasyboxSelected && (
+                  <div className={styles.groupInput}>
+                    <div className={styles.inputBox}>
+                      <label className={styles.optionalNote}>{orderString.inputsLabels.lockerDelivery}</label>
+                      <input
+                        type="text"
+                        value={orderData.lockerName}
+                        name="lockerName"
+                        onChange={inputHandler}
+                        // onChange={(e) => {
+                        //   // setSearch(e.target.value);
+                        //   // handleSearch(e.target.value);
+                        //   lockerInputHandler(e.target.value);
+                        // }}
                       />
-                    </label>
-                  </div>
-                  {isEasyboxSelected && (
-                    <div className={styles.groupInput}>
-                      <div className={styles.inputBox}>
-                        <label className={styles.optionalNote}>{orderString.inputsLabels.lockerDelivery}</label>
-                        <input
-                          type="text"
-                          value={orderData.lockerName}
-                          name="lockerName"
-                          onChange={inputHandler}
-                          // onChange={(e) => {
-                          //   // setSearch(e.target.value);
-                          //   // handleSearch(e.target.value);
-                          //   lockerInputHandler(e.target.value);
-                          // }}
-                        />
-                        {/* {results.length > 0 && (
+                      {/* {results.length > 0 && (
                           <div className={styles.dropdown}>
                             {results.map((result, index) => (
                               <div key={index} className={styles.dropdownItem}>
@@ -371,7 +410,7 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                             ))}
                           </div>
                         )} */}
-                        {/* <textarea
+                      {/* <textarea
                           className={styles.textareaparticular}
                           spellCheck="false"
                           rows={2}
@@ -380,66 +419,63 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
                           }}
                           value={orderData.orderNotes}
                         /> */}
-                      </div>
                     </div>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div
-              style={{
-                visibility: orderState === "errorState" && !completionState.inputCompleted ? "visible" : "hidden"
-              }}
-              className={styles.warningOrderWrapper}
-            >
-              <h4 className={styles.warningOrder} style={{ color: "red", margin: "auto", textAlign: "center" }}>
-                {orderString.shipping.inputError}
-              </h4>
-            </div>
-
-            <div className={styles.paymentShipContainer}>
-              <div className={styles.paymentContainer}>
-                <p className={styles.GDPRNotify}>
-                  {orderString.policyAgreementOrder}
-                  <NavHashLink replace to={orderString.policyAgremenet.link}>
-                    <a className={styles.extensiveGdpr}>{orderString.policyAgremenet.name}</a>
-                  </NavHashLink>
-                </p>
-
-                <div className={styles.groupInputTerms}>
-                  <div className={styles.checkBoxStyle}>
-                    <Checkboxer onSwitchEnabled={termAcceptHandler} />
-
-                    <label htmlFor="acceptTerms" className={styles.acceptTerms}>
-                      {orderString.policyAgremenet.constent.confirm}
-                    </label>
                   </div>
-                  <div className={styles.filledSpaceTCAlert}>
-                    {orderState === "errorState" && !completionState.termsAccepted && (
-                      <h4 className={styles.termConditionAlert}>{orderString.policyAgremenet.constent.error}</h4>
-                    )}
-                  </div>
-                </div>
-                <button onClick={sendOrderData} type="submit" className={styles.finishOrder}>
-                  {orderState != "pendingState" ? (
-                    <p>{orderString.orderItself.sendFinishOrder.nameButton}</p>
-                  ) : (
-                    <p>{". . ."}</p>
-                  )}
-                </button>
-                <div>
-                  {orderState == "pendingState" && (
-                    <p className={styles.emailSendStyle}>{orderString.orderItself.sendFinishOrder.pendingMessage}</p>
-                  )}
-                </div>
+                )}
               </div>
             </div>
           </div>
-        </>
-      ) : (
-        <OrderDone />
-      )}
+
+          <div
+            style={{
+              visibility: orderState === "errorState" && !completionState.inputCompleted ? "visible" : "hidden"
+            }}
+            className={styles.warningOrderWrapper}
+          >
+            <h4 className={styles.warningOrder} style={{ color: "red", margin: "auto", textAlign: "center" }}>
+              {orderString.shipping.inputError}
+            </h4>
+          </div>
+
+          <div className={styles.paymentShipContainer}>
+            <div className={styles.paymentContainer}>
+              <p className={styles.GDPRNotify}>
+                {orderString.policyAgreementOrder}
+                <NavHashLink replace to={orderString.policyAgremenet.link}>
+                  <a className={styles.extensiveGdpr}>{orderString.policyAgremenet.name}</a>
+                </NavHashLink>
+              </p>
+
+              <div className={styles.groupInputTerms}>
+                <div className={styles.checkBoxStyle}>
+                  <Checkboxer onSwitchEnabled={termAcceptHandler} />
+
+                  <label htmlFor="acceptTerms" className={styles.acceptTerms}>
+                    {orderString.policyAgremenet.constent.confirm}
+                  </label>
+                </div>
+                <div className={styles.filledSpaceTCAlert}>
+                  {orderState === "errorState" && !completionState.termsAccepted && (
+                    <h4 className={styles.termConditionAlert}>{orderString.policyAgremenet.constent.error}</h4>
+                  )}
+                </div>
+              </div>
+              <button onClick={sendOrderData} type="submit" className={styles.finishOrder}>
+                {orderState != "pendingState" ? (
+                  <p>{orderString.orderItself.sendFinishOrder.nameButton}</p>
+                ) : (
+                  <p>{". . ."}</p>
+                )}
+              </button>
+              <div>
+                {orderState == "pendingState" && (
+                  <p className={styles.emailSendStyle}>{orderString.orderItself.sendFinishOrder.pendingMessage}</p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
     </div>
   );
 };
