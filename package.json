@@ -89,7 +89,7 @@
     "pdfjs-dist": "2.16.105"
   },
   "scripts": {
-    "build": "react-scripts build",
+    "build": "react-scripts --openssl-legacy-provider build",
     "start": "react-scripts --openssl-legacy-provider start ",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -115,6 +115,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@jest/globals": "^29.3.1",
+    "@types/gtag.js": "^0.0.19",
     "@types/jquery": "^3.5.13",
     "@types/nodemailer": "^6.4.4",
     "@types/react": "^18.0.27",

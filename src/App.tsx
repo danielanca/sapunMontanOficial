@@ -20,6 +20,7 @@ import VideoInstructionsSupliment from "./components/VideoInstructions/VideoInst
 import InvoiceGeneratorView from "./components/Invoice/InvoiceGeneratorView";
 import Dashboard from "./components/AdminArea/ShardsDesign/Dashboard";
 import adminRoutes from "./components/AdminArea/ShardsDesign/routes";
+import OrderDone from "./components/CartPage/OrderDone";
 ReactGA.initialize("G-WFWYP44Z7L");
 
 export const ProductsContext = React.createContext<any[]>([]);
@@ -131,6 +132,7 @@ function App() {
                   <Route path="/produs/:productID" element={<ProductView notifyMe={CartHandler} />} />
                   <Route path="/cosulmeu" element={<CartPage notifyMe={CartHandler} />} />
                   <Route path="/finalizare-comanda" element={<FinishOrder clearNotification={CartHandler} />} />
+                  <Route path="/thank-you" element={<OrderDone />} />
 
                   <Route path="/blogs" element={<Blogs />} />
                   <Route path="/blogid/:blogLink" element={<BlogPost />} />
