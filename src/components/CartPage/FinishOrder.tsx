@@ -113,9 +113,8 @@ const FinishOrder = ({ clearNotification }: OrderProps) => {
 
   let deliveryFee = productConstants.shippingFee;
   let expectedData = localStorage.getItem(CartInfoItemCookie);
-  let explicitProductList: ExplicitProdListProps[] = [];
-
-  if (expectedData != null) {
+  var explicitProductList: ExplicitProdListProps[] = [];
+  if (expectedData !== null) {
     storedCart = JSON.parse(expectedData);
     if (productSessionStorage !== null) {
       storedCart = makeCheck(productSessionStorage, storedCart);

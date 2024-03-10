@@ -29,7 +29,7 @@ const BlogPost = () => {
   thisBlogLink = params.blogLink !== undefined ? params.blogLink : "";
 
   var dani: BlogContent = blogs.posts[thisBlogLink];
-  if (blogs.posts[thisBlogLink] != null) {
+  if (blogs.posts[thisBlogLink] !== null) {
   }
 
   return (
@@ -45,7 +45,7 @@ const BlogPost = () => {
             <h3 className={styles.centerTitle}>{dani.title}</h3>
             <span className={styles.date}>{dani.postedDate}</span>
             <span className={styles.fineLine} />
-            {blogs.posts[thisBlogLink].postCategory != null && (
+            {blogs.posts[thisBlogLink].postCategory !== null && (
               <span className={styles.postcategory}>{blogs.posts[thisBlogLink].postCategory}</span>
             )}
           </div>

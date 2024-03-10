@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import useAuth from "./../hooks/useAuth";
 import { requestLoginAccess } from "../../services/emails";
-import { Credentials, ResponseServer } from "./AdminTypes";
-import { useNavigate } from "react-router-dom";
+
+import { useLocation, useNavigate } from "react-router-dom";
 import { setJWT } from "../../utils/functions";
 import styles from "./LogIn.module.scss";
 

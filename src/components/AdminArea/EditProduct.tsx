@@ -63,10 +63,12 @@ const EditProduct = () => {
   };
 
   useEffect(() => {
-    if (productListUpdated == null) {
-      getProductWithID(ID).then((finalData) => {
-        setProducts(finalData);
-      });
+    if (editMode) {
+      if (productListUpdated === null) {
+        getProductWithID(ID).then((finalData) => {
+          setProducts(finalData);
+        });
+      }
     }
   });
 
@@ -77,6 +79,7 @@ const EditProduct = () => {
   }, [productListUpdated]);
 
   return (
+<<<<<<< HEAD
     <Container fluid className="main-content-container px-4">
       <Row noGutters className="page-header py-4">
         <PageTitle sm="4" title="Product List" subtitle={"Edit Product"} className="text-sm-left" />
@@ -87,6 +90,13 @@ const EditProduct = () => {
             {productListUpdated != null ? (
               <div className={styles.addAreaContainer}>
                 <h3>{"Edit Product"}</h3>
+=======
+    <div>
+      <div className={styles.editPage}>
+        {productListUpdated !== null || !editMode ? (
+          <div className={styles.addAreaContainer}>
+            <h2>{`${editMode ? "EDIT" : "ADD"} PRODUCT`}</h2>
+>>>>>>> bead203216069c968e2fa6856143c35c58481989
 
                 <div className={styles.inputContainer}>
                   <div className={styles.imageContainer}>

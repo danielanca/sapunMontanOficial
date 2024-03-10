@@ -11,7 +11,7 @@ import { getData } from "./data/productList";
 import { AuthProvider } from "./components/context/AuthProvider";
 import { getCookie } from "./components/CookieConsent/functions";
 import CookieConsent from "./components/CookieConsent/CookieConsent";
-import VideoInstructions from "./components/VideoInstructions/VideoInstructions";
+import { ProductsFromSessionStorage } from "./data/constants";
 import NotFound from "./components/NotFound/NotFound";
 import InvoiceView from "./components/Invoice/OrderView/InvoiceView";
 import "./App.css";
@@ -29,25 +29,25 @@ const CartPage = lazy(() => import(/*webpackPreload: true*/ "./components/CartPa
 const CheckAuth = lazy(() => import(/*webpackPreload: true*/ "./components/AdminArea/CheckAuth"));
 const Blogs = lazy(() => import(/* webpackPreload: true , webpackChunkName: "Blogs" */ "./components/Blogs"));
 const BlogPost = lazy(() => import(/* webpackPreload: true,  webpackChunkName: "BlogPost" */ "./components/BlogPost"));
-const ProduseleNoastre = lazy(() =>
-  import(/*webpackPreload: true , webpackChunkName: "ProduseleNoastre" */ "./components/ProduseleNoastre")
+const ProduseleNoastre = lazy(
+  () => import(/*webpackPreload: true , webpackChunkName: "ProduseleNoastre" */ "./components/ProduseleNoastre")
 );
-const AdminArea = lazy(() =>
-  import(/* webpackPrefetch: true, webpackChunkName: "AdminArea" */ "./components/AdminArea/AdminArea")
+const AdminArea = lazy(
+  () => import(/* webpackPrefetch: true, webpackChunkName: "AdminArea" */ "./components/AdminArea/AdminArea")
 );
-const RequireAuth = lazy(() =>
-  import(/*webpackPrefetch: true , webpackChunkName: "RequireAuth"*/ "./components/AdminArea/RequireAuth")
+const RequireAuth = lazy(
+  () => import(/*webpackPrefetch: true , webpackChunkName: "RequireAuth"*/ "./components/AdminArea/RequireAuth")
 );
 const Login = lazy(() => import(/*webpackPrefetch: true , webpackChunkName: "Login" */ "./components/AdminArea/LogIn"));
-const UpdateProducts = lazy(() =>
-  import(/*webpackPrefetch: true , webpackChunkName: "UpdateProducts"  */ "./components/AdminArea/UpdateProducts")
+const UpdateProducts = lazy(
+  () => import(/*webpackPrefetch: true , webpackChunkName: "UpdateProducts"  */ "./components/AdminArea/UpdateProducts")
 );
-const EditProduct = lazy(() =>
-  import(/*webpackPrefetch: true , webpackChunkName: "EditProduct" */ "./components/AdminArea/EditProduct")
+const EditProduct = lazy(
+  () => import(/*webpackPrefetch: true , webpackChunkName: "EditProduct" */ "./components/AdminArea/EditProduct")
 );
 const OrderView = lazy(() => import("./components/OrderView/OrderView"));
-const Testimonials = lazy(() =>
-  import(/*webpackPrefetch: true , webpackChunkName: "Testimonials" */ "./components/Testimonials")
+const Testimonials = lazy(
+  () => import(/*webpackPrefetch: true , webpackChunkName: "Testimonials" */ "./components/Testimonials")
 );
 const EditStrings = lazy(() => import("./components/AdminArea/EditStrings/EditStrings"));
 const SimpleContent = lazy(() => import(/*webpackPrefetch: true*/ "./blocks/SimpleContent"));
@@ -86,7 +86,7 @@ function App() {
   useEffect(() => {
     if (ssProducts == null) {
       getData().then((finalData) => {
-        sessionStorage.setItem("productsFetched", JSON.stringify(finalData));
+        sessionStorage.setItem(ProductsFromSessionStorage, JSON.stringify(finalData));
       });
     }
   }, [ssProducts]);

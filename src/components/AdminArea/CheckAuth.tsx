@@ -7,7 +7,7 @@ const CheckAuth = () => {
   const auth = useAuth();
   const location = useLocation();
 
-  return auth?.auth.authorise === false ? <Outlet /> : <Navigate to="/admin" state={{ from: location }} replace />;
+  return auth?.authorise === false ? <Outlet /> : <Navigate to="/admin" state={{ from: location }} replace />;
 };
 
 export default CheckAuth;
